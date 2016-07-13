@@ -1,0 +1,139 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+  <string name="app_name" translatable="false">AMessage</string>
+
+  <string name="navigation_drawer_open">Open navigation drawer</string>
+
+  <string name="generic_ok">OK</string>
+  <!--  <string name="generic_cancel">Cancel</string>-->
+
+  <string name="connect">Connect with %s</string>
+  <string name="confirm">Confirm</string>
+  <string name="reject">Reject</string>
+  <string name="qr_code">QR Code</string>
+  <string name="connections">Connections</string>
+  <string name="conversations">Conversations</string>
+  <string name="hint_handle">Handle</string>
+  <string name="title_handle">Set a Handle</string>
+  <string name="title_connection_list">Connections</string>
+  <string name="title_conversation_list">Conversations</string>
+  <string name="title_activity_connect">Connect</string>
+  <string name="title_activity_help">Help</string>
+  <string name="title_activity_windows">Windows</string>
+  <string name="title_activity_feedback">Feedback</string>
+  <string name="title_activity_about">About</string>
+  <string name="title_activity_settings">Settings</string>
+  <string name="title_activity_experiments">Experiments</string>
+  <string name="title_dialog_whats_new">What\'s New</string>
+
+  <string name="edit">Edit</string>
+
+  <!-- About -->
+  <string name="about_build_date">Built On</string>
+  <string name="about_privacy_policy">Privacy Policy</string>
+  <string name="about_privacy_policy_url" translatable="false">https://www.moonlitdoor.com/app/documents/PrivacyPolicy.pdf</string>
+  <string name="about_version">Version</string>
+  <string name="about_page_view_acknowledgements">Acknowledgements</string>
+  <string name="about_page_view_statistics">Statistics</string>
+  <string name="settings_title_key" translatable="false" tools:ignore="UnusedResources">com.moonlitdoor.amessage.settings.title</string>
+
+  <!-- PreferencesFragment -->
+  <string name="whats_new_preference_button" translatable="false">com.moonlitdoor.amessage.whats.new.preference.button</string>
+  <string name="whats_new_preference_title">Reset What\'s New Dialog</string>
+  <string name="whats_new_preference_toast">What\'s New Dialog Reset</string>
+  <string name="preference_theme" translatable="false">com.moonlitdoor.amessage.theme</string>
+  <string name="preference_theme_default" translatable="false">0</string>
+  <string name="preference_theme_dark" translatable="false">1</string>
+  <string name="preference_theme_monster" translatable="false">2</string>
+  <string name="preference_theme_deep" translatable="false">3</string>
+  <string name="preference_theme_cool" translatable="false">4</string>
+
+  <string name="preference_theme_title">Theme</string>
+  <string name="preference_theme_negative">Forget It</string>
+  <string name="first_preference_screen" translatable="false">com.moonlitdoor.amessage.first.preference.screen</string>
+  <string name="preference_starting_location" translatable="false">com.moonlitdoor.amessage.starting.location</string>
+  <string name="preference_starting_location_title">Starting Location</string>
+
+  <string name="preference_starting_location_negative">Forget It</string>
+  <string name="experiments_preference_button" translatable="false">com.moonlitdoor.amessage.experiments</string>
+  <string name="experiment_screens_count" translatable="false">com.moonlitdoor.amessage.screens.count</string>
+  <string name="metadata_whats_new_bug_fixes" tools:ignore="UnusedResources">Performance improvements and bug fixes.</string>
+  <string name="metadata_title" tools:ignore="UnusedResources">AMessage</string>
+  <string name="metadata_short_description" tools:ignore="UnusedResources">An encrypted server-less messaging application.</string>
+
+  <!-- Experiments -->
+  <string name="metadata_full_description" tools:ignore="UnusedResources">AMessage uses keys that are generated locally and shared locally to encrypt messages that are sent through the cloud to your connection.</string>
+  <string name="connect_list_title">Pending</string>
+
+  <!-- Metadata -->
+  <string name="connect_qr_title">QR Code</string>
+  <string name="connect_scan_title">Scan</string>
+  <string name="fragment_scan_content_description">contentDescription</string>
+  <string name="error_no_help">Error: can\'t show help.</string>
+  <string name="send_the_first_message">Send the first message.</string>
+  <!--<string name="profile_created">Profile Created</string>-->
+
+  <!-- Connect -->
+  <!--<string name="connect_client">Client</string>-->
+  <!--<string name="connect_server">Server</string>-->
+  <string name="title">Title</string>
+  <string name="add_a_topic_to_the_conversation">Add a Topic to the Conversation</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string-array name="about_acknowledgements_list">
+    <item>Android Support Constraint Layout:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support AppCompat V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Design:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Preference V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Preference V14:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support RecyclerView V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Support V4:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Lifecycle Runtime:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Lifecycle Extensions:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Lifecycle Compiler:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Persistence Room Runtime:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Persistence Room Compiler:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Dagger:Copyright © 2016 The Dagger Authors:Apache License, Version 2.0:APACHE</item>
+    <item>Dagger Compiler:Copyright © 2016 The Dagger Authors:Apache License, Version 2.0:APACHE</item>
+    <item>Firebase Config:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>
+    <item>Firebase Core:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>
+    <item>Firebase Messaging:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>
+    <item>ZXing:Copyright © 2007 ZXing authors:Apache License, Version 2.0:APACHE</item>
+    <item>OkHttp:Copyright © 2015 Square, Inc.:Apache License, Version 2.0:APACHE</item>
+    <item>Moshi Converter:Copyright © 2013 Square, Inc.:Apache License, Version 2.0:APACHE</item>
+    <item>Retrofit:Copyright © 2013 Square, Inc.:Apache License, Version 2.0:APACHE</item>
+  </string-array>
+  <string-array name="preference_theme_list_titles">
+    <item>Default Theme</item>
+    <item>Dark Theme</item>
+    <item>Monster Theme</item>
+    <item>Deep Theme</item>
+    <item>Cool Theme</item>
+  </string-array>
+  <string-array name="preference_theme_list_values" translatable="false">
+    <item>@string/preference_theme_default</item>
+    <item>@string/preference_theme_dark</item>
+    <item>@string/preference_theme_monster</item>
+    <item>@string/preference_theme_deep</item>
+    <item>@string/preference_theme_cool</item>
+  </string-array>
+  <string-array name="preference_starting_location_list_titles">
+    <item>Last Location</item>
+    <item>@string/title_connection_list</item>
+    <item>@string/title_conversation_list</item>
+  </string-array>
+  <string-array name="preference_starting_location_list_values" translatable="false">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+  <string-array name="metadata_whats_new">
+    <item>&#8226;"This What\'s New Dialog!"</item>
+    <item>&#8226;You can now select your theme in the settings.</item>
+    <item>&#8226;Added a notification that a QR Code has been read.</item>
+    <item>&#8226;Dismissing the New Connection Notification properly.</item>
+    <item>&#8226;Taping on the Version on the About screen takes you to the Play Store listing for Amessage so you can check for an update.</item>
+    <item>&#8226;Remove Debug Logging.</item>
+    <item>&#8226;Performance improvements and bug fixes.</item>
+  </string-array>
+
+</resources>

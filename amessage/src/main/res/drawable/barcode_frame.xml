@@ -1,0 +1,30 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+  android:width="162dp"
+  android:height="162dp"
+  android:viewportHeight="129"
+  android:viewportWidth="129">
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M129,127l0,2l-27,0l0,-2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M127,102h2v27h-2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M0,102h2v27h-2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M27,127l0,2l-27,0l0,-2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M127,0h2v27h-2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M102,2l0,-2l27,0l0,2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M0,2l0,-2l27,0l0,2z" />
+  <path
+    android:fillColor="@color/barcodeFrame"
+    android:pathData="M2,27l-2,0l0,-27l2,0z" />
+</vector>

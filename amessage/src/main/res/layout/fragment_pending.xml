@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <data>
+
+    <variable
+      name="viewModel"
+      type="com.moonlitdoor.amessage.connect.ConnectViewModel" />
+
+  </data>
+
+  <androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recycler_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:paddingTop="@dimen/dp008"
+
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+  <!--app:items="@{viewModel.pendingAndInvitedConnections}"-->
+</layout>

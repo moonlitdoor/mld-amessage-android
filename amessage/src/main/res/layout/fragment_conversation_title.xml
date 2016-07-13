@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  tools:context=".conversation.create.ConversationTitleFragment">
+
+  <data>
+
+    <variable
+      name="conversation"
+      type="com.moonlitdoor.amessage.domain.model.Conversation" />
+
+    <variable
+      name="viewModel"
+      type="com.moonlitdoor.amessage.conversation.create.ConversationCreateViewModel" />
+
+  </data>
+
+  <FrameLayout
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/dp016">
+
+    <com.google.android.material.textfield.TextInputLayout
+      android:id="@+id/input_layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="@string/title">
+
+      <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:inputType="textCapWords"
+        android:text="@={conversation.title}"
+        android:maxLines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+  </FrameLayout>
+
+</layout>

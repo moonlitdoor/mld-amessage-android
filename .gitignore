@@ -1,0 +1,10 @@
+*.iml
+.gradle
+local.properties
+.idea
+build
+.pid.lock
+amessage.db
+.DS_Store
+captures
+amessage/src/main/play/en-US

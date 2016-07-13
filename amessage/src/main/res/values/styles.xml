@@ -1,0 +1,209 @@
+<resources>
+
+  <style name="AmTheme.Splash" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+  </style>
+
+  <style name="AmTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="iconColor">@color/white</item>
+  </style>
+
+  <!--<style name="AmTheme.Deep" parent="Theme.AppCompat.Light.NoActionBar">-->
+  <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
+  <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+  <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+  <!--<item name="colorAccent">@color/colorAccent</item>-->
+  <!--<item name="iconColor">@color/white</item>-->
+  <!--</style>-->
+
+  <!--<style name="AmTheme.Cool" parent="Theme.AppCompat.NoActionBar">-->
+  <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
+  <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+  <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+  <!--<item name="colorAccent">@color/colorAccent</item>-->
+  <!--<item name="iconColor">@color/white</item>-->
+  <!--</style>-->
+
+  <style name="AmTheme.Deep">
+    <item name="colorPrimary">@color/colorDeepPrimary</item>
+    <item name="colorPrimaryDark">@color/colorDeepPrimaryDark</item>
+    <item name="colorAccent">@color/colorDeepAccent</item>
+    <item name="iconColor">@color/white</item>
+  </style>
+
+  <style name="AmTheme.Cool">
+    <item name="colorPrimary">@color/colorCoolPrimary</item>
+    <item name="colorPrimaryDark">@color/colorCoolPrimaryDark</item>
+    <item name="colorAccent">@color/colorCoolAccent</item>
+    <item name="iconColor">@color/white</item>
+  </style>
+
+  <!--<style name="AmTheme.Harvest">-->
+  <!--<item name="colorPrimary">@color/colorHarvestPrimary</item>-->
+  <!--<item name="colorPrimaryDark">@color/colorHarvestPrimaryDark</item>-->
+  <!--<item name="colorAccent">@color/colorHarvestAccent</item>-->
+  <!--<item name="iconColor">@color/white</item>-->
+  <!--</style>-->
+
+  <style name="AmTheme.Dark">
+    <item name="colorPrimary">@color/colorDarkPrimary</item>
+    <item name="colorPrimaryDark">@color/colorDeepPrimaryDark</item>
+    <item name="colorAccent">@color/colorDarkAccent</item>
+    <item name="android:windowBackground">@color/backgroundDark</item>
+    <item name="iconColor">@color/black_087</item>
+  </style>
+
+  <style name="AmTheme.Monster">
+    <item name="colorPrimary">@color/colorMonsterPrimary</item>
+    <item name="colorPrimaryDark">@color/colorMonsterPrimaryDark</item>
+    <item name="colorAccent">@color/colorMonsterAccent</item>
+    <item name="android:windowBackground">@color/backgroundDark</item>
+    <item name="iconColor">@color/black_087</item>
+  </style>
+
+  <!--<style name="AmTheme.Pink">-->
+  <!--<item name="colorPrimary">@color/colorPinkPrimary</item>-->
+  <!--<item name="colorPrimaryDark">@color/colorPinkPrimaryDark</item>-->
+  <!--<item name="colorAccent">@color/colorPinkAccent</item>-->
+  <!--<item name="android:windowBackground">@color/backgroundDark</item>-->
+  <!--<item name="iconColor">@color/black_087</item>-->
+  <!--</style>-->
+
+  <style name="AmTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+  <style name="AmTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+  <style name="Text.Primary" parent="android:Widget.TextView">
+    <item name="android:paddingEnd">@dimen/dp016</item>
+    <item name="android:paddingStart">@dimen/dp016</item>
+    <item name="android:paddingTop">@dimen/dp020</item>
+    <item name="android:textColor">?android:textColorPrimary</item>
+    <item name="android:textSize">@dimen/sp016</item>
+  </style>
+
+  <style name="Text.Secondary" parent="android:Widget.TextView">
+    <item name="android:paddingBottom">@dimen/dp020</item>
+    <item name="android:paddingEnd">@dimen/dp016</item>
+    <item name="android:paddingStart">@dimen/dp016</item>
+    <item name="android:textColor">?android:textColorSecondary</item>
+    <item name="android:textSize">@dimen/sp014</item>
+  </style>
+
+  <style name="Text.Secondary.Link">
+    <item name="android:textColor">@color/blueLink</item>
+  </style>
+
+  <style name="Dialog" />
+
+  <!--<style name="Dialog.Container">-->
+  <!--<item name="android:layout_width">match_parent</item>-->
+  <!--<item name="android:layout_height">wrap_content</item>-->
+  <!--</style>-->
+
+  <!--<style name="Dialog.Title" parent="android:Widget.TextView">-->
+  <!--<item name="android:textColor">@color/dialog_title</item>-->
+  <!--<item name="android:textSize">@dimen/dialog_title</item>-->
+  <!--<item name="android:fontFamily">sans-serif</item>-->
+  <!--<item name="android:textStyle">bold</item>-->
+  <!--<item name="android:layout_height">64dp</item>-->
+  <!--<item name="android:layout_width">0dp</item>-->
+  <!--<item name="android:gravity">center_vertical</item>-->
+  <!--<item name="android:layout_marginStart">24dp</item>-->
+  <!--<item name="android:layout_marginEnd">24dp</item>-->
+  <!--</style>-->
+
+  <!--<style name="Dialog2" parent="android:style/Theme.Dialog">-->
+  <!--<item name="android:windowBackground">@drawable/dialog_inset_background</item>-->
+  <!--<item name="android:windowNoTitle">true</item>-->
+  <!--<item name="android:windowIsFloating">true</item>-->
+  <!--</style>-->
+
+  <style name="Dialog.Content">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <!--<item name="android:layout_marginStart">24dp</item>-->
+    <!--<item name="android:layout_marginEnd">24dp</item>-->
+    <!--<item name="android:background">@drawable/dialog_inset_background</item>-->
+  </style>
+
+  <!--  <style name="AmTheme.NoActionBar">-->
+  <!--    <item name="windowActionBar">false</item>-->
+  <!--    <item name="windowNoTitle">true</item>-->
+  <!--  </style>-->
+
+  <!-- Buttons -->
+  <!--<style name="Button" parent="Widget.AppCompat.Button"/>-->
+  <!--<style name="Button.Colored" parent="Widget.AppCompat.Button.Colored" />-->
+  <!--<style name="Button.Flat" parent="Widget.AppCompat.Button.Borderless"/>-->
+  <!--<style name="Button.Flat.Colored" parent="Widget.AppCompat.Button.Borderless.Colored"/>-->
+
+  <!--Regular (default):-->
+
+  <!--<item name="android:fontFamily">sans-serif</item>-->
+  <!--<item name="android:textStyle">normal</item>-->
+  <!--Italic:-->
+
+  <!--<item name="android:fontFamily">sans-serif</item>-->
+  <!--<item name="android:textStyle">italic</item>-->
+  <!--Bold:-->
+
+  <!--<item name="android:fontFamily">sans-serif</item>-->
+  <!--<item name="android:textStyle">bold</item>-->
+  <!--Bold-italic:-->
+
+  <!--<item name="android:fontFamily">sans-serif</item>-->
+  <!--<item name="android:textStyle">bold|italic</item>-->
+  <!--Light:-->
+
+  <!--<item name="android:fontFamily">sans-serif-light</item>-->
+  <!--<item name="android:textStyle">normal</item>-->
+  <!--Light-italic:-->
+
+  <!--<item name="android:fontFamily">sans-serif-light</item>-->
+  <!--<item name="android:textStyle">italic</item>-->
+  <!--Thin :-->
+
+  <!--<item name="android:fontFamily">sans-serif-thin</item>-->
+  <!--<item name="android:textStyle">normal</item>-->
+  <!--Thin-italic :-->
+
+  <!--<item name="android:fontFamily">sans-serif-thin</item>-->
+  <!--<item name="android:textStyle">italic</item>-->
+  <!--Condensed regular:-->
+
+  <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
+  <!--<item name="android:textStyle">normal</item>-->
+  <!--Condensed italic:-->
+
+  <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
+  <!--<item name="android:textStyle">italic</item>-->
+  <!--Condensed bold:-->
+
+  <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
+  <!--<item name="android:textStyle">bold</item>-->
+  <!--Condensed bold-italic:-->
+
+  <!--<item name="android:fontFamily">sans-serif-condensed</item>-->
+  <!--<item name="android:textStyle">bold|italic</item>-->
+  <!--Added in Android Lollipop (v5.0) - API 21 :-->
+  <!--Medium:-->
+
+  <!--<item name="android:fontFamily">sans-serif-medium</item>-->
+  <!--<item name="android:textStyle">normal</item>-->
+  <!--Medium-italic:-->
+
+  <!--<item name="android:fontFamily">sans-serif-medium</item>-->
+  <!--<item name="android:textStyle">italic</item>-->
+  <!--Black:-->
+
+  <!--<item name="android:fontFamily">sans-serif-black</item>-->
+  <!--<item name="android:textStyle">italic</item>-->
+
+
+</resources>

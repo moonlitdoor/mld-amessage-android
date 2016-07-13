@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [ ! -d "../sdk-tools-linux" ]; then
+  echo Get and unpack the SDK Tools
+  wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O ../sdk-tools-linux.zip
+  unzip ../sdk-tools-linux.zip -d ../sdk-tools-linux
+fi
+
+if [ ! -d "../google-cloud-sdk" ]; then
+  echo Get GCloud Command Line Tools
+  wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-161.0.0-linux-x86_64.tar.gz -O ../google-cloud-sdk.tar.gz
+  tar -xzf ../google-cloud-sdk.tar.gz -C ..
+fi
+
+echo Define android Home and add PATHs
+echo "sdk.dir=/opt/atlassian/pipelines/agent/sdk-tools-linux" > local.properties
+
+echo Create "repositories.cfg" for sdkmanager
+mkdir /root/.android
+touch /root/.android/repositories.cfg
+
+echo Accept all licences
+yes | /opt/atlassian/pipelines/agent/sdk-tools-linux/tools/bin/sdkmanager --licenses
