@@ -20,6 +20,8 @@ jobs:
       - run:
           name: Write Keystore File
           command: |
+            pwd
+            ls -l
             touch ./build/amessage.keystore.jks
             base64 -d \<\<\< $com_moonlitdoor_amessage_key_store > ./build/amessage.keystore.jks
       - run:
