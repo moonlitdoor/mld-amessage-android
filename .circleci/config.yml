@@ -22,12 +22,7 @@ jobs:
           command: echo $com_moonlitdoor_amessage_key_store | base64 -d > amessage/build/amessage.keystore.jks
       - run:
           name: Build Release
-          command: |
-            ./gradlew assembleRelease |
-            -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks |
-            -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password |
-            -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias |
-            -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password
+          command: ./gradlew assembleRelease -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password
       - run:
           name: Run Tests
           command: ./gradlew lint test
