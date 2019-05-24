@@ -22,8 +22,8 @@ jobs:
           command: |
             pwd
             ls -l
-            touch ./build/amessage.keystore.jks
-            base64 -d \<\<\< $com_moonlitdoor_amessage_key_store > ./build/amessage.keystore.jks
+            touch amessage/build/amessage.keystore.jks
+            base64 -d \<\<\< $com_moonlitdoor_amessage_key_store > amessage/build/amessage.keystore.jks
       - run:
           name: Build Release
           command: ./gradlew assembleRelease -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks
