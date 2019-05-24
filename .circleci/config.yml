@@ -26,9 +26,18 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
-      - store_artifacts: # for display in Artifacts: https://circleci.com/docs/2.0/artifacts/
-          path: app/build/reports
+      - store_artifacts:
+          path: amessage/build/reports/tests
           destination: reports
+      - store_artifacts:
+          path: amessage/build/reports/lint-results.html
+          destination: lint
+      - store_artifacts:
+          path: domain/build/reports/tests
+          destination: reportsDomain
+      - store_artifacts:
+          path: domain/build/reports/lint-results.html
+          destination: lintDomain
       - store_test_results:
           path: amessage/build/test-results
       - store_test_results:
