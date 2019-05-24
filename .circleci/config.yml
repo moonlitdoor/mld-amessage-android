@@ -25,7 +25,10 @@ jobs:
           command: ./gradlew assembleRelease -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password
       - run:
           name: Run Tests
-          command: ./gradlew lint test
+          command: ./gradlew testDebug
+      - run:
+          name: Run Lint
+          command: ./gradlew lint
       - store_artifacts:
           path: amessage/build/reports/tests
           destination: reports
