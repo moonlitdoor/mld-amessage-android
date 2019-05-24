@@ -18,8 +18,11 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "amessage/build.gradle" }}
       - run:
+          name: Write Keystore File
+          command: base64 -d <<< $com_moonlitdoor_amessage_key_store > ./build/amessage.keystore.jks
+      - run:
           name: Build Release
-          command: ./gradlew assembleRelease
+          command: ./gradlew assembleRelease -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks
       - run:
           name: Run Tests
           command: ./gradlew lint test
