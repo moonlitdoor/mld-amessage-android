@@ -17,30 +17,33 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "amessage/build.gradle" }}
+      #      - run:
+      #          name: Write Keystore File
+      #          command: echo $com_moonlitdoor_amessage_key_store | base64 -d > amessage/build/amessage.keystore.jks
+      #      - run:
+      #          name: Build Release
+      #          command: ./gradlew assembleRelease -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_prod_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_prod_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_prod_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_prod_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_prod_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_prod_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID=$com_moonlitdoor_amessage_firebase_prod_project_id
       - run:
-          name: Write Keystore File
-          command: echo $com_moonlitdoor_amessage_key_store | base64 -d > amessage/build/amessage.keystore.jks
-      - run:
-          name: Build Release
-          command: ./gradlew assembleRelease -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=./build/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password
+          name: Build Debug
+          command: ./gradlew assembleDebug -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_beta_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_beta_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_beta_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID=$com_moonlitdoor_amessage_firebase_beta_project_id
       - run:
           name: Run Tests
           command: ./gradlew testDebug
       - run:
           name: Run Lint
-          command: ./gradlew lint
+          command: ./gradlew lintDebug
       - store_artifacts:
-          path: amessage/build/reports/tests
-          destination: reports
+          path: amessage/build/reports/tests/testDebugUnitTest
+          destination: UnitTestsAMessage
       - store_artifacts:
           path: amessage/build/reports/lint-results.html
-          destination: lint
+          destination: LintAMessage
       - store_artifacts:
-          path: domain/build/reports/tests
-          destination: reportsDomain
+          path: domain/build/reports/tests/testDebugUnitTest
+          destination: UnitTestsDomain
       - store_artifacts:
           path: domain/build/reports/lint-results.html
-          destination: lintDomain
+          destination: LintDomain
       - store_test_results:
           path: amessage/build/test-results
       - store_test_results:
