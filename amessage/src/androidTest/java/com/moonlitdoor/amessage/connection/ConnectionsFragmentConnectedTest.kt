@@ -1,13 +1,13 @@
 package com.moonlitdoor.amessage.connection
 
 import android.content.Intent
-import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.navigation.NavigationActivity
 import org.junit.Assert.assertEquals
@@ -25,7 +25,7 @@ class ConnectionsFragmentConnectedTest {
   @Ignore("flaky")
   @Test
   fun givenWhen() {
-    val applicationContext = InstrumentationRegistry.getTargetContext().applicationContext
+    val applicationContext = InstrumentationRegistry.getInstrumentation().targetContext.applicationContext
 //    PreferenceManager.getDefaultSharedPreferences(applicationContext).edit { putInt(Constants.SharedPreferences.VERSION_CODE, Int.MAX_VALUE) }
 //    Injector.init(applicationContext, DependencyModuleFake(applicationContext, MutableLiveData<String>().also { it.postValue("Bob") }))
     rule.launchActivity(Intent())

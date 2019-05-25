@@ -1,8 +1,7 @@
 package com.moonlitdoor.amessage
 
-import androidx.test.InstrumentationRegistry
-import androidx.test.filters.LargeTest
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -11,12 +10,11 @@ import org.junit.runner.RunWith
 class ExampleInstrumentedTest {
 
   @SmokeTest
-  @LargeTest
   @Test
   fun useAppContext() {
-    val appContext = InstrumentationRegistry.getTargetContext()
-    assertEquals("com.moonlitdoor.amessage", appContext.packageName)
-    assertEquals(App::class.java.canonicalName, appContext.applicationContext.javaClass.canonicalName)
-  }
+    // Context of the app under test.
+    val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 
+    assertEquals("com.moonlitdoor.amessage", appContext.packageName)
+  }
 }

@@ -51,7 +51,7 @@ android {
     } else if (flakyTests) {
       testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerFlaky"
     } else {
-      testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+      testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     testInstrumentationRunnerArguments clearPackageData: "true"
     javaCompileOptions {
@@ -131,7 +131,7 @@ dependencies {
   implementation "com.google.android.material:material:1.0.0"
   implementation "androidx.preference:preference:1.0.0"
   implementation "androidx.legacy:legacy-preference-v14:1.0.0"
-  implementation "androidx.recyclerview:recyclerview:1.0.0"
+  implementation 'androidx.recyclerview:recyclerview:1.1.0-alpha05'
   implementation "androidx.legacy:legacy-support-v4:1.0.0"
   implementation "com.crashlytics.sdk.android:crashlytics:2.10.1"
   implementation "com.google.android.gms:play-services-vision:17.0.2"
@@ -141,11 +141,11 @@ dependencies {
   implementation "com.google.firebase:firebase-messaging:18.0.0"
 //  implementation "com.google.firebase:firebase-perf:17.0.0"
   implementation "com.google.android.material:material:1.1.0-alpha06"
-  implementation "com.google.zxing:core:3.3.0"
+  implementation 'com.google.zxing:core:3.4.0'
   implementation "com.jakewharton.timber:timber:4.7.1"
   implementation "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
   implementation "com.stepstone.stepper:material-stepper:4.3.1"
-  implementation "com.squareup.okhttp3:logging-interceptor:3.12.1"
+  implementation 'com.squareup.okhttp3:logging-interceptor:3.14.2'
   implementation "com.squareup.retrofit2:converter-gson:2.5.0"
   implementation "com.squareup.retrofit2:retrofit:2.5.0"
   implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31"
@@ -158,13 +158,14 @@ dependencies {
   implementation "androidx.test.espresso:espresso-idling-resource:3.2.0-beta01"
 
   androidTestImplementation "androidx.test:runner:1.2.0-beta01"
+  androidTestImplementation "androidx.test.ext:junit-ktx:1.1.1-beta01"
   androidTestImplementation "androidx.test:rules:1.2.0-beta01"
   androidTestImplementation "androidx.room:room-testing:2.0.0"
-  androidTestImplementation "android.arch.work:work-testing:1.0.1"
-  androidTestImplementation "androidx.legacy:legacy-support-core-utils:1.0.0"
+//  androidTestImplementation "android.arch.work:work-testing:1.0.1"
+//  androidTestImplementation "androidx.legacy:legacy-support-core-utils:1.0.0"
   androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0-beta01"
   androidTestImplementation "androidx.test.espresso.idling:idling-concurrent:3.2.0-beta01"
-  androidTestImplementation "android.arch.navigation:navigation-testing:1.0.0-alpha08"
+//  androidTestImplementation "android.arch.navigation:navigation-testing:1.0.0-alpha08"
 
   androidTestUtil "androidx.test:orchestrator:1.2.0-beta01"
 
@@ -176,10 +177,12 @@ dependencies {
   testImplementation "androidx.test.espresso:espresso-core:3.2.0-beta01"
   testImplementation "androidx.legacy:legacy-support-core-utils:1.0.0"
   testImplementation "org.koin:koin-test:1.0.1"
-  testImplementation "com.squareup.okhttp3:mockwebserver:3.11.0"
+  testImplementation 'com.squareup.okhttp3:mockwebserver:3.14.2'
   testImplementation "junit:junit:4.12"
 
 }
+
+assemble.dependsOn assembleAndroidTest
 
 task connectedLargeTests {
   dependsOn "connectedCheck"

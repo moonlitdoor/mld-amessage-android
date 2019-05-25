@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.domain.json
 
-import androidx.test.runner.AndroidJUnit4
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.gson.Gson
 import com.moonlitdoor.amessage.domain.model.Connection
 import junit.framework.Assert.assertEquals

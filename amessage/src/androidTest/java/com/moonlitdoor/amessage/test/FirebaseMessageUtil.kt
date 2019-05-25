@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.test
 
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import com.moonlitdoor.amessage.ProfileObject
 import com.moonlitdoor.amessage.domain.client.FirebaseClient
 import com.moonlitdoor.amessage.domain.json.ConnectionInvitePayload
@@ -48,5 +48,4 @@ class FirebaseMessageUtil : KoinComponent {
 //    }
 
 
-}
 }
