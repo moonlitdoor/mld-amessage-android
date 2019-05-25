@@ -36,13 +36,13 @@ jobs:
           path: amessage/build/reports/tests/testDebugUnitTest
           destination: UnitTestsAMessage
       - store_artifacts:
-          path: amessage/build/reports/lint-results.html
+          path: amessage/build/reports/lint-results-debug.html
           destination: LintAMessage
       - store_artifacts:
           path: domain/build/reports/tests/testDebugUnitTest
           destination: UnitTestsDomain
       - store_artifacts:
-          path: domain/build/reports/lint-results.html
+          path: domain/build/reports/lint-results-debug.html
           destination: LintDomain
       - store_test_results:
           path: amessage/build/test-results
