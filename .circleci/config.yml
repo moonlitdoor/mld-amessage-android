@@ -26,25 +26,66 @@ jobs:
       - run:
           name: Build Debug
           command: ./gradlew assembleDebug -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_beta_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_beta_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_beta_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID=$com_moonlitdoor_amessage_firebase_beta_project_id
+  test:
+    working_directory: ~/project
+    docker:
+      - image: circleci/android:api-28
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "amessage/build.gradle" }}
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "amessage/build.gradle" }}
       - run:
           name: Run Tests
           command: ./gradlew testDebug -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_beta_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_beta_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_beta_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID=$com_moonlitdoor_amessage_firebase_beta_project_id
-      - run:
-          name: Run Lint
-          command: ./gradlew lintDebug
       - store_artifacts:
           path: amessage/build/reports/tests/testDebugUnitTest
           destination: UnitTestsAMessage
       - store_artifacts:
-          path: amessage/build/reports/lint-results-debug.html
-          destination: LintAMessage
-      - store_artifacts:
           path: domain/build/reports/tests/testDebugUnitTest
           destination: UnitTestsDomain
-      - store_artifacts:
-          path: domain/build/reports/lint-results-debug.html
-          destination: LintDomain
       - store_test_results:
           path: amessage/build/test-results
       - store_test_results:
           path: domain/build/test-results
+  lint:
+    working_directory: ~/project
+    docker:
+      - image: circleci/android:api-28
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "amessage/build.gradle" }}
+      - run:
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "amessage/build.gradle" }}
+      - run:
+          name: Run Lint
+          command: ./gradlew lintDebug
+      - store_artifacts:
+          path: amessage/build/reports/lint-results-debug.html
+          destination: LintAMessage
+      - store_artifacts:
+          path: domain/build/reports/lint-results-debug.html
+          destination: LintDomain
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - test
+      - lint
