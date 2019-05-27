@@ -9,6 +9,9 @@ apply plugin: "androidx.navigation.safeargs"
 
 project.ext.archivesBaseName = project.name + "-" + gitVersion
 
+println "VERSION NAME: $gitVersion"
+println "VERSION CODE: ${gitCommitAndTagCount + 200}"
+
 android {
   compileSdkVersion 28
 
@@ -35,7 +38,7 @@ android {
     applicationId "com.moonlitdoor.amessage"
     minSdkVersion 24
     targetSdkVersion 28
-    versionCode = gitCommitAndTagCount
+    versionCode = gitCommitAndTagCount + 200
     versionName = gitVersion
     playAccountConfig = playAccountConfigs.defaultAccountConfig
     buildConfigField "String", "BUILD_DATE", "\"0\""
