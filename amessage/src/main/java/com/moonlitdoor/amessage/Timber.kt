@@ -1,7 +1,8 @@
 package com.moonlitdoor.amessage
 
+import android.annotation.SuppressLint
 import android.util.Log
-import com.crashlytics.android.Crashlytics
+//import com.crashlytics.android.Crashlytics
 import timber.log.Timber
 
 fun initTimber(isDebug: Boolean) = if (isDebug) Timber.plant(DecoratedDebugTree) else Timber.plant(DecoratedCrashReportingTree)
@@ -12,12 +13,16 @@ private object DecoratedDebugTree : Timber.DebugTree() {
 
 private object DecoratedCrashReportingTree : Timber.Tree() {
   override fun isLoggable(tag: String?, priority: Int): Boolean = priority >= Log.INFO
+  @SuppressLint("LogNotTimber")
   override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
     if (priority < Log.INFO) return
-    Crashlytics.log(priority, tag, Decorator.decorate(message))
+    Log.println(priority, tag, Decorator.decorate(message))
+//    Crashlytics.log(priority, tag, Decorator.decorate(message))
     if (t != null) {
-      Crashlytics.logException(t)
+      Log.e(tag, message, t)
+//      Crashlytics.logException(t)
     }
+
   }
 }
 

@@ -5,6 +5,7 @@ apply plugin: "kotlin-kapt"
 apply plugin: "com.github.triplet.play"
 apply plugin: "androidx.navigation.safeargs"
 //apply plugin: "com.google.firebase.firebase-perf"
+//apply plugin: "io.fabric"
 
 project.ext.archivesBaseName = project.name + "-" + gitVersion
 
@@ -22,9 +23,7 @@ android {
     unitTests {
       includeAndroidResources = true
     }
-    if (orchestrator) {
-      execution "ANDROID_TEST_ORCHESTRATOR"
-    }
+    execution "ANDROIDX_TEST_ORCHESTRATOR"
     animationsDisabled = true
   }
   playAccountConfigs {
@@ -79,6 +78,7 @@ android {
       resValue "string", "google_crash_reporting_api_key", COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_CRASH_REPORTING_API_KEY
       resValue "string", "google_storage_bucket", COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET
 //      resValue "string", "project_id", COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID
+//      resValue "string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\""
       signingConfig signingConfigs.release
       //      minifyEnabled true
     }
@@ -92,6 +92,7 @@ android {
       resValue "string", "google_crash_reporting_api_key", COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY
       resValue "string", "google_storage_bucket", COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET
 //      resValue "string", "project_id", COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID
+//      resValue "string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\""
       minifyEnabled false
     }
   }
@@ -105,6 +106,17 @@ android {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
   }
+
+  sourceSets {
+    String sharedTestDir = "src/sharedTest/java"
+    test {
+      java.srcDir sharedTestDir
+    }
+    androidTest {
+      java.srcDir sharedTestDir
+    }
+  }
+
 }
 
 play {
@@ -134,7 +146,7 @@ dependencies {
   implementation "androidx.legacy:legacy-preference-v14:1.0.0"
   implementation "androidx.recyclerview:recyclerview:1.1.0-alpha05"
   implementation "androidx.legacy:legacy-support-v4:1.0.0"
-  implementation "com.crashlytics.sdk.android:crashlytics:2.10.1"
+//  implementation "com.crashlytics.sdk.android:crashlytics:2.10.1"
   implementation "com.google.android.gms:play-services-vision:17.0.2"
   implementation "com.google.code.gson:gson:2.8.5"
   implementation "com.google.firebase:firebase-config:17.0.0"
@@ -180,6 +192,8 @@ dependencies {
   testImplementation "org.koin:koin-test:1.0.1"
   testImplementation "com.squareup.okhttp3:mockwebserver:3.14.2"
   testImplementation "junit:junit:4.12"
+  testImplementation "androidx.test.ext:junit-ktx:1.1.1-beta01"
+  testImplementation "androidx.test.ext:truth:1.1.0"
 
 }
 
@@ -191,6 +205,8 @@ task connectedLargeTests {
 
   }
 }
+
+//apply plugin: "com.google.gms.google-services"
 
 task parseMetadata() {
   ext.parse = { param1, param2 ->
