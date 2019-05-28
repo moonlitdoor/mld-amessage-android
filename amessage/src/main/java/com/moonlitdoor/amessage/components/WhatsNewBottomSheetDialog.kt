@@ -5,8 +5,8 @@ import android.preference.PreferenceManager
 import android.view.*
 import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.BuildConfig
-import com.moonlitdoor.amessage.Constants
 import com.moonlitdoor.amessage.R
+import com.moonlitdoor.amessage.constants.Constants
 import com.moonlitdoor.amessage.databinding.BottomSheetDialogWhatsNewBinding
 import com.moonlitdoor.amessage.databinding.ListItemWhatsNewBinding
 import java.util.*

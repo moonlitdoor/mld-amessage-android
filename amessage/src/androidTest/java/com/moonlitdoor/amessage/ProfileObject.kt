@@ -3,6 +3,7 @@ package com.moonlitdoor.amessage
 import android.preference.PreferenceManager
 import androidx.core.content.edit
 import androidx.test.platform.app.InstrumentationRegistry
+import com.moonlitdoor.amessage.constants.Constants
 import java.util.*
 
 object ProfileObject {

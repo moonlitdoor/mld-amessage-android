@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.domain.json
 
 import com.google.gson.Gson
-import com.moonlitdoor.amessage.util.AesCbcWithIntegrity
+import com.moonlitdoor.amessage.domain.util.AesCbcWithIntegrity
 import timber.log.Timber
 
 abstract class Payload {

@@ -1,1 +1,2 @@
+include ':constants'
 include ":amessage", ":domain"

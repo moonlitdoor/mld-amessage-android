@@ -4,13 +4,13 @@ import android.content.SharedPreferences
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.moonlitdoor.amessage.Constants.SharedPreferences.HANDLE
-import com.moonlitdoor.amessage.Constants.SharedPreferences.ID
-import com.moonlitdoor.amessage.Constants.SharedPreferences.PASSWORD
-import com.moonlitdoor.amessage.Constants.SharedPreferences.SALT
-import com.moonlitdoor.amessage.Constants.SharedPreferences.TOKEN
+import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.HANDLE
+import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.ID
+import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.PASSWORD
+import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.SALT
+import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.TOKEN
 import com.moonlitdoor.amessage.domain.entity.ProfileEntity
-import com.moonlitdoor.amessage.util.liveData
+import com.moonlitdoor.shared.preference.live.data.liveData
 import java.util.*
 
 open class ProfileDao constructor(val preferences: SharedPreferences) {

@@ -2,12 +2,8 @@ package com.moonlitdoor.amessage.test
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.moonlitdoor.amessage.ProfileObject
 import com.moonlitdoor.amessage.domain.client.FirebaseClient
-import com.moonlitdoor.amessage.domain.json.ConnectionInvitePayload
-import com.moonlitdoor.amessage.domain.json.FirebaseMessageJson
 import com.moonlitdoor.amessage.navigation.NavigationActivity
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Ignore
 import org.junit.Rule
@@ -25,10 +21,10 @@ class FirebaseMessageUtil : KoinComponent {
   @Before
   fun setup() {
     val connectionId = UUID.randomUUID()
-    val result = client.send(
-      FirebaseMessageJson(ConnectionInvitePayload(ProfileObject.handle, ProfileObject.token, connectionId, ProfileObject.password, ProfileObject.salt), connectionId, ProfileObject.token, ProfileObject.password, ProfileObject.salt)
-    ).execute()
-    assertEquals(true, result.isSuccessful)
+//    val result = client.send(
+//      FirebaseMessageJson(ConnectionInvitePayload(ProfileObject.handle, ProfileObject.token, connectionId, ProfileObject.password, ProfileObject.salt), connectionId, ProfileObject.token, ProfileObject.password, ProfileObject.salt)
+//    ).execute()
+//    assertEquals(true, result.isSuccessful)
   }
 
   @get:Rule

@@ -11,9 +11,9 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.barcode.BarcodeDetector
-import com.moonlitdoor.amessage.Constants
 import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
+import com.moonlitdoor.amessage.constants.Constants
 import com.moonlitdoor.amessage.databinding.FragmentScanBinding
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.ignore

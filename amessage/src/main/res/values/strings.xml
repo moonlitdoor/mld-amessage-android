@@ -37,25 +37,19 @@
   <string name="settings_title_key" translatable="false" tools:ignore="UnusedResources">com.moonlitdoor.amessage.settings.title</string>
 
   <!-- PreferencesFragment -->
-  <string name="whats_new_preference_button" translatable="false">com.moonlitdoor.amessage.whats.new.preference.button</string>
+
   <string name="whats_new_preference_title">Reset What\'s New Dialog</string>
   <string name="whats_new_preference_toast">What\'s New Dialog Reset</string>
-  <string name="preference_theme" translatable="false">com.moonlitdoor.amessage.theme</string>
-  <string name="preference_theme_default" translatable="false">0</string>
-  <string name="preference_theme_dark" translatable="false">1</string>
-  <string name="preference_theme_monster" translatable="false">2</string>
-  <string name="preference_theme_deep" translatable="false">3</string>
-  <string name="preference_theme_cool" translatable="false">4</string>
+
 
   <string name="preference_theme_title">Theme</string>
   <string name="preference_theme_negative">Forget It</string>
   <string name="first_preference_screen" translatable="false">com.moonlitdoor.amessage.first.preference.screen</string>
-  <string name="preference_starting_location" translatable="false">com.moonlitdoor.amessage.starting.location</string>
+
   <string name="preference_starting_location_title">Starting Location</string>
 
   <string name="preference_starting_location_negative">Forget It</string>
-  <string name="experiments_preference_button" translatable="false">com.moonlitdoor.amessage.experiments</string>
-  <string name="experiment_screens_count" translatable="false">com.moonlitdoor.amessage.screens.count</string>
+
   <string name="metadata_whats_new_bug_fixes" tools:ignore="UnusedResources">Performance improvements and bug fixes.</string>
   <string name="metadata_title" tools:ignore="UnusedResources">AMessage</string>
   <string name="metadata_short_description" tools:ignore="UnusedResources">An encrypted server-less messaging application.</string>

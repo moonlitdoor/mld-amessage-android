@@ -7,8 +7,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.preference.PreferenceManager
-import com.moonlitdoor.amessage.Constants
 import com.moonlitdoor.amessage.R
+import com.moonlitdoor.amessage.constants.Constants
 
 
 class NavigationActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {

@@ -6,9 +6,9 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceManager
 import androidx.preference.PreferenceScreen
-import com.moonlitdoor.amessage.Constants
 import com.moonlitdoor.amessage.NavigationDirections
 import com.moonlitdoor.amessage.R
+import com.moonlitdoor.amessage.constants.Constants
 import org.koin.android.ext.android.inject
 
 class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat.OnPreferenceStartScreenCallback, SharedPreferences.OnSharedPreferenceChangeListener {

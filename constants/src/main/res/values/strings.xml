@@ -1,0 +1,12 @@
+<resources>
+  <string name="experiment_screens_count" translatable="false">com.moonlitdoor.amessage.screens.count</string>
+  <string name="preference_theme" translatable="false">com.moonlitdoor.amessage.theme</string>
+  <string name="preference_starting_location" translatable="false">com.moonlitdoor.amessage.starting.location</string>
+  <string name="whats_new_preference_button" translatable="false">com.moonlitdoor.amessage.whats.new.preference.button</string>
+  <string name="experiments_preference_button" translatable="false">com.moonlitdoor.amessage.experiments</string>
+  <string name="preference_theme_default" translatable="false">0</string>
+  <string name="preference_theme_dark" translatable="false">1</string>
+  <string name="preference_theme_monster" translatable="false">2</string>
+  <string name="preference_theme_deep" translatable="false">3</string>
+  <string name="preference_theme_cool" translatable="false">4</string>
+</resources>

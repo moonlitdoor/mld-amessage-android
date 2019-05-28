@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage
+package com.moonlitdoor.amessage.constants
 
 import android.content.res.Resources
 import org.koin.standalone.KoinComponent
