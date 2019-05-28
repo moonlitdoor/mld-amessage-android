@@ -32,6 +32,7 @@ object Constants : KoinComponent {
 
     object Defaults {
       val THEME: String = resources.getString(R.string.preference_theme_default)
+      val SCREENS: Int = 5
     }
   }
 

@@ -65,6 +65,8 @@ dependencies {
   implementation "org.koin:koin-android:1.0.1"
   implementation "org.koin:koin-android-scope:1.0.1"
   implementation "org.koin:koin-android-viewmodel:1.0.1"
+  implementation "com.google.firebase:firebase-core:16.0.9"
+  implementation "com.google.firebase:firebase-messaging:18.0.0"
 
   testImplementation "androidx.test:rules:1.2.0-beta01"
   testImplementation "androidx.test:runner:1.2.0-beta01"
