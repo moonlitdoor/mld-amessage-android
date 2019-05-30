@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.domain.json
 
 import com.google.gson.Gson
-import com.moonlitdoor.amessage.domain.util.AesCbcWithIntegrity
+import com.moonlitdoor.amessage.encryption.AesCbcWithIntegrity
 import timber.log.Timber
 
 abstract class Payload {
@@ -11,7 +11,7 @@ abstract class Payload {
   sealed class Type(val value: Int) {
     object ConnectionInvite : Type(1)
     object ConnectionConfirmation : Type(2)
-    object ConnectioneRejection : Type(3)
+    object ConnectionRejection : Type(3)
   }
 
   companion object {

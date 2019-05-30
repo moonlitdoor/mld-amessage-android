@@ -53,6 +53,7 @@ android {
 dependencies {
 
   implementation project(":constants")
+  implementation project(":encryption")
 
   kapt "androidx.room:room-compiler:2.1.0-rc01"
   implementation "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"

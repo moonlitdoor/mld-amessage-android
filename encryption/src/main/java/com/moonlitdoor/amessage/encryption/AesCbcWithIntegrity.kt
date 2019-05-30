@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.domain.util
+package com.moonlitdoor.amessage.encryption
 
 import android.util.Base64
 import java.nio.charset.Charset

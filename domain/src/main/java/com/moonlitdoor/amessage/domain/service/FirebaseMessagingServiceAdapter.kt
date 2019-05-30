@@ -47,7 +47,7 @@ class FirebaseMessagingServiceAdapter(private val connectionRepository: Connecti
       )
     ).ignore()
     Payload.Type.ConnectionConfirmation.value -> connectionRepository.update(id, Connection.State.Connected)
-    Payload.Type.ConnectioneRejection.value -> connectionRepository.delete(id)
+    Payload.Type.ConnectionRejection.value -> connectionRepository.delete(id)
     else -> throw IllegalStateException("type=$type")
   }.also {
     Timber.i("New Firebase Message of type=$type")

@@ -40,7 +40,7 @@ class FirebaseClientTest : KoinTest {
       FirebaseMessageJson(
         object : Payload() {
           override val type: Type
-            get() = Type.ConnectioneRejection
+            get() = Type.ConnectionRejection
         },
         UUID.randomUUID(), "token", UUID.randomUUID(), UUID.randomUUID()
       )
