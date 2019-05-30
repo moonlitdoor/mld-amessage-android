@@ -15,7 +15,7 @@ import com.moonlitdoor.amessage.domain.model.SelectableConnection
 import com.moonlitdoor.amessage.extensions.ignore
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ConversationParticipantsFragment : androidx.fragment.app.Fragment(), Step {
 

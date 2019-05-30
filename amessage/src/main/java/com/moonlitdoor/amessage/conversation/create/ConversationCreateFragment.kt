@@ -13,7 +13,7 @@ import com.moonlitdoor.amessage.components.StepperListener
 import com.moonlitdoor.amessage.databinding.FragmentConversationCreateBinding
 import com.moonlitdoor.amessage.extensions.ignore
 import com.stepstone.stepper.VerificationError
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ConversationCreateFragment : androidx.fragment.app.Fragment(), StepperListener {
 

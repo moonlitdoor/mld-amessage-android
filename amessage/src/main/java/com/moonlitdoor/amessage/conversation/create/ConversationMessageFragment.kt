@@ -9,7 +9,7 @@ import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.databinding.FragmentConversationMessageBinding
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
-import org.koin.android.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class ConversationMessageFragment : androidx.fragment.app.Fragment(), Step {
 

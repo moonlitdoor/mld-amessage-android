@@ -2,22 +2,33 @@ package com.moonlitdoor.amessage.constants
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.dsl.module.module
-import org.koin.standalone.StandAloneContext.loadKoinModules
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.core.context.stopKoin
+import org.koin.dsl.module
 
 @RunWith(AndroidJUnit4::class)
 class ConstantsTest {
 
   @Before
   fun setup() {
-    loadKoinModules(listOf(module {
-      single(override = true) { InstrumentationRegistry.getInstrumentation().targetContext.resources }
-    }))
+    startKoin {
+      androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
+      modules(module {
+        single { androidContext().resources }
+      })
+    }
+  }
+
+  @After
+  fun teardown() {
+    stopKoin()
   }
 
   @Test

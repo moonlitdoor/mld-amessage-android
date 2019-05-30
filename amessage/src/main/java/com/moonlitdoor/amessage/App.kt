@@ -7,7 +7,8 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.preference.PreferenceManager
 import com.google.firebase.FirebaseApp
 import com.moonlitdoor.amessage.domain.domainDi
-import org.koin.android.ext.android.startKoin
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class App : Application(), LifecycleObserver {
 
@@ -16,7 +17,10 @@ class App : Application(), LifecycleObserver {
     FirebaseApp.initializeApp(this)
     RemoteConfig.init()
     initTimber(BuildConfig.DEBUG)
-    startKoin(this, listOf(di, domainDi))
+    startKoin {
+      androidContext(this@App)
+      modules(listOf(di, domainDi))
+    }
 //    if (!BuildConfig.DEBUG) {
 //      Fabric.with(this, Crashlytics())
 //      PreferenceManager.getDefaultSharedPreferences(this).let {

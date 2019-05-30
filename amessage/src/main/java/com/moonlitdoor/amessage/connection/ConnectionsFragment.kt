@@ -21,7 +21,7 @@ import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.handle.HandleCreateDialog
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> {
 

@@ -8,7 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.databinding.FragmentQrBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class QrFragment : TitledFragmentPagerAdapter.TitledFragment() {
 

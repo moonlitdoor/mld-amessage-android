@@ -8,7 +8,7 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.extensions.ignore
-import org.koin.standalone.KoinComponent
+import org.koin.core.KoinComponent
 import timber.log.Timber
 import java.util.*
 

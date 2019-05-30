@@ -17,7 +17,7 @@ import com.moonlitdoor.amessage.constants.Constants
 import com.moonlitdoor.amessage.databinding.FragmentScanBinding
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.ignore
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), BarcodeProcessor.BarcodeDetectionListener {

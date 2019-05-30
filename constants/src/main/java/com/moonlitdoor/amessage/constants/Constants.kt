@@ -1,8 +1,8 @@
 package com.moonlitdoor.amessage.constants
 
 import android.content.res.Resources
-import org.koin.standalone.KoinComponent
-import org.koin.standalone.inject
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 object Constants : KoinComponent {
 

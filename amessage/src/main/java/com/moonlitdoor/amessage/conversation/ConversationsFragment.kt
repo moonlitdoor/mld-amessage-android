@@ -18,7 +18,7 @@ import com.moonlitdoor.amessage.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConversationsFragment : androidx.fragment.app.Fragment() {
 

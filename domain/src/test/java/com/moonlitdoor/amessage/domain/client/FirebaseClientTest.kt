@@ -7,9 +7,9 @@ import com.moonlitdoor.amessage.domain.json.Payload
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Assert.assertTrue
-import org.koin.standalone.StandAloneContext.stopKoin
-import org.koin.standalone.get
+import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
+import org.koin.test.get
 import org.robolectric.RuntimeEnvironment
 import java.util.*
 

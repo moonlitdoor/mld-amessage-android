@@ -4,8 +4,8 @@ import com.moonlitdoor.amessage.domain.client.FirebaseClient
 import com.moonlitdoor.amessage.domain.entity.ConnectionEntity
 import com.moonlitdoor.amessage.domain.entity.ProfileEntity
 import com.moonlitdoor.amessage.domain.model.Profile
-import org.koin.standalone.KoinComponent
-import org.koin.standalone.inject
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
 class ConnectionInviteWorker : KoinComponent {
 
