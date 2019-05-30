@@ -10,6 +10,7 @@ android {
     abortOnError true
     xmlReport false
   }
+
   testOptions {
     unitTests {
       includeAndroidResources = true
@@ -17,6 +18,7 @@ android {
     execution "ANDROIDX_TEST_ORCHESTRATOR"
     animationsDisabled = true
   }
+
   defaultConfig {
     minSdkVersion 24
     targetSdkVersion 28

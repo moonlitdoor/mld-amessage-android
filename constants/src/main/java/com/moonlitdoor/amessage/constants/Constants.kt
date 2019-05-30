@@ -32,16 +32,16 @@ object Constants : KoinComponent {
 
     object Defaults {
       val THEME: String = resources.getString(R.string.preference_theme_default)
-      val SCREENS: Int = 5
+      const val SCREENS: Int = 5
     }
   }
 
   object Values {
     object Theme {
-      val DARK = resources.getString(R.string.preference_theme_dark)
-      val MONSTER = resources.getString(R.string.preference_theme_monster)
-      val DEEP = resources.getString(R.string.preference_theme_deep)
-      val COOL = resources.getString(R.string.preference_theme_cool)
+      val DARK: String = resources.getString(R.string.preference_theme_dark)
+      val MONSTER: String = resources.getString(R.string.preference_theme_monster)
+      val DEEP: String = resources.getString(R.string.preference_theme_deep)
+      val COOL: String = resources.getString(R.string.preference_theme_cool)
     }
   }
 

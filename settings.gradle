@@ -1,2 +1,1 @@
-include ':constants'
-include ":amessage", ":domain"
+include ":amessage", ":domain", ":constants"
