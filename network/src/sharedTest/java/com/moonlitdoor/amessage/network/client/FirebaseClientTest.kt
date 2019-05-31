@@ -1,29 +1,35 @@
-package com.moonlitdoor.amessage.domain.client
+package com.moonlitdoor.amessage.network.client
 
 import android.net.SSLCertificateSocketFactory
 import android.net.SSLSessionCache
-import com.moonlitdoor.amessage.domain.json.FirebaseMessageJson
-import com.moonlitdoor.amessage.domain.json.Payload
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.platform.app.InstrumentationRegistry
+import com.moonlitdoor.amessage.network.json.FirebaseMessageJson
+import com.moonlitdoor.amessage.network.json.Payload
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
 import org.junit.Assert.assertTrue
+import org.junit.Before
+import org.junit.Ignore
+import org.junit.Test
+import org.junit.runner.RunWith
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
 import org.koin.test.get
-import org.robolectric.RuntimeEnvironment
 import java.util.*
 
-//@RunWith(AndroidJUnit4::class)
+
+@RunWith(AndroidJUnit4::class)
 class FirebaseClientTest : KoinTest {
 
   private lateinit var server: MockWebServer
 
-  //  @Before
+  @Before
   fun setup() {
     server = MockWebServer()
     server.hostName
     server.port
-    server.useHttps(SSLCertificateSocketFactory.getDefault(500, SSLSessionCache(RuntimeEnvironment.application)), false)
+    server.useHttps(SSLCertificateSocketFactory.getDefault(500, SSLSessionCache(InstrumentationRegistry.getInstrumentation().context)), false)
     val url = server.url("/fcm/send")
   }
 
@@ -33,7 +39,8 @@ class FirebaseClientTest : KoinTest {
     stopKoin()
   }
 
-  //  @Test
+  @Ignore("not built out")
+  @Test
   fun testClient() {
     val client: FirebaseClient = get()
     val response = client.send(

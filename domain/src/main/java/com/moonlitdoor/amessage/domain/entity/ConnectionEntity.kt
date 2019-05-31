@@ -4,9 +4,9 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import com.moonlitdoor.amessage.domain.json.ConnectionInvitePayload
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 import java.util.*
 
 @Entity(tableName = "connection", indices = [Index(value = ["connection_id"], unique = true)])

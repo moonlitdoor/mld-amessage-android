@@ -1,9 +1,8 @@
-package com.moonlitdoor.amessage.domain.json
+package com.moonlitdoor.amessage.network.json
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.gson.Gson
-import com.moonlitdoor.amessage.domain.model.Connection
-import junit.framework.Assert.assertEquals
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.util.*
@@ -24,7 +23,7 @@ class FirebaseMessageTest {
   @Test
   fun testConnectionInvitePayloadMessageSerialization() {
     val payload = ConnectionInvitePayload("eldnah", "nekot", UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID())
-    val connection = Connection(0, UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(), "token", "handle", Connection.State.Pending)
+    val connection = ConnectionJson(0, UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(), "token", "handle")
     val message = FirebaseMessageJson(payload, connection)
     val json = gson.toJson(message)
     val messageJson = gson.fromJson(json, FirebaseMessageJson::class.java)

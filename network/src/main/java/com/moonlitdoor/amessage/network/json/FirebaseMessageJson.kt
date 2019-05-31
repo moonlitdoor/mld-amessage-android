@@ -1,6 +1,5 @@
-package com.moonlitdoor.amessage.domain.json
+package com.moonlitdoor.amessage.network.json
 
-import com.moonlitdoor.amessage.domain.model.Connection
 import timber.log.Timber
 import java.util.*
 
@@ -12,7 +11,7 @@ class FirebaseMessageJson private constructor(payload: Payload, connectionId: UU
   private var registration_ids: List<String>? = null
   private val data = Data()
 
-  constructor(payload: Payload, connection: Connection) : this(payload, connection.connectionId, connection.token, connection.password, connection.salt)
+  constructor(payload: Payload, connection: ConnectionJson) : this(payload, connection.connectionId, connection.token, connection.password, connection.salt)
 
   constructor(payload: Payload, connectionId: UUID, token: String, password: UUID, salt: UUID) : this(payload, connectionId, password, salt) {
     to = token
