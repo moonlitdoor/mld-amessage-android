@@ -1,1 +1,5 @@
-include ":amessage", ":domain", ":constants", ":encryption", ":network"
+include ":amessage"
+include ":constants"
+include ":domain"
+include ":encryption"
+include ":network"
