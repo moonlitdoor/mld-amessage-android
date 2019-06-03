@@ -11,7 +11,6 @@ import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
-import org.koin.dsl.module
 
 @RunWith(AndroidJUnit4::class)
 class ConstantsTest {
@@ -20,9 +19,7 @@ class ConstantsTest {
   fun setup() {
     startKoin {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
-      modules(module {
-        single { androidContext().resources }
-      })
+      modules(constantsDi)
     }
   }
 

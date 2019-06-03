@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.domain.model
 
-import com.moonlitdoor.amessage.domain.entity.ConversationEntity
+import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import java.util.*
 
 data class Conversation(

@@ -1,7 +1,6 @@
 package com.moonlitdoor.amessage.domain.dao;
 
 import android.content.Context;
-import androidx.room.Room;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import org.junit.After;
@@ -14,14 +13,14 @@ import java.io.IOException;
 @RunWith(AndroidJUnit4.class)
 public class ConnectionDaoTest {
 
-    private ConnectionDao connectionDao;
-    private AppDatabase appDatabase;
+//    private ConnectionDao connectionDao;
+//    private AppDatabase appDatabase;
 
     @Before
     public void createDb() {
         Context context = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        appDatabase = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).build();
-        connectionDao = appDatabase.connectionDao();
+//        appDatabase = Room.inMemoryDatabaseBuilder(context, AppDatabase.class).build();
+//        connectionDao = appDatabase.connectionDao();
     }
 
     @After

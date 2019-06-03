@@ -6,7 +6,6 @@ import android.app.Application
 import androidx.lifecycle.LifecycleObserver
 import androidx.preference.PreferenceManager
 import com.google.firebase.FirebaseApp
-import com.moonlitdoor.amessage.domain.domainDi
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -19,7 +18,7 @@ class App : Application(), LifecycleObserver {
     initTimber(BuildConfig.DEBUG)
     startKoin {
       androidContext(this@App)
-      modules(listOf(di, domainDi))
+      modules(di)
     }
 //    if (!BuildConfig.DEBUG) {
 //      Fabric.with(this, Crashlytics())

@@ -2,7 +2,7 @@ package com.moonlitdoor.amessage.domain.repository
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
-import com.moonlitdoor.amessage.domain.dao.ProfileDao
+import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.map
 

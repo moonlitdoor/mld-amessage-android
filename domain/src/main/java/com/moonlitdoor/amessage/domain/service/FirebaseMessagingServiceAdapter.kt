@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.domain.service
 
 import com.google.firebase.messaging.RemoteMessage
-import com.moonlitdoor.amessage.domain.entity.ConnectionEntity
+import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
@@ -36,7 +36,7 @@ class FirebaseMessagingServiceAdapter(private val connectionRepository: Connecti
 
   private fun type(type: Int, id: UUID, payload: String) = when (type) {
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
-      ConnectionEntity.fromInvited(
+      ConnectionMapper.fromInvited(
         ConnectionInvitePayload.inflate(
           Payload.decrypt(
             payload,

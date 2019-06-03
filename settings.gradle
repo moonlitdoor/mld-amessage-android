@@ -1,5 +1,6 @@
 include ":amessage"
 include ":constants"
+include ":database"
 include ":domain"
 include ":encryption"
 include ":network"

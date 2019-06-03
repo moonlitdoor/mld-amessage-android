@@ -2,18 +2,14 @@ package com.moonlitdoor.amessage.domain.repository
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
-import com.moonlitdoor.amessage.domain.dao.ConnectionDao
-import com.moonlitdoor.amessage.domain.dao.ProfileDao
-import com.moonlitdoor.amessage.domain.entity.ConnectionEntity
+import com.moonlitdoor.amessage.database.dao.ConnectionDao
+import com.moonlitdoor.amessage.database.dao.ProfileDao
+import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.map
 import com.moonlitdoor.amessage.network.client.FirebaseClient
-import com.moonlitdoor.amessage.network.json.ConnectionConfirmationPayload
-import com.moonlitdoor.amessage.network.json.ConnectionRejectionPayload
-import com.moonlitdoor.amessage.network.json.FirebaseMessageJson
-import timber.log.Timber
 import java.util.*
 
 class ConnectionRepository(private val connectionDao: ConnectionDao, private val profileDao: ProfileDao, private val client: FirebaseClient) {
@@ -28,7 +24,7 @@ class ConnectionRepository(private val connectionDao: ConnectionDao, private val
   fun invite(profile: Profile) {
 
     profileDao.getProfileSync()?.let {
-      val entity = ConnectionEntity.fromPending(profile).also {
+      val entity = ConnectionMapper.fromPending(profile).also {
         connectionDao.insert(it)
       }
 //        WorkManager.getInstance().enqueue(OneTimeWorkRequestBuilder<ConnectionInviteWorker>().setInputData(ConnectionInviteWorker.data(it, entity, profile)).build())
@@ -38,23 +34,23 @@ class ConnectionRepository(private val connectionDao: ConnectionDao, private val
 
   fun confirm(connection: Connection) {
 
-    connectionDao.update(ConnectionEntity.fromConnected(connection))
-    val response = client.send(FirebaseMessageJson(ConnectionConfirmationPayload(), ConnectionMapper.toJson(connection))).execute()
-    Timber.d(response.isSuccessful.toString())
-    Timber.d(response.message())
+    connectionDao.update(ConnectionMapper.fromConnected(connection))
+//    val response = client.send(FirebaseMessageJson(ConnectionConfirmationPayload(), ConnectionMapper.toJson(connection))).execute()
+//    Timber.d(response.isSuccessful.toString())
+//    Timber.d(response.message())
 
   }
 
   fun reject(connection: Connection) {
 
-    connectionDao.delete(ConnectionEntity.from(connection))
-    val response = client.send(FirebaseMessageJson(ConnectionRejectionPayload(), ConnectionMapper.toJson(connection))).execute()
-    Timber.d(response.isSuccessful.toString())
-    Timber.d(response.message())
+    connectionDao.delete(ConnectionMapper.from(connection))
+//    val response = client.send(FirebaseMessageJson(ConnectionRejectionPayload(), ConnectionMapper.toJson(connection))).execute()
+//    Timber.d(response.isSuccessful.toString())
+//    Timber.d(response.message())
 
   }
 
-  fun update(connectionId: UUID, state: Connection.State) = connectionDao.update(connectionId, state)
+  fun update(connectionId: UUID, state: Connection.State) = connectionDao.update(connectionId, ConnectionMapper.state(state))
 
   fun insert(entity: ConnectionEntity) = connectionDao.insert(entity)
 

@@ -1,6 +1,7 @@
 package com.moonlitdoor.amessage.domain.model
 
-import com.moonlitdoor.amessage.domain.entity.ConnectionEntity
+import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import java.util.*
 
 data class Connection(
@@ -10,7 +11,7 @@ data class Connection(
   val salt: UUID,
   val token: String,
   val handle: String,
-  val state: Connection.State
+  val state: State
 ) {
   companion object {
     fun from(entity: ConnectionEntity) = Connection(
@@ -20,7 +21,7 @@ data class Connection(
       entity.salt,
       entity.token,
       entity.handle,
-      entity.state
+      ConnectionMapper.state(entity.state)
     )
 
     fun from(selected: SelectableConnection) = Connection(
@@ -30,7 +31,7 @@ data class Connection(
       selected.salt,
       selected.token,
       selected.handle,
-      Connection.State.Connected
+      State.Connected
     )
   }
 

@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.domain.work
 
-import com.moonlitdoor.amessage.domain.entity.ConnectionEntity
-import com.moonlitdoor.amessage.domain.entity.ProfileEntity
+import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.database.entity.ProfileEntity
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.network.client.FirebaseClient
 import org.koin.core.KoinComponent

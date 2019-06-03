@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.domain.model
 
-import com.moonlitdoor.amessage.domain.entity.ProfileEntity
+import com.moonlitdoor.amessage.database.entity.ProfileEntity
 import java.util.*
 
 data class Profile(
