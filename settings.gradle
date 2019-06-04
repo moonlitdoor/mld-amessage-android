@@ -1,7 +1,8 @@
-include ':bindings'
 include ":amessage"
+include ":bindings"
 include ":constants"
 include ":database"
 include ":domain"
 include ":encryption"
+include ":extensions"
 include ":network"
