@@ -1,0 +1,14 @@
+<resources>
+  <string name="app_name">components</string>
+  <string name="metadata_whats_new_bug_fixes">Performance improvements and bug fixes.</string>
+  <string-array name="metadata_whats_new">
+    <item>&#8226;"This What\'s New Dialog!"</item>
+    <item>&#8226;You can now select your theme in the settings.</item>
+    <item>&#8226;Added a notification that a QR Code has been read.</item>
+    <item>&#8226;Dismissing the New Connection Notification properly.</item>
+    <item>&#8226;Taping on the Version on the About screen takes you to the Play Store listing for Amessage so you can check for an update.</item>
+    <item>&#8226;Remove Debug Logging.</item>
+    <item>&#8226;Performance improvements and bug fixes.</item>
+  </string-array>
+
+</resources>

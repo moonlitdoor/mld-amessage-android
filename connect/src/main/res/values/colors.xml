@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="toolbarTitleText">@color/white</color>
+  <color name="toolbarTabText">@color/white_070</color>
+  <color name="toolbarTabTextSelected">@color/white</color>
+  <color name="barcodeFrame">@color/black</color>
+  <color name="white_070">#B3FFFFFF</color>
+  <color name="black">@color/black_100</color>
+  <color name="black_100">#FF000000</color>
+
+</resources>

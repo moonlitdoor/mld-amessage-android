@@ -23,7 +23,7 @@ android {
     minSdkVersion 24
     targetSdkVersion 28
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArguments clearPackageData: 'true'
+    testInstrumentationRunnerArguments clearPackageData: "true"
     consumerProguardFiles "consumer-rules.pro"
     javaCompileOptions {
       annotationProcessorOptions {

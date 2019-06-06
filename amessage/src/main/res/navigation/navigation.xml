@@ -4,12 +4,15 @@
   xmlns:tools="http://schemas.android.com/tools"
   android:id="@+id/navigation"
   app:startDestination="@id/connections_fragment">
+  <action
+    android:id="@+id/action_global_settings_fragment"
+    app:destination="@id/settings_fragment" />
   <fragment
     android:id="@+id/connections_fragment"
     android:name="com.moonlitdoor.amessage.connection.ConnectionsFragment"
     tools:layout="@layout/fragment_connections">
     <action
-      android:id="@+id/actionConnectionsFragmentToConnectFragment"
+      android:id="@id/action_connections_fragment_to_connect_fragment"
       app:destination="@id/connectFragment"
       app:enterAnim="@anim/slide_in_right"
       app:exitAnim="@anim/slide_out_left"
@@ -68,7 +71,4 @@
       android:name="experiments"
       android:defaultValue="false" />
   </fragment>
-  <action
-    android:id="@+id/action_global_settings_fragment"
-    app:destination="@id/settings_fragment" />
 </navigation>

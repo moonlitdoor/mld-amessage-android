@@ -6,14 +6,6 @@
     <item name="android:navigationBarColor">@android:color/transparent</item>
   </style>
 
-  <style name="AmTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="iconColor">@color/white</item>
-  </style>
-
   <!--<style name="AmTheme.Deep" parent="Theme.AppCompat.Light.NoActionBar">-->
   <!--<item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
   <!--<item name="colorPrimary">@color/colorPrimary</item>-->
@@ -77,7 +69,6 @@
 
   <style name="AmTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-  <style name="AmTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
   <style name="Text.Primary" parent="android:Widget.TextView">
     <item name="android:paddingEnd">@dimen/dp016</item>
@@ -99,7 +90,6 @@
     <item name="android:textColor">@color/blueLink</item>
   </style>
 
-  <style name="Dialog" />
 
   <!--<style name="Dialog.Container">-->
   <!--<item name="android:layout_width">match_parent</item>-->
@@ -124,13 +114,6 @@
   <!--<item name="android:windowIsFloating">true</item>-->
   <!--</style>-->
 
-  <style name="Dialog.Content">
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_width">match_parent</item>
-    <!--<item name="android:layout_marginStart">24dp</item>-->
-    <!--<item name="android:layout_marginEnd">24dp</item>-->
-    <!--<item name="android:background">@drawable/dialog_inset_background</item>-->
-  </style>
 
   <!--  <style name="AmTheme.NoActionBar">-->
   <!--    <item name="windowActionBar">false</item>-->

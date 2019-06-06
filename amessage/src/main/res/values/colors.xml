@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">@color/orange_500</color>
-  <color name="colorPrimaryDark">@color/orange_800</color>
+  <!--  <color name="colorPrimary">@color/orange_500</color>-->
+  <!--  <color name="colorPrimaryDark">@color/orange_800</color>-->
   <!--<color name="colorPrimaryLight">@color/orange_200</color>-->
   <color name="colorAccent">@color/purple_deep_A400</color>
   <!--<color name="colorAccentDark">@color/purple_deep_A700</color>-->
   <!--<color name="colorAccentLight">@color/purple_deep_A100</color>-->
   <!--<color name="colorWindowBackground">@color/white</color>-->
-  <color name="toolbarTitleText">@color/white</color>
+
   <color name="toolbarTabText">@color/white_070</color>
   <color name="toolbarTabTextSelected">@color/white</color>
   <color name="list_divider">@color/grey_200</color>
-  <color name="barcodeFrame">@color/black</color>
   <!--<color name="dialog_title">@color/black_087</color>-->
 
   <color name="colorDeepPrimary">#673ab7</color>
@@ -46,10 +45,10 @@
   <!--<color name="orange_200">#FFCC80</color>-->
   <!--<color name="orange_300">#FFB74D</color>-->
   <!--<color name="orange_400">#FFA726</color>-->
-  <color name="orange_500">#FF9800</color>
+  <!--  <color name="orange_500">#FF9800</color>-->
   <!--<color name="orange_600">#FB8C00</color>-->
   <!--<color name="orange_700">#F57C00</color>-->
-  <color name="orange_800">#EF6C00</color>
+  <!--  <color name="orange_800">#EF6C00</color>-->
   <!--<color name="orange_900">#E65100</color>-->
 
   <!--<color name="purple_deep_A100">#B388FF</color>-->
@@ -69,10 +68,6 @@
   <!--<color name="grey_700">#616161</color>-->
   <!--<color name="grey_800">#424242</color>-->
   <!--<color name="grey_900">#212121</color>-->
-
-  <color name="green_center">#4CAF50</color>
-  <color name="green_end">#2E7D32</color>
-  <color name="green_start">#81C784</color>
 
 
   <color name="white">@color/white_100</color>

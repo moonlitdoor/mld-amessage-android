@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="colorPrimary">@color/orange_500</color>
+  <color name="colorPrimaryDark">@color/orange_800</color>
+  <color name="colorAccent">@color/purple_deep_A400</color>
+  <color name="orange_500">#FF9800</color>
+  <color name="orange_800">#EF6C00</color>
+  <color name="purple_deep_A400">#651FFF</color>
+  <color name="white">@color/white_100</color>
+  <color name="white_100">#FFFFFFFF</color>
+  <color name="green_center">#4CAF50</color>
+  <color name="green_end">#2E7D32</color>
+  <color name="green_start">#81C784</color>
+
+</resources>

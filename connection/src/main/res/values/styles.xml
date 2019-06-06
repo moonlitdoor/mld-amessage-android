@@ -1,0 +1,15 @@
+<resources>
+
+  <style name="AmTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+  <style name="Dialog" />
+
+  <style name="Dialog.Content">
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">match_parent</item>
+    <!--<item name="android:layout_marginStart">24dp</item>-->
+    <!--<item name="android:layout_marginEnd">24dp</item>-->
+    <!--<item name="android:background">@drawable/dialog_inset_background</item>-->
+  </style>
+
+</resources>
