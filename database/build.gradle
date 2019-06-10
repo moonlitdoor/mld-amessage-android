@@ -58,24 +58,24 @@ android {
 
 dependencies {
 
-  kapt "androidx.room:room-compiler:2.1.0-rc01"
+  kapt D.androidxRoomRoomCompiler
 
-  implementation project(":constants")
+  implementation project(M.CONSTANTS)
 
-  implementation "androidx.lifecycle:lifecycle-livedata:2.2.0-alpha01"
-  implementation "androidx.room:room-coroutines:2.1.0-alpha04"
-  implementation "androidx.room:room-runtime:2.1.0-rc01"
-  implementation "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
-  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31"
-  implementation "org.koin:koin-android:2.0.1"
+  implementation D.androidxLifecycleLifecycleLivedataKtx
+  implementation D.androidxRoomRoomCoroutines
+  implementation D.androidxRoomRoomRuntime
+  implementation D.comMoonlitdoorSharedPreferenceLiveDataSharedPreferenceLiveData
+  implementation D.orgJetbrainsKotlinKotlinStandardLibrary
+  implementation D.orgKoinKoinAndroid
 
-  testImplementation "androidx.test.ext:junit-ktx:1.1.1"
-  testImplementation "org.koin:koin-test:2.0.1"
-  testImplementation "org.robolectric:robolectric:4.2.1"
+  testImplementation D.androidxTestExtJunitKtx
+  testImplementation D.orgKoinKoinTest
+  testImplementation D.orgRobolectricRobolectric
 
-  androidTestUtil "androidx.test:orchestrator:1.2.0"
+  androidTestUtil D.androidxTestOrchestrator
 
-  androidTestImplementation "org.koin:koin-test:2.0.1"
-  androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
-  androidTestImplementation "androidx.test.ext:junit:1.1.1"
+  androidTestImplementation D.orgKoinKoinTest
+  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestExtJunitKtx
 }

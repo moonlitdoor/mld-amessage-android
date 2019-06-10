@@ -28,7 +28,7 @@ class FirebaseClientTest : KoinTest {
   fun setup() {
     server = MockWebServer()
     server.hostName
-    server.port
+//    server.port
     server.useHttps(SSLCertificateSocketFactory.getDefault(500, SSLSessionCache(InstrumentationRegistry.getInstrumentation().context)), false)
     val url = server.url("/fcm/send")
   }

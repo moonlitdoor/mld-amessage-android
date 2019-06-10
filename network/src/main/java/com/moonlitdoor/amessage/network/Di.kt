@@ -12,7 +12,13 @@ import timber.log.Timber
 
 val networkDi = listOf(module {
 
-  single { _ -> HttpLoggingInterceptor { Timber.i(it) }.setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE) }
+  single {
+    HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+      override fun log(message: String) {
+        Timber.i(message)
+      }
+    }).setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+  }
   single { OkHttpClient.Builder().addNetworkInterceptor(get<HttpLoggingInterceptor>()).build() }
   single {
     Retrofit.Builder()
