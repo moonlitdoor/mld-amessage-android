@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import com.moonlitdoor.amessage.R
-import com.moonlitdoor.amessage.databinding.FragmentFeedbackBinding
+import com.moonlitdoor.amessage.feedback.databinding.FragmentFeedbackBinding
 
 class FeedbackFragment : androidx.fragment.app.Fragment() {
 

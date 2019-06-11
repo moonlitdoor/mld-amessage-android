@@ -10,6 +10,7 @@ object M {
   const val DOMAIN = ":domain"
   const val ENCRYPTION = ":encryption"
   const val EXTENSIONS = ":extensions"
+  const val FEEDBACK = ":feedback"
   const val HANDLE = ":handle"
   const val IDS = ":ids"
   const val NETWORK = ":network"
