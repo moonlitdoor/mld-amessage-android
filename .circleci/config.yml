@@ -53,8 +53,7 @@ jobs:
           path: domain/build/reports/tests/testDebugUnitTest
           destination: UnitTestsDomain
       - store_test_results:
-          - path: amessage/build/test-results
-          - path: database/build/test-results
+          path: amessage/build/test-results
       - store_test_results:
           path: domain/build/test-results
   lint:
