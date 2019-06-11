@@ -11,3 +11,4 @@ include M.EXTENSIONS
 include M.IDS
 include M.NETWORK
 include M.RES
+include M.WINDOWS

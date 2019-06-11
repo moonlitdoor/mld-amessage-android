@@ -1,7 +1,5 @@
 <resources>
 
-  <style name="AmTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
   <style name="Dialog" />
 
   <style name="Dialog.Content">

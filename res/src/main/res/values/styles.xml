@@ -10,4 +10,6 @@
 
   <style name="AmTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
+  <style name="AmTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

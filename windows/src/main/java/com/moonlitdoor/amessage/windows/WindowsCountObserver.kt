@@ -4,7 +4,6 @@ import android.view.MenuItem
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import com.moonlitdoor.amessage.connection.R
 
 class WindowsCountObserver(owner: LifecycleOwner, liveData: LiveData<Int>, private val menuItem: MenuItem) : Observer<Int> {
 

@@ -64,7 +64,6 @@ dependencies {
   implementation project(M.EXTENSIONS)
   implementation project(M.IDS)
   implementation project(M.RES)
-  implementation project(M.WINDOWS)
 
   implementation D.orgJetbrainsKotlinKotlinStandardLibrary
   implementation D.orgKoinKoinAndroid
