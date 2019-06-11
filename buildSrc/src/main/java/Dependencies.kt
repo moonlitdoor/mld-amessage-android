@@ -1,4 +1,5 @@
 object M {
+  const val ABOUT = ":about"
   const val AMESSAGE = ":amessage"
   const val BINDINGS = ":bindings"
   const val COMPONENTS = ":components"

@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.moonlitdoor.amessage.R
+import com.moonlitdoor.amessage.about.databinding.FragmentAcknowledgementsBinding
+import com.moonlitdoor.amessage.about.databinding.ListItemAcknowledgementBinding
 import com.moonlitdoor.amessage.components.ItemDecorationDivider
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
-import com.moonlitdoor.amessage.databinding.FragmentAcknowledgementsBinding
-import com.moonlitdoor.amessage.databinding.ListItemAcknowledgementBinding
 import com.moonlitdoor.amessage.domain.model.Acknowledgement
 
 class AcknowledgementsFragment : TitledFragmentPagerAdapter.TitledFragment() {

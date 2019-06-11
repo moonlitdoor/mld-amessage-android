@@ -3,7 +3,6 @@ package com.moonlitdoor.amessage.components
 import android.content.Context
 import android.graphics.Canvas
 import androidx.core.content.ContextCompat
-import com.moonlitdoor.amessage.R
 
 class ItemDecorationDivider(context: Context) : androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
 

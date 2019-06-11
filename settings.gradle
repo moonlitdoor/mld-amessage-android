@@ -1,3 +1,4 @@
+include M.ABOUT
 include M.AMESSAGE
 include M.BINDINGS
 include M.COMPONENTS

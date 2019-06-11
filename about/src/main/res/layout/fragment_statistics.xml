@@ -5,7 +5,7 @@
 
     <import type="android.text.format.DateFormat" />
 
-    <import type="com.moonlitdoor.amessage.BuildConfig" />
+    <!--    <import type="com.moonlitdoor.amessage.about.BuildConfig" />-->
 
     <variable
       name="version"
@@ -41,9 +41,9 @@
         style="@style/Text.Secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@{BuildConfig.VERSION_NAME}"
-        tools:text="1.0.0" />
 
+        tools:text="1.0.0" />
+      <!--      android:text="{BuildConfig.VERSION_NAME}"-->
     </LinearLayout>
 
     <View
@@ -61,9 +61,9 @@
       style="@style/Text.Secondary"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="@{DateFormat.getDateFormat(context).format(Long.parseLong(BuildConfig.BUILD_DATE))}"
-      tools:text="1.0.0" />
 
+      tools:text="1.0.0" />
+    <!--    android:text="{DateFormat.getDateFormat(context).format(Long.parseLong(BuildConfig.BUILD_DATE))}"-->
     <View
       android:layout_width="match_parent"
       android:layout_height="@dimen/dp001"
