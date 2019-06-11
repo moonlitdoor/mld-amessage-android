@@ -17,8 +17,6 @@ import com.moonlitdoor.amessage.connection.databinding.ListItemConnectionConnect
 import com.moonlitdoor.amessage.connection.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.ignore
-import com.moonlitdoor.amessage.handle.HandleCreateDialog
-import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.moonlitdoor.amessage.navigationids.R as N
@@ -26,7 +24,7 @@ import com.moonlitdoor.amessage.navigationids.R as N
 class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> {
 
   private val viewModel: ConnectionViewModel by viewModel()
-  private val handleViewModel: HandleViewModel by viewModel()
+  private val handleViewModel: com.moonlitdoor.amessage.handle.HandleViewModel by viewModel()
   private val adapter by lazy { Adapter(viewModel, LayoutInflater.from(activity)) }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -45,7 +43,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
       WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
     }.root
 
-  override fun onChanged(handle: String?): Unit = handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: HandleCreateDialog.show(activity, handleViewModel)
+  override fun onChanged(handle: String?): Unit = handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
 
   private class Adapter(private val viewModel: ConnectionViewModel, private val layoutInflater: LayoutInflater) : ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
     override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id

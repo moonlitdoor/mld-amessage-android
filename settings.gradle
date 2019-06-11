@@ -8,6 +8,7 @@ include M.DATABASE
 include M.DOMAIN
 include M.ENCRYPTION
 include M.EXTENSIONS
+include M.HANDLE
 include M.IDS
 include M.NETWORK
 include M.RES

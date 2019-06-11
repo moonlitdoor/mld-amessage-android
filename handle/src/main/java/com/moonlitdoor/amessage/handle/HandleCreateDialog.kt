@@ -5,10 +5,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
-import com.moonlitdoor.amessage.connection.R
-import com.moonlitdoor.amessage.connection.databinding.DialogHandleCreateBinding
 import com.moonlitdoor.amessage.extensions.afterTextChanged
 import com.moonlitdoor.amessage.extensions.ignore
+import com.moonlitdoor.amessage.handle.databinding.DialogHandleCreateBinding
 
 class HandleCreateDialog private constructor(activity: androidx.fragment.app.FragmentActivity, viewModel: HandleViewModel) {
 

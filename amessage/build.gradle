@@ -133,6 +133,7 @@ dependencies {
   implementation project(M.CONNECTION)
   implementation project(M.DOMAIN)
   implementation project(M.EXTENSIONS)
+  implementation project(M.HANDLE)
   implementation project(M.IDS)
   implementation project(M.WINDOWS)
 
