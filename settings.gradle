@@ -11,6 +11,7 @@ include M.ENCRYPTION
 include M.EXTENSIONS
 include M.FEEDBACK
 include M.HANDLE
+include M.HELP
 include M.IDS
 include M.NETWORK
 include M.RES

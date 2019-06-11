@@ -12,6 +12,7 @@ object M {
   const val EXTENSIONS = ":extensions"
   const val FEEDBACK = ":feedback"
   const val HANDLE = ":handle"
+  const val HELP = ":help"
   const val IDS = ":ids"
   const val NETWORK = ":network"
   const val RES = ":res"
