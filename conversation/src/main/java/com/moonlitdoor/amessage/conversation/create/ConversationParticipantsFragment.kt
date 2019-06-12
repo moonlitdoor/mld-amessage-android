@@ -7,9 +7,9 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.moonlitdoor.amessage.R
-import com.moonlitdoor.amessage.databinding.FragmentConversationParticipantsBinding
-import com.moonlitdoor.amessage.databinding.ListItemSelectableConnectionBinding
+import com.moonlitdoor.amessage.conversation.R
+import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationParticipantsBinding
+import com.moonlitdoor.amessage.conversation.databinding.ListItemSelectableConnectionBinding
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.SelectableConnection
 import com.moonlitdoor.amessage.extensions.ignore

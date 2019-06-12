@@ -28,7 +28,7 @@
     android:name="com.moonlitdoor.amessage.conversation.ConversationsFragment"
     tools:layout="@layout/fragment_conversations">
     <action
-      android:id="@+id/actionConversationsFragmentToConversationsCreateFragment"
+      android:id="@id/actionConversationsFragmentToConversationsCreateFragment"
       app:destination="@id/conversations_create_fragment"
       app:enterAnim="@anim/slide_in_right"
       app:exitAnim="@anim/slide_out_left"

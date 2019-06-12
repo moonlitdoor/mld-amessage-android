@@ -5,6 +5,7 @@ object M {
   const val COMPONENTS = ":components"
   const val CONNECT = ":connect"
   const val CONNECTION = ":connection"
+  const val CONVERSATION = ":conversation"
   const val CONSTANTS = ":constants"
   const val DATABASE = ":database"
   const val DOMAIN = ":domain"

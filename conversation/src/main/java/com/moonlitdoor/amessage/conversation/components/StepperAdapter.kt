@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.components
+package com.moonlitdoor.amessage.conversation.components
 
 import android.content.Context
 import com.stepstone.stepper.Step

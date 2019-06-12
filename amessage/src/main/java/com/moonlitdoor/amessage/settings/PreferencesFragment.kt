@@ -3,10 +3,7 @@ package com.moonlitdoor.amessage.settings
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.preference.ListPreference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
-import androidx.preference.PreferenceScreen
+import androidx.preference.*
 import com.moonlitdoor.amessage.NavigationDirections
 import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.constants.Constants
@@ -19,15 +16,15 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
   override fun onCreatePreferences(bundle: Bundle?, root: String?) {
     setPreferencesFromResource(R.xml.preferences, if (root == "null") null else root)
     settings.registerOnSharedPreferenceChangeListener(this)
-    findPreference<PreferenceScreen>(Constants.Keys.WHATS_NEW_PREFERENCE)?.setOnPreferenceClickListener {
+    findPreference<Preference>(Constants.Keys.WHATS_NEW_PREFERENCE)?.setOnPreferenceClickListener {
       PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(Constants.SharedPreferences.VERSION_CODE, 0).apply()
       com.google.android.material.snackbar.Snackbar.make(view!!, R.string.whats_new_preference_toast, com.google.android.material.snackbar.Snackbar.LENGTH_SHORT).show()
       true
     }
-    findPreference<PreferenceScreen>(Constants.Keys.THEME)?.summary = resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.THEME, null) ?: "0")]
-    findPreference<PreferenceScreen>(Constants.Keys.STARTING_LOCATION)?.summary = resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.STARTING_LOCATION, null) ?: "")]
-    findPreference<PreferenceScreen>(Constants.Keys.EXPERIMENTS)?.let {
-      it.isVisible = false
+    findPreference<ListPreference>(Constants.Keys.THEME)?.summary = resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.THEME, null) ?: "0")]
+    findPreference<ListPreference>(Constants.Keys.STARTING_LOCATION)?.summary = resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.STARTING_LOCATION, null) ?: "")]
+    findPreference<Preference>(Constants.Keys.EXPERIMENTS)?.let {
+      //TODO      it.isVisible = false
       it.setOnPreferenceClickListener { _ ->
         findNavController(this).navigate(NavigationDirections.actionGlobalSettingsFragment().setTitle(getString(R.string.title_activity_experiments)).setExperiments(true))
         true

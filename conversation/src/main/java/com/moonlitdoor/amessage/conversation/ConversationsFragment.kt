@@ -10,15 +10,15 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
-import com.moonlitdoor.amessage.connection.databinding.NavigationHeaderBinding
-import com.moonlitdoor.amessage.databinding.FragmentConversationsBinding
-import com.moonlitdoor.amessage.databinding.ListItemConversationBinding
+import com.moonlitdoor.amessage.components.databinding.NavigationHeaderBinding
+import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationsBinding
+import com.moonlitdoor.amessage.conversation.databinding.ListItemConversationBinding
 import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import com.moonlitdoor.amessage.components.R as C
 
 class ConversationsFragment : androidx.fragment.app.Fragment() {
 
@@ -32,7 +32,7 @@ class ConversationsFragment : androidx.fragment.app.Fragment() {
       setupWithNavController(it.toolbar, findNavController(this), it.drawerLayout)
       setupWithNavController(it.navigationView, findNavController(this))
       WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
-      it.navigationView.addHeaderView(DataBindingUtil.inflate<NavigationHeaderBinding>(inflater, R.layout.navigation_header, null, false).also {
+      it.navigationView.addHeaderView(DataBindingUtil.inflate<NavigationHeaderBinding>(inflater, C.layout.navigation_header, null, false).also {
         it.setLifecycleOwner(this)
         it.handle = viewModel.handle
       }.root)

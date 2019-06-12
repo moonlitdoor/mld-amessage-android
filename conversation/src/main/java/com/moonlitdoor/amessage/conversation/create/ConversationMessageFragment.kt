@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.moonlitdoor.amessage.R
-import com.moonlitdoor.amessage.databinding.FragmentConversationMessageBinding
+import com.moonlitdoor.amessage.conversation.R
+import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationMessageBinding
 import com.stepstone.stepper.Step
 import com.stepstone.stepper.VerificationError
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

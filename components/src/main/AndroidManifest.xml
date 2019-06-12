@@ -1,1 +1,6 @@
-<manifest package="com.moonlitdoor.amessage.components" />
+<manifest package="com.moonlitdoor.amessage.components"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <application android:supportsRtl="true" />
+
+</manifest>

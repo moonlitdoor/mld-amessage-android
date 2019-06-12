@@ -12,9 +12,9 @@ import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
+import com.moonlitdoor.amessage.components.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.connection.databinding.FragmentConnectionsBinding
 import com.moonlitdoor.amessage.connection.databinding.ListItemConnectionConnectedBinding
-import com.moonlitdoor.amessage.connection.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.windows.WindowsCountObserver

@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.components
+package com.moonlitdoor.amessage.conversation.components
 
 import com.stepstone.stepper.StepperLayout
 import com.stepstone.stepper.VerificationError

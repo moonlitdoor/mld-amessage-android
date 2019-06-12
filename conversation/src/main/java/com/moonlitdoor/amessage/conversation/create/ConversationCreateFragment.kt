@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.moonlitdoor.amessage.R
-import com.moonlitdoor.amessage.components.StepperAdapter
-import com.moonlitdoor.amessage.components.StepperListener
-import com.moonlitdoor.amessage.databinding.FragmentConversationCreateBinding
+import com.moonlitdoor.amessage.conversation.R
+import com.moonlitdoor.amessage.conversation.components.StepperAdapter
+import com.moonlitdoor.amessage.conversation.components.StepperListener
+import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationCreateBinding
 import com.moonlitdoor.amessage.extensions.ignore
 import com.stepstone.stepper.VerificationError
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel

@@ -132,10 +132,12 @@ dependencies {
   implementation project(M.CONSTANTS)
   implementation project(M.CONNECT)
   implementation project(M.CONNECTION)
+  implementation project(M.CONVERSATION)
   implementation project(M.DOMAIN)
   implementation project(M.EXTENSIONS)
   implementation project(M.FEEDBACK)
   implementation project(M.HANDLE)
+  implementation project(M.HELP)
   implementation project(M.IDS)
   implementation project(M.WINDOWS)
 
@@ -162,7 +164,6 @@ dependencies {
   implementation D.comGoogleFirebaseFirebaseMessaging
   implementation D.comGoogleZxingCore
   implementation D.comJakeWhartonTimberTimber
-  implementation D.comStepstoneStepperMaterialStepper
   implementation D.orgJetbrainsKotlinKotlinStandardLibrary
   implementation D.orgKoinKoinAndroid
   implementation D.orgKoinKoinAndroidxScope

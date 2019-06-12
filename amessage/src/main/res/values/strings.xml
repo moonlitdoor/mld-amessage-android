@@ -6,7 +6,7 @@
   <!--  <string name="generic_ok">OK</string>-->
   <!--  <string name="generic_cancel">Cancel</string>-->
 
-  <string name="title_conversation_list">Conversations</string>
+
 
 
   <!-- About -->
@@ -36,14 +36,13 @@
 
   <!-- Metadata -->
 
-  <string name="send_the_first_message">Send the first message.</string>
+
   <!--<string name="profile_created">Profile Created</string>-->
 
   <!-- Connect -->
   <!--<string name="connect_client">Client</string>-->
   <!--<string name="connect_server">Server</string>-->
-  <string name="title">Title</string>
-  <string name="add_a_topic_to_the_conversation">Add a Topic to the Conversation</string>
+
 
   <!-- TODO: Remove or change this placeholder text -->
   <string-array name="preference_theme_list_titles">

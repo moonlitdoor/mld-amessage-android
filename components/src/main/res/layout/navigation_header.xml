@@ -40,7 +40,7 @@
       android:layout_height="wrap_content"
       android:layout_marginEnd="8dp"
       android:contentDescription="@string/edit"
-      android:src="@drawable/ic_mode_edit_white_18px"
+      android:src="@drawable/ic_mode_edit_white_18dp"
       app:layout_constraintLeft_toRightOf="@+id/drawer_header_handle"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="@+id/drawer_header_handle" />

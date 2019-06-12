@@ -67,8 +67,6 @@
   <!--<item name="iconColor">@color/black_087</item>-->
   <!--</style>-->
 
-  <style name="AmTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
   <!--<style name="Dialog.Container">-->
   <!--<item name="android:layout_width">match_parent</item>-->
   <!--<item name="android:layout_height">wrap_content</item>-->
