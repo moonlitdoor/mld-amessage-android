@@ -8,8 +8,10 @@ import com.moonlitdoor.amessage.conversation.ConversationViewModel
 import com.moonlitdoor.amessage.conversation.create.ConversationCreateViewModel
 import com.moonlitdoor.amessage.domain.domainDi
 import com.moonlitdoor.amessage.domain.factory.ConversationFactory
-import com.moonlitdoor.amessage.domain.repository.*
-import com.moonlitdoor.amessage.navigation.NavigationViewModel
+import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
+import com.moonlitdoor.amessage.domain.repository.ConversationRepository
+import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.domain.repository.WindowsRepository
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -20,6 +22,5 @@ val di = domainDi + listOf(module {
   viewModel { ConversationViewModel(get<ConversationRepository>(), get<ProfileRepository>(), get<WindowsRepository>()) }
   viewModel { com.moonlitdoor.amessage.handle.HandleViewModel(get<ProfileRepository>()) }
   viewModel { ConversationCreateViewModel(get<ConversationRepository>(), get<ConnectionRepository>(), get<ConversationFactory>()) }
-  viewModel { NavigationViewModel(get<ThemeRepository>()) }
 
 })

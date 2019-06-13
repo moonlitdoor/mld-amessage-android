@@ -3,7 +3,7 @@ package com.moonlitdoor.amessage.test
 //import com.moonlitdoor.amessage.domain.client.FirebaseClient
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.moonlitdoor.amessage.navigation.NavigationActivity
+import com.moonlitdoor.amessage.AMessageActivity
 import org.junit.Before
 import org.junit.Ignore
 import org.junit.Rule
@@ -27,7 +27,7 @@ class FirebaseMessageUtil : KoinComponent {
   }
 
   @get:Rule
-  val rule = ActivityTestRule(NavigationActivity::class.java, false, false)
+  val rule = ActivityTestRule(AMessageActivity::class.java, false, false)
 
   @Ignore("flaky")
   @Test

@@ -1,9 +1,8 @@
-package com.moonlitdoor.amessage.splash
+package com.moonlitdoor.amessage
 
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
-import com.moonlitdoor.amessage.navigation.NavigationActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -11,7 +10,7 @@ class SplashActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
 
     Handler().postDelayed({
-      NavigationActivity.start(this)
+      AMessageActivity.start(this)
     }, 1000)
   }
 

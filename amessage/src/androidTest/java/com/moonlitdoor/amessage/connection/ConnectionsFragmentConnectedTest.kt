@@ -8,8 +8,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
+import com.moonlitdoor.amessage.AMessageActivity
 import com.moonlitdoor.amessage.R
-import com.moonlitdoor.amessage.navigation.NavigationActivity
 import org.junit.Assert.assertEquals
 import org.junit.Ignore
 import org.junit.Rule
@@ -20,7 +20,7 @@ import org.junit.runner.RunWith
 class ConnectionsFragmentConnectedTest {
 
   @get:Rule
-  val rule = ActivityTestRule(NavigationActivity::class.java, false, false)
+  val rule = ActivityTestRule(AMessageActivity::class.java, false, false)
 
   @Ignore("flaky")
   @Test

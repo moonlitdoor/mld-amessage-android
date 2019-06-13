@@ -10,7 +10,7 @@ import com.moonlitdoor.amessage.analytics.Analytics
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
-class App : Application(), LifecycleObserver {
+class AMessageApplication : Application(), LifecycleObserver {
 
   override fun onCreate() {
     super.onCreate()
@@ -18,7 +18,7 @@ class App : Application(), LifecycleObserver {
     RemoteConfig.init()
     initTimber(BuildConfig.DEBUG)
     startKoin {
-      androidContext(this@App)
+      androidContext(this@AMessageApplication)
       modules(di)
     }
 //    if (!BuildConfig.DEBUG) {
@@ -34,6 +34,6 @@ class App : Application(), LifecycleObserver {
   }
 
   companion object {
-    private const val CRASHLYTICS_USER_ID = "com.moonlitdoor.amessage.App.CRASHLYTICS_USER_ID"
+    private const val CRASHLYTICS_USER_ID = "com.moonlitdoor.amessage.AMessageApplication.CRASHLYTICS_USER_ID"
   }
 }

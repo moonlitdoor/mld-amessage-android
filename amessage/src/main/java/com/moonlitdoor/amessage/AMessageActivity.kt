@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.navigation
+package com.moonlitdoor.amessage
 
 import android.content.Context
 import android.content.Intent
@@ -7,11 +7,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.preference.PreferenceManager
-import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.constants.Constants
 
 
-class NavigationActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     this.setTheme(
@@ -42,6 +41,6 @@ class NavigationActivity : AppCompatActivity(), SharedPreferences.OnSharedPrefer
   }
 
   companion object {
-    fun start(context: Context) = context.startActivity(Intent(context, NavigationActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK))
+    fun start(context: Context) = context.startActivity(Intent(context, AMessageActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK))
   }
 }
