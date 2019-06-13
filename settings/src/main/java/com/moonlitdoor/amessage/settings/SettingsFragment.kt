@@ -6,8 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import com.moonlitdoor.amessage.R
-import com.moonlitdoor.amessage.databinding.FragmentSettingsBinding
+import com.moonlitdoor.amessage.settings.databinding.FragmentSettingsBinding
 
 class SettingsFragment : androidx.fragment.app.Fragment() {
 

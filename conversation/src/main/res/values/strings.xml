@@ -1,6 +1,5 @@
 <resources>
   <string name="app_name">conversation</string>
-  <string name="title_conversation_list">Conversations</string>
   <string name="send_the_first_message">Send the first message.</string>
   <string name="title">Title</string>
   <string name="add_a_topic_to_the_conversation">Add a Topic to the Conversation</string>

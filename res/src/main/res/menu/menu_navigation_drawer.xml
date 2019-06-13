@@ -21,7 +21,7 @@
 
   <group>
     <item
-      android:id="@+id/settings_fragment"
+      android:id="@+id/settings"
       android:icon="@drawable/ic_settings_black_24dp"
       android:title="@string/title_activity_settings" />
     <item

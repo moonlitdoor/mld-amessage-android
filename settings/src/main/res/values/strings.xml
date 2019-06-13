@@ -1,0 +1,35 @@
+<resources>
+  <string name="whats_new_preference_toast">What\'s New Dialog Reset</string>
+  <string name="whats_new_preference_title">Reset What\'s New Dialog</string>
+  <string name="preference_theme_title">Theme</string>
+  <string name="preference_theme_negative">Forget It</string>
+  <string name="preference_starting_location_negative">Forget It</string>
+  <string name="preference_starting_location_title">Starting Location</string>
+
+  <string name="first_preference_screen" translatable="false">com.moonlitdoor.amessage.first.preference.screen</string>
+
+  <string-array name="preference_theme_list_titles">
+    <item>Default Theme</item>
+    <item>Dark Theme</item>
+    <item>Monster Theme</item>
+    <item>Deep Theme</item>
+    <item>Cool Theme</item>
+  </string-array>
+  <string-array name="preference_starting_location_list_titles">
+    <item>Last Location</item>
+    <item>@string/title_connection_list</item>
+    <item>@string/title_conversation_list</item>
+  </string-array>
+  <string-array name="preference_theme_list_values" translatable="false">
+    <item>@string/preference_theme_default</item>
+    <item>@string/preference_theme_dark</item>
+    <item>@string/preference_theme_monster</item>
+    <item>@string/preference_theme_deep</item>
+    <item>@string/preference_theme_cool</item>
+  </string-array>
+  <string-array name="preference_starting_location_list_values" translatable="false">
+    <item>0</item>
+    <item>1</item>
+    <item>2</item>
+  </string-array>
+</resources>

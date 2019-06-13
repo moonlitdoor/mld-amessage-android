@@ -139,6 +139,7 @@ dependencies {
   implementation project(M.HANDLE)
   implementation project(M.HELP)
   implementation project(M.IDS)
+  implementation project(M.SETTINGS)
   implementation project(M.WINDOWS)
 
   implementation D.androidxAppcompatAppcompat

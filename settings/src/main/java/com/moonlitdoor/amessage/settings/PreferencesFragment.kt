@@ -4,8 +4,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.preference.*
-import com.moonlitdoor.amessage.NavigationDirections
-import com.moonlitdoor.amessage.R
 import com.moonlitdoor.amessage.constants.Constants
 import org.koin.android.ext.android.inject
 
@@ -26,7 +24,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     findPreference<Preference>(Constants.Keys.EXPERIMENTS)?.let {
       //TODO      it.isVisible = false
       it.setOnPreferenceClickListener { _ ->
-        findNavController(this).navigate(NavigationDirections.actionGlobalSettingsFragment().setTitle(getString(R.string.title_activity_experiments)).setExperiments(true))
+        findNavController(this).navigate(SettingsNavigationDirections.actionGlobalSettingsFragment().setTitle(getString(R.string.title_activity_experiments)).setExperiments(true))
         true
       }
     }
@@ -42,7 +40,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
   }
 
   override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat, pref: PreferenceScreen): Boolean {
-    findNavController(this).navigate(NavigationDirections.actionGlobalSettingsFragment().setTitle(pref.title.toString()).setRoot(pref.key))
+    findNavController(this).navigate(SettingsNavigationDirections.actionGlobalSettingsFragment().setTitle(pref.title.toString()).setRoot(pref.key))
     return true
   }
 

@@ -17,6 +17,7 @@ object M {
   const val IDS = ":ids"
   const val NETWORK = ":network"
   const val RES = ":res"
+  const val SETTINGS = ":settings"
   const val WINDOWS = ":windows"
 }
 

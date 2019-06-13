@@ -7,6 +7,8 @@
   <string name="title_activity_help">Help</string>
   <string name="title_activity_windows">Windows</string>
   <string name="connections">Connections</string>
+  <string name="title_connection_list">Connections</string>
+  <string name="title_conversation_list">Conversations</string>
   <string name="conversations">Conversations</string>
   <string name="generic_ok">OK</string>
   <string name="hint_handle">Handle</string>

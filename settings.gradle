@@ -16,4 +16,5 @@ include M.HELP
 include M.IDS
 include M.NETWORK
 include M.RES
+include M.SETTINGS
 include M.WINDOWS
