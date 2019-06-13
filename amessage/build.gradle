@@ -127,6 +127,7 @@ dependencies {
   kapt D.androidxRoomRoomCompiler
 
   implementation project(M.ABOUT)
+  implementation project(M.ANALYTICS)
   implementation project(M.BINDINGS)
   implementation project(M.COMPONENTS)
   implementation project(M.CONSTANTS)

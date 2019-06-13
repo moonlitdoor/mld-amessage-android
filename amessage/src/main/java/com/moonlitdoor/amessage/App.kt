@@ -6,6 +6,7 @@ import android.app.Application
 import androidx.lifecycle.LifecycleObserver
 import androidx.preference.PreferenceManager
 import com.google.firebase.FirebaseApp
+import com.moonlitdoor.amessage.analytics.Analytics
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

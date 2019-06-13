@@ -1,5 +1,6 @@
 include M.ABOUT
 include M.AMESSAGE
+include M.ANALYTICS
 include M.BINDINGS
 include M.COMPONENTS
 include M.CONNECT
