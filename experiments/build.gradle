@@ -1,0 +1,76 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+
+android {
+  compileSdkVersion 28
+
+  lintOptions {
+    disable "RtlEnabled"
+    warningsAsErrors true
+    abortOnError true
+    xmlReport false
+  }
+
+  testOptions {
+    unitTests {
+      includeAndroidResources = true
+    }
+    execution "ANDROIDX_TEST_ORCHESTRATOR"
+    animationsDisabled = true
+  }
+
+  defaultConfig {
+    minSdkVersion 24
+    targetSdkVersion 28
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunnerArguments clearPackageData: "true"
+    consumerProguardFiles "consumer-rules.pro"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+    }
+  }
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  dataBinding {
+    enabled true
+  }
+
+  sourceSets {
+    String sharedTestDir = "src/sharedTest/java"
+    test {
+      java.srcDir sharedTestDir
+    }
+    androidTest {
+      java.srcDir sharedTestDir
+    }
+  }
+
+}
+
+dependencies {
+
+  implementation D.orgJetbrainsKotlinKotlinStandardLibrary
+  implementation D.orgKoinKoinAndroid
+  implementation D.comGoogleFirebaseFirebaseConfig
+
+  testImplementation D.androidxTestExtJunitKtx
+  testImplementation D.comGoogleTruthTruth
+  testImplementation D.orgKoinKoinTest
+  testImplementation D.orgRobolectricRobolectric
+
+  androidTestUtil D.androidxTestOrchestrator
+
+  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestExtJunitKtx
+  androidTestImplementation D.comGoogleTruthTruth
+  androidTestImplementation D.orgKoinKoinTest
+}

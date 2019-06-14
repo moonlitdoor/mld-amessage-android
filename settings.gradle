@@ -10,6 +10,7 @@ include M.CONVERSATION
 include M.DATABASE
 include M.DOMAIN
 include M.ENCRYPTION
+include M.EXPERIMENTS
 include M.EXTENSIONS
 include M.FEEDBACK
 include M.HANDLE
