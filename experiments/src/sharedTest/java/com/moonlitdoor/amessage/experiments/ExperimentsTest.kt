@@ -21,7 +21,7 @@ class ExperimentsTest : KoinTest {
   fun setup() {
     startKoin {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
-      modules(experimentsDi)
+      modules(experimentsDi + testExperimentsDi)
     }
     declare {
       single {

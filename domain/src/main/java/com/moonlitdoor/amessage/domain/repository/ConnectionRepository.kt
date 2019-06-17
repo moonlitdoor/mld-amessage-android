@@ -24,7 +24,8 @@ class ConnectionRepository(private val connectionDao: ConnectionDao, private val
   fun invite(profile: Profile) {
 
     profileDao.getProfileSync()?.let {
-      val entity = ConnectionMapper.fromPending(profile).also {
+      //      val entity =
+      ConnectionMapper.fromPending(profile).also {
         connectionDao.insert(it)
       }
 //        WorkManager.getInstance().enqueue(OneTimeWorkRequestBuilder<ConnectionInviteWorker>().setInputData(ConnectionInviteWorker.data(it, entity, profile)).build())

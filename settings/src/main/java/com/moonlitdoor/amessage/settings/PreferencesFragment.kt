@@ -24,7 +24,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     findPreference<Preference>(Constants.Keys.EXPERIMENTS)?.let {
       //TODO      it.isVisible = false
       it.setOnPreferenceClickListener { _ ->
-        findNavController(this).navigate(SettingsNavigationDirections.actionGlobalSettingsFragment().setTitle(getString(R.string.title_activity_experiments)).setExperiments(true))
+        findNavController(this).navigate(R.id.experiments)
         true
       }
     }
@@ -40,7 +40,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
   }
 
   override fun onPreferenceStartScreen(caller: PreferenceFragmentCompat, pref: PreferenceScreen): Boolean {
-    findNavController(this).navigate(SettingsNavigationDirections.actionGlobalSettingsFragment().setTitle(pref.title.toString()).setRoot(pref.key))
+    findNavController(this).navigate(SettingsNavigationDirections.settings().setTitle(pref.title.toString()).setRoot(pref.key))
     return true
   }
 

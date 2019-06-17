@@ -16,7 +16,7 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
       it.toolbar.setNavigationOnClickListener { _ -> findNavController(this).navigateUp() }
       SettingsFragmentArgs.fromBundle(arguments!!).apply {
         it.toolbar.title = if (title == "null") getString(R.string.title_activity_settings) else title
-        fragmentManager?.beginTransaction()?.add(R.id.settings_container, if (experiments) ExperimentsFragment.create() else PreferencesFragment.create(this))?.commit()
+        fragmentManager?.beginTransaction()?.add(R.id.settings_container, PreferencesFragment.create(this))?.commit()
       }
     }.root
 

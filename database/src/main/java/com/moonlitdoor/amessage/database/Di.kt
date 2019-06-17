@@ -20,6 +20,6 @@ val databaseDi = constantsDi + listOf(module {
   single { get<AppDatabase>().conversationDao() }
   single { ProfileDao(get<SharedPreferences>()) }
   single { ThemeDao(get<SharedPreferences>()) }
-  single { WindowsDao(androidContext(), get<SharedPreferences>()) }
+  single { WindowsDao(get<SharedPreferences>()) }
 
 })

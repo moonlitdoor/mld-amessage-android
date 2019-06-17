@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.experiments
+package com.moonlitdoor.amessage.experiments.ui
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -17,7 +17,7 @@ class DiTest : KoinTest {
   fun checkingModules() {
     val koin = startKoin {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
-      modules(experimentsDi + testExperimentsDi)
+      modules(experimentsUiDi + testExperimentsUiDi)
     }
     koin.checkModules()
     stopKoin()
