@@ -66,13 +66,13 @@ class ExperimentTest : KoinTest {
   fun givenAnExperimentWithAKey_thenTheRemoteValueIsFALSE() = assertEquals("FALSE", Experiment("key").remoteValue)
 
   @Test
-  fun givenAnExperimentWithAKey_thenTheValueIsFALSE() = assertEquals(Experiment.BOOLEAN.FALSE, Experiment("key").value())
+  fun givenAnExperimentWithAKey_thenTheValueIsFALSE() = assertEquals(Experiment.BOOLEAN.FALSE, Experiment("key").value)
 
   @Test
   fun givenAnExperimentWithAKey_whenLocalValueIsSetToTRUE_thenTheValueIsTRUE() {
     val experiment = Experiment("key")
-    assertEquals(Experiment.BOOLEAN.FALSE, experiment.value())
+    assertEquals(Experiment.BOOLEAN.FALSE, experiment.value)
     experiment.localValue = "TRUE"
-    assertEquals(Experiment.BOOLEAN.TRUE, experiment.value())
+    assertEquals(Experiment.BOOLEAN.TRUE, experiment.value)
   }
 }

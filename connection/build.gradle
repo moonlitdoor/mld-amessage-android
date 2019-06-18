@@ -61,6 +61,7 @@ dependencies {
   implementation project(M.BINDINGS)
   implementation project(M.COMPONENTS)
   implementation project(M.DOMAIN)
+  implementation project(M.EXPERIMENTS)
   implementation project(M.EXTENSIONS)
   implementation project(M.HANDLE)
   implementation project(M.IDS)
@@ -68,6 +69,7 @@ dependencies {
   implementation project(M.WINDOWS)
 
   implementation D.orgJetbrainsKotlinKotlinStandardLibrary
+  implementation D.comJakeWhartonTimberTimber
   implementation D.orgKoinKoinAndroid
   implementation D.orgKoinKoinAndroidxViewmodel
   implementation D.androidxConstraintlayoutConstraintlayout

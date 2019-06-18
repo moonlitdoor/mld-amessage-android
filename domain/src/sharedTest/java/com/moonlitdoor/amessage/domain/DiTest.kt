@@ -5,6 +5,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidFileProperties
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.check.checkModules
@@ -16,6 +17,7 @@ class DiTest {
   fun checkingModules() {
     startKoin {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
+      androidFileProperties()
       modules(domainDi)
     }.checkModules()
     stopKoin()

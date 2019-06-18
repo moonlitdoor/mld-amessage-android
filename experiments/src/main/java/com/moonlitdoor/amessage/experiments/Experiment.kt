@@ -32,16 +32,19 @@ data class Experiment<T : Enum<T>>(val key: String, private val c: Class<T>, val
 
   var title: String? = null
   var description: String? = null
-  val remoteValue: String = remoteConfig.getString(key).toUpperCase(Locale.ROOT)
-  var localValue: String = sharedPreferences.getString(id, REMOTE) ?: REMOTE
+  val remoteValue: String
+    get() = remoteConfig.getString(key).toUpperCase(Locale.ROOT)
+
+  var localValue: String
+    get() = sharedPreferences.getString(id, REMOTE) ?: REMOTE
     set(value) {
-      field = value
       sharedPreferences.edit().putString(id, value).apply()
     }
 
   val options: List<String> = listOf(REMOTE) + c.enumConstants.map { it.name.toUpperCase(Locale.ROOT) }
 
-  fun value(): T = c.enumConstants.asList().find { if (localValue == REMOTE) remoteValue == it.name else localValue == it.name } ?: defaultValue
+  val value: T
+    get() = c.enumConstants.asList().find { if (localValue == REMOTE) remoteValue == it.name else localValue == it.name } ?: defaultValue
 
   companion object {
     @VisibleForTesting

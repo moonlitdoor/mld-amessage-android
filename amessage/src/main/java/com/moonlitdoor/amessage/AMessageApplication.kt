@@ -8,6 +8,7 @@ import androidx.preference.PreferenceManager
 import com.google.firebase.FirebaseApp
 import com.moonlitdoor.amessage.analytics.Analytics
 import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidFileProperties
 import org.koin.core.context.startKoin
 
 class AMessageApplication : Application(), LifecycleObserver {
@@ -19,6 +20,7 @@ class AMessageApplication : Application(), LifecycleObserver {
     initTimber(BuildConfig.DEBUG)
     startKoin {
       androidContext(this@AMessageApplication)
+      androidFileProperties()
       modules(di)
     }
 //    if (!BuildConfig.DEBUG) {

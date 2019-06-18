@@ -55,6 +55,8 @@ dependencies {
   implementation project(M.ENCRYPTION)
 
   implementation D.comJakeWhartonTimberTimber
+  implementation D.comGithubIhsanbalLoggingInterceptor
+  implementation D.comSquareupOkhttp3Okhttp
   implementation D.comSquareupOkhttp3LoggingInterceptor
   implementation D.comSquareupRetrofit2ConverterGson
   implementation D.comSquareupRetrofit2Retrofit
@@ -65,6 +67,8 @@ dependencies {
   testImplementation D.comSquareupOkhttp3MockWebServer
   testImplementation D.orgKoinKoinTest
   testImplementation D.orgRobolectricRobolectric
+  testImplementation D.orgJetbrainsKotlinxKotlinxCoroutinesAndroid
+  testImplementation D.orgJetbrainsKotlinxKotlinxCoroutinesCore
 
   androidTestUtil D.androidxTestOrchestrator
 
@@ -72,5 +76,7 @@ dependencies {
   androidTestImplementation D.comSquareupOkhttp3MockWebServer
   androidTestImplementation D.androidxEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
+  androidTestImplementation D.orgJetbrainsKotlinxKotlinxCoroutinesAndroid
+  androidTestImplementation D.orgJetbrainsKotlinxKotlinxCoroutinesCore
 
 }

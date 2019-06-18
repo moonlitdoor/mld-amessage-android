@@ -27,7 +27,7 @@ class ExperimentsTest : KoinTest {
       single {
         FirebaseRemoteConfigFake(
           defaultsHandler = {
-            assertThat(it).hasSize(2)
+            assertThat(it).hasSize(8)
             assertThat(it).containsEntry("exp_test_3", Experiments.ABC.A)
             assertThat(it).containsEntry("exp_test_2", Experiment.BOOLEAN.FALSE)
           },
@@ -74,7 +74,7 @@ class ExperimentsTest : KoinTest {
   fun givenExperimentsTEST2_whenTheRemoteValueIsChecked_thenTheValueIsNull() = assertEquals("TRUE", Experiments.TEST2.remoteValue)
 
   @Test
-  fun givenExperimentsTEST2_whenTheValueIsChecked_thenTheValueFALSE() = assertEquals(Experiment.BOOLEAN.TRUE, Experiments.TEST2.value())
+  fun givenExperimentsTEST2_whenTheValueIsChecked_thenTheValueFALSE() = assertEquals(Experiment.BOOLEAN.TRUE, Experiments.TEST2.value)
 
   @Test
   fun givenExperimentsTEST3_whenTheKeyIsChecked_thenTheValueIsExp_Test2() = assertEquals("exp_test_3", Experiments.TEST3.key)
@@ -98,6 +98,6 @@ class ExperimentsTest : KoinTest {
   fun givenExperimentsTEST3_whenTheRemoteValueIsChecked_thenTheValueIsNull() = assertEquals("A", Experiments.TEST3.remoteValue)
 
   @Test
-  fun givenExperimentsTEST3_whenTheValueIsChecked_thenTheValueFALSE() = assertEquals(Experiments.ABC.A, Experiments.TEST3.value())
+  fun givenExperimentsTEST3_whenTheValueIsChecked_thenTheValueFALSE() = assertEquals(Experiments.ABC.A, Experiments.TEST3.value)
 
 }

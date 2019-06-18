@@ -26,6 +26,7 @@ allprojects {
   repositories {
     google()
     jcenter()
+    maven { url "https://jitpack.io" }
   }
   ext.smokeTests = project.hasProperty("smokeTests") ? project.property("smokeTests") : false
   ext.largeTests = project.hasProperty("largeTests") ? project.property("largeTests") : false
