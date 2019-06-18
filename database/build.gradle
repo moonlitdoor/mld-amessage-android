@@ -69,6 +69,8 @@ dependencies {
   implementation D.orgJetbrainsKotlinKotlinStandardLibrary
   implementation D.orgKoinKoinAndroid
 
+  debugImplementation D.comAmitshekharAndroidDebugDb
+
   testImplementation D.androidxTestExtJunitKtx
   testImplementation D.orgKoinKoinTest
   testImplementation D.orgRobolectricRobolectric

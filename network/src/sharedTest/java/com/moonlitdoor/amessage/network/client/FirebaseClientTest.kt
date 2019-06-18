@@ -57,7 +57,7 @@ class FirebaseClientTest : KoinTest {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
       androidFileProperties()
       modules(networkDi)
-      properties(mapOf("firebase_url" to "http://${server.hostName}:${server.getPort()}"))
+      properties(mapOf("firebase_url" to "http://${server.hostName}:${server.port}"))
     }
   }
 
