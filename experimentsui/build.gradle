@@ -84,7 +84,7 @@ dependencies {
 
   androidTestUtil D.androidxTestOrchestrator
 
-  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxFragmentFragmentTesting
   androidTestImplementation D.androidxTestExtJunitKtx
   androidTestImplementation D.orgKoinKoinTest

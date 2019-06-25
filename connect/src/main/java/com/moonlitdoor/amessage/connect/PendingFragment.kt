@@ -13,13 +13,13 @@ import com.moonlitdoor.amessage.connect.databinding.FragmentPendingBinding
 import com.moonlitdoor.amessage.connect.databinding.ListItemConnectionPendingInvitedBinding
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.ignore
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class PendingFragment : TitledFragmentPagerAdapter.TitledFragment() {
 
   override fun getTitleId() = R.string.connect_list_title
 
-  private val viewModel1: ConnectViewModel by viewModel()
+  private val viewModel1: ConnectViewModel by sharedViewModel()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = DataBindingUtil.inflate<FragmentPendingBinding>(inflater, R.layout.fragment_pending, container, false).also {
     it.lifecycleOwner = activity

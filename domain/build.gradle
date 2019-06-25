@@ -67,7 +67,7 @@ dependencies {
 
   testImplementation D.androidxTestRules
   testImplementation D.androidxTestRunner
-  testImplementation D.androidxEspressoEspressoCore
+  testImplementation D.androidxTestEspressoEspressoCore
   testImplementation D.androidxTestExtJunitKtx
   testImplementation D.orgRobolectricRobolectric
   testImplementation D.orgKoinKoinTest
@@ -76,7 +76,7 @@ dependencies {
   androidTestUtil D.androidxTestOrchestrator
 
   androidTestImplementation D.androidxTestRunner
-  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
   androidTestImplementation D.orgKoinKoinTest
 

@@ -1,4 +1,5 @@
 object M {
+
   const val ABOUT = ":about"
   const val AMESSAGE = ":amessage"
   const val ANALYTICS = ":analytics"
@@ -22,6 +23,7 @@ object M {
   const val RES = ":res"
   const val SETTINGS = ":settings"
   const val WINDOWS = ":windows"
+
 }
 
 object D {
@@ -29,7 +31,6 @@ object D {
   const val androidxAppcompatAppcompat = "androidx.appcompat:appcompat:1.1.0-beta01"
   const val androidxConstraintlayoutConstraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
   const val androidxCoreCoreKtx = "androidx.core:core-ktx:1.2.0-alpha02"
-  const val androidxEspressoEspressoCore = "androidx.test.espresso:espresso-core:3.2.0"
   const val androidxFragmentFragmentTesting = "androidx.fragment:fragment-testing:1.1.0-beta01"
   const val androidxLegacyLegacyPreferenceV14 = "androidx.legacy:legacy-preference-v14:1.0.0"
   const val androidxLegacyLegacySupportCoreUtils = "androidx.legacy:legacy-support-core-utils:1.0.0"
@@ -54,7 +55,7 @@ object D {
   const val androidxTestRules = "androidx.test:rules:1.3.0-alpha01"
   const val androidxTestRunner = "androidx.test:runner:1.3.0-alpha01"
   const val androidxTestOrchestrator = "androidx.test:orchestrator:1.3.0-alpha01"
-  const val androidxWorkWorkRuntimeKtx = "androidx.work:work-runtime-ktx:2.1.0-beta01"
+  const val androidxWorkWorkRuntimeKtx = "androidx.work:work-runtime-ktx:2.1.0-beta02"
   const val comAmitshekharAndroidDebugDb = "com.amitshekhar.android:debug-db:1.0.6"
   const val comGithubIhsanbalLoggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:3.0.0"
   const val comGoogleAndroidGmsPlayServicesVision = "com.google.android.gms:play-services-vision:18.0.0"
@@ -62,19 +63,20 @@ object D {
   const val comGoogleCodeGsonGson = "com.google.code.gson:gson:2.8.5"
   const val comGoogleFirebaseFirebaseCore = "com.google.firebase:firebase-core:17.0.0"
   const val comGoogleFirebaseFirebaseConfig = "com.google.firebase:firebase-config:18.0.0"
-  const val comGoogleFirebaseFirebaseMessaging = "com.google.firebase:firebase-messaging:19.0.0"
+  const val comGoogleFirebaseFirebaseMessaging = "com.google.firebase:firebase-messaging:19.0.1"
+  const val comGoogleFirebaseFirebaseMlVision = "com.google.firebase:firebase-ml-vision:21.0.0"
   const val comGoogleTruthTruth = "com.google.truth:truth:0.45"
   const val comGoogleZxingCore = "com.google.zxing:core:3.4.0"
   const val comJakeWhartonTimberTimber = "com.jakewharton.timber:timber:4.7.1"
   const val comMoonlitdoorSharedPreferenceLiveDataSharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
-  const val comSquareupOkhttp3Okhttp = "com.squareup.okhttp3:okhttp:4.0.0-RC1"
-  const val comSquareupOkhttp3LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.0.0-RC1"
-  const val comSquareupOkhttp3MockWebServer = "com.squareup.okhttp3:mockwebserver:4.0.0-RC1"
+  const val comSquareupOkhttp3Okhttp = "com.squareup.okhttp3:okhttp:4.0.0-RC2"
+  const val comSquareupOkhttp3LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.0.0-RC2"
+  const val comSquareupOkhttp3MockWebServer = "com.squareup.okhttp3:mockwebserver:4.0.0-RC2"
   const val comSquareupRetrofit2ConverterGson = "com.squareup.retrofit2:converter-gson:2.6.0"
   const val comSquareupRetrofit2Retrofit = "com.squareup.retrofit2:retrofit:2.6.0"
   const val comStepstoneStepperMaterialStepper = "com.stepstone.stepper:material-stepper:4.3.1"
   const val junitJunit = "junit:junit:4.12"
-  const val orgJetbrainsKotlinKotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.31"
+  const val orgJetbrainsKotlinKotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.40"
   const val orgKoinKoinAndroid = "org.koin:koin-android:2.0.1"
   const val orgKoinKoinTest = "org.koin:koin-test:2.0.1"
   const val orgKoinKoinAndroidxScope = "org.koin:koin-androidx-scope:2.0.1"

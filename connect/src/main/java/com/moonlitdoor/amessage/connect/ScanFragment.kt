@@ -16,7 +16,7 @@ import com.moonlitdoor.amessage.connect.databinding.FragmentScanBinding
 import com.moonlitdoor.amessage.constants.Constants
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.ignore
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), BarcodeProcessor.BarcodeDetectionListener {
@@ -26,7 +26,7 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), BarcodeProcess
     const val CAMERA_PERMISSION = 6
   }
 
-  private val viewModel: ConnectViewModel by viewModel()
+  private val viewModel: ConnectViewModel by sharedViewModel()
   private lateinit var binding: FragmentScanBinding
 
   override fun getTitleId() = R.string.connect_scan_title

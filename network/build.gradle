@@ -74,7 +74,7 @@ dependencies {
 
   androidTestImplementation D.orgKoinKoinTest
   androidTestImplementation D.comSquareupOkhttp3MockWebServer
-  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
   androidTestImplementation D.orgJetbrainsKotlinxKotlinxCoroutinesAndroid
   androidTestImplementation D.orgJetbrainsKotlinxKotlinxCoroutinesCore

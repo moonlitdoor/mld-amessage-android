@@ -69,6 +69,8 @@ dependencies {
   implementation D.orgKoinKoinAndroid
   implementation D.orgKoinKoinAndroidxViewmodel
   implementation D.comGoogleAndroidGmsPlayServicesVision
+  implementation D.comGoogleFirebaseFirebaseMlVision
+  implementation D.comJakeWhartonTimberTimber
   implementation D.androidxNavigationNavigationFragmentKtx
   implementation D.androidxNavigationNavigationUiKtx
   implementation D.comGoogleZxingCore
@@ -81,6 +83,6 @@ dependencies {
   androidTestUtil D.androidxTestOrchestrator
 
   androidTestImplementation D.orgKoinKoinTest
-  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
 }

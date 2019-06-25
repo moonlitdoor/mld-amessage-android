@@ -69,7 +69,7 @@ dependencies {
 
   androidTestUtil D.androidxTestOrchestrator
 
-  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
   androidTestImplementation D.comGoogleTruthTruth
   androidTestImplementation D.orgKoinKoinTest

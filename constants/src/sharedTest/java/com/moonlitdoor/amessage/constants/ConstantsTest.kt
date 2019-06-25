@@ -11,9 +11,10 @@ import org.junit.runner.RunWith
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
+import org.koin.test.KoinTest
 
 @RunWith(AndroidJUnit4::class)
-class ConstantsTest {
+class ConstantsTest : KoinTest {
 
   @Before
   fun setup() {
@@ -21,6 +22,11 @@ class ConstantsTest {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
       modules(constantsDi)
     }
+//    declare {
+//      single {
+//        InstrumentationRegistry.getInstrumentation().targetContext.resources
+//      }
+//    }
   }
 
   @After
@@ -35,6 +41,16 @@ class ConstantsTest {
     assertTrue(Constants.EXPERIMENTS.contains("nckc983tpyw8lfRCUPUAzSWBqxhAV9g53wgTb"))
     assertTrue(Constants.EXPERIMENTS.contains("g53wgTbsftnAz9YPNfzZ5dZs9SUAXyygZ"))
   }
+
+//  @Test
+//  fun testTemp1() {
+//    assertEquals(InstrumentationRegistry.getInstrumentation().targetContext.packageName, InstrumentationRegistry.getInstrumentation().context.packageName)
+//  }
+//
+//  @Test
+//  fun testTemp2() {
+//    assertEquals(InstrumentationRegistry.getInstrumentation().context.toString(), InstrumentationRegistry.getInstrumentation().targetContext.toString())
+//  }
 
   @Test
   fun testBaseUrlFirebase() {

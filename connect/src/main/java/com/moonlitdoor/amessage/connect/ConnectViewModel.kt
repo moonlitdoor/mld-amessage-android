@@ -11,11 +11,15 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.extensions.and
 import com.moonlitdoor.amessage.extensions.map
+import timber.log.Timber
 
 class ConnectViewModel(private val connectionRepository: ConnectionRepository, profileRepository: ProfileRepository) : ViewModel() {
 
-  private val profile = profileRepository.profile
+  private val profile = profileRepository.profile.and {
+    Timber.i(it.toString())
+  }
   val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it.toString()) }
   val pendingAndInvitedConnections = connectionRepository.getInvitedAndPendingConnections()
   val selectedConnection = MutableLiveData<Connection>()

@@ -179,7 +179,7 @@ dependencies {
   testImplementation D.orgRobolectricRobolectric
   testImplementation D.androidxRoomRoomTesting
   testImplementation D.androidxLegacyLegacySupportCoreUtils
-  testImplementation D.androidxEspressoEspressoCore
+  testImplementation D.androidxTestEspressoEspressoCore
   testImplementation D.orgKoinKoinTest
   testImplementation D.comSquareupOkhttp3MockWebServer
   testImplementation D.androidxTestExtJunitKtx

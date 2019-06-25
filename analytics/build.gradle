@@ -66,6 +66,6 @@ dependencies {
 
   androidTestUtil D.androidxTestOrchestrator
 
-  androidTestImplementation D.androidxEspressoEspressoCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
 }

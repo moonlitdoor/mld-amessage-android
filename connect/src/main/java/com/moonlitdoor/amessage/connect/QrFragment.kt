@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.connect.databinding.FragmentQrBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class QrFragment : TitledFragmentPagerAdapter.TitledFragment() {
 
-  private val viewModel by viewModel<ConnectViewModel>()
+  private val viewModel by sharedViewModel<ConnectViewModel>()
 
   override fun getTitleId() = R.string.connect_qr_title
 

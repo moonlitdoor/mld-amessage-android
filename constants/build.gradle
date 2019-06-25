@@ -56,12 +56,22 @@ dependencies {
   implementation D.orgKoinKoinAndroid
 
   testImplementation D.androidxTestExtJunitKtx
+//  testImplementation D.androidxTestCore
   testImplementation D.orgKoinKoinTest
   testImplementation D.orgRobolectricRobolectric
+  testImplementation D.androidxTestCore
+  testImplementation D.androidxTestEspressoEspressoCore
+  testImplementation D.androidxTestEspressoEspressoIdlingResource
+  testImplementation D.androidxTestEspressoIdlingIdlingConcurrent
+  testImplementation D.androidxTestRules
+  testImplementation D.androidxTestRunner
+  testImplementation D.comGoogleTruthTruth
+  testImplementation D.junitJunit
 
   androidTestUtil D.androidxTestOrchestrator
 
-  androidTestImplementation D.androidxEspressoEspressoCore
+//  androidTestImplementation D.androidxTestCore
+  androidTestImplementation D.androidxTestEspressoEspressoCore
   androidTestImplementation D.androidxTestExtJunitKtx
   androidTestImplementation D.orgKoinKoinTest
 }
