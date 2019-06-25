@@ -42,19 +42,19 @@ android {
     versionName = gitVersion
 //    playAccountConfig = playAccountConfigs.defaultAccountConfig
     buildConfigField "String", "BUILD_DATE", "\"0\""
-    if (largeTests) {
-      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
-    } else if (mediumTests) {
-      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerMedium"
-    } else if (smallTests) {
-      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerSmall"
-    } else if (smokeTests) {
-      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerSmoke"
-    } else if (flakyTests) {
-      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerFlaky"
-    } else {
+//    if (largeTests) {
+//      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
+//    } else if (mediumTests) {
+//      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerMedium"
+//    } else if (smallTests) {
+//      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerSmall"
+//    } else if (smokeTests) {
+//      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerSmoke"
+//    } else if (flakyTests) {
+//      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerFlaky"
+//    } else {
       testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
+//    }
     testInstrumentationRunnerArguments clearPackageData: "true"
   }
   signingConfigs {
@@ -116,11 +116,6 @@ android {
   }
 
 }
-
-//play {
-//  track(getPlayTrack())
-//  untrackOld = true
-//}
 
 dependencies {
 
