@@ -31,9 +31,6 @@ android {
   buildTypes {
     getByName("release") {
       isMinifyEnabled = false
-//      proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
-//      proguardFile(file("proguard-rules.pro"))
-//      consumerProguardFile("consumer-rules.pro")
     }
   }
 
@@ -77,4 +74,5 @@ dependencies {
   androidTestImplementation(D.androidxTestEspressoEspressoCore)
   androidTestImplementation(D.androidxTestExtJunitKtx)
   androidTestImplementation(D.orgKoinKoinTest)
+
 }
