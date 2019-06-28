@@ -25,17 +25,15 @@ android {
     minSdkVersion(24)
     targetSdkVersion(28)
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArguments = mapOf(
-      "disableAnalytics" to "true",
-      "clearPackageData" to "true"
-    )
+    testInstrumentationRunnerArguments = mapOf("clearPackageData" to "true")
   }
 
   buildTypes {
     getByName("release") {
       isMinifyEnabled = false
-//      proguardFiles =getDefaultProguardFile ("proguard-android-optimize.txt"), "proguard-rules.pro"
-//    consumerProguardFiles = "consumer-rules.pro"
+//      proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
+//      proguardFile(file("proguard-rules.pro"))
+//      consumerProguardFile("consumer-rules.pro")
     }
   }
 
