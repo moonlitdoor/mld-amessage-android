@@ -16,7 +16,7 @@ class AMessageApplication : Application(), LifecycleObserver {
   override fun onCreate() {
     super.onCreate()
     FirebaseApp.initializeApp(this)
-    RemoteConfig.init()
+//    RemoteConfig.init()
     initTimber(BuildConfig.DEBUG)
     startKoin {
       androidContext(this@AMessageApplication)
