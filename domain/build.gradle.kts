@@ -1,7 +1,6 @@
 plugins {
   id("com.android.library")
   kotlin("android")
-  kotlin("kapt")
 }
 
 android {
@@ -27,11 +26,6 @@ android {
     targetSdkVersion(28)
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     testInstrumentationRunnerArguments = mapOf("clearPackageData" to "true")
-    javaCompileOptions {
-      annotationProcessorOptions {
-        arguments = mapOf("room.schemaLocation" to "$projectDir/schemas")
-      }
-    }
   }
 
   buildTypes {
@@ -59,26 +53,32 @@ android {
 
 dependencies {
 
-  kapt(D.androidxRoomRoomCompiler)
-
   implementation(project(M.CONSTANTS))
-  implementation(D.androidxLifecycleLifecycleLivedataKtx)
-  implementation(D.androidxRoomRoomCoroutines)
-  implementation(D.androidxRoomRoomRuntime)
-  implementation(D.comMoonlitdoorSharedPreferenceLiveDataSharedPreferenceLiveData)
+  implementation(project(M.DATABASE))
+  implementation(project(M.EXTENSIONS))
+  implementation(project(M.NETWORK))
+
+  implementation(D.androidxAppcompatAppcompat)
+  implementation(D.comJakeWhartonTimberTimber)
   implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
   implementation(D.orgKoinKoinAndroid)
+  implementation(D.orgKoinKoinAndroidxScope)
+  implementation(D.orgKoinKoinAndroidxViewmodel)
+  implementation(D.comGoogleFirebaseFirebaseCore)
+  implementation(D.comGoogleFirebaseFirebaseMessaging)
 
-  debugImplementation(D.comAmitshekharAndroidDebugDb)
-
+  testImplementation(D.androidxTestRules)
+  testImplementation(D.androidxTestRunner)
+  testImplementation(D.androidxTestEspressoEspressoCore)
   testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.orgKoinKoinTest)
   testImplementation(D.orgRobolectricRobolectric)
+  testImplementation(D.orgKoinKoinTest)
 
   androidTestUtil(D.androidxTestOrchestrator)
 
-  androidTestImplementation(D.orgKoinKoinTest)
+  androidTestImplementation(D.androidxTestRunner)
   androidTestImplementation(D.androidxTestEspressoEspressoCore)
   androidTestImplementation(D.androidxTestExtJunitKtx)
+  androidTestImplementation(D.orgKoinKoinTest)
 
 }
