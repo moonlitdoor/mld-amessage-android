@@ -62,9 +62,13 @@ dependencies {
   implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
   implementation(D.androidxRecyclerviewRecyclerview)
   implementation(D.androidxAppcompatAppcompat)
+
   testImplementation(D.androidxTestExtJunitKtx)
   testImplementation(D.orgRobolectricRobolectric)
+
   androidTestUtil(D.androidxTestOrchestrator)
+
   androidTestImplementation(D.androidxTestEspressoEspressoCore)
   androidTestImplementation(D.androidxTestExtJunitKtx)
+
 }
