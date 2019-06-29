@@ -70,6 +70,7 @@ android {
   }
   buildTypes {
     getByName("release") {
+      signingConfig = signingConfigs.getByName("release")
       buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_FIREBASE_DATABASE_URL").toString())
@@ -80,7 +81,6 @@ android {
       resValue("string", "google_storage_bucket", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET").toString())
 //      resValue ("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID").toString())
 //      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
-      signingConfig = signingConfigs.getByName("release")
       isMinifyEnabled = false
     }
     getByName("debug") {
