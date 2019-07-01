@@ -7,7 +7,6 @@ android {
   compileSdkVersion(28)
 
   lintOptions {
-    disable("RtlEnabled")
     isWarningsAsErrors = true
     isAbortOnError = true
     xmlReport = false
