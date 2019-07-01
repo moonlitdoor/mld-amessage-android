@@ -6,3 +6,5 @@ openssl base64 -A -in .signing/release.jks
 Then, in your config.yml file at CircleCI, decode it back:
 echo $RELEASE_KEYSTORE_BASE64 | base64 -d > .signing/release.jks
 base64 -d <<< $RELEASE_KEYSTORE_BASE64 > .signing/release.jks
+
+testing slack
