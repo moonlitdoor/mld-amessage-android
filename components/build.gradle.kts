@@ -63,7 +63,7 @@ dependencies {
   implementation(project(M.CONSTANTS))
   implementation(project(M.DOMAIN))
   implementation(project(M.EXTENSIONS))
-  implementation(project(M.RES))
+  implementation(project(M.RESOURCES))
 
   implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
   implementation(D.orgKoinKoinAndroid)

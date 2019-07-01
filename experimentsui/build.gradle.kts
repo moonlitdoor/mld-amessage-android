@@ -61,7 +61,7 @@ dependencies {
   implementation(project(M.BINDINGS))
   implementation(project(M.EXTENSIONS))
   implementation(project(M.EXPERIMENTS))
-  implementation(project(M.RES))
+  implementation(project(M.RESOURCES))
 
   implementation(D.androidxAppcompatAppcompat)
   implementation(D.androidxConstraintlayoutConstraintlayout)
