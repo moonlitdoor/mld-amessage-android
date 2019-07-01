@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-  compileSdkVersion(28)
+  compileSdkVersion(COMPILE_SDK_VERSION)
 
   lintOptions {
     disable("RtlEnabled")
@@ -19,19 +19,19 @@ android {
       isReturnDefaultValues = true
       isIncludeAndroidResources = true
     }
-    execution = "ANDROIDX_TEST_ORCHESTRATOR"
+    execution = TEST_ORCHESTRATOR
     animationsDisabled = true
   }
 
   defaultConfig {
-    minSdkVersion(24)
-    targetSdkVersion(28)
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    testInstrumentationRunnerArguments = mapOf("clearPackageData" to "true")
+    minSdkVersion(MIN_SDK_VERSION)
+    targetSdkVersion(TARGET_SDK_VERSION)
+    testInstrumentationRunner = TEST_RUNNER
+    testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
   }
 
   buildTypes {
-    getByName("release") {
+    getByName(RELEASE) {
       isMinifyEnabled = false
     }
   }
@@ -46,12 +46,11 @@ android {
   }
 
   sourceSets {
-    val sharedTestDir = "src/sharedTest/java"
-    getByName("test") {
-      java.srcDir(sharedTestDir)
+    getByName(SOURCE_SET_TEST) {
+      java.srcDir(SHARED_TEST_DIR)
     }
-    getByName("androidTest") {
-      java.srcDir(sharedTestDir)
+    getByName(SOURCE_SET_ANDROID_TEST) {
+      java.srcDir(SHARED_TEST_DIR)
     }
   }
 

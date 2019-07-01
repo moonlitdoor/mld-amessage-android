@@ -17,7 +17,7 @@ println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount") as Long + 200}")
 
 android {
-  compileSdkVersion(28)
+  compileSdkVersion(COMPILE_SDK_VERSION)
 
   lintOptions {
     isWarningsAsErrors = true
@@ -29,7 +29,7 @@ android {
       isReturnDefaultValues = true
       isIncludeAndroidResources = true
     }
-    execution = "ANDROIDX_TEST_ORCHESTRATOR"
+    execution = TEST_ORCHESTRATOR
     animationsDisabled = true
   }
 //  playAccountConfigs {
@@ -39,8 +39,8 @@ android {
 //  }
   defaultConfig {
     applicationId = "com.moonlitdoor.amessage"
-    minSdkVersion(24)
-    targetSdkVersion(28)
+    minSdkVersion(MIN_SDK_VERSION)
+    targetSdkVersion(TARGET_SDK_VERSION)
     versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt() + 200
     versionName = gitVersion
 //    playAccountConfig = playAccountConfigs.defaultAccountConfig
@@ -56,12 +56,12 @@ android {
 //    } else if (flakyTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerFlaky"
 //    } else {
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = TEST_RUNNER
 //    }
-    testInstrumentationRunnerArguments = mapOf("clearPackageData" to "true")
+    testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
   }
   signingConfigs {
-    create("release") {
+    create(RELEASE) {
       storeFile = file(property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE").toString())
       storePassword = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD").toString()
       keyAlias = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS").toString()
@@ -69,8 +69,8 @@ android {
     }
   }
   buildTypes {
-    getByName("release") {
-      signingConfig = signingConfigs.getByName("release")
+    getByName(RELEASE) {
+      signingConfig = signingConfigs.getByName(RELEASE)
       buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_FIREBASE_DATABASE_URL").toString())
@@ -83,7 +83,7 @@ android {
 //      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
       isMinifyEnabled = false
     }
-    getByName("debug") {
+    getByName(DEBUG) {
       applicationIdSuffix = ".beta"
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL").toString())
@@ -109,12 +109,11 @@ android {
   }
 
   sourceSets {
-    val sharedTestDir = "src/sharedTest/java"
-    getByName("test") {
-      java.srcDir(sharedTestDir)
+    getByName(SOURCE_SET_TEST) {
+      java.srcDir(SHARED_TEST_DIR)
     }
-    getByName("androidTest") {
-      java.srcDir(sharedTestDir)
+    getByName(SOURCE_SET_ANDROID_TEST) {
+      java.srcDir(SHARED_TEST_DIR)
     }
   }
 
