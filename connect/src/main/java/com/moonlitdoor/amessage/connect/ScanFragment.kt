@@ -6,28 +6,35 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.camera.core.*
 import androidx.databinding.DataBindingUtil
-import com.google.android.gms.common.ConnectionResult
-import com.google.android.gms.common.GoogleApiAvailability
-import com.google.android.gms.vision.CameraSource
-import com.google.android.gms.vision.barcode.BarcodeDetector
+import com.google.firebase.ml.vision.FirebaseVision
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
+import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.connect.databinding.FragmentScanBinding
-import com.moonlitdoor.amessage.constants.Constants
-import com.moonlitdoor.amessage.domain.model.Profile
-import com.moonlitdoor.amessage.extensions.ignore
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
-import java.util.*
+import timber.log.Timber
 
-class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), BarcodeProcessor.BarcodeDetectionListener {
+class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPreviewOutputUpdateListener, ImageAnalysis.Analyzer {
 
   companion object {
-    const val HANDLE_GMS = 5
     const val CAMERA_PERMISSION = 6
   }
 
   private val viewModel: ConnectViewModel by sharedViewModel()
   private lateinit var binding: FragmentScanBinding
+  private val detector = FirebaseVision.getInstance().getVisionBarcodeDetector(
+    FirebaseVisionBarcodeDetectorOptions.Builder().setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE).build()
+  )
+  private val preview = Preview(PreviewConfig.Builder().build()).also {
+    it.onPreviewOutputUpdateListener = this
+  }
+  private val analysis = ImageAnalysis(ImageAnalysisConfig.Builder().build()).also {
+    it.analyzer = this
+  }
 
   override fun getTitleId() = R.string.connect_scan_title
 
@@ -45,12 +52,10 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), BarcodeProcess
         if (it.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
           requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
         } else {
-          startCameraSource()
+          CameraX.bindToLifecycle(this, preview, analysis)
         }
       } else {
-
-        binding.preview.release()
-
+        CameraX.unbindAll()
       }
     }
   }
@@ -58,38 +63,29 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), BarcodeProcess
   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
     if (requestCode == CAMERA_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-      startCameraSource()
+      CameraX.bindToLifecycle(this, preview, analysis)
     }
   }
 
-  private fun startCameraSource() {
-    val code = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(activity)
-    if (code != ConnectionResult.SUCCESS) {
-      GoogleApiAvailability.getInstance().getErrorDialog(activity, code, HANDLE_GMS).show()
-    }
-
-    binding.preview.start(
-      CameraSource.Builder(activity, BarcodeDetector.Builder(activity).build().apply { setProcessor(BarcodeProcessor(this@ScanFragment)) })
-        .setFacing(CameraSource.CAMERA_FACING_BACK)
-        .setRequestedPreviewSize(resources.displayMetrics.widthPixels, resources.displayMetrics.heightPixels)
-        .setRequestedFps(15.0f)
-        .setAutoFocusEnabled(true)
-        .build()
-    )
-
+  override fun onUpdated(output: Preview.PreviewOutput) {
+    binding.preview.surfaceTexture = output.surfaceTexture
   }
 
-  override fun onNewBarcodeDetected(barcodeValue: String): Unit = when (barcodeValue) {
-    Constants.EXPERIMENTS -> com.google.android.material.snackbar.Snackbar.make(binding.root, "Going to 'Experimental' mode.", com.google.android.material.snackbar.Snackbar.LENGTH_LONG).show()
-    else -> {
-      val parts = barcodeValue.split("|")
-      if (parts.size == 5) {
-        val profile = Profile(parts[0], parts[1], UUID.fromString(parts[2]), UUID.fromString(parts[3]), UUID.fromString(parts[4]))
-
-
-      } else ignore()
+  override fun analyze(image: ImageProxy?, rotationDegrees: Int) {
+    image?.image?.let {
+      detector.detectInImage(FirebaseVisionImage.fromMediaImage(it, FirebaseVisionImageMetadata.ROTATION_0))
+        .addOnSuccessListener { barcodes ->
+          if (barcodes.isNotEmpty()) {
+            CameraX.unbind(analysis)
+            for (barcode in barcodes) {
+              Timber.i(barcode.rawValue)
+            }
+          }
+        }
+        .addOnFailureListener { e ->
+          Timber.e(e)
+        }
     }
   }
-
 
 }

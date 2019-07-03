@@ -2,6 +2,8 @@ object D {
 
   const val androidxAppcompatAppcompat = "androidx.appcompat:appcompat:1.1.0-beta01"
   const val androidxAnnotationAnnotation = "androidx.annotation:annotation:1.1.0"
+  const val androidxCameraCameraCore = "androidx.camera:camera-core:1.0.0-alpha02"
+  const val androidxCameraCameraCamera2 = "androidx.camera:camera-camera2:1.0.0-alpha02"
   const val androidxConstraintlayoutConstraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
   const val androidxCoreCoreKtx = "androidx.core:core-ktx:1.2.0-alpha02"
   const val androidxFragmentFragmentTesting = "androidx.fragment:fragment-testing:1.1.0-beta01"

@@ -5,6 +5,7 @@
   <string name="reject">Reject</string>
   <string name="connect_qr_title">QR Code</string>
   <string name="connect_scan_title">Scan</string>
+  <string name="connect_scan_title2">Scan2</string>
   <string name="qr_code">QR Code</string>
   <string name="title_activity_connect">Connect</string>
   <string name="settings_title_key" translatable="false">com.moonlitdoor.amessage.settings.title</string>
