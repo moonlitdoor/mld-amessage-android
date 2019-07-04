@@ -69,6 +69,7 @@ dependencies {
   implementation(D.orgKoinKoinAndroid)
   implementation(D.androidxAppcompatAppcompat)
   implementation(D.comGoogleAndroidMaterialMaterial)
+  implementation(D.comJakeWhartonTimberTimber)
   implementation(D.androidxConstraintlayoutConstraintlayout)
 
   testImplementation(D.androidxTestExtJunitKtx)
