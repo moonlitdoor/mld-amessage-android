@@ -13,7 +13,7 @@ import com.moonlitdoor.amessage.database.entity.ProfileEntity
 import com.moonlitdoor.shared.preference.live.data.liveData
 import java.util.*
 
-open class ProfileDao constructor(val preferences: SharedPreferences) {
+open class ProfileDao constructor(private val preferences: SharedPreferences) {
 
   open val handle: LiveData<String?> by lazy { preferences.liveData(HANDLE) }
   protected val token: LiveData<String?> by lazy { preferences.liveData(TOKEN) }

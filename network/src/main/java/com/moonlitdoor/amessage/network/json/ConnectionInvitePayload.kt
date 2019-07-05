@@ -5,7 +5,7 @@ import java.util.*
 data class ConnectionInvitePayload(val handle: String, val token: String, val connectionId: UUID, val password: UUID, val salt: UUID) : Payload() {
 
   @Transient
-  override val type: Type = Payload.Type.ConnectionInvite
+  override val type: Type = Type.ConnectionInvite
 
   override fun toString(): String = GSON.toJson(this)
 

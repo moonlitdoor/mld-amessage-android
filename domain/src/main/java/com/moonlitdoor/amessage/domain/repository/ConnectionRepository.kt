@@ -9,25 +9,35 @@ import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.map
-import com.moonlitdoor.amessage.network.client.FirebaseClient
+import com.moonlitdoor.amessage.network.NetworkClient
+import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import timber.log.Timber
 import java.util.*
 
-class ConnectionRepository(private val connectionDao: ConnectionDao, private val profileDao: ProfileDao, private val client: FirebaseClient) {
+class ConnectionRepository(private val connectionDao: ConnectionDao, private val profileDao: ProfileDao, private val client: NetworkClient) {
 
   @MainThread
   fun getConnectedConnections(): LiveData<List<Connection>> = connectionDao.getConnected().map { it.map { Connection.from(it) } }
 
   @MainThread
-  fun getInvitedAndPendingConnections(): LiveData<List<Connection>> = connectionDao.getInvitedAndPendingConnections().map { it.map { Connection.from(it) } }
+  fun getScannedInvitedAndPendingConnections(): LiveData<List<Connection>> = connectionDao.getScannedInvitedAndPendingConnections().map { it.map { Connection.from(it) } }
 
-  suspend fun invite(profile: Profile) {
+  suspend fun create(scannedProfile: Profile) {
     withContext(Dispatchers.IO) {
-      profileDao.getProfileSync()?.let {
-        //      val entity =
-        ConnectionMapper.fromPending(profile).also {
-          connectionDao.insert(it)
+      profileDao.getProfileSync()?.let { myProfile ->
+        Timber.i(scannedProfile.toString())
+        Timber.i(myProfile.toString())
+        ConnectionMapper.fromScanned(scannedProfile).also { entity ->
+          Timber.i(entity.toString())
+          if (connectionDao.insert(entity) > 0) {
+            val payload = ConnectionInvitePayload(myProfile.handle, myProfile.token, entity.connectionId, entity.password, entity.salt)
+            Timber.i(payload.toString())
+            val status = client.send(payload, entity.connectionId, entity.token, scannedProfile.password, scannedProfile.salt)
+            Timber.i(status.name)
+          }
+
         }
 //        WorkManager.getInstance().enqueue(OneTimeWorkRequestBuilder<ConnectionInviteWorker>().setInputData(ConnectionInviteWorker.data(it, entity, profile)).build())
       }

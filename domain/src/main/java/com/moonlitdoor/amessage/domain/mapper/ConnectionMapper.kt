@@ -20,15 +20,19 @@ object ConnectionMapper {
   )
 
   fun state(state: Connection.State) = when (state) {
-    Connection.State.Connected -> ConnectionEntity.State.Connected
+    Connection.State.Scanned -> ConnectionEntity.State.Scanned
+    Connection.State.Queued -> ConnectionEntity.State.Queued
     Connection.State.Invited -> ConnectionEntity.State.Invited
     Connection.State.Pending -> ConnectionEntity.State.Pending
+    Connection.State.Connected -> ConnectionEntity.State.Connected
   }
 
   fun state(state: ConnectionEntity.State) = when (state) {
-    ConnectionEntity.State.Connected -> Connection.State.Connected
+    ConnectionEntity.State.Scanned -> Connection.State.Scanned
+    ConnectionEntity.State.Queued -> Connection.State.Queued
     ConnectionEntity.State.Invited -> Connection.State.Invited
     ConnectionEntity.State.Pending -> Connection.State.Pending
+    ConnectionEntity.State.Connected -> Connection.State.Connected
   }
 
   fun fromConnected(connection: Connection) = ConnectionEntity(
@@ -39,6 +43,15 @@ object ConnectionMapper {
     connection.handle,
     ConnectionEntity.State.Connected,
     connection.id
+  )
+
+  fun fromScanned(profile: Profile) = ConnectionEntity(
+    UUID.randomUUID(),
+    UUID.randomUUID(),
+    UUID.randomUUID(),
+    profile.token,
+    profile.handle,
+    ConnectionEntity.State.Pending
   )
 
   fun fromPending(profile: Profile) = ConnectionEntity(

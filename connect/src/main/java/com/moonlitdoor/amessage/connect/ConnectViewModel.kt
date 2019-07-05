@@ -23,13 +23,13 @@ class ConnectViewModel(private val connectionRepository: ConnectionRepository, p
     Timber.i(it?.encode())
   }
   val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
-  val pendingAndInvitedConnections = connectionRepository.getInvitedAndPendingConnections()
+  val pendingAndInvitedConnections = connectionRepository.getScannedInvitedAndPendingConnections()
   val selectedConnection = MutableLiveData<Connection>()
   @Suppress("UsePropertyAccessSyntax")
   fun setSelected(connection: Connection) = selectedConnection.setValue(connection)
 
 
-  fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.invite(profile) }
+  fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.create(profile) }
 
   private fun encodeAsBitmap(string: String): Bitmap {
     val result: BitMatrix = MultiFormatWriter().encode(string, BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null)

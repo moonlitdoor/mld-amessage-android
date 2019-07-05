@@ -50,5 +50,6 @@ val networkDi = listOf(module {
       .build()
   }
   single { get<Retrofit>().create(FirebaseClient::class.java) }
+  single { NetworkClient(get<FirebaseClient>()) }
 
 })

@@ -15,8 +15,8 @@ interface ConnectionDao {
   fun getConnected(): LiveData<List<ConnectionEntity>>
 
   @MainThread
-  @Query("SELECT * FROM connection WHERE state IN ('pending', 'invited')")
-  fun getInvitedAndPendingConnections(): LiveData<List<ConnectionEntity>>
+  @Query("SELECT * FROM connection WHERE state IN ('scanned','pending', 'invited')")
+  fun getScannedInvitedAndPendingConnections(): LiveData<List<ConnectionEntity>>
 
   @WorkerThread
   @Query("SELECT * FROM connection WHERE connection_id == :connectionId")

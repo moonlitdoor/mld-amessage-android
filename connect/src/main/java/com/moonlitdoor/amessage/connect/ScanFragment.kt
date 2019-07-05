@@ -79,9 +79,9 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPrev
           if (barcodes.isNotEmpty()) {
             CameraX.unbind(analysis)
             for (barcode in barcodes) {
-              barcode.rawValue?.let {
-                Timber.i(it)
-                val profile = Profile(it)
+              barcode.rawValue?.let { value ->
+                Timber.i(value)
+                val profile = Profile(value)
                 Timber.i(profile.toString())
                 viewModel.connect(profile)
               }

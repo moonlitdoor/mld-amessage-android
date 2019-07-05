@@ -36,6 +36,8 @@ data class Connection(
   }
 
   sealed class State(val value: String) {
+    object Scanned : State("scanned")
+    object Queued : State("queued")
     object Pending : State("pending")
     object Invited : State("invited")
     object Connected : State("connected")

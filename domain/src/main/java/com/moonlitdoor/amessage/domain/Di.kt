@@ -10,13 +10,13 @@ import com.moonlitdoor.amessage.database.databaseDi
 import com.moonlitdoor.amessage.domain.factory.ConversationFactory
 import com.moonlitdoor.amessage.domain.repository.*
 import com.moonlitdoor.amessage.domain.service.FirebaseMessagingServiceAdapter
-import com.moonlitdoor.amessage.network.client.FirebaseClient
+import com.moonlitdoor.amessage.network.NetworkClient
 import com.moonlitdoor.amessage.network.networkDi
 import org.koin.dsl.module
 
 val domainDi = databaseDi + networkDi + listOf(module {
 
-  single { ConnectionRepository(get<ConnectionDao>(), get<ProfileDao>(), get<FirebaseClient>()) }
+  single { ConnectionRepository(get<ConnectionDao>(), get<ProfileDao>(), get<NetworkClient>()) }
   single { ConversationRepository(get<ConversationDao>()) }
   single { ThemeRepository(get()) }
   single { ProfileRepository(get<ProfileDao>()) }
