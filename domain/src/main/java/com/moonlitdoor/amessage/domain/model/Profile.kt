@@ -13,7 +13,7 @@ data class Profile(
 
   constructor(parts: String) : this(parts.split("|")[0], parts.split("|")[1], UUID.fromString(parts.split("|")[2]), UUID.fromString(parts.split("|")[3]), UUID.fromString(parts.split("|")[4]))
 
-  override fun toString() = "$handle|$token|$id|$password|$salt"
+  fun encode() = "$handle|$token|$id|$password|$salt"
 
   companion object {
     fun from(entity: ProfileEntity?) = entity?.let {

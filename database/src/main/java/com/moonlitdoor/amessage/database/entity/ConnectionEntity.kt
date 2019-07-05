@@ -6,7 +6,7 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity(tableName = "connection", indices = [Index(value = ["connection_id"], unique = true)])
+@Entity(tableName = "connection", indices = [Index(value = ["connection_id"], unique = true), Index(value = ["token"], unique = true)])
 data class ConnectionEntity(
   @ColumnInfo(name = "connection_id")
   val connectionId: UUID,

@@ -20,7 +20,7 @@ object D {
   const val androidxRecyclerviewRecyclerview = "androidx.recyclerview:recyclerview:1.1.0-alpha06"
   const val androidxRoomRoomCompiler = "androidx.room:room-compiler:2.1.0"
   const val androidxRoomRoomRuntime = "androidx.room:room-runtime:2.1.0"
-  const val androidxRoomRoomCoroutines = "androidx.room:room-coroutines:2.1.0-alpha04"
+  const val androidxRoomRoomKtx = "androidx.room:room-ktx:2.1.0"
   const val androidxRoomRoomTesting = "androidx.room:room-testing:2.1.0"
   const val androidxTestExtJunitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha01"
   const val androidxTestCore = "androidx.test:core:1.2.1-alpha01"

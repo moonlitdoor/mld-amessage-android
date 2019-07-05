@@ -62,7 +62,7 @@ dependencies {
 
   implementation(project(M.CONSTANTS))
   implementation(D.androidxLifecycleLifecycleLivedataKtx)
-  implementation(D.androidxRoomRoomCoroutines)
+  implementation(D.androidxRoomRoomKtx)
   implementation(D.androidxRoomRoomRuntime)
   implementation(D.comMoonlitdoorSharedPreferenceLiveDataSharedPreferenceLiveData)
   implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)

@@ -15,6 +15,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.connect.databinding.FragmentScanBinding
+import com.moonlitdoor.amessage.domain.model.Profile
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
@@ -78,7 +79,12 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPrev
           if (barcodes.isNotEmpty()) {
             CameraX.unbind(analysis)
             for (barcode in barcodes) {
-              Timber.i(barcode.rawValue)
+              barcode.rawValue?.let {
+                Timber.i(it)
+                val profile = Profile(it)
+                Timber.i(profile.toString())
+                viewModel.connect(profile)
+              }
             }
           }
         }

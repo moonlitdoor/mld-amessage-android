@@ -1,14 +1,23 @@
 package com.moonlitdoor.amessage.domain.service
 
 import com.google.firebase.messaging.RemoteMessage
+import com.moonlitdoor.amessage.extensions.ignore
+import kotlinx.coroutines.*
 import org.koin.android.ext.android.get
+import kotlin.coroutines.CoroutineContext
 
-class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessagingService() {
+class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessagingService(), CoroutineScope {
 
-  private val service: FirebaseMessagingServiceAdapter = get()
+  override val coroutineContext: CoroutineContext = Job() + Dispatchers.Default
 
-  override fun onNewToken(token: String?) = service.onNewToken(token)
+  private val adapter: FirebaseMessagingServiceAdapter = get()
 
-  override fun onMessageReceived(remoteMessage: RemoteMessage?) = service.onMessageReceived(remoteMessage)
+  override fun onNewToken(token: String?) = adapter.onNewToken(token)
 
+  override fun onMessageReceived(remoteMessage: RemoteMessage?) = launch { adapter.onMessageReceived(remoteMessage) }.ignore()
+
+  override fun onDestroy() {
+    super.onDestroy()
+    this.cancel()
+  }
 }

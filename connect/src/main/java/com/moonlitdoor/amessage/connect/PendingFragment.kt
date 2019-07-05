@@ -19,11 +19,11 @@ class PendingFragment : TitledFragmentPagerAdapter.TitledFragment() {
 
   override fun getTitleId() = R.string.connect_list_title
 
-  private val viewModel1: ConnectViewModel by sharedViewModel()
+  private val viewModel: ConnectViewModel by sharedViewModel()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = DataBindingUtil.inflate<FragmentPendingBinding>(inflater, R.layout.fragment_pending, container, false).also {
     it.lifecycleOwner = activity
-    it.viewModel = viewModel1.also { vm ->
+    it.viewModel = viewModel.also { vm ->
       vm.selectedConnection.observe(this, Observer { conn ->
         conn?.let { c ->
           if (c.state == Connection.State.Invited) {
@@ -40,7 +40,7 @@ class PendingFragment : TitledFragmentPagerAdapter.TitledFragment() {
         }
       })
     }
-    it.recyclerView.adapter = Adapter(viewModel1, LayoutInflater.from(activity))
+    it.recyclerView.adapter = Adapter(viewModel, LayoutInflater.from(activity))
   }.root
 
   private class Adapter(private val viewModel: ConnectViewModel, private val layoutInflater: LayoutInflater) : ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {

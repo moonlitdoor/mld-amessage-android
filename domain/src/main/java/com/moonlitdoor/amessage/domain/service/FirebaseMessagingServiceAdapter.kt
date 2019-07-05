@@ -21,7 +21,7 @@ class FirebaseMessagingServiceAdapter(private val connectionRepository: Connecti
     }
   }
 
-  fun onMessageReceived(remoteMessage: RemoteMessage?) {
+  suspend fun onMessageReceived(remoteMessage: RemoteMessage?) {
     Timber.i("New Firebase Message")
     remoteMessage?.let {
       it.data["type"]?.let { type ->
@@ -34,7 +34,7 @@ class FirebaseMessagingServiceAdapter(private val connectionRepository: Connecti
     }
   }
 
-  private fun type(type: Int, id: UUID, payload: String) = when (type) {
+  private suspend fun type(type: Int, id: UUID, payload: String) = when (type) {
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
       ConnectionMapper.fromInvited(
         ConnectionInvitePayload.inflate(

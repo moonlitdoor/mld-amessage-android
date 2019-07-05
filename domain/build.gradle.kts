@@ -60,6 +60,8 @@ dependencies {
   implementation(D.androidxAppcompatAppcompat)
   implementation(D.comJakeWhartonTimberTimber)
   implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
+  implementation(D.orgJetbrainsKotlinxKotlinxCoroutinesAndroid)
+  implementation(D.orgJetbrainsKotlinxKotlinxCoroutinesCore)
   implementation(D.orgKoinKoinAndroid)
   implementation(D.orgKoinKoinAndroidxScope)
   implementation(D.orgKoinKoinAndroidxViewmodel)

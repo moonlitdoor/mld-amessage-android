@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "adf8d672fa7d3a3785b34ed0de688a4f",
+    "identityHash": "d907aaeb9306aae8409e7e1621c63ce3",
     "entities": [
       {
         "tableName": "connection",
@@ -65,6 +65,14 @@
               "connection_id"
             ],
             "createSql": "CREATE UNIQUE INDEX `index_connection_connection_id` ON `${TABLE_NAME}` (`connection_id`)"
+          },
+          {
+            "name": "index_connection_token",
+            "unique": true,
+            "columnNames": [
+              "token"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_connection_token` ON `${TABLE_NAME}` (`token`)"
           }
         ],
         "foreignKeys": []
@@ -199,7 +207,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'adf8d672fa7d3a3785b34ed0de688a4f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd907aaeb9306aae8409e7e1621c63ce3')"
     ]
   }
 }

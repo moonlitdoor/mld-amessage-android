@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
@@ -13,21 +14,22 @@ import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.extensions.and
 import com.moonlitdoor.amessage.extensions.map
+import kotlinx.coroutines.launch
 import timber.log.Timber
 
 class ConnectViewModel(private val connectionRepository: ConnectionRepository, profileRepository: ProfileRepository) : ViewModel() {
 
   private val profile = profileRepository.profile.and {
-    Timber.i(it.toString())
+    Timber.i(it?.encode())
   }
-  val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it.toString()) }
+  val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
   val pendingAndInvitedConnections = connectionRepository.getInvitedAndPendingConnections()
   val selectedConnection = MutableLiveData<Connection>()
   @Suppress("UsePropertyAccessSyntax")
   fun setSelected(connection: Connection) = selectedConnection.setValue(connection)
 
 
-  fun connect(profile: Profile) = connectionRepository.invite(profile)
+  fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.invite(profile) }
 
   private fun encodeAsBitmap(string: String): Bitmap {
     val result: BitMatrix = MultiFormatWriter().encode(string, BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null)

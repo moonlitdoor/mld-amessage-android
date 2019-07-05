@@ -23,8 +23,8 @@ interface ConnectionDao {
   fun get(connectionId: UUID): ConnectionEntity
 
   @WorkerThread
-  @Insert
-  fun insert(connection: ConnectionEntity): Long
+  @Insert(onConflict = OnConflictStrategy.IGNORE)
+  suspend fun insert(connection: ConnectionEntity): Long
 
   @WorkerThread
   @Update
