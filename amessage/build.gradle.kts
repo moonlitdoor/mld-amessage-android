@@ -14,7 +14,7 @@ base {
 }
 
 println("VERSION NAME: $gitVersion")
-println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount") as Long + 200}")
+println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
 android {
   compileSdkVersion(COMPILE_SDK_VERSION)
@@ -41,7 +41,7 @@ android {
     applicationId = "com.moonlitdoor.amessage"
     minSdkVersion(MIN_SDK_VERSION)
     targetSdkVersion(TARGET_SDK_VERSION)
-    versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt() + 200
+    versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
 //    playAccountConfig = playAccountConfigs.defaultAccountConfig
     buildConfigField("String", "BUILD_DATE", "\"0\"")
