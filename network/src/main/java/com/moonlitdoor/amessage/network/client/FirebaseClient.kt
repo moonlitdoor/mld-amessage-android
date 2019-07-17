@@ -9,8 +9,8 @@ import retrofit2.http.POST
 
 interface FirebaseClient {
 
-  @Headers("Accept-Encoding:identity", "Content-Type:application/json", "Authorization:key=AAAAGLbgIi8:APA91bEmzVNYQcnloyNHr9aggrpeGzAj4H27mYQ3Geqr7w3x9mRRWvbQVwu0iGTT20su9Os9mA1gyKOG1aTte0bxfLcOB_dmuhu7a1Bz851FU-zRTfWhehHae_VkzKLQbbLM2cD8Vhqw")
-  @POST("/fcm/send")
+  @Headers("Content-Type:application/json")
+  @POST("/api/message/send")
   suspend fun send(@Body message: FirebaseMessageJson): Response<FirebaseResponseJson>
 
 }

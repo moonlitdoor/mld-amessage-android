@@ -12,6 +12,6 @@ class ExampleSharedTest {
   @Test
   fun useAppContext() {
     val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    assertEquals(if (BuildConfig.DEBUG) "com.moonlitdoor.amessage.beta" else "com.moonlitdoor.amessage", appContext.packageName)
+    assertEquals("com.moonlitdoor.amessage", appContext.packageName)
   }
 }

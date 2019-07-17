@@ -8,10 +8,10 @@ abstract class Payload {
 
   abstract val type: Type
 
-  sealed class Type(val value: Int) {
-    object ConnectionInvite : Type(1)
-    object ConnectionConfirmation : Type(2)
-    object ConnectionRejection : Type(3)
+  sealed class Type(val value: String) {
+    object ConnectionInvite : Type("ASFVASDFSV")
+    object ConnectionConfirmation : Type("BERTYHSAFDV")
+    object ConnectionRejection : Type("ETGASDFVB")
   }
 
   companion object {

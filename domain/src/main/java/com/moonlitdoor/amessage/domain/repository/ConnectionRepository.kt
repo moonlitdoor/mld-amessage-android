@@ -10,6 +10,7 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.map
 import com.moonlitdoor.amessage.network.NetworkClient
+import com.moonlitdoor.amessage.network.json.ConnectionConfirmationPayload
 import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -44,13 +45,13 @@ class ConnectionRepository(private val connectionDao: ConnectionDao, private val
     }
   }
 
-  fun confirm(connection: Connection) {
-
-    connectionDao.update(ConnectionMapper.fromConnected(connection))
-//    val response = client.send(FirebaseMessageJson(ConnectionConfirmationPayload(), ConnectionMapper.toJson(connection))).execute()
+  suspend fun confirm(connection: Connection) {
+    withContext(Dispatchers.IO) {
+      connectionDao.update(ConnectionMapper.fromConnected(connection))
+      val response = client.send(ConnectionConfirmationPayload(), ConnectionMapper.toJson(connection))
 //    Timber.d(response.isSuccessful.toString())
 //    Timber.d(response.message())
-
+    }
   }
 
   fun reject(connection: Connection) {

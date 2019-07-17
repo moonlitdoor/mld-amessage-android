@@ -2,8 +2,8 @@
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
   android:width="48dp"
   android:height="48dp"
-  android:viewportHeight="48"
-  android:viewportWidth="48">
+  android:viewportWidth="48"
+  android:viewportHeight="48">
   <group android:name="border">
     <path
       android:name="top_left"
@@ -41,8 +41,8 @@
       android:pathData="M33.5,4.5h10v10h-2.5v-6l-6,6 -1.5,-1.5 6,-6h-6" />
     <path
       android:name="shadow"
-      android:fillColor="#FFFFFF"
       android:fillAlpha=".2"
+      android:fillColor="#FFFFFF"
       android:pathData="M33.5,4.5h10l1,1v10h-2.5l-1,-1v-6l1,1 -6,6 -1,-1 6,-6v-.5h-6.5l-1,-1" />
   </group>
   <group android:name="plus">
@@ -52,8 +52,8 @@
       android:pathData="M8,33h3v4h4v3h-4v4h-3v-4h-4v-3h4" />
     <path
       android:name="shadow"
-      android:fillColor="#FFFFFF"
       android:fillAlpha="0.2"
+      android:fillColor="#FFFFFF"
       android:pathData="M8,33h3l1,1v3h3l1,1v3h-4v4h-3l-1,-1v-3h-3l-1,-1h4" />
   </group>
 </vector>

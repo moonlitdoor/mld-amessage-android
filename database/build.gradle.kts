@@ -29,7 +29,7 @@ android {
     testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
     javaCompileOptions {
       annotationProcessorOptions {
-        arguments = mapOf("room.schemaLocation" to "$projectDir/schemas")
+        arguments = mapOf("room.schemaLocation" to "$projectDir/schemas", "room.incremental" to "true")
       }
     }
   }

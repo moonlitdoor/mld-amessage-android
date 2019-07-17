@@ -1,6 +1,7 @@
 package com.moonlitdoor.amessage.network
 
 import com.moonlitdoor.amessage.network.client.FirebaseClient
+import com.moonlitdoor.amessage.network.json.ConnectionJson
 import com.moonlitdoor.amessage.network.json.FirebaseMessageJson
 import com.moonlitdoor.amessage.network.json.Payload
 import timber.log.Timber
@@ -17,5 +18,7 @@ class NetworkClient(private val client: FirebaseClient) {
       false -> NetworkRequestStatus.FAILED
     }
   }
+
+  suspend fun send(payload: Payload, connection: ConnectionJson) = send(payload, connection.connectionId, connection.token, connection.password, connection.salt)
 
 }

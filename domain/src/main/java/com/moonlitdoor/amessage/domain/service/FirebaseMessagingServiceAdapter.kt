@@ -27,14 +27,14 @@ class FirebaseMessagingServiceAdapter(private val connectionRepository: Connecti
       it.data["type"]?.let { type ->
         it.data["id"]?.let { id ->
           it.data["payload"]?.let { payload ->
-            type(type.toInt(), UUID.fromString(id), payload)
+            type(type, UUID.fromString(id), payload)
           }
         }
       }
     }
   }
 
-  private suspend fun type(type: Int, id: UUID, payload: String) = when (type) {
+  private suspend fun type(type: String, id: UUID, payload: String) = when (type) {
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
       ConnectionMapper.fromInvited(
         ConnectionInvitePayload.inflate(

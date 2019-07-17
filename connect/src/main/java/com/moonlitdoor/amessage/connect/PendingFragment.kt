@@ -22,7 +22,7 @@ class PendingFragment : TitledFragmentPagerAdapter.TitledFragment() {
   private val viewModel: ConnectViewModel by sharedViewModel()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = DataBindingUtil.inflate<FragmentPendingBinding>(inflater, R.layout.fragment_pending, container, false).also {
-    it.lifecycleOwner = activity
+    it.lifecycleOwner = this
     it.viewModel = viewModel.also { vm ->
       vm.selectedConnection.observe(this, Observer { conn ->
         conn?.let { c ->

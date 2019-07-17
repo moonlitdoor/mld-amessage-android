@@ -6,19 +6,19 @@ import java.util.*
 class FirebaseMessageJson private constructor(payload: Payload, connectionId: UUID, password: UUID, salt: UUID) {
 
   @Suppress("UNUSED")
-  private val restricted_package_name = "com.moonlitdoor.amessage"
-  private var to: String? = null
-  private var registration_ids: List<String>? = null
+//  private val restricted_package_name = "com.moonlitdoor.amessage"
+  private var token: String? = null
+  private var tokens: List<String>? = null
   private val data = Data()
 
   constructor(payload: Payload, connection: ConnectionJson) : this(payload, connection.connectionId, connection.token, connection.password, connection.salt)
 
-  constructor(payload: Payload, connectionId: UUID, token: String, password: UUID, salt: UUID) : this(payload, connectionId, password, salt) {
-    to = token
+  constructor(payload: Payload, connectionId: UUID, id: String, password: UUID, salt: UUID) : this(payload, connectionId, password, salt) {
+    token = id
   }
 
   constructor(payload: Payload, connectionId: UUID, ids: List<String>, password: UUID, salt: UUID) : this(payload, connectionId, password, salt) {
-    registration_ids = ids
+    tokens = ids
   }
 
   init {
@@ -30,7 +30,7 @@ class FirebaseMessageJson private constructor(payload: Payload, connectionId: UU
 
   private class Data {
 
-    var type: Int = 0
+    var type: String = ""
     var id: String? = null
     var payload: String? = null
 

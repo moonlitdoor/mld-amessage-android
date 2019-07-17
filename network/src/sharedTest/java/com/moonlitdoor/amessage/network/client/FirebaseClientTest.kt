@@ -35,18 +35,11 @@ class FirebaseClientTest : KoinTest {
     server.start()
     server.dispatcher = object : Dispatcher() {
       override fun dispatch(request: RecordedRequest): MockResponse = when (request.path) {
-        "/fcm/send" -> MockResponse().setResponseCode(200).setBody(
+        "/api/message/send" -> MockResponse().setResponseCode(200).setBody(
           """
           {
-            "multicast_id": 0,
-            "success": 0,
-            "failure": 0,
-            "canonical_ids": 0,
-            "results": [
-              {
-                "message_id": "sdfasd"
-              }
-            ]
+            "message": "fdshdfht",
+            "code": "success"
           }
         """.trimIndent()
         )

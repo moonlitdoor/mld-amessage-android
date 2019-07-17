@@ -45,9 +45,9 @@ class ConnectViewModel(private val connectionRepository: ConnectionRepository, p
     return Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888).also { it.setPixels(pixels, 0, w, 0, 0, w, h) }
   }
 
-  fun confirmConnection(connection: Connection) = connectionRepository.confirm(connection)
+  fun confirmConnection(connection: Connection) = viewModelScope.launch { connectionRepository.confirm(connection) }
 
-  fun rejectConnection(connection: Connection) = connectionRepository.reject(connection)
+  fun rejectConnection(connection: Connection) = viewModelScope.launch { connectionRepository.reject(connection) }
 
   companion object {
 
