@@ -13,7 +13,7 @@ object M {
   const val DOMAIN = ":domain"
   const val ENCRYPTION = ":encryption"
   const val EXPERIMENTS = ":experiments"
-  const val EXPERIMENTSUI = ":experimentsui"
+  const val EXPERIMENTS_UI = ":experiments:ui"
   const val EXTENSIONS = ":extensions"
   const val FEEDBACK = ":feedback"
   const val HANDLE = ":handle"
