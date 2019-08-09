@@ -132,6 +132,7 @@ dependencies {
   implementation(project(M.CONNECTION))
   implementation(project(M.CONVERSATION))
   implementation(project(M.DOMAIN))
+  implementation(project(M.EXPERIMENTS))
   implementation(project(M.EXTENSIONS))
   implementation(project(M.FEEDBACK))
   implementation(project(M.HANDLE))

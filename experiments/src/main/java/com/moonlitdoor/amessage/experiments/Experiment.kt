@@ -9,7 +9,7 @@ import org.koin.core.get
 import java.util.*
 
 
-data class Experiment<T : Enum<T>>(val key: String, private val c: Class<T>, val defaultValue: T) : KoinComponent {
+data class Experiment<T : Enum<T>> internal constructor(val key: String, private val c: Class<T>, val defaultValue: T) : KoinComponent {
 
   private val remoteConfig: FirebaseRemoteConfigWrapper = get()
   private val sharedPreferences: SharedPreferences = get()

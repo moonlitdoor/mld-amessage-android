@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.preference.PreferenceManager
 import com.google.firebase.FirebaseApp
 import com.moonlitdoor.amessage.analytics.Analytics
+import com.moonlitdoor.amessage.experiments.Experiments
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidFileProperties
 import org.koin.core.context.startKoin
@@ -16,13 +17,14 @@ class AMessageApplication : Application(), LifecycleObserver {
   override fun onCreate() {
     super.onCreate()
     FirebaseApp.initializeApp(this)
-//    RemoteConfig.init()
     initTimber(BuildConfig.DEBUG)
     startKoin {
       androidContext(this@AMessageApplication)
       androidFileProperties()
       modules(di)
     }
+    Experiments.init()
+//    RemoteConfig.init()
 //    if (!BuildConfig.DEBUG) {
 //      Fabric.with(this, Crashlytics())
 //      PreferenceManager.getDefaultSharedPreferences(this).let {
@@ -30,7 +32,7 @@ class AMessageApplication : Application(), LifecycleObserver {
 //          it.edit().putString(CRASHLYTICS_USER_ID, id).apply()
 //        })
 //      }
-//    }
+//    }A
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
     Analytics.init(this)
   }

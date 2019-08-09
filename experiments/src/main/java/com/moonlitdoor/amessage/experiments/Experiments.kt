@@ -29,8 +29,7 @@ object Experiments : KoinComponent {
     TEST2
   )
 
-  init {
-    get<FirebaseRemoteConfigWrapper>().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
-  }
+  fun init(): Unit = get<FirebaseRemoteConfigWrapper>().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
+
 
 }
