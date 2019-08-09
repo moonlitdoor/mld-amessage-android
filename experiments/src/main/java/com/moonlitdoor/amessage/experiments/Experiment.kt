@@ -50,7 +50,9 @@ data class Experiment<T : Enum<T>>(val key: String, private val c: Class<T>, val
     @VisibleForTesting
     internal const val REMOTE = "REMOTE"
 
-    internal operator fun invoke(key: String) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE)
+    internal operator fun invoke(key: String) = Experiment(key, BOOLEAN.FALSE)
+
+    internal operator fun invoke(key: String, defaultValue: BOOLEAN) = Experiment(key, BOOLEAN::class.java, defaultValue)
 
     internal operator fun invoke(key: String, title: String? = null, description: String? = null) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE, title, description)
 
