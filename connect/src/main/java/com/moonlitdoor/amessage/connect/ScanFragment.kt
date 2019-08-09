@@ -47,7 +47,7 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPrev
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding.root
 
   override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-    super.setUserVisibleHint(isVisibleToUser)
+//    super.setUserVisibleHint(isVisibleToUser)
     activity?.let {
       if (isVisibleToUser) {
         if (it.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
