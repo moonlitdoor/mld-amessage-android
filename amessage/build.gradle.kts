@@ -147,7 +147,7 @@ dependencies {
   implementation(D.androidxLifecycleLifecycleRuntimeKtx)
   implementation(D.androidxLifecycleLifecycleLivedataKtx)
   implementation(D.androidxLifecycleLifecycleExtensions)
-  implementation(D.androidxLifecycleLifecycleViemodelKtx)
+  implementation(D.androidxLifecycleLifecycleViewmodelKtx)
   implementation(D.androidxNavigationNavigationFragmentKtx)
   implementation(D.androidxNavigationNavigationUiKtx)
   implementation(D.androidxWorkWorkRuntimeKtx)

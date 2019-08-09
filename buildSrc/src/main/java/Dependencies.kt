@@ -13,7 +13,7 @@ object D {
   const val androidxLifecycleLifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha03"
   const val androidxLifecycleLifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha03"
   const val androidxLifecycleLifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha03"
-  const val androidxLifecycleLifecycleViemodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha03"
+  const val androidxLifecycleLifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha03"
   const val androidxNavigationNavigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:2.2.0-alpha01"
   const val androidxNavigationNavigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:2.2.0-alpha01"
   const val androidxNavigationNavigationUiKtx = "androidx.navigation:navigation-ui-ktx:2.2.0-alpha01"

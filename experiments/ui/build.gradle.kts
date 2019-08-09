@@ -66,7 +66,7 @@ dependencies {
   implementation(D.androidxAppcompatAppcompat)
   implementation(D.androidxConstraintlayoutConstraintlayout)
   implementation(D.androidxLifecycleLifecycleLivedataKtx)
-  implementation(D.androidxLifecycleLifecycleViemodelKtx)
+  implementation(D.androidxLifecycleLifecycleViewmodelKtx)
   implementation(D.androidxNavigationNavigationFragmentKtx)
   implementation(D.androidxNavigationNavigationUiKtx)
   implementation(D.androidxRecyclerviewRecyclerview)
