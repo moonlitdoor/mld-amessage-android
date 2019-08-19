@@ -5,19 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
+import androidx.fragment.app.Fragment
 import com.moonlitdoor.amessage.connect.databinding.FragmentQrBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class QrFragment : TitledFragmentPagerAdapter.TitledFragment() {
+class QrFragment : Fragment() {
 
   private val viewModel by sharedViewModel<ConnectViewModel>()
-
-  override fun getTitleId() = R.string.connect_qr_title
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = DataBindingUtil.inflate<FragmentQrBinding>(inflater, R.layout.fragment_qr, container, false).also {
     it.lifecycleOwner = this
     it.viewModel = viewModel
   }.root
+
+  companion object {
+    val titleId = R.string.connect_qr_title
+  }
 
 }

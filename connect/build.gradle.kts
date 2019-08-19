@@ -70,6 +70,7 @@ dependencies {
   implementation(D.androidxConstraintlayoutConstraintlayout)
   implementation(D.androidxNavigationNavigationFragmentKtx)
   implementation(D.androidxNavigationNavigationUiKtx)
+  implementation(D.androidxViewpager2Viewpager2)
   implementation(D.comGoogleAndroidGmsPlayServicesVision)
   implementation(D.comGoogleFirebaseFirebaseMlVision)
   implementation(D.comGoogleZxingCore)

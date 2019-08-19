@@ -31,6 +31,7 @@ object D {
   const val androidxTestOrchestrator = "androidx.test:orchestrator:1.3.0-alpha02"
   const val androidxTestRules = "androidx.test:rules:1.3.0-alpha02"
   const val androidxTestRunner = "androidx.test:runner:1.3.0-alpha02"
+  const val androidxViewpager2Viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta03"
   const val androidxWorkWorkRuntimeKtx = "androidx.work:work-runtime-ktx:2.2.0-rc01"
   const val comAndroidToolsBuildGradle = "com.android.tools.build:gradle:3.6.0-alpha05"
   const val comAmitshekharAndroidDebugDb = "com.amitshekhar.android:debug-db:1.0.6"

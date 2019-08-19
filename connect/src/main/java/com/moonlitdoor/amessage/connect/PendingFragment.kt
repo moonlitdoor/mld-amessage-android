@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,9 +16,7 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.ignore
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class PendingFragment : TitledFragmentPagerAdapter.TitledFragment() {
-
-  override fun getTitleId() = R.string.connect_list_title
+class PendingFragment : Fragment() {
 
   private val viewModel: ConnectViewModel by sharedViewModel()
 
@@ -57,4 +56,9 @@ class PendingFragment : TitledFragmentPagerAdapter.TitledFragment() {
       it.viewModel = viewModel
     }
   }
+
+  companion object {
+    val titleId = R.string.connect_list_title
+  }
+
 }

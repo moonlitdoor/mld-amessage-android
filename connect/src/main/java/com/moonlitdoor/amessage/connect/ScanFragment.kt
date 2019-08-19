@@ -1,29 +1,23 @@
 package com.moonlitdoor.amessage.connect
 
-import android.Manifest
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.camera.core.*
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcodeDetectorOptions
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
-import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.connect.databinding.FragmentScanBinding
 import com.moonlitdoor.amessage.domain.model.Profile
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
-class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPreviewOutputUpdateListener, ImageAnalysis.Analyzer {
-
-  companion object {
-    const val CAMERA_PERMISSION = 6
-  }
+class ScanFragment : Fragment(), Preview.OnPreviewOutputUpdateListener, ImageAnalysis.Analyzer {
 
   private val viewModel: ConnectViewModel by sharedViewModel()
   private lateinit var binding: FragmentScanBinding
@@ -37,8 +31,6 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPrev
     it.analyzer = this
   }
 
-  override fun getTitleId() = R.string.connect_scan_title
-
   override fun onAttach(context: Context) {
     super.onAttach(context)
     binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_scan, null, false)
@@ -46,26 +38,14 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPrev
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding.root
 
-  override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-//    super.setUserVisibleHint(isVisibleToUser)
-    activity?.let {
-      if (isVisibleToUser) {
-        if (it.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-          requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
-        } else {
-          CameraX.bindToLifecycle(this, preview, analysis)
-        }
-      } else {
-        CameraX.unbindAll()
-      }
-    }
+  override fun onResume() {
+    super.onResume()
+    CameraX.bindToLifecycle(this, preview, analysis)
   }
 
-  override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    if (requestCode == CAMERA_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-      CameraX.bindToLifecycle(this, preview, analysis)
-    }
+  override fun onPause() {
+    super.onPause()
+    CameraX.unbindAll()
   }
 
   override fun onUpdated(output: Preview.PreviewOutput) {
@@ -92,6 +72,10 @@ class ScanFragment : TitledFragmentPagerAdapter.TitledFragment(), Preview.OnPrev
           Timber.e(e)
         }
     }
+  }
+
+  companion object {
+    val titleId = R.string.connect_scan_title
   }
 
 }
