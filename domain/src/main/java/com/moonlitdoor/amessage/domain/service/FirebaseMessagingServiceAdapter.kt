@@ -14,27 +14,23 @@ import java.util.*
 
 class FirebaseMessagingServiceAdapter(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) : KoinComponent {
 
-  fun onNewToken(token: String?) {
-    token?.let {
-      Timber.i("New Firebase Token")
-      profileRepository.setToken(it)
-    }
+  fun onNewToken(token: String) {
+    Timber.i("New Firebase Token")
+    profileRepository.setToken(token)
   }
 
-  suspend fun onMessageReceived(remoteMessage: RemoteMessage?) {
+  suspend fun onMessageReceived(remoteMessage: RemoteMessage) {
     Timber.i("New Firebase Message")
-    remoteMessage?.let {
-      it.data["type"]?.let { type ->
-        it.data["id"]?.let { id ->
-          it.data["payload"]?.let { payload ->
-            type(type, UUID.fromString(id), payload)
-          }
+    remoteMessage.data["type"]?.let { type ->
+      remoteMessage.data["id"]?.let { id ->
+        remoteMessage.data["payload"]?.let { payload ->
+          type(type, UUID.fromString(id), payload)
         }
       }
     }
   }
 
-  private suspend fun type(type: String, id: UUID, payload: String) = when (type) {
+  private suspend fun type(type: String, id: UUID, payload: String): Unit = when (type) {
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
       ConnectionMapper.fromInvited(
         ConnectionInvitePayload.inflate(

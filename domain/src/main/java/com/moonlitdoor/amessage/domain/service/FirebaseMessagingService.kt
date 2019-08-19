@@ -12,9 +12,9 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
 
   private val adapter: FirebaseMessagingServiceAdapter = get()
 
-  override fun onNewToken(token: String?) = adapter.onNewToken(token)
+  override fun onNewToken(token: String) = adapter.onNewToken(token)
 
-  override fun onMessageReceived(remoteMessage: RemoteMessage?) = launch { adapter.onMessageReceived(remoteMessage) }.ignore()
+  override fun onMessageReceived(remoteMessage: RemoteMessage) = launch { adapter.onMessageReceived(remoteMessage) }.ignore()
 
   override fun onDestroy() {
     super.onDestroy()
