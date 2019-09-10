@@ -6,13 +6,13 @@ buildscript {
     maven(url = "https://plugins.gradle.org/m2/")
   }
   dependencies {
-    classpath(D.comGithubBenManesGradleVersionsPlugin)
-    classpath(D.comMoonlitdoorGitVersionGitVersion)
-    classpath(D.comAndroidToolsBuildGradle)
-    classpath(kotlin("gradle-plugin", version = "1.3.41"))
     classpath(D.androidxNavigationNavigationSafeArgsGradlePlugin)
+    classpath(D.comAndroidToolsBuildGradle)
+    classpath(D.comGithubBenManesGradleVersionsPlugin)
+    classpath(D.comGithubTripletGradlePlayPublisher)
+    classpath(D.comMoonlitdoorGitVersionGitVersion)
+    classpath(kotlin("gradle-plugin", version = "1.3.41"))
 //    classpath ("com.google.firebase:perf-plugin:1.2.1")
-//    classpath ("com.github.triplet.gradle:play-publisher:2.2.1")
 //    classpath ("io.fabric.tools:gradle:1.29.0")
   }
 }

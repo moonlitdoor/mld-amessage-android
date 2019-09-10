@@ -4,7 +4,7 @@ plugins {
   kotlin("android")
   kotlin("kapt")
   id("androidx.navigation.safeargs")
-//  id("com.github.triplet.play")
+  id("com.github.triplet.play")
 //  id("com.google.firebase.firebase-perf")
 //  id("io.fabric")
 }
@@ -15,6 +15,12 @@ base {
 
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
+
+play {
+  serviceAccountCredentials = file("play-api-key.json")
+  defaultToAppBundles = true
+  track = "alpha"
+}
 
 android {
   compileSdkVersion(COMPILE_SDK_VERSION)
@@ -32,11 +38,6 @@ android {
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true
   }
-//  playAccountConfigs {
-//    defaultAccountConfig {
-//      jsonFile = file("keys.json")
-//    }
-//  }
   defaultConfig {
     applicationId = "com.moonlitdoor.amessage"
     minSdkVersion(MIN_SDK_VERSION)
