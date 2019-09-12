@@ -14,7 +14,7 @@ jobs:
       #          java-version: 1.8
       - name: List Tags
         run: |
-          git fetch
+          git fetch --tags --verbose
           git tag
 #      - name: AssembleDebug
 #        env:
