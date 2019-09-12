@@ -16,6 +16,8 @@ jobs:
         run: git fetch --tags --verbose
       - name: List Tags 2
         run: git tag
+      - name: List Tags 3
+        run: git describe --tags `git rev-list --tags --max-count=1`
 #      - name: AssembleDebug
 #        env:
 #          com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
