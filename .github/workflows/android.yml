@@ -39,6 +39,7 @@ jobs:
       - name: Test
         run: ./gradlew test
       - name: Collect Reports
+        if: always()
         run: |
           mkdir ./build/tests
           mv ./about/build/reports/tests ./build/tests/about
@@ -65,6 +66,7 @@ jobs:
           mv ./settings/build/reports/tests ./build/tests/settings
           mv ./windows/build/reports/tests ./build/tests/windows
       - name: Upload Test Reports
+        if: always()
         uses: actions/upload-artifact@master
         with:
           name: tests
