@@ -42,6 +42,7 @@ jobs:
         if: always()
         run: |
           mkdir ./build/tests
+          cp ./.github/misc/index.html ./build/tests
           mv ./about/build/reports/tests ./build/tests/about
           mv ./amessage/build/reports/tests ./build/tests/amessage
           mv ./analytics/build/reports/tests ./build/tests/analytics
