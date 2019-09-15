@@ -1,5 +1,4 @@
 <resources>
-  <string name="app_name">components</string>
   <string name="metadata_whats_new_bug_fixes">Performance improvements and bug fixes.</string>
   <string-array name="metadata_whats_new">
     <item>&#8226;"This What\'s New Dialog!"</item>

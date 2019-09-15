@@ -32,7 +32,7 @@ class AMessageApplication : Application(), LifecycleObserver {
 //          it.edit().putString(CRASHLYTICS_USER_ID, id).apply()
 //        })
 //      }
-//    }A
+//    }
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
     Analytics.init(this)
   }
