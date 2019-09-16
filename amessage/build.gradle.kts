@@ -105,6 +105,7 @@ android {
       firebaseAppDistribution {
         appId = "com.moonlitdoor.amessage.beta"
         serviceCredentialsFile = "./build/keys/firebase-api-key.json"
+        groups = "beta"
       }
     }
     getByName(DEBUG) {
