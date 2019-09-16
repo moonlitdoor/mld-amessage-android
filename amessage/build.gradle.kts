@@ -103,7 +103,7 @@ android {
 //      resValue ("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID").toString())
 //      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
       firebaseAppDistribution {
-        appId = "com.moonlitdoor.amessage.beta"
+        appId = property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID").toString()
         serviceCredentialsFile = "./build/keys/firebase-api-key.json"
         groups = "beta"
         releaseNotes = "The Release Notes"
