@@ -106,6 +106,7 @@ android {
         appId = "com.moonlitdoor.amessage.beta"
         serviceCredentialsFile = "./build/keys/firebase-api-key.json"
         groups = "beta"
+        releaseNotes = "The Release Notes"
       }
     }
     getByName(DEBUG) {
