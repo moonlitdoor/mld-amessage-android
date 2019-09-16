@@ -4,6 +4,7 @@ plugins {
   kotlin("android")
   kotlin("kapt")
   id("androidx.navigation.safeargs")
+  id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
 //  id("com.google.firebase.firebase-perf")
 //  id("io.fabric")
@@ -101,6 +102,10 @@ android {
       resValue("string", "google_storage_bucket", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET").toString())
 //      resValue ("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID").toString())
 //      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
+      firebaseAppDistribution {
+        appId = "com.moonlitdoor.amessage.beta"
+        serviceCredentialsFile = "./build/keys/firebase-api-key.json"
+      }
     }
     getByName(DEBUG) {
       isMinifyEnabled = false

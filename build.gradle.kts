@@ -9,6 +9,7 @@ buildscript {
     classpath(D.androidxNavigationNavigationSafeArgsGradlePlugin)
     classpath(D.comAndroidToolsBuildGradle)
     classpath(D.comGithubBenManesGradleVersionsPlugin)
+    classpath("com.google.firebase:firebase-appdistribution-gradle:0.2.2")
     classpath(D.comGithubTripletGradlePlayPublisher)
     classpath(D.comMoonlitdoorGitVersionGitVersion)
     classpath(kotlin("gradle-plugin", version = "1.3.50"))
