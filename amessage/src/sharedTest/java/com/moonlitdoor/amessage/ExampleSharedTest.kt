@@ -10,7 +10,7 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ExampleSharedTest {
 
-  @Ignore
+  @Ignore("Need to extract Firebase to make it testable")
   @Test
   fun useAppContext() {
     val appContext = InstrumentationRegistry.getInstrumentation().targetContext
