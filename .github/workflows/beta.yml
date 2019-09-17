@@ -29,8 +29,8 @@ jobs:
           com_moonlitdoor_amessage_firebase_debug_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_storage_bucket }}
           com_moonlitdoor_amessage_firebase_debug_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_project_id }}
         run: ./gradlew assembleDebug -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_debug_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_debug_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_debug_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_debug_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID=$com_moonlitdoor_amessage_firebase_debug_project_id
-  tests:
-    name: Tests
+  test:
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
