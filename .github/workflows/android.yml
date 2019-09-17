@@ -1,4 +1,4 @@
-name: Android Beta CI
+name: Android CI
 
 on:
   push:
