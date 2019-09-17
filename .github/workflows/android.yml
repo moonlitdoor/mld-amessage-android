@@ -3,6 +3,7 @@ name: Android Beta CI
 on:
   push:
     branches:
+      - '*'
       - '!master'
 
 jobs:
