@@ -162,12 +162,12 @@ jobs:
             \"auth_provider_x509_cert_url\": \"$keys_firebase_auth_provider_x509_cert_url\",
             \"client_x509_cert_url\": \"$keys_firebase_client_x509_cert_url\"
           }" > ./build/keys/firebase-api-key.json
-      - name: Write Signing Keys
+      - name: Get Signing Keys
         env:
-          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
+          github_access_token: ${{ secrets.github_access_token }}
+          amessage_signing_key: ${{ secrets.amessage_signing_key }}
         run: |
-          echo $com_moonlitdoor_amessage_key_store | base64 -di | tee ./build/keys/amessage.keystore.jks >/dev/null
-          ls -al ./build/keys/
+          curl -H 'Authorization: token $github_access_token' -H 'Accept: application/vnd.github.v3.raw' -o ./build/keys/amessage.keystore.jks -O -L $amessage_signing_key
       - name: AssembleBeta
         env:
           com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
