@@ -168,6 +168,7 @@ jobs:
           amessage_signing_key: ${{ secrets.amessage_signing_key }}
         run: |
           curl -H 'Authorization: token $github_access_token' -H 'Accept: application/vnd.github.v3.raw' -o ./build/keys/amessage.keystore.jks -O -L $amessage_signing_key
+          ls -al ./build/keys
       - name: AssembleBeta
         env:
           com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
