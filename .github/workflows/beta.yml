@@ -165,7 +165,9 @@ jobs:
       - name: Write Signing Keys
         env:
           com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
-        run: echo $com_moonlitdoor_amessage_key_store | base64 -di | tee ./build/keys/amessage.keystore.jks >/dev/null
+        run: |
+          echo $com_moonlitdoor_amessage_key_store | base64 -di | tee ./build/keys/amessage.keystore.jks >/dev/null
+          ls -al ./build/keys/
       - name: AssembleBeta
         env:
           com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
