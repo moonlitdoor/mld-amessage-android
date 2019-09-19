@@ -14,11 +14,12 @@ base {
   archivesBaseName = project.name + "-" + gitVersion
 }
 
+println("APP_ID: ${property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID").toString()}")
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
 play {
-  serviceAccountCredentials = file("play-api-key.json")
+  serviceAccountCredentials = file("../build/keys/play-api-key.json")
   defaultToAppBundles = true
   track = "alpha"
 }
