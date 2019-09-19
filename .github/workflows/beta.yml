@@ -167,7 +167,7 @@ jobs:
           github_access_token: ${{ secrets.github_access_token }}
           amessage_signing_key: ${{ secrets.amessage_signing_key }}
         run: |
-          curl -H "Authorization: token $github_access_token" -H 'Accept: application/vnd.github.v3.raw' -o ./build/keys/amessage.keystore.jks -O -L "$amessage_signing_key"
+          curl -H "Authorization: token $github_access_token" -H 'Accept: application/vnd.github.v3.raw' -o ./build/keys/amessage2.keystore.jks -O -L "$amessage_signing_key"
       - name: Write Signing Keys1
         env:
           com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
@@ -178,7 +178,7 @@ jobs:
           com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
           com_moonlitdoor_amessage_key_store_key_password: ${{ secrets.com_moonlitdoor_amessage_key_store_key_password }}
         run: |
-          echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage2.keystore.jks
+          echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
           ls -al ./build/keys/
           echo ===========================
           echo $com_moonlitdoor_amessage_key_store_key_password | keytool -list -keystore ./build/keys/amessage.keystore.jks
