@@ -169,16 +169,16 @@ jobs:
         run: |
           curl -H "Authorization: token $github_access_token" -H 'Accept: application/vnd.github.v3.raw' -o ./build/keys/amessage.keystore.jks -O -L "$amessage_signing_key"
       - name: Write Signing Keys1
-          env:
-            com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
-          run: |
-            echo $com_moonlitdoor_amessage_key_store | base64 -di | tee ./build/keys/amessage1.keystore.jks >/dev/null
+        env:
+          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
+        run: |
+          echo $com_moonlitdoor_amessage_key_store | base64 -di | tee ./build/keys/amessage1.keystore.jks >/dev/null
       - name: Write Signing Keys2
-          env:
-            com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
-          run: |
-            echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage2.keystore.jks
-            ls -al ./build/keys/
+        env:
+          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
+        run: |
+          echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage2.keystore.jks
+          ls -al ./build/keys/
       - name: AssembleBeta
         env:
           com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
