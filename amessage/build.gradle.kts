@@ -14,7 +14,7 @@ base {
   archivesBaseName = project.name + "-" + gitVersion
 }
 
-println("APP_ID: ${property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID").toString()}")
+println("APP_ID: ${property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID").toString().substring(0, 9)}")
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
