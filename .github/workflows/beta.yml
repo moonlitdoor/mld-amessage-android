@@ -162,31 +162,10 @@ jobs:
             \"auth_provider_x509_cert_url\": \"$keys_firebase_auth_provider_x509_cert_url\",
             \"client_x509_cert_url\": \"$keys_firebase_client_x509_cert_url\"
           }" > ./build/keys/firebase-api-key.json
-      - name: Get Signing Keys
-        env:
-          github_access_token: ${{ secrets.github_access_token }}
-          amessage_signing_key: ${{ secrets.amessage_signing_key }}
-        run: |
-          curl -H "Authorization: token $github_access_token" -H 'Accept: application/vnd.github.v3.raw' -o ./build/keys/amessage2.keystore.jks -O -L "$amessage_signing_key"
-      - name: Write Signing Keys1
+      - name: Write Signing Keys
         env:
           com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
-        run: |
-          echo $com_moonlitdoor_amessage_key_store | base64 -di | tee ./build/keys/amessage1.keystore.jks >/dev/null
-      - name: Write Signing Keys2
-        env:
-          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
-          com_moonlitdoor_amessage_key_store_key_password: ${{ secrets.com_moonlitdoor_amessage_key_store_key_password }}
-        run: |
-          echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
-          ls -al ./build/keys/
-          echo ===========================
-          echo $com_moonlitdoor_amessage_key_store_key_password | keytool -list -keystore ./build/keys/amessage.keystore.jks
-          echo ---------------------------
-          echo $com_moonlitdoor_amessage_key_store_key_password | keytool -list -keystore ./build/keys/amessage1.keystore.jks
-          echo +++++++++++++++++++++++++++
-          echo $com_moonlitdoor_amessage_key_store_key_password | keytool -list -keystore ./build/keys/amessage2.keystore.jks
-          echo ***************************
+        run: echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
       - name: AssembleBeta
         env:
           com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
@@ -202,4 +181,6 @@ jobs:
           com_moonlitdoor_amessage_key_store_key_password: ${{ secrets.com_moonlitdoor_amessage_key_store_key_password }}
         run: ./gradlew assembleBeta -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=../build/keys/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_prod_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_prod_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_prod_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_prod_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_prod_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_prod_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID=$com_moonlitdoor_amessage_firebase_prod_project_id
       - name: Deploy Beta
+        env:
+          com_moonlitdoor_amessage_firebase_beta_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_app_id }}
         run: ./gradlew appDistributionUploadBeta -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id
