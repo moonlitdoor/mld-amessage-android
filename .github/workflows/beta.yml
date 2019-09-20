@@ -183,4 +183,6 @@ jobs:
       - name: Deploy Beta
         env:
           com_moonlitdoor_amessage_firebase_beta_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_app_id }}
-        run: ./gradlew appDistributionUploadBeta -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id
+        run: |
+          ls -l amessage/build/outputs/apk/beta
+          ./gradlew appDistributionUploadBeta -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id
