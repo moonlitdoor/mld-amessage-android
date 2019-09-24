@@ -182,7 +182,7 @@ jobs:
             \"auth_provider_x509_cert_url\": \"$keys_firebase_auth_provider_x509_cert_url\",
             \"client_x509_cert_url\": \"$keys_firebase_client_x509_cert_url\"
           }" > ./build/keys/firebase-api-key.json
-          echo ./build/keys/firebase-api-key.json
+          cat ./build/keys/firebase-api-key.json
       - name: Write Signing Keys
         env:
           com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
