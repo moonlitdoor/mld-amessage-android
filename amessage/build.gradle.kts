@@ -99,7 +99,7 @@ android {
 //      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
     }
     create(BETA) {
-      matchingFallbacks = listOf("release")
+      matchingFallbacks = listOf(RELEASE)
       isDebuggable = false
       signingConfig = signingConfigs.getByName(RELEASE)
       isMinifyEnabled = false
