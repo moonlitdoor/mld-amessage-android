@@ -124,7 +124,7 @@ jobs:
           path: build/lint
   beta:
     name: Beta
-    #    needs: [build, test, lint]
+    needs: [build, test, lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
