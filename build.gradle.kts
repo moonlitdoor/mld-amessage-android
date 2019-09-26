@@ -1,3 +1,13 @@
+plugins {
+  id("com.gradle.build-scan") version "2.4.2"
+}
+
+buildScan {
+  termsOfServiceUrl = "https://gradle.com/terms-of-service"
+  termsOfServiceAgree = "yes"
+  publishAlways()
+}
+
 buildscript {
 
   repositories {
@@ -9,7 +19,7 @@ buildscript {
     classpath(D.androidxNavigationNavigationSafeArgsGradlePlugin)
     classpath(D.comAndroidToolsBuildGradle)
     classpath(D.comGithubBenManesGradleVersionsPlugin)
-    classpath("com.google.firebase:firebase-appdistribution-gradle:0.2.2")
+    classpath("com.google.firebase:firebase-appdistribution-gradle:1.0.0")
     classpath(D.comGithubTripletGradlePlayPublisher)
     classpath(D.comMoonlitdoorGitVersionGitVersion)
     classpath(kotlin("gradle-plugin", version = "1.3.50"))

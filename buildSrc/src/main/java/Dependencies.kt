@@ -33,7 +33,7 @@ object D {
   const val androidxTestRunner = "androidx.test:runner:1.3.0-alpha02"
   const val androidxViewpager2Viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta04"
   const val androidxWorkWorkRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-alpha01"
-  const val comAndroidToolsBuildGradle = "com.android.tools.build:gradle:3.6.0-alpha10"
+  const val comAndroidToolsBuildGradle = "com.android.tools.build:gradle:3.6.0-alpha12"
   const val comAmitshekharAndroidDebugDb = "com.amitshekhar.android:debug-db:1.0.6"
   const val comGithubBenManesGradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.25.0"
   const val comGithubIhsanbalLoggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:3.0.0"

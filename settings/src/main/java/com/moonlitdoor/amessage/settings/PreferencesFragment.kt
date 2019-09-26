@@ -24,7 +24,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     findPreference<Preference>(Constants.Keys.EXPERIMENTS)?.let {
       //TODO      it.isVisible = false
       it.setOnPreferenceClickListener { _ ->
-        findNavController(this).navigate(R.id.experiments)
+        //        findNavController(this).navigate(R.id.experiments)
         true
       }
     }

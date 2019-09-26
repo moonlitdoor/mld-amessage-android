@@ -1,5 +1,7 @@
 package com.moonlitdoor.amessage.settings
 
-import com.moonlitdoor.amessage.experiments.ui.experimentsUiDi
+import org.koin.dsl.module
 
-val settingsDi = experimentsUiDi
+//import com.moonlitdoor.amessage.experiments.ui.experimentsUiDi
+
+val settingsDi = module {} //experimentsUiDi

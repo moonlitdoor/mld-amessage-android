@@ -6,9 +6,9 @@
   app:startDestination="@id/settings_fragment"
   tools:ignore="UnusedNavigation">
 
-  <action
-    android:id="@+id/experiments"
-    app:destination="@id/experiments_navigation" />
+  <!--  <action-->
+  <!--    android:id="@+id/experiments"-->
+  <!--    app:destination="@id/experiments_navigation" />-->
 
   <action
     android:id="@+id/settings"
@@ -28,6 +28,6 @@
       app:argType="string" />
   </fragment>
 
-  <include app:graph="@navigation/experiments_ui_navigation" />
+  <!--  <include app:graph="@navigation/experiments_ui_navigation" />-->
 
 </navigation>
