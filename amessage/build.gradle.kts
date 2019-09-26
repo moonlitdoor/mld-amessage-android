@@ -18,7 +18,7 @@ println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
 play {
-  serviceAccountCredentials = file("../build/keys/play-api-key.json")
+  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
   defaultToAppBundles = true
   track = "alpha"
 }
@@ -43,7 +43,7 @@ android {
     applicationId = "com.moonlitdoor.amessage"
     minSdkVersion(MIN_SDK_VERSION)
     targetSdkVersion(TARGET_SDK_VERSION)
-    versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
+    versionCode = 215//(project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
     buildConfigField("String", "BUILD_DATE", "\"0\"")
 //    if (largeTests) {

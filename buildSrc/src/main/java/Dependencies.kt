@@ -37,7 +37,7 @@ object D {
   const val comAmitshekharAndroidDebugDb = "com.amitshekhar.android:debug-db:1.0.6"
   const val comGithubBenManesGradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.25.0"
   const val comGithubIhsanbalLoggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:3.0.0"
-  const val comGithubTripletGradlePlayPublisher = "com.github.triplet.gradle:play-publisher:2.4.1"
+  const val comGithubTripletGradlePlayPublisher = "com.github.triplet.gradle:play-publisher:2.5.0-SNAPSHOT"
   const val comGoogleAndroidGmsPlayServicesVision = "com.google.android.gms:play-services-vision:18.0.0"
   const val comGoogleAndroidMaterialMaterial = "com.google.android.material:material:1.1.0-alpha10"
   const val comGoogleCodeGsonGson = "com.google.code.gson:gson:2.8.5"

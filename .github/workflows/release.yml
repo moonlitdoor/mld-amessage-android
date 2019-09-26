@@ -1,11 +1,9 @@
-name: Android CI
+name: Android Release CI
 
 on:
   push:
     branches:
-      - '*'
-      - '!master'
-      - '!develop'
+      - develop
 
 jobs:
   build:
@@ -30,7 +28,7 @@ jobs:
           com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key }}
           com_moonlitdoor_amessage_firebase_debug_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_storage_bucket }}
           com_moonlitdoor_amessage_firebase_debug_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_project_id }}
-        run: ./gradlew assembleDebug -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_debug_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_debug_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_debug_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_debug_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID=$com_moonlitdoor_amessage_firebase_debug_project_id
+        run: ./gradlew assembleDebug --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_debug_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_debug_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_debug_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_debug_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID=$com_moonlitdoor_amessage_firebase_debug_project_id
   test:
     name: Test
     runs-on: ubuntu-latest
@@ -44,7 +42,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Test
-        run: ./gradlew test
+        run: ./gradlew test --stacktrace
       - name: Collect Reports
         if: always()
         run: |
@@ -92,7 +90,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Lint
-        run: ./gradlew lint
+        run: ./gradlew lint --stacktrace
       - name: Collect Reports
         run: |
           mkdir ./build/lint
@@ -124,3 +122,61 @@ jobs:
         with:
           name: lint
           path: build/lint
+  release:
+    name: Release
+    needs: [build, test, lint]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          ref: ${{ github.ref }}
+      - name: Set Up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Create Key Directory
+        run: mkdir -p ./build/keys
+      - name: Write Deploy Keys
+        env:
+          keys_playstore_type: ${{ secrets.keys_playstore_type }}
+          keys_playstore_project_id: ${{ secrets.keys_playstore_project_id }}
+          keys_playstore_private_key_id: ${{ secrets.keys_playstore_private_key_id }}
+          keys_playstore_private_key: ${{ secrets.keys_playstore_private_key }}
+          keys_playstore_client_email: ${{ secrets.keys_playstore_client_email }}
+          keys_playstore_client_id: ${{ secrets.keys_playstore_client_id }}
+          keys_playstore_auth_uri: ${{ secrets.keys_playstore_auth_uri }}
+          keys_playstore_token_uri: ${{ secrets.keys_playstore_token_uri }}
+          keys_playstore_auth_provider_x509_cert_url: ${{ secrets.keys_playstore_auth_provider_x509_cert_url }}
+          keys_playstore_client_x509_cert_url: ${{ secrets.keys_playstore_client_x509_cert_url }}
+        run: |
+          echo "{
+            \"type\": \"$keys_playstore_type\",
+            \"project_id\": \"$keys_playstore_project_id\",
+            \"private_key_id\": \"$keys_playstore_private_key_id\",
+            \"private_key\": \"$keys_playstore_private_key\",
+            \"client_email\": \"$keys_playstore_client_email\",
+            \"client_id\": \"$keys_playstore_client_id\",
+            \"auth_uri\": \"$keys_playstore_auth_uri\",
+            \"token_uri\": \"$keys_playstore_token_uri\",
+            \"auth_provider_x509_cert_url\": \"$keys_playstore_auth_provider_x509_cert_url\",
+            \"client_x509_cert_url\": \"$keys_playstore_client_x509_cert_url\"
+          }" > ./build/keys/playstore-api-key.json
+      - name: Write Signing Keys
+        env:
+          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
+        run: echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
+      - name: Deploy Release Bundle
+        env:
+          com_moonlitdoor_amessage_firebase_prod_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_default_web_client_id }}
+          com_moonlitdoor_amessage_firebase_prod_firebase_database_url: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_firebase_database_url }}
+          com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id }}
+          com_moonlitdoor_amessage_firebase_prod_google_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_google_api_key }}
+          com_moonlitdoor_amessage_firebase_prod_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_google_app_id }}
+          com_moonlitdoor_amessage_firebase_prod_google_crash_reporting_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_google_crash_reporting_api_key }}
+          com_moonlitdoor_amessage_firebase_prod_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_google_storage_bucket }}
+          com_moonlitdoor_amessage_firebase_prod_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_project_id }}
+          com_moonlitdoor_amessage_key_store_store_password: ${{ secrets.com_moonlitdoor_amessage_key_store_store_password }}
+          com_moonlitdoor_amessage_key_store_key_alias: ${{ secrets.com_moonlitdoor_amessage_key_store_key_alias }}
+          com_moonlitdoor_amessage_key_store_key_password: ${{ secrets.com_moonlitdoor_amessage_key_store_key_password }}
+        run: ./gradlew bundleRelease publishReleaseBundle --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=../build/keys/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_prod_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_prod_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_prod_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_prod_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_prod_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_prod_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID=$com_moonlitdoor_amessage_firebase_prod_project_id
