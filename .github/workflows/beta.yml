@@ -61,7 +61,7 @@ jobs:
           mv ./domain/build/reports/tests ./build/tests/domain
           mv ./encryption/build/reports/tests ./build/tests/encryption
           mv ./experiments/build/reports/tests ./build/tests/experiments
-          #          mv ./experiments/ui/build/reports/tests ./build/tests/experiments-ui
+#          mv ./experiments/ui/build/reports/tests ./build/tests/experiments-ui
           mv ./extensions/build/reports/tests ./build/tests/extensions
           mv ./feedback/build/reports/tests ./build/tests/feedback
           mv ./handle/build/reports/tests ./build/tests/handle
@@ -107,7 +107,7 @@ jobs:
           mv ./domain/build/reports/lint-results.html ./build/lint/domain-lint-results.html
           mv ./encryption/build/reports/lint-results.html ./build/lint/encryption-lint-results.html
           mv ./experiments/build/reports/lint-results.html ./build/lint/experiments-lint-results.html
-          #          mv ./experiments/ui/build/reports/lint-results.html ./build/lint/experiments-ui-lint-results.html
+#          mv ./experiments/ui/build/reports/lint-results.html ./build/lint/experiments-ui-lint-results.html
           mv ./extensions/build/reports/lint-results.html ./build/lint/extensions-lint-results.html
           mv ./feedback/build/reports/lint-results.html ./build/lint/feedback-lint-results.html
           mv ./handle/build/reports/lint-results.html ./build/lint/handle-lint-results.html

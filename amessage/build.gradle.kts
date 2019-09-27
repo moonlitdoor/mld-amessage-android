@@ -43,7 +43,7 @@ android {
     applicationId = "com.moonlitdoor.amessage"
     minSdkVersion(MIN_SDK_VERSION)
     targetSdkVersion(TARGET_SDK_VERSION)
-    versionCode = 215//(project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
+    versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
     buildConfigField("String", "BUILD_DATE", "\"0\"")
 //    if (largeTests) {
