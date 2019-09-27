@@ -58,14 +58,14 @@ android {
 
 dependencies {
 
-  implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
-  implementation(D.comGoogleFirebaseFirebaseCore)
+  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Com.Google.Firebase.firebaseCore)
 
-  testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.orgRobolectricRobolectric)
+  testImplementation(D.Androidx.Test.Ext.junitKtx)
+  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.androidxTestOrchestrator)
+  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.androidxTestEspressoEspressoCore)
-  androidTestImplementation(D.androidxTestExtJunitKtx)
+  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 }

@@ -17,12 +17,12 @@ buildscript {
     maven("https://oss.sonatype.org/content/repositories/snapshots")
   }
   dependencies {
-    classpath(D.androidxNavigationNavigationSafeArgsGradlePlugin)
-    classpath(D.comAndroidToolsBuildGradle)
-    classpath(D.comGithubBenManesGradleVersionsPlugin)
+    classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
+    classpath(D.Com.Android.Tools.Build.gradle)
+    classpath(D.Com.Github.BenManes.gradleVersionsPlugin)
     classpath("com.google.firebase:firebase-appdistribution-gradle:1.0.0")
-    classpath(D.comGithubTripletGradlePlayPublisher)
-    classpath(D.comMoonlitdoorGitVersionGitVersion)
+    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
+    classpath(D.Com.Moonlitdoor.GitVersion.gitVersion)
     classpath(kotlin("gradle-plugin", version = "1.3.50"))
 //    classpath ("com.google.firebase:perf-plugin:1.2.1")
 //    classpath ("io.fabric.tools:gradle:1.29.0")

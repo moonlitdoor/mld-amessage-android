@@ -68,22 +68,22 @@ dependencies {
   implementation(project(M.RESOURCES))
   implementation(project(M.WINDOWS))
 
-  implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
-  implementation(D.comJakeWhartonTimberTimber)
-  implementation(D.orgKoinKoinAndroid)
-  implementation(D.orgKoinKoinAndroidxViewmodel)
-  implementation(D.androidxConstraintlayoutConstraintlayout)
-  implementation(D.androidxNavigationNavigationFragmentKtx)
-  implementation(D.androidxNavigationNavigationUiKtx)
+  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Com.JakeWharton.Timber.timber)
+  implementation(D.Org.Koin.koinAndroid)
+  implementation(D.Org.Koin.koinAndroidxViewmodel)
+  implementation(D.Androidx.ConstraintLayout.constraintLayout)
+  implementation(D.Androidx.Navigation.navigationFragmentKtx)
+  implementation(D.Androidx.Navigation.navigationUiKtx)
 
-  testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.orgKoinKoinTest)
-  testImplementation(D.orgRobolectricRobolectric)
+  testImplementation(D.Androidx.Test.Ext.junitKtx)
+  testImplementation(D.Org.Koin.koinTest)
+  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.androidxTestOrchestrator)
+  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.orgKoinKoinTest)
-  androidTestImplementation(D.androidxTestEspressoEspressoCore)
-  androidTestImplementation(D.androidxTestExtJunitKtx)
+  androidTestImplementation(D.Org.Koin.koinTest)
+  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
 }

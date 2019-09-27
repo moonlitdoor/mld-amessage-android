@@ -58,26 +58,26 @@ android {
 
 dependencies {
 
-  kapt(D.androidxRoomRoomCompiler)
+  kapt(D.Androidx.Room.roomCompiler)
 
   implementation(project(M.CONSTANTS))
-  implementation(D.androidxLifecycleLifecycleLivedataKtx)
-  implementation(D.androidxRoomRoomKtx)
-  implementation(D.androidxRoomRoomRuntime)
-  implementation(D.comMoonlitdoorSharedPreferenceLiveDataSharedPreferenceLiveData)
-  implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
-  implementation(D.orgKoinKoinAndroid)
+  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+  implementation(D.Androidx.Room.roomKtx)
+  implementation(D.Androidx.Room.roomRuntime)
+  implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
+  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Org.Koin.koinAndroid)
 
-  debugImplementation(D.comAmitshekharAndroidDebugDb)
+  debugImplementation(D.Com.Amitshekhar.Android.debugDb)
 
-  testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.orgKoinKoinTest)
-  testImplementation(D.orgRobolectricRobolectric)
+  testImplementation(D.Androidx.Test.Ext.junitKtx)
+  testImplementation(D.Org.Koin.koinTest)
+  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.androidxTestOrchestrator)
+  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.orgKoinKoinTest)
-  androidTestImplementation(D.androidxTestEspressoEspressoCore)
-  androidTestImplementation(D.androidxTestExtJunitKtx)
+  androidTestImplementation(D.Org.Koin.koinTest)
+  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
 }

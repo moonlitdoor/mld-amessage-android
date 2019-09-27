@@ -52,26 +52,26 @@ android {
 
 dependencies {
 
-  implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
-  implementation(D.orgKoinKoinAndroid)
+  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Org.Koin.koinAndroid)
 
-  testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.orgKoinKoinTest)
-  testImplementation(D.orgRobolectricRobolectric)
-  testImplementation(D.androidxTestCore)
-  testImplementation(D.androidxTestEspressoEspressoCore)
-  testImplementation(D.androidxTestEspressoEspressoIdlingResource)
-  testImplementation(D.androidxTestEspressoIdlingIdlingConcurrent)
-  testImplementation(D.androidxTestRules)
-  testImplementation(D.androidxTestRunner)
-  testImplementation(D.comGoogleTruthTruth)
-  testImplementation(D.junitJunit)
+  testImplementation(D.Androidx.Test.Ext.junitKtx)
+  testImplementation(D.Org.Koin.koinTest)
+  testImplementation(D.Org.Robolectric.robolectric)
+  testImplementation(D.Androidx.Test.core)
+  testImplementation(D.Androidx.Test.Espresso.espressoCore)
+  testImplementation(D.Androidx.Test.Espresso.espressoIdlingResource)
+  testImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
+  testImplementation(D.Androidx.Test.rules)
+  testImplementation(D.Androidx.Test.runner)
+  testImplementation(D.Com.Google.Truth.truth)
+  testImplementation(D.Junit.junit)
 
-  androidTestUtil(D.androidxTestOrchestrator)
+  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.androidxTestCore)
-  androidTestImplementation(D.androidxTestEspressoEspressoCore)
-  androidTestImplementation(D.androidxTestExtJunitKtx)
-  androidTestImplementation(D.orgKoinKoinTest)
+  androidTestImplementation(D.Androidx.Test.core)
+  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(D.Org.Koin.koinTest)
 
 }

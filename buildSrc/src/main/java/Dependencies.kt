@@ -1,69 +1,227 @@
 object D {
+  object Androidx {
+    object Annotation {
+      const val annotation = "androidx.annotation:annotation:1.1.0"
+    }
 
-  const val androidxAnnotationAnnotation = "androidx.annotation:annotation:1.1.0"
-  const val androidxAppcompatAppcompat = "androidx.appcompat:appcompat:1.1.0"
-  const val androidxCameraCameraCamera2 = "androidx.camera:camera-camera2:1.0.0-alpha05"
-  const val androidxCameraCameraCore = "androidx.camera:camera-core:1.0.0-alpha05"
-  const val androidxConstraintlayoutConstraintlayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
-  const val androidxCoreCoreKtx = "androidx.core:core-ktx:1.2.0-alpha04"
-  const val androidxFragmentFragmentTesting = "androidx.fragment:fragment-testing:1.2.0-alpha03"
-  const val androidxLegacyLegacyPreferenceV14 = "androidx.legacy:legacy-preference-v14:1.0.0"
-  const val androidxLegacyLegacySupportCoreUtils = "androidx.legacy:legacy-support-core-utils:1.0.0"
-  const val androidxLegacyLegacySupportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
-  const val androidxLifecycleLifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:2.2.0-alpha05"
-  const val androidxLifecycleLifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha05"
-  const val androidxLifecycleLifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0-alpha05"
-  const val androidxLifecycleLifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-alpha05"
-  const val androidxNavigationNavigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:2.2.0-alpha03"
-  const val androidxNavigationNavigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:2.2.0-alpha03"
-  const val androidxNavigationNavigationUiKtx = "androidx.navigation:navigation-ui-ktx:2.2.0-alpha03"
-  const val androidxPreferencePreference = "androidx.preference:preference:1.1.0"
-  const val androidxRecyclerviewRecyclerview = "androidx.recyclerview:recyclerview:1.1.0-beta04"
-  const val androidxRoomRoomCompiler = "androidx.room:room-compiler:2.2.0-rc01"
-  const val androidxRoomRoomRuntime = "androidx.room:room-runtime:2.2.0-rc01"
-  const val androidxRoomRoomKtx = "androidx.room:room-ktx:2.2.0-rc01"
-  const val androidxRoomRoomTesting = "androidx.room:room-testing:2.2.0-rc01"
-  const val androidxTestCore = "androidx.test:core:1.2.1-alpha02"
-  const val androidxTestEspressoEspressoCore = "androidx.test.espresso:espresso-core:3.3.0-alpha02"
-  const val androidxTestEspressoEspressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:3.3.0-alpha02"
-  const val androidxTestEspressoIdlingIdlingConcurrent = "androidx.test.espresso.idling:idling-concurrent:3.3.0-alpha02"
-  const val androidxTestExtJunitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha02"
-  const val androidxTestOrchestrator = "androidx.test:orchestrator:1.3.0-alpha02"
-  const val androidxTestRules = "androidx.test:rules:1.3.0-alpha02"
-  const val androidxTestRunner = "androidx.test:runner:1.3.0-alpha02"
-  const val androidxViewpager2Viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta04"
-  const val androidxWorkWorkRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-alpha01"
-  const val comAndroidToolsBuildGradle = "com.android.tools.build:gradle:3.6.0-alpha12"
-  const val comAmitshekharAndroidDebugDb = "com.amitshekhar.android:debug-db:1.0.6"
-  const val comGithubBenManesGradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.25.0"
-  const val comGithubIhsanbalLoggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:3.0.0"
-  const val comGithubTripletGradlePlayPublisher = "com.github.triplet.gradle:play-publisher:2.5.0-SNAPSHOT"
-  const val comGoogleAndroidGmsPlayServicesVision = "com.google.android.gms:play-services-vision:18.0.0"
-  const val comGoogleAndroidMaterialMaterial = "com.google.android.material:material:1.1.0-alpha10"
-  const val comGoogleCodeGsonGson = "com.google.code.gson:gson:2.8.5"
-  const val comGoogleFirebaseFirebaseConfig = "com.google.firebase:firebase-config:19.0.2"
-  const val comGoogleFirebaseFirebaseCore = "com.google.firebase:firebase-core:17.2.0"
-  const val comGoogleFirebaseFirebaseMessaging = "com.google.firebase:firebase-messaging:20.0.0"
-  const val comGoogleFirebaseFirebaseMlVision = "com.google.firebase:firebase-ml-vision:23.0.0"
-  const val comGoogleTruthTruth = "com.google.truth:truth:1.0"
-  const val comGoogleZxingCore = "com.google.zxing:core:3.4.0"
-  const val comJakeWhartonTimberTimber = "com.jakewharton.timber:timber:4.7.1"
-  const val comMoonlitdoorGitVersionGitVersion = "com.moonlitdoor.git-version:git-version:0.1.1"
-  const val comMoonlitdoorSharedPreferenceLiveDataSharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
-  const val comSquareupOkhttp3LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor:4.2.0"
-  const val comSquareupOkhttp3MockWebServer = "com.squareup.okhttp3:mockwebserver:4.2.0"
-  const val comSquareupOkhttp3Okhttp = "com.squareup.okhttp3:okhttp:4.2.0"
-  const val comSquareupRetrofit2ConverterGson = "com.squareup.retrofit2:converter-gson:2.6.2"
-  const val comSquareupRetrofit2Retrofit = "com.squareup.retrofit2:retrofit:2.6.2"
-  const val comStepstoneStepperMaterialStepper = "com.stepstone.stepper:material-stepper:4.3.1"
-  const val junitJunit = "junit:junit:4.13-beta-3"
-  const val orgJetbrainsKotlinKotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
-  const val orgJetbrainsKotlinxKotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
-  const val orgJetbrainsKotlinxKotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.2"
-  const val orgKoinKoinAndroid = "org.koin:koin-android:2.0.1"
-  const val orgKoinKoinAndroidxScope = "org.koin:koin-androidx-scope:2.0.1"
-  const val orgKoinKoinAndroidxViewmodel = "org.koin:koin-androidx-viewmodel:2.0.1"
-  const val orgKoinKoinTest = "org.koin:koin-test:2.0.1"
-  const val orgRobolectricRobolectric = "org.robolectric:robolectric:4.3"
+    object AppCompat {
+      const val appcompat = "androidx.appcompat:appcompat:1.1.0"
+    }
 
+    object Camera {
+      private const val version = "1.0.0-alpha05"
+      const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
+      const val cameraCore = "androidx.camera:camera-core:$version"
+    }
+
+    object ConstraintLayout {
+      const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
+    }
+
+    object Core {
+      const val coreKtx = "androidx.core:core-ktx:1.2.0-alpha04"
+    }
+
+    object Fragment {
+      const val fragmentTesting = "androidx.fragment:fragment-testing:1.2.0-alpha03"
+    }
+
+    object Legacy {
+      const val legacyPreferenceV14 = "androidx.legacy:legacy-preference-v14:1.0.0"
+      const val legacySupportCoreUtils = "androidx.legacy:legacy-support-core-utils:1.0.0"
+      const val legacySupportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
+    }
+
+    object Lifecycle {
+      private const val version = "2.2.0-alpha05"
+      const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$version"
+      const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
+      const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+      const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+    }
+
+    object Navigation {
+      private const val version = "2.2.0-alpha03"
+      const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
+      const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
+      const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
+    }
+
+    object Preference {
+      const val preference = "androidx.preference:preference:1.1.0"
+    }
+
+    object Recyclerview {
+      const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0-beta04"
+    }
+
+    object Room {
+      private const val version = "2.2.0-rc01"
+      const val roomCompiler = "androidx.room:room-compiler:$version"
+      const val roomRuntime = "androidx.room:room-runtime:$version"
+      const val roomKtx = "androidx.room:room-ktx:$version"
+      const val roomTesting = "androidx.room:room-testing:$version"
+    }
+
+    object Test {
+      const val core = "androidx.test:core:1.2.1-alpha02"
+      const val orchestrator = "androidx.test:orchestrator:1.3.0-alpha02"
+      const val rules = "androidx.test:rules:1.3.0-alpha02"
+      const val runner = "androidx.test:runner:1.3.0-alpha02"
+
+      object Espresso {
+        private const val version = "3.3.0-alpha02"
+        const val espressoCore = "androidx.test.espresso:espresso-core:$version"
+        const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
+
+        object Idling {
+          const val idlingConcurrent = "androidx.test.espresso.idling:idling-concurrent:$version"
+        }
+      }
+
+      object Ext {
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha02"
+      }
+    }
+
+    object Viewpager2 {
+      const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta04"
+    }
+
+    object Work {
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-alpha01"
+    }
+  }
+
+  object Com {
+    object Android {
+      object Tools {
+        object Build {
+          const val gradle = "com.android.tools.build:gradle:3.6.0-alpha12"
+        }
+      }
+    }
+
+    object Amitshekhar {
+      object Android {
+        const val debugDb = "com.amitshekhar.android:debug-db:1.0.6"
+      }
+    }
+
+    object Github {
+      object BenManes {
+        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.25.0"
+      }
+
+      object Ihsanbal {
+        const val loggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:3.0.0"
+      }
+
+      object Triplet {
+        object Gradle {
+          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.5.0-SNAPSHOT"
+        }
+      }
+    }
+
+    object Google {
+      object Android {
+        object Gms {
+          const val playServicesVision = "com.google.android.gms:play-services-vision:18.0.0"
+        }
+
+        object Material {
+          const val material = "com.google.android.material:material:1.1.0-alpha10"
+        }
+      }
+
+      object Code {
+        object Gson {
+          const val gson = "com.google.code.gson:gson:2.8.5"
+        }
+      }
+
+      object Firebase {
+        const val firebaseConfig = "com.google.firebase:firebase-config:19.0.2"
+        const val firebaseCore = "com.google.firebase:firebase-core:17.2.0"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.0.0"
+        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:23.0.0"
+      }
+
+      object Truth {
+        const val truth = "com.google.truth:truth:1.0"
+      }
+
+      object Zxing {
+        const val core = "com.google.zxing:core:3.4.0"
+      }
+    }
+
+    object JakeWharton {
+      object Timber {
+        const val timber = "com.jakewharton.timber:timber:4.7.1"
+      }
+    }
+
+    object Moonlitdoor {
+      object GitVersion {
+        const val gitVersion = "com.moonlitdoor.git-version:git-version:0.1.1"
+      }
+
+      object SharedPreferenceLiveData {
+        const val sharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
+      }
+    }
+
+    object SquareUp {
+      object OkHttp3 {
+        private const val version = "4.2.0"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
+        const val okhttp = "com.squareup.okhttp3:okhttp:$version"
+      }
+
+      object Retrofit2 {
+        private const val version = "2.6.2"
+        const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
+        const val retrofit = "com.squareup.retrofit2:retrofit:$version"
+      }
+    }
+
+    object Stepstone {
+      object Stepper {
+        const val materialStepper = "com.stepstone.stepper:material-stepper:4.3.1"
+      }
+    }
+  }
+
+  object Junit {
+    const val junit = "junit:junit:4.13-beta-3"
+  }
+
+  object Org {
+    object Jetbrains {
+      object Kotlin {
+        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
+      }
+
+      object Kotlinx {
+        private const val version = "1.3.2"
+        const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
+        const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
+      }
+    }
+
+    object Koin {
+      private const val version = "2.0.1"
+      const val koinAndroid = "org.koin:koin-android:$version"
+      const val koinAndroidxScope = "org.koin:koin-androidx-scope:$version"
+      const val koinAndroidxViewmodel = "org.koin:koin-androidx-viewmodel:$version"
+      const val koinTest = "org.koin:koin-test:$version"
+    }
+
+    object Robolectric {
+      const val robolectric = "org.robolectric:robolectric:4.3"
+    }
+  }
 }

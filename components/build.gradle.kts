@@ -65,21 +65,21 @@ dependencies {
   implementation(project(M.EXTENSIONS))
   implementation(project(M.RESOURCES))
 
-  implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
-  implementation(D.orgKoinKoinAndroid)
-  implementation(D.androidxAppcompatAppcompat)
-  implementation(D.comGoogleAndroidMaterialMaterial)
-  implementation(D.comJakeWhartonTimberTimber)
-  implementation(D.androidxConstraintlayoutConstraintlayout)
+  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Org.Koin.koinAndroid)
+  implementation(D.Androidx.AppCompat.appcompat)
+  implementation(D.Com.Google.Android.Material.material)
+  implementation(D.Com.JakeWharton.Timber.timber)
+  implementation(D.Androidx.ConstraintLayout.constraintLayout)
 
-  testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.orgKoinKoinTest)
-  testImplementation(D.orgRobolectricRobolectric)
+  testImplementation(D.Androidx.Test.Ext.junitKtx)
+  testImplementation(D.Org.Koin.koinTest)
+  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.androidxTestOrchestrator)
+  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.orgKoinKoinTest)
-  androidTestImplementation(D.androidxTestEspressoEspressoCore)
-  androidTestImplementation(D.androidxTestExtJunitKtx)
+  androidTestImplementation(D.Org.Koin.koinTest)
+  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
 }

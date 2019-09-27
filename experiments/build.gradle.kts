@@ -53,20 +53,20 @@ android {
 
 dependencies {
 
-  implementation(D.orgJetbrainsKotlinKotlinStandardLibrary)
-  implementation(D.orgKoinKoinAndroid)
-  implementation(D.comGoogleFirebaseFirebaseConfig)
+  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Org.Koin.koinAndroid)
+  implementation(D.Com.Google.Firebase.firebaseConfig)
 
-  testImplementation(D.androidxTestExtJunitKtx)
-  testImplementation(D.comGoogleTruthTruth)
-  testImplementation(D.orgKoinKoinTest)
-  testImplementation(D.orgRobolectricRobolectric)
+  testImplementation(D.Androidx.Test.Ext.junitKtx)
+  testImplementation(D.Com.Google.Truth.truth)
+  testImplementation(D.Org.Koin.koinTest)
+  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.androidxTestOrchestrator)
+  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.androidxTestEspressoEspressoCore)
-  androidTestImplementation(D.androidxTestExtJunitKtx)
-  androidTestImplementation(D.comGoogleTruthTruth)
-  androidTestImplementation(D.orgKoinKoinTest)
+  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(D.Com.Google.Truth.truth)
+  androidTestImplementation(D.Org.Koin.koinTest)
 
 }
