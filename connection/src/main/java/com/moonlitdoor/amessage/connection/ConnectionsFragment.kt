@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
@@ -31,14 +30,14 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
   private val adapter by lazy { Adapter(viewModel, LayoutInflater.from(activity)) }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentConnectionsBinding>(inflater, R.layout.fragment_connections, container, false).also {
+    FragmentConnectionsBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this
       it.viewModel = viewModel
       setupWithNavController(it.toolbar, findNavController(this), it.drawerLayout)
       setupWithNavController(it.navigationView, findNavController(this))
       WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
       it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
-      it.navigationView.addHeaderView(DataBindingUtil.inflate<NavigationHeaderBinding>(inflater, R.layout.navigation_header, null, false).also { header ->
+      it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
         header.lifecycleOwner = this
         header.handle = viewModel.handle.also { h -> h.observe(this, this) }
       }.root)
@@ -84,7 +83,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
     override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
   }) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConnectionViewHolder(DataBindingUtil.inflate(layoutInflater, R.layout.list_item_connection_connected, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConnectionViewHolder(ListItemConnectionConnectedBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: ConnectionViewHolder, position: Int) = holder.bind(getItem(position), viewModel).ignore()
   }
 

@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.camera.core.*
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
@@ -33,7 +32,7 @@ class ScanFragment : Fragment(), Preview.OnPreviewOutputUpdateListener, ImageAna
 
   override fun onAttach(context: Context) {
     super.onAttach(context)
-    binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_scan, null, false)
+    binding = FragmentScanBinding.inflate(layoutInflater, null, false)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = binding.root

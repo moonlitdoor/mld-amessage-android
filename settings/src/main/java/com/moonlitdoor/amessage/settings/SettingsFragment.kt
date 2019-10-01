@@ -4,14 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.moonlitdoor.amessage.settings.databinding.FragmentSettingsBinding
 
 class SettingsFragment : androidx.fragment.app.Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentSettingsBinding>(inflater, R.layout.fragment_settings, container, false).also {
+    FragmentSettingsBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this
       it.toolbar.setNavigationOnClickListener { _ -> findNavController(this).navigateUp() }
       SettingsFragmentArgs.fromBundle(arguments!!).apply {

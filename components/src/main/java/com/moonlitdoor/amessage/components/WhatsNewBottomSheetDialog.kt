@@ -3,7 +3,6 @@ package com.moonlitdoor.amessage.components
 import android.content.Context
 import android.preference.PreferenceManager
 import android.view.*
-import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.components.databinding.BottomSheetDialogWhatsNewBinding
 import com.moonlitdoor.amessage.components.databinding.ListItemWhatsNewBinding
 import com.moonlitdoor.amessage.constants.Constants
@@ -11,14 +10,14 @@ import java.util.*
 
 class WhatsNewBottomSheetDialog(context: Context) : com.google.android.material.bottomsheet.BottomSheetDialog(context) {
 
-  private val binding: BottomSheetDialogWhatsNewBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.bottom_sheet_dialog_whats_new, null, false)
+  private val binding: BottomSheetDialogWhatsNewBinding = BottomSheetDialogWhatsNewBinding.inflate(LayoutInflater.from(context), null, false)
 
   init {
     this.setContentView(this.binding.root)
     val data: MutableList<String>
     val stringArray = getContext().resources.getStringArray(R.array.metadata_whats_new)
     if (stringArray.isNotEmpty()) {
-      data = Arrays.asList(*stringArray)
+      data = mutableListOf(*stringArray)
     } else {
       data = ArrayList()
       data.add(getContext().resources.getString(R.string.metadata_whats_new_bug_fixes))

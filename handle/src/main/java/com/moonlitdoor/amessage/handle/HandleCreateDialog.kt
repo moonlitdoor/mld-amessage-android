@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.inputmethod.InputMethodManager
-import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.extensions.afterTextChanged
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.handle.databinding.DialogHandleCreateBinding
@@ -12,7 +11,7 @@ import com.moonlitdoor.amessage.handle.databinding.DialogHandleCreateBinding
 class HandleCreateDialog private constructor(activity: androidx.fragment.app.FragmentActivity, viewModel: HandleViewModel) {
 
   private val binding: DialogHandleCreateBinding by lazy {
-    DataBindingUtil.inflate<DialogHandleCreateBinding>(LayoutInflater.from(activity), R.layout.dialog_handle_create, null, false).also {
+    DialogHandleCreateBinding.inflate(LayoutInflater.from(activity), null, false).also {
       it.input.afterTextChanged { dialog.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = !it.isNullOrBlank() }
     }
   }

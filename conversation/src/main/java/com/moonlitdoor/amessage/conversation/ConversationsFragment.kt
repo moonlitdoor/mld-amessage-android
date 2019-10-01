@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
@@ -18,7 +17,6 @@ import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import com.moonlitdoor.amessage.components.R as C
 
 class ConversationsFragment : androidx.fragment.app.Fragment() {
 
@@ -26,13 +24,13 @@ class ConversationsFragment : androidx.fragment.app.Fragment() {
   private val adapter by lazy { Adapter(viewModel, LayoutInflater.from(activity)) }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentConversationsBinding>(inflater, R.layout.fragment_conversations, container, false).also {
+    FragmentConversationsBinding.inflate(inflater, container, false).also {
       it.setLifecycleOwner(this)
       it.viewModel = viewModel
       setupWithNavController(it.toolbar, findNavController(this), it.drawerLayout)
       setupWithNavController(it.navigationView, findNavController(this))
       WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
-      it.navigationView.addHeaderView(DataBindingUtil.inflate<NavigationHeaderBinding>(inflater, C.layout.navigation_header, null, false).also {
+      it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also {
         it.setLifecycleOwner(this)
         it.handle = viewModel.handle
       }.root)
@@ -46,7 +44,7 @@ class ConversationsFragment : androidx.fragment.app.Fragment() {
     override fun areItemsTheSame(oldItem: Conversation, newItem: Conversation): Boolean = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean = oldItem == newItem
   }) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConversationViewHolder(DataBindingUtil.inflate(layoutInflater, R.layout.list_item_conversation, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConversationViewHolder(ListItemConversationBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) = holder.bind(getItem(position), viewModel).ignore()
   }
 

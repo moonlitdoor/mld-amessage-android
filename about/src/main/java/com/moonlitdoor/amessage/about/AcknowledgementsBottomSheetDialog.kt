@@ -4,13 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.about.databinding.BottomSheetDialogAcknowledgementBinding
 import com.moonlitdoor.amessage.domain.model.Acknowledgement
 
 internal class AcknowledgementsBottomSheetDialog(context: Context, acknowledgement: Acknowledgement) : com.google.android.material.bottomsheet.BottomSheetDialog(context), View.OnScrollChangeListener {
 
-  private val binding: BottomSheetDialogAcknowledgementBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.bottom_sheet_dialog_acknowledgement, null, false)
+  private val binding: BottomSheetDialogAcknowledgementBinding = BottomSheetDialogAcknowledgementBinding.inflate(LayoutInflater.from(context), null, false)
 
   init {
     this.binding.title = acknowledgement.title

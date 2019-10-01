@@ -4,10 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
-import com.moonlitdoor.amessage.conversation.R
 import com.moonlitdoor.amessage.conversation.components.StepperAdapter
 import com.moonlitdoor.amessage.conversation.components.StepperListener
 import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationCreateBinding
@@ -21,7 +19,7 @@ class ConversationCreateFragment : androidx.fragment.app.Fragment(), StepperList
   private lateinit var binding: FragmentConversationCreateBinding
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentConversationCreateBinding>(inflater, R.layout.fragment_conversation_create, container, false).also {
+    FragmentConversationCreateBinding.inflate(inflater, container, false).also {
       viewModel.initConversation()
       binding = it
       setupWithNavController(it.toolbar, findNavController(this))

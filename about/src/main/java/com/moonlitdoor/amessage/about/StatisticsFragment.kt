@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import com.moonlitdoor.amessage.about.databinding.FragmentStatisticsBinding
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.extensions.ignore
@@ -16,7 +15,7 @@ class StatisticsFragment : TitledFragmentPagerAdapter.TitledFragment(), View.OnC
   override fun getTitleId() = R.string.about_page_view_statistics
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentStatisticsBinding>(inflater, R.layout.fragment_statistics, container, false).apply {
+    FragmentStatisticsBinding.inflate(inflater, container, false).apply {
       handler = this@StatisticsFragment
 
     }.root

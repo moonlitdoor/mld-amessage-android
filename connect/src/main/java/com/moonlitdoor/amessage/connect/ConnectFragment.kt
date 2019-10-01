@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -18,7 +17,7 @@ class ConnectFragment : androidx.fragment.app.Fragment() {
   private lateinit var binding: FragmentConnectBinding
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentConnectBinding>(inflater, R.layout.fragment_connect, container, false).also {
+    FragmentConnectBinding.inflate(inflater, container, false).also {
       it.toolbar.setNavigationOnClickListener { findNavController(this).navigateUp() }
       binding = it
       activity?.let { act ->

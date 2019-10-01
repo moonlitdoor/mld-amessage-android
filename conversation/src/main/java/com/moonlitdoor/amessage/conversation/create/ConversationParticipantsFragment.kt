@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.conversation.R
@@ -22,8 +21,8 @@ class ConversationParticipantsFragment : androidx.fragment.app.Fragment(), Step 
   private val viewModel: ConversationCreateViewModel by sharedViewModel()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentConversationParticipantsBinding>(inflater, R.layout.fragment_conversation_participants, container, false).also {
-      it.setLifecycleOwner(this)
+    FragmentConversationParticipantsBinding.inflate(inflater, container, false).also {
+      it.lifecycleOwner = this
       it.viewModel = viewModel
       it.recyclerView.adapter = Adapter(LayoutInflater.from(activity))
     }.root
@@ -49,7 +48,7 @@ class ConversationParticipantsFragment : androidx.fragment.app.Fragment(), Step 
     override fun areItemsTheSame(oldItem: SelectableConnection, newItem: SelectableConnection): Boolean = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: SelectableConnection, newItem: SelectableConnection): Boolean = oldItem == newItem
   }) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SelectableConnectionViewHolder(DataBindingUtil.inflate(layoutInflater, R.layout.list_item_selectable_connection, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SelectableConnectionViewHolder(ListItemSelectableConnectionBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: SelectableConnectionViewHolder, position: Int) = holder.bind(getItem(position)).ignore()
   }
 

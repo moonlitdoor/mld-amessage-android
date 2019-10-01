@@ -4,12 +4,10 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
 import com.moonlitdoor.amessage.connect.databinding.FragmentPendingBinding
 import com.moonlitdoor.amessage.connect.databinding.ListItemConnectionPendingInvitedBinding
 import com.moonlitdoor.amessage.domain.model.Connection
@@ -20,7 +18,7 @@ class PendingFragment : Fragment() {
 
   private val viewModel: ConnectViewModel by sharedViewModel()
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = DataBindingUtil.inflate<FragmentPendingBinding>(inflater, R.layout.fragment_pending, container, false).also {
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = FragmentPendingBinding.inflate(inflater, container, false).also {
     it.lifecycleOwner = this
     it.viewModel = viewModel.also { vm ->
       vm.selectedConnection.observe(this, Observer { conn ->
@@ -46,7 +44,7 @@ class PendingFragment : Fragment() {
     override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
     override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
   }) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConnectionViewHolder(DataBindingUtil.inflate(layoutInflater, R.layout.list_item_connection_pending_invited, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConnectionViewHolder(ListItemConnectionPendingInvitedBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: ConnectionViewHolder, position: Int) = holder.bind(getItem(position), viewModel).ignore()
   }
 

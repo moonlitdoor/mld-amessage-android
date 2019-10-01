@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.about.databinding.FragmentAcknowledgementsBinding
@@ -18,7 +17,7 @@ class AcknowledgementsFragment : TitledFragmentPagerAdapter.TitledFragment() {
   override fun getTitleId() = R.string.about_page_view_acknowledgements
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    DataBindingUtil.inflate<FragmentAcknowledgementsBinding>(inflater, R.layout.fragment_acknowledgements, container, false).also {
+    FragmentAcknowledgementsBinding.inflate(inflater, container, false).also {
       it.recyclerView.addItemDecoration(ItemDecorationDivider(activity!!))
       it.recyclerView.adapter = Adapter().also {
         it.submitList(resources.getStringArray(R.array.about_acknowledgements_list).map { Acknowledgement.create(it) })
@@ -29,7 +28,7 @@ class AcknowledgementsFragment : TitledFragmentPagerAdapter.TitledFragment() {
     override fun areItemsTheSame(oldItem: Acknowledgement, newItem: Acknowledgement) = oldItem.title == newItem.title
     override fun areContentsTheSame(oldItem: Acknowledgement, newItem: Acknowledgement) = oldItem == newItem
   }) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AcknowledgementViewHolder(DataBindingUtil.inflate(layoutInflater, R.layout.list_item_acknowledgement, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = AcknowledgementViewHolder(ListItemAcknowledgementBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: AcknowledgementViewHolder, position: Int) = holder.bind(getItem(position))
   }
 
