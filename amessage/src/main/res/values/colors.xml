@@ -3,7 +3,7 @@
   <!--  <color name="colorPrimary">@color/orange_500</color>-->
   <!--  <color name="colorPrimaryDark">@color/orange_800</color>-->
   <!--<color name="colorPrimaryLight">@color/orange_200</color>-->
-  <color name="colorAccent">@color/purple_deep_A400</color>
+  <!--  <color name="colorAccent">@color/purple_deep_A400</color>-->
   <!--<color name="colorAccentDark">@color/purple_deep_A700</color>-->
   <!--<color name="colorAccentLight">@color/purple_deep_A100</color>-->
   <!--<color name="colorWindowBackground">@color/white</color>-->
@@ -50,7 +50,7 @@
 
   <!--<color name="purple_deep_A100">#B388FF</color>-->
   <!--<color name="purple_deep_A200">#7C4DFF</color>-->
-  <color name="purple_deep_A400">#651FFF</color>
+  <!--  <color name="purple_deep_A400">#651FFF</color>-->
   <!--<color name="purple_deep_A700">#6200EA</color>-->
 
   <!--<color name="transparent">@color/white_000</color>-->

@@ -45,6 +45,7 @@ android {
     targetSdkVersion(TARGET_SDK_VERSION)
     versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
+    resValue("color", "launcher_background", "@color/purple_deep_A400")
     buildConfigField("String", "BUILD_DATE", "\"0\"")
 //    if (largeTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
@@ -91,6 +92,7 @@ android {
       signingConfig = signingConfigs.getByName(RELEASE)
       isMinifyEnabled = false
       applicationIdSuffix = ".beta"
+      resValue("color", "launcher_background", "@color/colorMonsterAccent")
       resValue("string", "app_name", "AMessage Beta")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL").toString())
@@ -111,6 +113,7 @@ android {
     getByName(DEBUG) {
       isMinifyEnabled = false
       applicationIdSuffix = ".debug"
+      resValue("color", "launcher_background", "@color/colorDarkPrimary")
       resValue("string", "app_name", "AMessage Debug")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL").toString())
