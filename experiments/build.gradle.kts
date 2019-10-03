@@ -53,6 +53,8 @@ android {
 
 dependencies {
 
+  implementation(project(M.RESOURCES))
+
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Koin.koinAndroid)
   implementation(D.Com.Google.Firebase.firebaseConfig)

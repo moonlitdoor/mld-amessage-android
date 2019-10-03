@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
@@ -15,13 +16,11 @@ import com.moonlitdoor.amessage.components.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.connection.databinding.FragmentConnectionsBinding
 import com.moonlitdoor.amessage.connection.databinding.ListItemConnectionConnectedBinding
 import com.moonlitdoor.amessage.domain.model.Connection
-import com.moonlitdoor.amessage.experiments.Experiment
-import com.moonlitdoor.amessage.experiments.Experiments
+import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
-import com.moonlitdoor.amessage.navigationids.R as N
+import com.moonlitdoor.amessage.ids.R as N
 
 class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> {
 
@@ -33,8 +32,10 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
     FragmentConnectionsBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this
       it.viewModel = viewModel
-      setupWithNavController(it.toolbar, findNavController(this), it.drawerLayout)
-      setupWithNavController(it.navigationView, findNavController(this))
+      findNavController().also { navController ->
+        it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
+        it.navigationView.setupWithNavController(navController)
+      }
       WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
       it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
       it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
@@ -43,38 +44,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
       }.root)
       it.recyclerView.adapter = adapter
       WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
-      for (i in 0 until it.navigationView.menu.size()) {
-        it.navigationView.menu.getItem(i).also { item ->
-          when (item.itemId) {
-            R.id.windows_fragment -> item.isVisible = when (Experiments.FEATURE_WINDOWS.value) {
-              Experiment.BOOLEAN.TRUE -> true
-              Experiment.BOOLEAN.FALSE -> false
-            }
-            R.id.settings -> item.isVisible = when (Experiments.FEATURE_SETTINGS.value) {
-              Experiment.BOOLEAN.TRUE -> true
-              Experiment.BOOLEAN.FALSE -> false
-            }
-            R.id.help_fragment -> item.isVisible = when (Experiments.FEATURE_HELP.value) {
-              Experiment.BOOLEAN.TRUE -> true
-              Experiment.BOOLEAN.FALSE -> false
-            }
-            R.id.feedback_fragment -> item.isVisible = when (Experiments.FEATURE_FEEDBACK.value) {
-              Experiment.BOOLEAN.TRUE -> true
-              Experiment.BOOLEAN.FALSE -> false
-            }
-            R.id.about_fragment -> item.isVisible = when (Experiments.FEATURE_ABOUT.value) {
-              Experiment.BOOLEAN.TRUE -> true
-              Experiment.BOOLEAN.FALSE -> false
-            }
-            R.id.navigation_whats_new -> item.isVisible = when (Experiments.FEATURE_WHATS_NEW.value) {
-              Experiment.BOOLEAN.TRUE -> true
-              Experiment.BOOLEAN.FALSE -> false
-            }
-          }
-
-          Timber.i(item.title.toString())
-        }
-      }
+      NavigationMenuExperimentHelper.help(it.navigationView.menu)
     }.root
 
   override fun onChanged(handle: String?): Unit = handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)

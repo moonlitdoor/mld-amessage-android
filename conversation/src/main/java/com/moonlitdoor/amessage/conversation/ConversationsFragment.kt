@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.navigation.ui.NavigationUI.setupWithNavController
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
@@ -14,6 +15,7 @@ import com.moonlitdoor.amessage.components.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationsBinding
 import com.moonlitdoor.amessage.conversation.databinding.ListItemConversationBinding
 import com.moonlitdoor.amessage.domain.model.Conversation
+import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -25,19 +27,22 @@ class ConversationsFragment : androidx.fragment.app.Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentConversationsBinding.inflate(inflater, container, false).also {
-      it.setLifecycleOwner(this)
+      it.lifecycleOwner = this
       it.viewModel = viewModel
-      setupWithNavController(it.toolbar, findNavController(this), it.drawerLayout)
-      setupWithNavController(it.navigationView, findNavController(this))
+      findNavController().also { navController ->
+        it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
+        it.navigationView.setupWithNavController(navController)
+      }
       WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
-      it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also {
-        it.setLifecycleOwner(this)
-        it.handle = viewModel.handle
+      it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
+        header.lifecycleOwner = this
+        header.handle = viewModel.handle
       }.root)
       WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
       it.recyclerView.adapter = adapter
       it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.actionConversationsFragmentToConversationsCreateFragment))
       WhatsNewBottomSheetDialog.show(activity)
+      NavigationMenuExperimentHelper.help(it.navigationView.menu)
     }.root
 
   private class Adapter(private val viewModel: ConversationViewModel, private val layoutInflater: LayoutInflater) : ListAdapter<Conversation, ConversationViewHolder>(object : DiffUtil.ItemCallback<Conversation>() {

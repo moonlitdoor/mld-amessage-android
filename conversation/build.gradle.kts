@@ -61,6 +61,7 @@ dependencies {
   implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))
   implementation(project(M.DOMAIN))
+  implementation(project(M.EXPERIMENTS))
   implementation(project(M.EXTENSIONS))
   implementation(project(M.HANDLE))
   implementation(project(M.IDS))
