@@ -5,7 +5,7 @@ plugins {
   kotlin("kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
-  id("com.github.triplet.play")
+//  id("com.github.triplet.play")
 //  id("com.google.firebase.firebase-perf")
 //  id("io.fabric")
 }
@@ -17,11 +17,11 @@ base {
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
-play {
-  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
-  defaultToAppBundles = true
-  track = "alpha"
-}
+//play {
+//  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
+//  defaultToAppBundles = true
+//  track = "alpha"
+//}
 
 android {
   compileSdkVersion(COMPILE_SDK_VERSION)

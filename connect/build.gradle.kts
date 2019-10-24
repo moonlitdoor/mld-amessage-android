@@ -45,14 +45,15 @@ android {
     isEnabled = true
   }
 
-  sourceSets {
-    getByName(SOURCE_SET_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-    getByName(SOURCE_SET_ANDROID_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-  }
+//  TODO
+//  sourceSets {
+//    getByName(SOURCE_SET_TEST) {
+//      java.srcDir(SHARED_TEST_DIR)
+//    }
+//    getByName(SOURCE_SET_ANDROID_TEST) {
+//      java.srcDir(SHARED_TEST_DIR)
+//    }
+//  }
 
 }
 
@@ -64,6 +65,10 @@ dependencies {
   implementation(project(M.CONSTANTS))
   implementation(project(M.EXTENSIONS))
   implementation(project(M.RESOURCES))
+
+  implementation(D.Androidx.Ui.uiLayout)
+  implementation(D.Androidx.Ui.uiMaterial)
+  implementation(D.Androidx.Ui.uiTooling)
 
   implementation(D.Androidx.Camera.cameraCamera2)
   implementation(D.Androidx.Camera.cameraCore)

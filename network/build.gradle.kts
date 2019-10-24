@@ -39,14 +39,15 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
-  sourceSets {
-    getByName(SOURCE_SET_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-    getByName(SOURCE_SET_ANDROID_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-  }
+//  TODO
+//  sourceSets {
+//    getByName(SOURCE_SET_TEST) {
+//      java.srcDir(SHARED_TEST_DIR)
+//    }
+//    getByName(SOURCE_SET_ANDROID_TEST) {
+//      java.srcDir(SHARED_TEST_DIR)
+//    }
+//  }
 
 }
 
@@ -55,7 +56,6 @@ dependencies {
   implementation(project(M.ENCRYPTION))
 
   implementation(D.Com.JakeWharton.Timber.timber)
-  implementation(D.Com.Github.Ihsanbal.loggingInterceptor)
   implementation(D.Com.SquareUp.OkHttp3.okhttp)
   implementation(D.Com.SquareUp.OkHttp3.loggingInterceptor)
   implementation(D.Com.SquareUp.Retrofit2.converterGson)

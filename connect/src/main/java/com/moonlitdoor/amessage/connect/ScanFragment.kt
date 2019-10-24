@@ -13,6 +13,8 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import com.moonlitdoor.amessage.connect.databinding.FragmentScanBinding
 import com.moonlitdoor.amessage.domain.model.Profile
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.asExecutor
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
 
@@ -24,10 +26,10 @@ class ScanFragment : Fragment(), Preview.OnPreviewOutputUpdateListener, ImageAna
     FirebaseVisionBarcodeDetectorOptions.Builder().setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE).build()
   )
   private val preview = Preview(PreviewConfig.Builder().build()).also {
-    it.onPreviewOutputUpdateListener = this
+    it.setOnPreviewOutputUpdateListener(this)
   }
   private val analysis = ImageAnalysis(ImageAnalysisConfig.Builder().build()).also {
-    it.analyzer = this
+    it.setAnalyzer(Dispatchers.IO.asExecutor(), this)
   }
 
   override fun onAttach(context: Context) {

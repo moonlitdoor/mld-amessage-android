@@ -9,6 +9,7 @@ object Migrations {
   const val VERSION = VERSION_1
 
   val ALL = arrayOf<Migration>(
+
   )
 
   private class M(startVersion: Int, endVersion: Int, private val migration: (db: SupportSQLiteDatabase) -> Unit) : Migration(startVersion, endVersion) {

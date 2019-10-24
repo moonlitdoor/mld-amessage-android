@@ -1,5 +1,5 @@
 plugins {
-  id("com.gradle.build-scan") version "2.4.2"
+  id("com.gradle.build-scan") version "3.0"
 }
 
 buildScan {
@@ -13,6 +13,7 @@ buildscript {
   repositories {
     google()
     jcenter()
+    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
     maven(url = "https://plugins.gradle.org/m2/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
   }
@@ -20,10 +21,10 @@ buildscript {
     classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
     classpath(D.Com.Android.Tools.Build.gradle)
     classpath(D.Com.Github.BenManes.gradleVersionsPlugin)
-    classpath("com.google.firebase:firebase-appdistribution-gradle:1.0.0")
-    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
+    classpath(D.Com.Google.Firebase.firebaseAppdistributionGradle)
+//    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
     classpath(D.Com.Moonlitdoor.GitVersion.gitVersion)
-    classpath(kotlin("gradle-plugin", version = "1.3.50"))
+    classpath(kotlin("gradle-plugin", version = "1.3.60-eap-25"))
 //    classpath ("com.google.firebase:perf-plugin:1.2.1")
 //    classpath ("io.fabric.tools:gradle:1.29.0")
   }
@@ -34,6 +35,8 @@ allprojects {
   repositories {
     google()
     jcenter()
+    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
+    maven(url = "https://dl.bintray.com/kotlin/kotlin-dev/")
     maven(url = "https://jitpack.io")
   }
   ext {
@@ -48,9 +51,16 @@ allprojects {
       jvmTarget = "1.8"
     }
   }
+
   tasks.withType<Test> {
     testLogging.events("failed", "passed", "skipped")
+    reports.html.isEnabled = false
   }
+}
+
+tasks.register("testReport", TestReport::class) {
+  destinationDir = file("$buildDir/reports/allTests")
+  reportOn(allprojects.map { it.tasks.withType(Test::class) })
 }
 
 tasks.register("clean", Delete::class) {
@@ -58,4 +68,8 @@ tasks.register("clean", Delete::class) {
     rootProject.buildDir,
     "amessage/src/main/play/en-US"
   )
+}
+
+tasks.register("cleanGradleBuildCache", Delete::class) {
+  delete("${System.getProperty("user.home")}/.gradle/cache")
 }

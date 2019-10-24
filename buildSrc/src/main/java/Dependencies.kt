@@ -9,17 +9,17 @@ object D {
     }
 
     object Camera {
-      private const val version = "1.0.0-alpha05"
+      private const val version = "1.0.0-alpha06"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
     }
 
     object ConstraintLayout {
-      const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta2"
+      const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta3"
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.2.0-alpha04"
+      const val coreKtx = "androidx.core:core-ktx:1.2.0-beta01"
     }
 
     object Fragment {
@@ -33,7 +33,7 @@ object D {
     }
 
     object Lifecycle {
-      private const val version = "2.2.0-alpha05"
+      private const val version = "2.2.0-rc01"
       const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$version"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
@@ -41,7 +41,7 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.2.0-alpha03"
+      private const val version = "2.2.0-rc01"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
       const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
@@ -52,11 +52,11 @@ object D {
     }
 
     object Recyclerview {
-      const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0-beta04"
+      const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0-rc01"
     }
 
     object Room {
-      private const val version = "2.2.0-rc01"
+      private const val version = "2.2.1"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -84,12 +84,19 @@ object D {
       }
     }
 
+    object Ui {
+      private const val version = "0.1.0-dev02"
+      const val uiLayout = "androidx.ui:ui-layout:$version"
+      const val uiMaterial = "androidx.ui:ui-material:$version"
+      const val uiTooling = "androidx.ui:ui-tooling:$version"
+    }
+
     object Viewpager2 {
-      const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-beta04"
+      const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-rc01"
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-alpha01"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-alpha03"
     }
   }
 
@@ -97,7 +104,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:3.6.0-alpha12"
+          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha01"
         }
       }
     }
@@ -110,11 +117,7 @@ object D {
 
     object Github {
       object BenManes {
-        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.25.0"
-      }
-
-      object Ihsanbal {
-        const val loggingInterceptor = "com.github.ihsanbal:LoggingInterceptor:3.0.0"
+        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.27.0"
       }
 
       object Triplet {
@@ -127,25 +130,26 @@ object D {
     object Google {
       object Android {
         object Gms {
-          const val playServicesVision = "com.google.android.gms:play-services-vision:18.0.0"
+          const val playServicesVision = "com.google.android.gms:play-services-vision:19.0.0"
         }
 
         object Material {
-          const val material = "com.google.android.material:material:1.1.0-alpha10"
+          const val material = "com.google.android.material:material:1.2.0-alpha01"
         }
       }
 
       object Code {
         object Gson {
-          const val gson = "com.google.code.gson:gson:2.8.5"
+          const val gson = "com.google.code.gson:gson:2.8.6"
         }
       }
 
       object Firebase {
-        const val firebaseConfig = "com.google.firebase:firebase-config:19.0.2"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.1.0"
+        const val firebaseConfig = "com.google.firebase:firebase-config:19.0.3"
         const val firebaseCore = "com.google.firebase:firebase-core:17.2.0"
         const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.0.0"
-        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:23.0.0"
+        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.0"
       }
 
       object Truth {
@@ -175,7 +179,7 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.2.0"
+        private const val version = "4.2.2"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
@@ -202,7 +206,7 @@ object D {
   object Org {
     object Jetbrains {
       object Kotlin {
-        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
+        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60-eap-25"
       }
 
       object Kotlinx {
@@ -213,7 +217,7 @@ object D {
     }
 
     object Koin {
-      private const val version = "2.0.1"
+      private const val version = "2.1.0-alpha-1"
       const val koinAndroid = "org.koin:koin-android:$version"
       const val koinAndroidxScope = "org.koin:koin-androidx-scope:$version"
       const val koinAndroidxViewmodel = "org.koin:koin-androidx-viewmodel:$version"
@@ -221,7 +225,7 @@ object D {
     }
 
     object Robolectric {
-      const val robolectric = "org.robolectric:robolectric:4.3"
+      const val robolectric = "org.robolectric:robolectric:4.3.1"
     }
   }
 }

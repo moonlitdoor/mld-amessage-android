@@ -43,41 +43,13 @@ jobs:
         with:
           java-version: 1.8
       - name: Test
-        run: ./gradlew test
-      - name: Collect Reports
-        if: always()
-        run: |
-          mkdir ./build/tests
-          cp ./.github/misc/index.html ./build/tests
-          mv ./about/build/reports/tests ./build/tests/about
-          mv ./amessage/build/reports/tests ./build/tests/amessage
-          mv ./analytics/build/reports/tests ./build/tests/analytics
-          mv ./bindings/build/reports/tests ./build/tests/bindings
-          mv ./components/build/reports/tests ./build/tests/components
-          mv ./connect/build/reports/tests ./build/tests/connect
-          mv ./connection/build/reports/tests ./build/tests/connection
-          mv ./constants/build/reports/tests ./build/tests/constants
-          mv ./conversation/build/reports/tests ./build/tests/conversation
-          mv ./database/build/reports/tests ./build/tests/database
-          mv ./domain/build/reports/tests ./build/tests/domain
-          mv ./encryption/build/reports/tests ./build/tests/encryption
-          mv ./experiments/build/reports/tests ./build/tests/experiments
-          #          mv ./experiments/ui/build/reports/tests ./build/tests/experiments-ui
-          mv ./extensions/build/reports/tests ./build/tests/extensions
-          mv ./feedback/build/reports/tests ./build/tests/feedback
-          mv ./handle/build/reports/tests ./build/tests/handle
-          mv ./help/build/reports/tests ./build/tests/help
-          mv ./ids/build/reports/tests ./build/tests/ids
-          mv ./network/build/reports/tests ./build/tests/network
-          mv ./resources/build/reports/tests ./build/tests/resources
-          mv ./settings/build/reports/tests ./build/tests/settings
-          mv ./windows/build/reports/tests ./build/tests/windows
+        run: ./gradlew test testReport
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@master
         with:
           name: tests
-          path: build/tests
+          path: build/reports/allTests
   lint:
     name: Lint
     runs-on: ubuntu-latest
