@@ -1,11 +1,9 @@
 package com.moonlitdoor.amessage.connect
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.connect.databinding.FragmentPendingBinding
@@ -20,23 +18,23 @@ class PendingFragment : Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = FragmentPendingBinding.inflate(inflater, container, false).also {
     it.lifecycleOwner = this
-    it.viewModel = viewModel.also { vm ->
-      vm.selectedConnection.observe(this, Observer { conn ->
-        conn?.let { c ->
-          if (c.state == Connection.State.Invited) {
-            AlertDialog.Builder(activity)
-              .setTitle(getString(R.string.connect, c.handle))
-              .setPositiveButton(R.string.confirm) { _, _ ->
-                vm.confirmConnection(c)
-              }
-              .setNegativeButton(R.string.reject) { _, _ ->
-                vm.rejectConnection(c)
-              }
-              .show()
-          }
-        }
-      })
-    }
+//    it.viewModel = viewModel.also { vm ->
+//      vm.selectedConnection.observe(this, Observer { conn ->
+//        conn?.let { c ->
+//          if (c.state == Connection.State.Invited) {
+//            AlertDialog.Builder(activity)
+//              .setTitle(getString(R.string.connect, c.handle))
+//              .setPositiveButton(R.string.confirm) { _, _ ->
+//                vm.confirmConnection(c)
+//              }
+//              .setNegativeButton(R.string.reject) { _, _ ->
+//                vm.rejectConnection(c)
+//              }
+//              .show()
+//          }
+//        }
+//      })
+//    }
     it.recyclerView.adapter = Adapter(viewModel, LayoutInflater.from(activity))
   }.root
 
