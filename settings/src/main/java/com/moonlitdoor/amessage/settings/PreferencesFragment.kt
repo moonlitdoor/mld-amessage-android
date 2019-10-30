@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.preference.*
+import com.google.android.material.snackbar.Snackbar
 import com.moonlitdoor.amessage.constants.Constants
 import org.koin.android.ext.android.inject
 
@@ -16,7 +17,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     settings.registerOnSharedPreferenceChangeListener(this)
     findPreference<Preference>(Constants.Keys.WHATS_NEW_PREFERENCE)?.setOnPreferenceClickListener {
       PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(Constants.SharedPreferences.VERSION_CODE, 0).apply()
-      com.google.android.material.snackbar.Snackbar.make(view!!, R.string.whats_new_preference_toast, com.google.android.material.snackbar.Snackbar.LENGTH_SHORT).show()
+      Snackbar.make(view!!, R.string.whats_new_preference_toast, Snackbar.LENGTH_SHORT).show()
       true
     }
     findPreference<ListPreference>(Constants.Keys.THEME)?.summary = resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.THEME, null) ?: "0")]
@@ -24,7 +25,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     findPreference<Preference>(Constants.Keys.EXPERIMENTS)?.let {
       //TODO      it.isVisible = false
       it.setOnPreferenceClickListener { _ ->
-        //        findNavController(this).navigate(R.id.experiments)
+        findNavController(this).navigate(R.id.experiments)
         true
       }
     }

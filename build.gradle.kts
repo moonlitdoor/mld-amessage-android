@@ -25,6 +25,7 @@ buildscript {
 //    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
     classpath(D.Com.Moonlitdoor.GitVersion.gitVersion)
     classpath(kotlin("gradle-plugin", version = "1.3.60-eap-25"))
+    classpath("com.android.tools.build:gradle:4.0.0-alpha01")
 //    classpath ("com.google.firebase:perf-plugin:1.2.1")
 //    classpath ("io.fabric.tools:gradle:1.29.0")
   }

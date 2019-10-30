@@ -17,6 +17,7 @@ object Experiments : KoinComponent {
   val FEATURE_FEEDBACK = Experiment("exp_feature_feedback")
   val FEATURE_ABOUT = Experiment("exp_feature_about")
   val FEATURE_WHATS_NEW = Experiment("exp_feature_whats_new")
+  val USE_COMPOSE = Experiment("exp_use_compose")
 
   val experiments: List<Experiment<*>> = listOf(
     FEATURE_WINDOWS,
@@ -26,7 +27,8 @@ object Experiments : KoinComponent {
     FEATURE_ABOUT,
     FEATURE_WHATS_NEW,
     TEST3,
-    TEST2
+    TEST2,
+    USE_COMPOSE
   )
 
   fun init(): Unit = get<FirebaseRemoteConfigWrapper>().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))

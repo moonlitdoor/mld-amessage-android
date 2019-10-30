@@ -23,7 +23,9 @@ object D {
     }
 
     object Fragment {
-      const val fragmentTesting = "androidx.fragment:fragment-testing:1.2.0-alpha03"
+      private const val version = "1.2.0-rc01"
+      const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
+      const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
 
     object Legacy {

@@ -173,6 +173,7 @@ dependencies {
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Core.coreKtx)
+  implementation(D.Androidx.Fragment.fragmentKtx)
   implementation(D.Androidx.Lifecycle.lifecycleRuntimeKtx)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(D.Androidx.Lifecycle.lifecycleExtensions)

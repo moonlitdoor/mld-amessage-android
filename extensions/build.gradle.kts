@@ -54,6 +54,8 @@ dependencies {
 
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+  implementation(D.Androidx.Fragment.fragmentKtx)
+  implementation(D.Androidx.Ui.uiTooling)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)
