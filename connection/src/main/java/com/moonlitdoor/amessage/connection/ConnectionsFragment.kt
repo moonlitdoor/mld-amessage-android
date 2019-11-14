@@ -11,7 +11,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.ui.core.Text
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
 import com.moonlitdoor.amessage.connection.databinding.FragmentConnectionsBinding
 import com.moonlitdoor.amessage.connection.databinding.ListItemConnectionConnectedBinding
@@ -34,7 +33,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     when (Experiments.USE_COMPOSE.value) {
       Experiment.BOOLEAN.TRUE -> setComposable {
-        Text("Compose With Extension II")
+        Connections { findNavController().navigate(R.id.settings) }
       }
       Experiment.BOOLEAN.FALSE -> FragmentConnectionsBinding.inflate(inflater, container, false).also {
         it.lifecycleOwner = this

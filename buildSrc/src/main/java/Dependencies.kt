@@ -106,7 +106,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha01"
+          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha02"
         }
       }
     }
