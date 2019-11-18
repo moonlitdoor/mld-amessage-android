@@ -10,4 +10,7 @@ const val DEBUG = "debug"
 const val SHARED_TEST_DIR = "src/sharedTest/java"
 const val SOURCE_SET_TEST = "test"
 const val SOURCE_SET_ANDROID_TEST = "androidTest"
-
+const val MINIFY = false
+const val SHRINK = false
+const val PROGUARD_FILE = "proguard-rules.pro"
+const val PROGUARD_ANDROID_FILE = "proguard-android-optimize.txt"

@@ -32,7 +32,9 @@ android {
 
   buildTypes {
     getByName(RELEASE) {
-      isMinifyEnabled = false
+      isMinifyEnabled = MINIFY
+//      isShrinkResources = SHRINK
+      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
     }
   }
 

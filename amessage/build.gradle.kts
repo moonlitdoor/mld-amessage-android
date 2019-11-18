@@ -73,7 +73,9 @@ android {
   buildTypes {
     getByName(RELEASE) {
       signingConfig = signingConfigs.getByName(RELEASE)
-      isMinifyEnabled = false
+      isMinifyEnabled = MINIFY
+      isShrinkResources = SHRINK
+      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
       resValue("string", "app_name", "AMessage")
       buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID").toString())
@@ -90,7 +92,9 @@ android {
       matchingFallbacks = listOf(RELEASE)
       isDebuggable = false
       signingConfig = signingConfigs.getByName(RELEASE)
-      isMinifyEnabled = false
+      isMinifyEnabled = MINIFY
+      isShrinkResources = SHRINK
+      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
       applicationIdSuffix = ".beta"
       resValue("color", "launcher_background", "@color/colorMonsterAccent")
       resValue("string", "app_name", "AMessage Beta")

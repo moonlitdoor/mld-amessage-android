@@ -2,8 +2,10 @@ package com.moonlitdoor.amessage.analytics
 
 import android.content.Context
 import android.os.Bundle
+import androidx.annotation.Keep
 import androidx.annotation.VisibleForTesting
 
+@Keep
 object Analytics {
 
   @VisibleForTesting
