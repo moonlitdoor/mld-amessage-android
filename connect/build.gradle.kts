@@ -47,15 +47,14 @@ android {
     isEnabled = true
   }
 
-//  TODO
-//  sourceSets {
-//    getByName(SOURCE_SET_TEST) {
-//      java.srcDir(SHARED_TEST_DIR)
-//    }
-//    getByName(SOURCE_SET_ANDROID_TEST) {
-//      java.srcDir(SHARED_TEST_DIR)
-//    }
-//  }
+  sourceSets {
+    getByName(SOURCE_SET_TEST) {
+      java.srcDir(SHARED_TEST_DIR)
+    }
+    getByName(SOURCE_SET_ANDROID_TEST) {
+      java.srcDir(SHARED_TEST_DIR)
+    }
+  }
 
 }
 
