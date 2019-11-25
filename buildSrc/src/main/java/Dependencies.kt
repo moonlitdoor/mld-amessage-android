@@ -19,7 +19,7 @@ object D {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.2.0-beta02"
+      const val coreKtx = "androidx.core:core-ktx:1.2.0-rc01"
     }
 
     object Fragment {
@@ -54,11 +54,11 @@ object D {
     }
 
     object Recyclerview {
-      const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0-rc01"
+      const val recyclerview = "androidx.recyclerview:recyclerview:1.1.0"
     }
 
     object Room {
-      private const val version = "2.2.1"
+      private const val version = "2.2.2"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -94,11 +94,11 @@ object D {
     }
 
     object Viewpager2 {
-      const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0-rc01"
+      const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-alpha03"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-beta01"
     }
   }
 
