@@ -1,13 +1,3 @@
-plugins {
-  id("com.gradle.build-scan") version "3.0"
-}
-
-buildScan {
-  termsOfServiceUrl = "https://gradle.com/terms-of-service"
-  termsOfServiceAgree = "yes"
-  publishAlways()
-}
-
 buildscript {
 
   repositories {
@@ -15,7 +5,6 @@ buildscript {
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
     maven(url = "https://plugins.gradle.org/m2/")
-    maven("https://oss.sonatype.org/content/repositories/snapshots")
   }
   dependencies {
     classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
@@ -36,7 +25,6 @@ allprojects {
     google()
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
-//    maven(url = "https://dl.bintray.com/kotlin/kotlin-dev/")
     maven(url = "https://jitpack.io")
   }
   ext {

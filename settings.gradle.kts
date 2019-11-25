@@ -1,23 +1,35 @@
-include(M.ABOUT)
-include(M.AMESSAGE)
-include(M.ANALYTICS)
-include(M.BINDINGS)
-include(M.COMPONENTS)
-include(M.CONNECT)
-include(M.CONNECTION)
-include(M.CONSTANTS)
-include(M.CONVERSATION)
-include(M.DATABASE)
-include(M.DOMAIN)
-include(M.ENCRYPTION)
-include(M.EXPERIMENTS)
-include(M.EXPERIMENTS_UI)
-include(M.EXTENSIONS)
-include(M.FEEDBACK)
-include(M.HANDLE)
-include(M.HELP)
-include(M.IDS)
-include(M.NETWORK)
-include(M.RESOURCES)
-include(M.SETTINGS)
-include(M.WINDOWS)
+plugins {
+  id("com.gradle.enterprise") version "3.1"
+}
+
+gradleEnterprise {
+  buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+    publishAlways()
+  }
+}
+
+include(":about")
+include(":amessage")
+include(":analytics")
+include(":bindings")
+include(":components")
+include(":connect")
+include(":connection")
+include(":conversation")
+include(":constants")
+include(":database")
+include(":domain")
+include(":encryption")
+include(":experiments")
+include(":ui")
+include(":extensions")
+include(":feedback")
+include(":handle")
+include(":help")
+include(":ids")
+include(":network")
+include(":resources")
+include(":settings")
+include(":windows")
