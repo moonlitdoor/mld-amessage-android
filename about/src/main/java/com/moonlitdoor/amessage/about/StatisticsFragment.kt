@@ -25,7 +25,7 @@ class StatisticsFragment : TitledFragmentPagerAdapter.TitledFragment(), View.OnC
       Intent(
         Intent.ACTION_VIEW, Uri.parse(
           when (view.id) {
-            R.id.build -> "https://play.google.com/store/apps/details?id=${BuildConfig.LIBRARY_PACKAGE_NAME}"
+            R.id.build -> "https://play.google.com/store/apps/details?id=${BuildConfig.APPLICATION_ID}"
             R.id.privacy -> getString(R.string.about_privacy_policy_url)
             else -> ""
           }

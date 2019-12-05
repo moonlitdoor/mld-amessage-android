@@ -43,8 +43,8 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
-  dataBinding {
-    isEnabled = true
+  buildFeatures {
+    dataBinding = true
   }
 
   sourceSets {

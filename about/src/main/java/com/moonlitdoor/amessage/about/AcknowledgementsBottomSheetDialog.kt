@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import com.moonlitdoor.amessage.about.databinding.BottomSheetDialogAcknowledgementBinding
-import com.moonlitdoor.amessage.domain.model.Acknowledgement
 
 internal class AcknowledgementsBottomSheetDialog(context: Context, acknowledgement: Acknowledgement) : com.google.android.material.bottomsheet.BottomSheetDialog(context), View.OnScrollChangeListener {
 

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.moonlitdoor.amessage.about.databinding.FragmentAboutBinding
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
+import com.moonlitdoor.amessage.resources.R
 
 @Keep
 class AboutFragment : Fragment() {

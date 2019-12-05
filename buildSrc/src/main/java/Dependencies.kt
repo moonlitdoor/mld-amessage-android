@@ -44,9 +44,11 @@ object D {
 
     object Navigation {
       private const val version = "2.2.0-rc02"
-      const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
+      private const val snapshot = "2.3.0-SNAPSHOT"
+      const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$snapshot"
+      const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$snapshot"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
-      const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
+      const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$snapshot"
     }
 
     object Preference {
@@ -106,7 +108,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha04"
+          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha05"
         }
       }
     }

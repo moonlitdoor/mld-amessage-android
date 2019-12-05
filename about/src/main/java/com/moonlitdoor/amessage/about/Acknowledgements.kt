@@ -1,3 +1,3 @@
-package com.moonlitdoor.amessage.domain.model
+package com.moonlitdoor.amessage.about
 
 class Acknowledgements : Container<Acknowledgement>()

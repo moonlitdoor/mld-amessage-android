@@ -10,7 +10,6 @@ import com.moonlitdoor.amessage.about.databinding.FragmentAcknowledgementsBindin
 import com.moonlitdoor.amessage.about.databinding.ListItemAcknowledgementBinding
 import com.moonlitdoor.amessage.components.ItemDecorationDivider
 import com.moonlitdoor.amessage.components.TitledFragmentPagerAdapter
-import com.moonlitdoor.amessage.domain.model.Acknowledgement
 
 class AcknowledgementsFragment : TitledFragmentPagerAdapter.TitledFragment() {
 

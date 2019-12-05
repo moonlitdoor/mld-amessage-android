@@ -26,6 +26,7 @@ allprojects {
     jcenter()
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
     maven(url = "https://jitpack.io")
+    maven(url = "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/")
   }
   ext {
     set("smokeTests", if (project.hasProperty("smokeTests")) project.property("smokeTests") else false)

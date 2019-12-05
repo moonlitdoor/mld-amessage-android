@@ -26,6 +26,8 @@ play {
 android {
   compileSdkVersion(COMPILE_SDK_VERSION)
 
+  dynamicFeatures = mutableSetOf(M.ABOUT)
+
   lintOptions {
     isWarningsAsErrors = true
     isAbortOnError = true
@@ -133,8 +135,8 @@ android {
   packagingOptions {
     exclude("META-INF/proguard/androidx-annotations.pro")
   }
-  dataBinding {
-    isEnabled = true
+  buildFeatures {
+    dataBinding = true
   }
   compileOptions {
     sourceCompatibility = JavaVersion.VERSION_1_8
@@ -156,7 +158,6 @@ dependencies {
 
   kapt(D.Androidx.Room.roomCompiler)
 
-  implementation(project(M.ABOUT))
   implementation(project(M.ANALYTICS))
   implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))
@@ -182,6 +183,7 @@ dependencies {
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(D.Androidx.Lifecycle.lifecycleExtensions)
   implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
+  implementation(D.Androidx.Navigation.navigationDynamicFeatureFragment)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
   implementation(D.Androidx.Work.workRuntimeKtx)

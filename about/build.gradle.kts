@@ -1,5 +1,6 @@
 plugins {
-  id("com.android.library")
+  id("com.moonlitdoor.git-version")
+  id("com.android.dynamic-feature")
   kotlin("android")
   kotlin("kapt")
 }
@@ -26,6 +27,9 @@ android {
   defaultConfig {
     minSdkVersion(MIN_SDK_VERSION)
     targetSdkVersion(TARGET_SDK_VERSION)
+    versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
+    versionName = gitVersion
+
     testInstrumentationRunner = TEST_RUNNER
     testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
   }
@@ -34,7 +38,7 @@ android {
     getByName(RELEASE) {
       isMinifyEnabled = MINIFY
 //      isShrinkResources = SHRINK
-      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
+      proguardFiles(PROGUARD_FILE)
     }
   }
 
@@ -43,8 +47,8 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
-  dataBinding {
-    isEnabled = true
+  buildFeatures {
+    dataBinding = true
   }
 
   sourceSets {
@@ -60,14 +64,16 @@ android {
 
 dependencies {
 
-  implementation(project(M.BINDINGS))
+  implementation(project(M.AMESSAGE))
+
+//  implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))
-  implementation(project(M.DOMAIN))
+//  implementation(project(M.DOMAIN))
   implementation(project(M.EXTENSIONS))
-  implementation(project(M.HANDLE))
-  implementation(project(M.IDS))
+//  implementation(project(M.HANDLE))
+//  implementation(project(M.IDS))
   implementation(project(M.RESOURCES))
-  implementation(project(M.WINDOWS))
+//  implementation(project(M.WINDOWS))
 
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Koin.koinAndroid)

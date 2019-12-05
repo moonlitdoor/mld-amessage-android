@@ -9,7 +9,7 @@
 
     <variable
       name="acknowledgement"
-      type="com.moonlitdoor.amessage.domain.model.Acknowledgement" />
+      type="com.moonlitdoor.amessage.about.Acknowledgement" />
 
   </data>
 

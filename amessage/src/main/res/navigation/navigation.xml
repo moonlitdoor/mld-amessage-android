@@ -49,6 +49,7 @@
     android:name="com.moonlitdoor.amessage.feedback.FeedbackFragment"
     tools:layout="@layout/fragment_feedback" />
   <fragment
+    app:moduleName="about"
     android:id="@+id/about_fragment"
     android:name="com.moonlitdoor.amessage.about.AboutFragment"
     tools:layout="@layout/fragment_about" />
