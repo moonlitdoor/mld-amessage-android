@@ -15,7 +15,7 @@ object Experiments : KoinComponent {
   val FEATURE_SETTINGS = Experiment("exp_feature_settings", Experiment.BOOLEAN.TRUE)
   val FEATURE_HELP = Experiment("exp_feature_help")
   val FEATURE_FEEDBACK = Experiment("exp_feature_feedback")
-  val FEATURE_ABOUT = Experiment("exp_feature_about", Experiment.BOOLEAN.TRUE)
+  val FEATURE_ABOUT = Experiment("exp_feature_about")
   val FEATURE_WHATS_NEW = Experiment("exp_feature_whats_new")
   val USE_COMPOSE = Experiment("exp_use_compose")
 
