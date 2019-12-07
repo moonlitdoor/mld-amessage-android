@@ -1,5 +1,4 @@
 plugins {
-  id("com.moonlitdoor.git-version")
   id("com.android.dynamic-feature")
   kotlin("android")
   kotlin("kapt")
@@ -27,8 +26,6 @@ android {
   defaultConfig {
     minSdkVersion(MIN_SDK_VERSION)
     targetSdkVersion(TARGET_SDK_VERSION)
-    versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
-    versionName = gitVersion
 
     testInstrumentationRunner = TEST_RUNNER
     testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
@@ -36,8 +33,6 @@ android {
 
   buildTypes {
     getByName(RELEASE) {
-      isMinifyEnabled = MINIFY
-//      isShrinkResources = SHRINK
       proguardFiles(PROGUARD_FILE)
     }
   }
