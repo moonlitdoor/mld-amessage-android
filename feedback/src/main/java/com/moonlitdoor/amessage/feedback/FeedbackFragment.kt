@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.moonlitdoor.amessage.feedback.databinding.FragmentFeedbackBinding
+import com.moonlitdoor.amessage.resources.R
 
 class FeedbackFragment : androidx.fragment.app.Fragment() {
 

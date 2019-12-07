@@ -41,10 +41,12 @@
     android:name="com.moonlitdoor.amessage.windows.WindowsFragment"
     tools:layout="@layout/fragment_windows" />
   <fragment
+    app:moduleName="help"
     android:id="@+id/help_fragment"
     android:name="com.moonlitdoor.amessage.help.HelpFragment"
     tools:layout="@layout/fragment_help" />
   <fragment
+    app:moduleName="feedback"
     android:id="@+id/feedback_fragment"
     android:name="com.moonlitdoor.amessage.feedback.FeedbackFragment"
     tools:layout="@layout/fragment_feedback" />

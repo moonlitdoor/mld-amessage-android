@@ -26,7 +26,6 @@ android {
   defaultConfig {
     minSdkVersion(MIN_SDK_VERSION)
     targetSdkVersion(TARGET_SDK_VERSION)
-
     testInstrumentationRunner = TEST_RUNNER
     testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
   }
@@ -61,14 +60,9 @@ dependencies {
 
   implementation(project(M.AMESSAGE))
 
-//  implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))
-//  implementation(project(M.DOMAIN))
   implementation(project(M.EXTENSIONS))
-//  implementation(project(M.HANDLE))
-//  implementation(project(M.IDS))
   implementation(project(M.RESOURCES))
-//  implementation(project(M.WINDOWS))
 
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Koin.koinAndroid)

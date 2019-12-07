@@ -26,7 +26,7 @@ play {
 android {
   compileSdkVersion(COMPILE_SDK_VERSION)
 
-  dynamicFeatures = mutableSetOf(M.ABOUT)
+  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP)
 
   lintOptions {
     isWarningsAsErrors = true
@@ -168,9 +168,7 @@ dependencies {
   implementation(project(M.DOMAIN))
   implementation(project(M.EXPERIMENTS))
   implementation(project(M.EXTENSIONS))
-  implementation(project(M.FEEDBACK))
   implementation(project(M.HANDLE))
-  implementation(project(M.HELP))
   implementation(project(M.IDS))
   implementation(project(M.SETTINGS))
   implementation(project(M.WINDOWS))
