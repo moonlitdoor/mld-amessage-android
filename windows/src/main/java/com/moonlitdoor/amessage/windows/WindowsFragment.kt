@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.moonlitdoor.amessage.resources.R
 import com.moonlitdoor.amessage.windows.databinding.FragmentWindowsBinding
 
 class WindowsFragment : androidx.fragment.app.Fragment() {

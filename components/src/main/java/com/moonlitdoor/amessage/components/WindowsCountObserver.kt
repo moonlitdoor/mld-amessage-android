@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.windows
+package com.moonlitdoor.amessage.components
 
 import android.view.MenuItem
 import androidx.lifecycle.LifecycleOwner

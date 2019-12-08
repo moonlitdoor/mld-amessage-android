@@ -68,7 +68,6 @@ dependencies {
   implementation(project(M.HANDLE))
   implementation(project(M.IDS))
   implementation(project(M.RESOURCES))
-  implementation(project(M.WINDOWS))
 
   implementation(D.Androidx.Ui.uiLayout)
   implementation(D.Androidx.Ui.uiMaterial)

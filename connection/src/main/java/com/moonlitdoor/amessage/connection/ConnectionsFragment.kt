@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
+import com.moonlitdoor.amessage.components.WindowsCountObserver
 import com.moonlitdoor.amessage.connection.databinding.FragmentConnectionsBinding
 import com.moonlitdoor.amessage.connection.databinding.ListItemConnectionConnectedBinding
 import com.moonlitdoor.amessage.domain.model.Connection
@@ -20,7 +21,6 @@ import com.moonlitdoor.amessage.experiments.Experiments
 import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.extensions.setComposable
-import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.moonlitdoor.amessage.ids.R as N
 

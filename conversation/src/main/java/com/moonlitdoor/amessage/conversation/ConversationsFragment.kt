@@ -11,13 +11,13 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
+import com.moonlitdoor.amessage.components.WindowsCountObserver
 import com.moonlitdoor.amessage.components.databinding.NavigationHeaderBinding
 import com.moonlitdoor.amessage.conversation.databinding.FragmentConversationsBinding
 import com.moonlitdoor.amessage.conversation.databinding.ListItemConversationBinding
 import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
-import com.moonlitdoor.amessage.windows.WindowsCountObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ConversationsFragment : androidx.fragment.app.Fragment() {

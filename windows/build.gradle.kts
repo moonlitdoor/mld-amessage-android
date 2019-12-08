@@ -1,5 +1,5 @@
 plugins {
-  id("com.android.library")
+  id("com.android.dynamic-feature")
   kotlin("android")
   kotlin("kapt")
 }
@@ -32,9 +32,7 @@ android {
 
   buildTypes {
     getByName(RELEASE) {
-      isMinifyEnabled = MINIFY
-//      isShrinkResources = SHRINK
-      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
+      proguardFiles(PROGUARD_FILE)
     }
   }
 
@@ -60,6 +58,8 @@ android {
 
 dependencies {
 
+  implementation(project(M.AMESSAGE))
+
   implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))
   implementation(project(M.DOMAIN))
@@ -83,4 +83,5 @@ dependencies {
   androidTestImplementation(D.Org.Koin.koinTest)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+
 }

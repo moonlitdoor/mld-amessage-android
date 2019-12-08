@@ -37,6 +37,7 @@
     android:name="com.moonlitdoor.amessage.conversation.create.ConversationCreateFragment"
     tools:layout="@layout/fragment_conversation_create" />
   <fragment
+    app:moduleName="windows"
     android:id="@+id/windows_fragment"
     android:name="com.moonlitdoor.amessage.windows.WindowsFragment"
     tools:layout="@layout/fragment_windows" />

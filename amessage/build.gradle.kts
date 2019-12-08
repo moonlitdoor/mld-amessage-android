@@ -26,7 +26,7 @@ play {
 android {
   compileSdkVersion(COMPILE_SDK_VERSION)
 
-  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP)
+  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lintOptions {
     isWarningsAsErrors = true
@@ -171,7 +171,6 @@ dependencies {
   implementation(project(M.HANDLE))
   implementation(project(M.IDS))
   implementation(project(M.SETTINGS))
-  implementation(project(M.WINDOWS))
 
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
