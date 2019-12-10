@@ -48,7 +48,7 @@ class ConnectionRepository(private val connectionDao: ConnectionDao, private val
   suspend fun confirm(connection: Connection) {
     withContext(Dispatchers.IO) {
       connectionDao.update(ConnectionMapper.fromConnected(connection))
-      val response = client.send(ConnectionConfirmationPayload(), ConnectionMapper.toJson(connection))
+      /*val response =*/ client.send(ConnectionConfirmationPayload(), ConnectionMapper.toJson(connection))
 //    Timber.d(response.isSuccessful.toString())
 //    Timber.d(response.message())
     }

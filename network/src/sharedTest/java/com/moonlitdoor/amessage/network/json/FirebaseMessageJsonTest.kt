@@ -7,9 +7,7 @@ class FirebaseMessageJsonTest {
 
   @Test
   fun test() {
-    val payload = ConnectionInvitePayload("handle", "token", UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID())
-//    println(payload)
-
+    ConnectionInvitePayload("handle", "token", UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID())
   }
 
 }

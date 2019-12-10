@@ -26,7 +26,7 @@ class FirebaseMessageTest {
     val connection = ConnectionJson(0, UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID(), "token", "handle")
     val message = FirebaseMessageJson(payload, connection)
     val json = gson.toJson(message)
-    val messageJson = gson.fromJson(json, FirebaseMessageJson::class.java)
+    gson.fromJson(json, FirebaseMessageJson::class.java)
 
   }
 

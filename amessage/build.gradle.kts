@@ -156,7 +156,7 @@ android {
 
 dependencies {
 
-  kapt(D.Androidx.Room.roomCompiler)
+  //  kapt(D.Androidx.Room.roomCompiler)
 
   implementation(project(M.ANALYTICS))
   implementation(project(M.BINDINGS))

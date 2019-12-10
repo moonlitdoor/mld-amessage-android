@@ -56,6 +56,7 @@ android {
 dependencies {
 
   implementation(project(M.RESOURCES))
+  implementation(project(M.EXTENSIONS))
 
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Koin.koinAndroid)

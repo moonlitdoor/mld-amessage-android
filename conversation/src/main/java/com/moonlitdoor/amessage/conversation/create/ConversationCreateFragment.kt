@@ -24,7 +24,7 @@ class ConversationCreateFragment : androidx.fragment.app.Fragment(), StepperList
       binding = it
       setupWithNavController(it.toolbar, findNavController(this))
       activity?.let { act ->
-        fragmentManager?.let { fm ->
+        parentFragmentManager.let { fm ->
           it.stepperLayout.also { stepper ->
             stepper.setListener(this)
             stepper.adapter = StepperAdapter(fm, act, ConversationParticipantsFragment(), ConversationTitleFragment(), ConversationTopicFragment(), ConversationMessageFragment())

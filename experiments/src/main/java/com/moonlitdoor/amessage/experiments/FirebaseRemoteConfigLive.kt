@@ -2,6 +2,7 @@ package com.moonlitdoor.amessage.experiments
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.moonlitdoor.amessage.extensions.ignore
 
 class FirebaseRemoteConfigLive private constructor() : FirebaseRemoteConfigWrapper {
 
@@ -13,7 +14,7 @@ class FirebaseRemoteConfigLive private constructor() : FirebaseRemoteConfigWrapp
     }
   }
 
-  override fun setDefaults(defaults: Map<String, Any>) = config.setDefaults(defaults)
+  override fun setDefaults(defaults: Map<String, Any>) = config.setDefaultsAsync(defaults).ignore()
 
   override fun getString(key: String): String = config.getString(key)
 

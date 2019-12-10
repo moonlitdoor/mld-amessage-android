@@ -1,6 +1,5 @@
 package com.moonlitdoor.amessage.experiments.ui
 
-import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.After
@@ -38,7 +37,7 @@ class ExperimentsFragmentTest {
 //    val appContext = InstrumentationRegistry.getInstrumentation().targetContext
 //    assertEquals("com.moonlitdoor.amessage.experiments.ui.test", appContext.packageName)
 
-    val scenario = launchFragmentInContainer<ExperimentsFragment>()
+//    val scenario = launchFragmentInContainer<ExperimentsFragment>()
 //    onView(withId(R.id.text)).check(matches(withText("Hello World!")))
 
   }

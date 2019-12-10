@@ -2,7 +2,10 @@ package com.moonlitdoor.amessage.components
 
 import android.content.Context
 import android.preference.PreferenceManager
-import android.view.*
+import android.view.LayoutInflater
+import android.view.MenuItem
+import android.view.ViewGroup
+import androidx.core.view.GravityCompat
 import com.moonlitdoor.amessage.components.databinding.BottomSheetDialogWhatsNewBinding
 import com.moonlitdoor.amessage.components.databinding.ListItemWhatsNewBinding
 import com.moonlitdoor.amessage.constants.Constants
@@ -24,24 +27,24 @@ class WhatsNewBottomSheetDialog(context: Context) : com.google.android.material.
     }
     this.binding.recyclerView.adapter = WhatsNewAdapter(data)
 
-    val bottomSheetBehavior = object : com.google.android.material.bottomsheet.BottomSheetBehavior<View>() {
-      override fun onInterceptTouchEvent(parent: androidx.coordinatorlayout.widget.CoordinatorLayout, child: View, event: MotionEvent): Boolean {
-        return super.onInterceptTouchEvent(parent, child, event)
-      }
-    }
+//    val bottomSheetBehavior = object : com.google.android.material.bottomsheet.BottomSheetBehavior<View>() {
+//      override fun onInterceptTouchEvent(parent: androidx.coordinatorlayout.widget.CoordinatorLayout, child: View, event: MotionEvent): Boolean {
+//        return super.onInterceptTouchEvent(parent, child, event)
+//      }
+//    }
+//
+//    bottomSheetBehavior.setBottomSheetCallback(object : com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback() {
+//      override fun onStateChanged(bottomSheet: View, newState: Int) {
+////        when (newState) {
+////          com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN -> {
+////            dismiss()
+////            return
+////          }
+////        }
+//      }
 
-    bottomSheetBehavior.setBottomSheetCallback(object : com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback() {
-      override fun onStateChanged(bottomSheet: View, newState: Int) {
-//        when (newState) {
-//          com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN -> {
-//            dismiss()
-//            return
-//          }
-//        }
-      }
-
-      override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-    })
+//      override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+//    })
 
   }
 
@@ -83,7 +86,7 @@ class WhatsNewBottomSheetDialog(context: Context) : com.google.android.material.
 
     fun setMenuItemListener(context: Context?, drawerLayout: androidx.drawerlayout.widget.DrawerLayout, menuItem: MenuItem?) {
       menuItem?.setOnMenuItemClickListener { _ ->
-        //        drawerLayout.closeDrawer(Gravity.START)
+        drawerLayout.closeDrawer(GravityCompat.START)
         forceShow(context)
         true
       }

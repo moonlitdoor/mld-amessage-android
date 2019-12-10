@@ -2,7 +2,6 @@ package com.moonlitdoor.amessage.about
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import com.moonlitdoor.amessage.about.databinding.BottomSheetDialogAcknowledgementBinding
 
@@ -24,24 +23,24 @@ internal class AcknowledgementsBottomSheetDialog(context: Context, acknowledgeme
       this.binding.textView.text = context.getString(R.string.error_no_help)
     }
 
-    val bottomSheetBehavior = object : com.google.android.material.bottomsheet.BottomSheetBehavior<View>() {
-      override fun onInterceptTouchEvent(parent: androidx.coordinatorlayout.widget.CoordinatorLayout, child: View, event: MotionEvent): Boolean {
-        return super.onInterceptTouchEvent(parent, child, event)
-      }
-    }
+//    val bottomSheetBehavior = object : com.google.android.material.bottomsheet.BottomSheetBehavior<View>() {
+//      override fun onInterceptTouchEvent(parent: androidx.coordinatorlayout.widget.CoordinatorLayout, child: View, event: MotionEvent): Boolean {
+//        return super.onInterceptTouchEvent(parent, child, event)
+//      }
+//    }
 
-    bottomSheetBehavior.setBottomSheetCallback(object : com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback() {
-      override fun onStateChanged(bottomSheet: View, newState: Int) {
+//    bottomSheetBehavior.setBottomSheetCallback(object : com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback() {
+//      override fun onStateChanged(bottomSheet: View, newState: Int) {
 //        when (newState) {
 //          com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HIDDEN -> {
 //            dismiss()
 //            return
 //          }
 //        }
-      }
+//      }
 
-      override fun onSlide(bottomSheet: View, slideOffset: Float) {}
-    })
+//      override fun onSlide(bottomSheet: View, slideOffset: Float) {}
+//    })
   }
 
   override fun onScrollChange(view: View, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {

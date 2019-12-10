@@ -12,10 +12,10 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentSettingsBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this
-      it.toolbar.setNavigationOnClickListener { _ -> findNavController(this).navigateUp() }
+      it.toolbar.setNavigationOnClickListener { findNavController(this).navigateUp() }
       SettingsFragmentArgs.fromBundle(arguments!!).apply {
         it.toolbar.title = if (title == "null") getString(R.string.title_activity_settings) else title
-        fragmentManager?.beginTransaction()?.add(R.id.settings_container, PreferencesFragment.create(this))?.commit()
+        parentFragmentManager.beginTransaction().add(R.id.settings_container, PreferencesFragment.create(this)).commit()
       }
     }.root
 
