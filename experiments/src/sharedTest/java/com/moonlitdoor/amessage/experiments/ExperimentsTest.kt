@@ -12,7 +12,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.test.KoinTest
-import org.koin.test.mock.declare
+import org.koin.test.mock.declareModule
 
 @RunWith(AndroidJUnit4::class)
 class ExperimentsTest : KoinTest {
@@ -23,7 +23,7 @@ class ExperimentsTest : KoinTest {
       androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
       modules(experimentsDi + testExperimentsDi)
     }
-    declare {
+    declareModule {
       single {
         FirebaseRemoteConfigFake(
           defaultsHandler = {

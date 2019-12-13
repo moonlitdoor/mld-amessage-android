@@ -5,7 +5,7 @@ object D {
     }
 
     object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.1.0"
+      const val appcompat = "androidx.appcompat:appcompat:1.2.0-alpha01"
     }
 
     object Camera {
@@ -23,7 +23,7 @@ object D {
     }
 
     object Fragment {
-      private const val version = "1.2.0-rc02"
+      private const val version = "1.2.0-rc03"
       const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
@@ -35,7 +35,7 @@ object D {
     }
 
     object Lifecycle {
-      private const val version = "2.2.0-rc02"
+      private const val version = "2.2.0-rc03"
       const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$version"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
@@ -43,7 +43,7 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.2.0-rc02"
+      private const val version = "2.2.0-rc03"
       private const val snapshot = "2.3.0-SNAPSHOT"
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$snapshot"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$snapshot"
@@ -68,13 +68,14 @@ object D {
     }
 
     object Test {
-      const val core = "androidx.test:core:1.2.1-alpha02"
-      const val orchestrator = "androidx.test:orchestrator:1.3.0-alpha02"
-      const val rules = "androidx.test:rules:1.3.0-alpha02"
-      const val runner = "androidx.test:runner:1.3.0-alpha02"
+      private const val version = "1.3.0-alpha03"
+      const val core = "androidx.test:core:$version"
+      const val orchestrator = "androidx.test:orchestrator:$version"
+      const val rules = "androidx.test:rules:$version"
+      const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.3.0-alpha02"
+        private const val version = "3.3.0-alpha03"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -84,15 +85,27 @@ object D {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha02"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha03"
       }
     }
 
     object Ui {
-      private const val version = "0.1.0-dev02"
+      private const val version = "0.1.0-dev03"
+      const val uiAndroidText = "androidx.ui:ui-android-text:$version"
+      const val uiAnimation = "androidx.ui:ui-animation:$version"
+      const val uiAnimationCore = "androidx.ui:ui-animation-core:$version"
+      const val uiCore = "androidx.ui:ui-core:$version"
+
+      const val uiFoundation = "androidx.ui:ui-foundation:$version"
+      const val uiFramework = "androidx.ui:ui-framework:$version"
       const val uiLayout = "androidx.ui:ui-layout:$version"
       const val uiMaterial = "androidx.ui:ui-material:$version"
+
+      const val uiPlatform = "androidx.ui:ui-platform:$version"
+      const val uiTest = "androidx.ui:ui-test:$version"
+      const val uiText = "androidx.ui:ui-text:$version"
       const val uiTooling = "androidx.ui:ui-tooling:$version"
+      const val uiVector = "androidx.ui:ui-vector:$version"
     }
 
     object Viewpager2 {
@@ -108,7 +121,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha05"
+          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha06"
         }
       }
     }
@@ -149,10 +162,10 @@ object D {
       }
 
       object Firebase {
-        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.2.0"
-        const val firebaseConfig = "com.google.firebase:firebase-config:19.0.3"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.0"
+        const val firebaseConfig = "com.google.firebase:firebase-config:19.0.4"
         const val firebaseCore = "com.google.firebase:firebase-core:17.2.1"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.0.1"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.0"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.1"
       }
 
@@ -190,7 +203,7 @@ object D {
       }
 
       object Retrofit2 {
-        private const val version = "2.6.2"
+        private const val version = "2.7.0"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
       }
@@ -204,24 +217,26 @@ object D {
   }
 
   object Junit {
-    const val junit = "junit:junit:4.13-rc-1"
+    const val junit = "junit:junit:4.13-rc-2"
   }
 
   object Org {
     object Jetbrains {
       object Kotlin {
-        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.60"
+        private const val version = "1.3.61"
+        const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
+        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
       }
 
       object Kotlinx {
-        private const val version = "1.3.2-1.3.60"
+        private const val version = "1.3.3"
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
       }
     }
 
     object Koin {
-      private const val version = "2.1.0-alpha-3"
+      private const val version = "2.1.0-alpha-7"
       const val koinAndroid = "org.koin:koin-android:$version"
       const val koinAndroidxScope = "org.koin:koin-androidx-scope:$version"
       const val koinAndroidxViewmodel = "org.koin:koin-androidx-viewmodel:$version"
