@@ -1,7 +1,6 @@
 plugins {
   id("com.android.dynamic-feature")
   kotlin("android")
-  kotlin("kapt")
 }
 
 android {
@@ -41,9 +40,12 @@ android {
     targetCompatibility = JavaVersion.VERSION_1_8
   }
 
-  buildFeatures {
-    dataBinding = true
+  dataBinding {
+    isEnabled = true
   }
+//  buildFeatures {
+//    dataBinding = true
+//  }
 
   sourceSets {
     getByName(SOURCE_SET_TEST) {

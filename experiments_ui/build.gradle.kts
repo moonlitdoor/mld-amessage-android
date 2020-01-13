@@ -1,7 +1,6 @@
 plugins {
   id("com.android.library")
   kotlin("android")
-  kotlin("kapt")
 }
 
 android {
@@ -44,7 +43,12 @@ android {
   }
 
   buildFeatures {
+    compose = true
     dataBinding = true
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
   }
 
   sourceSets {

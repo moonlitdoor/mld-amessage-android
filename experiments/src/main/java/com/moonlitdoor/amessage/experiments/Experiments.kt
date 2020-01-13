@@ -9,26 +9,36 @@ object Experiments : KoinComponent {
     A, B, C
   }
 
-  val TEST3 = Experiment("exp_test_3", ABC::class.java, ABC.A)
-  val TEST2 = Experiment("exp_test_2")
-  val FEATURE_WINDOWS = Experiment("exp_feature_windows")
-  val FEATURE_SETTINGS = Experiment("exp_feature_settings", Experiment.BOOLEAN.TRUE)
-  val FEATURE_HELP = Experiment("exp_feature_help")
-  val FEATURE_FEEDBACK = Experiment("exp_feature_feedback")
-  val FEATURE_ABOUT = Experiment("exp_feature_about")
-  val FEATURE_WHATS_NEW = Experiment("exp_feature_whats_new")
-  val USE_COMPOSE = Experiment("exp_use_compose")
+  val TEST1 = Experiment(key = "exp_test_1")
+  val TEST2 = Experiment(key = "exp_test_2")
+  val TEST3 = Experiment(key = "exp_test_3", c = ABC::class.java, defaultValue = ABC.A)
+  val TEST4 = Experiment(key = "exp_test_4", title = "This is a title")
+  val TEST5 = Experiment(key = "exp_test_5", description = "this is a description")
+  val TEST6 = Experiment(key = "exp_test_6", title = "This is a title", description = "this is a description")
+  val FEATURE_WINDOWS = Experiment(key = "exp_feature_windows")
+  val FEATURE_SETTINGS = Experiment(key = "exp_feature_settings", defaultValue = Experiment.BOOLEAN.TRUE)
+  val FEATURE_HELP = Experiment(key = "exp_feature_help")
+  val FEATURE_FEEDBACK = Experiment(key = "exp_feature_feedback")
+  val FEATURE_ABOUT = Experiment(key = "exp_feature_about")
+  val FEATURE_WHATS_NEW = Experiment(key = "exp_feature_whats_new")
+  val USE_COMPOSE = Experiment(key = "exp_use_compose")
+  val USE_COMPOSE_EXPERIMENTS = Experiment(key = "exp_use_compose_experiments", defaultValue = Experiment.BOOLEAN.FALSE)
 
   val experiments: List<Experiment<*>> = listOf(
+    USE_COMPOSE_EXPERIMENTS,
+    USE_COMPOSE,
     FEATURE_WINDOWS,
     FEATURE_SETTINGS,
     FEATURE_HELP,
     FEATURE_FEEDBACK,
     FEATURE_ABOUT,
     FEATURE_WHATS_NEW,
-    TEST3,
+    TEST1,
     TEST2,
-    USE_COMPOSE
+    TEST3,
+    TEST4,
+    TEST5,
+    TEST6
   )
 
   fun init(): Unit = get<FirebaseRemoteConfigWrapper>().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))

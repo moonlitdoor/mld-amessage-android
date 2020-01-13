@@ -2,10 +2,9 @@ plugins {
   id("com.moonlitdoor.git-version")
   id("com.android.application")
   kotlin("android")
-  kotlin("kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
-  id("com.github.triplet.play") version "2.6.1"
+  id("com.github.triplet.play")
 //  id("com.google.firebase.firebase-perf")
 //  id("io.fabric")
 }
@@ -136,6 +135,7 @@ android {
     exclude("META-INF/proguard/androidx-annotations.pro")
   }
   buildFeatures {
+    compose = true
     dataBinding = true
   }
   compileOptions {
@@ -208,7 +208,7 @@ dependencies {
   testImplementation(D.Androidx.Test.runner)
   testImplementation(D.Androidx.Test.rules)
   testImplementation(D.Org.Robolectric.robolectric)
-  testImplementation(D.Androidx.Room.roomTesting)
+//  testImplementation(D.Androidx.Room.roomTesting)
   testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
   testImplementation(D.Androidx.Test.Espresso.espressoCore)
   testImplementation(D.Org.Koin.koinTest)

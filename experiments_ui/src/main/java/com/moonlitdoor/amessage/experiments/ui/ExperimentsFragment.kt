@@ -28,9 +28,9 @@ class ExperimentsFragment : Fragment() {
   private val adapter by lazy { Adapter(LayoutInflater.from(activity), this) }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    when (Experiments.USE_COMPOSE.value) {
+    when (Experiments.USE_COMPOSE_EXPERIMENTS.value) {
       Experiment.BOOLEAN.TRUE -> setComposable {
-
+        ExperimentsList(Experiments.experiments)
       }
       Experiment.BOOLEAN.FALSE ->
         FragmentExperimentsBinding.inflate(inflater, container, false).also {
