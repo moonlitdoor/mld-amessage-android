@@ -16,11 +16,8 @@ import com.moonlitdoor.amessage.components.WindowsCountObserver
 import com.moonlitdoor.amessage.connection.databinding.FragmentConnectionsBinding
 import com.moonlitdoor.amessage.connection.databinding.ListItemConnectionConnectedBinding
 import com.moonlitdoor.amessage.domain.model.Connection
-import com.moonlitdoor.amessage.experiments.Experiment
-import com.moonlitdoor.amessage.experiments.Experiments
 import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
-import com.moonlitdoor.amessage.extensions.setComposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import com.moonlitdoor.amessage.ids.R as N
 
@@ -31,29 +28,23 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
   private val adapter by lazy { Adapter(viewModel, LayoutInflater.from(activity)) }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    when (Experiments.USE_COMPOSE.value) {
-      Experiment.BOOLEAN.TRUE -> setComposable {
-        Connections { findNavController().navigate(R.id.settings) }
+    FragmentConnectionsBinding.inflate(inflater, container, false).also {
+      it.lifecycleOwner = this
+      it.viewModel = viewModel
+      findNavController().also { navController ->
+        it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
+        it.navigationView.setupWithNavController(navController)
       }
-      Experiment.BOOLEAN.FALSE -> FragmentConnectionsBinding.inflate(inflater, container, false).also {
-        it.lifecycleOwner = this
-        it.viewModel = viewModel
-        findNavController().also { navController ->
-          it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
-          it.navigationView.setupWithNavController(navController)
-        }
-        WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
-        it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
+      WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
+      it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
 //        it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
 //          header.lifecycleOwner = this
 //          header.handle = viewModel.handle.also { h -> h.observe(header.life, this) }
 //        }.root)
-        it.recyclerView.adapter = adapter
-        WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
-        NavigationMenuExperimentHelper.help(it.navigationView.menu)
-      }.root
-
-    }
+      it.recyclerView.adapter = adapter
+      WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
+      NavigationMenuExperimentHelper.help(it.navigationView.menu)
+    }.root
 
   override fun onChanged(handle: String?): Unit = handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
 

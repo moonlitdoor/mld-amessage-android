@@ -161,8 +161,14 @@ object D {
         }
       }
 
+      object Dagger {
+        private const val version = "2.25.4"
+        const val dagger = "com.google.dagger:dagger:$version"
+        const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
+      }
+
       object Firebase {
-        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.1"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.0"
         const val firebaseConfig = "com.google.firebase:firebase-config:19.1.0"
         const val firebaseCore = "com.google.firebase:firebase-core:17.2.1"
         const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.0"

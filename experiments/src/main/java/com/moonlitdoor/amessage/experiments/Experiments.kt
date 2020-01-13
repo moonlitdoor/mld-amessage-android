@@ -21,12 +21,10 @@ object Experiments : KoinComponent {
   val FEATURE_FEEDBACK = Experiment(key = "exp_feature_feedback")
   val FEATURE_ABOUT = Experiment(key = "exp_feature_about")
   val FEATURE_WHATS_NEW = Experiment(key = "exp_feature_whats_new")
-  val USE_COMPOSE = Experiment(key = "exp_use_compose")
-  val USE_COMPOSE_EXPERIMENTS = Experiment(key = "exp_use_compose_experiments", defaultValue = Experiment.BOOLEAN.FALSE)
+  val USE_COMPOSE_EXPERIMENTS = Experiment(key = "exp_use_compose_experiments")
 
   val experiments: List<Experiment<*>> = listOf(
-    USE_COMPOSE_EXPERIMENTS,
-    USE_COMPOSE,
+//    USE_COMPOSE_EXPERIMENTS,
     FEATURE_WINDOWS,
     FEATURE_SETTINGS,
     FEATURE_HELP,

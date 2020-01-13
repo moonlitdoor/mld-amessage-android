@@ -47,6 +47,12 @@ allprojects {
   }
 }
 
+gradle.projectsEvaluated {
+  tasks.withType(JavaCompile::class.java) {
+    options.compilerArgs + "-Xmaxerrs" + "500"
+  }
+}
+
 tasks.register("testReport", TestReport::class) {
   destinationDir = file("$buildDir/reports/allTests")
   reportOn(allprojects.map { it.tasks.withType(Test::class) })

@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.extensions
+package com.moonlitdoor.amessage.experiments.ui
 
 import android.view.View
 import android.widget.FrameLayout

@@ -19,7 +19,6 @@ import com.moonlitdoor.amessage.experiments.Experiments
 import com.moonlitdoor.amessage.experiments.ui.databinding.FragmentExperimentsBinding
 import com.moonlitdoor.amessage.experiments.ui.databinding.ListItemExperimentBinding
 import com.moonlitdoor.amessage.extensions.ignore
-import com.moonlitdoor.amessage.extensions.setComposable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ExperimentsFragment : Fragment() {

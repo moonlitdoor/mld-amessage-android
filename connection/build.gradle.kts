@@ -69,10 +69,6 @@ dependencies {
   implementation(project(M.IDS))
   implementation(project(M.RESOURCES))
 
-  implementation(D.Androidx.Ui.uiLayout)
-  implementation(D.Androidx.Ui.uiMaterial)
-  implementation(D.Androidx.Ui.uiTooling)
-
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Koin.koinAndroid)

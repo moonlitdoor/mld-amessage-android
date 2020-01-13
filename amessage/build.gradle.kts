@@ -2,6 +2,7 @@ plugins {
   id("com.moonlitdoor.git-version")
   id("com.android.application")
   kotlin("android")
+//  kotlin("kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
@@ -156,7 +157,7 @@ android {
 
 dependencies {
 
-  //  kapt(D.Androidx.Room.roomCompiler)
+  //  kapt(D.Com.Google.Dagger.daggerCompiler)
 
   implementation(project(M.ANALYTICS))
   implementation(project(M.BINDINGS))
@@ -172,6 +173,7 @@ dependencies {
   implementation(project(M.IDS))
   implementation(project(M.SETTINGS))
 
+  implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Core.coreKtx)
