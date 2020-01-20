@@ -8,11 +8,11 @@ import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 import com.moonlitdoor.amessage.network.json.Payload
-import org.koin.core.KoinComponent
 import timber.log.Timber
 import java.util.*
+import javax.inject.Inject
 
-class FirebaseMessagingServiceAdapter(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) : KoinComponent {
+class FirebaseMessagingServiceAdapter @Inject constructor(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) {
 
   fun onNewToken(token: String) {
     Timber.i("New Firebase Token")

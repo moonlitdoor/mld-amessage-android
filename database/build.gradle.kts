@@ -60,25 +60,25 @@ android {
 
 dependencies {
 
+  kapt(D.Com.Google.Dagger.daggerCompiler)
   kapt(D.Androidx.Room.roomCompiler)
 
-  implementation(project(M.CONSTANTS))
+  api(project(M.CONSTANTS))
+
+  implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(D.Androidx.Room.roomKtx)
   implementation(D.Androidx.Room.roomRuntime)
   implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Koin.koinAndroid)
 
   debugImplementation(D.Com.Amitshekhar.Android.debugDb)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Org.Robolectric.robolectric)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Org.Koin.koinTest)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 

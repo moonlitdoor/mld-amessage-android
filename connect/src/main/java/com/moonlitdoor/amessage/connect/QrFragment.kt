@@ -6,11 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.moonlitdoor.amessage.connect.databinding.FragmentQrBinding
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import javax.inject.Inject
 
 class QrFragment : Fragment() {
 
-  private val viewModel by sharedViewModel<ConnectViewModel>()
+  @Inject
+  lateinit var viewModel: ConnectViewModel
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    ConnectDI.get().inject(this)
+  }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = FragmentQrBinding.inflate(inflater, container, false).also {
     it.lifecycleOwner = this

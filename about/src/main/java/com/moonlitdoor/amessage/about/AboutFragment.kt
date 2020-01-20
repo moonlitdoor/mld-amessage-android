@@ -14,6 +14,11 @@ import com.moonlitdoor.amessage.resources.R
 @Keep
 class AboutFragment : Fragment() {
 
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    AboutDI.init().inject(this)
+  }
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentAboutBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this

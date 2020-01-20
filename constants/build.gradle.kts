@@ -1,6 +1,7 @@
 plugins {
   id("com.android.library")
   kotlin("android")
+  kotlin("kapt")
 }
 
 android {
@@ -54,11 +55,12 @@ android {
 
 dependencies {
 
+  kapt(D.Com.Google.Dagger.daggerCompiler)
+
+  implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Koin.koinAndroid)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Org.Robolectric.robolectric)
   testImplementation(D.Androidx.Test.core)
   testImplementation(D.Androidx.Test.Espresso.espressoCore)
@@ -74,6 +76,5 @@ dependencies {
   androidTestImplementation(D.Androidx.Test.core)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
-  androidTestImplementation(D.Org.Koin.koinTest)
 
 }

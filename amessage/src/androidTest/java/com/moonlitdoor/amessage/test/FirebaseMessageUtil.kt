@@ -1,6 +1,5 @@
 package com.moonlitdoor.amessage.test
 
-//import com.moonlitdoor.amessage.domain.client.FirebaseClient
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
 import com.moonlitdoor.amessage.AMessageActivity
@@ -9,11 +8,10 @@ import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.core.KoinComponent
 import java.util.*
 
 @RunWith(AndroidJUnit4::class)
-class FirebaseMessageUtil : KoinComponent {
+class FirebaseMessageUtil {
 
 //  val client: FirebaseClient by inject()
 

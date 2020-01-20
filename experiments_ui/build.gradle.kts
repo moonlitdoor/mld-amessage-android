@@ -1,6 +1,7 @@
 plugins {
   id("com.android.library")
   kotlin("android")
+  kotlin("kapt")
 }
 
 android {
@@ -43,7 +44,7 @@ android {
   }
 
   buildFeatures {
-    compose = true
+    //    compose = true
     dataBinding = true
   }
 
@@ -64,24 +65,28 @@ android {
 
 dependencies {
 
+  kapt(D.Com.Google.Dagger.daggerCompiler)
+
   implementation(project(M.BINDINGS))
   implementation(project(M.EXTENSIONS))
   implementation(project(M.EXPERIMENTS))
   implementation(project(M.RESOURCES))
 
-  implementation(D.Androidx.Ui.uiAndroidText)
-  implementation(D.Androidx.Ui.uiAnimation)
-  implementation(D.Androidx.Ui.uiAnimationCore)
-  implementation(D.Androidx.Ui.uiCore)
-  implementation(D.Androidx.Ui.uiFoundation)
-  implementation(D.Androidx.Ui.uiFramework)
-  implementation(D.Androidx.Ui.uiLayout)
-  implementation(D.Androidx.Ui.uiMaterial)
-  implementation(D.Androidx.Ui.uiPlatform)
-//  implementation(D.Androidx.Ui.uiTest)
-  implementation(D.Androidx.Ui.uiText)
-  implementation(D.Androidx.Ui.uiTooling)
-  implementation(D.Androidx.Ui.uiVector)
+  implementation(D.Com.Google.Dagger.dagger)
+
+//  implementation(D.Androidx.Ui.uiAndroidText)
+//  implementation(D.Androidx.Ui.uiAnimation)
+//  implementation(D.Androidx.Ui.uiAnimationCore)
+//  implementation(D.Androidx.Ui.uiCore)
+//  implementation(D.Androidx.Ui.uiFoundation)
+//  implementation(D.Androidx.Ui.uiFramework)
+//  implementation(D.Androidx.Ui.uiLayout)
+//  implementation(D.Androidx.Ui.uiMaterial)
+//  implementation(D.Androidx.Ui.uiPlatform)
+////  implementation(D.Androidx.Ui.uiTest)
+//  implementation(D.Androidx.Ui.uiText)
+//  implementation(D.Androidx.Ui.uiTooling)
+//  implementation(D.Androidx.Ui.uiVector)
 
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
@@ -91,15 +96,12 @@ dependencies {
   implementation(D.Androidx.Navigation.navigationUiKtx)
   implementation(D.Androidx.Recyclerview.recyclerview)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Koin.koinAndroid)
-  implementation(D.Org.Koin.koinAndroidxViewmodel)
 
   debugImplementation(D.Androidx.Fragment.fragmentTesting)
   debugImplementation(D.Androidx.Test.core)
 
   testImplementation(D.Androidx.Fragment.fragmentTesting)
   testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Org.Robolectric.robolectric)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
@@ -107,6 +109,5 @@ dependencies {
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Fragment.fragmentTesting)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
-  androidTestImplementation(D.Org.Koin.koinTest)
 
 }

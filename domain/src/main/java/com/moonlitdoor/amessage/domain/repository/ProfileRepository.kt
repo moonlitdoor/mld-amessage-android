@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.extensions.map
+import javax.inject.Inject
 
-class ProfileRepository(private val profileDao: ProfileDao) {
+class ProfileRepository @Inject constructor(private val profileDao: ProfileDao) {
 
   val profile: LiveData<Profile?> = profileDao.profile.map { Profile.from(it) }
 

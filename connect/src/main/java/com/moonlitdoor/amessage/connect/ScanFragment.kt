@@ -15,12 +15,13 @@ import com.moonlitdoor.amessage.connect.databinding.FragmentScanBinding
 import com.moonlitdoor.amessage.domain.model.Profile
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import timber.log.Timber
+import javax.inject.Inject
 
 class ScanFragment : Fragment(), Preview.OnPreviewOutputUpdateListener, ImageAnalysis.Analyzer {
 
-  private val viewModel: ConnectViewModel by sharedViewModel()
+  @Inject
+  lateinit var viewModel: ConnectViewModel
   private lateinit var binding: FragmentScanBinding
   private val detector = FirebaseVision.getInstance().getVisionBarcodeDetector(
     FirebaseVisionBarcodeDetectorOptions.Builder().setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE).build()
@@ -30,6 +31,11 @@ class ScanFragment : Fragment(), Preview.OnPreviewOutputUpdateListener, ImageAna
   }
   private val analysis = ImageAnalysis(ImageAnalysisConfig.Builder().build()).also {
     it.setAnalyzer(Dispatchers.IO.asExecutor(), this)
+  }
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    ConnectDI.get().inject(this)
   }
 
   override fun onAttach(context: Context) {

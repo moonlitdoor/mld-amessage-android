@@ -1,50 +1,46 @@
 package com.moonlitdoor.amessage.experiments
 
+import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.common.truth.Truth.assertThat
+import dagger.Provides
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.test.KoinTest
-import org.koin.test.mock.declareModule
 
 @RunWith(AndroidJUnit4::class)
-class ExperimentsTest : KoinTest {
+class ExperimentsTest {
+
+  class TestExperimentsModule(context: Context) : ExperimentsDI.ExperimentsModule(context) {
+
+    @Provides
+    override fun providesFirebaseRemoteConfigWrapper(): FirebaseRemoteConfigWrapper = FirebaseRemoteConfigFake(
+      defaultsHandler = {
+        assertThat(it).hasSize(8)
+        assertThat(it).containsEntry("exp_test_3", Experiments.ABC.A)
+        assertThat(it).containsEntry("exp_test_2", Experiment.BOOLEAN.FALSE)
+      },
+      stringHandler = {
+        when (it) {
+          "exp_test_2" -> "TRUE"
+          "exp_test_3" -> "A"
+          else -> ""
+        }
+      })
+  }
 
   @Before
   fun setup() {
-    startKoin {
-      androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
-      modules(experimentsDi + testExperimentsDi)
-    }
-    declareModule {
-      single {
-        FirebaseRemoteConfigFake(
-          defaultsHandler = {
-            assertThat(it).hasSize(8)
-            assertThat(it).containsEntry("exp_test_3", Experiments.ABC.A)
-            assertThat(it).containsEntry("exp_test_2", Experiment.BOOLEAN.FALSE)
-          },
-          stringHandler = {
-            when (it) {
-              "exp_test_2" -> "TRUE"
-              "exp_test_3" -> "A"
-              else -> ""
-            }
-          }) as FirebaseRemoteConfigWrapper
-      }
-    }
+    ExperimentsDI.init(InstrumentationRegistry.getInstrumentation().targetContext, TestExperimentsModule(InstrumentationRegistry.getInstrumentation().targetContext))
   }
+
 
   @After
   fun teardown() {
-    stopKoin()
+    ExperimentsDI.unload()
   }
 
   @Test

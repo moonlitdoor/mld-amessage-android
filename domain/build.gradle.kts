@@ -1,6 +1,7 @@
 plugins {
   id("com.android.library")
   kotlin("android")
+  kotlin("kapt")
 }
 
 android {
@@ -54,19 +55,19 @@ android {
 
 dependencies {
 
-  implementation(project(M.CONSTANTS))
-  implementation(project(M.DATABASE))
-  implementation(project(M.EXTENSIONS))
-  implementation(project(M.NETWORK))
+  kapt(D.Com.Google.Dagger.daggerCompiler)
 
+  api(project(M.DATABASE))
+  api(project(M.NETWORK))
+
+  implementation(project(M.EXTENSIONS))
+
+  implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
-  implementation(D.Org.Koin.koinAndroid)
-  implementation(D.Org.Koin.koinAndroidxScope)
-  implementation(D.Org.Koin.koinAndroidxViewmodel)
   implementation(D.Com.Google.Firebase.firebaseCore)
   implementation(D.Com.Google.Firebase.firebaseMessaging)
 
@@ -75,13 +76,11 @@ dependencies {
   testImplementation(D.Androidx.Test.Espresso.espressoCore)
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)
-  testImplementation(D.Org.Koin.koinTest)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
 
   androidTestImplementation(D.Androidx.Test.runner)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
-  androidTestImplementation(D.Org.Koin.koinTest)
 
 }

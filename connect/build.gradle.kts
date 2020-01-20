@@ -60,6 +60,8 @@ android {
 
 dependencies {
 
+  kapt(D.Com.Google.Dagger.daggerCompiler)
+
   implementation(project(M.BINDINGS))
   implementation(project(M.DOMAIN))
   implementation(project(M.COMPONENTS))
@@ -67,6 +69,7 @@ dependencies {
   implementation(project(M.EXTENSIONS))
   implementation(project(M.RESOURCES))
 
+  implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.Camera.cameraCamera2)
   implementation(D.Androidx.Camera.cameraCore)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
@@ -78,16 +81,12 @@ dependencies {
   implementation(D.Com.Google.Zxing.core)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Koin.koinAndroid)
-  implementation(D.Org.Koin.koinAndroidxViewmodel)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Org.Robolectric.robolectric)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Org.Koin.koinTest)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 }

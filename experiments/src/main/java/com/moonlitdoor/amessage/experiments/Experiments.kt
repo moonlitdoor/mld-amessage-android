@@ -1,9 +1,6 @@
 package com.moonlitdoor.amessage.experiments
 
-import org.koin.core.KoinComponent
-import org.koin.core.get
-
-object Experiments : KoinComponent {
+object Experiments {
 
   enum class ABC {
     A, B, C
@@ -39,7 +36,7 @@ object Experiments : KoinComponent {
     TEST6
   )
 
-  fun init(): Unit = get<FirebaseRemoteConfigWrapper>().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
+  fun init(): Unit = ExperimentsDI.get().firebaseRemoteConfigWrapper().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
 
 
 }

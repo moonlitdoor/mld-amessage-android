@@ -10,6 +10,11 @@ import com.moonlitdoor.amessage.resources.R
 
 class HelpFragment : androidx.fragment.app.Fragment() {
 
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    HelpDI.init().inject(this)
+  }
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentHelpBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this

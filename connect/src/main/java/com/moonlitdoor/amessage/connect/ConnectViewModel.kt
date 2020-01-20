@@ -16,8 +16,9 @@ import com.moonlitdoor.amessage.extensions.and
 import com.moonlitdoor.amessage.extensions.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class ConnectViewModel(private val connectionRepository: ConnectionRepository, profileRepository: ProfileRepository) : ViewModel() {
+class ConnectViewModel @Inject constructor(private val connectionRepository: ConnectionRepository, profileRepository: ProfileRepository) : ViewModel() {
 
   private val profile = profileRepository.profile.and {
     Timber.i(it?.encode())

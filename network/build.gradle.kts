@@ -1,6 +1,7 @@
 plugins {
   id("com.android.library")
   kotlin("android")
+  kotlin("kapt")
 }
 
 android {
@@ -32,7 +33,11 @@ android {
     getByName(RELEASE) {
       isMinifyEnabled = MINIFY
 //      isShrinkResources = SHRINK
+      buildConfigField("String", "BASE_URL", "\"https://amessage.moonlitdoor.com\"")
       proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
+    }
+    getByName(DEBUG) {
+      buildConfigField("String", "BASE_URL", "\"https://beta.amessage.moonlitdoor.com\"")
     }
   }
 
@@ -54,26 +59,28 @@ android {
 
 dependencies {
 
+  kapt(D.Com.Google.Dagger.daggerCompiler)
+
   implementation(project(M.ENCRYPTION))
 
+  implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Com.SquareUp.OkHttp3.okhttp)
   implementation(D.Com.SquareUp.OkHttp3.loggingInterceptor)
   implementation(D.Com.SquareUp.Retrofit2.converterGson)
   implementation(D.Com.SquareUp.Retrofit2.retrofit)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Koin.koinAndroid)
+
+  kaptTest(D.Com.Google.Dagger.daggerCompiler)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Org.Robolectric.robolectric)
   testImplementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   testImplementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Org.Koin.koinTest)
   androidTestImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)

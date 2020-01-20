@@ -3,7 +3,6 @@ buildscript {
   repositories {
     google()
     jcenter()
-    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
     maven(url = "https://plugins.gradle.org/m2/")
   }
   dependencies {
@@ -24,7 +23,6 @@ allprojects {
   repositories {
     google()
     jcenter()
-    maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
     maven(url = "https://jitpack.io")
     maven(url = "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/")
   }

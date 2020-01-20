@@ -6,11 +6,17 @@ import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.preference.*
 import com.google.android.material.snackbar.Snackbar
 import com.moonlitdoor.amessage.constants.Constants
-import org.koin.android.ext.android.inject
+import javax.inject.Inject
 
 class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat.OnPreferenceStartScreenCallback, SharedPreferences.OnSharedPreferenceChangeListener {
 
-  private val settings: SharedPreferences by inject()
+  @Inject
+  lateinit var settings: SharedPreferences
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    SettingsDI.get().inject(this)
+    super.onCreate(savedInstanceState)
+  }
 
   override fun onCreatePreferences(bundle: Bundle?, root: String?) {
     setPreferencesFromResource(R.xml.preferences, if (root == "null") null else root)

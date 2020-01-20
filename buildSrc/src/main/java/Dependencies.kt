@@ -89,24 +89,24 @@ object D {
       }
     }
 
-    object Ui {
-      private const val version = "0.1.0-dev03"
-      const val uiAndroidText = "androidx.ui:ui-android-text:$version"
-      const val uiAnimation = "androidx.ui:ui-animation:$version"
-      const val uiAnimationCore = "androidx.ui:ui-animation-core:$version"
-      const val uiCore = "androidx.ui:ui-core:$version"
-
-      const val uiFoundation = "androidx.ui:ui-foundation:$version"
-      const val uiFramework = "androidx.ui:ui-framework:$version"
-      const val uiLayout = "androidx.ui:ui-layout:$version"
-      const val uiMaterial = "androidx.ui:ui-material:$version"
-
-      const val uiPlatform = "androidx.ui:ui-platform:$version"
-      const val uiTest = "androidx.ui:ui-test:$version"
-      const val uiText = "androidx.ui:ui-text:$version"
-      const val uiTooling = "androidx.ui:ui-tooling:$version"
-      const val uiVector = "androidx.ui:ui-vector:$version"
-    }
+//    object Ui {
+//      private const val version = "0.1.0-dev03"
+//      const val uiAndroidText = "androidx.ui:ui-android-text:$version"
+//      const val uiAnimation = "androidx.ui:ui-animation:$version"
+//      const val uiAnimationCore = "androidx.ui:ui-animation-core:$version"
+//      const val uiCore = "androidx.ui:ui-core:$version"
+//
+//      const val uiFoundation = "androidx.ui:ui-foundation:$version"
+//      const val uiFramework = "androidx.ui:ui-framework:$version"
+//      const val uiLayout = "androidx.ui:ui-layout:$version"
+//      const val uiMaterial = "androidx.ui:ui-material:$version"
+//
+//      const val uiPlatform = "androidx.ui:ui-platform:$version"
+//      const val uiTest = "androidx.ui:ui-test:$version"
+//      const val uiText = "androidx.ui:ui-text:$version"
+//      const val uiTooling = "androidx.ui:ui-tooling:$version"
+//      const val uiVector = "androidx.ui:ui-vector:$version"
+//    }
 
     object Viewpager2 {
       const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
@@ -239,14 +239,6 @@ object D {
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
       }
-    }
-
-    object Koin {
-      private const val version = "2.1.0-alpha-10"
-      const val koinAndroid = "org.koin:koin-android:$version"
-      const val koinAndroidxScope = "org.koin:koin-androidx-scope:$version"
-      const val koinAndroidxViewmodel = "org.koin:koin-androidx-viewmodel:$version"
-      const val koinTest = "org.koin:koin-test:$version"
     }
 
     object Robolectric {

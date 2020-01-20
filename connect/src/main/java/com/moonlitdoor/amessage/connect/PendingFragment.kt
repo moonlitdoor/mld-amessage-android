@@ -10,11 +10,17 @@ import com.moonlitdoor.amessage.connect.databinding.FragmentPendingBinding
 import com.moonlitdoor.amessage.connect.databinding.ListItemConnectionPendingInvitedBinding
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.ignore
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import javax.inject.Inject
 
 class PendingFragment : Fragment() {
 
-  private val viewModel: ConnectViewModel by sharedViewModel()
+  @Inject
+  lateinit var viewModel: ConnectViewModel
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    ConnectDI.get().inject(this)
+  }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = FragmentPendingBinding.inflate(inflater, container, false).also {
     it.lifecycleOwner = this

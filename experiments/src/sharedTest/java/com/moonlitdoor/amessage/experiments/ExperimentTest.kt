@@ -1,44 +1,39 @@
 package com.moonlitdoor.amessage.experiments
 
+import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import dagger.Provides
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.test.KoinTest
-import org.koin.test.mock.declareModule
 
 @RunWith(AndroidJUnit4::class)
-class ExperimentTest : KoinTest {
+class ExperimentTest {
+
+  class TestExperimentsModule(context: Context) : ExperimentsDI.ExperimentsModule(context) {
+
+    @Provides
+    override fun providesFirebaseRemoteConfigWrapper(): FirebaseRemoteConfigWrapper = FirebaseRemoteConfigFake(
+      stringHandler = {
+        when (it) {
+          "key" -> "FALSE"
+          else -> ""
+        }
+      })
+  }
 
   @Before
   fun setup() {
-    startKoin {
-      androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
-      modules(experimentsDi + testExperimentsDi)
-    }
-    declareModule {
-      single {
-        FirebaseRemoteConfigFake(
-          stringHandler = {
-            when (it) {
-              "key" -> "FALSE"
-              else -> ""
-            }
-          }) as FirebaseRemoteConfigWrapper
-      }
-    }
+    ExperimentsDI.init(InstrumentationRegistry.getInstrumentation().targetContext, TestExperimentsModule(InstrumentationRegistry.getInstrumentation().targetContext))
   }
 
   @After
   fun teardown() {
-    stopKoin()
+    ExperimentsDI.unload()
   }
 
   @Test

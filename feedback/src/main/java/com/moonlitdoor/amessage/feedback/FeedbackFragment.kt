@@ -10,6 +10,11 @@ import com.moonlitdoor.amessage.resources.R
 
 class FeedbackFragment : androidx.fragment.app.Fragment() {
 
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    FeedbackDI.init().inject(this)
+  }
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentFeedbackBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this

@@ -2,14 +2,20 @@ package com.moonlitdoor.amessage.domain.work
 
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ProfileEntity
+import com.moonlitdoor.amessage.domain.DomainDI
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.network.client.FirebaseClient
-import org.koin.core.KoinComponent
-import org.koin.core.inject
+import javax.inject.Inject
 
-class ConnectionInviteWorker : KoinComponent {
+class ConnectionInviteWorker {
 
-  private val client: FirebaseClient by inject()
+  init {
+    DomainDI.get().inject(this)
+  }
+
+
+  @Inject
+  lateinit var client: FirebaseClient
 
   fun doWork() {
 //    inputData.getString(PAYLOAD_HANDLE)?.let { payloadHandle ->

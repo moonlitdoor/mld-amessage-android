@@ -15,30 +15,35 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.moonlitdoor.amessage.experiments.Experiment
-import com.moonlitdoor.amessage.experiments.Experiments
 import com.moonlitdoor.amessage.experiments.ui.databinding.FragmentExperimentsBinding
 import com.moonlitdoor.amessage.experiments.ui.databinding.ListItemExperimentBinding
 import com.moonlitdoor.amessage.extensions.ignore
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import javax.inject.Inject
 
 class ExperimentsFragment : Fragment() {
 
-  private val viewModel by viewModel<ExperimentsViewModel>()
+  @Inject
+  lateinit var viewModel: ExperimentsViewModel
   private val adapter by lazy { Adapter(LayoutInflater.from(activity), this) }
 
+  override fun onCreate(savedInstanceState: Bundle?) {
+    ExperimentsUiDI.get().inject(this)
+    super.onCreate(savedInstanceState)
+  }
+
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    when (Experiments.USE_COMPOSE_EXPERIMENTS.value) {
-      Experiment.BOOLEAN.TRUE -> setComposable {
-        ExperimentsList(Experiments.experiments)
-      }
-      Experiment.BOOLEAN.FALSE ->
-        FragmentExperimentsBinding.inflate(inflater, container, false).also {
-          it.toolbar.setupWithNavController(findNavController(), AppBarConfiguration(findNavController().graph))
-          it.viewModel = viewModel
-          it.lifecycleOwner = this
-          it.recyclerView.adapter = adapter
-        }.root
-    }
+//    when (Experiments.USE_COMPOSE_EXPERIMENTS.value) {
+//      Experiment.BOOLEAN.TRUE -> setComposable {
+//        ExperimentsList(Experiments.experiments)
+//      }
+//      Experiment.BOOLEAN.FALSE ->
+    FragmentExperimentsBinding.inflate(inflater, container, false).also {
+      it.toolbar.setupWithNavController(findNavController(), AppBarConfiguration(findNavController().graph))
+      it.viewModel = viewModel
+      it.lifecycleOwner = this
+      it.recyclerView.adapter = adapter
+    }.root
+//    }
 
   private class Adapter(private val layoutInflater: LayoutInflater, private val lifecycleOwner: LifecycleOwner) : ListAdapter<Experiment<*>, ExperimentViewHolder>(object : DiffUtil.ItemCallback<Experiment<*>>() {
     override fun areItemsTheSame(oldItem: Experiment<*>, newItem: Experiment<*>): Boolean = oldItem.id == newItem.id

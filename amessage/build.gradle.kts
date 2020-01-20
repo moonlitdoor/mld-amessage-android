@@ -2,7 +2,7 @@ plugins {
   id("com.moonlitdoor.git-version")
   id("com.android.application")
   kotlin("android")
-//  kotlin("kapt")
+  kotlin("kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
@@ -136,7 +136,6 @@ android {
     exclude("META-INF/proguard/androidx-annotations.pro")
   }
   buildFeatures {
-    compose = true
     dataBinding = true
   }
   compileOptions {
@@ -157,21 +156,21 @@ android {
 
 dependencies {
 
-  //  kapt(D.Com.Google.Dagger.daggerCompiler)
+  kapt(D.Com.Google.Dagger.daggerCompiler)
 
   implementation(project(M.ANALYTICS))
   implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))
   implementation(project(M.CONSTANTS))
-  implementation(project(M.CONNECT))
-  implementation(project(M.CONNECTION))
-  implementation(project(M.CONVERSATION))
+  api(project(M.CONNECT))
+  api(project(M.CONNECTIONS))
+  api(project(M.CONVERSATIONS))
   implementation(project(M.DOMAIN))
-  implementation(project(M.EXPERIMENTS))
+  api(project(M.EXPERIMENTS))
   implementation(project(M.EXTENSIONS))
-  implementation(project(M.HANDLE))
+  api(project(M.HANDLE))
   implementation(project(M.IDS))
-  implementation(project(M.SETTINGS))
+  api(project(M.SETTINGS))
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)
@@ -200,9 +199,6 @@ dependencies {
   implementation(D.Com.Google.Zxing.core)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Koin.koinAndroid)
-  implementation(D.Org.Koin.koinAndroidxScope)
-  implementation(D.Org.Koin.koinAndroidxViewmodel)
   implementation(D.Androidx.Test.Espresso.espressoIdlingResource)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
@@ -213,7 +209,6 @@ dependencies {
 //  testImplementation(D.Androidx.Room.roomTesting)
   testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
   testImplementation(D.Androidx.Test.Espresso.espressoCore)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
   testImplementation(D.Androidx.Test.Ext.junitKtx)
 

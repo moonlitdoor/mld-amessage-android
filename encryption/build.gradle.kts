@@ -57,7 +57,6 @@ dependencies {
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Koin.koinTest)
   testImplementation(D.Org.Robolectric.robolectric)
 
   androidTestUtil(D.Androidx.Test.orchestrator)

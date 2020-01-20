@@ -6,7 +6,7 @@
   app:startDestination="@id/connections_fragment">
   <fragment
     android:id="@+id/connections_fragment"
-    android:name="com.moonlitdoor.amessage.connection.ConnectionsFragment"
+    android:name="com.moonlitdoor.amessage.connections.ConnectionsFragment"
     tools:layout="@layout/fragment_connections">
     <action
       android:id="@id/action_connections_fragment_to_connect_fragment"
@@ -22,7 +22,7 @@
     tools:layout="@layout/fragment_connect" />
   <fragment
     android:id="@+id/conversations_fragment"
-    android:name="com.moonlitdoor.amessage.conversation.ConversationsFragment"
+    android:name="com.moonlitdoor.amessage.conversations.ConversationsFragment"
     tools:layout="@layout/fragment_conversations">
     <action
       android:id="@id/actionConversationsFragmentToConversationsCreateFragment"
@@ -34,7 +34,7 @@
   </fragment>
   <fragment
     android:id="@+id/conversations_create_fragment"
-    android:name="com.moonlitdoor.amessage.conversation.create.ConversationCreateFragment"
+    android:name="com.moonlitdoor.amessage.conversations.create.ConversationCreateFragment"
     tools:layout="@layout/fragment_conversation_create" />
   <fragment
     app:moduleName="windows"

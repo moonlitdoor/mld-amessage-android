@@ -1,10 +1,10 @@
 package com.moonlitdoor.amessage.network.client
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import androidx.test.platform.app.InstrumentationRegistry
+import com.moonlitdoor.amessage.network.FirebaseClientContainer
+import com.moonlitdoor.amessage.network.TestNetworkDI
 import com.moonlitdoor.amessage.network.json.FirebaseMessageJson
 import com.moonlitdoor.amessage.network.json.Payload
-import com.moonlitdoor.amessage.network.networkDi
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
@@ -15,19 +15,14 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.koin.android.ext.koin.androidContext
-import org.koin.android.ext.koin.androidFileProperties
-import org.koin.core.context.startKoin
-import org.koin.core.context.stopKoin
-import org.koin.test.KoinTest
-import org.koin.test.get
 import java.util.*
 
 
 @RunWith(AndroidJUnit4::class)
-class FirebaseClientTest : KoinTest {
+class FirebaseClientTest {
 
   private lateinit var server: MockWebServer
+  private lateinit var container: FirebaseClientContainer
 
   @Before
   fun setup() {
@@ -46,25 +41,18 @@ class FirebaseClientTest : KoinTest {
         else -> MockResponse().setResponseCode(404)
       }
     }
-    startKoin {
-      androidContext(InstrumentationRegistry.getInstrumentation().targetContext)
-      androidFileProperties()
-      modules(networkDi)
-      properties(mapOf("firebase_url" to "http://${server.hostName}:${server.port}"))
-    }
+    container = TestNetworkDI.init("http://${server.hostName}:${server.port}").inject(FirebaseClientContainer())
   }
 
   @After
   fun teardown() {
-    stopKoin()
     server.shutdown()
   }
 
   @Test
   fun testClient() {
     runBlocking {
-      val client: FirebaseClient = get()
-      val response = client.send(
+      val response = container.client.send(
         FirebaseMessageJson(
           object : Payload() {
             override val type: Type

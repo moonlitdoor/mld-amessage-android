@@ -16,8 +16,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.util.*
+import javax.inject.Inject
 
-class ConnectionRepository(private val connectionDao: ConnectionDao, private val profileDao: ProfileDao, private val client: NetworkClient) {
+class ConnectionRepository @Inject constructor(private val connectionDao: ConnectionDao, private val profileDao: ProfileDao, private val client: NetworkClient) {
 
   @MainThread
   fun getConnectedConnections(): LiveData<List<Connection>> = connectionDao.getConnected().map { it.map { Connection.from(it) } }
