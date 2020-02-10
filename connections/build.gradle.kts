@@ -77,6 +77,8 @@ dependencies {
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
+  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
+  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)

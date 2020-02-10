@@ -1,7 +1,6 @@
 package com.moonlitdoor.amessage.experiments.ui
 
 import android.content.Context
-import com.moonlitdoor.amessage.experiments.ExperimentsDI
 import dagger.Component
 import dagger.Module
 
@@ -21,7 +20,7 @@ interface ExperimentsUiDI {
 
     @Synchronized
     fun init(context: Context): ExperimentsUiDI = component ?: DaggerExperimentsUiDI.builder()
-      .experimentsUiModule(ExperimentsDI.ExperimentsModule())
+      .experimentsUiModule(ExperimentsUiModule())
       .build().also {
         component = it
       }

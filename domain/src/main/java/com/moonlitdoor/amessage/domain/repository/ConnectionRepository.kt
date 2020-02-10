@@ -23,6 +23,10 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
   @MainThread
   fun getConnectedConnections(): LiveData<List<Connection>> = connectionDao.getConnected().map { it.map { Connection.from(it) } }
 
+  suspend fun getConnectedConnections2(): List<Connection> = connectionDao.getConnected2().map {
+    Connection.from(it)
+  }
+
   @MainThread
   fun getScannedInvitedAndPendingConnections(): LiveData<List<Connection>> = connectionDao.getScannedInvitedAndPendingConnections().map { it.map { Connection.from(it) } }
 

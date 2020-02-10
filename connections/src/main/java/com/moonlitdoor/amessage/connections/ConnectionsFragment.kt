@@ -18,7 +18,9 @@ import com.moonlitdoor.amessage.connections.databinding.ListItemConnectionConnec
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
+import com.moonlitdoor.amessage.extensions.observe
 import com.moonlitdoor.amessage.handle.HandleViewModel
+import timber.log.Timber
 import javax.inject.Inject
 import com.moonlitdoor.amessage.ids.R as N
 
@@ -33,6 +35,9 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     ConnectionsDI.get().inject(this)
+    viewModel.con.observe(this) {
+      Timber.i(it.toString())
+    }
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
