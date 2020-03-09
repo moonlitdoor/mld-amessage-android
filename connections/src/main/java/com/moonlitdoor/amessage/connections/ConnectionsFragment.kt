@@ -28,6 +28,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
 
   @Inject
   lateinit var viewModel: ConnectionViewModel
+
   @Inject
   lateinit var handleViewModel: HandleViewModel
   private val adapter by lazy { Adapter(viewModel, LayoutInflater.from(activity)) }
@@ -59,12 +60,14 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
       NavigationMenuExperimentHelper.help(it.navigationView.menu)
     }.root
 
-  override fun onChanged(handle: String?): Unit = handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
+  override fun onChanged(handle: String?): Unit =
+    handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
 
-  private class Adapter(private val viewModel: ConnectionViewModel, private val layoutInflater: LayoutInflater) : ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
-    override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
-  }) {
+  private class Adapter(private val viewModel: ConnectionViewModel, private val layoutInflater: LayoutInflater) :
+    ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
+      override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
+      override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
+    }) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConnectionViewHolder(ListItemConnectionConnectedBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: ConnectionViewHolder, position: Int) = holder.bind(getItem(position), viewModel).ignore()
   }

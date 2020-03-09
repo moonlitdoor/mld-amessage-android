@@ -3,7 +3,11 @@ package com.moonlitdoor.amessage.settings
 import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.navigation.fragment.NavHostFragment.findNavController
-import androidx.preference.*
+import androidx.preference.ListPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.PreferenceManager
+import androidx.preference.PreferenceScreen
 import com.google.android.material.snackbar.Snackbar
 import com.moonlitdoor.amessage.constants.Constants
 import javax.inject.Inject
@@ -23,11 +27,13 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     settings.registerOnSharedPreferenceChangeListener(this)
     findPreference<Preference>(Constants.Keys.WHATS_NEW_PREFERENCE)?.setOnPreferenceClickListener {
       PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(Constants.SharedPreferences.VERSION_CODE, 0).apply()
-      Snackbar.make(view!!, R.string.whats_new_preference_toast, Snackbar.LENGTH_SHORT).show()
+      Snackbar.make(requireView(), R.string.whats_new_preference_toast, Snackbar.LENGTH_SHORT).show()
       true
     }
-    findPreference<ListPreference>(Constants.Keys.THEME)?.summary = resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.THEME, null) ?: "0")]
-    findPreference<ListPreference>(Constants.Keys.STARTING_LOCATION)?.summary = resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.STARTING_LOCATION, null) ?: "")]
+    findPreference<ListPreference>(Constants.Keys.THEME)?.summary =
+      resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.THEME, null) ?: "0")]
+    findPreference<ListPreference>(Constants.Keys.STARTING_LOCATION)?.summary =
+      resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(settings.getString(Constants.Keys.STARTING_LOCATION, null) ?: "")]
     findPreference<Preference>(Constants.Keys.EXPERIMENTS)?.let {
       //TODO      it.isVisible = false
       it.setOnPreferenceClickListener { _ ->
@@ -53,8 +59,10 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
 
   override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences, key: String) {
     when (key) {
-      Constants.Keys.STARTING_LOCATION -> findPreference<ListPreference>(key)?.summary = resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(sharedPreferences.getString(key, null) ?: "")]
-      Constants.Keys.THEME -> findPreference<ListPreference>(key)?.summary = resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(sharedPreferences.getString(key, null) ?: "")]
+      Constants.Keys.STARTING_LOCATION -> findPreference<ListPreference>(key)?.summary =
+        resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(sharedPreferences.getString(key, null) ?: "")]
+      Constants.Keys.THEME -> findPreference<ListPreference>(key)?.summary =
+        resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(sharedPreferences.getString(key, null) ?: "")]
     }
   }
 

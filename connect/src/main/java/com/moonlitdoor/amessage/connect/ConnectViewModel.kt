@@ -26,6 +26,7 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
   val pendingAndInvitedConnections = connectionRepository.getScannedInvitedAndPendingConnections()
   val selectedConnection = MutableLiveData<Connection>()
+
   @Suppress("UsePropertyAccessSyntax")
   fun setSelected(connection: Connection) = selectedConnection.setValue(connection)
 

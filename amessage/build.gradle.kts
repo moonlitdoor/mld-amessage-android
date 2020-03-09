@@ -35,8 +35,8 @@ android {
   }
   testOptions {
     unitTests.apply {
-      isReturnDefaultValues = true
-      isIncludeAndroidResources = true
+      returnDefaultValues = true
+      includeAndroidResources = true
     }
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true
@@ -160,17 +160,18 @@ dependencies {
 
   implementation(project(M.ANALYTICS))
   implementation(project(M.BINDINGS))
-  implementation(project(M.COMPONENTS))
+  api(project(M.COMPONENTS))
   implementation(project(M.CONSTANTS))
   api(project(M.CONNECT))
   api(project(M.CONNECTIONS))
   api(project(M.CONVERSATIONS))
   implementation(project(M.DOMAIN))
   api(project(M.EXPERIMENTS))
-  implementation(project(M.EXTENSIONS))
+  api(project(M.EXTENSIONS))
   api(project(M.HANDLE))
   implementation(project(M.IDS))
   api(project(M.SETTINGS))
+  api(project(M.RESOURCES))
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)

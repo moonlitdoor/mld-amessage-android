@@ -6,7 +6,8 @@ import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.domain.repository.WindowsRepository
 import javax.inject.Inject
 
-class ConversationViewModel @Inject constructor(conversationRepository: ConversationRepository, profileRepository: ProfileRepository, windowsRepository: WindowsRepository) : ViewModel() {
+class ConversationViewModel @Inject constructor(conversationRepository: ConversationRepository, profileRepository: ProfileRepository, windowsRepository: WindowsRepository) :
+  ViewModel() {
 
   val handle = profileRepository.handle
 

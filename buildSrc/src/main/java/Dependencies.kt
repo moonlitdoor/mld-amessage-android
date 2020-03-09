@@ -5,7 +5,7 @@ object D {
     }
 
     object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.2.0-alpha01"
+      const val appcompat = "androidx.appcompat:appcompat:1.2.0-alpha03"
     }
 
     object Camera {
@@ -19,11 +19,11 @@ object D {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.2.0-rc01"
+      const val coreKtx = "androidx.core:core-ktx:1.3.0-alpha02"
     }
 
     object Fragment {
-      private const val version = "1.2.0-rc05"
+      private const val version = "1.3.0-alpha01"
       const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
@@ -35,7 +35,7 @@ object D {
     }
 
     object Lifecycle {
-      private const val version = "2.2.0-rc03"
+      private const val version = "2.2.0"
       const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$version"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
@@ -43,12 +43,11 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.2.0-rc04"
-      private const val snapshot = "2.3.0-SNAPSHOT"
-      const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$snapshot"
-      const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$snapshot"
+      private const val version = "2.3.0-alpha03"
+      const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
+      const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
-      const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$snapshot"
+      const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
     }
 
     object Preference {
@@ -60,7 +59,7 @@ object D {
     }
 
     object Room {
-      private const val version = "2.2.3"
+      private const val version = "2.2.4"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -68,14 +67,14 @@ object D {
     }
 
     object Test {
-      private const val version = "1.3.0-alpha03"
+      private const val version = "1.3.0-alpha04"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.3.0-alpha03"
+        private const val version = "3.3.0-alpha04"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -85,7 +84,7 @@ object D {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha03"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha04"
       }
     }
 
@@ -113,19 +112,11 @@ object D {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.3.0-rc01"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-alpha01"
     }
   }
 
   object Com {
-    object Android {
-      object Tools {
-        object Build {
-          const val gradle = "com.android.tools.build:gradle:4.0.0-alpha08"
-        }
-      }
-    }
-
     object Amitshekhar {
       object Android {
         const val debugDb = "com.amitshekhar.android:debug-db:1.0.6"
@@ -134,12 +125,12 @@ object D {
 
     object Github {
       object BenManes {
-        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.27.0"
+        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
       }
 
       object Triplet {
         object Gradle {
-          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.6.2"
+          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.7.2"
         }
       }
     }
@@ -151,7 +142,7 @@ object D {
         }
 
         object Material {
-          const val material = "com.google.android.material:material:1.2.0-alpha03"
+          const val material = "com.google.android.material:material:1.2.0-alpha05"
         }
       }
 
@@ -162,21 +153,21 @@ object D {
       }
 
       object Dagger {
-        private const val version = "2.25.4"
+        private const val version = "2.26"
         const val dagger = "com.google.dagger:dagger:$version"
         const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
       }
 
       object Firebase {
-        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.0"
-        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.0"
-        const val firebaseCore = "com.google.firebase:firebase-core:17.2.1"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.0"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.1"
+        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.2"
+        const val firebaseCore = "com.google.firebase:firebase-core:17.2.3"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.2"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.1"
       }
 
       object Truth {
-        const val truth = "com.google.truth:truth:1.0"
+        const val truth = "com.google.truth:truth:1.0.1"
       }
 
       object Zxing {
@@ -202,7 +193,7 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.3.0"
+        private const val version = "4.4.0"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
@@ -229,13 +220,13 @@ object D {
   object Org {
     object Jetbrains {
       object Kotlin {
-        private const val version = "1.3.61"
+        private const val version = "1.3.70"
         const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
       }
 
       object Kotlinx {
-        private const val version = "1.3.3"
+        private const val version = "1.3.4"
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
       }

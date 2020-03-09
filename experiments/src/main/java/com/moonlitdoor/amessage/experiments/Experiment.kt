@@ -2,7 +2,6 @@ package com.moonlitdoor.amessage.experiments
 
 import android.content.SharedPreferences
 import androidx.annotation.StringRes
-import androidx.annotation.VisibleForTesting
 import java.util.*
 import javax.inject.Inject
 
@@ -13,6 +12,7 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
   class InjectableWrapper {
     @Inject
     lateinit var remoteConfig: FirebaseRemoteConfigWrapper
+
     @Inject
     lateinit var sharedPreferences: SharedPreferences
   }
@@ -52,14 +52,14 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
     get() = c.enumConstants.asList().find { if (localValue == REMOTE) remoteValue == it.name else localValue == it.name } ?: defaultValue
 
   companion object {
-    @VisibleForTesting
-    internal const val REMOTE = "REMOTE"
 
-    internal operator fun invoke(key: String) = Experiment(key, BOOLEAN.FALSE)
+    const val REMOTE = "REMOTE"
 
-    internal operator fun invoke(key: String, defaultValue: BOOLEAN) = Experiment(key, BOOLEAN::class.java, defaultValue)
+    operator fun invoke(key: String) = Experiment(key, BOOLEAN.FALSE)
 
-    internal operator fun invoke(key: String, title: String? = null, description: String? = null) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE, title, description)
+    operator fun invoke(key: String, defaultValue: BOOLEAN) = Experiment(key, BOOLEAN::class.java, defaultValue)
+
+    operator fun invoke(key: String, title: String? = null, description: String? = null) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE, title, description)
 
     operator fun invoke(key: String, @StringRes title: Int = 0, @StringRes description: Int = 0) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE, title, description)
   }

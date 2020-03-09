@@ -16,8 +16,8 @@ android {
 
   testOptions {
     unitTests.apply {
-      isReturnDefaultValues = true
-      isIncludeAndroidResources = true
+      returnDefaultValues = true
+      includeAndroidResources = true
     }
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true
@@ -65,12 +65,12 @@ dependencies {
 
   implementation(project(M.AMESSAGE))
 
-  implementation(project(M.BINDINGS))
-  implementation(project(M.COMPONENTS))
-  implementation(project(M.DOMAIN))
-  implementation(project(M.EXTENSIONS))
-  implementation(project(M.IDS))
-  implementation(project(M.RESOURCES))
+//  implementation(project(M.BINDINGS))
+//  implementation(project(M.COMPONENTS))
+//  implementation(project(M.DOMAIN))
+//  implementation(project(M.EXTENSIONS))
+//  implementation(project(M.IDS))
+//  implementation(project(M.RESOURCES))
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)

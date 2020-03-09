@@ -14,6 +14,6 @@ class ExampleSharedTest {
   @Test
   fun useAppContext() {
     val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-    assertTrue(listOf("com.moonlitdoor.amessage","com.moonlitdoor.amessage.beta","com.moonlitdoor.amessage.debug").contains(appContext.packageName))
+    assertTrue(listOf("com.moonlitdoor.amessage", "com.moonlitdoor.amessage.beta", "com.moonlitdoor.amessage.debug").contains(appContext.packageName))
   }
 }

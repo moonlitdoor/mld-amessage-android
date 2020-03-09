@@ -5,7 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import com.moonlitdoor.amessage.about.databinding.BottomSheetDialogAcknowledgementBinding
 
-internal class AcknowledgementsBottomSheetDialog(context: Context, acknowledgement: Acknowledgement) : com.google.android.material.bottomsheet.BottomSheetDialog(context), View.OnScrollChangeListener {
+internal class AcknowledgementsBottomSheetDialog(context: Context, acknowledgement: Acknowledgement) : com.google.android.material.bottomsheet.BottomSheetDialog(context),
+  View.OnScrollChangeListener {
 
   private val binding: BottomSheetDialogAcknowledgementBinding = BottomSheetDialogAcknowledgementBinding.inflate(LayoutInflater.from(context), null, false)
 

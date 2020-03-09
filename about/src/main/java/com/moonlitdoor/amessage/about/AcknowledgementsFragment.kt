@@ -17,7 +17,7 @@ class AcknowledgementsFragment : TitledFragmentPagerAdapter.TitledFragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentAcknowledgementsBinding.inflate(inflater, container, false).also {
-      it.recyclerView.addItemDecoration(ItemDecorationDivider(activity!!))
+      it.recyclerView.addItemDecoration(ItemDecorationDivider(requireContext()))
       it.recyclerView.adapter = Adapter().also {
         it.submitList(resources.getStringArray(R.array.about_acknowledgements_list).map { Acknowledgement.create(it) })
       }

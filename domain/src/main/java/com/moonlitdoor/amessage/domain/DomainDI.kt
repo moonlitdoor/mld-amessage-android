@@ -3,7 +3,11 @@ package com.moonlitdoor.amessage.domain
 import android.content.Context
 import com.moonlitdoor.amessage.database.DatabaseDI
 import com.moonlitdoor.amessage.domain.factory.ConversationFactory
-import com.moonlitdoor.amessage.domain.repository.*
+import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
+import com.moonlitdoor.amessage.domain.repository.ConversationRepository
+import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.domain.repository.ThemeRepository
+import com.moonlitdoor.amessage.domain.repository.WindowsRepository
 import com.moonlitdoor.amessage.domain.service.FirebaseMessagingService
 import com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker
 import com.moonlitdoor.amessage.network.NetworkDI

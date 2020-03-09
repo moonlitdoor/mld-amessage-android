@@ -13,6 +13,7 @@ private object DecoratedDebugTree : Timber.DebugTree() {
 
 private object DecoratedCrashReportingTree : Timber.Tree() {
   override fun isLoggable(tag: String?, priority: Int): Boolean = priority >= Log.INFO
+
   @SuppressLint("LogNotTimber")
   override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
     if (priority < Log.INFO) return

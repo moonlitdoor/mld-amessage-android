@@ -44,10 +44,11 @@ class PendingFragment : Fragment() {
     it.recyclerView.adapter = Adapter(viewModel, LayoutInflater.from(activity))
   }.root
 
-  private class Adapter(private val viewModel: ConnectViewModel, private val layoutInflater: LayoutInflater) : ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
-    override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
-  }) {
+  private class Adapter(private val viewModel: ConnectViewModel, private val layoutInflater: LayoutInflater) :
+    ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
+      override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
+      override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
+    }) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConnectionViewHolder(ListItemConnectionPendingInvitedBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: ConnectionViewHolder, position: Int) = holder.bind(getItem(position), viewModel).ignore()
   }

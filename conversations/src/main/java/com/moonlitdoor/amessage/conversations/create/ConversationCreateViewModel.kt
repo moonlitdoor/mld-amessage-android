@@ -10,7 +10,11 @@ import com.moonlitdoor.amessage.domain.repository.ConversationRepository
 import com.moonlitdoor.amessage.extensions.map
 import javax.inject.Inject
 
-class ConversationCreateViewModel @Inject constructor(private val conversationRepository: ConversationRepository, connectionRepository: ConnectionRepository, private val factory: ConversationFactory) : ViewModel() {
+class ConversationCreateViewModel @Inject constructor(
+  private val conversationRepository: ConversationRepository,
+  connectionRepository: ConnectionRepository,
+  private val factory: ConversationFactory
+) : ViewModel() {
 
   fun initConversation() {
     conversation = factory.getInstance()

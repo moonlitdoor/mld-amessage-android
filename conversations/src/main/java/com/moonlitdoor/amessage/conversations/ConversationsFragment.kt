@@ -51,10 +51,11 @@ class ConversationsFragment : androidx.fragment.app.Fragment() {
       NavigationMenuExperimentHelper.help(it.navigationView.menu)
     }.root
 
-  private class Adapter(private val viewModel: ConversationViewModel, private val layoutInflater: LayoutInflater) : ListAdapter<Conversation, ConversationViewHolder>(object : DiffUtil.ItemCallback<Conversation>() {
-    override fun areItemsTheSame(oldItem: Conversation, newItem: Conversation): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean = oldItem == newItem
-  }) {
+  private class Adapter(private val viewModel: ConversationViewModel, private val layoutInflater: LayoutInflater) :
+    ListAdapter<Conversation, ConversationViewHolder>(object : DiffUtil.ItemCallback<Conversation>() {
+      override fun areItemsTheSame(oldItem: Conversation, newItem: Conversation): Boolean = oldItem.id == newItem.id
+      override fun areContentsTheSame(oldItem: Conversation, newItem: Conversation): Boolean = oldItem == newItem
+    }) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ConversationViewHolder(ListItemConversationBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: ConversationViewHolder, position: Int) = holder.bind(getItem(position), viewModel).ignore()
   }

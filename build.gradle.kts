@@ -7,7 +7,7 @@ buildscript {
   }
   dependencies {
     classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
-    classpath(D.Com.Android.Tools.Build.gradle)
+    classpath(T.Com.Android.Tools.Build.gradle)
     classpath(D.Com.Github.BenManes.gradleVersionsPlugin)
     classpath(D.Com.Google.Firebase.firebaseAppdistributionGradle)
     classpath(D.Com.Github.Triplet.Gradle.playPublisher)

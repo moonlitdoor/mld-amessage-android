@@ -5,7 +5,11 @@ import android.content.SharedPreferences
 import android.preference.PreferenceManager
 import androidx.room.Room
 import com.moonlitdoor.amessage.constants.ConstantsDI
-import com.moonlitdoor.amessage.database.dao.*
+import com.moonlitdoor.amessage.database.dao.ConnectionDao
+import com.moonlitdoor.amessage.database.dao.ConversationDao
+import com.moonlitdoor.amessage.database.dao.ProfileDao
+import com.moonlitdoor.amessage.database.dao.ThemeDao
+import com.moonlitdoor.amessage.database.dao.WindowsDao
 import dagger.Component
 import dagger.Module
 import dagger.Provides

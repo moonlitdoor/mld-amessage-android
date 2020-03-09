@@ -1,7 +1,11 @@
 package com.moonlitdoor.amessage.conversations
 
 import android.content.Context
-import com.moonlitdoor.amessage.conversations.create.*
+import com.moonlitdoor.amessage.conversations.create.ConversationCreateFragment
+import com.moonlitdoor.amessage.conversations.create.ConversationMessageFragment
+import com.moonlitdoor.amessage.conversations.create.ConversationParticipantsFragment
+import com.moonlitdoor.amessage.conversations.create.ConversationTitleFragment
+import com.moonlitdoor.amessage.conversations.create.ConversationTopicFragment
 import com.moonlitdoor.amessage.domain.DomainDI
 import dagger.Component
 import dagger.Module

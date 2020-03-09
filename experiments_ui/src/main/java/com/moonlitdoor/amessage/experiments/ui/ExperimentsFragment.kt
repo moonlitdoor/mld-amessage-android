@@ -45,16 +45,20 @@ class ExperimentsFragment : Fragment() {
     }.root
 //    }
 
-  private class Adapter(private val layoutInflater: LayoutInflater, private val lifecycleOwner: LifecycleOwner) : ListAdapter<Experiment<*>, ExperimentViewHolder>(object : DiffUtil.ItemCallback<Experiment<*>>() {
-    override fun areItemsTheSame(oldItem: Experiment<*>, newItem: Experiment<*>): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: Experiment<*>, newItem: Experiment<*>): Boolean = oldItem == newItem
-  }) {
-    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ExperimentViewHolder = ExperimentViewHolder(ListItemExperimentBinding.inflate(layoutInflater, parent, false), lifecycleOwner)
+  private class Adapter(private val layoutInflater: LayoutInflater, private val lifecycleOwner: LifecycleOwner) :
+    ListAdapter<Experiment<*>, ExperimentViewHolder>(object : DiffUtil.ItemCallback<Experiment<*>>() {
+      override fun areItemsTheSame(oldItem: Experiment<*>, newItem: Experiment<*>): Boolean = oldItem.id == newItem.id
+      override fun areContentsTheSame(oldItem: Experiment<*>, newItem: Experiment<*>): Boolean = oldItem == newItem
+    }) {
+    override fun onCreateViewHolder(parent: ViewGroup, position: Int): ExperimentViewHolder =
+      ExperimentViewHolder(ListItemExperimentBinding.inflate(layoutInflater, parent, false), lifecycleOwner)
+
     override fun onBindViewHolder(holder: ExperimentViewHolder, position: Int) = holder.bind(getItem(position)).ignore()
   }
 
 
-  private class ExperimentViewHolder(private val binding: ListItemExperimentBinding, private val lifecycleOwner: LifecycleOwner) : RecyclerView.ViewHolder(binding.root), AdapterViewBindingAdapter.OnItemSelected {
+  private class ExperimentViewHolder(private val binding: ListItemExperimentBinding, private val lifecycleOwner: LifecycleOwner) : RecyclerView.ViewHolder(binding.root),
+    AdapterViewBindingAdapter.OnItemSelected {
 
     fun bind(experiment: Experiment<*>) = binding.also {
       it.experiment = experiment

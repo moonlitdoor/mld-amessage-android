@@ -6,15 +6,11 @@
   <!--  <string name="generic_cancel">Cancel</string>-->
 
 
-
-
   <!-- About -->
 
   <string name="settings_title_key" translatable="false" tools:ignore="UnusedResources">com.moonlitdoor.amessage.settings.title</string>
 
   <!-- PreferencesFragment -->
-
-
 
 
   <string name="metadata_whats_new_bug_fixes" tools:ignore="UnusedResources">Performance improvements and bug fixes.</string>

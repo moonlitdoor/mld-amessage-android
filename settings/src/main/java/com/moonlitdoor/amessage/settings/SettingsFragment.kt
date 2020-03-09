@@ -13,7 +13,7 @@ class SettingsFragment : androidx.fragment.app.Fragment() {
     FragmentSettingsBinding.inflate(inflater, container, false).also {
       it.lifecycleOwner = this
       it.toolbar.setNavigationOnClickListener { findNavController(this).navigateUp() }
-      SettingsFragmentArgs.fromBundle(arguments!!).apply {
+      SettingsFragmentArgs.fromBundle(requireArguments()).apply {
         it.toolbar.title = if (title == "null") getString(R.string.title_activity_settings) else title
         parentFragmentManager.beginTransaction().add(R.id.settings_container, PreferencesFragment.create(this)).commit()
       }

@@ -51,10 +51,11 @@ class ConversationParticipantsFragment : androidx.fragment.app.Fragment(), Step 
 
   override fun onError(error: VerificationError) {}
 
-  private class Adapter(private val layoutInflater: LayoutInflater) : ListAdapter<SelectableConnection, SelectableConnectionViewHolder>(object : DiffUtil.ItemCallback<SelectableConnection>() {
-    override fun areItemsTheSame(oldItem: SelectableConnection, newItem: SelectableConnection): Boolean = oldItem.id == newItem.id
-    override fun areContentsTheSame(oldItem: SelectableConnection, newItem: SelectableConnection): Boolean = oldItem == newItem
-  }) {
+  private class Adapter(private val layoutInflater: LayoutInflater) :
+    ListAdapter<SelectableConnection, SelectableConnectionViewHolder>(object : DiffUtil.ItemCallback<SelectableConnection>() {
+      override fun areItemsTheSame(oldItem: SelectableConnection, newItem: SelectableConnection): Boolean = oldItem.id == newItem.id
+      override fun areContentsTheSame(oldItem: SelectableConnection, newItem: SelectableConnection): Boolean = oldItem == newItem
+    }) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = SelectableConnectionViewHolder(ListItemSelectableConnectionBinding.inflate(layoutInflater, parent, false))
     override fun onBindViewHolder(holder: SelectableConnectionViewHolder, position: Int) = holder.bind(getItem(position)).ignore()
   }
