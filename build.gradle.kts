@@ -8,10 +8,10 @@ buildscript {
   dependencies {
     classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
     classpath(T.Com.Android.Tools.Build.gradle)
-    classpath(D.Com.Github.BenManes.gradleVersionsPlugin)
+    classpath(T.Com.Github.BenManes.gradleVersionsPlugin)
     classpath(D.Com.Google.Firebase.firebaseAppdistributionGradle)
-    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
-    classpath(D.Com.Moonlitdoor.GitVersion.gitVersion)
+    classpath(T.Com.Github.Triplet.Gradle.playPublisher)
+    classpath(T.Com.Moonlitdoor.GitVersion.gitVersion)
     classpath(D.Org.Jetbrains.Kotlin.kotlinGradlePlugin)
 //    classpath ("com.google.firebase:perf-plugin:1.2.1")
 //    classpath ("io.fabric.tools:gradle:1.29.0")

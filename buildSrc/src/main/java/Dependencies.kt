@@ -1,8 +1,8 @@
 object D {
   object Androidx {
-    object Annotation {
-      const val annotation = "androidx.annotation:annotation:1.1.0"
-    }
+//    object Annotation {
+//      const val annotation = "androidx.annotation:annotation:1.1.0"
+//    }
 
     object AppCompat {
       const val appcompat = "androidx.appcompat:appcompat:1.2.0-alpha03"
@@ -35,8 +35,9 @@ object D {
     }
 
     object Lifecycle {
-      private const val version = "2.2.0"
-      const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$version"
+      private const val versionOld = "2.2.0"
+      private const val version = "2.3.0-alpha01"
+      const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$versionOld"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
       const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
@@ -117,23 +118,6 @@ object D {
   }
 
   object Com {
-    object Amitshekhar {
-      object Android {
-        const val debugDb = "com.amitshekhar.android:debug-db:1.0.6"
-      }
-    }
-
-    object Github {
-      object BenManes {
-        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
-      }
-
-      object Triplet {
-        object Gradle {
-          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.7.2"
-        }
-      }
-    }
 
     object Google {
       object Android {
@@ -182,10 +166,6 @@ object D {
     }
 
     object Moonlitdoor {
-      object GitVersion {
-        const val gitVersion = "com.moonlitdoor.git-version:git-version:0.1.1"
-      }
-
       object SharedPreferenceLiveData {
         const val sharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
       }

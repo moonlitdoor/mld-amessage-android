@@ -72,7 +72,7 @@ dependencies {
   implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
 
-  debugImplementation(D.Com.Amitshekhar.Android.debugDb)
+  debugImplementation(T.Com.Amitshekhar.Android.debugDb)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)
