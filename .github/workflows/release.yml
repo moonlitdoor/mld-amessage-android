@@ -148,6 +148,7 @@ jobs:
         run: echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
       - name: Deploy Release Bundle
         env:
+          COM_MOONLITDOOR_AMESSAGE_PERF: true
           com_moonlitdoor_amessage_firebase_prod_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_default_web_client_id }}
           com_moonlitdoor_amessage_firebase_prod_firebase_database_url: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_firebase_database_url }}
           com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id: ${{ secrets.com_moonlitdoor_amessage_firebase_prod_gcm_default_sender_id }}

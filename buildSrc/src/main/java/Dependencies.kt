@@ -149,9 +149,11 @@ object D {
         const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.1"
         const val firebaseConfig = "com.google.firebase:firebase-config:19.1.2"
         const val firebaseCore = "com.google.firebase:firebase-core:17.2.3"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta01"
         const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.2"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.1"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.0.2"
+        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.5"
       }
 
       object Truth {

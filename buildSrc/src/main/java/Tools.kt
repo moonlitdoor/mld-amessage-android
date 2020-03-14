@@ -14,6 +14,13 @@ object T {
       }
     }
 
+    object Google {
+      object Firebase {
+        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.0.0-beta02"
+        const val perfPlugin = "com.google.firebase:perf-plugin:1.3.1"
+      }
+    }
+
     object Github {
       object BenManes {
         const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"

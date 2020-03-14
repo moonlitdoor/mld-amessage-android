@@ -6,12 +6,15 @@ plugins {
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
-//  id("com.google.firebase.firebase-perf")
-//  id("io.fabric")
+  id("com.google.firebase.crashlytics")
+  if (System.getenv("COM_MOONLITDOOR_AMESSAGE_PERF") != null) {
+    println("Applying Performance Plugin")
+    id("com.google.firebase.firebase-perf")
+  }
 }
 
 base {
-  archivesBaseName = project.name + "-" + gitVersion
+  archivesBaseName = "$name-$gitVersion"
 }
 
 println("VERSION NAME: $gitVersion")
@@ -87,8 +90,7 @@ android {
       resValue("string", "google_app_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_APP_ID").toString())
       resValue("string", "google_crash_reporting_api_key", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_CRASH_REPORTING_API_KEY").toString())
       resValue("string", "google_storage_bucket", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET").toString())
-//      resValue ("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID").toString())
-//      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
+      resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID").toString())
     }
     create(BETA) {
       matchingFallbacks = listOf(RELEASE)
@@ -107,8 +109,7 @@ android {
       resValue("string", "google_app_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID").toString())
       resValue("string", "google_crash_reporting_api_key", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY").toString())
       resValue("string", "google_storage_bucket", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET").toString())
-//      resValue ("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID").toString())
-//      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
+      resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID").toString())
       firebaseAppDistribution {
         apkPath = "./amessage/build/outputs/apk/beta/amessage-$gitVersion-beta.apk"
         appId = property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID").toString()
@@ -129,8 +130,7 @@ android {
       resValue("string", "google_app_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID").toString())
       resValue("string", "google_crash_reporting_api_key", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY").toString())
       resValue("string", "google_storage_bucket", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET").toString())
-//      resValue ("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID").toString())
-//      resValue ("string", "com.crashlytics.android.build_id", "\"${UUID.randomUUID()}\"")
+      resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID").toString())
     }
   }
   packagingOptions {
@@ -200,6 +200,8 @@ dependencies {
   implementation(D.Com.Google.Firebase.firebaseConfig)
   implementation(D.Com.Google.Firebase.firebaseCore)
   implementation(D.Com.Google.Firebase.firebaseMessaging)
+  implementation(D.Com.Google.Firebase.firebasePerf)
+  implementation(D.Com.Google.Firebase.firebaseCrashlytics)
   implementation(D.Com.Google.Zxing.core)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
