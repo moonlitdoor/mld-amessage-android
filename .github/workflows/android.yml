@@ -47,7 +47,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Test
-        run: ./gradlew test testReport
+        run: ./gradlew test testReport --stacktrace --continue
       - name: Upload Test Reports
         if: always()
         uses: actions/upload-artifact@master
@@ -69,8 +69,9 @@ jobs:
         with:
           java-version: 1.8
       - name: Lint
-        run: ./gradlew lint
+        run: ./gradlew lint --stacktrace --continue
       - name: Collect Reports
+        if: always()
         run: |
           mkdir ./build/lint
           mv ./about/build/reports/lint-results.html ./build/lint/about-lint-results.html
@@ -97,6 +98,7 @@ jobs:
           mv ./settings/build/reports/lint-results.html ./build/lint/settings-lint-results.html
           mv ./windows/build/reports/lint-results.html ./build/lint/windows-lint-results.html
       - name: Upload Lint
+        if: always()
         uses: actions/upload-artifact@master
         with:
           name: lint
