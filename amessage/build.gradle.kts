@@ -176,6 +176,8 @@ dependencies {
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)
+  implementation(D.Androidx.Camera.cameraCamera2)
+  implementation(D.Androidx.Camera.cameraCore)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Core.coreKtx)
   implementation(D.Androidx.Fragment.fragmentKtx)

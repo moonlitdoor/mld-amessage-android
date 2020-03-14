@@ -9,9 +9,12 @@ object D {
     }
 
     object Camera {
-      private const val version = "1.0.0-alpha06"
+      private const val version = "1.0.0-beta01"
+      private const val versionView = "1.0.0-alpha08"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
+      const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
+      const val cameraView = "androidx.camera:camera-view:$versionView"
     }
 
     object ConstraintLayout {
@@ -148,6 +151,7 @@ object D {
         const val firebaseCore = "com.google.firebase:firebase-core:17.2.3"
         const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.2"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.1"
+        const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.0.2"
       }
 
       object Truth {

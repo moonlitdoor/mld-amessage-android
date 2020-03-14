@@ -12,7 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.moonlitdoor.amessage.connect.databinding.FragmentConnectBinding
 
-class ConnectFragment : androidx.fragment.app.Fragment() {
+class ConnectFragment : Fragment() {
 
   private lateinit var binding: FragmentConnectBinding
 
