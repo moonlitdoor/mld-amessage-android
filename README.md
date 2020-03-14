@@ -8,3 +8,5 @@ echo $RELEASE_KEYSTORE_BASE64 | base64 -d > .signing/release.jks
 base64 -d <<< $RELEASE_KEYSTORE_BASE64 > .signing/release.jks
 
 testing slack
+
+![](https://github.com/moonlitdoor/mld-amessage-android/workflows/Android%20Beta%20CI/badge.svg)
