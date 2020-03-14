@@ -68,7 +68,7 @@ jobs:
         with:
           java-version: 1.8
       - name: Lint
-        run: ./gradlew lint --stacktrace
+        run: ./gradlew lint --stacktrace --continue
       - name: Collect Reports
         if: always()
         run: |
