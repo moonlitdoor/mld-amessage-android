@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+        run: git fetch --depth=0 origin +refs/tags/*:refs/tags/*
       - name: Set Up JDK 1.8
         uses: actions/setup-java@v1
         with:
@@ -31,139 +31,139 @@ jobs:
           com_moonlitdoor_amessage_firebase_debug_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_storage_bucket }}
           com_moonlitdoor_amessage_firebase_debug_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_project_id }}
         run: ./gradlew assembleDebug --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_debug_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_debug_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_debug_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_debug_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID=$com_moonlitdoor_amessage_firebase_debug_project_id
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      - name: Set Up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Test
-        run: ./gradlew test testReport --stacktrace
-      - name: Upload Test Reports
-        if: always()
-        uses: actions/upload-artifact@master
-        with:
-          name: tests
-          path: build/reports/allTests
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      - name: Set Up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Lint
-        run: ./gradlew lint --stacktrace
-      - name: Collect Reports
-        run: |
-          mkdir ./build/lint
-          mv ./about/build/reports/lint-results.html ./build/lint/about-lint-results.html
-          mv ./amessage/build/reports/lint-results.html ./build/lint/amessage-lint-results.html
-          mv ./analytics/build/reports/lint-results.html ./build/lint/analytics-lint-results.html
-          mv ./bindings/build/reports/lint-results.html ./build/lint/bindings-lint-results.html
-          mv ./components/build/reports/lint-results.html ./build/lint/components-lint-results.html
-          mv ./connect/build/reports/lint-results.html ./build/lint/connect-lint-results.html
-          mv ./connections/build/reports/lint-results.html ./build/lint/connections-lint-results.html
-          mv ./constants/build/reports/lint-results.html ./build/lint/constants-lint-results.html
-          mv ./conversations/build/reports/lint-results.html ./build/lint/conversations-lint-results.html
-          mv ./database/build/reports/lint-results.html ./build/lint/database-lint-results.html
-          mv ./domain/build/reports/lint-results.html ./build/lint/domain-lint-results.html
-          mv ./encryption/build/reports/lint-results.html ./build/lint/encryption-lint-results.html
-          mv ./experiments/build/reports/lint-results.html ./build/lint/experiments-lint-results.html
-          mv ./experiments_ui/build/reports/lint-results.html ./build/lint/experiments-ui-lint-results.html
-          mv ./extensions/build/reports/lint-results.html ./build/lint/extensions-lint-results.html
-          mv ./feedback/build/reports/lint-results.html ./build/lint/feedback-lint-results.html
-          mv ./handle/build/reports/lint-results.html ./build/lint/handle-lint-results.html
-          mv ./help/build/reports/lint-results.html ./build/lint/help-lint-results.html
-          mv ./ids/build/reports/lint-results.html ./build/lint/ids-lint-results.html
-          mv ./network/build/reports/lint-results.html ./build/lint/network-lint-results.html
-          mv ./resources/build/reports/lint-results.html ./build/lint/resources-lint-results.html
-          mv ./settings/build/reports/lint-results.html ./build/lint/settings-lint-results.html
-          mv ./windows/build/reports/lint-results.html ./build/lint/windows-lint-results.html
-      - name: Upload Lint
-        uses: actions/upload-artifact@master
-        with:
-          name: lint
-          path: build/lint
-  beta:
-    name: Beta
-    needs: [build, test, lint]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Tags
-        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
-      - name: Set Up JDK 1.8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Create Key Directory
-        run: mkdir -p ./build/keys
-      - name: Write Deploy Keys
-        env:
-          keys_firebase_type: ${{ secrets.keys_firebase_type }}
-          keys_firebase_project_id: ${{ secrets.keys_firebase_project_id }}
-          keys_firebase_private_key_id: ${{ secrets.keys_firebase_private_key_id }}
-          keys_firebase_private_key: ${{ secrets.keys_firebase_private_key }}
-          keys_firebase_client_email: ${{ secrets.keys_firebase_client_email }}
-          keys_firebase_client_id: ${{ secrets.keys_firebase_client_id }}
-          keys_firebase_auth_uri: ${{ secrets.keys_firebase_auth_uri }}
-          keys_firebase_token_uri: ${{ secrets.keys_firebase_token_uri }}
-          keys_firebase_auth_provider_x509_cert_url: ${{ secrets.keys_firebase_auth_provider_x509_cert_url }}
-          keys_firebase_client_x509_cert_url: ${{ secrets.keys_firebase_client_x509_cert_url }}
-        run: |
-          echo "{
-            \"type\": \"$keys_firebase_type\",
-            \"project_id\": \"$keys_firebase_project_id\",
-            \"private_key_id\": \"$keys_firebase_private_key_id\",
-            \"private_key\": \"$keys_firebase_private_key\",
-            \"client_email\": \"$keys_firebase_client_email\",
-            \"client_id\": \"$keys_firebase_client_id\",
-            \"auth_uri\": \"$keys_firebase_auth_uri\",
-            \"token_uri\": \"$keys_firebase_token_uri\",
-            \"auth_provider_x509_cert_url\": \"$keys_firebase_auth_provider_x509_cert_url\",
-            \"client_x509_cert_url\": \"$keys_firebase_client_x509_cert_url\"
-          }" > ./build/keys/firebase-api-key.json
-      - name: Write Signing Keys
-        env:
-          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
-        run: echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
-      - name: Assemble & Deploy Beta
-        env:
-          com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
-          com_moonlitdoor_amessage_firebase_beta_firebase_database_url: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_firebase_database_url }}
-          com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id }}
-          com_moonlitdoor_amessage_firebase_beta_google_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_api_key }}
-          com_moonlitdoor_amessage_firebase_beta_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_app_id }}
-          com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key }}
-          com_moonlitdoor_amessage_firebase_beta_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_storage_bucket }}
-          com_moonlitdoor_amessage_firebase_beta_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_project_id }}
-          com_moonlitdoor_amessage_key_store_store_password: ${{ secrets.com_moonlitdoor_amessage_key_store_store_password }}
-          com_moonlitdoor_amessage_key_store_key_alias: ${{ secrets.com_moonlitdoor_amessage_key_store_key_alias }}
-          com_moonlitdoor_amessage_key_store_key_password: ${{ secrets.com_moonlitdoor_amessage_key_store_key_password }}
-        run: |
-          curl -L --output $(pwd)/build/bundletool.jar https://github.com/google/bundletool/releases/download/0.11.0/bundletool-all-0.11.0.jar
-          ./gradlew amessage:packageBeta bundleBeta -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=../build/keys/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_beta_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_beta_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_beta_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID=$com_moonlitdoor_amessage_firebase_beta_project_id
-          java -jar $(pwd)/build/bundletool.jar build-apks --bundle=./amessage/build/outputs/bundle/beta/$(ls ./amessage/build/outputs/bundle/beta/amessage-*-beta.aab | xargs basename) --output=./amessage/build/temp.apks --ks ./build/keys/amessage.keystore.jks --ks-pass=pass:$com_moonlitdoor_amessage_key_store_store_password --ks-key-alias=$com_moonlitdoor_amessage_key_store_key_alias --key-pass=pass:$com_moonlitdoor_amessage_key_store_key_password --mode=universal
-          mv ./amessage/build/temp.apks ./amessage/build/temp.zip
-          unzip ./amessage/build/temp.zip -d ./amessage/build/outputs/apk/beta/
-          mv ./amessage/build/outputs/apk/beta/universal.apk ./amessage/build/outputs/apk/beta/$(ls ./amessage/build/outputs/apk/beta/amessage-*-beta.apk | xargs basename)
-          ./gradlew appDistributionUploadBeta -x packageBeta --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id
+#  test:
+#    name: Test
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#      - name: Tags
+#        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+#      - name: Set Up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Test
+#        run: ./gradlew test testReport --stacktrace
+#      - name: Upload Test Reports
+#        if: always()
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: tests
+#          path: build/reports/allTests
+#  lint:
+#    name: Lint
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#      - name: Tags
+#        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+#      - name: Set Up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Lint
+#        run: ./gradlew lint --stacktrace
+#      - name: Collect Reports
+#        run: |
+#          mkdir ./build/lint
+#          mv ./about/build/reports/lint-results.html ./build/lint/about-lint-results.html
+#          mv ./amessage/build/reports/lint-results.html ./build/lint/amessage-lint-results.html
+#          mv ./analytics/build/reports/lint-results.html ./build/lint/analytics-lint-results.html
+#          mv ./bindings/build/reports/lint-results.html ./build/lint/bindings-lint-results.html
+#          mv ./components/build/reports/lint-results.html ./build/lint/components-lint-results.html
+#          mv ./connect/build/reports/lint-results.html ./build/lint/connect-lint-results.html
+#          mv ./connections/build/reports/lint-results.html ./build/lint/connections-lint-results.html
+#          mv ./constants/build/reports/lint-results.html ./build/lint/constants-lint-results.html
+#          mv ./conversations/build/reports/lint-results.html ./build/lint/conversations-lint-results.html
+#          mv ./database/build/reports/lint-results.html ./build/lint/database-lint-results.html
+#          mv ./domain/build/reports/lint-results.html ./build/lint/domain-lint-results.html
+#          mv ./encryption/build/reports/lint-results.html ./build/lint/encryption-lint-results.html
+#          mv ./experiments/build/reports/lint-results.html ./build/lint/experiments-lint-results.html
+#          mv ./experiments_ui/build/reports/lint-results.html ./build/lint/experiments-ui-lint-results.html
+#          mv ./extensions/build/reports/lint-results.html ./build/lint/extensions-lint-results.html
+#          mv ./feedback/build/reports/lint-results.html ./build/lint/feedback-lint-results.html
+#          mv ./handle/build/reports/lint-results.html ./build/lint/handle-lint-results.html
+#          mv ./help/build/reports/lint-results.html ./build/lint/help-lint-results.html
+#          mv ./ids/build/reports/lint-results.html ./build/lint/ids-lint-results.html
+#          mv ./network/build/reports/lint-results.html ./build/lint/network-lint-results.html
+#          mv ./resources/build/reports/lint-results.html ./build/lint/resources-lint-results.html
+#          mv ./settings/build/reports/lint-results.html ./build/lint/settings-lint-results.html
+#          mv ./windows/build/reports/lint-results.html ./build/lint/windows-lint-results.html
+#      - name: Upload Lint
+#        uses: actions/upload-artifact@master
+#        with:
+#          name: lint
+#          path: build/lint
+#  beta:
+#    name: Beta
+#    needs: [build, test, lint]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 0
+#      - name: Tags
+#        run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+#      - name: Set Up JDK 1.8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Create Key Directory
+#        run: mkdir -p ./build/keys
+#      - name: Write Deploy Keys
+#        env:
+#          keys_firebase_type: ${{ secrets.keys_firebase_type }}
+#          keys_firebase_project_id: ${{ secrets.keys_firebase_project_id }}
+#          keys_firebase_private_key_id: ${{ secrets.keys_firebase_private_key_id }}
+#          keys_firebase_private_key: ${{ secrets.keys_firebase_private_key }}
+#          keys_firebase_client_email: ${{ secrets.keys_firebase_client_email }}
+#          keys_firebase_client_id: ${{ secrets.keys_firebase_client_id }}
+#          keys_firebase_auth_uri: ${{ secrets.keys_firebase_auth_uri }}
+#          keys_firebase_token_uri: ${{ secrets.keys_firebase_token_uri }}
+#          keys_firebase_auth_provider_x509_cert_url: ${{ secrets.keys_firebase_auth_provider_x509_cert_url }}
+#          keys_firebase_client_x509_cert_url: ${{ secrets.keys_firebase_client_x509_cert_url }}
+#        run: |
+#          echo "{
+#            \"type\": \"$keys_firebase_type\",
+#            \"project_id\": \"$keys_firebase_project_id\",
+#            \"private_key_id\": \"$keys_firebase_private_key_id\",
+#            \"private_key\": \"$keys_firebase_private_key\",
+#            \"client_email\": \"$keys_firebase_client_email\",
+#            \"client_id\": \"$keys_firebase_client_id\",
+#            \"auth_uri\": \"$keys_firebase_auth_uri\",
+#            \"token_uri\": \"$keys_firebase_token_uri\",
+#            \"auth_provider_x509_cert_url\": \"$keys_firebase_auth_provider_x509_cert_url\",
+#            \"client_x509_cert_url\": \"$keys_firebase_client_x509_cert_url\"
+#          }" > ./build/keys/firebase-api-key.json
+#      - name: Write Signing Keys
+#        env:
+#          com_moonlitdoor_amessage_key_store: ${{ secrets.com_moonlitdoor_amessage_key_store }}
+#        run: echo $com_moonlitdoor_amessage_key_store | base64 -d > ./build/keys/amessage.keystore.jks
+#      - name: Assemble & Deploy Beta
+#        env:
+#          com_moonlitdoor_amessage_firebase_beta_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_default_web_client_id }}
+#          com_moonlitdoor_amessage_firebase_beta_firebase_database_url: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_firebase_database_url }}
+#          com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id }}
+#          com_moonlitdoor_amessage_firebase_beta_google_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_api_key }}
+#          com_moonlitdoor_amessage_firebase_beta_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_app_id }}
+#          com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key }}
+#          com_moonlitdoor_amessage_firebase_beta_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_google_storage_bucket }}
+#          com_moonlitdoor_amessage_firebase_beta_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_beta_project_id }}
+#          com_moonlitdoor_amessage_key_store_store_password: ${{ secrets.com_moonlitdoor_amessage_key_store_store_password }}
+#          com_moonlitdoor_amessage_key_store_key_alias: ${{ secrets.com_moonlitdoor_amessage_key_store_key_alias }}
+#          com_moonlitdoor_amessage_key_store_key_password: ${{ secrets.com_moonlitdoor_amessage_key_store_key_password }}
+#        run: |
+#          curl -L --output $(pwd)/build/bundletool.jar https://github.com/google/bundletool/releases/download/0.11.0/bundletool-all-0.11.0.jar
+#          ./gradlew amessage:packageBeta bundleBeta -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE=../build/keys/amessage.keystore.jks -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD=$com_moonlitdoor_amessage_key_store_store_password -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS=$com_moonlitdoor_amessage_key_store_key_alias -PCOM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD=$com_moonlitdoor_amessage_key_store_key_password -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_beta_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_beta_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_beta_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_beta_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_beta_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_PROJECT_ID=$com_moonlitdoor_amessage_firebase_beta_project_id
+#          java -jar $(pwd)/build/bundletool.jar build-apks --bundle=./amessage/build/outputs/bundle/beta/$(ls ./amessage/build/outputs/bundle/beta/amessage-*-beta.aab | xargs basename) --output=./amessage/build/temp.apks --ks ./build/keys/amessage.keystore.jks --ks-pass=pass:$com_moonlitdoor_amessage_key_store_store_password --ks-key-alias=$com_moonlitdoor_amessage_key_store_key_alias --key-pass=pass:$com_moonlitdoor_amessage_key_store_key_password --mode=universal
+#          mv ./amessage/build/temp.apks ./amessage/build/temp.zip
+#          unzip ./amessage/build/temp.zip -d ./amessage/build/outputs/apk/beta/
+#          mv ./amessage/build/outputs/apk/beta/universal.apk ./amessage/build/outputs/apk/beta/$(ls ./amessage/build/outputs/apk/beta/amessage-*-beta.apk | xargs basename)
+#          ./gradlew appDistributionUploadBeta -x packageBeta --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_beta_google_app_id
