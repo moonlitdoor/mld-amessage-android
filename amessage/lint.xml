@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
   <issue id="UnusedResources">
-    <ignore path="build.gradle.kts1" />
+    <ignore path="build.gradle.kts" />
   </issue>
   <issue id="GoogleAppIndexingWarning" severity="ignore" />
   <issue id="VectorPath" severity="ignore">
