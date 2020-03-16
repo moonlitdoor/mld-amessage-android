@@ -11,8 +11,9 @@ object Analytics {
   @VisibleForTesting
   internal lateinit var analytics: FirebaseAnalyticsWrapper
 
-  fun init(context: Context, a: FirebaseAnalyticsWrapper = FirebaseAnalyticsLive(context)) {
+  fun init(context: Context, userId: String, a: FirebaseAnalyticsWrapper = FirebaseAnalyticsLive(context)) {
     analytics = a
+    analytics.setUserId(userId)
   }
 
   fun sendCustomEvent() {

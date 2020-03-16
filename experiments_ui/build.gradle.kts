@@ -60,7 +60,10 @@ android {
       java.srcDir(SHARED_TEST_DIR)
     }
   }
-
+//  composeOptions {
+//    kotlinCompilerVersion = "1.3.61-dev-withExperimentalGoogleExtensions-20200129"
+//    kotlinCompilerExtensionVersion = "0.1.0-dev06"
+//  }
 }
 
 dependencies {
@@ -74,19 +77,10 @@ dependencies {
 
   implementation(D.Com.Google.Dagger.dagger)
 
-//  implementation(D.Androidx.Ui.uiAndroidText)
-//  implementation(D.Androidx.Ui.uiAnimation)
-//  implementation(D.Androidx.Ui.uiAnimationCore)
-//  implementation(D.Androidx.Ui.uiCore)
-//  implementation(D.Androidx.Ui.uiFoundation)
-//  implementation(D.Androidx.Ui.uiFramework)
+//  implementation(D.Androidx.Compose.composeRuntime)
 //  implementation(D.Androidx.Ui.uiLayout)
 //  implementation(D.Androidx.Ui.uiMaterial)
-//  implementation(D.Androidx.Ui.uiPlatform)
-////  implementation(D.Androidx.Ui.uiTest)
-//  implementation(D.Androidx.Ui.uiText)
 //  implementation(D.Androidx.Ui.uiTooling)
-//  implementation(D.Androidx.Ui.uiVector)
 
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)

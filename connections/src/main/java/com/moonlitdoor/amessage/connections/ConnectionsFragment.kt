@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -21,6 +22,7 @@ import com.moonlitdoor.amessage.extensions.observe
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import timber.log.Timber
 import javax.inject.Inject
+import com.moonlitdoor.amessage.ids.R as N
 
 class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> {
 
@@ -48,8 +50,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
         it.navigationView.setupWithNavController(navController)
       }
       WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
-      it.fab.setOnClickListener { throw RuntimeException("Test Crash") }
-//      it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
+      it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
 //        it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
 //          header.lifecycleOwner = this
 //          header.handle = viewModel.handle.also { h -> h.observe(header.life, this) }

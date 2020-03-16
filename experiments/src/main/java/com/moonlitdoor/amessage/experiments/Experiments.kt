@@ -21,7 +21,7 @@ object Experiments {
   val USE_COMPOSE_EXPERIMENTS = Experiment(key = "exp_use_compose_experiments")
 
   val experiments: List<Experiment<*>> = listOf(
-//    USE_COMPOSE_EXPERIMENTS,
+    USE_COMPOSE_EXPERIMENTS,
     FEATURE_WINDOWS,
     FEATURE_SETTINGS,
     FEATURE_HELP,

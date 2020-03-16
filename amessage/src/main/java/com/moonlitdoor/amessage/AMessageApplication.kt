@@ -1,7 +1,5 @@
 package com.moonlitdoor.amessage
 
-//import com.crashlytics.android.Crashlytics
-//import io.fabric.sdk.android.Fabric
 import android.app.Application
 import androidx.camera.camera2.Camera2Config
 import androidx.camera.core.CameraXConfig
@@ -15,26 +13,15 @@ class AMessageApplication : Application(), LifecycleObserver, CameraXConfig.Prov
 
   override fun onCreate() {
     super.onCreate()
+    UserId.init(this)
     FirebaseApp.initializeApp(this)
-    initTimber(BuildConfig.DEBUG)
+    TimberInit(BuildConfig.DEBUG)
+    Analytics.init(this, UserId.value)
     AMessageDI.init(this)
     Experiments.init()
-//    RemoteConfig.init()
-//    if (!BuildConfig.DEBUG) {
-//      Fabric.with(this, Crashlytics())
-//      PreferenceManager.getDefaultSharedPreferences(this).let {
-//        Crashlytics.setUserIdentifier(it.getString(CRASHLYTICS_USER_ID, null) ?: UUID.randomUUID().toString().also { id ->
-//          it.edit().putString(CRASHLYTICS_USER_ID, id).apply()
-//        })
-//      }
-//    }
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
-    Analytics.init(this)
   }
 
   override fun getCameraXConfig(): CameraXConfig = Camera2Config.defaultConfig()
 
-  companion object {
-    private const val CRASHLYTICS_USER_ID = "com.moonlitdoor.amessage.AMessageApplication.CRASHLYTICS_USER_ID"
-  }
 }

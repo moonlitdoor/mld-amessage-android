@@ -16,7 +16,7 @@ class AnalyticsTest {
       assertEquals("foo", parameters?.getString("custom_event_param1"))
       assertEquals("bar", parameters?.getString("custom_event_param2"))
     })
-    Analytics.init(InstrumentationRegistry.getInstrumentation().targetContext, fake)
+    Analytics.init(InstrumentationRegistry.getInstrumentation().targetContext, "userId", fake)
     Analytics.sendCustomEvent()
   }
 
