@@ -3,14 +3,20 @@ package com.moonlitdoor.amessage.help
 import com.moonlitdoor.amessage.AMessageDI
 import dagger.Component
 import dagger.Module
+import javax.inject.Scope
 
 @Component(
   modules = [HelpDI.HelpModule::class],
   dependencies = [AMessageDI::class]
 )
+@HelpDI.HelpScope
 interface HelpDI {
 
   fun inject(fragment: HelpFragment)
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class HelpScope
 
   @Module
   open class HelpModule

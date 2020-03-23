@@ -1,14 +1,12 @@
 package com.moonlitdoor.amessage.components
 
 import android.content.Context
-import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
 import com.moonlitdoor.amessage.components.databinding.BottomSheetDialogWhatsNewBinding
 import com.moonlitdoor.amessage.components.databinding.ListItemWhatsNewBinding
-import com.moonlitdoor.amessage.constants.Constants
 import java.util.*
 
 class WhatsNewBottomSheetDialog(context: Context) : com.google.android.material.bottomsheet.BottomSheetDialog(context) {
@@ -50,7 +48,7 @@ class WhatsNewBottomSheetDialog(context: Context) : com.google.android.material.
 
   override fun dismiss() {
     super.dismiss()
-    PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(Constants.SharedPreferences.VERSION_CODE, BuildConfig.VERSION_CODE).apply()
+//    PreferenceManager.getDefaultSharedPreferences(context).edit().putInt(Constants.SharedPreferences.VERSION_CODE, BuildConfig.VERSION_CODE).apply()
   }
 
   private class WhatsNewAdapter(private val data: List<String>) : androidx.recyclerview.widget.RecyclerView.Adapter<ViewHolder>() {
@@ -79,9 +77,9 @@ class WhatsNewBottomSheetDialog(context: Context) : com.google.android.material.
   companion object {
 
     fun show(context: Context?) {
-      if (PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.SharedPreferences.VERSION_CODE, 0) < BuildConfig.VERSION_CODE) {
-        forceShow(context)
-      }
+//      if (PreferenceManager.getDefaultSharedPreferences(context).getInt(Constants.SharedPreferences.VERSION_CODE, 0) < BuildConfig.VERSION_CODE) {
+//        forceShow(context)
+//      }
     }
 
     fun setMenuItemListener(context: Context?, drawerLayout: androidx.drawerlayout.widget.DrawerLayout, menuItem: MenuItem?) {

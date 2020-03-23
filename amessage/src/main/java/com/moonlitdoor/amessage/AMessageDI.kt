@@ -4,23 +4,34 @@ import android.content.Context
 import com.moonlitdoor.amessage.connect.ConnectDI
 import com.moonlitdoor.amessage.connections.ConnectionsDI
 import com.moonlitdoor.amessage.conversations.ConversationsDI
+import com.moonlitdoor.amessage.domain.DomainDI
+import com.moonlitdoor.amessage.domain.repository.FrequentlyAskedQuestionRepository
 import com.moonlitdoor.amessage.settings.SettingsDI
 import dagger.Component
 import dagger.Module
+import javax.inject.Scope
 
 @Component(
-  modules = [AMessageDI.AmessageModule::class],
+  modules = [AMessageDI.AMessageModule::class],
   dependencies = [
     ConnectionsDI::class,
     ConversationsDI::class,
     ConnectDI::class,
-    SettingsDI::class
+    SettingsDI::class,
+    DomainDI::class
   ]
 )
+@AMessageDI.AMessageScope
 interface AMessageDI {
 
+  fun frequentlyAskedQuestionRepository(): FrequentlyAskedQuestionRepository
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class AMessageScope
+
   @Module
-  class AmessageModule
+  class AMessageModule
 
   companion object {
 
@@ -32,6 +43,7 @@ interface AMessageDI {
       .conversationsDI(ConversationsDI.init(context))
       .connectDI(ConnectDI.init(context))
       .settingsDI(SettingsDI.init(context))
+      .domainDI(DomainDI.init(context))
       .build().also {
         component = it
       }

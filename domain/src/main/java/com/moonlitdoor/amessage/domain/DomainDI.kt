@@ -5,6 +5,7 @@ import com.moonlitdoor.amessage.database.DatabaseDI
 import com.moonlitdoor.amessage.domain.factory.ConversationFactory
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ConversationRepository
+import com.moonlitdoor.amessage.domain.repository.FrequentlyAskedQuestionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.domain.repository.ThemeRepository
 import com.moonlitdoor.amessage.domain.repository.WindowsRepository
@@ -13,6 +14,7 @@ import com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker
 import com.moonlitdoor.amessage.network.NetworkDI
 import dagger.Component
 import dagger.Module
+import javax.inject.Scope
 
 @Component(
   modules = [
@@ -23,10 +25,12 @@ import dagger.Module
     NetworkDI::class
   ]
 )
+@DomainDI.DomainScope
 interface DomainDI {
 
   fun connectionRepository(): ConnectionRepository
   fun conversationRepository(): ConversationRepository
+  fun frequentlyAskedQuestionRepository(): FrequentlyAskedQuestionRepository
   fun profileRepository(): ProfileRepository
   fun themeRepository(): ThemeRepository
   fun windowsRepository(): WindowsRepository
@@ -35,6 +39,10 @@ interface DomainDI {
 
   fun inject(service: FirebaseMessagingService)
   fun inject(worker: ConnectionInviteWorker)
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class DomainScope
 
   @Module
   class DomainModule

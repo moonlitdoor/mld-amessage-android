@@ -8,16 +8,16 @@ object TimberInit {
 
   operator fun invoke(isDebug: Boolean) = if (isDebug) Timber.plant(DecoratedDebugTree) else Timber.plant(DecoratedCrashReportingTree)
 
-  private val crashlytics = FirebaseCrashlytics.getInstance().also {
-    it.setUserId(UserId.value)
-    it.sendUnsentReports()
-  }
-
   private object DecoratedDebugTree : Timber.DebugTree() {
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) = super.log(priority, tag, Decorator.decorate(message), t)
   }
 
   private object DecoratedCrashReportingTree : Timber.Tree() {
+
+    private val crashlytics = FirebaseCrashlytics.getInstance().also {
+      it.setUserId(UserId.value)
+      it.sendUnsentReports()
+    }
 
     override fun isLoggable(tag: String?, priority: Int): Boolean = priority >= Log.INFO
 

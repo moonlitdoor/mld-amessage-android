@@ -9,6 +9,7 @@ import com.moonlitdoor.amessage.experiments.ui.ExperimentsUiDI
 import dagger.Component
 import dagger.Module
 import dagger.Provides
+import javax.inject.Scope
 
 @Component(
   modules = [SettingsDI.SettingsModule::class],
@@ -18,9 +19,14 @@ import dagger.Provides
     ExperimentsUiDI::class
   ]
 )
+@SettingsDI.SettingsScope
 interface SettingsDI {
 
   fun inject(fragment: PreferencesFragment)
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class SettingsScope
 
   @Module
   class SettingsModule(private var context: Context) {

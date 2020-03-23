@@ -15,8 +15,8 @@ android {
 
   testOptions {
     unitTests.apply {
-      returnDefaultValues = true
-      includeAndroidResources = true
+      isReturnDefaultValues = true
+      isIncludeAndroidResources = true
     }
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true
@@ -65,12 +65,15 @@ dependencies {
 
   api(project(M.CONSTANTS))
 
+  api("com.google.firebase:firebase-database-ktx:19.2.1")
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(D.Androidx.Room.roomKtx)
   implementation(D.Androidx.Room.roomRuntime)
   implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)
+  implementation(D.Com.JakeWharton.Timber.timber)
 
   debugImplementation(T.Com.Amitshekhar.Android.debugDb)
 

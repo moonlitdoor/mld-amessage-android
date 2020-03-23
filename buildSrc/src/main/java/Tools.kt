@@ -3,7 +3,7 @@ object T {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha02"
+          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha03"
         }
       }
     }

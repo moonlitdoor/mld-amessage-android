@@ -2,6 +2,7 @@
 <lint>
   <issue id="UnusedResources">
     <ignore path="build.gradle.kts" />
+    <ignore path="../../help/src/main/res/drawable/ic_baseline_expand_more_24.xml" />
   </issue>
   <issue id="GoogleAppIndexingWarning" severity="ignore" />
   <issue id="VectorPath" severity="ignore">

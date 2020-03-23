@@ -6,6 +6,7 @@ import com.moonlitdoor.amessage.experiments.ExperimentsDI
 import com.moonlitdoor.amessage.handle.HandleDI
 import dagger.Component
 import dagger.Module
+import javax.inject.Scope
 
 @Component(
   modules = [ConnectionsDI.ConnectionsModule::class],
@@ -15,9 +16,14 @@ import dagger.Module
     ExperimentsDI::class
   ]
 )
+@ConnectionsDI.ConnectionsScope
 interface ConnectionsDI {
 
   fun inject(fragment: ConnectionsFragment)
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class ConnectionsScope
 
   @Module
   class ConnectionsModule

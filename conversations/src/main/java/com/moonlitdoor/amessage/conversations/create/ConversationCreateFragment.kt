@@ -1,11 +1,13 @@
 package com.moonlitdoor.amessage.conversations.create
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.ui.NavigationUI.setupWithNavController
+import com.google.android.material.snackbar.Snackbar
 import com.moonlitdoor.amessage.conversations.ConversationsDI
 import com.moonlitdoor.amessage.conversations.components.StepperAdapter
 import com.moonlitdoor.amessage.conversations.components.StepperListener
@@ -45,8 +47,9 @@ class ConversationCreateFragment : androidx.fragment.app.Fragment(), StepperList
     findNavController(this).popBackStack()
   }
 
+  @SuppressLint("WrongConstant")
   override fun onError(verificationError: VerificationError?) = verificationError?.let {
-    com.google.android.material.snackbar.Snackbar.make(binding.root, verificationError.errorMessage, com.google.android.material.snackbar.Snackbar.LENGTH_LONG).show()
+    Snackbar.make(binding.root, verificationError.errorMessage, Snackbar.LENGTH_LONG).show()
   }.ignore()
 
 }

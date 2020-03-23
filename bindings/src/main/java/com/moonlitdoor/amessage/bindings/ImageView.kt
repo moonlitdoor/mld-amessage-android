@@ -9,4 +9,11 @@ fun ImageView.setImageViewResource(bitmap: Bitmap?) {
   this.setImageBitmap(bitmap)
 }
 
+@BindingAdapter(value = ["rotate", "rotationDuration"], requireAll = true)
+fun ImageView.rotate(rotate: Float, rotationDuration: Long) {
+  if (rotation != rotate) {
+    this.animate().setDuration(rotationDuration).rotation(rotate).start()
+  }
+}
+
 

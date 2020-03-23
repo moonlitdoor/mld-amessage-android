@@ -16,8 +16,8 @@ android {
 
   testOptions {
     unitTests.apply {
-      returnDefaultValues = true
-      includeAndroidResources = true
+      isReturnDefaultValues = true
+      isIncludeAndroidResources = true
     }
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true
@@ -70,6 +70,9 @@ dependencies {
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
+  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
+  implementation(D.Com.JakeWharton.Timber.timber)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)

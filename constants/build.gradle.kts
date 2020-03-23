@@ -15,8 +15,8 @@ android {
 
   testOptions {
     unitTests.apply {
-      returnDefaultValues = true
-      includeAndroidResources = true
+      isReturnDefaultValues = true
+      isIncludeAndroidResources = true
     }
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true

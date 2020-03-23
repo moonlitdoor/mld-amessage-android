@@ -4,7 +4,12 @@ import android.content.Context
 import android.graphics.Canvas
 import androidx.core.content.ContextCompat
 
-class ItemDecorationDivider(context: Context) : androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
+class ItemDecorationDivider(context: Context, private val trailingDivider: TrailingDivider = TrailingDivider.HIDE) : androidx.recyclerview.widget.RecyclerView.ItemDecoration() {
+
+  enum class TrailingDivider {
+    SHOW,
+    HIDE
+  }
 
   private val divider = ContextCompat.getDrawable(context, R.drawable.item_decoration_divider)
 
@@ -13,7 +18,10 @@ class ItemDecorationDivider(context: Context) : androidx.recyclerview.widget.Rec
       val left = parent.paddingLeft
       val right = parent.width - parent.paddingRight
 
-      val childCount = parent.childCount
+      val childCount = when (trailingDivider) {
+        TrailingDivider.SHOW -> parent.childCount
+        TrailingDivider.HIDE -> parent.childCount - 1
+      }
       for (i in 0 until childCount) {
         val child = parent.getChildAt(i)
         val params = child.layoutParams as androidx.recyclerview.widget.RecyclerView.LayoutParams

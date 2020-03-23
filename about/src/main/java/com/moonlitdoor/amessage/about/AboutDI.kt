@@ -3,14 +3,20 @@ package com.moonlitdoor.amessage.about
 import com.moonlitdoor.amessage.AMessageDI
 import dagger.Component
 import dagger.Module
+import javax.inject.Scope
 
 @Component(
   modules = [AboutDI.AboutModule::class],
   dependencies = [AMessageDI::class]
 )
+@AboutDI.AboutScope
 interface AboutDI {
 
   fun inject(fragment: AboutFragment)
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class AboutScope
 
   @Module
   open class AboutModule

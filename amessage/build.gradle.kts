@@ -32,14 +32,16 @@ android {
   dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lintOptions {
+    isIgnoreTestSources = true
+    isCheckDependencies = true
     isWarningsAsErrors = true
     isAbortOnError = true
     xmlReport = false
   }
   testOptions {
     unitTests.apply {
-      returnDefaultValues = true
-      includeAndroidResources = true
+      isReturnDefaultValues = true
+      isIncludeAndroidResources = true
     }
     execution = TEST_ORCHESTRATOR
     animationsDisabled = true
@@ -160,13 +162,13 @@ dependencies {
   kapt(D.Com.Google.Dagger.daggerCompiler)
 
   implementation(project(M.ANALYTICS))
-  implementation(project(M.BINDINGS))
+  api(project(M.BINDINGS))
   api(project(M.COMPONENTS))
   implementation(project(M.CONSTANTS))
   api(project(M.CONNECT))
   api(project(M.CONNECTIONS))
   api(project(M.CONVERSATIONS))
-  implementation(project(M.DOMAIN))
+  api(project(M.DOMAIN))
   api(project(M.EXPERIMENTS))
   api(project(M.EXTENSIONS))
   api(project(M.HANDLE))

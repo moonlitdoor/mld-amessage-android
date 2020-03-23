@@ -9,12 +9,14 @@ import com.moonlitdoor.amessage.conversations.create.ConversationTopicFragment
 import com.moonlitdoor.amessage.domain.DomainDI
 import dagger.Component
 import dagger.Module
+import javax.inject.Scope
 
 @Component(
   modules = [ConversationsDI.ConnectionsModule::class],
   dependencies = [
     DomainDI::class]
 )
+@ConversationsDI.ConversationsScope
 interface ConversationsDI {
 
   fun inject(fragment: ConversationsFragment)
@@ -23,6 +25,10 @@ interface ConversationsDI {
   fun inject(fragment: ConversationParticipantsFragment)
   fun inject(fragment: ConversationTitleFragment)
   fun inject(fragment: ConversationTopicFragment)
+
+  @Scope
+  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
+  annotation class ConversationsScope
 
   @Module
   class ConnectionsModule

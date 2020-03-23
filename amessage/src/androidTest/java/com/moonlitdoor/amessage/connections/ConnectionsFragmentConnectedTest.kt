@@ -3,7 +3,6 @@ package com.moonlitdoor.amessage.connections
 import android.content.Intent
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -30,7 +29,7 @@ class ConnectionsFragmentConnectedTest {
 //    Injector.init(applicationContext, DependencyModuleFake(applicationContext, MutableLiveData<String>().also { it.postValue("Bob") }))
     rule.launchActivity(Intent())
 
-    onView(withContentDescription(R.string.navigation_drawer_open)).perform(click())
+//    onView(withContentDescription(R.string.navigation_drawer_open)).perform(click())
     onView(withText(R.string.title_conversation_list)).perform(click())
     assertEquals(2, 2)
   }
