@@ -28,7 +28,7 @@ object T {
 
       object Triplet {
         object Gradle {
-          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.7.2"
+          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.8.0-SNAPSHOT"
         }
       }
     }

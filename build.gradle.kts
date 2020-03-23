@@ -4,13 +4,14 @@ buildscript {
     google()
     jcenter()
     maven(url = "https://plugins.gradle.org/m2/")
+    maven("https://oss.sonatype.org/content/repositories/snapshots")
   }
   dependencies {
     classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
     classpath(T.Com.Android.Tools.Build.gradle)
     classpath(T.Com.Github.BenManes.gradleVersionsPlugin)
     classpath(D.Com.Google.Firebase.firebaseAppdistributionGradle)
-//    classpath(T.Com.Github.Triplet.Gradle.playPublisher)
+    classpath(T.Com.Github.Triplet.Gradle.playPublisher)
     classpath(T.Com.Moonlitdoor.GitVersion.gitVersion)
     classpath(D.Org.Jetbrains.Kotlin.kotlinGradlePlugin)
     classpath(T.Com.Google.Firebase.firebaseCrashlyticsGradle)
