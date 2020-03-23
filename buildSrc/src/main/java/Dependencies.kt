@@ -30,7 +30,7 @@ object D {
     }
 
     object Fragment {
-      private const val version = "1.3.0-alpha01"
+      private const val version = "1.3.0-alpha02"
       const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
@@ -51,7 +51,7 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.3.0-alpha03"
+      private const val version = "2.3.0-alpha04"
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
@@ -67,7 +67,7 @@ object D {
     }
 
     object Room {
-      private const val version = "2.2.4"
+      private const val version = "2.2.5"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -75,14 +75,14 @@ object D {
     }
 
     object Test {
-      private const val version = "1.3.0-alpha04"
+      private const val version = "1.3.0-alpha05"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.3.0-alpha04"
+        private const val version = "3.3.0-alpha05"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -92,7 +92,7 @@ object D {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha04"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha05"
       }
     }
 
@@ -139,13 +139,18 @@ object D {
 
       object Firebase {
         const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.1"
-        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.2"
+        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.3"
         const val firebaseCore = "com.google.firebase:firebase-core:17.2.3"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta01"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.2"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta02"
+        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.4"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.3"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.1"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.0.2"
         const val firebasePerf = "com.google.firebase:firebase-perf:19.0.5"
+      }
+
+      object Guava {
+        const val listenablefuture = "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"
       }
 
       object Truth {
@@ -171,14 +176,14 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.4.0"
+        private const val version = "4.4.1"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
       }
 
       object Retrofit2 {
-        private const val version = "2.7.1"
+        private const val version = "2.7.2"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
       }
