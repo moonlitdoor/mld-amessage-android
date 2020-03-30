@@ -7,6 +7,7 @@ import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ConversationRepository
 import com.moonlitdoor.amessage.domain.repository.FrequentlyAskedQuestionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.domain.repository.SettingsRepository
 import com.moonlitdoor.amessage.domain.repository.ThemeRepository
 import com.moonlitdoor.amessage.domain.repository.WindowsRepository
 import com.moonlitdoor.amessage.domain.service.FirebaseMessagingService
@@ -32,6 +33,7 @@ interface DomainDI {
   fun conversationRepository(): ConversationRepository
   fun frequentlyAskedQuestionRepository(): FrequentlyAskedQuestionRepository
   fun profileRepository(): ProfileRepository
+  fun settingsRepository(): SettingsRepository
   fun themeRepository(): ThemeRepository
   fun windowsRepository(): WindowsRepository
 

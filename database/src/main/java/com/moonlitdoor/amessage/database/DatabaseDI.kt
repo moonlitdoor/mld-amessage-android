@@ -13,6 +13,7 @@ import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.FrequentlyAskedQuestionDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
+import com.moonlitdoor.amessage.database.dao.SettingsDao
 import com.moonlitdoor.amessage.database.dao.ThemeDao
 import com.moonlitdoor.amessage.database.dao.WindowsDao
 import dagger.Component
@@ -31,6 +32,7 @@ interface DatabaseDI {
   fun conversationDao(): ConversationDao
   fun frequentlyAskedQuestionDao(): FrequentlyAskedQuestionDao
   fun profileDao(): ProfileDao
+  fun settingsDao(): SettingsDao
   fun themeDao(): ThemeDao
   fun windowsDao(): WindowsDao
 

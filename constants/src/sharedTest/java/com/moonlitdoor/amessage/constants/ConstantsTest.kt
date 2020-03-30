@@ -83,7 +83,7 @@ class ConstantsTest {
 
   @Test
   fun testKeysExperiments() {
-    assertEquals("com.moonlitdoor.amessage.experiments", Constants.Keys.EXPERIMENTS)
+    assertEquals("com.moonlitdoor.amessage.experiments.settings", Constants.Keys.EXPERIMENTS_SETTINGS)
   }
 
 }

@@ -70,6 +70,7 @@ dependencies {
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(D.Androidx.Room.roomKtx)
   implementation(D.Androidx.Room.roomRuntime)
+  implementation(D.Androidx.Core.coreKtx)
   implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)

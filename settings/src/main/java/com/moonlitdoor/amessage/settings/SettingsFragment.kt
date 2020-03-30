@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.moonlitdoor.amessage.settings.databinding.FragmentSettingsBinding
 
-class SettingsFragment : androidx.fragment.app.Fragment() {
+class SettingsFragment : Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentSettingsBinding.inflate(inflater, container, false).also {

@@ -10,3 +10,4 @@ base64 -d <<< $RELEASE_KEYSTORE_BASE64 > .signing/release.jks
 testing slack
 
 ![](https://github.com/moonlitdoor/mld-amessage-android/workflows/Android%20Beta%20CI/badge.svg)
+![](https://github.com/moonlitdoor/mld-amessage-android/workflows/Android%20Release%20CI/badge.svg)

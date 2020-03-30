@@ -52,9 +52,15 @@ gradle.projectsEvaluated {
   }
 }
 
+
+gradle.taskGraph.whenReady {
+  val lintTaskRegex = """^((?!\:amessage:).)*lint$""".toRegex()
+  allTasks.forEach { task -> task.enabled = !lintTaskRegex.matches(task.path) }
+}
+
 tasks.register("testReport", TestReport::class) {
-  destinationDir = file("$buildDir/reports/allTests")
   reportOn(allprojects.map { it.tasks.withType(Test::class) })
+  destinationDir = file("$buildDir/reports/allTests")
 }
 
 tasks.register("clean", Delete::class) {

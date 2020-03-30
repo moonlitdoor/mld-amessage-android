@@ -39,6 +39,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
     viewModel.con.observe(this) {
       Timber.i(it.toString())
     }
+    viewModel.handle.observe(this, this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

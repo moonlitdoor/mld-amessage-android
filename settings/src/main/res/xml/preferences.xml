@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
@@ -29,8 +30,47 @@
 
   </androidx.preference.PreferenceScreen>
 
+  <androidx.preference.PreferenceScreen
+    android:key="@string/preference_employee_settings"
+    android:summary="Tools to be used by employees."
+    android:title="@string/employee_settings_title"
+    app:isPreferenceVisible="false">
+
+    <androidx.preference.SwitchPreference
+      android:defaultValue="false"
+      android:key="@string/developer_settings_preference_screen_visible"
+      android:title="@string/developer_settings_title" />
+
+  </androidx.preference.PreferenceScreen>
+
+
+  <androidx.preference.PreferenceScreen
+    android:key="@string/preference_developer_settings"
+    android:summary="Tools to be used by developers."
+    android:title="@string/developer_settings_title"
+    app:isPreferenceVisible="false">
+
+    <androidx.preference.SwitchPreference
+      android:defaultValue="false"
+      android:key="@string/preference_developer_settings"
+      android:title="@string/developer_settings_visibility" />
+
+    <androidx.preference.SwitchPreference
+      android:defaultValue="false"
+      android:key="@string/preference_employee_settings"
+      android:title="@string/employee_settings_visibility" />
+
+    <androidx.preference.SwitchPreference
+      android:defaultValue="false"
+      android:key="@string/preference_experiments_settings"
+      android:title="@string/experiments_settings_visibility" />
+
+  </androidx.preference.PreferenceScreen>
+
   <androidx.preference.Preference
-    android:title="Experiments"
-    android:key="@string/experiments_preference_button" />
+    android:key="@string/preference_experiments_settings"
+    android:summary="Enable experiments to test upcoming features."
+    android:title="@string/experiments_settings_title"
+    app:isPreferenceVisible="false" />
 
 </androidx.preference.PreferenceScreen>

@@ -1,6 +1,7 @@
 package com.moonlitdoor.amessage.connect
 
 import android.graphics.Bitmap
+import androidx.camera.core.ImageProxy
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,17 +9,20 @@ import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
 import com.google.zxing.common.BitMatrix
+import com.moonlitdoor.amessage.components.SingleLiveEvent
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.domain.repository.SettingsRepository
 import com.moonlitdoor.amessage.extensions.and
+import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.extensions.map
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
-class ConnectViewModel @Inject constructor(private val connectionRepository: ConnectionRepository, profileRepository: ProfileRepository) : ViewModel() {
+class ConnectViewModel @Inject constructor(private val connectionRepository: ConnectionRepository, private val settingsRepository: SettingsRepository, profileRepository: ProfileRepository) : ViewModel() {
 
   private val profile = profileRepository.profile.and {
     Timber.i(it?.encode())
@@ -26,12 +30,13 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
   val pendingAndInvitedConnections = connectionRepository.getScannedInvitedAndPendingConnections()
   val selectedConnection = MutableLiveData<Connection>()
+  val scanViewState = SingleLiveEvent<ScanViewState>()
 
   @Suppress("UsePropertyAccessSyntax")
   fun setSelected(connection: Connection) = selectedConnection.setValue(connection)
 
 
-  fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.create(profile) }
+  fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.create(profile) }.ignore()
 
   private fun encodeAsBitmap(string: String): Bitmap {
     val result: BitMatrix = MultiFormatWriter().encode(string, BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null)
@@ -50,6 +55,33 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   fun confirmConnection(connection: Connection) = viewModelScope.launch { connectionRepository.confirm(connection) }
 
   fun rejectConnection(connection: Connection) = viewModelScope.launch { connectionRepository.reject(connection) }
+
+  //TODO check of profile is already connected
+  fun profileFound(profile: Profile, imageProxy: ImageProxy): Unit = scanViewState.setValue(ScanViewState.Connected(profile, imageProxy))
+
+  fun experimentsCodeFound(imageProxy: ImageProxy) = if (settingsRepository.getExperimentsUiEnabled()) {
+    scanViewState.setValue(ScanViewState.ExperimentsEnabled(imageProxy))
+  } else {
+    scanViewState.setValue(ScanViewState.Experiments(imageProxy))
+  }
+
+  fun enableExperiments() = settingsRepository.setExperimentsUiEnabled()
+
+  fun developerSettingsCodeFound(imageProxy: ImageProxy) = if (settingsRepository.getDeveloperSettingsEnabled()) {
+    scanViewState.setValue(ScanViewState.DeveloperSettingsEnabled(imageProxy))
+  } else {
+    scanViewState.setValue(ScanViewState.DeveloperSettings(imageProxy))
+  }
+
+  fun enableDeveloperSettings() = settingsRepository.setDeveloperSettingsEnabled()
+
+  fun employeeSettingsCodeFound(imageProxy: ImageProxy) = if (settingsRepository.getEmployeeSettingsEnabled()) {
+    scanViewState.setValue(ScanViewState.EmployeeSettingsEnabled(imageProxy))
+  } else {
+    scanViewState.setValue(ScanViewState.EmployeeSettings(imageProxy))
+  }
+
+  fun enableEmployeeSettings() = settingsRepository.setEmployeeSettingsEnabled()
 
   companion object {
 

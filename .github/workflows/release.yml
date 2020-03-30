@@ -69,39 +69,12 @@ jobs:
           java-version: 1.8
       - name: Lint
         run: ./gradlew lint --stacktrace --continue
-      - name: Collect Reports
-        if: always()
-        run: |
-          mkdir ./build/lint
-          mv ./about/build/reports/lint-results.html ./build/lint/about-lint-results.html
-          mv ./amessage/build/reports/lint-results.html ./build/lint/amessage-lint-results.html
-          mv ./analytics/build/reports/lint-results.html ./build/lint/analytics-lint-results.html
-          mv ./bindings/build/reports/lint-results.html ./build/lint/bindings-lint-results.html
-          mv ./components/build/reports/lint-results.html ./build/lint/components-lint-results.html
-          mv ./connect/build/reports/lint-results.html ./build/lint/connect-lint-results.html
-          mv ./connections/build/reports/lint-results.html ./build/lint/connections-lint-results.html
-          mv ./constants/build/reports/lint-results.html ./build/lint/constants-lint-results.html
-          mv ./conversations/build/reports/lint-results.html ./build/lint/conversations-lint-results.html
-          mv ./database/build/reports/lint-results.html ./build/lint/database-lint-results.html
-          mv ./domain/build/reports/lint-results.html ./build/lint/domain-lint-results.html
-          mv ./encryption/build/reports/lint-results.html ./build/lint/encryption-lint-results.html
-          mv ./experiments/build/reports/lint-results.html ./build/lint/experiments-lint-results.html
-          mv ./experiments_ui/build/reports/lint-results.html ./build/lint/experiments-ui-lint-results.html
-          mv ./extensions/build/reports/lint-results.html ./build/lint/extensions-lint-results.html
-          mv ./feedback/build/reports/lint-results.html ./build/lint/feedback-lint-results.html
-          mv ./handle/build/reports/lint-results.html ./build/lint/handle-lint-results.html
-          mv ./help/build/reports/lint-results.html ./build/lint/help-lint-results.html
-          mv ./ids/build/reports/lint-results.html ./build/lint/ids-lint-results.html
-          mv ./network/build/reports/lint-results.html ./build/lint/network-lint-results.html
-          mv ./resources/build/reports/lint-results.html ./build/lint/resources-lint-results.html
-          mv ./settings/build/reports/lint-results.html ./build/lint/settings-lint-results.html
-          mv ./windows/build/reports/lint-results.html ./build/lint/windows-lint-results.html
       - name: Upload Lint
         if: always()
         uses: actions/upload-artifact@master
         with:
           name: lint
-          path: build/lint
+          path: amessage/build/reports/lint-results.html
   release:
     name: Release
     needs: [build, test, lint]
