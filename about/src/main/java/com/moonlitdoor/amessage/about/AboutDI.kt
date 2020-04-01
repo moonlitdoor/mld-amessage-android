@@ -21,16 +21,21 @@ interface AboutDI {
   @Module
   open class AboutModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(aMessageDI: AMessageDI): AboutDI
+  }
+
   companion object {
 
     private var component: AboutDI? = null
 
     @Synchronized
-    fun init(): AboutDI = component ?: DaggerAboutDI.builder()
-      .aMessageDI(AMessageDI.get())
-      .build().also {
-        component = it
-      }
+    fun init(): AboutDI = component ?: DaggerAboutDI.factory().create(
+      aMessageDI = AMessageDI.get()
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): AboutDI = component ?: run { throw Exception("Not Initialized") }

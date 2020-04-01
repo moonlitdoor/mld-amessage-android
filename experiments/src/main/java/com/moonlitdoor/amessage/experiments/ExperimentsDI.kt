@@ -30,16 +30,21 @@ interface ExperimentsDI {
 
   }
 
+  @Component.Factory
+  interface Factory {
+    fun create(experimentsModule: ExperimentsModule): ExperimentsDI
+  }
+
   companion object {
 
     private var component: ExperimentsDI? = null
 
     @Synchronized
-    fun init(context: Context, module: ExperimentsModule = ExperimentsModule((context))): ExperimentsDI = component ?: DaggerExperimentsDI.builder()
-      .experimentsModule(module)
-      .build().also {
-        component = it
-      }
+    fun init(context: Context, module: ExperimentsModule = ExperimentsModule((context))): ExperimentsDI = component ?: DaggerExperimentsDI.factory().create(
+      experimentsModule = module
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): ExperimentsDI = component ?: run { throw Exception("Not Initialized") }

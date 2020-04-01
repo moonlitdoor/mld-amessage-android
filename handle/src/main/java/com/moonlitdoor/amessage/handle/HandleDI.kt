@@ -22,16 +22,21 @@ interface HandleDI {
   @Module
   class HandleModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(domainDI: DomainDI): HandleDI
+  }
+
   companion object {
 
     private var component: HandleDI? = null
 
     @Synchronized
-    fun init(context: Context): HandleDI = component ?: DaggerHandleDI.builder()
-      .domainDI(DomainDI.init(context))
-      .build().also {
-        component = it
-      }
+    fun init(context: Context): HandleDI = component ?: DaggerHandleDI.factory().create(
+      domainDI = DomainDI.init(context)
+    ).also {
+      component = it
+    }
 
 
     @Synchronized

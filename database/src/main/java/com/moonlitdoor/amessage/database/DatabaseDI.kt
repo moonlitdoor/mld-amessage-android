@@ -78,18 +78,22 @@ interface DatabaseDI {
 
   }
 
+  @Component.Factory
+  interface Factory {
+    fun create(constantsDI: ConstantsDI, databaseModule: DatabaseModule): DatabaseDI
+  }
+
   companion object {
 
     private var component: DatabaseDI? = null
 
     @Synchronized
-    fun init(context: Context): DatabaseDI = component ?: DaggerDatabaseDI.builder()
-      .constantsDI(ConstantsDI.init(context))
-      .databaseModule(DatabaseModule(context))
-      .build().also {
-        component = it
-      }
-
+    fun init(context: Context): DatabaseDI = component ?: DaggerDatabaseDI.factory().create(
+      constantsDI = ConstantsDI.init(context),
+      databaseModule = DatabaseModule(context)
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): DatabaseDI = component ?: run { throw Exception("Not Initialized") }

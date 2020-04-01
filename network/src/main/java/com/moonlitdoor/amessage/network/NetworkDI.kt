@@ -64,18 +64,22 @@ interface NetworkDI {
 
   }
 
+  @Component.Factory
+  interface Factory {
+    fun create(networkModule: NetworkModule, baseUrlModule: BaseUrlModule): NetworkDI
+  }
+
   companion object {
 
     private var component: NetworkDI? = null
 
     @Synchronized
-    fun init(): NetworkDI = component ?: DaggerNetworkDI.builder()
-      .networkModule(NetworkModule())
-      .baseUrlModule(BaseUrlModule())
-      .build().also {
-        component = it
-      }
-
+    fun init(): NetworkDI = component ?: DaggerNetworkDI.factory().create(
+      networkModule = NetworkModule(),
+      baseUrlModule = BaseUrlModule()
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): NetworkDI = component ?: run { throw Exception("Not Initialized") }

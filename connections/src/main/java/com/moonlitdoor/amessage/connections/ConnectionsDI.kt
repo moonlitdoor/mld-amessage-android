@@ -28,19 +28,23 @@ interface ConnectionsDI {
   @Module
   class ConnectionsModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(domainDI: DomainDI, handleDI: HandleDI, experimentsDI: ExperimentsDI): ConnectionsDI
+  }
+
   companion object {
 
     private var component: ConnectionsDI? = null
 
     @Synchronized
-    fun init(context: Context): ConnectionsDI = component ?: DaggerConnectionsDI.builder()
-      .handleDI(HandleDI.init(context))
-      .domainDI(DomainDI.init(context))
-      .experimentsDI(ExperimentsDI.init(context))
-      .build().also {
-        component = it
-      }
-
+    fun init(context: Context): ConnectionsDI = component ?: DaggerConnectionsDI.factory().create(
+      handleDI = HandleDI.init(context),
+      domainDI = DomainDI.init(context),
+      experimentsDI = ExperimentsDI.init(context)
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): ConnectionsDI = component ?: run { throw Exception("Not Initialized") }

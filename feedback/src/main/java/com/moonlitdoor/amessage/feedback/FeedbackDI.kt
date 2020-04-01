@@ -21,16 +21,21 @@ interface FeedbackDI {
   @Module
   open class FeedbackModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(aMessageDI: AMessageDI): FeedbackDI
+  }
+
   companion object {
 
     private var component: FeedbackDI? = null
 
     @Synchronized
-    fun init(): FeedbackDI = component ?: DaggerFeedbackDI.builder()
-      .aMessageDI(AMessageDI.get())
-      .build().also {
-        component = it
-      }
+    fun init(): FeedbackDI = component ?: DaggerFeedbackDI.factory().create(
+      aMessageDI = AMessageDI.get()
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): FeedbackDI = component ?: run { throw Exception("Not Initialized") }

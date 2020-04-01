@@ -19,16 +19,21 @@ interface ConstantsDI {
 
   }
 
+  @Component.Factory
+  interface Factory {
+    fun create(constantsModule: ConstantsModule): ConstantsDI
+  }
+
   companion object {
 
     private var component: ConstantsDI? = null
 
     @Synchronized
-    fun init(context: Context): ConstantsDI = component ?: DaggerConstantsDI.builder()
-      .constantsModule(ConstantsModule(context))
-      .build().also {
-        component = it
-      }
+    fun init(context: Context): ConstantsDI = component ?: DaggerConstantsDI.factory().create(
+      constantsModule = ConstantsModule(context)
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): ConstantsDI = component ?: run { throw Exception("Not Initialized") }

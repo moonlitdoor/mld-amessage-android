@@ -49,18 +49,22 @@ interface DomainDI {
   @Module
   class DomainModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(databaseDI: DatabaseDI, networkDI: NetworkDI): DomainDI
+  }
+
   companion object {
 
     private var component: DomainDI? = null
 
     @Synchronized
-    fun init(context: Context): DomainDI = component ?: DaggerDomainDI.builder()
-      .databaseDI(DatabaseDI.init(context))
-      .networkDI(NetworkDI.init())
-      .build().also {
-        component = it
-      }
-
+    fun init(context: Context): DomainDI = component ?: DaggerDomainDI.factory().create(
+      databaseDI = DatabaseDI.init(context),
+      networkDI = NetworkDI.init()
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): DomainDI = component ?: run { throw Exception("Not Initialized") }

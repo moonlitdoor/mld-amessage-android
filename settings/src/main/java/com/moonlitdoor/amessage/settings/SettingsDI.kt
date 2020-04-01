@@ -36,20 +36,24 @@ interface SettingsDI {
 
   }
 
+  @Component.Factory
+  interface Factory {
+    fun create(domainDI: DomainDI, experimentsDI: ExperimentsDI, experimentsUiDI: ExperimentsUiDI, settingsModule: SettingsModule): SettingsDI
+  }
+
   companion object {
 
     private var component: SettingsDI? = null
 
     @Synchronized
-    fun init(context: Context): SettingsDI = component ?: DaggerSettingsDI.builder()
-      .domainDI(DomainDI.init(context))
-      .experimentsDI(ExperimentsDI.init(context))
-      .experimentsUiDI(ExperimentsUiDI.init(context))
-      .settingsModule(SettingsModule(context))
-      .build().also {
-        component = it
-      }
-
+    fun init(context: Context): SettingsDI = component ?: DaggerSettingsDI.factory().create(
+      domainDI = DomainDI.init(context),
+      experimentsDI = ExperimentsDI.init(context),
+      experimentsUiDI = ExperimentsUiDI.init(),
+      settingsModule = SettingsModule(context)
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): SettingsDI = component ?: run { throw Exception("Not Initialized") }

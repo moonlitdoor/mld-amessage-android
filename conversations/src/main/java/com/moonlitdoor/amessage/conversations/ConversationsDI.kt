@@ -33,17 +33,21 @@ interface ConversationsDI {
   @Module
   class ConnectionsModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(domainDI: DomainDI): ConversationsDI
+  }
+
   companion object {
 
     private var component: ConversationsDI? = null
 
     @Synchronized
-    fun init(context: Context): ConversationsDI = component ?: DaggerConversationsDI.builder()
-      .domainDI(DomainDI.init(context))
-      .build().also {
-        component = it
-      }
-
+    fun init(context: Context): ConversationsDI = component ?: DaggerConversationsDI.factory().create(
+      domainDI = DomainDI.init(context)
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): ConversationsDI = component ?: run { throw Exception("Not Initialized") }

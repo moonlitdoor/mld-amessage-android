@@ -33,21 +33,25 @@ interface AMessageDI {
   @Module
   class AMessageModule
 
+  @Component.Factory
+  interface Factory {
+    fun create(connectionsDI: ConnectionsDI, conversationsDI: ConversationsDI, connectDI: ConnectDI, settingsDI: SettingsDI, domainDI: DomainDI): AMessageDI
+  }
+
   companion object {
 
     private var component: AMessageDI? = null
 
     @Synchronized
-    fun init(context: Context): AMessageDI = component ?: DaggerAMessageDI.builder()
-      .connectionsDI(ConnectionsDI.init(context))
-      .conversationsDI(ConversationsDI.init(context))
-      .connectDI(ConnectDI.init(context))
-      .settingsDI(SettingsDI.init(context))
-      .domainDI(DomainDI.init(context))
-      .build().also {
-        component = it
-      }
-
+    fun init(context: Context): AMessageDI = component ?: DaggerAMessageDI.factory().create(
+      connectionsDI = ConnectionsDI.init(context),
+      conversationsDI = ConversationsDI.init(context),
+      connectDI = ConnectDI.init(context),
+      settingsDI = SettingsDI.init(context),
+      domainDI = DomainDI.init(context)
+    ).also {
+      component = it
+    }
 
     @Synchronized
     fun get(): AMessageDI = component ?: run { throw Exception("Not Initialized") }
