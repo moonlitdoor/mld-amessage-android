@@ -5,12 +5,12 @@ object D {
 //    }
 
     object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.2.0-alpha03"
+      const val appcompat = "androidx.appcompat:appcompat:1.2.0-beta01"
     }
 
     object Camera {
-      private const val version = "1.0.0-beta01"
-      private const val versionView = "1.0.0-alpha08"
+      private const val version = "1.0.0-beta02"
+      private const val versionView = "1.0.0-alpha09"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -26,11 +26,11 @@ object D {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.3.0-alpha02"
+      const val coreKtx = "androidx.core:core-ktx:1.3.0-beta01"
     }
 
     object Fragment {
-      private const val version = "1.3.0-alpha02"
+      private const val version = "1.3.0-alpha03"
       const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
@@ -63,7 +63,7 @@ object D {
     }
 
     object Recyclerview {
-      const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha01"
+      const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha02"
     }
 
     object Room {
@@ -104,11 +104,11 @@ object D {
     }
 
     object Viewpager2 {
-      const val viewpager2 = "androidx.viewpager2:viewpager2:1.0.0"
+      const val viewpager2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-alpha01"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-alpha02"
     }
   }
 
@@ -117,11 +117,11 @@ object D {
     object Google {
       object Android {
         object Gms {
-          const val playServicesVision = "com.google.android.gms:play-services-vision:19.0.0"
+          const val playServicesVision = "com.google.android.gms:play-services-vision:20.0.0"
         }
 
         object Material {
-          const val material = "com.google.android.material:material:1.2.0-alpha05"
+          const val material = "com.google.android.material:material:1.2.0-alpha06"
         }
       }
 
@@ -138,15 +138,16 @@ object D {
       }
 
       object Firebase {
-        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.3.1"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.4.0"
         const val firebaseConfig = "com.google.firebase:firebase-config:19.1.3"
-        const val firebaseCore = "com.google.firebase:firebase-core:17.2.3"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta02"
-        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.4"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.3"
-        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.1"
-        const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.0.2"
-        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.5"
+        const val firebaseCore = "com.google.firebase:firebase-core:17.3.0"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta04"
+        const val firebaseIid = "com.google.firebase:firebase-iid:20.1.5"
+        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.5"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.5"
+        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.2"
+        const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.0"
+        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.6"
       }
 
       object Guava {
@@ -176,14 +177,14 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.4.1"
+        private const val version = "4.5.0"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
       }
 
       object Retrofit2 {
-        private const val version = "2.7.2"
+        private const val version = "2.8.1"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
       }
@@ -203,9 +204,9 @@ object D {
   object Org {
     object Jetbrains {
       object Kotlin {
-        private const val version = "1.3.70"
+        private const val version = "1.3.72"
         const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
-        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version"
+        const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
       }
 
       object Kotlinx {

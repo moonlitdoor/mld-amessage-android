@@ -70,6 +70,7 @@ dependencies {
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
   implementation(D.Com.Google.Firebase.firebaseCore)
+  implementation(D.Com.Google.Firebase.firebaseIid)
   implementation(D.Com.Google.Firebase.firebaseMessaging)
 
   testImplementation(D.Androidx.Test.rules)

@@ -81,6 +81,7 @@ dependencies {
   implementation(D.Androidx.Navigation.navigationUiKtx)
   implementation(D.Com.Google.Zxing.core)
   implementation(D.Com.Google.Firebase.firebaseCore)
+  implementation(D.Com.Google.Firebase.firebaseIid)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Preference.preference)
   implementation(D.Androidx.Legacy.legacyPreferenceV14)

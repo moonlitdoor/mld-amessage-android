@@ -81,6 +81,7 @@ dependencies {
   implementation(D.Androidx.Navigation.navigationUiKtx)
   implementation(D.Androidx.Viewpager2.viewpager2)
   implementation(D.Com.Google.Android.Gms.playServicesVision)
+  implementation(D.Com.Google.Firebase.firebaseIid)
   implementation(D.Com.Google.Firebase.firebaseMlVision)
   implementation(D.Com.Google.Firebase.firebaseMlVisionBarcodeModel)
   implementation(D.Com.Google.Zxing.core)

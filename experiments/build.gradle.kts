@@ -65,6 +65,7 @@ dependencies {
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Com.Google.Firebase.firebaseConfig)
+  implementation(D.Com.Google.Firebase.firebaseIid)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Com.Google.Truth.truth)

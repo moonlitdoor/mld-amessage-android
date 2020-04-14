@@ -58,11 +58,12 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
     ProcessCameraProvider.getInstance(requireContext()).also {
       it.addListener(Runnable {
         cameraProvider = it.get()
-        cameraProvider.bindToLifecycle(CustomLifecycle,
+        val preview = Preview.Builder().build()
+        val camera = cameraProvider.bindToLifecycle(
+          CustomLifecycle,
           CameraSelector.Builder()
             .requireLensFacing(CameraSelector.LENS_FACING_BACK)
             .build(),
-
           ImageAnalysis.Builder()
             .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
             .build().also { imageAnalysis ->
@@ -94,10 +95,9 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
                 }
               })
             },
-          Preview.Builder().build().also { preview ->
-            preview.setSurfaceProvider(binding.preview.previewSurfaceProvider)
-          }
+          preview
         )
+        preview.setSurfaceProvider(binding.preview.createSurfaceProvider(camera.cameraInfo))
       }, ContextCompat.getMainExecutor(requireContext()))
     }
   }
