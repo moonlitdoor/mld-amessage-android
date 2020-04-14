@@ -3,6 +3,7 @@ plugins {
   id("androidx.navigation.safeargs")
   kotlin("android")
   kotlin("kapt")
+  id("com.moonlitdoor.jacoco")
 }
 
 android {

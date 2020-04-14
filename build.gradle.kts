@@ -46,6 +46,10 @@ allprojects {
   }
 }
 
+plugins {
+  id("com.moonlitdoor.jacoco.report")
+}
+
 gradle.projectsEvaluated {
   tasks.withType(JavaCompile::class.java) {
     options.compilerArgs + "-Xmaxerrs" + "500"

@@ -2,6 +2,7 @@ plugins {
   id("com.android.dynamic-feature")
   kotlin("android")
   kotlin("kapt")
+  id("com.moonlitdoor.jacoco")
 }
 
 android {

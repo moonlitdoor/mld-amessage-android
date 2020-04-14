@@ -7,6 +7,7 @@ plugins {
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
   id("com.google.firebase.crashlytics")
+  id("com.moonlitdoor.jacoco")
   if (System.getenv("COM_MOONLITDOOR_AMESSAGE_PERF") != null) {
     println("Applying Performance Plugin")
     id("com.google.firebase.firebase-perf")
@@ -95,7 +96,7 @@ android {
       resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID").toString())
     }
     create(BETA) {
-      matchingFallbacks = listOf(RELEASE)
+      matchingFallbacks = mutableListOf(RELEASE)
       isDebuggable = false
       signingConfig = signingConfigs.getByName(RELEASE)
       isMinifyEnabled = MINIFY
