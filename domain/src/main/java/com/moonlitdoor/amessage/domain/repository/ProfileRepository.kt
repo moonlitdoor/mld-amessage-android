@@ -9,9 +9,7 @@ import javax.inject.Inject
 
 class ProfileRepository @Inject constructor(private val profileDao: ProfileDao) {
 
-  val profile: LiveData<Profile?> = profileDao.profile.map {
-    Profile.from(it)
-  }
+  val profile: LiveData<Profile?> = profileDao.profile.map { Profile.from(it) }
 
   //TODO notify connections of handle change
   fun setHandle(handle: String) = profileDao.setHandle(handle)
