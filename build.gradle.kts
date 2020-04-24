@@ -8,14 +8,14 @@ buildscript {
   }
   dependencies {
     classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
-    classpath(T.Com.Android.Tools.Build.gradle)
-    classpath(T.Com.Github.BenManes.gradleVersionsPlugin)
+    classpath(D.Com.Android.Tools.Build.gradle)
+    classpath(D.Com.Github.BenManes.gradleVersionsPlugin)
     classpath(D.Com.Google.Firebase.firebaseAppdistributionGradle)
-    classpath(T.Com.Github.Triplet.Gradle.playPublisher)
-    classpath(T.Com.Moonlitdoor.GitVersion.gitVersion)
+    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
+    classpath(D.Com.Moonlitdoor.GitVersion.gitVersion)
     classpath(D.Org.Jetbrains.Kotlin.kotlinGradlePlugin)
-    classpath(T.Com.Google.Firebase.firebaseCrashlyticsGradle)
-    classpath(T.Com.Google.Firebase.perfPlugin)
+    classpath(D.Com.Google.Firebase.firebaseCrashlyticsGradle)
+    classpath(D.Com.Google.Firebase.perfPlugin)
   }
 }
 

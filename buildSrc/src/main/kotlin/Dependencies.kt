@@ -1,16 +1,16 @@
 object D {
   object Androidx {
-//    object Annotation {
-//      const val annotation = "androidx.annotation:annotation:1.1.0"
-//    }
+    object Annotation {
+      const val annotation = "androidx.annotation:annotation:1.1.0"
+    }
 
     object AppCompat {
       const val appcompat = "androidx.appcompat:appcompat:1.2.0-beta01"
     }
 
     object Camera {
-      private const val version = "1.0.0-beta02"
-      private const val versionView = "1.0.0-alpha09"
+      private const val version = "1.0.0-beta03"
+      private const val versionView = "1.0.0-alpha10"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -18,7 +18,7 @@ object D {
     }
 
     object Compose {
-      const val composeRuntime = "androidx.compose:compose-runtime:0.1.0-dev06"
+      const val composeRuntime = "androidx.compose:compose-runtime:0.1.0-dev09"
     }
 
     object ConstraintLayout {
@@ -26,7 +26,7 @@ object D {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.3.0-beta01"
+      const val coreKtx = "androidx.core:core-ktx:1.3.0-rc01"
     }
 
     object Fragment {
@@ -51,7 +51,7 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.3.0-alpha04"
+      private const val version = "2.3.0-alpha05"
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
@@ -59,7 +59,7 @@ object D {
     }
 
     object Preference {
-      const val preference = "androidx.preference:preference:1.1.0"
+      const val preference = "androidx.preference:preference:1.1.1"
     }
 
     object Recyclerview {
@@ -75,14 +75,14 @@ object D {
     }
 
     object Test {
-      private const val version = "1.3.0-alpha05"
+      private const val version = "1.3.0-beta01"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.3.0-alpha05"
+        private const val version = "3.3.0-beta01"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -92,12 +92,12 @@ object D {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-alpha05"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-beta01"
       }
     }
 
     object Ui {
-      private const val version = "0.1.0-dev06"
+      private const val version = "0.1.0-dev09"
       const val uiLayout = "androidx.ui:ui-layout:$version"
       const val uiMaterial = "androidx.ui:ui-material:$version"
       const val uiTooling = "androidx.ui:ui-tooling:$version"
@@ -113,6 +113,19 @@ object D {
   }
 
   object Com {
+    object Amitshekhar {
+      object Android {
+        const val debugDb = "com.amitshekhar.android:debug-db:1.0.6"
+      }
+    }
+
+    object Android {
+      object Tools {
+        object Build {
+          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha07"
+        }
+      }
+    }
 
     object Google {
       object Android {
@@ -139,15 +152,18 @@ object D {
 
       object Firebase {
         const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.4.0"
-        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.3"
-        const val firebaseCore = "com.google.firebase:firebase-core:17.3.0"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0-beta04"
-        const val firebaseIid = "com.google.firebase:firebase-iid:20.1.5"
-        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.5"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.5"
-        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.2"
-        const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.0"
-        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.6"
+        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.4"
+        const val firebaseCore = "com.google.firebase:firebase-core:17.4.0"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0"
+        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.0.0"
+        const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.3.0"
+        const val firebaseIid = "com.google.firebase:firebase-iid:20.1.6"
+        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.6"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.6"
+        const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.3"
+        const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.1"
+        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.7"
+        const val perfPlugin = "com.google.firebase:perf-plugin:1.3.1"
       }
 
       object Guava {
@@ -163,6 +179,18 @@ object D {
       }
     }
 
+    object Github {
+      object BenManes {
+        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
+      }
+
+      object Triplet {
+        object Gradle {
+          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.8.0-SNAPSHOT"
+        }
+      }
+    }
+
     object JakeWharton {
       object Timber {
         const val timber = "com.jakewharton.timber:timber:4.7.1"
@@ -170,6 +198,10 @@ object D {
     }
 
     object Moonlitdoor {
+      object GitVersion {
+        const val gitVersion = "com.moonlitdoor.git-version:git-version:0.1.1"
+      }
+
       object SharedPreferenceLiveData {
         const val sharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
       }
