@@ -1,55 +1,101 @@
 package com.moonlitdoor.amessage
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.content.res.Resources
+import android.preference.PreferenceManager
 import com.moonlitdoor.amessage.connect.ConnectDI
 import com.moonlitdoor.amessage.connections.ConnectionsDI
 import com.moonlitdoor.amessage.conversations.ConversationsDI
 import com.moonlitdoor.amessage.domain.DomainDI
 import com.moonlitdoor.amessage.domain.repository.FrequentlyAskedQuestionRepository
+import com.moonlitdoor.amessage.experiments.ui.ExperimentsUiDI
+import com.moonlitdoor.amessage.handle.HandleDI
+import com.moonlitdoor.amessage.push.PushDI
 import com.moonlitdoor.amessage.settings.SettingsDI
 import dagger.Component
 import dagger.Module
-import javax.inject.Scope
+import dagger.Provides
+
 
 @Component(
-  modules = [AMessageDI.AMessageModule::class],
-  dependencies = [
-    ConnectionsDI::class,
-    ConversationsDI::class,
-    ConnectDI::class,
-    SettingsDI::class,
-    DomainDI::class
+  modules = [
+    AMessageDI.AMessageModule::class,
+    AMessageDI.SubcomponentsModule::class,
+    DomainDI.DomainModule::class
   ]
 )
-@AMessageDI.AMessageScope
 interface AMessageDI {
 
   fun frequentlyAskedQuestionRepository(): FrequentlyAskedQuestionRepository
 
-  @Scope
-  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-  annotation class AMessageScope
+  fun connectDIFactory(): ConnectDI.Factory
+
+  fun connectionsDIFactory(): ConnectionsDI.Factory
+
+  fun conversationsDIFactory(): ConversationsDI.Factory
+
+  fun experimentsUiDIFactory(): ExperimentsUiDI.Factory
+
+  fun handleDIFactory(): HandleDI.Factory
+
+  fun pushDIFactory(): PushDI.Factory
+
+  fun settingsDIFactory(): SettingsDI.Factory
 
   @Module
-  class AMessageModule
+  class AMessageModule(private val context: Context) {
+
+    @Provides
+    fun providesContext(): Context = context
+
+    @Provides
+    fun provideResources(context: Context): Resources = context.resources
+
+    @Provides
+    fun providesSharedPreferences(context: Context): SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
+
+  }
+
+  @Module(
+    subcomponents = [
+      ConnectDI::class,
+      ConnectionsDI::class,
+      ConversationsDI::class,
+      HandleDI::class,
+      PushDI::class,
+      SettingsDI::class
+    ]
+  )
+  class SubcomponentsModule
 
   @Component.Factory
   interface Factory {
-    fun create(connectionsDI: ConnectionsDI, conversationsDI: ConversationsDI, connectDI: ConnectDI, settingsDI: SettingsDI, domainDI: DomainDI): AMessageDI
+    fun create(aMessageModule: AMessageModule): AMessageDI
   }
 
-  companion object {
+  companion object : Provider {
 
     private var component: AMessageDI? = null
 
+    override fun provideAMessageDI(): AMessageDI = get()
+
+    override fun provideConnectDI(): ConnectDI = provideAMessageDI().connectDIFactory().create()
+
+    override fun provideConnectionsDI(): ConnectionsDI = provideAMessageDI().connectionsDIFactory().create()
+
+    override fun provideConversationsDI(): ConversationsDI = provideAMessageDI().conversationsDIFactory().create()
+
+    override fun provideExperimentsUiDI(): ExperimentsUiDI = provideAMessageDI().experimentsUiDIFactory().create()
+
+    override fun provideHandleDI(): HandleDI = provideAMessageDI().handleDIFactory().create()
+
+    override fun providePushDI(): PushDI = provideAMessageDI().pushDIFactory().create()
+
+    override fun provideSettingsDI(): SettingsDI = provideAMessageDI().settingsDIFactory().create()
+
     @Synchronized
-    fun init(context: Context): AMessageDI = component ?: DaggerAMessageDI.factory().create(
-      connectionsDI = ConnectionsDI.init(context),
-      conversationsDI = ConversationsDI.init(context),
-      connectDI = ConnectDI.init(context),
-      settingsDI = SettingsDI.init(context),
-      domainDI = DomainDI.init(context)
-    ).also {
+    fun init(context: Context): AMessageDI = component ?: DaggerAMessageDI.factory().create(AMessageModule(context)).also {
       component = it
     }
 

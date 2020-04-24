@@ -27,7 +27,7 @@ class ExperimentsFragment : Fragment() {
   private val adapter by lazy { Adapter(LayoutInflater.from(activity), this) }
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    ExperimentsUiDI.get().inject(this)
+    ExperimentsUiDI.get(requireActivity()).inject(this)
     super.onCreate(savedInstanceState)
   }
 

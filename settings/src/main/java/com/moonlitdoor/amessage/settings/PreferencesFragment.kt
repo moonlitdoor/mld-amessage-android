@@ -21,7 +21,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
   lateinit var viewModel: SettingsViewModel
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    SettingsDI.get().inject(this)
+    SettingsDI.get(requireActivity()).inject(this)
     super.onCreate(savedInstanceState)
   }
 

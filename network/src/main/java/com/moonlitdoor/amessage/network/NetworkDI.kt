@@ -1,7 +1,6 @@
 package com.moonlitdoor.amessage.network
 
 import com.moonlitdoor.amessage.network.client.FirebaseClient
-import dagger.Component
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -11,16 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 import javax.inject.Named
 
-@Component(
-  modules = [
-    NetworkDI.NetworkModule::class,
-    NetworkDI.BaseUrlModule::class
-  ]
-)
 interface NetworkDI {
 
-  fun firebaseClient(): FirebaseClient
-  fun networkClient(): NetworkClient
 
   @Module
   class NetworkModule {
@@ -63,27 +54,4 @@ interface NetworkDI {
     open fun providesFirebaseUrl() = BuildConfig.BASE_URL
 
   }
-
-  @Component.Factory
-  interface Factory {
-    fun create(networkModule: NetworkModule, baseUrlModule: BaseUrlModule): NetworkDI
-  }
-
-  companion object {
-
-    private var component: NetworkDI? = null
-
-    @Synchronized
-    fun init(): NetworkDI = component ?: DaggerNetworkDI.factory().create(
-      networkModule = NetworkModule(),
-      baseUrlModule = BaseUrlModule()
-    ).also {
-      component = it
-    }
-
-    @Synchronized
-    fun get(): NetworkDI = component ?: run { throw Exception("Not Initialized") }
-
-  }
-
 }

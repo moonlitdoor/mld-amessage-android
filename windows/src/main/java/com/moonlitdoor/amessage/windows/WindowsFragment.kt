@@ -13,7 +13,7 @@ class WindowsFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    WindowsDI.init().inject(this)
+    WindowsDI.get(requireActivity()).inject(this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

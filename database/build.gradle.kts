@@ -66,10 +66,10 @@ dependencies {
 
   api(project(M.CONSTANTS))
 
-  api("com.google.firebase:firebase-database-ktx:19.2.1")
+  api("com.google.firebase:firebase-database-ktx:19.3.0")
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-  implementation(D.Androidx.Room.roomKtx)
+  api(D.Androidx.Room.roomKtx)
   implementation(D.Androidx.Room.roomRuntime)
   implementation(D.Androidx.Core.coreKtx)
   implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)

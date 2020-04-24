@@ -1,53 +1,30 @@
 package com.moonlitdoor.amessage.connections
 
-import android.content.Context
-import com.moonlitdoor.amessage.domain.DomainDI
-import com.moonlitdoor.amessage.experiments.ExperimentsDI
-import com.moonlitdoor.amessage.handle.HandleDI
-import dagger.Component
+import android.app.Activity
 import dagger.Module
-import javax.inject.Scope
+import dagger.Subcomponent
 
-@Component(
-  modules = [ConnectionsDI.ConnectionsModule::class],
-  dependencies = [
-    DomainDI::class,
-    HandleDI::class,
-    ExperimentsDI::class
-  ]
-)
-@ConnectionsDI.ConnectionsScope
+@Subcomponent(modules = [ConnectionsDI.ConnectionsModule::class])
 interface ConnectionsDI {
 
   fun inject(fragment: ConnectionsFragment)
 
-  @Scope
-  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-  annotation class ConnectionsScope
+  interface ConnectionsDIProvider {
+    fun provideConnectionsDI(): ConnectionsDI
+  }
 
   @Module
   class ConnectionsModule
 
-  @Component.Factory
+  @Subcomponent.Factory
   interface Factory {
-    fun create(domainDI: DomainDI, handleDI: HandleDI, experimentsDI: ExperimentsDI): ConnectionsDI
+    fun create(): ConnectionsDI
   }
 
   companion object {
 
-    private var component: ConnectionsDI? = null
-
     @Synchronized
-    fun init(context: Context): ConnectionsDI = component ?: DaggerConnectionsDI.factory().create(
-      handleDI = HandleDI.init(context),
-      domainDI = DomainDI.init(context),
-      experimentsDI = ExperimentsDI.init(context)
-    ).also {
-      component = it
-    }
-
-    @Synchronized
-    fun get(): ConnectionsDI = component ?: run { throw Exception("Not Initialized") }
+    fun get(activity: Activity): ConnectionsDI = (activity.application as ConnectionsDIProvider).provideConnectionsDI()
 
   }
 

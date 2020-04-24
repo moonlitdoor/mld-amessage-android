@@ -1,7 +1,6 @@
-package com.moonlitdoor.amessage.domain.service
+package com.moonlitdoor.amessage.push
 
 import com.google.firebase.messaging.RemoteMessage
-import com.moonlitdoor.amessage.domain.DomainDI
 import com.moonlitdoor.amessage.extensions.ignore
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,10 +19,10 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
 
   override fun onCreate() {
     super.onCreate()
-    DomainDI.get().inject(this)
+    PushDI.get(this).inject(this)
   }
 
-  override fun onNewToken(token: String) = adapter.onNewToken(token)
+  override fun onNewToken(token: String) = launch { adapter.onNewToken(token) }.ignore()
 
   override fun onMessageReceived(remoteMessage: RemoteMessage) = launch { adapter.onMessageReceived(remoteMessage) }.ignore()
 

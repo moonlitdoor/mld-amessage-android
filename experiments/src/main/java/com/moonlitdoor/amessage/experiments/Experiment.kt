@@ -1,23 +1,20 @@
 package com.moonlitdoor.amessage.experiments
 
-import android.content.SharedPreferences
+import android.preference.PreferenceManager
 import androidx.annotation.StringRes
+import com.moonlitdoor.amessage.resources.ResourceContainer
+import com.moonlitdoor.amessage.root.Root
 import java.util.*
 import javax.inject.Inject
 
-
 data class Experiment<T : Enum<T>> internal constructor(val key: String, private val c: Class<T>, val defaultValue: T) {
-
 
   class InjectableWrapper {
     @Inject
     lateinit var remoteConfig: FirebaseRemoteConfigWrapper
-
-    @Inject
-    lateinit var sharedPreferences: SharedPreferences
   }
 
-  private val wrapper: InjectableWrapper = ExperimentsDI.get().inject(InjectableWrapper())
+  private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Root.get())
 
   enum class BOOLEAN {
     FALSE, TRUE
@@ -29,8 +26,8 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
   }
 
   private constructor(key: String, c: Class<T>, defaultValue: T, @StringRes title: Int = 0, @StringRes description: Int = 0) : this(key, c, defaultValue) {
-    this.title = ExperimentsDI.get().resources().getString(title)
-    this.description = ExperimentsDI.get().resources().getString(description)
+    this.title = ResourceContainer.getString(title)
+    this.description = ResourceContainer.getString(description)
   }
 
   val id = "com.moonlitdoor.amessage.experiment.$key"
@@ -38,12 +35,12 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
   var title: String? = null
   var description: String? = null
   val remoteValue: String
-    get() = wrapper.remoteConfig.getString(key).toUpperCase(Locale.ROOT)
+    get() = FirebaseRemoteConfigWrapper.get().getString(key).toUpperCase(Locale.ROOT)
 
   var localValue: String
-    get() = wrapper.sharedPreferences.getString(id, REMOTE) ?: REMOTE
+    get() = sharedPreferences.getString(id, REMOTE) ?: REMOTE
     set(value) {
-      wrapper.sharedPreferences.edit().putString(id, value).apply()
+      sharedPreferences.edit().putString(id, value).apply()
     }
 
   val options: List<String> = listOf(REMOTE) + c.enumConstants.map { it.name.toUpperCase(Locale.ROOT) }

@@ -67,9 +67,9 @@ dependencies {
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Com.SquareUp.OkHttp3.okhttp)
-  implementation(D.Com.SquareUp.OkHttp3.loggingInterceptor)
+  api(D.Com.SquareUp.OkHttp3.loggingInterceptor)
   implementation(D.Com.SquareUp.Retrofit2.converterGson)
-  implementation(D.Com.SquareUp.Retrofit2.retrofit)
+  api(D.Com.SquareUp.Retrofit2.retrofit)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
 
   kaptTest(D.Com.Google.Dagger.daggerCompiler)

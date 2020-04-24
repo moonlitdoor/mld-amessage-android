@@ -15,7 +15,7 @@ class QrFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    ConnectDI.get().inject(this)
+    ConnectDI.get(requireActivity()).inject(this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = FragmentQrBinding.inflate(inflater, container, false).also {

@@ -1,10 +1,9 @@
 package com.moonlitdoor.amessage.experiments
 
-import android.content.Context
+import android.app.Application
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import dagger.Provides
-import org.junit.After
+import com.moonlitdoor.amessage.root.Root
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Before
@@ -14,26 +13,18 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ExperimentTest {
 
-  class TestExperimentsModule(context: Context) : ExperimentsDI.ExperimentsModule(context) {
-
-    @Provides
-    override fun providesFirebaseRemoteConfigWrapper(): FirebaseRemoteConfigWrapper = FirebaseRemoteConfigFake(
-      stringHandler = {
-        when (it) {
-          "key" -> "FALSE"
-          else -> ""
-        }
-      })
-  }
+  private val firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper = FirebaseRemoteConfigFake(
+    stringHandler = {
+      when (it) {
+        "key" -> "FALSE"
+        else -> ""
+      }
+    })
 
   @Before
   fun setup() {
-    ExperimentsDI.init(InstrumentationRegistry.getInstrumentation().targetContext, TestExperimentsModule(InstrumentationRegistry.getInstrumentation().targetContext))
-  }
-
-  @After
-  fun teardown() {
-    ExperimentsDI.unload()
+    Root.init(InstrumentationRegistry.getInstrumentation().targetContext as Application)
+    FirebaseRemoteConfigWrapper.get(firebaseRemoteConfigWrapper)
   }
 
   @Test

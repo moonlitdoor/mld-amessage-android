@@ -174,8 +174,10 @@ dependencies {
   api(project(M.EXTENSIONS))
   api(project(M.HANDLE))
   implementation(project(M.IDS))
-  api(project(M.SETTINGS))
+  api(project(M.PUSH))
   api(project(M.RESOURCES))
+  implementation(project(M.ROOT))
+  api(project(M.SETTINGS))
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)

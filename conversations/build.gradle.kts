@@ -77,7 +77,7 @@ dependencies {
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
-  implementation(D.Com.Stepstone.Stepper.materialStepper)
+  api(D.Com.Stepstone.Stepper.materialStepper)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)

@@ -19,7 +19,7 @@ class PendingFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    ConnectDI.get().inject(this)
+    ConnectDI.get(requireActivity()).inject(this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) = FragmentPendingBinding.inflate(inflater, container, false).also {

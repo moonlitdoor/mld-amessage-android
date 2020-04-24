@@ -1,35 +1,31 @@
 package com.moonlitdoor.amessage.experiments.ui
 
-import dagger.Component
+import android.app.Activity
 import dagger.Module
+import dagger.Subcomponent
 
-@Component(
+@Subcomponent(
   modules = [ExperimentsUiDI.ExperimentsUiModule::class]
 )
 interface ExperimentsUiDI {
 
   fun inject(fragment: ExperimentsFragment)
 
+  interface ExperimentsUiDIProvider {
+    fun provideExperimentsUiDI(): ExperimentsUiDI
+  }
+
   @Module
   class ExperimentsUiModule
 
-  @Component.Factory
+  @Subcomponent.Factory
   interface Factory {
     fun create(): ExperimentsUiDI
   }
 
   companion object {
-
-    private var component: ExperimentsUiDI? = null
-
     @Synchronized
-    fun init(): ExperimentsUiDI = component ?: DaggerExperimentsUiDI.factory().create()
-      .also {
-        component = it
-      }
-
-    @Synchronized
-    fun get(): ExperimentsUiDI = component ?: run { throw Exception("Not Initialized") }
+    fun get(activity: Activity): ExperimentsUiDI = (activity.application as ExperimentsUiDIProvider).provideExperimentsUiDI()
 
   }
 

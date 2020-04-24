@@ -58,6 +58,8 @@ dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
 
+  implementation(project(M.RESOURCES))
+
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
 

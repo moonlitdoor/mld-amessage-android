@@ -20,7 +20,9 @@ object M {
   const val HELP = ":help"
   const val IDS = ":ids"
   const val NETWORK = ":network"
+  const val PUSH = ":push"
   const val RESOURCES = ":resources"
+  const val ROOT = ":root"
   const val SETTINGS = ":settings"
   const val WINDOWS = ":windows"
 

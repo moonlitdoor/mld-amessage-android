@@ -35,7 +35,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    ConnectionsDI.get().inject(this)
+    ConnectionsDI.get(requireActivity()).inject(this)
     viewModel.con.observe(this) {
       Timber.i(it.toString())
     }
@@ -55,7 +55,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
 //        it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
 //          header.lifecycleOwner = this
 //          header.handle = viewModel.handle.also { h -> h.observe(header.life, this) }
-//        }.root)
+//        }.com.moonlitdoor.amessage.root)
       it.recyclerView.adapter = adapter
       WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
       NavigationMenuExperimentHelper.help(it.navigationView.menu)

@@ -1,11 +1,10 @@
 package com.moonlitdoor.amessage.experiments
 
-import android.content.Context
+import android.app.Application
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.common.truth.Truth.assertThat
-import dagger.Provides
-import org.junit.After
+import com.moonlitdoor.amessage.root.Root
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
@@ -14,33 +13,24 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class ExperimentsTest {
 
-  class TestExperimentsModule(context: Context) : ExperimentsDI.ExperimentsModule(context) {
-
-    @Provides
-    override fun providesFirebaseRemoteConfigWrapper(): FirebaseRemoteConfigWrapper = FirebaseRemoteConfigFake(
-      defaultsHandler = {
-        assertThat(it).hasSize(8)
-        assertThat(it).containsEntry("exp_test_3", Experiments.ABC.A)
-        assertThat(it).containsEntry("exp_test_2", Experiment.BOOLEAN.FALSE)
-      },
-      stringHandler = {
-        when (it) {
-          "exp_test_2" -> "TRUE"
-          "exp_test_3" -> "A"
-          else -> ""
-        }
-      })
-  }
+  private val firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper = FirebaseRemoteConfigFake(
+    defaultsHandler = {
+      assertThat(it).hasSize(8)
+      assertThat(it).containsEntry("exp_test_3", Experiments.ABC.A)
+      assertThat(it).containsEntry("exp_test_2", Experiment.BOOLEAN.FALSE)
+    },
+    stringHandler = {
+      when (it) {
+        "exp_test_2" -> "TRUE"
+        "exp_test_3" -> "A"
+        else -> ""
+      }
+    })
 
   @Before
   fun setup() {
-    ExperimentsDI.init(InstrumentationRegistry.getInstrumentation().targetContext, TestExperimentsModule(InstrumentationRegistry.getInstrumentation().targetContext))
-  }
-
-
-  @After
-  fun teardown() {
-    ExperimentsDI.unload()
+    Root.init(InstrumentationRegistry.getInstrumentation().targetContext as Application)
+    FirebaseRemoteConfigWrapper.get(firebaseRemoteConfigWrapper)
   }
 
   @Test

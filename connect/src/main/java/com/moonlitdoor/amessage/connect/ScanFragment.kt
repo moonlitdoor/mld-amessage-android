@@ -43,7 +43,7 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
 
   override fun onAttach(context: Context) {
     super.onAttach(context)
-    ConnectDI.get().inject(this)
+    ConnectDI.get(requireActivity()).inject(this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = binding.root

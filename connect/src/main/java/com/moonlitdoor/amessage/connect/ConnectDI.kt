@@ -1,47 +1,34 @@
 package com.moonlitdoor.amessage.connect
 
-import android.content.Context
-import com.moonlitdoor.amessage.domain.DomainDI
-import dagger.Component
+import android.app.Activity
 import dagger.Module
-import javax.inject.Scope
+import dagger.Subcomponent
 
-@Component(
-  modules = [ConnectDI.ConnectModule::class],
-  dependencies = [DomainDI::class]
+@Subcomponent(
+  modules = [ConnectDI.ConnectModule::class]
 )
-@ConnectDI.ConnectScope
 interface ConnectDI {
 
   fun inject(fragment: PendingFragment)
   fun inject(fragment: QrFragment)
   fun inject(fragment: ScanFragment)
 
-  @Scope
-  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-  annotation class ConnectScope
+  interface ConnectDIProvider {
+    fun provideConnectDI(): ConnectDI
+  }
 
   @Module
   class ConnectModule
 
-  @Component.Factory
+  @Subcomponent.Factory
   interface Factory {
-    fun create(domainDI: DomainDI): ConnectDI
+    fun create(): ConnectDI
   }
 
   companion object {
 
-    private var component: ConnectDI? = null
-
     @Synchronized
-    fun init(context: Context): ConnectDI = component ?: DaggerConnectDI.factory().create(
-      domainDI = DomainDI.init(context)
-    ).also {
-      component = it
-    }
-
-    @Synchronized
-    fun get(): ConnectDI = component ?: run { throw Exception("Not Initialized") }
+    fun get(activity: Activity): ConnectDI = (activity.application as ConnectDIProvider).provideConnectDI()
 
   }
 

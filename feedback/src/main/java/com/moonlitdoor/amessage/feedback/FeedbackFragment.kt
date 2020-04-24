@@ -12,7 +12,7 @@ class FeedbackFragment : androidx.fragment.app.Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    FeedbackDI.init().inject(this)
+    FeedbackDI.get(requireActivity()).inject(this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

@@ -28,7 +28,7 @@ class ConversationsFragment : androidx.fragment.app.Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    ConversationsDI.get().inject(this)
+    ConversationsDI.get(requireActivity()).inject(this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =

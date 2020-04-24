@@ -36,7 +36,7 @@ object Experiments {
     TEST6
   )
 
-  fun init(): Unit = ExperimentsDI.get().firebaseRemoteConfigWrapper().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
+  fun init(): Unit = FirebaseRemoteConfigWrapper.get().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
 
 
 }

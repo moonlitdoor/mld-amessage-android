@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.domain.service
+package com.moonlitdoor.amessage.push
 
 import com.google.firebase.messaging.RemoteMessage
 import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper

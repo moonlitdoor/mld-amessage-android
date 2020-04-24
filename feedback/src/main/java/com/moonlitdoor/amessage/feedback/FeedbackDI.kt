@@ -1,22 +1,18 @@
 package com.moonlitdoor.amessage.feedback
 
+import android.app.Activity
 import com.moonlitdoor.amessage.AMessageDI
+import com.moonlitdoor.amessage.Provider
 import dagger.Component
 import dagger.Module
-import javax.inject.Scope
 
 @Component(
   modules = [FeedbackDI.FeedbackModule::class],
   dependencies = [AMessageDI::class]
 )
-@FeedbackDI.FeedbackScope
 interface FeedbackDI {
 
   fun inject(fragment: FeedbackFragment)
-
-  @Scope
-  @kotlin.annotation.Retention(AnnotationRetention.RUNTIME)
-  annotation class FeedbackScope
 
   @Module
   open class FeedbackModule
@@ -28,17 +24,8 @@ interface FeedbackDI {
 
   companion object {
 
-    private var component: FeedbackDI? = null
-
     @Synchronized
-    fun init(): FeedbackDI = component ?: DaggerFeedbackDI.factory().create(
-      aMessageDI = AMessageDI.get()
-    ).also {
-      component = it
-    }
-
-    @Synchronized
-    fun get(): FeedbackDI = component ?: run { throw Exception("Not Initialized") }
+    fun get(activity: Activity): FeedbackDI = DaggerFeedbackDI.factory().create((activity.application as Provider).provideAMessageDI())
 
   }
 
