@@ -57,7 +57,7 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   fun rejectConnection(connection: Connection) = viewModelScope.launch { connectionRepository.reject(connection) }
 
   //TODO check of profile is already connected
-  fun profileFound(profile: Profile, imageProxy: ImageProxy): Unit = scanViewState.setValue(ScanViewState.Connected(profile, imageProxy))
+  fun profileFound(profile: Profile, imageProxy: ImageProxy): Unit = scanViewState.setValue(ScanViewState.Connect(profile, imageProxy))
 
   fun experimentsCodeFound(imageProxy: ImageProxy) = if (settingsRepository.getExperimentsUiEnabled()) {
     scanViewState.setValue(ScanViewState.ExperimentsEnabled(imageProxy))

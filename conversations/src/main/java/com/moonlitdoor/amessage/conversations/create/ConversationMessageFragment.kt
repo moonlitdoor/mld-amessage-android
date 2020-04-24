@@ -20,8 +20,7 @@ class ConversationMessageFragment : androidx.fragment.app.Fragment(), Step {
     ConversationsDI.get(requireActivity()).inject(this)
   }
 
-  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    FragmentConversationMessageBinding.inflate(inflater, container, false).root
+  override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = FragmentConversationMessageBinding.inflate(inflater, container, false).root
 
   override fun onSelected() {
   }

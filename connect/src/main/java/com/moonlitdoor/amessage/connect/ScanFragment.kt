@@ -112,7 +112,10 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
     is ScanViewState.Connect -> AlertDialog.Builder(requireActivity())
       .setTitle("Connect")
       .setMessage("Connect with ${viewState.profile.handle}?")
-      .setPositiveButton("OK") { _, _ -> viewState.imageProxy.close() }
+      .setPositiveButton("OK") { _, _ ->
+        viewState.imageProxy.close()
+        viewModel.connect(viewState.profile)
+      }
       .setNegativeButton("Cancel") { _, _ -> viewState.imageProxy.close() }
     is ScanViewState.Connected -> AlertDialog.Builder(requireActivity())
       .setTitle("Connected")
