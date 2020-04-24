@@ -1,22 +1,17 @@
 package com.moonlitdoor.jacoco
 
+import com.moonlitdoor.jacoco.tasks.JacocoTestCoverageVerification
+import com.moonlitdoor.jacoco.tasks.JacocoTestReport
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.tasks.testing.Test
-import org.gradle.kotlin.dsl.applyTo
-import org.gradle.kotlin.dsl.get
-import org.gradle.testing.jacoco.plugins.JacocoPluginExtension
-import org.gradle.testing.jacoco.plugins.JacocoTaskExtension
+import org.gradle.testing.jacoco.plugins.JacocoPlugin
 
 class JacocoPlugin : Plugin<Project> {
   override fun apply(project: Project) {
-    project.applyTo<org.gradle.testing.jacoco.plugins.JacocoPlugin>()
-    (project.extensions["jacoco"] as JacocoPluginExtension).apply {
-      toolVersion = "0.8.5"
-      reportsDir = project.file("${project.buildDir}/reports")
-    }
-    project.tasks.withType(Test::class.java) {
-      (extensions["jacoco"] as JacocoTaskExtension).isIncludeNoLocationClasses = true
-    }
+    project.plugins.apply(JacocoPlugin::class.java)
+    project.tasks.create(JacocoTestReport.NAME, JacocoTestReport::class.java)
+    project.tasks.findByName(JacocoTestReport.NAME)?.mustRunAfter(project.childProjects.keys.map { "$it:testDebugUnitTest" })
+    project.tasks.create(JacocoTestCoverageVerification.NAME, JacocoTestCoverageVerification::class.java)
+    project.tasks.findByName(JacocoTestCoverageVerification.NAME)?.mustRunAfter(project.childProjects.keys.map { "$it:testDebugUnitTest" })
   }
 }

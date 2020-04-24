@@ -1,13 +1,15 @@
+import com.moonlitdoor.android.AndroidPlugin
+
 plugins {
   id("com.moonlitdoor.git-version")
   id("com.android.application")
-  kotlin("android")
+  id("com.moonlitdoor.android")
   kotlin("kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
   id("com.google.firebase.crashlytics")
-  id("com.moonlitdoor.jacoco")
+
   if (System.getenv("COM_MOONLITDOOR_AMESSAGE_PERF") != null) {
     println("Applying Performance Plugin")
     id("com.google.firebase.firebase-perf")
@@ -28,29 +30,15 @@ play {
 }
 
 android {
-  compileSdkVersion(COMPILE_SDK_VERSION)
-
   dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lintOptions {
     isIgnoreTestSources = true
     isCheckDependencies = true
-    isWarningsAsErrors = true
-    isAbortOnError = true
-    xmlReport = false
   }
-  testOptions {
-    unitTests.apply {
-      isReturnDefaultValues = true
-      isIncludeAndroidResources = true
-    }
-    execution = TEST_ORCHESTRATOR
-    animationsDisabled = true
-  }
+
   defaultConfig {
     applicationId = "com.moonlitdoor.amessage"
-    minSdkVersion(MIN_SDK_VERSION)
-    targetSdkVersion(TARGET_SDK_VERSION)
     versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
     resValue("color", "launcher_background", "@color/purple_deep_A400")
@@ -66,12 +54,10 @@ android {
 //    } else if (flakyTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerFlaky"
 //    } else {
-    testInstrumentationRunner = TEST_RUNNER
 //    }
-    testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
   }
   signingConfigs {
-    create(RELEASE) {
+    create(AndroidPlugin.RELEASE) {
       storeFile = file(property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE").toString())
       storePassword = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD").toString()
       keyAlias = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS").toString()
@@ -79,11 +65,10 @@ android {
     }
   }
   buildTypes {
-    getByName(RELEASE) {
-      signingConfig = signingConfigs.getByName(RELEASE)
-      isMinifyEnabled = MINIFY
-      isShrinkResources = SHRINK
-      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
+    getByName(AndroidPlugin.RELEASE) {
+      signingConfig = signingConfigs.getByName(AndroidPlugin.RELEASE)
+      isShrinkResources = false
+      proguardFiles(getDefaultProguardFile(AndroidPlugin.PROGUARD_ANDROID_FILE), AndroidPlugin.PROGUARD_FILE)
       resValue("string", "app_name", "AMessage")
       buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID").toString())
@@ -95,13 +80,13 @@ android {
       resValue("string", "google_storage_bucket", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GOOGLE_STORAGE_BUCKET").toString())
       resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID").toString())
     }
-    create(BETA) {
-      matchingFallbacks = mutableListOf(RELEASE)
+
+    create(AndroidPlugin.BETA) {
+      matchingFallbacks = mutableListOf(AndroidPlugin.RELEASE)
       isDebuggable = false
-      signingConfig = signingConfigs.getByName(RELEASE)
-      isMinifyEnabled = MINIFY
-      isShrinkResources = SHRINK
-      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
+      signingConfig = signingConfigs.getByName(AndroidPlugin.RELEASE)
+      isShrinkResources = false
+      proguardFiles(getDefaultProguardFile(AndroidPlugin.PROGUARD_ANDROID_FILE), AndroidPlugin.PROGUARD_FILE)
       applicationIdSuffix = ".beta"
       resValue("color", "launcher_background", "@color/colorMonsterAccent")
       resValue("string", "app_name", "AMessage Beta")
@@ -121,7 +106,8 @@ android {
         releaseNotes = "The Release Notes"
       }
     }
-    getByName(DEBUG) {
+
+    getByName(AndroidPlugin.DEBUG) {
       isMinifyEnabled = false
       applicationIdSuffix = ".debug"
       resValue("color", "launcher_background", "@color/colorDarkPrimary")
@@ -136,24 +122,13 @@ android {
       resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID").toString())
     }
   }
+
   packagingOptions {
     exclude("META-INF/proguard/androidx-annotations.pro")
   }
+
   buildFeatures {
     dataBinding = true
-  }
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-  }
-
-  sourceSets {
-    getByName(SOURCE_SET_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-    getByName(SOURCE_SET_ANDROID_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
   }
 
 }

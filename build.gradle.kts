@@ -47,7 +47,7 @@ allprojects {
 }
 
 plugins {
-  id("com.moonlitdoor.jacoco.report")
+  id("com.moonlitdoor.jacoco")
 }
 
 gradle.projectsEvaluated {

@@ -1,61 +1,20 @@
+import com.moonlitdoor.android.AndroidPlugin
+
 plugins {
   id("com.android.library")
-  kotlin("android")
+  id("com.moonlitdoor.android")
   kotlin("kapt")
-  id("com.moonlitdoor.jacoco")
 }
 
 android {
-  compileSdkVersion(COMPILE_SDK_VERSION)
-
-  lintOptions {
-    isWarningsAsErrors = true
-    isAbortOnError = true
-    xmlReport = false
-  }
-
-  testOptions {
-    unitTests.apply {
-      isReturnDefaultValues = true
-      isIncludeAndroidResources = true
-    }
-    execution = TEST_ORCHESTRATOR
-    animationsDisabled = true
-  }
-
-  defaultConfig {
-    minSdkVersion(MIN_SDK_VERSION)
-    targetSdkVersion(TARGET_SDK_VERSION)
-    testInstrumentationRunner = TEST_RUNNER
-    testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
-  }
-
   buildTypes {
-    getByName(RELEASE) {
-      isMinifyEnabled = MINIFY
-//      isShrinkResources = SHRINK
+    getByName(AndroidPlugin.RELEASE) {
       buildConfigField("String", "BASE_URL", "\"https://amessage.moonlitdoor.com\"")
-      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
     }
-    getByName(DEBUG) {
+    getByName(AndroidPlugin.DEBUG) {
       buildConfigField("String", "BASE_URL", "\"https://beta.amessage.moonlitdoor.com\"")
     }
   }
-
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-  }
-
-  sourceSets {
-    getByName(SOURCE_SET_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-    getByName(SOURCE_SET_ANDROID_TEST) {
-      java.srcDir(SHARED_TEST_DIR)
-    }
-  }
-
 }
 
 dependencies {

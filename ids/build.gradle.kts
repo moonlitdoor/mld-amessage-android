@@ -1,44 +1,4 @@
 plugins {
   id("com.android.library")
-  id("com.moonlitdoor.jacoco")
-}
-
-android {
-  compileSdkVersion(COMPILE_SDK_VERSION)
-
-  lintOptions {
-    isWarningsAsErrors = true
-    isAbortOnError = true
-    xmlReport = false
-  }
-
-  testOptions {
-    unitTests.apply {
-      isReturnDefaultValues = true
-      isIncludeAndroidResources = true
-    }
-    execution = TEST_ORCHESTRATOR
-    animationsDisabled = true
-  }
-
-  defaultConfig {
-    minSdkVersion(MIN_SDK_VERSION)
-    targetSdkVersion(TARGET_SDK_VERSION)
-    testInstrumentationRunner = TEST_RUNNER
-    testInstrumentationRunnerArguments = TEST_RUNNER_ARGUMENTS
-  }
-
-  buildTypes {
-    getByName(RELEASE) {
-      isMinifyEnabled = MINIFY
-//      isShrinkResources = SHRINK
-      proguardFiles(getDefaultProguardFile(PROGUARD_ANDROID_FILE), PROGUARD_FILE)
-    }
-  }
-
-  compileOptions {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
-  }
-
+  id("com.moonlitdoor.android")
 }
