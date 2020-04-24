@@ -66,7 +66,7 @@ dependencies {
 
   api(project(M.CONSTANTS))
 
-  api("com.google.firebase:firebase-database-ktx:19.3.0")
+  api(D.Com.Google.Firebase.firebaseDatabase)
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   api(D.Androidx.Room.roomKtx)
@@ -77,7 +77,7 @@ dependencies {
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)
   implementation(D.Com.JakeWharton.Timber.timber)
 
-  debugImplementation(T.Com.Amitshekhar.Android.debugDb)
+  debugImplementation(D.Com.Amitshekhar.Android.debugDb)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)
