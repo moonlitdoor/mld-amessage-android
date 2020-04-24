@@ -9,7 +9,7 @@ open class JacocoTestReport : JacocoReport() {
 
   private val subProjects: List<String> by lazy {
     project.subprojects
-      .filter { it.plugins.hasPlugin("com.moonlitdoor.jacoco") }
+      .filter { it.plugins.hasPlugin("com.moonlitdoor.android") }
       .map { it.projectDir.absolutePath }
   }
 
