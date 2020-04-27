@@ -29,6 +29,8 @@ dependencies {
   implementation(D.Androidx.Core.coreKtx)
   implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
+  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)
   implementation(D.Com.JakeWharton.Timber.timber)
 

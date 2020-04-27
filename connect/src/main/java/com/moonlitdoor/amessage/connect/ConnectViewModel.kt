@@ -5,6 +5,7 @@ import androidx.camera.core.ImageProxy
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.MultiFormatWriter
@@ -29,12 +30,22 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   }
   val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
   val pendingAndInvitedConnections = connectionRepository.getScannedInvitedAndPendingConnections()
+
   val selectedConnection = MutableLiveData<Connection>()
   val scanViewState = SingleLiveEvent<ScanViewState>()
 
+  fun getInvitedConnections(): LiveData<List<Connection>> = connectionRepository.getInvitedConnections().asLiveData().also {
+    it.observeForever {
+      Timber.i(it.toString())
+    }
+  }
+
+  val pending: LiveData<List<Connection>> = connectionRepository.getPending().asLiveData()
+
+  val invited: LiveData<List<Connection>> = connectionRepository.invited.asLiveData()
+
   @Suppress("UsePropertyAccessSyntax")
   fun setSelected(connection: Connection) = selectedConnection.setValue(connection)
-
 
   fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.create(profile) }.ignore()
 
@@ -52,9 +63,9 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
     return Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888).also { it.setPixels(pixels, 0, w, 0, 0, w, h) }
   }
 
-  fun confirmConnection(connection: Connection) = viewModelScope.launch { connectionRepository.confirm(connection) }
+  fun confirm(connection: Connection) = viewModelScope.launch { connectionRepository.confirm(connection) }
 
-  fun rejectConnection(connection: Connection) = viewModelScope.launch { connectionRepository.reject(connection) }
+  fun reject(connection: Connection) = viewModelScope.launch { connectionRepository.reject(connection) }
 
   //TODO check of profile is already connected
   fun profileFound(profile: Profile, imageProxy: ImageProxy): Unit = scanViewState.setValue(ScanViewState.Connect(profile, imageProxy))

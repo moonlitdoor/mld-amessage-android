@@ -16,7 +16,7 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:paddingTop="@dimen/dp008"
-    app:items="@{viewModel.pending}"
+    app:items="@{viewModel.invited}"
     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </layout>

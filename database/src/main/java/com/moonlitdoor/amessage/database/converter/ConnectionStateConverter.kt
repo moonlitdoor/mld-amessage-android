@@ -10,6 +10,8 @@ class ConnectionStateConverter {
 
   @TypeConverter
   fun to(state: String): ConnectionEntity.State = when (state) {
+    ConnectionEntity.State.Scanned.value -> ConnectionEntity.State.Scanned
+    ConnectionEntity.State.Queued.value -> ConnectionEntity.State.Queued
     ConnectionEntity.State.Pending.value -> ConnectionEntity.State.Pending
     ConnectionEntity.State.Invited.value -> ConnectionEntity.State.Invited
     ConnectionEntity.State.Connected.value -> ConnectionEntity.State.Connected

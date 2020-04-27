@@ -22,7 +22,7 @@ class ConnectFragment : Fragment() {
       binding = it
       activity?.let { act ->
         if (act.checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-          setup(true)
+          onRequestPermissionsResult(true)
         } else {
           requestPermissions(arrayOf(Manifest.permission.CAMERA), CAMERA_PERMISSION)
         }
@@ -31,18 +31,19 @@ class ConnectFragment : Fragment() {
 
   override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
     super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    setup(requestCode == CAMERA_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED)
+    onRequestPermissionsResult(requestCode == CAMERA_PERMISSION && grantResults[0] == PackageManager.PERMISSION_GRANTED)
   }
 
-  private fun setup(permissionGranted: Boolean) {
+  private fun onRequestPermissionsResult(permissionGranted: Boolean) {
     binding.tabLayout.visibility = View.VISIBLE
     binding.viewPager2.adapter = object : FragmentStateAdapter(this) {
 
-      override fun getItemCount() = if (permissionGranted) 3 else 2
+      override fun getItemCount() = if (permissionGranted) 4 else 2
 
       override fun createFragment(position: Int): Fragment = when (position) {
         0 -> PendingFragment()
-        1 -> QrFragment()
+        1 -> if (permissionGranted) InvitedFragment() else QrFragment()
+        2 -> QrFragment()
         else -> ScanFragment()
       }
 
@@ -51,7 +52,8 @@ class ConnectFragment : Fragment() {
       tab.setText(
         when (position) {
           0 -> PendingFragment.titleId
-          1 -> QrFragment.titleId
+          1 -> if (permissionGranted) InvitedFragment.titleId else QrFragment.titleId
+          2 -> QrFragment.titleId
           else -> ScanFragment.titleId
         }
       )

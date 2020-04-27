@@ -3,6 +3,7 @@ package com.moonlitdoor.amessage.connections
 import androidx.annotation.MainThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.moonlitdoor.amessage.domain.model.Connection
@@ -15,7 +16,7 @@ import javax.inject.Inject
 class ConnectionViewModel @Inject constructor(connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository, windowsRepository: WindowsRepository) :
   ViewModel() {
 
-  val connectedConnections = connectionRepository.getConnectedConnections()
+  val connectionsConnected: LiveData<List<Connection>> = connectionRepository.getConnected().asLiveData()
 
   //   viewModelScope.coroutineContext + Dispatchers.IO
   val con: LiveData<List<Connection>> = liveData(viewModelScope.coroutineContext + Dispatchers.IO) { connectionRepository.getConnectedConnections2() }

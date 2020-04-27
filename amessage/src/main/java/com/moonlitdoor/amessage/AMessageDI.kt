@@ -27,6 +27,8 @@ import dagger.Provides
 )
 interface AMessageDI {
 
+  fun inject(application: AMessageApplication)
+
   fun frequentlyAskedQuestionRepository(): FrequentlyAskedQuestionRepository
 
   fun connectDIFactory(): ConnectDI.Factory

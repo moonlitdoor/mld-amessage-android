@@ -32,7 +32,7 @@ class FirebaseMessagingServiceAdapter @Inject constructor(private val connection
 
   private suspend fun type(type: String, id: UUID, payload: String): Unit = when (type) {
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
-      ConnectionMapper.fromInvited(
+      ConnectionMapper.fromPending(
         ConnectionInvitePayload.inflate(
           Payload.decrypt(
             payload,

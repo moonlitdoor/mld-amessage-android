@@ -18,9 +18,7 @@ import com.moonlitdoor.amessage.connections.databinding.ListItemConnectionConnec
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
-import com.moonlitdoor.amessage.extensions.observe
 import com.moonlitdoor.amessage.handle.HandleViewModel
-import timber.log.Timber
 import javax.inject.Inject
 import com.moonlitdoor.amessage.ids.R as N
 
@@ -36,16 +34,11 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     ConnectionsDI.get(requireActivity()).inject(this)
-    viewModel.con.observe(this) {
-      Timber.i(it.toString())
-    }
     viewModel.handle.observe(this, this)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
     FragmentConnectionsBinding.inflate(inflater, container, false).also {
-      it.lifecycleOwner = this
-      it.viewModel = viewModel
       findNavController().also { navController ->
         it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
         it.navigationView.setupWithNavController(navController)
@@ -59,6 +52,8 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
       it.recyclerView.adapter = adapter
       WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
       NavigationMenuExperimentHelper.help(it.navigationView.menu)
+      it.lifecycleOwner = this
+      it.viewModel = viewModel
     }.root
 
   override fun onChanged(handle: String?): Unit =

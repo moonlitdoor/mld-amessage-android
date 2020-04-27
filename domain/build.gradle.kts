@@ -15,6 +15,7 @@ dependencies {
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)
+  api(D.Androidx.Work.workRuntimeKtx)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)

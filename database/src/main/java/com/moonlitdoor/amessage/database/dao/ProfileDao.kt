@@ -50,11 +50,11 @@ open class ProfileDao constructor(private val preferences: SharedPreferences) {
   }
 
   fun getProfileSync(): ProfileEntity? =
-    handle.value?.let { h ->
-      token.value?.let { t ->
-        id.value?.let { i ->
-          password.value?.let { p ->
-            salt.value?.let { s ->
+    preferences.getString(HANDLE, null)?.let { h ->
+      preferences.getString(TOKEN, null)?.let { t ->
+        preferences.getString(ID, null)?.let { i ->
+          preferences.getString(PASSWORD, null)?.let { p ->
+            preferences.getString(SALT, null)?.let { s ->
               ProfileEntity(h, t, UUID.fromString(i), UUID.fromString(p), UUID.fromString(s))
             }
           }

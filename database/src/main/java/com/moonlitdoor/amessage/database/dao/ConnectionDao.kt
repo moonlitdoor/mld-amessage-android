@@ -10,17 +10,27 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import kotlinx.coroutines.flow.Flow
 import java.util.*
 
 @Dao
 interface ConnectionDao {
 
-  @MainThread
   @Query("SELECT * FROM connection WHERE state = 'connected'")
-  fun getConnected(): LiveData<List<ConnectionEntity>>
+  fun getConnected(): Flow<List<ConnectionEntity>>
+
+  @Query("SELECT * FROM connection WHERE state = 'invited'")
+  fun getInvited(): Flow<List<ConnectionEntity>>
+
+  @Query("SELECT * FROM connection WHERE state = 'pending'")
+  fun getPending(): Flow<List<ConnectionEntity>>
+
 
   @Query("SELECT * FROM connection WHERE state = 'connected'")
   suspend fun getConnected2(): List<ConnectionEntity>
+
+  @Query("SELECT * FROM connection WHERE state = 'invited'")
+  fun getInvitedConnections(): Flow<List<ConnectionEntity>>
 
   @MainThread
   @Query("SELECT * FROM connection WHERE state IN ('scanned','pending', 'invited')")

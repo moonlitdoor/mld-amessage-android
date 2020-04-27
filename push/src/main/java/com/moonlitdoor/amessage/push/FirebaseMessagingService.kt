@@ -24,7 +24,9 @@ class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessaging
 
   override fun onNewToken(token: String) = launch { adapter.onNewToken(token) }.ignore()
 
-  override fun onMessageReceived(remoteMessage: RemoteMessage) = launch { adapter.onMessageReceived(remoteMessage) }.ignore()
+  override fun onMessageReceived(remoteMessage: RemoteMessage) = launch {
+    adapter.onMessageReceived(remoteMessage)
+  }.ignore()
 
   override fun onDestroy() {
     super.onDestroy()

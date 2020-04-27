@@ -10,6 +10,7 @@ class FirebaseMessageJson private constructor(payload: Payload, connectionId: UU
   private var token: String? = null
   private var tokens: List<String>? = null
   private val data = Data()
+  private val fcm_options = FcmOptions()
 
   constructor(payload: Payload, connection: ConnectionJson) : this(payload, connection.connectionId, connection.token, connection.password, connection.salt)
 
@@ -26,6 +27,7 @@ class FirebaseMessageJson private constructor(payload: Payload, connectionId: UU
     data.type = payload.type.value
     Timber.i("ENCRYPT -> DECRYPT password=%s salt=%s", password, salt)
     data.payload = Payload.encrypt(payload.toString(), password.toString(), salt.toString())
+    fcm_options.analytics_label = payload.type.value
   }
 
   private class Data {
@@ -33,6 +35,12 @@ class FirebaseMessageJson private constructor(payload: Payload, connectionId: UU
     var type: String = ""
     var id: String? = null
     var payload: String? = null
+
+  }
+
+  private class FcmOptions {
+
+    var analytics_label: String = ""
 
   }
 

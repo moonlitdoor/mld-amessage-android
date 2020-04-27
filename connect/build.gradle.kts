@@ -28,6 +28,8 @@ dependencies {
   implementation(D.Androidx.Camera.cameraLifecycle)
   implementation(D.Androidx.Camera.cameraView)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
+  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
   implementation(D.Androidx.Viewpager2.viewpager2)

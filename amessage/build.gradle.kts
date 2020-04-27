@@ -168,7 +168,6 @@ dependencies {
   implementation(D.Androidx.Navigation.navigationDynamicFeatureFragment)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
-  implementation(D.Androidx.Work.workRuntimeKtx)
 
   implementation(D.Com.Google.Android.Material.material)
   implementation(D.Androidx.Preference.preference)

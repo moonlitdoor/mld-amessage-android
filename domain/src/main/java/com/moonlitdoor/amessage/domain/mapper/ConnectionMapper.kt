@@ -36,43 +36,43 @@ object ConnectionMapper {
   }
 
   fun fromConnected(connection: Connection) = ConnectionEntity(
-    connection.connectionId,
-    connection.password,
-    connection.salt,
-    connection.token,
-    connection.handle,
-    ConnectionEntity.State.Connected,
-    connection.id
+    connectionId = connection.connectionId,
+    password = connection.password,
+    salt = connection.salt,
+    token = connection.token,
+    handle = connection.handle,
+    state = ConnectionEntity.State.Connected,
+    id = connection.id
   )
 
   fun fromScanned(profile: Profile) = ConnectionEntity(
-    UUID.randomUUID(),
-    UUID.randomUUID(),
-    UUID.randomUUID(),
-    profile.token,
-    profile.handle,
-    ConnectionEntity.State.Pending
+    connectionId = UUID.randomUUID(),
+    password = UUID.randomUUID(),
+    salt = UUID.randomUUID(),
+    token = profile.token,
+    handle = profile.handle,
+    state = ConnectionEntity.State.Scanned
   )
 
-  fun fromPending(profile: Profile) = ConnectionEntity(
-    UUID.randomUUID(),
-    UUID.randomUUID(),
-    UUID.randomUUID(),
-    profile.token,
-    profile.handle,
-    ConnectionEntity.State.Pending
-  )
-
-  fun fromInvited(payload: ConnectionInvitePayload) = ConnectionEntity(
-    payload.connectionId,
-    payload.password,
-    payload.salt,
-    payload.token,
-    payload.handle,
-    ConnectionEntity.State.Invited
+  fun fromPending(payload: ConnectionInvitePayload) = ConnectionEntity(
+    connectionId = payload.connectionId,
+    password = payload.password,
+    salt = payload.salt,
+    token = payload.token,
+    handle = payload.handle,
+    state = ConnectionEntity.State.Pending
   )
 
   fun toJson(connection: Connection) = ConnectionJson(
+    id = connection.id,
+    connectionId = connection.connectionId,
+    password = connection.password,
+    salt = connection.salt,
+    token = connection.token,
+    handle = connection.handle
+  )
+
+  fun toJson(connection: ConnectionEntity) = ConnectionJson(
     id = connection.id,
     connectionId = connection.connectionId,
     password = connection.password,

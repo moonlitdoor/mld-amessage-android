@@ -1,13 +1,13 @@
 package com.moonlitdoor.amessage.conversations.create
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.moonlitdoor.amessage.domain.factory.ConversationFactory
 import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.domain.model.SelectableConnection
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ConversationRepository
-import com.moonlitdoor.amessage.extensions.map
 import javax.inject.Inject
 
 class ConversationCreateViewModel @Inject constructor(
@@ -26,11 +26,11 @@ class ConversationCreateViewModel @Inject constructor(
     }
   }
 
-  val connections: LiveData<List<SelectableConnection>> = connectionRepository.getConnectedConnections().map {
-    it.map {
-      SelectableConnection.from(it)
-    }
-  }
+  val connections: LiveData<List<SelectableConnection>> = MutableLiveData()//   connectionRepository.getConnectedConnections().map {
+//    it.map {
+//      SelectableConnection.from(it)
+//    }
+//  }
 
   var conversation: Conversation? = null
 

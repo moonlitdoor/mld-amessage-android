@@ -12,6 +12,7 @@ interface ConnectDI {
   fun inject(fragment: PendingFragment)
   fun inject(fragment: QrFragment)
   fun inject(fragment: ScanFragment)
+  fun inject(fragment: InvitedFragment)
 
   interface ConnectDIProvider {
     fun provideConnectDI(): ConnectDI
