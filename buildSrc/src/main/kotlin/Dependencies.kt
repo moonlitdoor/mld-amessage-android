@@ -18,7 +18,9 @@ object D {
     }
 
     object Compose {
-      const val composeRuntime = "androidx.compose:compose-runtime:0.1.0-dev09"
+      private const val version = "0.1.0-dev10"
+      const val composeCompiler = "androidx.compose:compose-compiler:$version"
+      const val composeRuntime = "androidx.compose:compose-runtime:$version"
     }
 
     object ConstraintLayout {
@@ -75,14 +77,14 @@ object D {
     }
 
     object Test {
-      private const val version = "1.3.0-beta01"
+      private const val version = "1.2.0"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.3.0-beta01"
+        private const val version = "3.2.0"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -97,9 +99,15 @@ object D {
     }
 
     object Ui {
-      private const val version = "0.1.0-dev09"
+      private const val version = "0.1.0-dev10"
+      const val uiCore = "androidx.ui:ui-core:$version"
+      const val uiFoundation = "androidx.ui:ui-foundation:$version"
+      const val uiFramework = "androidx.ui:ui-framework:$version"
       const val uiLayout = "androidx.ui:ui-layout:$version"
+      const val uiLivedata = "androidx.ui:ui-livedata:$version"
       const val uiMaterial = "androidx.ui:ui-material:$version"
+      const val uiSavedInstanceState = "androidx.ui:ui-saved-instance-state:$version"
+      const val uiTest = "androidx.ui:ui-test:$version"
       const val uiTooling = "androidx.ui:ui-tooling:$version"
     }
 
@@ -122,7 +130,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha07"
+          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha08"
         }
       }
     }

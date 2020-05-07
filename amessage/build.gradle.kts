@@ -128,7 +128,17 @@ android {
   }
 
   buildFeatures {
+    compose = true
     dataBinding = true
+  }
+
+  composeOptions {
+    kotlinCompilerVersion = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+    kotlinCompilerExtensionVersion = "0.1.0-dev10"
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
   }
 
 }
@@ -136,6 +146,18 @@ android {
 dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
+  kapt(D.Androidx.Compose.composeCompiler)
+
+  implementation(D.Androidx.Compose.composeRuntime)
+  implementation(D.Androidx.Ui.uiCore)
+  implementation(D.Androidx.Ui.uiFoundation)
+  implementation(D.Androidx.Ui.uiFramework)
+  implementation(D.Androidx.Ui.uiLayout)
+  implementation(D.Androidx.Ui.uiLivedata)
+  implementation(D.Androidx.Ui.uiMaterial)
+  implementation(D.Androidx.Ui.uiSavedInstanceState)
+  implementation(D.Androidx.Ui.uiTest)
+  implementation(D.Androidx.Ui.uiTooling)
 
   implementation(project(M.ANALYTICS))
   api(project(M.BINDINGS))
