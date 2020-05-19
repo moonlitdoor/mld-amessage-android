@@ -5,7 +5,7 @@ object D {
     }
 
     object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.2.0-beta01"
+      const val appcompat = "androidx.appcompat:appcompat:1.2.0-rc01"
     }
 
     object Camera {
@@ -18,13 +18,16 @@ object D {
     }
 
     object Compose {
-      private const val version = "0.1.0-dev10"
-      const val composeCompiler = "androidx.compose:compose-compiler:$version"
-      const val composeRuntime = "androidx.compose:compose-runtime:$version"
+      private const val version = "0.1.0-dev11"
+
+      //      const val composeCompiler = "androidx.compose:compose-compiler:$version"
+      const val composeCompiler = version
+      const val composeKotlin = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
+//      const val composeRuntime = "androidx.compose:compose-runtime:$version"
     }
 
     object ConstraintLayout {
-      const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta4"
+      const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.0-beta6"
     }
 
     object Core {
@@ -32,7 +35,7 @@ object D {
     }
 
     object Fragment {
-      private const val version = "1.3.0-alpha03"
+      private const val version = "1.3.0-alpha04"
       const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
@@ -45,7 +48,7 @@ object D {
 
     object Lifecycle {
       private const val versionOld = "2.2.0"
-      private const val version = "2.3.0-alpha01"
+      private const val version = "2.3.0-alpha02"
       const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$versionOld"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
@@ -53,7 +56,7 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.3.0-alpha05"
+      private const val version = "2.3.0-alpha06"
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
@@ -65,7 +68,7 @@ object D {
     }
 
     object Recyclerview {
-      const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha02"
+      const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha03"
     }
 
     object Room {
@@ -99,10 +102,9 @@ object D {
     }
 
     object Ui {
-      private const val version = "0.1.0-dev10"
+      private const val version = "0.1.0-dev11"
       const val uiCore = "androidx.ui:ui-core:$version"
       const val uiFoundation = "androidx.ui:ui-foundation:$version"
-      const val uiFramework = "androidx.ui:ui-framework:$version"
       const val uiLayout = "androidx.ui:ui-layout:$version"
       const val uiLivedata = "androidx.ui:ui-livedata:$version"
       const val uiMaterial = "androidx.ui:ui-material:$version"
@@ -116,7 +118,7 @@ object D {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-alpha02"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-alpha03"
     }
   }
 
@@ -159,15 +161,15 @@ object D {
       }
 
       object Firebase {
-        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.4.0"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.4.1"
         const val firebaseConfig = "com.google.firebase:firebase-config:19.1.4"
-        const val firebaseCore = "com.google.firebase:firebase-core:17.4.0"
+        const val firebaseCore = "com.google.firebase:firebase-core:17.4.1"
         const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0"
-        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.0.0"
+        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.1.0"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.3.0"
-        const val firebaseIid = "com.google.firebase:firebase-iid:20.1.6"
+        const val firebaseIid = "com.google.firebase:firebase-iid:20.1.7"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.6"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.6"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.7"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.3"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.1"
         const val firebasePerf = "com.google.firebase:firebase-perf:19.0.7"
@@ -217,14 +219,14 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.5.0"
+        private const val version = "4.7.1"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
       }
 
       object Retrofit2 {
-        private const val version = "2.8.1"
+        private const val version = "2.8.2"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
       }
@@ -250,7 +252,7 @@ object D {
       }
 
       object Kotlinx {
-        private const val version = "1.3.4"
+        private const val version = "1.3.7"
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlinxCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
