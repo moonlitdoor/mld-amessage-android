@@ -80,14 +80,14 @@ object D {
     }
 
     object Test {
-      private const val version = "1.2.0"
+      private const val version = "1.3.0-beta01"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.2.0"
+        private const val version = "3.3.0-beta01"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
