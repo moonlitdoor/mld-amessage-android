@@ -7,8 +7,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation.findNavController
 import androidx.preference.PreferenceManager
-//import androidx.ui.core.setContent
-//import androidx.ui.material.Button
+import androidx.ui.core.setContent
+import androidx.ui.foundation.Text
+import androidx.ui.material.Button
 import com.moonlitdoor.amessage.constants.Constants
 
 
@@ -25,12 +26,15 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
       }
     )
     super.onCreate(savedInstanceState)
-//    setContent {
-//      Button(onClick = {
-//      }) {
-//      }
-//    }
-    setContentView(R.layout.activity_navigation)
+    if (BuildConfig.USE_COMPOSE) {
+      setContent {
+        Button(onClick = {}) {
+          Text(text = "test")
+        }
+      }
+    } else {
+      setContentView(R.layout.activity_navigation)
+    }
     PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this)
   }
 

@@ -43,6 +43,7 @@ android {
     versionName = gitVersion
     resValue("color", "launcher_background", "@color/purple_deep_A400")
     buildConfigField("String", "BUILD_DATE", "\"0\"")
+    buildConfigField("boolean", "USE_COMPOSE", "false")
 //    if (largeTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
 //    } else if (mediumTests) {
@@ -146,18 +147,20 @@ android {
 dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
-  kapt(D.Androidx.Compose.composeCompiler)
+//  kapt(D.Androidx.Compose.composeCompiler)
 
-  implementation(D.Androidx.Compose.composeRuntime)
-  implementation(D.Androidx.Ui.uiCore)
+//  implementation(D.Androidx.Compose.composeRuntime)
+
   implementation(D.Androidx.Ui.uiFoundation)
-  implementation(D.Androidx.Ui.uiFramework)
-  implementation(D.Androidx.Ui.uiLayout)
-  implementation(D.Androidx.Ui.uiLivedata)
-  implementation(D.Androidx.Ui.uiMaterial)
-  implementation(D.Androidx.Ui.uiSavedInstanceState)
-  implementation(D.Androidx.Ui.uiTest)
   implementation(D.Androidx.Ui.uiTooling)
+  implementation(D.Androidx.Ui.uiLayout)
+  implementation(D.Androidx.Ui.uiMaterial)
+
+//  implementation(D.Androidx.Ui.uiCore)
+//  implementation(D.Androidx.Ui.uiFramework)
+//  implementation(D.Androidx.Ui.uiLivedata)
+//  implementation(D.Androidx.Ui.uiSavedInstanceState)
+//  implementation(D.Androidx.Ui.uiTest)
 
   implementation(project(M.ANALYTICS))
   api(project(M.BINDINGS))
