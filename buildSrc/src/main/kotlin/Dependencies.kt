@@ -130,7 +130,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha08"
+          const val gradle = "com.android.tools.build:gradle:4.1.0-alpha09"
         }
       }
     }
