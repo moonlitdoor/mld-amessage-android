@@ -5,12 +5,12 @@ object D {
     }
 
     object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.2.0-rc01"
+      const val appcompat = "androidx.appcompat:appcompat:1.3.0-alpha01"
     }
 
     object Camera {
-      private const val version = "1.0.0-beta03"
-      private const val versionView = "1.0.0-alpha10"
+      private const val version = "1.0.0-beta05"
+      private const val versionView = "1.0.0-alpha12"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -18,7 +18,7 @@ object D {
     }
 
     object Compose {
-      private const val version = "0.1.0-dev11"
+      private const val version = "0.1.0-dev13"
 
       //      const val composeCompiler = "androidx.compose:compose-compiler:$version"
       const val composeCompiler = version
@@ -31,11 +31,11 @@ object D {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.3.0-rc01"
+      const val coreKtx = "androidx.core:core-ktx:1.5.0-alpha01"
     }
 
     object Fragment {
-      private const val version = "1.3.0-alpha04"
+      private const val version = "1.3.0-alpha06"
       const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
@@ -48,7 +48,7 @@ object D {
 
     object Lifecycle {
       private const val versionOld = "2.2.0"
-      private const val version = "2.3.0-alpha02"
+      private const val version = "2.3.0-alpha04"
       const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$versionOld"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
@@ -56,7 +56,7 @@ object D {
     }
 
     object Navigation {
-      private const val version = "2.3.0-alpha06"
+      private const val version = "2.3.0-rc01"
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationSafeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$version"
@@ -72,7 +72,7 @@ object D {
     }
 
     object Room {
-      private const val version = "2.2.5"
+      private const val version = "2.3.0-alpha01"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -80,14 +80,14 @@ object D {
     }
 
     object Test {
-      private const val version = "1.3.0-beta01"
+      private const val version = "1.3.0-rc01"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.3.0-beta01"
+        private const val version = "3.3.0-rc01"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -97,12 +97,12 @@ object D {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-beta01"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.2-rc01"
       }
     }
 
     object Ui {
-      private const val version = "0.1.0-dev11"
+      private const val version = "0.1.0-dev13"
       const val uiCore = "androidx.ui:ui-core:$version"
       const val uiFoundation = "androidx.ui:ui-foundation:$version"
       const val uiLayout = "androidx.ui:ui-layout:$version"
@@ -118,7 +118,7 @@ object D {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-alpha03"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.4.0-beta01"
     }
   }
 
@@ -137,14 +137,26 @@ object D {
       }
     }
 
+    object Github {
+      object BenManes {
+        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
+      }
+
+      object Triplet {
+        object Gradle {
+          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.8.0"
+        }
+      }
+    }
+
     object Google {
       object Android {
         object Gms {
-          const val playServicesVision = "com.google.android.gms:play-services-vision:20.0.0"
+          const val playServicesVision = "com.google.android.gms:play-services-vision:20.1.0"
         }
 
         object Material {
-          const val material = "com.google.android.material:material:1.2.0-alpha06"
+          const val material = "com.google.android.material:material:1.3.0-alpha01"
         }
       }
 
@@ -155,21 +167,21 @@ object D {
       }
 
       object Dagger {
-        private const val version = "2.27"
+        private const val version = "2.28"
         const val dagger = "com.google.dagger:dagger:$version"
         const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
       }
 
       object Firebase {
-        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:1.4.1"
-        const val firebaseConfig = "com.google.firebase:firebase-config:19.1.4"
-        const val firebaseCore = "com.google.firebase:firebase-core:17.4.1"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.0"
-        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.1.0"
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.4.3"
+        const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:2.0.0"
+        const val firebaseConfig = "com.google.firebase:firebase-config-ktx:19.1.4"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.0.1"
+        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.1.1"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.3.0"
-        const val firebaseIid = "com.google.firebase:firebase-iid:20.1.7"
-        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.6"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.1.7"
+        const val firebaseIid = "com.google.firebase:firebase-iid:20.2.0"
+        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.0.7"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.2.0"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.0.3"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.1"
         const val firebasePerf = "com.google.firebase:firebase-perf:19.0.7"
@@ -186,18 +198,6 @@ object D {
 
       object Zxing {
         const val core = "com.google.zxing:core:3.4.0"
-      }
-    }
-
-    object Github {
-      object BenManes {
-        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.28.0"
-      }
-
-      object Triplet {
-        object Gradle {
-          const val playPublisher = "com.github.triplet.gradle:play-publisher:2.8.0-SNAPSHOT"
-        }
       }
     }
 
@@ -219,14 +219,14 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.7.1"
+        private const val version = "4.7.2"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
       }
 
       object Retrofit2 {
-        private const val version = "2.8.2"
+        private const val version = "2.9.0"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
       }

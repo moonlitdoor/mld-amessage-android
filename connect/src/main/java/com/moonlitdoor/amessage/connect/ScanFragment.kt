@@ -59,7 +59,7 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
       it.addListener(Runnable {
         cameraProvider = it.get()
         val preview = Preview.Builder().build()
-        val camera = cameraProvider.bindToLifecycle(
+        cameraProvider.bindToLifecycle(
           CustomLifecycle,
           CameraSelector.Builder()
             .requireLensFacing(CameraSelector.LENS_FACING_BACK)
@@ -97,7 +97,7 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
             },
           preview
         )
-        preview.setSurfaceProvider(binding.preview.createSurfaceProvider(camera.cameraInfo))
+        preview.setSurfaceProvider(binding.preview.createSurfaceProvider())
       }, ContextCompat.getMainExecutor(requireContext()))
     }
   }

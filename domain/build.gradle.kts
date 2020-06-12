@@ -20,7 +20,7 @@ dependencies {
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
-  implementation(D.Com.Google.Firebase.firebaseCore)
+  implementation(D.Com.Google.Firebase.firebaseAnalytics)
   implementation(D.Com.Google.Firebase.firebaseIid)
   implementation(D.Com.Google.Firebase.firebaseMessaging)
 

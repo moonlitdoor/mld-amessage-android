@@ -193,7 +193,7 @@ dependencies {
   implementation(D.Com.Google.Android.Gms.playServicesVision)
   implementation(D.Com.Google.Code.Gson.gson)
   implementation(D.Com.Google.Firebase.firebaseConfig)
-  implementation(D.Com.Google.Firebase.firebaseCore)
+  implementation(D.Com.Google.Firebase.firebaseAnalytics)
   implementation(D.Com.Google.Firebase.firebaseIid)
   implementation(D.Com.Google.Firebase.firebaseInAppMessaging)
   implementation(D.Com.Google.Firebase.firebaseMessaging)
