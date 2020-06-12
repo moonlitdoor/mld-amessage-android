@@ -22,7 +22,7 @@ class AndroidPlugin : Plugin<Project> {
           minSdkVersion(24)
           targetSdkVersion(28)
           testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-          testInstrumentationRunnerArguments = mutableMapOf("clearPackageData" to "true")
+          testInstrumentationRunnerArguments.putAll(mapOf("clearPackageData" to "true"))
         }
 
         buildTypes {
