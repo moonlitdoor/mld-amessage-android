@@ -2,6 +2,7 @@ plugins {
   id("com.android.library")
   id("com.moonlitdoor.android")
   kotlin("kapt")
+  id("kotlin-android")
 }
 
 android {
@@ -16,6 +17,7 @@ android {
 
 dependencies {
 
+  implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
   kapt(D.Com.Google.Dagger.daggerCompiler)
   kapt(D.Androidx.Room.roomCompiler)
 

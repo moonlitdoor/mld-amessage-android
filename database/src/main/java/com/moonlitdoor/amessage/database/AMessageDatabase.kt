@@ -8,19 +8,32 @@ import com.moonlitdoor.amessage.database.converter.DateConverter
 import com.moonlitdoor.amessage.database.converter.UuidConverter
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
+import com.moonlitdoor.amessage.database.dao.KeyValueDao
+import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
+import com.moonlitdoor.amessage.database.entity.KeyValueEntity
+import com.moonlitdoor.amessage.database.view.ProfileView
 
 @TypeConverters(value = [DateConverter::class, UuidConverter::class, ConnectionStateConverter::class])
 @Database(
   version = Migrations.VERSION,
-  entities = [ConnectionEntity::class,
+  entities = [
+    KeyValueEntity::class,
+    ConnectionEntity::class,
     ConversationEntity::class,
     ConversationConnectionEntity::class
+  ],
+  views = [
+    ProfileView::class
   ]
 )
 abstract class AMessageDatabase : RoomDatabase() {
+
+  abstract fun keyValueDao(): KeyValueDao
+
+  abstract fun profileDao(): ProfileDao
 
   abstract fun connectionDao(): ConnectionDao
 

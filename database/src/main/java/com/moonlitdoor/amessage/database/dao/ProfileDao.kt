@@ -1,72 +1,24 @@
 package com.moonlitdoor.amessage.database.dao
 
-import android.content.SharedPreferences
-import androidx.annotation.WorkerThread
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.HANDLE
-import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.ID
-import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.PASSWORD
-import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.SALT
-import com.moonlitdoor.amessage.constants.Constants.SharedPreferences.TOKEN
-import com.moonlitdoor.amessage.database.entity.ProfileEntity
-import com.moonlitdoor.shared.preference.live.data.liveData
-import java.util.*
+import androidx.room.Dao
+import androidx.room.Query
+import com.moonlitdoor.amessage.database.projection.HandleProjection
+import com.moonlitdoor.amessage.database.view.ProfileView
+import kotlinx.coroutines.flow.Flow
 
-open class ProfileDao constructor(private val preferences: SharedPreferences) {
+@Dao
+interface ProfileDao {
 
-  open val handle: LiveData<String?> by lazy { preferences.liveData(HANDLE) }
-  protected val token: LiveData<String?> by lazy { preferences.liveData(TOKEN) }
-  protected val id: LiveData<String?> by lazy { preferences.liveData(ID).also { it.value ?: preferences.edit().putString(ID, UUID.randomUUID().toString()).apply() } }
-  protected val password: LiveData<String?> by lazy { preferences.liveData(PASSWORD).also { it.value ?: preferences.edit().putString(PASSWORD, UUID.randomUUID().toString()).apply() } }
-  protected val salt: LiveData<String?> by lazy { preferences.liveData(SALT).also { it.value ?: preferences.edit().putString(SALT, UUID.randomUUID().toString()).apply() } }
+  @Query("SELECT * FROM profile")
+  fun getProfile(): Flow<ProfileView>
 
-  val profile: LiveData<ProfileEntity?> by lazy {
-    object : MediatorLiveData<ProfileEntity?>() {
-      var h: String? = null
-      var t: String? = null
-      var i: UUID? = null
-      var p: UUID? = null
-      var s: UUID? = null
-      fun build() =
-        h?.let { _h ->
-          t?.let { _t ->
-            i?.let { _i ->
-              p?.let { _p ->
-                s?.let { _s ->
-                  postValue(ProfileEntity(_h, _t, _i, _p, _s))
-                }
-              }
-            }
-          }
-        }
-    }.apply {
-      addSource(handle) { h = it; build() }
-      addSource(token) { t = it; build() }
-      addSource(id) { i = UUID.fromString(it); build() }
-      addSource(password) { p = UUID.fromString(it); build() }
-      addSource(salt) { s = UUID.fromString(it); build() }
-    }
-  }
+  @Query("SELECT value FROM key_value WHERE `key` = 'handle'")
+  fun getHandle(): Flow<HandleProjection>
 
-  fun getProfileSync(): ProfileEntity? =
-    preferences.getString(HANDLE, null)?.let { h ->
-      preferences.getString(TOKEN, null)?.let { t ->
-        preferences.getString(ID, null)?.let { i ->
-          preferences.getString(PASSWORD, null)?.let { p ->
-            preferences.getString(SALT, null)?.let { s ->
-              ProfileEntity(h, t, UUID.fromString(i), UUID.fromString(p), UUID.fromString(s))
-            }
-          }
-        }
-      }
-    }
+  @Query("INSERT INTO key_value (`key`, value) VALUES ('handle', :value)")
+  suspend fun insertHandle(value: String)
 
-
-  @WorkerThread
-  fun setHandle(handle: String) = preferences.edit().putString(HANDLE, handle).apply()
-
-  @WorkerThread
-  fun setToken(token: String) = preferences.edit().putString(TOKEN, token).apply()
+  @Query("INSERT INTO key_value (`key`, value) VALUES ('token', :value)")
+  suspend fun insertToken(value: String)
 
 }

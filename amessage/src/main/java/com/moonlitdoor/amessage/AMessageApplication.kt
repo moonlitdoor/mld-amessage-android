@@ -22,14 +22,15 @@ class AMessageApplication : Application(), LifecycleObserver, Configuration.Prov
   override fun onCreate() {
     Root.init(this)
     super.onCreate()
+    AMessageDI.init(this).inject(this)
     UserId.init(this)
     FirebaseApp.initializeApp(this)
     TimberInit(BuildConfig.DEBUG)
-    Analytics.init(this, UserId.value)
-    AMessageDI.init(this).inject(this)
+    Analytics.init(this, UserId.value.toString())
     Experiments.init()
     WorkManager.initialize(this, this.workManagerConfiguration)
     PreferenceManager.setDefaultValues(this, R.xml.preferences, false)
+    DatabasePopulationService.start(this)
   }
 
   override fun getCameraXConfig(): CameraXConfig = Camera2Config.defaultConfig()

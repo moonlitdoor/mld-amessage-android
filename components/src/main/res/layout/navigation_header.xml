@@ -4,10 +4,11 @@
   xmlns:tools="http://schemas.android.com/tools">
 
   <data>
+    <import type="com.moonlitdoor.amessage.database.projection.HandleProjection" />
 
     <variable
       name="handle"
-      type="androidx.lifecycle.LiveData&lt;String>" />
+      type="androidx.lifecycle.LiveData&lt;HandleProjection>" />
 
   </data>
 
@@ -26,7 +27,7 @@
       android:layout_marginStart="8dp"
       android:layout_marginTop="32dp"
       android:textSize="36sp"
-      android:text="@{handle}"
+      android:text="@{handle.value}"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintHorizontal_chainStyle="spread_inside"
       app:layout_constraintLeft_toLeftOf="parent"

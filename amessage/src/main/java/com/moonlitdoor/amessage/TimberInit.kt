@@ -15,7 +15,7 @@ object TimberInit {
   private object DecoratedCrashReportingTree : Timber.Tree() {
 
     private val crashlytics = FirebaseCrashlytics.getInstance().also {
-      it.setUserId(UserId.value)
+      it.setUserId(UserId.value.toString())
       it.sendUnsentReports()
     }
 

@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.domain.model
 
-import com.moonlitdoor.amessage.database.entity.ProfileEntity
+import  com.moonlitdoor.amessage.database.view.ProfileView
 import java.util.*
 
 data class Profile(
@@ -16,14 +16,13 @@ data class Profile(
   fun encode() = "$handle|$token|$id|$password|$salt"
 
   companion object {
-    fun from(entity: ProfileEntity?) = entity?.let {
-      Profile(
-        it.handle,
-        it.token,
-        it.id,
-        it.password,
-        it.salt
-      )
-    }
+    fun from(view: ProfileView) = Profile(
+      handle = view.handle,
+      token = view.token,
+      id = view.id,
+      password = view.password,
+      salt = view.salt
+    )
+
   }
 }

@@ -1,7 +1,7 @@
 plugins {
   id("com.android.library")
   id("com.moonlitdoor.android")
-  kotlin("kapt")
+  id("kotlin-kapt")
 }
 
 android {

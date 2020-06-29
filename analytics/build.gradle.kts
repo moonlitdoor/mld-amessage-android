@@ -3,12 +3,6 @@ plugins {
   id("com.moonlitdoor.android")
 }
 
-android {
-  buildFeatures {
-    dataBinding = true
-  }
-}
-
 dependencies {
 
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)

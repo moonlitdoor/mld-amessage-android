@@ -23,6 +23,7 @@ dependencies {
 
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)

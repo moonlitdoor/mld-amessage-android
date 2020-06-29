@@ -2,8 +2,43 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "d907aaeb9306aae8409e7e1621c63ce3",
+    "identityHash": "02554b9b0bccc90d6c062faca66e6974",
     "entities": [
+      {
+        "tableName": "key_value",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`key` TEXT NOT NULL, `value` TEXT NOT NULL, PRIMARY KEY(`key`))",
+        "fields": [
+          {
+            "fieldPath": "key",
+            "columnName": "key",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "value",
+            "columnName": "value",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "key"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_key_value_key",
+            "unique": true,
+            "columnNames": [
+              "key"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_key_value_key` ON `${TABLE_NAME}` (`key`)"
+          }
+        ],
+        "foreignKeys": []
+      },
       {
         "tableName": "connection",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT NOT NULL, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
@@ -207,7 +242,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd907aaeb9306aae8409e7e1621c63ce3')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '02554b9b0bccc90d6c062faca66e6974')"
     ]
   }
 }

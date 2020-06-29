@@ -9,6 +9,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
+import com.moonlitdoor.amessage.database.dao.KeyValueDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.dao.ThemeDao
 import com.moonlitdoor.amessage.database.dao.WindowsDao
@@ -34,13 +35,16 @@ interface DatabaseDI {
     fun providesAppDatabase(context: Context): AMessageDatabase = Room.databaseBuilder(context, AMessageDatabase::class.java, AMessageDatabase.DATABASE_NAME).addMigrations(*Migrations.ALL).build()
 
     @Provides
-    fun providesConnectionDao(AMessageDatabase: AMessageDatabase): ConnectionDao = AMessageDatabase.connectionDao()
+    fun providesConnectionDao(aMessageDatabase: AMessageDatabase): ConnectionDao = aMessageDatabase.connectionDao()
 
     @Provides
-    fun providesConversationDao(AMessageDatabase: AMessageDatabase): ConversationDao = AMessageDatabase.conversationDao()
+    fun providesConversationDao(aMessageDatabase: AMessageDatabase): ConversationDao = aMessageDatabase.conversationDao()
 
     @Provides
-    fun providesProfileDao(sharedPreferences: SharedPreferences): ProfileDao = ProfileDao(sharedPreferences)
+    fun providesKeyValueDao(aMessageDatabase: AMessageDatabase): KeyValueDao = aMessageDatabase.keyValueDao()
+
+    @Provides
+    fun providesProfileDao(aMessageDatabase: AMessageDatabase): ProfileDao = aMessageDatabase.profileDao()
 
     @Provides
     fun providesThemeDao(sharedPreferences: SharedPreferences): ThemeDao = ThemeDao(sharedPreferences)

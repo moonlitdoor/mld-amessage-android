@@ -10,7 +10,10 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.domain.repository.WindowsRepository
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class ConnectionViewModel @Inject constructor(connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository, windowsRepository: WindowsRepository) :
@@ -18,13 +21,14 @@ class ConnectionViewModel @Inject constructor(connectionRepository: ConnectionRe
 
   val connectionsConnected: LiveData<List<Connection>> = connectionRepository.getConnected().asLiveData()
 
-  //   viewModelScope.coroutineContext + Dispatchers.IO
   val con: LiveData<List<Connection>> = liveData(viewModelScope.coroutineContext + Dispatchers.IO) { connectionRepository.getConnectedConnections2() }
 
-  val handle = profileRepository.handle
+  val handle = profileRepository.getHandle().asLiveData()
 
   @MainThread
-  fun setHandle(handle: String) = profileRepository.setHandle(handle)
+  fun setHandle(handle: String) = viewModelScope.launch(CoroutineExceptionHandler { _, exception ->
+    println("CoroutineExceptionHandler got $exception")
+  }) { withContext(Dispatchers.IO) { profileRepository.setHandle(handle) } }
 
   val windowsCount = windowsRepository.windowsCount
 

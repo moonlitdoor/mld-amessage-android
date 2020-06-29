@@ -17,6 +17,7 @@ import com.moonlitdoor.amessage.network.NetworkRequestStatus
 import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -33,32 +34,31 @@ class ConnectionInviteWorker @Inject constructor(
 
   override suspend fun doWork(): Result = coroutineScope {
     withContext(Dispatchers.IO) {
+      val profile = profileDao.getProfile().first()
       inputData.getString(CONNECTION_UUID)?.let { connectionUuid ->
         val connectionEntity = connectionDao.get(UUID.fromString(connectionUuid))
-        profileDao.getProfileSync()?.let { profile ->
-          inputData.getString(CONNECTION_ID)?.let { connectionId ->
-            inputData.getString(CONNECTION_TOKEN)?.let { connectionToken ->
-              inputData.getString(CONNECTION_PASSWORD)?.let { connectionPassword ->
-                inputData.getString(CONNECTION_SALT)?.let { connectionSalt ->
-                  when (client.send(
-                    payload = ConnectionInvitePayload(
-                      handle = profile.handle,
-                      token = profile.token,
-                      connectionId = connectionEntity.connectionId,
-                      password = connectionEntity.password,
-                      salt = connectionEntity.salt
-                    ),
-                    connectionId = UUID.fromString(connectionId),
-                    token = connectionToken,
-                    password = UUID.fromString(connectionPassword),
-                    salt = UUID.fromString(connectionSalt)
-                  )) {
-                    NetworkRequestStatus.SENT -> {
-                      connectionDao.update(connectionEntity.copy(state = ConnectionEntity.State.Invited))
-                      return@withContext Result.success()
-                    }
-                    NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
+        inputData.getString(CONNECTION_ID)?.let { connectionId ->
+          inputData.getString(CONNECTION_TOKEN)?.let { connectionToken ->
+            inputData.getString(CONNECTION_PASSWORD)?.let { connectionPassword ->
+              inputData.getString(CONNECTION_SALT)?.let { connectionSalt ->
+                when (client.send(
+                  payload = ConnectionInvitePayload(
+                    handle = profile.handle,
+                    token = profile.token,
+                    connectionId = connectionEntity.connectionId,
+                    password = connectionEntity.password,
+                    salt = connectionEntity.salt
+                  ),
+                  connectionId = UUID.fromString(connectionId),
+                  token = connectionToken,
+                  password = UUID.fromString(connectionPassword),
+                  salt = UUID.fromString(connectionSalt)
+                )) {
+                  NetworkRequestStatus.SENT -> {
+                    connectionDao.update(connectionEntity.copy(state = ConnectionEntity.State.Invited))
+                    return@withContext Result.success()
                   }
+                  NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
                 }
               }
             }

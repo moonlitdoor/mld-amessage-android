@@ -19,14 +19,15 @@ import com.moonlitdoor.amessage.domain.repository.SettingsRepository
 import com.moonlitdoor.amessage.extensions.and
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.extensions.map
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import javax.inject.Inject
 
 class ConnectViewModel @Inject constructor(private val connectionRepository: ConnectionRepository, private val settingsRepository: SettingsRepository, profileRepository: ProfileRepository) : ViewModel() {
 
-  private val profile = profileRepository.profile.and {
-    Timber.i(it?.encode())
+  private val profile = profileRepository.getProfile().asLiveData().and {
+    Timber.i(it.encode())
   }
   val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
   val pendingAndInvitedConnections = connectionRepository.getScannedInvitedAndPendingConnections()
@@ -47,7 +48,9 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   @Suppress("UsePropertyAccessSyntax")
   fun setSelected(connection: Connection) = selectedConnection.setValue(connection)
 
-  fun connect(profile: Profile) = viewModelScope.launch { connectionRepository.create(profile) }.ignore()
+  fun connect(profile: Profile) = viewModelScope.launch(CoroutineExceptionHandler { _, exception ->
+    println("CoroutineExceptionHandler got $exception")
+  }) { connectionRepository.create(profile) }.ignore()
 
   private fun encodeAsBitmap(string: String): Bitmap {
     val result: BitMatrix = MultiFormatWriter().encode(string, BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null)
@@ -63,9 +66,13 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
     return Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888).also { it.setPixels(pixels, 0, w, 0, 0, w, h) }
   }
 
-  fun confirm(connection: Connection) = viewModelScope.launch { connectionRepository.confirm(connection) }
+  fun confirm(connection: Connection) = viewModelScope.launch(CoroutineExceptionHandler { _, exception ->
+    println("CoroutineExceptionHandler got $exception")
+  }) { connectionRepository.confirm(connection) }
 
-  fun reject(connection: Connection) = viewModelScope.launch { connectionRepository.reject(connection) }
+  fun reject(connection: Connection) = viewModelScope.launch(CoroutineExceptionHandler { _, exception ->
+    println("CoroutineExceptionHandler got $exception")
+  }) { connectionRepository.reject(connection) }
 
   //TODO check of profile is already connected
   fun profileFound(profile: Profile, imageProxy: ImageProxy): Unit = scanViewState.setValue(ScanViewState.Connect(profile, imageProxy))

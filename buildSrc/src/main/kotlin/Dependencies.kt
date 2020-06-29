@@ -52,6 +52,7 @@ object D {
       const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$versionOld"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
+      const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
       const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
     }
 
@@ -132,7 +133,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.2.0-alpha01"
+          const val gradle = "com.android.tools.build:gradle:4.2.0-alpha02"
         }
       }
     }

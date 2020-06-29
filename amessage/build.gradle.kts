@@ -4,7 +4,7 @@ plugins {
   id("com.moonlitdoor.git-version")
   id("com.android.application")
   id("com.moonlitdoor.android")
-  kotlin("kapt")
+  id("kotlin-kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
@@ -33,6 +33,7 @@ android {
   dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lintOptions {
+    disable("NullSafeMutableLiveData")
     isIgnoreTestSources = true
     isCheckDependencies = true
   }
@@ -170,6 +171,7 @@ dependencies {
   implementation(project(M.ROOT))
   api(project(M.SETTINGS))
 
+  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
   implementation(D.Com.Google.Dagger.dagger)
   implementation(D.Androidx.AppCompat.appcompat)
   implementation(D.Androidx.Camera.cameraCamera2)

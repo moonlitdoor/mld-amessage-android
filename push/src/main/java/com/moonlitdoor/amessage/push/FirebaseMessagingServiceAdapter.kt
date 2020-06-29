@@ -8,13 +8,14 @@ import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.extensions.ignore
 import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 import com.moonlitdoor.amessage.network.json.Payload
+import kotlinx.coroutines.flow.first
 import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
 class FirebaseMessagingServiceAdapter @Inject constructor(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) {
 
-  fun onNewToken(token: String) {
+  suspend fun onNewToken(token: String) {
     Timber.i("New Firebase Token")
     profileRepository.setToken(token)
   }
@@ -34,11 +35,13 @@ class FirebaseMessagingServiceAdapter @Inject constructor(private val connection
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
       ConnectionMapper.fromPending(
         ConnectionInvitePayload.inflate(
-          Payload.decrypt(
-            payload,
-            profileRepository.getProfile()?.password.toString(),
-            profileRepository.getProfile()?.salt.toString()
-          )
+          profileRepository.getProfile().first().let {
+            Payload.decrypt(
+              payload,
+              it.password.toString(),
+              it.salt.toString()
+            )
+          }
         )
       )
     ).ignore()

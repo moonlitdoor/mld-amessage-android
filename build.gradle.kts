@@ -1,5 +1,6 @@
 buildscript {
 
+  val kotlin_version by extra("1.3.72")
   repositories {
     google()
     jcenter()
@@ -15,6 +16,7 @@ buildscript {
     classpath(D.Org.Jetbrains.Kotlin.kotlinGradlePlugin)
     classpath(D.Com.Google.Firebase.firebaseCrashlyticsGradle)
     classpath(D.Com.Google.Firebase.perfPlugin)
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
   }
 }
 

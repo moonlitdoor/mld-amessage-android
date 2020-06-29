@@ -29,6 +29,8 @@ interface AMessageDI {
 
   fun inject(application: AMessageApplication)
 
+  fun inject(service: DatabasePopulationService)
+
   fun frequentlyAskedQuestionRepository(): FrequentlyAskedQuestionRepository
 
   fun connectDIFactory(): ConnectDI.Factory

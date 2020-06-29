@@ -15,6 +15,7 @@ import com.moonlitdoor.amessage.components.WhatsNewBottomSheetDialog
 import com.moonlitdoor.amessage.components.WindowsCountObserver
 import com.moonlitdoor.amessage.connections.databinding.FragmentConnectionsBinding
 import com.moonlitdoor.amessage.connections.databinding.ListItemConnectionConnectedBinding
+import com.moonlitdoor.amessage.database.projection.HandleProjection
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.experiments.helper.NavigationMenuExperimentHelper
 import com.moonlitdoor.amessage.extensions.ignore
@@ -22,7 +23,7 @@ import com.moonlitdoor.amessage.handle.HandleViewModel
 import javax.inject.Inject
 import com.moonlitdoor.amessage.ids.R as N
 
-class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> {
+class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<HandleProjection?> {
 
   @Inject
   lateinit var viewModel: ConnectionViewModel
@@ -56,8 +57,8 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<String?> 
       it.viewModel = viewModel
     }.root
 
-  override fun onChanged(handle: String?): Unit =
-    handle?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
+  override fun onChanged(handle: HandleProjection?): Unit =
+    handle?.value?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
 
   private class Adapter(private val viewModel: ConnectionViewModel, private val layoutInflater: LayoutInflater) :
     ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
