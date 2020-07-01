@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class ConnectionViewModel @Inject constructor(connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository, windowsRepository: WindowsRepository) :
+class ConnectionsViewModel @Inject constructor(connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository, windowsRepository: WindowsRepository) :
   ViewModel() {
 
   val connectionsConnected: LiveData<List<Connection>> = connectionRepository.getConnected().asLiveData()

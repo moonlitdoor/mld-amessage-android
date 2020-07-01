@@ -29,17 +29,10 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   private val profile = profileRepository.getProfile().asLiveData().and {
     Timber.i(it.encode())
   }
-  val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it?.encode() ?: "null") }
-  val pendingAndInvitedConnections = connectionRepository.getScannedInvitedAndPendingConnections()
+  val qrCode: LiveData<Bitmap> = profile.map { encodeAsBitmap(it.encode()) }
 
   val selectedConnection = MutableLiveData<Connection>()
   val scanViewState = SingleLiveEvent<ScanViewState>()
-
-  fun getInvitedConnections(): LiveData<List<Connection>> = connectionRepository.getInvitedConnections().asLiveData().also {
-    it.observeForever {
-      Timber.i(it.toString())
-    }
-  }
 
   val pending: LiveData<List<Connection>> = connectionRepository.getPending().asLiveData()
 
@@ -83,21 +76,21 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
     scanViewState.setValue(ScanViewState.Experiments(imageProxy))
   }
 
-  fun enableExperiments() = settingsRepository.setExperimentsUiEnabled()
-
   fun developerSettingsCodeFound(imageProxy: ImageProxy) = if (settingsRepository.getDeveloperSettingsEnabled()) {
     scanViewState.setValue(ScanViewState.DeveloperSettingsEnabled(imageProxy))
   } else {
     scanViewState.setValue(ScanViewState.DeveloperSettings(imageProxy))
   }
 
-  fun enableDeveloperSettings() = settingsRepository.setDeveloperSettingsEnabled()
-
   fun employeeSettingsCodeFound(imageProxy: ImageProxy) = if (settingsRepository.getEmployeeSettingsEnabled()) {
     scanViewState.setValue(ScanViewState.EmployeeSettingsEnabled(imageProxy))
   } else {
     scanViewState.setValue(ScanViewState.EmployeeSettings(imageProxy))
   }
+
+  fun enableExperiments() = settingsRepository.setExperimentsUiEnabled()
+
+  fun enableDeveloperSettings() = settingsRepository.setDeveloperSettingsEnabled()
 
   fun enableEmployeeSettings() = settingsRepository.setEmployeeSettingsEnabled()
 

@@ -8,6 +8,7 @@ import androidx.preference.ListPreference
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.PreferenceScreen
+import androidx.preference.SwitchPreference
 import com.google.android.material.snackbar.Snackbar
 import com.moonlitdoor.amessage.constants.Constants
 import javax.inject.Inject
@@ -26,7 +27,7 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
   }
 
   override fun onCreatePreferences(bundle: Bundle?, root: String?) {
-    setPreferencesFromResource(R.xml.preferences, if (root == "null") null else root)
+    setPreferencesFromResource(R.xml.preferences, root)
     sharedPreferences.registerOnSharedPreferenceChangeListener(this)
     findPreference<Preference>(Constants.Keys.WHATS_NEW_PREFERENCE)?.setOnPreferenceClickListener {
       sharedPreferences.edit { putInt(Constants.SharedPreferences.VERSION_CODE, 0) }
@@ -36,20 +37,27 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
     findPreference<ListPreference>(Constants.Keys.THEME)?.summary = resources.getStringArray(R.array.preference_theme_list_titles)[Integer.parseInt(sharedPreferences.getString(Constants.Keys.THEME, null) ?: "0")]
     findPreference<ListPreference>(Constants.Keys.STARTING_LOCATION)?.summary =
       resources.getStringArray(R.array.preference_starting_location_list_titles)[Integer.parseInt(sharedPreferences.getString(Constants.Keys.STARTING_LOCATION, null) ?: "")]
+
     findPreference<Preference>(Constants.Keys.EMPLOYEE_SETTINGS)?.let {
       it.isVisible = viewModel.employeeSettingsEnabled || root == Constants.Keys.DEVELOPER_SETTINGS
     }
-//    findPreference<SwitchPreference>(Constants.Keys.EMPLOYEE_SETTINGS_VISIBLE)?.setOnPreferenceChangeListener { _, newValue ->
-//      sharedPreferences.edit{ putBoolean(Constants.Keys.EMPLOYEE_SETTINGS, newValue as Boolean)}
-//      true
-//    }
-    findPreference<Preference>(Constants.Keys.DEVELOPER_SETTINGS)?.let {
+
+    findPreference<PreferenceScreen>(Constants.Keys.DEVELOPER_SETTINGS)?.let {
       it.isVisible = viewModel.developerSettingsEnabled || root == Constants.Keys.DEVELOPER_SETTINGS || BuildConfig.DEBUG
+      findPreference<SwitchPreference>(Constants.Keys.EMPLOYEE_SETTINGS_VISIBLE)?.setOnPreferenceChangeListener { _, newValue ->
+        sharedPreferences.edit { putBoolean(Constants.Keys.EMPLOYEE_SETTINGS, newValue as Boolean) }
+        true
+      }
+      findPreference<SwitchPreference>(Constants.Keys.DEVELOPER_SETTINGS_VISIBLE)?.setOnPreferenceChangeListener { _, newValue ->
+        sharedPreferences.edit { putBoolean(Constants.Keys.DEVELOPER_SETTINGS, newValue as Boolean) }
+        true
+      }
+      findPreference<SwitchPreference>(Constants.Keys.EXPERIMENTS_SETTINGS_VISIBLE)?.setOnPreferenceChangeListener { _, newValue ->
+        sharedPreferences.edit { putBoolean(Constants.Keys.EXPERIMENTS_SETTINGS, newValue as Boolean) }
+        true
+      }
     }
-//    findPreference<SwitchPreference>(Constants.Keys.DEVELOPER_SETTINGS_VISIBLE)?.setOnPreferenceChangeListener { _, newValue ->
-//      sharedPreferences.edit{ putBoolean(Constants.Keys.DEVELOPER_SETTINGS, newValue as Boolean)}
-//      true
-//    }
+
     findPreference<Preference>(Constants.Keys.EXPERIMENTS_SETTINGS)?.let {
       it.isVisible = viewModel.experimentUiEnabled || root == Constants.Keys.DEVELOPER_SETTINGS
       it.setOnPreferenceClickListener {
@@ -57,11 +65,6 @@ class PreferencesFragment : PreferenceFragmentCompat(), PreferenceFragmentCompat
         true
       }
     }
-//    findPreference<SwitchPreference>(Constants.Keys.EXPERIMENTS_SETTINGS_VISIBLE)?.setOnPreferenceChangeListener { _, newValue ->
-//      sharedPreferences.edit{ putBoolean(Constants.Keys.EXPERIMENTS_SETTINGS, newValue as Boolean)}
-//      true
-//    }
-
   }
 
   override fun onDetach() {

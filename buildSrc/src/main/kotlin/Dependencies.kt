@@ -65,7 +65,7 @@ object D {
     }
 
     object Preference {
-      const val preference = "androidx.preference:preference:1.1.1"
+      const val preference = "androidx.preference:preference-ktx:1.1.1"
     }
 
     object Recyclerview {
@@ -133,7 +133,7 @@ object D {
     object Android {
       object Tools {
         object Build {
-          const val gradle = "com.android.tools.build:gradle:4.2.0-alpha02"
+          const val gradle = "com.android.tools.build:gradle:4.2.0-alpha03"
         }
       }
     }

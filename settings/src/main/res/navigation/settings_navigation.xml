@@ -20,12 +20,14 @@
     tools:layout="@layout/fragment_settings">
     <argument
       android:name="title"
-      android:defaultValue="null"
-      app:argType="string" />
+      android:defaultValue="@null"
+      app:argType="string"
+      app:nullable="true" />
     <argument
       android:name="root"
-      android:defaultValue="null"
-      app:argType="string" />
+      android:defaultValue="@null"
+      app:argType="string"
+      app:nullable="true" />
   </fragment>
 
   <include app:graph="@navigation/experiments_ui_navigation" />

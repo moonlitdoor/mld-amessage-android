@@ -6,7 +6,7 @@ import java.util.*
 
 object UserId {
 
-  private const val RANDOM_USER_ID = "com.moonlitdoor.amessage.RANDOM_USER_ID"
+  private const val RANDOM_USER_ID = "com.moonlitdoor.amessage.random.user.id"
 
   lateinit var value: UUID
 

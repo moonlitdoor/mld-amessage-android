@@ -30,17 +30,11 @@ dependencies {
   implementation(project(M.RESOURCES))
 
   implementation(D.Com.Google.Dagger.dagger)
-  implementation(D.Androidx.Core.coreKtx)
+//  implementation(D.Androidx.Core.coreKtx)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Com.Google.Android.Gms.playServicesVision)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
-  implementation(D.Com.Google.Zxing.core)
-  implementation(D.Com.Google.Firebase.firebaseAnalytics)
-  implementation(D.Com.Google.Firebase.firebaseIid)
-  implementation(D.Androidx.ConstraintLayout.constraintLayout)
   implementation(D.Androidx.Preference.preference)
-  implementation(D.Androidx.Legacy.legacyPreferenceV14)
   implementation(D.Com.JakeWharton.Timber.timber)
 
   testImplementation(D.Androidx.Test.Ext.junitKtx)

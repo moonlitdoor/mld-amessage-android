@@ -26,7 +26,7 @@ import com.moonlitdoor.amessage.ids.R as N
 class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<HandleProjection?> {
 
   @Inject
-  lateinit var viewModel: ConnectionViewModel
+  lateinit var viewModel: ConnectionsViewModel
 
   @Inject
   lateinit var handleViewModel: HandleViewModel
@@ -60,7 +60,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<HandlePro
   override fun onChanged(handle: HandleProjection?): Unit =
     handle?.value?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
 
-  private class Adapter(private val viewModel: ConnectionViewModel, private val layoutInflater: LayoutInflater) :
+  private class Adapter(private val viewModel: ConnectionsViewModel, private val layoutInflater: LayoutInflater) :
     ListAdapter<Connection, ConnectionViewHolder>(object : DiffUtil.ItemCallback<Connection>() {
       override fun areItemsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem.id == newItem.id
       override fun areContentsTheSame(oldItem: Connection, newItem: Connection): Boolean = oldItem == newItem
@@ -70,7 +70,7 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<HandlePro
   }
 
   private class ConnectionViewHolder(private val binding: ListItemConnectionConnectedBinding) : androidx.recyclerview.widget.RecyclerView.ViewHolder(binding.root) {
-    fun bind(connection: Connection, viewModel: ConnectionViewModel) = binding.also {
+    fun bind(connection: Connection, viewModel: ConnectionsViewModel) = binding.also {
       it.connection = connection
       it.viewModel = viewModel
     }

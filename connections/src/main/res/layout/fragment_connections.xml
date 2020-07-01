@@ -7,7 +7,7 @@
 
     <variable
       name="viewModel"
-      type="com.moonlitdoor.amessage.connections.ConnectionViewModel" />
+      type="com.moonlitdoor.amessage.connections.ConnectionsViewModel" />
 
   </data>
 
