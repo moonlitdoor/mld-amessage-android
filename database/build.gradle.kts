@@ -9,7 +9,7 @@ android {
   defaultConfig {
     javaCompileOptions {
       annotationProcessorOptions {
-        arguments.putAll(mapOf("room.schemaLocation" to "$projectDir/schemas", "room.incremental" to "true"))
+        arguments.putAll(mapOf("room.schemaLocation" to "$projectDir/schemas"))
       }
     }
   }
@@ -17,7 +17,6 @@ android {
 
 dependencies {
 
-  implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
   kapt(D.Com.Google.Dagger.daggerCompiler)
   kapt(D.Androidx.Room.roomCompiler)
 

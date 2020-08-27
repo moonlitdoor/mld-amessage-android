@@ -72,7 +72,10 @@ class AndroidPlugin : Plugin<Project> {
       reportsDir = project.file("${project.buildDir}/reports")
     }
     project.tasks.withType(Test::class.java) {
-      (extensions["jacoco"] as JacocoTaskExtension).isIncludeNoLocationClasses = true
+      (extensions["jacoco"] as JacocoTaskExtension).apply {
+        excludes = listOf("jdk.internal.*")
+        isIncludeNoLocationClasses = true
+      }
     }
 
   }

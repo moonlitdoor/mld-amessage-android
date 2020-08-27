@@ -7,7 +7,7 @@
   <string name="preference_starting_location_title">Starting Location</string>
 
   <string name="first_preference_screen" translatable="false">com.moonlitdoor.amessage.first.preference.screen</string>
-  <string name="developer_settings_preference_screen_visible" translatable="false">com.moonlitdoor.amessage.developer.settings.preference.screen.visible</string>
+<!--  <string name="developer_settings_preference_screen_visible" translatable="false">com.moonlitdoor.amessage.developer.settings.preference.screen.visible</string>-->
   <string name="employee_settings_title">Employee Settings</string>
   <string name="employee_settings_visibility">Employee Settings Visibility</string>
   <string name="developer_settings_title">Developer Settings</string>
