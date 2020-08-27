@@ -84,7 +84,7 @@ android {
     }
 
     create(AndroidPlugin.BETA) {
-      matchingFallbacks = mutableListOf(AndroidPlugin.RELEASE)
+      matchingFallbacks += AndroidPlugin.RELEASE
       isDebuggable = false
       signingConfig = signingConfigs.getByName(AndroidPlugin.RELEASE)
       isShrinkResources = false
