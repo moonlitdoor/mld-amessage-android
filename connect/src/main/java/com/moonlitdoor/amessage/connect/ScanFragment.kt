@@ -97,7 +97,7 @@ class ScanFragment : Fragment(), Observer<ScanViewState> {
             },
           preview
         )
-        preview.setSurfaceProvider(binding.preview.createSurfaceProvider())
+        preview.setSurfaceProvider(binding.preview.surfaceProvider)
       }, ContextCompat.getMainExecutor(requireContext()))
     }
   }

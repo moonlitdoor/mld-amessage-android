@@ -5,12 +5,19 @@ plugins {
 }
 
 android {
+
   dataBinding {
     isEnabled = true
   }
 //  buildFeatures {
 //    dataBinding = true
 //  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
+    useIR = true
+  }
+
 }
 
 dependencies {

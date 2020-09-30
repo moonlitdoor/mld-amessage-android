@@ -5,14 +5,30 @@ plugins {
 }
 
 android {
+
   buildFeatures {
+    compose = true
     dataBinding = true
   }
+
+  composeOptions {
+    kotlinCompilerExtensionVersion = D.Androidx.Compose.version
+  }
+
+  kotlinOptions {
+    jvmTarget = "1.8"
+    useIR = true
+  }
+
 }
 
 dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
+
+  implementation(D.Androidx.Compose.Ui.ui)
+  implementation(D.Androidx.Compose.Ui.uiTooling)
+  implementation(D.Androidx.Compose.Material.material)
 
   implementation(project(M.BINDINGS))
   implementation(project(M.COMPONENTS))

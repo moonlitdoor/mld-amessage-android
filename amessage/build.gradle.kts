@@ -33,7 +33,11 @@ android {
   dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lintOptions {
-    disable("NullSafeMutableLiveData")
+    isAbortOnError = false
+    disable(
+      "NullSafeMutableLiveData",
+      "InvalidFragmentVersionForActivityResult"
+    )
     isIgnoreTestSources = true
     isCheckDependencies = true
   }
@@ -44,7 +48,7 @@ android {
     versionName = gitVersion
     resValue("color", "launcher_background", "@color/purple_deep_A400")
     buildConfigField("String", "BUILD_DATE", "\"0\"")
-    buildConfigField("boolean", "USE_COMPOSE", "false")
+    buildConfigField("boolean", "USE_COMPOSE", "true")
 //    if (largeTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
 //    } else if (mediumTests) {
@@ -130,17 +134,17 @@ android {
   }
 
   buildFeatures {
-//    compose = true
+    compose = true
     dataBinding = true
   }
 
-//  composeOptions {
-//    kotlinCompilerVersion = D.Androidx.Compose.composeKotlin
-//    kotlinCompilerExtensionVersion = D.Androidx.Compose.composeCompiler
-//  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = D.Androidx.Compose.version
+  }
 
   kotlinOptions {
     jvmTarget = "1.8"
+    useIR = true
   }
 
 }
@@ -149,10 +153,9 @@ dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
 
-//  implementation(D.Androidx.Ui.uiFoundation)
-//  implementation(D.Androidx.Ui.uiTooling)
-//  implementation(D.Androidx.Ui.uiLayout)
-//  implementation(D.Androidx.Ui.uiMaterial)
+  implementation(D.Androidx.Compose.Ui.ui)
+  implementation(D.Androidx.Compose.Ui.uiTooling)
+  implementation(D.Androidx.Compose.Material.material)
 
   implementation(project(M.ANALYTICS))
   api(project(M.BINDINGS))
@@ -181,7 +184,6 @@ dependencies {
   implementation(D.Androidx.Fragment.fragmentKtx)
   implementation(D.Androidx.Lifecycle.lifecycleRuntimeKtx)
   implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-  implementation(D.Androidx.Lifecycle.lifecycleExtensions)
   implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
   implementation(D.Androidx.Navigation.navigationDynamicFeatureFragment)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)

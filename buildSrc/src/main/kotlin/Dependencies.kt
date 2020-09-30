@@ -1,37 +1,47 @@
 object D {
+
+  object AGP {
+    const val version = "com.android.tools.build:gradle:4.2.0-alpha12"
+  }
+
   object Androidx {
-    object Annotation {
-      const val annotation = "androidx.annotation:annotation:1.1.0"
-    }
+//    object Annotation {
+//      const val annotation = "androidx.annotation:annotation:1.1.0"
+//    }
 
     object AppCompat {
       const val appcompat = "androidx.appcompat:appcompat:1.3.0-alpha02"
     }
 
     object Camera {
-      private const val version = "1.0.0-beta08"
-      private const val versionView = "1.0.0-alpha15"
+      private const val version = "1.0.0-beta10"
+      private const val versionView = "1.0.0-alpha17"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
       const val cameraView = "androidx.camera:camera-view:$versionView"
     }
 
-//    object Compose {
-//      private const val version = "0.1.0-dev13"
-//
-//      //      const val composeCompiler = "androidx.compose:compose-compiler:$version"
-//      const val composeCompiler = version
-//      const val composeKotlin = "1.3.70-dev-withExperimentalGoogleExtensions-20200424"
-////      const val composeRuntime = "androidx.compose:compose-runtime:$version"
-//    }
+    object Compose {
+      const val version = "1.0.0-alpha03"
+
+      object Material {
+        const val material = "androidx.compose.material:material:$version"
+      }
+
+      object Ui {
+        const val ui = "androidx.compose.ui:ui:$version"
+        const val uiTooling = "androidx.ui:ui-tooling:$version"
+      }
+    }
+
 
     object ConstraintLayout {
       const val constraintLayout = "androidx.constraintlayout:constraintlayout:2.0.1"
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.5.0-alpha02"
+      const val coreKtx = "androidx.core:core-ktx:1.5.0-alpha03"
     }
 
     object Fragment {
@@ -49,9 +59,6 @@ object D {
     object Lifecycle {
       private const val versionOld = "2.2.0"
       private const val version = "2.3.0-alpha07"
-
-      @Deprecated("Remove")
-      const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:$versionOld"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
       const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
@@ -104,24 +111,12 @@ object D {
       }
     }
 
-//    object Ui {
-//      private const val version = "0.1.0-dev13"
-//      const val uiCore = "androidx.ui:ui-core:$version"
-//      const val uiFoundation = "androidx.ui:ui-foundation:$version"
-//      const val uiLayout = "androidx.ui:ui-layout:$version"
-//      const val uiLivedata = "androidx.ui:ui-livedata:$version"
-//      const val uiMaterial = "androidx.ui:ui-material:$version"
-//      const val uiSavedInstanceState = "androidx.ui:ui-saved-instance-state:$version"
-//      const val uiTest = "androidx.ui:ui-test:$version"
-//      const val uiTooling = "androidx.ui:ui-tooling:$version"
-//    }
-
     object Viewpager2 {
       const val viewpager2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.5.0-alpha01"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.5.0-alpha02"
     }
   }
 
@@ -132,17 +127,9 @@ object D {
       }
     }
 
-    object Android {
-      object Tools {
-        object Build {
-          const val gradle = "com.android.tools.build:gradle:4.2.0-alpha08"
-        }
-      }
-    }
-
     object Github {
       object BenManes {
-        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.29.0"
+        const val gradleVersionsPlugin = "com.github.ben-manes:gradle-versions-plugin:0.33.0"
       }
 
       object Triplet {
@@ -170,7 +157,7 @@ object D {
       }
 
       object Dagger {
-        private const val version = "2.28.3"
+        private const val version = "2.29.1"
         const val dagger = "com.google.dagger:dagger:$version"
         const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
       }
@@ -179,15 +166,15 @@ object D {
         const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.5.0"
         const val firebaseAppdistributionGradle = "com.google.firebase:firebase-appdistribution-gradle:2.0.1"
         const val firebaseConfig = "com.google.firebase:firebase-config-ktx:19.2.0"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.2.1"
-        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.2.0"
-        const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.3.1"
-        const val firebaseIid = "com.google.firebase:firebase-iid:20.2.4"
-        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.0"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.2.4"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.2.2"
+        const val firebaseCrashlyticsGradle = "com.google.firebase:firebase-crashlytics-gradle:2.3.0"
+        const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.5.0"
+        const val firebaseIid = "com.google.firebase:firebase-iid:20.3.0"
+        const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.3.0"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.1.0"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.2"
-        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.8"
+        const val firebasePerf = "com.google.firebase:firebase-perf:19.0.9"
         const val perfPlugin = "com.google.firebase:perf-plugin:1.3.1"
       }
 
@@ -200,7 +187,7 @@ object D {
       }
 
       object Zxing {
-        const val core = "com.google.zxing:core:3.4.0"
+        const val core = "com.google.zxing:core:3.4.1"
       }
     }
 
@@ -222,7 +209,7 @@ object D {
 
     object SquareUp {
       object OkHttp3 {
-        private const val version = "4.8.1"
+        private const val version = "4.9.0"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
         const val mockWebServer = "com.squareup.okhttp3:mockwebserver:$version"
         const val okhttp = "com.squareup.okhttp3:okhttp:$version"
@@ -249,7 +236,7 @@ object D {
   object Org {
     object Jetbrains {
       object Kotlin {
-        private const val version = "1.4.0"
+        private const val version = "1.4.10"
         const val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$version"
         const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
       }
@@ -263,7 +250,7 @@ object D {
     }
 
     object Robolectric {
-      const val robolectric = "org.robolectric:robolectric:4.4-beta-1"
+      const val robolectric = "org.robolectric:robolectric:4.4"
     }
   }
 }

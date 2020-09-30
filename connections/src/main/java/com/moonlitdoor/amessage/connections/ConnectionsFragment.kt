@@ -4,6 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.Text
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -39,23 +44,37 @@ class ConnectionsFragment : androidx.fragment.app.Fragment(), Observer<HandlePro
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-    FragmentConnectionsBinding.inflate(inflater, container, false).also {
-      findNavController().also { navController ->
-        it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
-        it.navigationView.setupWithNavController(navController)
+    if (false) {
+      ComposeView(requireContext()).apply {
+        setContent {
+          MaterialTheme {
+            Surface {
+              Button(onClick = {}) {
+                Text(text = "Connections")
+              }
+            }
+          }
+        }
       }
-      WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
-      it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
+    } else {
+      FragmentConnectionsBinding.inflate(inflater, container, false).also {
+        findNavController().also { navController ->
+          it.toolbar.setupWithNavController(navController, AppBarConfiguration(setOf(R.id.connections_fragment, R.id.conversations_fragment), it.drawerLayout))
+          it.navigationView.setupWithNavController(navController)
+        }
+        WhatsNewBottomSheetDialog.setMenuItemListener(activity, it.drawerLayout, it.navigationView.menu.findItem(R.id.navigation_whats_new))
+        it.fab.setOnClickListener(Navigation.createNavigateOnClickListener(N.id.action_connections_fragment_to_connect_fragment))
 //        it.navigationView.addHeaderView(NavigationHeaderBinding.inflate(inflater, null, false).also { header ->
 //          header.lifecycleOwner = this
 //          header.handle = viewModel.handle.also { h -> h.observe(header.life, this) }
 //        }.com.moonlitdoor.amessage.root)
-      it.recyclerView.adapter = adapter
-      WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
-      NavigationMenuExperimentHelper.help(it.navigationView.menu)
-      it.lifecycleOwner = this
-      it.viewModel = viewModel
-    }.root
+        it.recyclerView.adapter = adapter
+        WindowsCountObserver(this, viewModel.windowsCount, it.navigationView.menu.findItem(R.id.windows_fragment))
+        NavigationMenuExperimentHelper.help(it.navigationView.menu)
+        it.lifecycleOwner = this
+        it.viewModel = viewModel
+      }.root
+    }
 
   override fun onChanged(handle: HandleProjection?): Unit =
     handle?.value?.run { WhatsNewBottomSheetDialog.show(activity) } ?: com.moonlitdoor.amessage.handle.HandleCreateDialog.show(activity, handleViewModel)
