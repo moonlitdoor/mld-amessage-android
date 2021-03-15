@@ -2,7 +2,7 @@ package com.moonlitdoor.amessage.dependencies
 
 object Dependencies {
   object AGP {
-    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha08"
+    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha09"
   }
 
 

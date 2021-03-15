@@ -1,13 +1,14 @@
-import com.moonlitdoor.android.AndroidPlugin
+import com.moonlitdoor.amessage.android.AndroidPlugin
+import com.moonlitdoor.amessage.dependencies.Dependencies
 
 plugins {
-//  id("com.moonlitdoor.git-version")
+  id("com.moonlitdoor.git-version")
   id("com.android.application")
-//  id("com.moonlitdoor.android")
-//  id("kotlin-kapt")
+  id("com.moonlitdoor.amessage.android")
+  id("kotlin-kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
-  id("com.github.triplet.play")
+//  id("com.github.triplet.play")
   id("com.google.firebase.crashlytics")
 
   if (System.getenv("COM_MOONLITDOOR_AMESSAGE_PERF") != null) {
@@ -16,18 +17,18 @@ plugins {
   }
 }
 
-base {
-  archivesBaseName = "$name-$gitVersion"
-}
+//base {
+//  archivesBaseName = "$name-$gitVersion"
+//}
 
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
-play {
-  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
-  defaultToAppBundles = true
-  track = "alpha"
-}
+//play {
+//  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
+//  defaultToAppBundles = true
+//  track = "alpha"
+//}
 
 android {
 //  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
@@ -134,13 +135,12 @@ android {
   }
 
   buildFeatures {
-//    compose = true
-    dataBinding = true
+    compose = true
   }
 
-//  composeOptions {
-//    kotlinCompilerExtensionVersion = D.Androidx.Compose.version
-//  }
+  composeOptions {
+    kotlinCompilerExtensionVersion = "1.0.0-beta02"
+  }
 
   kotlinOptions {
     jvmTarget = "1.8"
@@ -174,19 +174,29 @@ dependencies {
 //  implementation(project(M.ROOT))
 //  api(project(M.SETTINGS))
 
+  implementation("com.google.android.material:material:1.3.0")
+  implementation("androidx.compose.ui:ui:1.0.0-beta02")
+  implementation("androidx.compose.material:material:1.0.0-beta02")
+  implementation("androidx.compose.ui:ui-tooling:1.0.0-beta02")
+  implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.0")
+  implementation("androidx.activity:activity-compose:1.3.0-alpha04")
+  testImplementation("junit:junit:4.13.2")
+  androidTestImplementation("androidx.test.ext:junit:1.1.2")
+  androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+
 //  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
 //  implementation(D.Com.Google.Dagger.dagger)
-//  implementation(D.Androidx.AppCompat.appcompat)
+  implementation(Dependencies.Androidx.AppCompat.appcompat)
 //  implementation(D.Androidx.Camera.cameraCamera2)
 //  implementation(D.Androidx.Camera.cameraCore)
-  implementation(D.Androidx.Core.coreKtx)
+  implementation(Dependencies.Androidx.Core.coreKtx)
 //  implementation(D.Androidx.Fragment.fragmentKtx)
 //  implementation(D.Androidx.Lifecycle.lifecycleRuntimeKtx)
 //  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
 //  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
-  implementation(D.Androidx.Navigation.navigationDynamicFeatureFragment)
-  implementation(D.Androidx.Navigation.navigationFragmentKtx)
-  implementation(D.Androidx.Navigation.navigationUiKtx)
+//  implementation(Dependencies.Androidx.Navigation.navigationDynamicFeatureFragment)
+//  implementation(Dependencies.Androidx.Navigation.navigationFragmentKtx)
+//  implementation(Dependencies.Androidx.Navigation.navigationUiKtx)
 
 //  implementation(D.Androidx.Preference.preference)
 //  implementation(D.Androidx.Legacy.legacyPreferenceV14)
@@ -203,26 +213,26 @@ dependencies {
 //  implementation(D.Com.Google.Firebase.firebaseCrashlytics)
 //  implementation(D.Com.Google.Guava.listenablefuture)
 //  implementation(D.Com.Google.Zxing.core)
-  implementation(D.Com.JakeWharton.Timber.timber)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
+//  implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
 //  implementation(D.Androidx.Test.Espresso.espressoIdlingResource)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+//  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
-  testImplementation(D.Androidx.Test.runner)
-  testImplementation(D.Androidx.Test.rules)
-  testImplementation(D.Org.Robolectric.robolectric)
+  testImplementation(Dependencies.Androidx.Test.runner)
+  testImplementation(Dependencies.Androidx.Test.rules)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 //  testImplementation(D.Androidx.Room.roomTesting)
 //  testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
-//  testImplementation(D.Androidx.Test.Espresso.espressoCore)
 //  testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
 
-  androidTestImplementation(D.Androidx.Test.runner)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
-  androidTestImplementation(D.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 //  androidTestImplementation(D.Androidx.Room.roomTesting)
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
 //  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
 
 }

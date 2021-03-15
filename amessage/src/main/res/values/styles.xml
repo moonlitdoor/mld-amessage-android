@@ -1,17 +1,19 @@
 <resources>
 
   <style name="AmTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <!--    <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-    <item name="colorAccent">@color/colorAccent</item>
-    <item name="iconColor">@android:color/white</item>
+    <!--    <item name="colorPrimary">@color/colorPrimary</item>-->
+    <!--    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+    <!--    <item name="colorAccent">@color/colorAccent</item>-->
+    <!--    <item name="iconColor">@color/white</item>-->
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="android:statusBarColor">@color/black_025</item>
   </style>
 
   <style name="AmTheme.Splash" parent="Theme.AppCompat.NoActionBar">
     <item name="android:windowBackground">@drawable/splash</item>
-    <item name="android:statusBarColor">@android:color/transparent</item>
-    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:statusBarColor">@color/transparent</item>
+    <item name="android:navigationBarColor">@color/transparent</item>
   </style>
 
   <!--<style name="AmTheme.Deep" parent="Theme.AppCompat.Light.NoActionBar">-->

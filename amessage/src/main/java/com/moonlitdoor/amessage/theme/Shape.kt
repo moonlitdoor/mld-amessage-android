@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.ui.theme
+package com.moonlitdoor.amessage.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

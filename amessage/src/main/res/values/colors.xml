@@ -53,7 +53,7 @@
   <color name="purple_deep_A400">#651FFF</color>
   <!--<color name="purple_deep_A700">#6200EA</color>-->
 
-  <!--<color name="transparent">@color/white_000</color>-->
+  <color name="transparent">@android:color/transparent</color>
   <color name="white">@android:color/white</color>
 
 
@@ -108,7 +108,7 @@
   <!--<color name="black_053">#87000000</color> -->
   <!--<color name="black_052">#85000000</color> -->
   <!--<color name="black_051">#82000000</color> -->
-  <!--<color name="black_050">#80000000</color> -->
+  <!--  <color name="black_050">#80000000</color>-->
   <!--<color name="black_049">#7D000000</color> -->
   <!--<color name="black_048">#7A000000</color> -->
   <!--<color name="black_047">#78000000</color> -->
@@ -133,7 +133,7 @@
   <!--<color name="black_028">#47000000</color> -->
   <!--<color name="black_027">#45000000</color> -->
   <!--<color name="black_026">#42000000</color> -->
-  <!--<color name="black_025">#40000000</color> -->
+  <color name="black_025">#40000000</color>
   <!--<color name="black_024">#3D000000</color> -->
   <!--<color name="black_023">#3B000000</color> -->
   <!--<color name="black_022">#38000000</color> -->

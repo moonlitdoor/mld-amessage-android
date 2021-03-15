@@ -4,8 +4,11 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation.findNavController
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Surface
+import com.moonlitdoor.amessage.theme.MldamessageandroidTheme
 
 //import androidx.preference.PreferenceManager
 //import com.moonlitdoor.amessage.constants.Constants
@@ -24,11 +27,19 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 //      }
 //    )
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_navigation2)
+//    setContentView(R.layout.activity_navigation2)
+    setContent {
+      MldamessageandroidTheme {
+        // A surface container using the 'background' color from the theme
+        Surface(color = MaterialTheme.colors.background) {
+          Greeting("Android")
+        }
+      }
+    }
 //    PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this)
   }
 
-  override fun onSupportNavigateUp() = findNavController(this, R.id.fragment).navigateUp()
+//  override fun onSupportNavigateUp() = findNavController(this, R.id.fragment).navigateUp()
 
   override fun onDestroy() {
     super.onDestroy()

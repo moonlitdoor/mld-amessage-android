@@ -1,5 +1,5 @@
 includeBuild("plugins/dependencies")
-//includeBuild("plugins/android")
+includeBuild("plugins/android")
 //includeBuild("plugins/jacoco")
 
 plugins {
@@ -14,9 +14,8 @@ gradleEnterprise {
   }
 }
 
-include(":amessage2")
 //include(":about")
-//include(":amessage")
+include(":amessage")
 //include(":analytics")
 //include(":bindings")
 //include(":components")

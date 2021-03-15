@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.ui.theme
+package com.moonlitdoor.amessage.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
