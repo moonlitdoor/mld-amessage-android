@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <!--  <color name="colorPrimary">@color/orange_500</color>-->
-  <!--  <color name="colorPrimaryDark">@color/orange_800</color>-->
-  <!--<color name="colorPrimaryLight">@color/orange_200</color>-->
-  <!--  <color name="colorAccent">@color/purple_deep_A400</color>-->
+  <color name="colorPrimary">@color/orange_500</color>
+  <color name="colorPrimaryDark">@color/orange_800</color>
+  <!--  <color name="colorPrimaryLight">@color/orange_200</color>-->
+  <color name="colorAccent">@color/purple_deep_A400</color>
   <!--<color name="colorAccentDark">@color/purple_deep_A700</color>-->
   <!--<color name="colorAccentLight">@color/purple_deep_A100</color>-->
   <!--<color name="colorWindowBackground">@color/white</color>-->
@@ -12,11 +12,11 @@
   <!--<color name="dialog_title">@color/black_087</color>-->
 
   <color name="colorDeepPrimary">#673ab7</color>
-  <color name="colorDeepPrimaryDark">@color/orange_800</color>
+  <!--  <color name="colorDeepPrimaryDark">@color/orange_800</color>-->
   <color name="colorDeepAccent">#ffc107</color>
 
   <color name="colorCoolPrimary">#2196f3</color>
-  <color name="colorCoolPrimaryDark">@color/orange_800</color>
+  <!--  <color name="colorCoolPrimaryDark">@color/orange_800</color>-->
   <color name="colorCoolAccent">#607d8b</color>
 
   <!--<color name="colorHarvestPrimary">#ff5722</color>-->
@@ -28,7 +28,7 @@
   <color name="colorDarkAccent">#ffc107</color>
 
   <color name="colorMonsterPrimary">#9c27b0</color>
-  <color name="colorMonsterPrimaryDark">@color/orange_800</color>
+  <!--  <color name="colorMonsterPrimaryDark">@color/orange_800</color>-->
   <color name="colorMonsterAccent">#4caf50</color>
 
   <!--<color name="colorPinkPrimary">#e91e63</color>-->
@@ -39,21 +39,22 @@
 
   <!--<color name="orange_050">#FFF3E0</color>-->
   <!--<color name="orange_100">#FFE0B2</color>-->
-  <!--<color name="orange_200">#FFCC80</color>-->
+  <!--  <color name="orange_200">#FFCC80</color>-->
   <!--<color name="orange_300">#FFB74D</color>-->
   <!--<color name="orange_400">#FFA726</color>-->
-  <!--  <color name="orange_500">#FF9800</color>-->
+  <color name="orange_500">#FF9800</color>
   <!--<color name="orange_600">#FB8C00</color>-->
   <!--<color name="orange_700">#F57C00</color>-->
-  <!--  <color name="orange_800">#EF6C00</color>-->
+  <color name="orange_800">#EF6C00</color>
   <!--<color name="orange_900">#E65100</color>-->
 
   <!--<color name="purple_deep_A100">#B388FF</color>-->
   <!--<color name="purple_deep_A200">#7C4DFF</color>-->
-  <!--  <color name="purple_deep_A400">#651FFF</color>-->
+  <color name="purple_deep_A400">#651FFF</color>
   <!--<color name="purple_deep_A700">#6200EA</color>-->
 
   <!--<color name="transparent">@color/white_000</color>-->
+  <color name="white">@android:color/white</color>
 
 
   <color name="black">@color/black_100</color>

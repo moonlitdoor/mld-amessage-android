@@ -1,5 +1,13 @@
 <resources>
 
+  <style name="AmTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+    <!--    <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>-->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="iconColor">@android:color/white</item>
+  </style>
+
   <style name="AmTheme.Splash" parent="Theme.AppCompat.NoActionBar">
     <item name="android:windowBackground">@drawable/splash</item>
     <item name="android:statusBarColor">@android:color/transparent</item>
@@ -22,19 +30,19 @@
   <!--<item name="iconColor">@color/white</item>-->
   <!--</style>-->
 
-  <style name="AmTheme.Deep">
-    <item name="colorPrimary">@color/colorDeepPrimary</item>
-    <item name="colorPrimaryDark">@color/colorDeepPrimaryDark</item>
-    <item name="colorAccent">@color/colorDeepAccent</item>
-    <item name="iconColor">@color/white</item>
-  </style>
+  <!--  <style name="AmTheme.Deep">-->
+  <!--    <item name="colorPrimary">@color/colorDeepPrimary</item>-->
+  <!--    <item name="colorPrimaryDark">@color/colorDeepPrimaryDark</item>-->
+  <!--    <item name="colorAccent">@color/colorDeepAccent</item>-->
+  <!--    <item name="iconColor">@color/white</item>-->
+  <!--  </style>-->
 
-  <style name="AmTheme.Cool">
-    <item name="colorPrimary">@color/colorCoolPrimary</item>
-    <item name="colorPrimaryDark">@color/colorCoolPrimaryDark</item>
-    <item name="colorAccent">@color/colorCoolAccent</item>
-    <item name="iconColor">@color/white</item>
-  </style>
+  <!--  <style name="AmTheme.Cool">-->
+  <!--    <item name="colorPrimary">@color/colorCoolPrimary</item>-->
+  <!--    <item name="colorPrimaryDark">@color/colorCoolPrimaryDark</item>-->
+  <!--    <item name="colorAccent">@color/colorCoolAccent</item>-->
+  <!--    <item name="iconColor">@color/white</item>-->
+  <!--  </style>-->
 
   <!--<style name="AmTheme.Harvest">-->
   <!--<item name="colorPrimary">@color/colorHarvestPrimary</item>-->
@@ -43,21 +51,21 @@
   <!--<item name="iconColor">@color/white</item>-->
   <!--</style>-->
 
-  <style name="AmTheme.Dark">
-    <item name="colorPrimary">@color/colorDarkPrimary</item>
-    <item name="colorPrimaryDark">@color/colorDeepPrimaryDark</item>
-    <item name="colorAccent">@color/colorDarkAccent</item>
-    <item name="android:windowBackground">@color/backgroundDark</item>
-    <item name="iconColor">@color/black_087</item>
-  </style>
+  <!--  <style name="AmTheme.Dark">-->
+  <!--    <item name="colorPrimary">@color/colorDarkPrimary</item>-->
+  <!--    <item name="colorPrimaryDark">@color/colorDeepPrimaryDark</item>-->
+  <!--    <item name="colorAccent">@color/colorDarkAccent</item>-->
+  <!--    <item name="android:windowBackground">@color/backgroundDark</item>-->
+  <!--    <item name="iconColor">@color/black_087</item>-->
+  <!--  </style>-->
 
-  <style name="AmTheme.Monster">
-    <item name="colorPrimary">@color/colorMonsterPrimary</item>
-    <item name="colorPrimaryDark">@color/colorMonsterPrimaryDark</item>
-    <item name="colorAccent">@color/colorMonsterAccent</item>
-    <item name="android:windowBackground">@color/backgroundDark</item>
-    <item name="iconColor">@color/black_087</item>
-  </style>
+  <!--  <style name="AmTheme.Monster">-->
+  <!--    <item name="colorPrimary">@color/colorMonsterPrimary</item>-->
+  <!--    <item name="colorPrimaryDark">@color/colorMonsterPrimaryDark</item>-->
+  <!--    <item name="colorAccent">@color/colorMonsterAccent</item>-->
+  <!--    <item name="android:windowBackground">@color/backgroundDark</item>-->
+  <!--    <item name="iconColor">@color/black_087</item>-->
+  <!--  </style>-->
 
   <!--<style name="AmTheme.Pink">-->
   <!--<item name="colorPrimary">@color/colorPinkPrimary</item>-->

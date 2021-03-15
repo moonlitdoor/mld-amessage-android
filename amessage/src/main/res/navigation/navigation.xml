@@ -1,67 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:id="@+id/navigation"
-  app:startDestination="@id/connections_fragment">
-  <fragment
-    android:id="@+id/connections_fragment"
-    android:name="com.moonlitdoor.amessage.connections.ConnectionsFragment"
-    tools:layout="@layout/fragment_connections">
-    <action
-      android:id="@id/action_connections_fragment_to_connect_fragment"
-      app:destination="@id/connectFragment"
-      app:enterAnim="@anim/slide_in_right"
-      app:exitAnim="@anim/slide_out_left"
-      app:popEnterAnim="@anim/slide_in_left"
-      app:popExitAnim="@anim/slide_out_right" />
-  </fragment>
-  <fragment
-    android:id="@+id/connectFragment"
-    android:name="com.moonlitdoor.amessage.connect.ConnectFragment"
-    tools:layout="@layout/fragment_connect" />
-  <fragment
-    android:id="@+id/conversations_fragment"
-    android:name="com.moonlitdoor.amessage.conversations.ConversationsFragment"
-    tools:layout="@layout/fragment_conversations">
-    <action
-      android:id="@id/actionConversationsFragmentToConversationsCreateFragment"
-      app:destination="@id/conversations_create_fragment"
-      app:enterAnim="@anim/slide_in_right"
-      app:exitAnim="@anim/slide_out_left"
-      app:popEnterAnim="@anim/slide_in_left"
-      app:popExitAnim="@anim/slide_out_right" />
-  </fragment>
-  <fragment
-    android:id="@+id/conversations_create_fragment"
-    android:name="com.moonlitdoor.amessage.conversations.create.ConversationCreateFragment"
-    tools:layout="@layout/fragment_conversation_create" />
-  <fragment
-    app:moduleName="windows"
-    android:id="@+id/windows_fragment"
-    android:name="com.moonlitdoor.amessage.windows.WindowsFragment"
-    tools:layout="@layout/fragment_windows" />
-  <fragment
-    app:moduleName="help"
-    android:id="@+id/help_fragment"
-    android:name="com.moonlitdoor.amessage.help.HelpFragment"
-    tools:layout="@layout/fragment_help" />
-  <fragment
-    app:moduleName="feedback"
-    android:id="@+id/feedback_fragment"
-    android:name="com.moonlitdoor.amessage.feedback.FeedbackFragment"
-    tools:layout="@layout/fragment_feedback" />
-  <fragment
-    app:moduleName="about"
-    android:id="@+id/about_fragment"
-    android:name="com.moonlitdoor.amessage.about.AboutFragment"
-    tools:layout="@layout/fragment_about" />
+  android:id="@+id/navigation">
+  <!--  app:startDestination="@id/connections_fragment">-->
+  <!--  <fragment-->
+  <!--    android:id="@+id/connections_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.connections.ConnectionsFragment"-->
+  <!--    tools:layout="@layout/fragment_connections">-->
+  <!--    <action-->
+  <!--      android:id="@id/action_connections_fragment_to_connect_fragment"-->
+  <!--      app:destination="@id/connectFragment"-->
+  <!--      app:enterAnim="@anim/slide_in_right"-->
+  <!--      app:exitAnim="@anim/slide_out_left"-->
+  <!--      app:popEnterAnim="@anim/slide_in_left"-->
+  <!--      app:popExitAnim="@anim/slide_out_right" />-->
+  <!--  </fragment>-->
+  <!--  <fragment-->
+  <!--    android:id="@+id/connectFragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.connect.ConnectFragment"-->
+  <!--    tools:layout="@layout/fragment_connect" />-->
+  <!--  <fragment-->
+  <!--    android:id="@+id/conversations_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.conversations.ConversationsFragment"-->
+  <!--    tools:layout="@layout/fragment_conversations">-->
+  <!--    <action-->
+  <!--      android:id="@id/actionConversationsFragmentToConversationsCreateFragment"-->
+  <!--      app:destination="@id/conversations_create_fragment"-->
+  <!--      app:enterAnim="@anim/slide_in_right"-->
+  <!--      app:exitAnim="@anim/slide_out_left"-->
+  <!--      app:popEnterAnim="@anim/slide_in_left"-->
+  <!--      app:popExitAnim="@anim/slide_out_right" />-->
+  <!--  </fragment>-->
+  <!--  <fragment-->
+  <!--    android:id="@+id/conversations_create_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.conversations.create.ConversationCreateFragment"-->
+  <!--    tools:layout="@layout/fragment_conversation_create" />-->
+  <!--  <fragment-->
+  <!--    app:moduleName="windows"-->
+  <!--    android:id="@+id/windows_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.windows.WindowsFragment"-->
+  <!--    tools:layout="@layout/fragment_windows" />-->
+  <!--  <fragment-->
+  <!--    app:moduleName="help"-->
+  <!--    android:id="@+id/help_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.help.HelpFragment"-->
+  <!--    tools:layout="@layout/fragment_help" />-->
+  <!--  <fragment-->
+  <!--    app:moduleName="feedback"-->
+  <!--    android:id="@+id/feedback_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.feedback.FeedbackFragment"-->
+  <!--    tools:layout="@layout/fragment_feedback" />-->
+  <!--  <fragment-->
+  <!--    app:moduleName="about"-->
+  <!--    android:id="@+id/about_fragment"-->
+  <!--    android:name="com.moonlitdoor.amessage.about.AboutFragment"-->
+  <!--    tools:layout="@layout/fragment_about" />-->
 
-  <include app:graph="@navigation/settings_navigation" />
+  <!--  <include app:graph="@navigation/settings_navigation" />-->
 
-  <action
-    android:id="@+id/settings"
-    app:destination="@id/settings_navigation" />
+  <!--  <action-->
+  <!--    android:id="@+id/settings"-->
+  <!--    app:destination="@id/settings_navigation" />-->
 
 
 </navigation>

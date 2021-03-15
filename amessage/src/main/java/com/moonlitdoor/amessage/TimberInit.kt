@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage
 
 import android.util.Log
-import com.google.firebase.crashlytics.FirebaseCrashlytics
+//import com.google.firebase.crashlytics.FirebaseCrashlytics
 import timber.log.Timber
 
 object TimberInit {
@@ -14,16 +14,16 @@ object TimberInit {
 
   private object DecoratedCrashReportingTree : Timber.Tree() {
 
-    private val crashlytics = FirebaseCrashlytics.getInstance().also {
-      it.setUserId(UserId.value.toString())
-      it.sendUnsentReports()
-    }
+//    private val crashlytics = FirebaseCrashlytics.getInstance().also {
+//      it.setUserId(UserId.value.toString())
+//      it.sendUnsentReports()
+//    }
 
     override fun isLoggable(tag: String?, priority: Int): Boolean = priority >= Log.INFO
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-      crashlytics.log(Decorator.decorate(message, tag))
-      t?.let { crashlytics.recordException(it) }
+//      crashlytics.log(Decorator.decorate(message, tag))
+//      t?.let { crashlytics.recordException(it) }
     }
   }
 

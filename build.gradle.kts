@@ -2,19 +2,23 @@ buildscript {
 
   repositories {
     google()
-    jcenter()
+    mavenCentral()
     maven(url = "https://plugins.gradle.org/m2/")
+
   }
   dependencies {
-    classpath(D.Androidx.Navigation.navigationSafeArgsGradlePlugin)
-    classpath(D.AGP.version)
-    classpath(D.Com.Github.BenManes.gradleVersionsPlugin)
-    classpath(D.Com.Google.Firebase.firebaseAppdistributionGradle)
-    classpath(D.Com.Github.Triplet.Gradle.playPublisher)
-    classpath(D.Com.Moonlitdoor.GitVersion.gitVersion)
-    classpath(D.Org.Jetbrains.Kotlin.kotlinGradlePlugin)
-    classpath(D.Com.Google.Firebase.firebaseCrashlyticsGradle)
-    classpath(D.Com.Google.Firebase.perfPlugin)
+    classpath("com.moonlitdoor.amessage:dependencies")
+    classpath("com.android.tools.build:gradle:7.0.0-alpha09")
+//    classpath("com.moonlitdoor.amessage:android")
+//    classpath("com.moonlitdoor.amessage:jacoco")
+//    classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3")
+    classpath("com.github.ben-manes:gradle-versions-plugin:0.36.0")
+//    classpath("com.google.firebase:firebase-appdistribution-gradle:2.0.1")
+//    classpath("com.github.triplet.gradle:play-publisher:3.3.0")
+    classpath("com.moonlitdoor.git-version:git-version:0.1.1")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.30")
+//    classpath("com.google.firebase:firebase-crashlytics-gradle:2.5.0")
+//    classpath("com.google.firebase:perf-plugin:1.3.4")
   }
 }
 
@@ -23,16 +27,17 @@ allprojects {
   repositories {
     google()
     jcenter()
+    mavenCentral()
     maven(url = "https://jitpack.io")
     maven(url = "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/")
   }
-  ext {
-    set("smokeTests", if (project.hasProperty("smokeTests")) project.property("smokeTests") else false)
-    set("largeTests", if (project.hasProperty("largeTests")) project.property("largeTests") else false)
-    set("mediumTests", if (project.hasProperty("mediumTests")) project.property("mediumTests") else false)
-    set("smallTests", if (project.hasProperty("smallTests")) project.property("smallTests") else false)
-    set("flakyTests", if (project.hasProperty("flakyTests")) project.property("flakyTests") else false)
-  }
+//  ext {
+//    set("smokeTests", if (project.hasProperty("smokeTests")) project.property("smokeTests") else false)
+//    set("largeTests", if (project.hasProperty("largeTests")) project.property("largeTests") else false)
+//    set("mediumTests", if (project.hasProperty("mediumTests")) project.property("mediumTests") else false)
+//    set("smallTests", if (project.hasProperty("smallTests")) project.property("smallTests") else false)
+//    set("flakyTests", if (project.hasProperty("flakyTests")) project.property("flakyTests") else false)
+//  }
   tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
       jvmTarget = "1.8"
@@ -45,9 +50,9 @@ allprojects {
   }
 }
 
-plugins {
-  id("com.moonlitdoor.jacoco")
-}
+//plugins {
+//  id("com.moonlitdoor.amessage.jacoco")
+//}
 
 gradle.projectsEvaluated {
   tasks.withType(JavaCompile::class.java) {

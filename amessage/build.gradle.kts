@@ -1,10 +1,10 @@
 import com.moonlitdoor.android.AndroidPlugin
 
 plugins {
-  id("com.moonlitdoor.git-version")
+//  id("com.moonlitdoor.git-version")
   id("com.android.application")
-  id("com.moonlitdoor.android")
-  id("kotlin-kapt")
+//  id("com.moonlitdoor.android")
+//  id("kotlin-kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
   id("com.github.triplet.play")
@@ -30,7 +30,7 @@ play {
 }
 
 android {
-  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
+//  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lintOptions {
     isAbortOnError = false
@@ -134,13 +134,13 @@ android {
   }
 
   buildFeatures {
-    compose = true
+//    compose = true
     dataBinding = true
   }
 
-  composeOptions {
-    kotlinCompilerExtensionVersion = D.Androidx.Compose.version
-  }
+//  composeOptions {
+//    kotlinCompilerExtensionVersion = D.Androidx.Compose.version
+//  }
 
   kotlinOptions {
     jvmTarget = "1.8"
@@ -151,63 +151,61 @@ android {
 
 dependencies {
 
-  kapt(D.Com.Google.Dagger.daggerCompiler)
+//  kapt(D.Com.Google.Dagger.daggerCompiler)
 
-  implementation(D.Androidx.Compose.Ui.ui)
-  implementation(D.Androidx.Compose.Ui.uiTooling)
-  implementation(D.Androidx.Compose.Material.material)
+//  implementation(D.Androidx.Compose.Ui.ui)
+//  implementation(D.Androidx.Compose.Ui.uiTooling)
+//  implementation(D.Androidx.Compose.Material.material)
 
-  implementation(project(M.ANALYTICS))
-  api(project(M.BINDINGS))
-  api(project(M.COMPONENTS))
-  implementation(project(M.CONSTANTS))
-  api(project(M.CONNECT))
-  api(project(M.CONNECTIONS))
-  api(project(M.CONVERSATIONS))
-  api(project(M.DOMAIN))
-  api(project(M.EXPERIMENTS))
-  api(project(M.EXTENSIONS))
-  api(project(M.HANDLE))
-  implementation(project(M.IDS))
-  api(project(M.PUSH))
-  api(project(M.RESOURCES))
-  implementation(project(M.ROOT))
-  api(project(M.SETTINGS))
+//  implementation(project(M.ANALYTICS))
+//  api(project(M.BINDINGS))
+//  api(project(M.COMPONENTS))
+//  implementation(project(M.CONSTANTS))
+//  api(project(M.CONNECT))
+//  api(project(M.CONNECTIONS))
+//  api(project(M.CONVERSATIONS))
+//  api(project(M.DOMAIN))
+//  api(project(M.EXPERIMENTS))
+//  api(project(M.EXTENSIONS))
+//  api(project(M.HANDLE))
+//  implementation(project(M.IDS))
+//  api(project(M.PUSH))
+//  api(project(M.RESOURCES))
+//  implementation(project(M.ROOT))
+//  api(project(M.SETTINGS))
 
-  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
-  implementation(D.Com.Google.Dagger.dagger)
-  implementation(D.Androidx.AppCompat.appcompat)
-  implementation(D.Androidx.Camera.cameraCamera2)
-  implementation(D.Androidx.Camera.cameraCore)
-  implementation(D.Androidx.ConstraintLayout.constraintLayout)
+//  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
+//  implementation(D.Com.Google.Dagger.dagger)
+//  implementation(D.Androidx.AppCompat.appcompat)
+//  implementation(D.Androidx.Camera.cameraCamera2)
+//  implementation(D.Androidx.Camera.cameraCore)
   implementation(D.Androidx.Core.coreKtx)
-  implementation(D.Androidx.Fragment.fragmentKtx)
-  implementation(D.Androidx.Lifecycle.lifecycleRuntimeKtx)
-  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
+//  implementation(D.Androidx.Fragment.fragmentKtx)
+//  implementation(D.Androidx.Lifecycle.lifecycleRuntimeKtx)
+//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+//  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
   implementation(D.Androidx.Navigation.navigationDynamicFeatureFragment)
   implementation(D.Androidx.Navigation.navigationFragmentKtx)
   implementation(D.Androidx.Navigation.navigationUiKtx)
 
-  implementation(D.Com.Google.Android.Material.material)
-  implementation(D.Androidx.Preference.preference)
-  implementation(D.Androidx.Legacy.legacyPreferenceV14)
-  implementation(D.Androidx.Recyclerview.recyclerview)
-  implementation(D.Androidx.Legacy.legacySupportV4)
-  implementation(D.Com.Google.Android.Gms.playServicesVision)
-  implementation(D.Com.Google.Code.Gson.gson)
-  implementation(D.Com.Google.Firebase.firebaseConfig)
-  implementation(D.Com.Google.Firebase.firebaseAnalytics)
-  implementation(D.Com.Google.Firebase.firebaseIid)
-  implementation(D.Com.Google.Firebase.firebaseInAppMessaging)
-  implementation(D.Com.Google.Firebase.firebaseMessaging)
-  implementation(D.Com.Google.Firebase.firebasePerf)
-  implementation(D.Com.Google.Firebase.firebaseCrashlytics)
-  implementation(D.Com.Google.Guava.listenablefuture)
-  implementation(D.Com.Google.Zxing.core)
+//  implementation(D.Androidx.Preference.preference)
+//  implementation(D.Androidx.Legacy.legacyPreferenceV14)
+//  implementation(D.Androidx.Recyclerview.recyclerview)
+//  implementation(D.Androidx.Legacy.legacySupportV4)
+//  implementation(D.Com.Google.Android.Gms.playServicesVision)
+//  implementation(D.Com.Google.Code.Gson.gson)
+//  implementation(D.Com.Google.Firebase.firebaseConfig)
+//  implementation(D.Com.Google.Firebase.firebaseAnalytics)
+//  implementation(D.Com.Google.Firebase.firebaseIid)
+//  implementation(D.Com.Google.Firebase.firebaseInAppMessaging)
+//  implementation(D.Com.Google.Firebase.firebaseMessaging)
+//  implementation(D.Com.Google.Firebase.firebasePerf)
+//  implementation(D.Com.Google.Firebase.firebaseCrashlytics)
+//  implementation(D.Com.Google.Guava.listenablefuture)
+//  implementation(D.Com.Google.Zxing.core)
   implementation(D.Com.JakeWharton.Timber.timber)
   implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Androidx.Test.Espresso.espressoIdlingResource)
+//  implementation(D.Androidx.Test.Espresso.espressoIdlingResource)
 
   androidTestUtil(D.Androidx.Test.orchestrator)
 
@@ -215,17 +213,17 @@ dependencies {
   testImplementation(D.Androidx.Test.rules)
   testImplementation(D.Org.Robolectric.robolectric)
 //  testImplementation(D.Androidx.Room.roomTesting)
-  testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
-  testImplementation(D.Androidx.Test.Espresso.espressoCore)
-  testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
+//  testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
+//  testImplementation(D.Androidx.Test.Espresso.espressoCore)
+//  testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
   testImplementation(D.Androidx.Test.Ext.junitKtx)
 
   androidTestImplementation(D.Androidx.Test.runner)
   androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
   androidTestImplementation(D.Androidx.Test.rules)
-  androidTestImplementation(D.Androidx.Room.roomTesting)
+//  androidTestImplementation(D.Androidx.Room.roomTesting)
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
+//  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
 
 }
 
