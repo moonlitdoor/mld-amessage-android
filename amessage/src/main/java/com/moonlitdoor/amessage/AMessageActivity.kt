@@ -6,12 +6,22 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import com.moonlitdoor.amessage.theme.MldamessageandroidTheme
-
-//import androidx.preference.PreferenceManager
-//import com.moonlitdoor.amessage.constants.Constants
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.KEY_ROUTE
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.theme.AMessageTheme
 
 
 class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
@@ -27,12 +37,47 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 //      }
 //    )
     super.onCreate(savedInstanceState)
-//    setContentView(R.layout.activity_navigation2)
     setContent {
-      MldamessageandroidTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(color = MaterialTheme.colors.background) {
-          Greeting("Android")
+      AMessageTheme {
+        EdgeToEdgeContent {
+          val navController = rememberNavController()
+          Scaffold(
+            topBar = {
+              val currentScreenState by navController.currentBackStackEntryAsState()
+              val currentScreen = Screen.fromRoute(currentScreenState?.arguments?.getString(KEY_ROUTE))
+              TopAppBar(
+                title = { Text(getString(currentScreen.resourceId)) },
+                elevation = 120.dp
+              )
+            },
+            bottomBar = {
+              BottomNavigation() {
+                val currentScreenState by navController.currentBackStackEntryAsState()
+                val currentRoute = currentScreenState?.arguments?.getString(KEY_ROUTE)
+                Screen.items.forEach { screen ->
+                  BottomNavigationItem(
+                    icon = { Icon(screen.icon, null) },
+                    label = { Text(stringResource(screen.resourceId)) },
+                    selected = currentRoute == screen.route,
+                    onClick = {
+                      navController.navigate(screen.route) {
+                        popUpTo = navController.graph.startDestination
+                        launchSingleTop = true
+                      }
+                    }
+                  )
+                }
+              }
+            },
+            content = {
+              NavHost(navController, startDestination = Screen.Conversations.route) {
+                composable(Screen.Conversations.route) { Greeting(name = "Conversations") }
+                composable(Screen.Connections.route) { Greeting(name = "Connections") }
+//            composable(Screen.Conversations.route) { Conversations(navController) }
+//            composable(Screen.Connections.route) { Connections(navController) }
+              }
+            }
+          )
         }
       }
     }
@@ -41,15 +86,15 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
 
 //  override fun onSupportNavigateUp() = findNavController(this, R.id.fragment).navigateUp()
 
-  override fun onDestroy() {
-    super.onDestroy()
+//  override fun onDestroy() {
+//    super.onDestroy()
 //    PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this)
-  }
+//  }
 
   override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-    when (key) {
+//    when (key) {
 //      getString(R.string.preference_theme) -> recreate()
-    }
+//    }
   }
 
   companion object {

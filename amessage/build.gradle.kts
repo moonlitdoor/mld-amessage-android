@@ -183,6 +183,8 @@ dependencies {
   testImplementation("junit:junit:4.13.2")
   androidTestImplementation("androidx.test.ext:junit:1.1.2")
   androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
+  implementation("androidx.navigation:navigation-compose:1.0.0-alpha09")
+  implementation("com.google.accompanist:accompanist-insets:0.6.2")
 
 //  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
 //  implementation(D.Com.Google.Dagger.dagger)

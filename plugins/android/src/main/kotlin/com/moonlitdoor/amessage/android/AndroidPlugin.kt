@@ -14,7 +14,7 @@ class AndroidPlugin : Plugin<Project> {
         compileSdkVersion(28)
 
         defaultConfig {
-          minSdkVersion(24)
+          minSdkVersion(26)
           targetSdkVersion(28)
           testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
           testInstrumentationRunnerArguments.putAll(mapOf("clearPackageData" to "true"))

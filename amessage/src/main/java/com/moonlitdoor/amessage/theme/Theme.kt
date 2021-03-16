@@ -7,28 +7,27 @@ import androidx.compose.material.lightColors
 import androidx.compose.runtime.Composable
 
 private val DarkColorPalette = darkColors(
-  primary = Purple200,
-  primaryVariant = Purple700,
-  secondary = Teal200
+  primary = Colors.Purple200,
+  primaryVariant = Colors.Purple700,
+  secondary = Colors.Teal200
 )
 
 private val LightColorPalette = lightColors(
-  primary = Purple500,
-  primaryVariant = Purple700,
-  secondary = Teal200
+  primary = Colors.Purple500,
+  primaryVariant = Colors.Purple700,
+  secondary = Colors.Teal200,
 
-  /* Other default colors to override
-    background = Color.White,
-    surface = Color.White,
-    onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
-    */
+/* Overridable */
+//  onPrimary = Color.White,
+//  background = Color.White,
+//  surface = Purple700,
+//  onSecondary = Color.Black,
+//  onBackground = Color.Black,
+//  onSurface = Color.Black,
 )
 
 @Composable
-fun MldamessageandroidTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
+fun AMessageTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
   val colors = if (darkTheme) {
     DarkColorPalette
   } else {
@@ -42,3 +41,10 @@ fun MldamessageandroidTheme(darkTheme: Boolean = isSystemInDarkTheme(), content:
     content = content
   )
 }
+
+//AmTheme.Deep
+//AmTheme.Cool
+//AmTheme.Harvest
+//AmTheme.Dark
+//AmTheme.Monster
+//AmTheme.Pink
