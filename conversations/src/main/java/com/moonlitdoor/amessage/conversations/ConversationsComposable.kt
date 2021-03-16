@@ -1,19 +1,16 @@
-package com.moonlitdoor.amessage
+package com.moonlitdoor.amessage.conversations
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.moonlitdoor.amessage.theme.AMessageTheme
 
 @Composable
-fun Greeting(name: String) {
-  Text(text = "Hello $name!")
+fun Conversations(name: String) {
+  Text(text = "Hello, my name is $name!")
 }
 
 @Preview(showBackground = false)
 @Composable
 fun DefaultPreview() {
-  AMessageTheme {
-    Greeting("Android")
-  }
+  Conversations("Android")
 }

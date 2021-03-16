@@ -1,18 +1,23 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+
 plugins {
   id("com.android.library")
-  id("com.moonlitdoor.android")
-  kotlin("kapt")
+  id("com.moonlitdoor.amessage.android")
+  id("kotlin-kapt")
 }
 
 android {
 
+  lint {
+    isAbortOnError = false
+  }
+
   buildFeatures {
     compose = true
-    dataBinding = true
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = D.Androidx.Compose.version
+    kotlinCompilerExtensionVersion = "1.0.0-beta02"
   }
 
   kotlinOptions {
@@ -24,36 +29,49 @@ android {
 
 dependencies {
 
-  kapt(D.Com.Google.Dagger.daggerCompiler)
+//  kapt(D.Com.Google.Dagger.daggerCompiler)
 
-  implementation(D.Androidx.Compose.Ui.ui)
-  implementation(D.Androidx.Compose.Ui.uiTooling)
-  implementation(D.Androidx.Compose.Material.material)
+  implementation(Dependencies.Androidx.Compose.Material.material)
+  implementation(Dependencies.Androidx.Compose.Ui.ui)
+  implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
 
-  implementation(project(M.BINDINGS))
-  implementation(project(M.COMPONENTS))
-  api(project(M.DOMAIN))
-  implementation(project(M.EXPERIMENTS))
-  implementation(project(M.EXTENSIONS))
-  implementation(project(M.HANDLE))
-  implementation(project(M.IDS))
-  implementation(project(M.RESOURCES))
+//  testImplementation(Dependencies.Junit.junit)
 
-  implementation(D.Com.Google.Dagger.dagger)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Com.JakeWharton.Timber.timber)
-  implementation(D.Androidx.ConstraintLayout.constraintLayout)
-  implementation(D.Androidx.Navigation.navigationFragmentKtx)
-  implementation(D.Androidx.Navigation.navigationUiKtx)
-  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
-  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+//  implementation(project(M.BINDINGS))
+//  implementation(project(M.COMPONENTS))
+//  api(project(M.DOMAIN))
+//  implementation(project(M.EXPERIMENTS))
+//  implementation(project(M.EXTENSIONS))
+//  implementation(project(M.HANDLE))
+//  implementation(project(M.IDS))
+//  implementation(project(M.RESOURCES))
+//
+//  implementation(D.Com.Google.Dagger.dagger)
+//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+//  implementation(D.Com.JakeWharton.Timber.timber)
+//  implementation(D.Androidx.ConstraintLayout.constraintLayout)
+//  implementation(D.Androidx.Navigation.navigationFragmentKtx)
+//  implementation(D.Androidx.Navigation.navigationUiKtx)
+//  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
+//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+//
+//  testImplementation(D.Androidx.Test.Ext.junitKtx)
+//  testImplementation(D.Org.Robolectric.robolectric)
+//
+//  androidTestUtil(D.Androidx.Test.orchestrator)
+//
+//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+//  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Robolectric.robolectric)
+//  testImplementation(Dependencies.Androidx.Test.runner)
+//  testImplementation(Dependencies.Androidx.Test.rules)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+//  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
+//  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
-
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+//  androidTestImplementation(Dependencies.Androidx.Test.runner)
+//  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+//  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
 
 }

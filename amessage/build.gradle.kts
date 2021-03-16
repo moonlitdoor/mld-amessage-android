@@ -1,5 +1,6 @@
 import com.moonlitdoor.amessage.android.AndroidPlugin
 import com.moonlitdoor.amessage.dependencies.Dependencies
+import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.git-version")
@@ -33,7 +34,7 @@ println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 android {
 //  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
-  lintOptions {
+  lint {
     isAbortOnError = false
     disable(
       "NullSafeMutableLiveData",
@@ -63,6 +64,7 @@ android {
 //    } else {
 //    }
   }
+
   signingConfigs {
     create(AndroidPlugin.RELEASE) {
       storeFile = file(property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE").toString())
@@ -71,6 +73,7 @@ android {
       keyPassword = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_PASSWORD").toString()
     }
   }
+
   buildTypes {
     getByName(AndroidPlugin.RELEASE) {
       signingConfig = signingConfigs.getByName(AndroidPlugin.RELEASE)
@@ -153,17 +156,13 @@ dependencies {
 
 //  kapt(D.Com.Google.Dagger.daggerCompiler)
 
-//  implementation(D.Androidx.Compose.Ui.ui)
-//  implementation(D.Androidx.Compose.Ui.uiTooling)
-//  implementation(D.Androidx.Compose.Material.material)
-
 //  implementation(project(M.ANALYTICS))
 //  api(project(M.BINDINGS))
 //  api(project(M.COMPONENTS))
 //  implementation(project(M.CONSTANTS))
 //  api(project(M.CONNECT))
-//  api(project(M.CONNECTIONS))
-//  implementation(project(Modules.CONVERSATIONS))
+  implementation(project(Modules.CONNECTIONS))
+  implementation(project(Modules.CONVERSATIONS))
 //  api(project(M.DOMAIN))
 //  api(project(M.EXPERIMENTS))
 //  api(project(M.EXTENSIONS))
@@ -175,14 +174,16 @@ dependencies {
 //  api(project(M.SETTINGS))
 
 //  implementation("com.google.android.material:material:1.3.0")
+
+  implementation(Dependencies.Androidx.Activity.activityCompose)
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleRuntimeKtx)
-  implementation(Dependencies.Androidx.Activity.activityCompose)
-  testImplementation(Dependencies.Junit.junit)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
   implementation(Dependencies.Com.Google.Accompanist.accompanistInsets)
+
+  testImplementation(Dependencies.Junit.junit)
 
 //  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
 //  implementation(D.Com.Google.Dagger.dagger)

@@ -21,6 +21,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.connections.Connections
+import com.moonlitdoor.amessage.conversations.Conversations
 import com.moonlitdoor.amessage.theme.AMessageTheme
 
 
@@ -71,8 +73,8 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
             },
             content = {
               NavHost(navController, startDestination = Screen.Conversations.route) {
-                composable(Screen.Conversations.route) { Greeting(name = "Conversations") }
-                composable(Screen.Connections.route) { Greeting(name = "Connections") }
+                composable(Screen.Conversations.route) { Conversations(name = "Conversations") }
+                composable(Screen.Connections.route) { Connections(name = "Connections") }
 //            composable(Screen.Conversations.route) { Conversations(navController) }
 //            composable(Screen.Connections.route) { Connections(navController) }
               }

@@ -2,8 +2,8 @@ package com.moonlitdoor.amessage
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Email
-import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 
 sealed class Screen(
@@ -12,15 +12,15 @@ sealed class Screen(
   @StringRes val resourceId: Int,
 ) {
   object Conversations : Screen(
-    route = "profile",
-    icon = Icons.Filled.Favorite,
-    resourceId = R.string.generic_ok,
+    route = "conversations",
+    icon = Icons.Filled.Call,
+    resourceId = R.string.conversations_title,
   )
 
   object Connections : Screen(
-    route = "friends-list",
-    icon = Icons.Filled.Email,
-    resourceId = R.string.generic_cancel,
+    route = "connections",
+    icon = Icons.Filled.Person,
+    resourceId = R.string.connections_title,
   )
 
   companion object {
