@@ -13,6 +13,10 @@ object Dependencies {
 //      const val annotation = "androidx.annotation:annotation:1.1.0"
 //    }
 
+    object Activity {
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha04"
+    }
+
     object AppCompat {
       const val appcompat = "androidx.appcompat:appcompat:1.3.0-beta01"
     }
@@ -27,7 +31,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-alpha03"
+      const val version = "1.0.0-beta02"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -35,7 +39,7 @@ object Dependencies {
 
       object Ui {
         const val ui = "androidx.compose.ui:ui:$version"
-        const val uiTooling = "androidx.ui:ui-tooling:$version"
+        const val uiTooling = "androidx.compose.ui:ui-tooling:$version"
       }
     }
 
@@ -69,6 +73,7 @@ object Dependencies {
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
+      const val navigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha09"
     }
 
     object Preference {
@@ -126,6 +131,10 @@ object Dependencies {
     }
 
     class Google {
+      object Accompanist {
+        const val accompanistInsets = "com.google.accompanist:accompanist-insets:0.6.2"
+      }
+
       class Android {
         object Gms {
           const val playServicesVision = "com.google.android.gms:play-services-vision:20.1.2"
@@ -209,7 +218,7 @@ object Dependencies {
   }
 
   object Junit {
-    const val junit = "junit:junit:4.13"
+    const val junit = "junit:junit:4.13.2"
   }
 
   class Org {
