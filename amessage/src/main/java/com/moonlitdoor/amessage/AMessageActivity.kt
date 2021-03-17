@@ -15,6 +15,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -42,7 +43,7 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
     setContent {
       AMessageTheme {
         EdgeToEdgeContent {
-          val navController = rememberNavController()
+          val navController: NavHostController = rememberNavController()
           Scaffold(
             topBar = {
               val currentScreenState by navController.currentBackStackEntryAsState()
@@ -53,7 +54,7 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
               )
             },
             bottomBar = {
-              BottomNavigation() {
+              BottomNavigation {
                 val currentScreenState by navController.currentBackStackEntryAsState()
                 val currentRoute = currentScreenState?.arguments?.getString(KEY_ROUTE)
                 Screen.items.forEach { screen ->
@@ -73,10 +74,8 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
             },
             content = {
               NavHost(navController, startDestination = Screen.Conversations.route) {
-                composable(Screen.Conversations.route) { Conversations(name = "Conversations") }
-                composable(Screen.Connections.route) { Connections(name = "Connections") }
-//            composable(Screen.Conversations.route) { Conversations(navController) }
-//            composable(Screen.Connections.route) { Connections(navController) }
+                composable(Screen.Conversations.route) { Conversations(navController) }
+                composable(Screen.Connections.route) { Connections(navController) }
               }
             }
           )

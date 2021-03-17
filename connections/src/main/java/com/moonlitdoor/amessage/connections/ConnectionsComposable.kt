@@ -1,16 +1,22 @@
 package com.moonlitdoor.amessage.connections
 
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Connections(name: String) {
-  Text(text = "Hello, $name is my name!")
+fun Connections(navHostController: NavHostController) {
+  Text(text = "Hello, Connections is my name!")
 }
 
 @Preview(showBackground = false)
 @Composable
 fun DefaultPreview() {
-  Connections("Android")
+  MaterialTheme {
+    val navHostController = rememberNavController()
+    Connections(navHostController)
+  }
 }
