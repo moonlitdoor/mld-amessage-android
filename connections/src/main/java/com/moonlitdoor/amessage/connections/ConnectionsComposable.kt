@@ -4,12 +4,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun Connections(navHostController: NavHostController) {
-  Text(text = "Hello, Connections is my name!")
+  val viewModel: ConnectionsViewModel = viewModel()
+  Text(text = "Hello, Connections is my name!: $viewModel")
 }
 
 @Preview(showBackground = false)

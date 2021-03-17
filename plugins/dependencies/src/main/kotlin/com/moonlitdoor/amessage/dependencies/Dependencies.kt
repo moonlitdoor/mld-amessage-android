@@ -66,6 +66,7 @@ object Dependencies {
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
       const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
       const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
+      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
     }
 
     object Navigation {

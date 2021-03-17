@@ -34,6 +34,7 @@ dependencies {
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
+  implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
 
 //  testImplementation(Dependencies.Junit.junit)
