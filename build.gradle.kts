@@ -11,6 +11,7 @@ buildscript {
 //    classpath("com.android.tools.build:gradle:7.0.0-alpha09")
     classpath("com.moonlitdoor.amessage:android")
 //    classpath("com.moonlitdoor.amessage:jacoco")
+    classpath("com.google.dagger:hilt-android-gradle-plugin:2.33-beta")
     classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.36.0")
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.0.1")

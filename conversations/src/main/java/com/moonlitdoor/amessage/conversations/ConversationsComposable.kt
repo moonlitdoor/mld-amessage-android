@@ -9,8 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Conversations(navHostController: NavHostController) {
-  val viewModel: ConversationsViewModel = viewModel()
+fun Conversations(navHostController: NavHostController, viewModel: ConversationsViewModel) {
   Text(text = "Hello, my name is Conversation!: $viewModel")
 }
 
@@ -19,7 +18,8 @@ fun Conversations(navHostController: NavHostController) {
 fun DefaultPreview() {
   MaterialTheme {
     val navHostController = rememberNavController()
-    Conversations(navHostController)
+    val viewModel: ConversationsViewModel = viewModel()
+    Conversations(navHostController, viewModel)
   }
 
 }

@@ -2,7 +2,6 @@ package com.moonlitdoor.amessage
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +14,7 @@ import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.NavHost
@@ -23,11 +23,14 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.connections.Connections
+import com.moonlitdoor.amessage.connections.ConnectionsViewModel
 import com.moonlitdoor.amessage.conversations.Conversations
+import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.theme.AMessageTheme
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferenceChangeListener {
+@AndroidEntryPoint
+class AMessageActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
 //    this.setTheme(
@@ -74,28 +77,20 @@ class AMessageActivity : AppCompatActivity(), SharedPreferences.OnSharedPreferen
             },
             content = {
               NavHost(navController, startDestination = Screen.Conversations.route) {
-                composable(Screen.Conversations.route) { Conversations(navController) }
-                composable(Screen.Connections.route) { Connections(navController) }
+                composable(Screen.Conversations.route) {
+                  val viewModel: ConversationsViewModel = hiltNavGraphViewModel()
+                  Conversations(navController, viewModel)
+                }
+                composable(Screen.Connections.route) {
+                  val viewModel: ConnectionsViewModel = hiltNavGraphViewModel()
+                  Connections(navController, viewModel)
+                }
               }
             }
           )
         }
       }
     }
-//    PreferenceManager.getDefaultSharedPreferences(this).registerOnSharedPreferenceChangeListener(this)
-  }
-
-//  override fun onSupportNavigateUp() = findNavController(this, R.id.fragment).navigateUp()
-
-//  override fun onDestroy() {
-//    super.onDestroy()
-//    PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this)
-//  }
-
-  override fun onSharedPreferenceChanged(sharedPreferences: SharedPreferences?, key: String?) {
-//    when (key) {
-//      getString(R.string.preference_theme) -> recreate()
-//    }
   }
 
   companion object {

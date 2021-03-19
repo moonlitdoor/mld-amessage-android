@@ -9,8 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun Connections(navHostController: NavHostController) {
-  val viewModel: ConnectionsViewModel = viewModel()
+fun Connections(navHostController: NavHostController, viewModel: ConnectionsViewModel) {
   Text(text = "Hello, Connections is my name!: $viewModel")
 }
 
@@ -19,6 +18,7 @@ fun Connections(navHostController: NavHostController) {
 fun DefaultPreview() {
   MaterialTheme {
     val navHostController = rememberNavController()
-    Connections(navHostController)
+    val viewModel: ConnectionsViewModel = viewModel()
+    Connections(navHostController, viewModel)
   }
 }

@@ -36,6 +36,7 @@ dependencies {
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
+  implementation("com.google.dagger:hilt-android:2.33-beta")
 
 //  testImplementation(Dependencies.Junit.junit)
 

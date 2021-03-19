@@ -4,6 +4,7 @@ import android.app.Application
 //import androidx.camera.camera2.Camera2Config
 //import androidx.camera.core.CameraXConfig
 import androidx.lifecycle.LifecycleObserver
+import dagger.hilt.android.HiltAndroidApp
 
 //import androidx.preference.PreferenceManager
 //import androidx.work.Configuration
@@ -15,6 +16,7 @@ import androidx.lifecycle.LifecycleObserver
 //import com.moonlitdoor.amessage.root.Root
 //import javax.inject.Inject
 
+@HiltAndroidApp
 class AMessageApplication : Application(), LifecycleObserver, /*Configuration.Provider,*/ /*CameraXConfig.Provider,*/ Provider by AMessageDI {
 
 //  @Inject

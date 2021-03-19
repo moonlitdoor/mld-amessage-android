@@ -6,6 +6,7 @@ plugins {
   id("com.moonlitdoor.git-version")
   id("com.android.application")
   id("com.moonlitdoor.amessage.android")
+  id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
   id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
@@ -21,6 +22,10 @@ plugins {
 //base {
 //  archivesBaseName = "$name-$gitVersion"
 //}
+
+kapt {
+  correctErrorTypes = true
+}
 
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
@@ -153,7 +158,7 @@ android {
 }
 
 dependencies {
-
+  kapt("com.google.dagger:hilt-compiler:2.33-beta")
 //  kapt(D.Com.Google.Dagger.daggerCompiler)
 
 //  implementation(project(M.ANALYTICS))
@@ -182,6 +187,8 @@ dependencies {
   implementation(Dependencies.Androidx.Lifecycle.lifecycleRuntimeKtx)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
   implementation(Dependencies.Com.Google.Accompanist.accompanistInsets)
+  implementation("com.google.dagger:hilt-android:2.33-beta")
+  implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha01")
 
   testImplementation(Dependencies.Junit.junit)
 
@@ -220,21 +227,26 @@ dependencies {
 
 //  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
+  kaptTest("com.google.dagger:hilt-compiler:2.33-beta")
+
   testImplementation(Dependencies.Androidx.Test.runner)
   testImplementation(Dependencies.Androidx.Test.rules)
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
+  testImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 //  testImplementation(D.Androidx.Room.roomTesting)
 //  testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
 //  testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
 
+  kaptAndroidTest("com.google.dagger:hilt-compiler:2.33-beta")
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 //  androidTestImplementation(D.Androidx.Room.roomTesting)
   androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-//  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
+  androidTestImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
+  //  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
 
 }
 
