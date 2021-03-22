@@ -2,7 +2,7 @@ package com.moonlitdoor.amessage.dependencies
 
 object Dependencies {
   object AGP {
-    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha10"
+    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha11"
   }
 
 
@@ -124,19 +124,19 @@ object Dependencies {
     }
   }
 
-  class Com {
-    class Amitshekhar {
+  object Com {
+    object Amitshekhar {
       object Android {
         const val debugDb = "com.amitshekhar.android:debug-db:1.0.6"
       }
     }
 
-    class Google {
+    object Google {
       object Accompanist {
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:0.6.2"
       }
 
-      class Android {
+      object Android {
         object Gms {
           const val playServicesVision = "com.google.android.gms:play-services-vision:20.1.2"
         }
@@ -146,7 +146,7 @@ object Dependencies {
         }
       }
 
-      class Code {
+      object Code {
         object Gson {
           const val gson = "com.google.code.gson:gson:2.8.6"
         }
@@ -184,19 +184,24 @@ object Dependencies {
       }
     }
 
-    class JakeWharton {
+    object JakeWharton {
       object Timber {
         const val timber = "com.jakewharton.timber:timber:4.7.1"
       }
     }
 
-    class Moonlitdoor {
+    object MoonlitDoor {
+
+      object AMessage {
+        const val dependencies = "com.moonlitdoor.amessage:dependencies"
+      }
+
       object SharedPreferenceLiveData {
         const val sharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
       }
     }
 
-    class SquareUp {
+    object SquareUp {
       object OkHttp3 {
         private const val version = "4.9.0"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"
@@ -211,7 +216,7 @@ object Dependencies {
       }
     }
 
-    class Stepstone {
+    object Stepstone {
       object Stepper {
         const val materialStepper = "com.stepstone.stepper:material-stepper:4.3.1"
       }
@@ -222,8 +227,8 @@ object Dependencies {
     const val junit = "junit:junit:4.13.2"
   }
 
-  class Org {
-    class Jetbrains {
+  object Org {
+    object Jetbrains {
       object Kotlin {
         private const val version = "1.4.30"
         const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"

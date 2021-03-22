@@ -1,8 +1,7 @@
 import com.moonlitdoor.amessage.dependencies.Dependencies
 
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.amessage.android")
+  id("com.moonlitdoor.amessage.android.library")
   id("kotlin-kapt")
 }
 

@@ -1,11 +1,10 @@
-import com.moonlitdoor.amessage.android.AndroidPlugin
+import com.moonlitdoor.amessage.dependencies.Constants
 import com.moonlitdoor.amessage.dependencies.Dependencies
 import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.git-version")
-  id("com.android.application")
-  id("com.moonlitdoor.amessage.android")
+  id("com.moonlitdoor.amessage.android.application")
   id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
   id("androidx.navigation.safeargs")
@@ -71,7 +70,7 @@ android {
   }
 
   signingConfigs {
-    create(AndroidPlugin.RELEASE) {
+    create(Constants.RELEASE) {
       storeFile = file(property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE").toString())
       storePassword = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_STORE_PASSWORD").toString()
       keyAlias = property("COM_MOONLITDOOR_AMESSAGE_KEY_STORE_KEY_ALIAS").toString()
@@ -80,10 +79,10 @@ android {
   }
 
   buildTypes {
-    getByName(AndroidPlugin.RELEASE) {
-      signingConfig = signingConfigs.getByName(AndroidPlugin.RELEASE)
+    getByName(Constants.RELEASE) {
+      signingConfig = signingConfigs.getByName(Constants.RELEASE)
       isShrinkResources = false
-      proguardFiles(getDefaultProguardFile(AndroidPlugin.PROGUARD_ANDROID_FILE), AndroidPlugin.PROGUARD_FILE)
+      proguardFiles(getDefaultProguardFile(Constants.PROGUARD_ANDROID_FILE), Constants.PROGUARD_FILE)
       resValue("string", "app_name", "AMessage")
       buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID").toString())
@@ -96,12 +95,12 @@ android {
       resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_PROJECT_ID").toString())
     }
 
-    create(AndroidPlugin.BETA) {
-      matchingFallbacks += AndroidPlugin.RELEASE
+    create(Constants.BETA) {
+      matchingFallbacks += Constants.RELEASE
       isDebuggable = false
-      signingConfig = signingConfigs.getByName(AndroidPlugin.RELEASE)
+      signingConfig = signingConfigs.getByName(Constants.RELEASE)
       isShrinkResources = false
-      proguardFiles(getDefaultProguardFile(AndroidPlugin.PROGUARD_ANDROID_FILE), AndroidPlugin.PROGUARD_FILE)
+      proguardFiles(getDefaultProguardFile(Constants.PROGUARD_ANDROID_FILE), Constants.PROGUARD_FILE)
       applicationIdSuffix = ".beta"
       resValue("color", "launcher_background", "@color/colorMonsterAccent")
       resValue("string", "app_name", "AMessage Beta")
@@ -122,7 +121,7 @@ android {
       }
     }
 
-    getByName(AndroidPlugin.DEBUG) {
+    getByName(Constants.DEBUG) {
       isMinifyEnabled = false
       applicationIdSuffix = ".debug"
       resValue("color", "launcher_background", "@color/colorDarkPrimary")

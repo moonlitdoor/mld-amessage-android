@@ -20,13 +20,18 @@ group = "com.moonlitdoor.amessage"
 
 gradlePlugin {
   plugins {
-    create("android") {
-      id = "com.moonlitdoor.amessage.android"
-      implementationClass = "com.moonlitdoor.amessage.android.AndroidPlugin"
+    create("application") {
+      id = "com.moonlitdoor.amessage.android.application"
+      implementationClass = "com.moonlitdoor.amessage.android.AndroidApplicationPlugin"
+    }
+    create("library") {
+      id = "com.moonlitdoor.amessage.android.library"
+      implementationClass = "com.moonlitdoor.amessage.android.AndroidLibraryPlugin"
     }
   }
 }
 
 dependencies {
   implementation(Dependencies.AGP.gradle)
+  implementation(Dependencies.Com.MoonlitDoor.AMessage.dependencies)
 }

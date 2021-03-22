@@ -1,11 +1,12 @@
 package com.moonlitdoor.amessage.android
 
 import com.android.build.gradle.BaseExtension
+import com.moonlitdoor.amessage.dependencies.Constants
 import org.gradle.api.JavaVersion
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
-class AndroidPlugin : Plugin<Project> {
+abstract class AbstractAndroidPlugin : Plugin<Project> {
   override fun apply(project: Project) {
     project.plugins.apply("kotlin-android")
     val android = project.extensions.getByName("android")
@@ -21,10 +22,10 @@ class AndroidPlugin : Plugin<Project> {
         }
 
         buildTypes {
-          getByName(RELEASE) {
+          getByName(Constants.RELEASE) {
             isMinifyEnabled = false
 //            isShrinkResources = SHRINK
-            proguardFiles(PROGUARD_FILE)
+            proguardFiles(Constants.PROGUARD_FILE)
           }
         }
 
@@ -73,13 +74,4 @@ class AndroidPlugin : Plugin<Project> {
 //    }
 
   }
-
-  companion object {
-    const val RELEASE = "release"
-    const val BETA = "beta"
-    const val DEBUG = "debug"
-    const val PROGUARD_FILE = "proguard-rules.pro"
-    const val PROGUARD_ANDROID_FILE = "proguard-android-optimize.txt"
-  }
-
 }
