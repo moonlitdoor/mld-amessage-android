@@ -1,39 +1,43 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
-  kotlin("kapt")
+  id("com.moonlitdoor.amessage.android.library")
+  id("kotlin-kapt")
 }
 
 dependencies {
 
-  kapt(D.Com.Google.Dagger.daggerCompiler)
+//  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
-  api(project(M.DATABASE))
-  api(project(M.NETWORK))
+//  implementation(project(Modules.DATABASE))
+//  api(project(M.NETWORK))
 
-  implementation(project(M.EXTENSIONS))
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
-  implementation(D.Com.Google.Dagger.dagger)
-  implementation(D.Androidx.AppCompat.appcompat)
-  api(D.Androidx.Work.workRuntimeKtx)
-  implementation(D.Com.JakeWharton.Timber.timber)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
-  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
-  implementation(D.Com.Google.Firebase.firebaseAnalytics)
-  implementation(D.Com.Google.Firebase.firebaseIid)
-  implementation(D.Com.Google.Firebase.firebaseMessaging)
+//  implementation(project(M.EXTENSIONS))
 
-  testImplementation(D.Androidx.Test.rules)
-  testImplementation(D.Androidx.Test.runner)
-  testImplementation(D.Androidx.Test.Espresso.espressoCore)
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Robolectric.robolectric)
+//  implementation(D.Com.Google.Dagger.dagger)
+//  implementation(D.Androidx.AppCompat.appcompat)
+//  api(D.Androidx.Work.workRuntimeKtx)
+//  implementation(D.Com.JakeWharton.Timber.timber)
+//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
+//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
+//  implementation(D.Com.Google.Firebase.firebaseAnalytics)
+//  implementation(D.Com.Google.Firebase.firebaseIid)
+//  implementation(D.Com.Google.Firebase.firebaseMessaging)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+//  testImplementation(D.Androidx.Test.rules)
+//  testImplementation(D.Androidx.Test.runner)
+//  testImplementation(D.Androidx.Test.Espresso.espressoCore)
+//  testImplementation(D.Androidx.Test.Ext.junitKtx)
+//  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestImplementation(D.Androidx.Test.runner)
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
+
+//  androidTestImplementation(D.Androidx.Test.runner)
+//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+//  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
 }

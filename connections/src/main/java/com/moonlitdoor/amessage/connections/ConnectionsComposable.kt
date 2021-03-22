@@ -10,7 +10,7 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun Connections(navHostController: NavHostController, viewModel: ConnectionsViewModel) {
-  Text(text = "Hello, Connections is my name!: $viewModel")
+  Text(text = "Hello, Connections is my name!: ${viewModel.repository}")
 }
 
 @Preview(showBackground = false)

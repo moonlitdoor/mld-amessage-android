@@ -1,10 +1,10 @@
 package com.moonlitdoor.amessage.domain.repository
 
-import com.moonlitdoor.amessage.database.dao.ThemeDao
+//import com.moonlitdoor.amessage.database.dao.ThemeDao
 import javax.inject.Inject
 
-class ThemeRepository @Inject constructor(dao: ThemeDao) {
+class ThemeRepository @Inject constructor(/*dao: ThemeDao*/) {
 
-  val theme = dao.theme
+  val theme = 3//dao.theme
 
 }

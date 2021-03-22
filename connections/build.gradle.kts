@@ -1,4 +1,5 @@
 import com.moonlitdoor.amessage.dependencies.Dependencies
+import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.amessage.android.library")
@@ -29,19 +30,20 @@ android {
 dependencies {
 
 //  kapt(D.Com.Google.Dagger.daggerCompiler)
+  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
-  implementation("com.google.dagger:hilt-android:2.33-beta")
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
 
 //  testImplementation(Dependencies.Junit.junit)
 
 //  implementation(project(M.BINDINGS))
 //  implementation(project(M.COMPONENTS))
-//  api(project(M.DOMAIN))
+  implementation(project(Modules.DOMAIN))
 //  implementation(project(M.EXPERIMENTS))
 //  implementation(project(M.EXTENSIONS))
 //  implementation(project(M.HANDLE))
@@ -50,7 +52,7 @@ dependencies {
 //
 //  implementation(D.Com.Google.Dagger.dagger)
 //  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-//  implementation(D.Com.JakeWharton.Timber.timber)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
 //  implementation(D.Androidx.ConstraintLayout.constraintLayout)
 //  implementation(D.Androidx.Navigation.navigationFragmentKtx)
 //  implementation(D.Androidx.Navigation.navigationUiKtx)

@@ -1,20 +1,20 @@
 package com.moonlitdoor.amessage.domain.repository
 
-import com.moonlitdoor.amessage.database.dao.SettingsDao
+//import com.moonlitdoor.amessage.database.dao.SettingsDao
 import javax.inject.Inject
 
-class SettingsRepository @Inject constructor(private val dao: SettingsDao) {
+class SettingsRepository @Inject constructor(/*private val dao: SettingsDao*/) {
 
-  fun getExperimentsUiEnabled() = dao.getExperimentsUiEnabled()
+  fun getExperimentsUiEnabled() = Unit//dao.getExperimentsUiEnabled()
 
-  fun setExperimentsUiEnabled() = dao.setExperimentsUiEnabled()
+  fun setExperimentsUiEnabled() = Unit//dao.setExperimentsUiEnabled()
 
-  fun getDeveloperSettingsEnabled() = dao.getDeveloperSettingsUiEnabled()
+  fun getDeveloperSettingsEnabled() = Unit//dao.getDeveloperSettingsUiEnabled()
 
-  fun setDeveloperSettingsEnabled() = dao.setDeveloperSettingsEnabled()
+  fun setDeveloperSettingsEnabled() = Unit//dao.setDeveloperSettingsEnabled()
 
-  fun getEmployeeSettingsEnabled() = dao.getEmployeeSettingsEnabled()
+  fun getEmployeeSettingsEnabled() = Unit//dao.getEmployeeSettingsEnabled()
 
-  fun setEmployeeSettingsEnabled() = dao.setEmployeeSettingsEnabled()
+  fun setEmployeeSettingsEnabled() = Unit//dao.setEmployeeSettingsEnabled()
 
 }

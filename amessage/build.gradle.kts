@@ -26,6 +26,10 @@ kapt {
   correctErrorTypes = true
 }
 
+hilt {
+  enableExperimentalClasspathAggregation = true
+}
+
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
@@ -157,8 +161,8 @@ android {
 }
 
 dependencies {
-  kapt("com.google.dagger:hilt-compiler:2.33-beta")
-//  kapt(D.Com.Google.Dagger.daggerCompiler)
+
+  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
 //  implementation(project(M.ANALYTICS))
 //  api(project(M.BINDINGS))
@@ -186,8 +190,8 @@ dependencies {
   implementation(Dependencies.Androidx.Lifecycle.lifecycleRuntimeKtx)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
   implementation(Dependencies.Com.Google.Accompanist.accompanistInsets)
-  implementation("com.google.dagger:hilt-android:2.33-beta")
-  implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha01")
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
+  implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
 
   testImplementation(Dependencies.Junit.junit)
 

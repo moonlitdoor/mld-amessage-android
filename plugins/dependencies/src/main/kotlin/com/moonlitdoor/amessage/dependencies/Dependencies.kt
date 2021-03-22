@@ -53,6 +53,11 @@ object Dependencies {
       const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
     }
 
+    object Hilt {
+      const val hilt = "androidx.hilt:hilt:1.0.0-beta01"
+      const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
+    }
+
     object Legacy {
       const val legacyPreferenceV14 = "androidx.legacy:legacy-preference-v14:1.0.0"
       const val legacySupportCoreUtils = "androidx.legacy:legacy-support-core-utils:1.0.0"
@@ -153,9 +158,13 @@ object Dependencies {
       }
 
       object Dagger {
-        private const val version = "2.29.1"
-        const val dagger = "com.google.dagger:dagger:$version"
-        const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
+        //        private const val version = "2.29.1"
+        private const val hiltVersion = "2.33-beta"
+
+        //        const val dagger = "com.google.dagger:dagger:$version"
+//        const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
+        const val hiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
       }
 
       object Firebase {
