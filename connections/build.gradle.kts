@@ -50,6 +50,7 @@ dependencies {
 //  implementation(project(M.HANDLE))
 //  implementation(project(M.IDS))
 //  implementation(project(M.RESOURCES))
+  implementation(project(Modules.THEME))
 //
 //  implementation(D.Com.Google.Dagger.dagger)
 //  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)

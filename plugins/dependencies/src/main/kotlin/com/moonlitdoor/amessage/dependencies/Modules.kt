@@ -26,5 +26,6 @@ object Modules {
   const val RESOURCES = ":resources"
   const val ROOT = ":root"
   const val SETTINGS = ":settings"
+  const val THEME = ":theme"
   const val WINDOWS = ":windows"
 }
