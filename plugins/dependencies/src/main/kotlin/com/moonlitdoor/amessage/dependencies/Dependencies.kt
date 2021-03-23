@@ -44,7 +44,7 @@ object Dependencies {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.5.0-beta02"
+      const val coreKtx = "androidx.core:core-ktx:1.5.0-beta03"
     }
 
     object Fragment {
@@ -65,8 +65,7 @@ object Dependencies {
     }
 
     object Lifecycle {
-      private const val versionOld = "2.2.0"
-      private const val version = "2.3.0-alpha07"
+      private const val version = "2.3.0"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
       const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
@@ -91,7 +90,7 @@ object Dependencies {
     }
 
     object Room {
-      private const val version = "2.3.0-alpha02"
+      private const val version = "2.3.0-beta03"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -158,13 +157,10 @@ object Dependencies {
       }
 
       object Dagger {
-        //        private const val version = "2.29.1"
-        private const val hiltVersion = "2.33-beta"
-
-        //        const val dagger = "com.google.dagger:dagger:$version"
-//        const val daggerCompiler = "com.google.dagger:dagger-compiler:$version"
-        const val hiltAndroid = "com.google.dagger:hilt-android:$hiltVersion"
-        const val hiltCompiler = "com.google.dagger:hilt-compiler:$hiltVersion"
+        private const val version = "2.33-beta"
+        const val hiltAndroid = "com.google.dagger:hilt-android:$version"
+        const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
+        const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
       }
 
       object Firebase {

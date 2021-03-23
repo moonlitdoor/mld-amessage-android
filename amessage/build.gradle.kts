@@ -7,7 +7,6 @@ plugins {
   id("com.moonlitdoor.amessage.android.application")
   id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
-  id("androidx.navigation.safeargs")
   id("com.google.firebase.appdistribution")
 //  id("com.github.triplet.play")
   id("com.google.firebase.crashlytics")
@@ -230,25 +229,25 @@ dependencies {
 
 //  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
-  kaptTest("com.google.dagger:hilt-compiler:2.33-beta")
+  kaptTest(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   testImplementation(Dependencies.Androidx.Test.runner)
   testImplementation(Dependencies.Androidx.Test.rules)
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-  testImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
+  testImplementation(Dependencies.Com.Google.Dagger.hiltAndroidTesting)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 //  testImplementation(D.Androidx.Room.roomTesting)
 //  testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
 //  testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
 
-  kaptAndroidTest("com.google.dagger:hilt-compiler:2.33-beta")
+  kaptAndroidTest(Dependencies.Com.Google.Dagger.hiltCompiler)
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 //  androidTestImplementation(D.Androidx.Room.roomTesting)
   androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation("com.google.dagger:hilt-android-testing:2.33-beta")
+  testImplementation(Dependencies.Com.Google.Dagger.hiltAndroidTesting)
   //  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
 
 }
