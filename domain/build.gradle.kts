@@ -1,4 +1,5 @@
 import com.moonlitdoor.amessage.dependencies.Dependencies
+import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.amessage.android.library")
@@ -9,7 +10,7 @@ dependencies {
 
 //  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
-//  implementation(project(Modules.DATABASE))
+  api(project(Modules.DATABASE))
 //  api(project(M.NETWORK))
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
@@ -21,23 +22,28 @@ dependencies {
 //  implementation(D.Androidx.AppCompat.appcompat)
 //  api(D.Androidx.Work.workRuntimeKtx)
 //  implementation(D.Com.JakeWharton.Timber.timber)
-//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
-//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
+  implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
+  implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 //  implementation(D.Com.Google.Firebase.firebaseAnalytics)
 //  implementation(D.Com.Google.Firebase.firebaseIid)
 //  implementation(D.Com.Google.Firebase.firebaseMessaging)
 
 //  testImplementation(D.Androidx.Test.rules)
 //  testImplementation(D.Androidx.Test.runner)
-//  testImplementation(D.Androidx.Test.Espresso.espressoCore)
-//  testImplementation(D.Androidx.Test.Ext.junitKtx)
+//  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Androidx.Test.runner)
+  testImplementation(Dependencies.Androidx.Test.rules)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
 //  testImplementation(D.Org.Robolectric.robolectric)
 
 //  androidTestUtil(D.Androidx.Test.orchestrator)
 
 //  androidTestImplementation(D.Androidx.Test.runner)
-//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-//  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
 
 }

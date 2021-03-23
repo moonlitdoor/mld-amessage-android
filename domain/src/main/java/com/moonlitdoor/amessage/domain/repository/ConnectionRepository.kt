@@ -1,9 +1,9 @@
 package com.moonlitdoor.amessage.domain.repository
 
 //import androidx.annotation.MainThread
-//import androidx.lifecycle.LiveData
+//import androidx.lifecycle.LiveData/**/
 //import androidx.work.WorkManager
-//import com.moonlitdoor.amessage.database.dao.ConnectionDao
+import com.moonlitdoor.amessage.database.dao.ConnectionDao
 //import com.moonlitdoor.amessage.database.dao.ProfileDao
 //import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 //import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
@@ -15,14 +15,14 @@ import com.moonlitdoor.amessage.domain.model.Profile
 //import com.moonlitdoor.amessage.network.NetworkClient
 //import kotlinx.coroutines.Dispatchers
 //import kotlinx.coroutines.flow.Flow
-//import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.map
 //import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 
-class ConnectionRepository @Inject constructor(/*private val connectionDao: ConnectionDao, private val profileDao: ProfileDao, private val workManager: WorkManager, private val client: NetworkClient*/) {
+class ConnectionRepository @Inject constructor(private val connectionDao: ConnectionDao/*, private val profileDao: ProfileDao, private val workManager: WorkManager, private val client: NetworkClient*/) {
 
-  fun getConnected() = Unit//connectionDao.getConnected().map { list -> list.map { Connection.from(it) } }
+  fun getConnected() = connectionDao.getConnected().map { list -> list.map { Connection.from(it) } }
 
   fun getPending() = Unit//connectionDao.getPending().map { list -> list.map { Connection.from(it) } }
 

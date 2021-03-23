@@ -1,8 +1,9 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
-  kotlin("kapt")
-  id("kotlin-android")
+  id("com.moonlitdoor.amessage.android.library")
+  id("dagger.hilt.android.plugin")
+  id("kotlin-kapt")
 }
 
 android {
@@ -17,32 +18,32 @@ android {
 
 dependencies {
 
-  kapt(D.Com.Google.Dagger.daggerCompiler)
-  kapt(D.Androidx.Room.roomCompiler)
+  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
+  kapt(Dependencies.Androidx.Room.roomCompiler)
 
-  api(project(M.CONSTANTS))
+//  api(project(M.CONSTANTS))
 
-  api(D.Com.Google.Firebase.firebaseDatabase)
-  implementation(D.Com.Google.Dagger.dagger)
-  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-  api(D.Androidx.Room.roomKtx)
-  implementation(D.Androidx.Room.roomRuntime)
-  implementation(D.Androidx.Core.coreKtx)
-  implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
-  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
-  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)
-  implementation(D.Com.JakeWharton.Timber.timber)
+  implementation(Dependencies.Com.Google.Firebase.firebaseDatabase)
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
+//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
+  implementation(Dependencies.Androidx.Room.roomKtx)
+  implementation(Dependencies.Androidx.Room.roomRuntime)
+//  implementation(D.Androidx.Core.coreKtx)
+//  implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
+//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
+//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
+//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
-  debugImplementation(D.Com.Amitshekhar.Android.debugDb)
+//  debugImplementation(D.Com.Amitshekhar.Android.debugDb)
 
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Robolectric.robolectric)
+  testImplementation(Dependencies.Junit.junit)
+//  testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(Dependencies.Junit.junit)
 
 }
