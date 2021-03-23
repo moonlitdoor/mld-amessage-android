@@ -5,6 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.moonlitdoor.amessage.routes.Routes
 
 sealed class Screen(
   val route: String,
@@ -12,13 +13,13 @@ sealed class Screen(
   @StringRes val resourceId: Int,
 ) {
   object Conversations : Screen(
-    route = "conversations",
+    route = Routes.Conversations.route,
     icon = Icons.Filled.Call,
     resourceId = R.string.conversations_title,
   )
 
   object Connections : Screen(
-    route = "connections",
+    route = Routes.Connections.route,
     icon = Icons.Filled.Person,
     resourceId = R.string.connections_title,
   )

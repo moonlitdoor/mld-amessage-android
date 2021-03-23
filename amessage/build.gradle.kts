@@ -171,6 +171,7 @@ dependencies {
   implementation(project(Modules.CONNECTIONS))
   implementation(project(Modules.CONVERSATIONS))
   implementation(project(Modules.INIT))
+  implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 //  api(project(M.DOMAIN))
 //  api(project(M.EXPERIMENTS))

@@ -25,6 +25,7 @@ object Modules {
   const val PUSH = ":push"
   const val RESOURCES = ":resources"
   const val ROOT = ":root"
+  const val ROUTES = ":routes"
   const val SETTINGS = ":settings"
   const val THEME = ":theme"
   const val WINDOWS = ":windows"
