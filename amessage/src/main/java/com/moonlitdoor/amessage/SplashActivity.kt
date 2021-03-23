@@ -13,9 +13,4 @@ class SplashActivity : AppCompatActivity() {
       AMessageActivity.start(this)
     }, 1000)
   }
-
-  override fun onDestroy() {
-    super.onDestroy()
-
-  }
 }
