@@ -27,10 +27,6 @@
       android:name=".AMessageActivity"
       android:windowSoftInputMode="adjustResize" />
 
-    <service
-      android:name="com.moonlitdoor.amessage.DatabasePopulationService"
-      android:exported="false" />
-
     <meta-data
       android:name="firebase_crashlytics_collection_enabled"
       android:value="false" />

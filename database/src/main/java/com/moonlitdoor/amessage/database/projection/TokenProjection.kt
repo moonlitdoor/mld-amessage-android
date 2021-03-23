@@ -2,15 +2,15 @@ package com.moonlitdoor.amessage.database.projection
 
 import androidx.room.ColumnInfo
 
-data class HandleProjection(
+data class TokenProjection(
   @ColumnInfo(name = "value")
   val value: String?
 ) {
-  val key: String = HANDLE
+  val key: String = TOKEN
 
   companion object {
 
-    const val HANDLE = "handle"
+    const val TOKEN = "token"
   }
 
 }

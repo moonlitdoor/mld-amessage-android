@@ -4,6 +4,7 @@ import android.app.Application
 //import androidx.camera.camera2.Camera2Config
 //import androidx.camera.core.CameraXConfig
 import androidx.lifecycle.LifecycleObserver
+import com.moonlitdoor.amessage.init.DatabasePopulationService
 import dagger.hilt.android.HiltAndroidApp
 
 //import androidx.preference.PreferenceManager
@@ -17,7 +18,7 @@ import dagger.hilt.android.HiltAndroidApp
 //import javax.inject.Inject
 
 @HiltAndroidApp
-class AMessageApplication : Application(), LifecycleObserver, /*Configuration.Provider,*/ /*CameraXConfig.Provider,*/ Provider by AMessageDI {
+class AMessageApplication : Application(), LifecycleObserver /*Configuration.Provider,*/ /*CameraXConfig.Provider,*/ {
 
 //  @Inject
 //  lateinit var workerFactory: AMessageWorkerFactory
@@ -25,10 +26,9 @@ class AMessageApplication : Application(), LifecycleObserver, /*Configuration.Pr
   override fun onCreate() {
 //    Root.init(this)
     super.onCreate()
-//    AMessageDI.init(this).inject(this)
     UserId.init(this)
 //    FirebaseApp.initializeApp(this)
-//    TimberInit(BuildConfig.DEBUG)
+    TimberInit(BuildConfig.DEBUG)
 //    Analytics.init(this, UserId.value.toString())
 //    Experiments.init()
 //    WorkManager.initialize(this, this.workManagerConfiguration)

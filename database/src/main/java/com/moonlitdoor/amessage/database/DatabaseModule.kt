@@ -1,7 +1,6 @@
 package com.moonlitdoor.amessage.database
 
 import android.content.Context
-//import android.content.SharedPreferences
 import androidx.room.Room
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -11,8 +10,6 @@ import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.KeyValueDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
-//import com.moonlitdoor.amessage.database.dao.ThemeDao
-//import com.moonlitdoor.amessage.database.dao.WindowsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

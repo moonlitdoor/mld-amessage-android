@@ -20,6 +20,7 @@ object Modules {
   const val HANDLE = ":handle"
   const val HELP = ":help"
   const val IDS = ":ids"
+  const val INIT = ":init"
   const val NETWORK = ":network"
   const val PUSH = ":push"
   const val RESOURCES = ":resources"

@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.domain.model
 
-//import com.moonlitdoor.amessage.database.entity.ConversationEntity
+import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import java.util.*
 
 data class Conversation(
@@ -14,14 +14,14 @@ data class Conversation(
   var messages: List<Message> = mutableListOf()
 ) {
   companion object {
-//    fun from(entity: ConversationEntity) = Conversation(
-//      entity.id,
-//      entity.conversationId,
-//      entity.title,
-//      entity.topic,
-//      entity.password,
-//      entity.salt
-//    )
+    fun from(entity: ConversationEntity) = Conversation(
+      entity.id,
+      entity.conversationId,
+      entity.title,
+      entity.topic,
+      entity.password,
+      entity.salt
+    )
   }
 }
 

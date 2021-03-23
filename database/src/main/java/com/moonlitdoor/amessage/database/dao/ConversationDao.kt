@@ -1,13 +1,12 @@
 package com.moonlitdoor.amessage.database.dao
 
-import androidx.annotation.MainThread
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.moonlitdoor.amessage.database.entity.ConversationConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 abstract class ConversationDao {
@@ -25,8 +24,7 @@ abstract class ConversationDao {
     }
   }
 
-  @MainThread
   @Query("SELECT * FROM conversation")
-  abstract fun get(): LiveData<List<ConversationEntity>>
+  abstract fun get(): Flow<List<ConversationEntity>>
 
 }

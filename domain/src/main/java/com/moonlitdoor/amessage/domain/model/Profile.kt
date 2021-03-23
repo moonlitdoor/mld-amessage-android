@@ -15,14 +15,5 @@ data class Profile(
 
   fun encode() = "$handle|$token|$id|$password|$salt"
 
-  companion object {
-//    fun from(view: ProfileView) = Profile(
-//      handle = view.handle,
-//      token = view.token,
-//      id = view.id,
-//      password = view.password,
-//      salt = view.salt
-//    )
 
-  }
 }
