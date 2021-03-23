@@ -167,7 +167,7 @@ dependencies {
 //  api(project(M.BINDINGS))
 //  api(project(M.COMPONENTS))
 //  implementation(project(M.CONSTANTS))
-//  api(project(M.CONNECT))
+  implementation(project(Modules.CONNECT))
   implementation(project(Modules.CONNECTIONS))
   implementation(project(Modules.CONVERSATIONS))
   implementation(project(Modules.INIT))

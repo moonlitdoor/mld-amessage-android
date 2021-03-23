@@ -22,6 +22,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.connect.Connect
+import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connections.Connections
 import com.moonlitdoor.amessage.connections.ConnectionsViewModel
 import com.moonlitdoor.amessage.conversations.Conversations
@@ -84,6 +86,10 @@ class AMessageActivity : AppCompatActivity() {
                 composable(Screen.Connections.route) {
                   val viewModel: ConnectionsViewModel = hiltNavGraphViewModel()
                   Connections(navController, viewModel)
+                }
+                composable(Screen.Connect.route) {
+                  val viewModel: ConnectViewModel = hiltNavGraphViewModel()
+                  Connect(navController, viewModel)
                 }
               }
             }

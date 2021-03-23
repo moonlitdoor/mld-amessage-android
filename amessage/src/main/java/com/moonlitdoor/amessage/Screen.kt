@@ -24,15 +24,23 @@ sealed class Screen(
     resourceId = R.string.connections_title,
   )
 
+  object Connect : Screen(
+    route = Routes.Connect.route,
+    icon = Icons.Filled.Person,
+    resourceId = R.string.connect_title,
+  )
+
   companion object {
     val items = listOf(
       Conversations,
       Connections,
+      Connect
     )
 
     fun fromRoute(route: String?): Screen = when (route) {
       Conversations.route -> Conversations
       Connections.route -> Connections
+      Connect.route -> Connect
       else -> Conversations
     }
 
