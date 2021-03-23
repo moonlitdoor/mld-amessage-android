@@ -3,6 +3,7 @@ import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.amessage.android.library")
+  id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
 }
 
@@ -43,7 +44,7 @@ dependencies {
 
 //  implementation(project(M.BINDINGS))
 //  implementation(project(M.COMPONENTS))
-  api(project(Modules.DOMAIN))
+  implementation(project(Modules.DOMAIN))
 //  implementation(project(M.EXPERIMENTS))
 //  implementation(project(M.EXTENSIONS))
 //  implementation(project(M.HANDLE))

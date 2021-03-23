@@ -3,14 +3,15 @@ import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.amessage.android.library")
+  id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
 }
 
 dependencies {
 
-//  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
+  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
-  api(project(Modules.DATABASE))
+  implementation(project(Modules.DATABASE))
 //  api(project(M.NETWORK))
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
