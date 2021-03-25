@@ -149,7 +149,7 @@ android {
   }
 
   composeOptions {
-    kotlinCompilerExtensionVersion = "1.0.0-beta02"
+    kotlinCompilerExtensionVersion = Dependencies.Androidx.Compose.version
   }
 
   kotlinOptions {
