@@ -1,6 +1,5 @@
 package com.moonlitdoor.amessage.domain.model
 
-//import  com.moonlitdoor.amessage.database.view.ProfileView
 import java.util.*
 
 data class Profile(

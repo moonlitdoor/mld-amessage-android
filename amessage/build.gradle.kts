@@ -176,7 +176,7 @@ dependencies {
 //  api(project(M.DOMAIN))
 //  api(project(M.EXPERIMENTS))
 //  api(project(M.EXTENSIONS))
-//  api(project(M.HANDLE))
+  implementation(project(Modules.HANDLE))
 //  implementation(project(M.IDS))
 //  api(project(M.PUSH))
 //  api(project(M.RESOURCES))
@@ -187,6 +187,7 @@ dependencies {
 
   implementation(Dependencies.Androidx.Activity.activityCompose)
   implementation(Dependencies.Androidx.Compose.Material.material)
+  implementation(Dependencies.Androidx.Compose.Material.materialIconsExtended)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleRuntimeKtx)

@@ -4,4 +4,6 @@ sealed class Routes(val route: String) {
   object Conversations : Routes("conversations")
   object Connections : Routes("connections")
   object Connect : Routes("connect")
+  object More : Routes("more")
+  object Handle : Routes("handle")
 }

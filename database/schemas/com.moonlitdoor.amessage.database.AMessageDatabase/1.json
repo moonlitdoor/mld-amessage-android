@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "02554b9b0bccc90d6c062faca66e6974",
+    "identityHash": "e3ca971fcba8fcad84270cb4f440db56",
     "entities": [
       {
         "tableName": "key_value",
@@ -41,7 +41,7 @@
       },
       {
         "tableName": "connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT NOT NULL, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "connectionId",
@@ -71,7 +71,7 @@
             "fieldPath": "handle",
             "columnName": "handle",
             "affinity": "TEXT",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "state",
@@ -239,10 +239,15 @@
         ]
       }
     ],
-    "views": [],
+    "views": [
+      {
+        "viewName": "profile",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT \n  (SELECT value FROM key_value WHERE `key` = 'handle') AS handle,\n  (SELECT value FROM key_value WHERE `key` = 'token') AS token,\n  (SELECT value FROM key_value WHERE `key` = 'id') AS id,\n  (SELECT value FROM key_value WHERE `key` = 'password') AS password,\n  (SELECT value FROM key_value WHERE `key` = 'salt') AS salt"
+      }
+    ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '02554b9b0bccc90d6c062faca66e6974')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e3ca971fcba8fcad84270cb4f440db56')"
     ]
   }
 }

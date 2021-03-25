@@ -1,3 +1,3 @@
 <resources>
-  <string name="title_handle">Set a Handle</string>
+  <string name="handle.title">Set a Handle</string>
 </resources>

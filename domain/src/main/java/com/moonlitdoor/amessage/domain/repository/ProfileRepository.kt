@@ -11,12 +11,15 @@ import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.domain.model.Token
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class ProfileRepository @Inject constructor(private val dao: ProfileDao) {
 
   fun getProfile(): Flow<Profile> = dao.getProfile().map { ProfileMapper.map(it) }
+
+  fun handleIsSet(): Flow<Boolean> = flow { getHandle().value != null }
 
   //TODO notify connections of handle change
   suspend fun setHandle(handle: Handle) = dao.insertHandle(HandleMapper.map(handle))

@@ -3,14 +3,25 @@ package com.moonlitdoor.amessage.conversations
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.routes.Routes
 
 @Composable
 fun Conversations(navHostController: NavHostController, viewModel: ConversationsViewModel) {
-  Text(text = "Hello, my name is Conversation!: ${viewModel.repository}")
+  val handleIsSet: Boolean by viewModel.handleIsSet().collectAsState(initial = false)
+  if (!handleIsSet) {
+    navHostController.navigate(Routes.Handle.route) {
+      launchSingleTop = true
+    }
+  } else {
+    Text(text = "Hello, my name is Conversation!: ${viewModel.repository}")
+  }
 }
 
 @Preview(showBackground = true)
