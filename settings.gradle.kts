@@ -3,7 +3,7 @@ includeBuild("plugins/android")
 includeBuild("plugins/jacoco")
 
 plugins {
-  id("com.gradle.enterprise").version("3.5.2")
+  id("com.gradle.enterprise").version("3.6")
 }
 
 gradleEnterprise {
