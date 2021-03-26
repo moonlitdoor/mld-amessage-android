@@ -5,7 +5,6 @@ object Dependencies {
     const val gradle = "com.android.tools.build:gradle:7.0.0-alpha12"
   }
 
-
   object Androidx {
     const val version = "off"
 
@@ -66,7 +65,7 @@ object Dependencies {
     }
 
     object Lifecycle {
-      private const val version = "2.3.0"
+      private const val version = "2.4.0-alpha01"
       const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
       const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
@@ -236,12 +235,12 @@ object Dependencies {
   object Org {
     object Jetbrains {
       object Kotlin {
-        private const val version = "1.4.30"
+        private const val version = "1.4.31"
         const val kotlinStandardLibrary = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
       }
 
       object Kotlinx {
-        private const val version = "1.3.9"
+        private const val version = "1.4.3"
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlinxCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"

@@ -8,17 +8,16 @@ buildscript {
   }
   dependencies {
     classpath("com.moonlitdoor.amessage:dependencies")
-//    classpath("com.android.tools.build:gradle:7.0.0-alpha09")
     classpath("com.moonlitdoor.amessage:android")
 //    classpath("com.moonlitdoor.amessage:jacoco")
     classpath("com.google.dagger:hilt-android-gradle-plugin:2.33-beta")
-    classpath("com.github.ben-manes:gradle-versions-plugin:0.36.0")
-    classpath("com.google.firebase:firebase-appdistribution-gradle:2.0.1")
+    classpath("com.github.ben-manes:gradle-versions-plugin:0.38.0")
+    classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.0")
     classpath("com.github.triplet.gradle:play-publisher:3.3.0")
     classpath("com.moonlitdoor.git-version:git-version:0.1.1")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
-    classpath("com.google.firebase:firebase-crashlytics-gradle:2.5.0")
-    classpath("com.google.firebase:perf-plugin:1.3.4")
+    classpath("com.google.firebase:firebase-crashlytics-gradle:2.5.2")
+    classpath("com.google.firebase:perf-plugin:1.3.5")
   }
 }
 
@@ -26,10 +25,8 @@ allprojects {
   apply(plugin = "com.github.ben-manes.versions")
   repositories {
     google()
-    jcenter()
     mavenCentral()
-    maven(url = "https://jitpack.io")
-    maven(url = "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/")
+    jcenter()
   }
 //  ext {
 //    set("smokeTests", if (project.hasProperty("smokeTests")) project.property("smokeTests") else false)
