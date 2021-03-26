@@ -183,8 +183,6 @@ dependencies {
 //  implementation(project(M.ROOT))
 //  api(project(M.SETTINGS))
 
-//  implementation("com.google.android.material:material:1.3.0")
-
   implementation(Dependencies.Androidx.Activity.activityCompose)
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Material.materialIconsExtended)
@@ -233,26 +231,17 @@ dependencies {
 
 //  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
-  kaptTest(Dependencies.Com.Google.Dagger.hiltCompiler)
+//  kaptTest(Dependencies.Com.Google.Dagger.hiltCompiler)
 
-  testImplementation(Dependencies.Androidx.Test.runner)
-  testImplementation(Dependencies.Androidx.Test.rules)
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-  testImplementation(Dependencies.Com.Google.Dagger.hiltAndroidTesting)
+  testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
-//  testImplementation(D.Androidx.Room.roomTesting)
-//  testImplementation(D.Androidx.Legacy.legacySupportCoreUtils)
-//  testImplementation(D.Com.SquareUp.OkHttp3.mockWebServer)
 
-  kaptAndroidTest(Dependencies.Com.Google.Dagger.hiltCompiler)
-  androidTestImplementation(Dependencies.Androidx.Test.runner)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
+
   androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  androidTestImplementation(D.Androidx.Room.roomTesting)
-  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-  testImplementation(Dependencies.Com.Google.Dagger.hiltAndroidTesting)
-  //  androidTestImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
 
 }
 

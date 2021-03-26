@@ -60,16 +60,13 @@ dependencies {
 //  implementation(D.Androidx.Navigation.navigationFragmentKtx)
 //  implementation(D.Androidx.Navigation.navigationUiKtx)
 
-//  testImplementation(Dependencies.Androidx.Test.runner)
-//  testImplementation(Dependencies.Androidx.Test.rules)
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-//  testImplementation(Dependencies.Org.Robolectric.robolectric)
-
-//  androidTestImplementation(Dependencies.Androidx.Test.runner)
-//  androidTestImplementation(Dependencies.Androidx.Test.rules)
-  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
 //  androidTestUtil(D.Androidx.Test.orchestrator)
+
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 }

@@ -69,9 +69,10 @@ dependencies {
 //  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
 //  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
+  testImplementation(Dependencies.Junit.junit)
 //  testImplementation(Dependencies.Androidx.Test.runner)
 //  testImplementation(Dependencies.Androidx.Test.rules)
-  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+//  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 //  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
 //  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
@@ -96,10 +97,12 @@ dependencies {
   implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 }

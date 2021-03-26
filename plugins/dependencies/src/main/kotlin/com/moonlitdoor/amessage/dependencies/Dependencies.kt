@@ -2,7 +2,7 @@ package com.moonlitdoor.amessage.dependencies
 
 object Dependencies {
   object AGP {
-    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha11"
+    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha12"
   }
 
 
@@ -14,16 +14,16 @@ object Dependencies {
 //    }
 
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha04"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha05"
     }
 
     object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.3.0-beta01"
+      const val appcompat = "androidx.appcompat:appcompat:1.3.0-rc01"
     }
 
     object Camera {
-      private const val version = "1.1.0-alpha02"
-      private const val versionView = "1.0.0-alpha17"
+      private const val version = "1.1.0-alpha03"
+      private const val versionView = "1.0.0-alpha23"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -31,7 +31,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-beta02"
+      const val version = "1.0.0-beta03"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -45,7 +45,7 @@ object Dependencies {
     }
 
     object Core {
-      const val coreKtx = "androidx.core:core-ktx:1.5.0-beta03"
+      const val coreKtx = "androidx.core:core-ktx:1.6.0-alpha01"
     }
 
     object Fragment {
@@ -91,7 +91,7 @@ object Dependencies {
     }
 
     object Room {
-      private const val version = "2.3.0-beta03"
+      private const val version = "2.3.0-rc01"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -99,14 +99,14 @@ object Dependencies {
     }
 
     object Test {
-      private const val version = "1.4.0-alpha04"
+      private const val version = "1.3.0"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.4.0-alpha04"
+        private const val version = "3.4.0-alpha05"
         const val espressoCore = "androidx.test.espresso:espresso-core:$version"
         const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
 
@@ -116,7 +116,7 @@ object Dependencies {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.3-alpha04"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.3-alpha05"
       }
     }
 
@@ -138,12 +138,12 @@ object Dependencies {
 
     object Google {
       object Accompanist {
-        const val accompanistInsets = "com.google.accompanist:accompanist-insets:0.6.2"
+        const val accompanistInsets = "com.google.accompanist:accompanist-insets:0.7.0"
       }
 
       object Android {
         object Gms {
-          const val playServicesVision = "com.google.android.gms:play-services-vision:20.1.2"
+          const val playServicesVision = "com.google.android.gms:play-services-vision:20.1.3"
         }
 
         object Material {
@@ -168,8 +168,8 @@ object Dependencies {
         const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.5.0"
         const val firebaseConfig = "com.google.firebase:firebase-config-ktx:19.2.0"
         const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.2.2"
-        const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.5.0"
-        const val firebaseIid = "com.google.firebase:firebase-iid:20.3.0"
+        const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.7.0"
+        const val firebaseIid = "com.google.firebase:firebase-iid:21.0.1"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
         const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.3.0"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.1.0"
@@ -249,7 +249,7 @@ object Dependencies {
     }
 
     object Robolectric {
-      const val robolectric = "org.robolectric:robolectric:4.4"
+      const val robolectric = "org.robolectric:robolectric:4.5.1"
     }
   }
 }

@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e3ca971fcba8fcad84270cb4f440db56",
+    "identityHash": "e6bae0effe86cbeaafb0cd91b3b3359c",
     "entities": [
       {
         "tableName": "key_value",
@@ -41,7 +41,7 @@
       },
       {
         "tableName": "connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT NOT NULL, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "connectionId",
@@ -71,7 +71,7 @@
             "fieldPath": "handle",
             "columnName": "handle",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "state",
@@ -247,7 +247,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e3ca971fcba8fcad84270cb4f440db56')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e6bae0effe86cbeaafb0cd91b3b3359c')"
     ]
   }
 }

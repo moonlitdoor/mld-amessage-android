@@ -61,23 +61,14 @@ dependencies {
 //  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
 //  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
 //
-//  testImplementation(D.Androidx.Test.Ext.junitKtx)
-//  testImplementation(D.Org.Robolectric.robolectric)
-//
-//  androidTestUtil(D.Androidx.Test.orchestrator)
-//
-//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-//  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
-
-//  testImplementation(Dependencies.Androidx.Test.runner)
-//  testImplementation(Dependencies.Androidx.Test.rules)
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-//  testImplementation(Dependencies.Org.Robolectric.robolectric)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-//  androidTestImplementation(Dependencies.Androidx.Test.runner)
-//  androidTestImplementation(Dependencies.Androidx.Test.rules)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
+
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
 
 }

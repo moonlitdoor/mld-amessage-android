@@ -38,12 +38,14 @@ dependencies {
 
 //  debugImplementation(D.Com.Amitshekhar.Android.debugDb)
 
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
-//  testImplementation(D.Org.Robolectric.robolectric)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
 //  androidTestUtil(D.Androidx.Test.orchestrator)
 
-//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(Dependencies.Junit.junit)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 
 }
