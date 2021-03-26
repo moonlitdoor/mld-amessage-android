@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.jacoco.tasks
 
+import com.moonlitdoor.amessage.dependencies.Constants
 import org.gradle.api.file.ConfigurableFileCollection
 import org.gradle.api.file.FileCollection
 import org.gradle.api.tasks.Internal
@@ -9,7 +10,10 @@ open class JacocoTestReport : JacocoReport() {
 
   private val subProjects: List<String> by lazy {
     project.subprojects
-      .filter { it.plugins.hasPlugin("com.moonlitdoor.android") }
+      .filter {
+        it.plugins.hasPlugin(Constants.PLUGIN_APPLICATION) ||
+            it.plugins.hasPlugin(Constants.PLUGIN_LIBRARY)
+      }
       .map { it.projectDir.absolutePath }
   }
 

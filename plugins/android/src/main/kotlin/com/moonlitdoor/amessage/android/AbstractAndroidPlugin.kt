@@ -60,18 +60,5 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
         }
       }
     }
-
-//    project.applyTo<org.gradle.testing.jacoco.plugins.JacocoPlugin>()
-//    (project.extensions["jacoco"] as JacocoPluginExtension).apply {
-//      toolVersion = "0.8.5"
-//      reportsDir = project.file("${project.buildDir}/reports")
-//    }
-//    project.tasks.withType(Test::class.java) {
-//      (extensions["jacoco"] as JacocoTaskExtension).apply {
-//        excludes = listOf("jdk.internal.*")
-//        isIncludeNoLocationClasses = true
-//      }
-//    }
-
   }
 }

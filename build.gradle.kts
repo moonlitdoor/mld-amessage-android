@@ -9,7 +9,7 @@ buildscript {
   dependencies {
     classpath("com.moonlitdoor.amessage:dependencies")
     classpath("com.moonlitdoor.amessage:android")
-//    classpath("com.moonlitdoor.amessage:jacoco")
+    classpath("com.moonlitdoor.amessage:jacoco")
     classpath("com.google.dagger:hilt-android-gradle-plugin:2.33-beta")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.38.0")
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.0")
@@ -43,13 +43,13 @@ allprojects {
 
   tasks.withType<Test> {
     testLogging.events("failed", "passed", "skipped")
-//    reports.html.isEnabled = false
+    reports.html.isEnabled = false
   }
 }
 
-//plugins {
-//  id("com.moonlitdoor.amessage.jacoco")
-//}
+plugins {
+  id("com.moonlitdoor.amessage.jacoco")
+}
 
 gradle.projectsEvaluated {
   tasks.withType(JavaCompile::class.java) {

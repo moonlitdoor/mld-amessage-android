@@ -1,3 +1,4 @@
+import com.moonlitdoor.amessage.dependencies.Constants
 import com.moonlitdoor.amessage.dependencies.Dependencies
 
 repositories {
@@ -21,11 +22,11 @@ group = "com.moonlitdoor.amessage"
 gradlePlugin {
   plugins {
     create("application") {
-      id = "com.moonlitdoor.amessage.android.application"
+      id = Constants.PLUGIN_APPLICATION
       implementationClass = "com.moonlitdoor.amessage.android.AndroidApplicationPlugin"
     }
     create("library") {
-      id = "com.moonlitdoor.amessage.android.library"
+      id = Constants.PLUGIN_LIBRARY
       implementationClass = "com.moonlitdoor.amessage.android.AndroidLibraryPlugin"
     }
   }

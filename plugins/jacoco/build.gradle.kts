@@ -29,4 +29,5 @@ gradlePlugin {
 
 dependencies {
   implementation(Dependencies.AGP.gradle)
+  implementation(Dependencies.Com.MoonlitDoor.AMessage.dependencies)
 }
