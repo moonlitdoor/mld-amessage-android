@@ -17,9 +17,9 @@ plugins {
   }
 }
 
-//base {
-//  archivesBaseName = "$name-$gitVersion"
-//}
+base {
+  archivesBaseName = "$name-$gitVersion"
+}
 
 kapt {
   correctErrorTypes = true
