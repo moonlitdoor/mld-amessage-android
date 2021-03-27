@@ -1,29 +1,33 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+import com.moonlitdoor.amessage.dependencies.Modules
+
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
-  kotlin("kapt")
+  id("com.moonlitdoor.amessage.android.library")
+//  id("kotlin-kapt")
 }
 
 dependencies {
 
-  kapt(D.Com.Google.Dagger.daggerCompiler)
+//  kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
-  implementation(project(M.RESOURCES))
-  implementation(project(M.EXTENSIONS))
+//  implementation(project(M.RESOURCES))
+  implementation(project(Modules.EXTENSIONS))
+  implementation(project(Modules.ROOT))
 
-  implementation(D.Com.Google.Dagger.dagger)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Com.Google.Firebase.firebaseConfig)
-  implementation(D.Com.Google.Firebase.firebaseIid)
+  implementation(Dependencies.Androidx.Preference.preferenceKtx)
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
+  implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(Dependencies.Com.Google.Firebase.firebaseConfig)
+  implementation(Dependencies.Com.Google.Firebase.firebaseIid)
 
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Com.Google.Truth.truth)
-  testImplementation(D.Org.Robolectric.robolectric)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+//  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
-  androidTestImplementation(D.Com.Google.Truth.truth)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 
 }

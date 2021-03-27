@@ -1,23 +1,17 @@
 package com.moonlitdoor.amessage.experiments
 
-import android.preference.PreferenceManager
 import androidx.annotation.StringRes
-import com.moonlitdoor.amessage.resources.ResourceContainer
+import androidx.preference.PreferenceManager
 import com.moonlitdoor.amessage.root.Root
 import java.util.*
-import javax.inject.Inject
+
 
 data class Experiment<T : Enum<T>> internal constructor(val key: String, private val c: Class<T>, val defaultValue: T) {
 
-  class InjectableWrapper {
-    @Inject
-    lateinit var remoteConfig: FirebaseRemoteConfigWrapper
-  }
-
   private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Root.get())
 
-  enum class BOOLEAN {
-    FALSE, TRUE
+  enum class BOOLEAN(val asBoolean: Boolean) {
+    FALSE(false), TRUE(true)
   }
 
   private constructor(key: String, c: Class<T>, defaultValue: T, title: String? = null, description: String? = null) : this(key, c, defaultValue) {
@@ -26,8 +20,8 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
   }
 
   private constructor(key: String, c: Class<T>, defaultValue: T, @StringRes title: Int = 0, @StringRes description: Int = 0) : this(key, c, defaultValue) {
-    this.title = ResourceContainer.getString(title)
-    this.description = ResourceContainer.getString(description)
+    this.title = Root.get().getString(title)
+    this.description = Root.get().getString(description)
   }
 
   val id = "com.moonlitdoor.amessage.experiment.$key"

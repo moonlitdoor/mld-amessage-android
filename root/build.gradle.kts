@@ -1,28 +1,21 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
+  id("com.moonlitdoor.amessage.android.library")
 }
 
 dependencies {
 
-  implementation(D.Androidx.AppCompat.appcompat)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Robolectric.robolectric)
-  testImplementation(D.Androidx.Test.core)
-  testImplementation(D.Androidx.Test.Espresso.espressoCore)
-  testImplementation(D.Androidx.Test.Espresso.espressoIdlingResource)
-  testImplementation(D.Androidx.Test.Espresso.Idling.idlingConcurrent)
-  testImplementation(D.Androidx.Test.rules)
-  testImplementation(D.Androidx.Test.runner)
-  testImplementation(D.Com.Google.Truth.truth)
-  testImplementation(D.Junit.junit)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Androidx.Test.core)
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 
 }

@@ -163,7 +163,7 @@ dependencies {
 
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
-//  implementation(project(M.ANALYTICS))
+  implementation(project(Modules.ANALYTICS))
 //  api(project(M.BINDINGS))
 //  api(project(M.COMPONENTS))
 //  implementation(project(M.CONSTANTS))
@@ -173,14 +173,13 @@ dependencies {
   implementation(project(Modules.INIT))
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
-//  api(project(M.DOMAIN))
-//  api(project(M.EXPERIMENTS))
+  implementation(project(Modules.EXPERIMENTS))
 //  api(project(M.EXTENSIONS))
   implementation(project(Modules.HANDLE))
 //  implementation(project(M.IDS))
 //  api(project(M.PUSH))
 //  api(project(M.RESOURCES))
-//  implementation(project(M.ROOT))
+  implementation(project(Modules.ROOT))
 //  api(project(M.SETTINGS))
 
   implementation(Dependencies.Androidx.Activity.activityCompose)
@@ -193,6 +192,8 @@ dependencies {
   implementation(Dependencies.Com.Google.Accompanist.accompanistInsets)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
+
+  debugImplementation(Dependencies.Com.SquareUp.Leakcanary.leakcanaryAndroid)
 
   testImplementation(Dependencies.Junit.junit)
 
@@ -210,19 +211,19 @@ dependencies {
 //  implementation(Dependencies.Androidx.Navigation.navigationFragmentKtx)
 //  implementation(Dependencies.Androidx.Navigation.navigationUiKtx)
 
-//  implementation(D.Androidx.Preference.preference)
+  implementation(Dependencies.Androidx.Preference.preferenceKtx)
 //  implementation(D.Androidx.Legacy.legacyPreferenceV14)
 //  implementation(D.Androidx.Recyclerview.recyclerview)
 //  implementation(D.Androidx.Legacy.legacySupportV4)
 //  implementation(D.Com.Google.Android.Gms.playServicesVision)
 //  implementation(D.Com.Google.Code.Gson.gson)
 //  implementation(D.Com.Google.Firebase.firebaseConfig)
-//  implementation(D.Com.Google.Firebase.firebaseAnalytics)
+  implementation(Dependencies.Com.Google.Firebase.firebaseAnalytics)
 //  implementation(D.Com.Google.Firebase.firebaseIid)
 //  implementation(D.Com.Google.Firebase.firebaseInAppMessaging)
 //  implementation(D.Com.Google.Firebase.firebaseMessaging)
 //  implementation(D.Com.Google.Firebase.firebasePerf)
-//  implementation(D.Com.Google.Firebase.firebaseCrashlytics)
+  implementation(Dependencies.Com.Google.Firebase.firebaseCrashlytics)
 //  implementation(D.Com.Google.Guava.listenablefuture)
 //  implementation(D.Com.Google.Zxing.core)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)

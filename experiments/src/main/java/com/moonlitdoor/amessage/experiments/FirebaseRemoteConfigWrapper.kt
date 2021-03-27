@@ -10,14 +10,6 @@ interface FirebaseRemoteConfigWrapper {
   fun setDefaults(defaults: Map<String, Any>)
   fun getString(key: String): String
 
-  companion object {
-
-    private var INSTANCE: FirebaseRemoteConfigWrapper? = null
-
-    fun get(firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper? = null): FirebaseRemoteConfigWrapper = firebaseRemoteConfigWrapper?.also { INSTANCE = it } ?: INSTANCE ?: FirebaseRemoteConfigLive.get().also { INSTANCE = it }
-
-  }
-
   class FirebaseRemoteConfigLive private constructor() : FirebaseRemoteConfigWrapper {
 
     private val config = FirebaseRemoteConfig.getInstance().also {
@@ -40,4 +32,11 @@ interface FirebaseRemoteConfigWrapper {
 
   }
 
+  companion object {
+
+    private var INSTANCE: FirebaseRemoteConfigWrapper? = null
+
+    fun get(firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper? = null): FirebaseRemoteConfigWrapper = firebaseRemoteConfigWrapper?.also { INSTANCE = it } ?: INSTANCE ?: FirebaseRemoteConfigLive.get().also { INSTANCE = it }
+
+  }
 }

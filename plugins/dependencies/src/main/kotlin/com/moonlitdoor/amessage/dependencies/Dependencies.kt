@@ -82,7 +82,7 @@ object Dependencies {
     }
 
     object Preference {
-      const val preference = "androidx.preference:preference-ktx:1.1.1"
+      const val preferenceKtx = "androidx.preference:preference-ktx:1.1.1"
     }
 
     object Recyclerview {
@@ -164,9 +164,9 @@ object Dependencies {
       }
 
       object Firebase {
-        const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:17.5.0"
-        const val firebaseConfig = "com.google.firebase:firebase-config-ktx:19.2.0"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.2.2"
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:18.0.2"
+        const val firebaseConfig = "com.google.firebase:firebase-config-ktx:20.0.4"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.4.1"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.7.0"
         const val firebaseIid = "com.google.firebase:firebase-iid:21.0.1"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
@@ -207,6 +207,10 @@ object Dependencies {
     }
 
     object SquareUp {
+      object Leakcanary {
+        const val leakcanaryAndroid = "com.squareup.leakcanary:leakcanary-android:2.7"
+      }
+
       object OkHttp3 {
         private const val version = "4.9.0"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:$version"

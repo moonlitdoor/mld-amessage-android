@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.VisibleForTesting
+import java.util.*
 
 @Keep
 object Analytics {
@@ -11,9 +12,9 @@ object Analytics {
   @VisibleForTesting
   internal lateinit var analytics: FirebaseAnalyticsWrapper
 
-  fun init(context: Context, userId: String, a: FirebaseAnalyticsWrapper = FirebaseAnalyticsLive(context)) {
+  fun init(context: Context, userId: UUID, a: FirebaseAnalyticsWrapper = FirebaseAnalyticsLive(context)) {
     analytics = a
-    analytics.setUserId(userId)
+    analytics.setUserId(userId.toString())
   }
 
   fun sendCustomEvent() {
