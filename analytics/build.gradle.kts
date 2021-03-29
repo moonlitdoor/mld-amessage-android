@@ -7,7 +7,6 @@ plugins {
 dependencies {
 
   implementation(Dependencies.Com.Google.Firebase.firebaseAnalytics)
-//  implementation(Dependencies.Com.Google.Firebase.firebaseIid)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)

@@ -13,12 +13,11 @@ import com.moonlitdoor.amessage.database.dao.ProfileDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ServiceComponent
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(ViewModelComponent::class, ServiceComponent::class)
+@InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
   @Provides

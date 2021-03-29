@@ -21,6 +21,7 @@ dependencies {
   implementation(Dependencies.Com.Google.Firebase.firebaseIid)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Com.Google.Truth.truth)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 
@@ -29,5 +30,6 @@ dependencies {
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(Dependencies.Com.Google.Truth.truth)
 
 }

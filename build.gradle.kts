@@ -43,7 +43,7 @@ allprojects {
 
   tasks.withType<Test> {
     testLogging.events("failed", "passed", "skipped")
-    reports.html.isEnabled = false
+//    reports.html.isEnabled = false
   }
 }
 

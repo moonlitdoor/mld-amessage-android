@@ -1,19 +1,22 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
+  id("com.moonlitdoor.amessage.android.library")
 }
 
 dependencies {
 
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+//  TODO Bring in Tink: https://github.com/google/tink
 
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Robolectric.robolectric)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 
 }
 

@@ -7,7 +7,7 @@ import javax.inject.Named
 
 @Component(
   modules = [
-    NetworkDI.NetworkModule::class,
+    NetworkModule::class,
     TestNetworkDI.TestBaseUrlModule::class
   ]
 )
@@ -28,13 +28,13 @@ interface TestNetworkDI {
 
     private var component: TestNetworkDI? = null
 
-    @Synchronized
-    fun init(baseUrl: String): TestNetworkDI = component ?: DaggerTestNetworkDI.builder()
-      .networkModule(NetworkDI.NetworkModule())
-      .testBaseUrlModule(TestBaseUrlModule(baseUrl))
-      .build().also {
-        component = it
-      }
+//    @Synchronized
+//    fun init(baseUrl: String): TestNetworkDI = component ?: DaggerTestNetworkDI.builder()
+//      .networkModule(NetworkModule())
+//      .testBaseUrlModule(TestBaseUrlModule(baseUrl))
+//      .build().also {
+//        component = it
+//      }
 
 
     @Synchronized

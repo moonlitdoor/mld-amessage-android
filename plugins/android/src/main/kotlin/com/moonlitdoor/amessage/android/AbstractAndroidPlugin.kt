@@ -30,7 +30,10 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
         }
 
         lintOptions {
-          disable("RtlEnabled")
+          disable(
+            "RtlEnabled",
+            "ObsoleteLintCustomCheck"
+          )
           isWarningsAsErrors = true
           isAbortOnError = true
           xmlReport = false

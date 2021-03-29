@@ -18,7 +18,7 @@ class JacocoPlugin : Plugin<Project> {
     project.tasks.findByName(JacocoTestReport.NAME)?.mustRunAfter(project.childProjects.keys.map { "$it:testDebugUnitTest" })
     project.tasks.create(JacocoTestCoverageVerification.NAME, JacocoTestCoverageVerification::class.java)
     project.tasks.findByName(JacocoTestCoverageVerification.NAME)?.mustRunAfter(project.childProjects.keys.map { "$it:testDebugUnitTest" })
-//    project.applyTo<org.gradle.testing.jacoco.plugins.JacocoPlugin>()
+
     (project.extensions["jacoco"] as JacocoPluginExtension).apply {
       toolVersion = "0.8.6"
       reportsDirectory.set(project.file("${project.buildDir}/reports"))

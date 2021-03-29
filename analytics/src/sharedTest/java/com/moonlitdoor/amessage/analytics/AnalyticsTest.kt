@@ -5,6 +5,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 class AnalyticsTest {
@@ -16,7 +17,7 @@ class AnalyticsTest {
       assertEquals("foo", parameters?.getString("custom_event_param1"))
       assertEquals("bar", parameters?.getString("custom_event_param2"))
     })
-    Analytics.init(InstrumentationRegistry.getInstrumentation().targetContext, "userId", fake)
+    Analytics.init(InstrumentationRegistry.getInstrumentation().targetContext, UUID.fromString("d6c9f835-cc01-43f6-86b8-25646e87d807"), fake)
     Analytics.sendCustomEvent()
   }
 

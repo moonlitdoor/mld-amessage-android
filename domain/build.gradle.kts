@@ -12,7 +12,7 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.DATABASE))
-//  api(project(M.NETWORK))
+  implementation(project(Modules.NETWORK))
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
