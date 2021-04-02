@@ -4,6 +4,8 @@ package com.moonlitdoor.amessage.domain.repository
 //import androidx.lifecycle.LiveData/**/
 //import androidx.work.WorkManager
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
+import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 //import com.moonlitdoor.amessage.database.dao.ProfileDao
 //import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 //import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
@@ -63,9 +65,9 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
 
   }
 
-//  fun update(connectionId: UUID, state: Connection.State) = connectionDao.update(connectionId, ConnectionMapper.state(state))
+  fun update(connectionId: UUID, state: Connection.State) = connectionDao.update(connectionId, ConnectionMapper.state(state))
 
-//  suspend fun insert(entity: ConnectionEntity) = connectionDao.insert(entity)
+  suspend fun insert(entity: ConnectionEntity) = connectionDao.insert(entity)
 
   fun delete(connectionId: UUID) = Unit//connectionDao.delete(connectionId)
 

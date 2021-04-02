@@ -179,7 +179,7 @@ dependencies {
 //  api(project(M.EXTENSIONS))
   implementation(project(Modules.HANDLE))
 //  implementation(project(M.IDS))
-//  api(project(M.PUSH))
+  implementation(project(Modules.PUSH))
 //  api(project(M.RESOURCES))
   implementation(project(Modules.ROOT))
 //  api(project(M.SETTINGS))

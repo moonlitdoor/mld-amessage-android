@@ -1,7 +1,9 @@
 package com.moonlitdoor.amessage.push
 
+import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.moonlitdoor.amessage.extensions.ignore
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -10,17 +12,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class FirebaseMessagingService : com.google.firebase.messaging.FirebaseMessagingService(), CoroutineScope {
+@AndroidEntryPoint
+class MessagingService : FirebaseMessagingService(), CoroutineScope {
 
   override val coroutineContext: CoroutineContext = Job() + Dispatchers.Default
 
   @Inject
-  lateinit var adapter: FirebaseMessagingServiceAdapter
-
-  override fun onCreate() {
-    super.onCreate()
-    PushDI.get(this).inject(this)
-  }
+  lateinit var adapter: MessagingServiceAdapter
 
   override fun onNewToken(token: String) = launch { adapter.onNewToken(token) }.ignore()
 

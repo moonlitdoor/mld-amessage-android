@@ -3,6 +3,7 @@ package com.moonlitdoor.amessage.push
 import com.google.firebase.messaging.RemoteMessage
 import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.extensions.ignore
@@ -13,11 +14,11 @@ import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
-class FirebaseMessagingServiceAdapter @Inject constructor(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) {
+class MessagingServiceAdapter @Inject constructor(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) {
 
   suspend fun onNewToken(token: String) {
     Timber.i("New Firebase Token")
-    profileRepository.setToken(token)
+    profileRepository.setToken(Token(token))
   }
 
   suspend fun onMessageReceived(remoteMessage: RemoteMessage) {

@@ -3,6 +3,7 @@ package com.moonlitdoor.amessage.domain.mapper
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 //import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 //import com.moonlitdoor.amessage.network.json.ConnectionJson
 import java.util.*
@@ -54,14 +55,14 @@ object ConnectionMapper {
     state = ConnectionEntity.State.Scanned
   )
 
-//  fun fromPending(payload: ConnectionInvitePayload) = ConnectionEntity(
-//    connectionId = payload.connectionId,
-//    password = payload.password,
-//    salt = payload.salt,
-//    token = payload.token,
-//    handle = payload.handle,
-//    state = ConnectionEntity.State.Pending
-//  )
+  fun fromPending(payload: ConnectionInvitePayload) = ConnectionEntity(
+    connectionId = payload.connectionId,
+    password = payload.password,
+    salt = payload.salt,
+    token = payload.token,
+    handle = payload.handle,
+    state = ConnectionEntity.State.Pending
+  )
 
 //  fun toJson(connection: Connection) = ConnectionJson(
 //    id = connection.id,

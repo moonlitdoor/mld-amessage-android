@@ -170,7 +170,7 @@ object Dependencies {
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.7.0"
         const val firebaseIid = "com.google.firebase:firebase-iid:21.0.1"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:20.3.0"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:21.0.1"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.1.0"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.2"
         const val firebasePerf = "com.google.firebase:firebase-perf:19.0.9"
