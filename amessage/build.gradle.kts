@@ -44,6 +44,8 @@ android {
   lint {
     isAbortOnError = false
     disable(
+      "ObsoleteSdkInt",
+      "UnusedResources",
       "NullSafeMutableLiveData",
       "InvalidFragmentVersionForActivityResult"
     )
