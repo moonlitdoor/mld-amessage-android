@@ -9,7 +9,9 @@ object TimberInit {
   operator fun invoke(isDebug: Boolean) = if (isDebug) Timber.plant(DecoratedDebugTree) else Timber.plant(DecoratedCrashReportingTree)
 
   private object DecoratedDebugTree : Timber.DebugTree() {
-    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) = super.log(priority, tag, Decorator.decorate(message), t)
+
+
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) = super.log(priority, Decorator.decorateTag(tag), Decorator.decorate(message), t)
   }
 
   private object DecoratedCrashReportingTree : Timber.Tree() {
@@ -22,12 +24,15 @@ object TimberInit {
     override fun isLoggable(tag: String?, priority: Int): Boolean = priority >= Log.INFO
 
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-      crashlytics.log(Decorator.decorate(message, tag))
+      crashlytics.log(Decorator.decorate(message, Decorator.decorateTag(tag)))
       t?.let { crashlytics.recordException(it) }
     }
   }
 
   private object Decorator {
+
+    fun decorateTag(tag: String?) = "AMSG $tag"
+
     fun decorate(msg: String, tag: String? = null): String = logTag(msg, tag)
 
     private fun logTag(msg: String, tag: String?): String = "${tag?.let { "$it: " } ?: ""}${logThread(msg)}"

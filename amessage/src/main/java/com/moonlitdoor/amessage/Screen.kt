@@ -14,13 +14,12 @@ sealed class Screen(
   val route: String,
   val icon: ImageVector,
   @StringRes val resourceId: Int,
-  val showBottomBar: Boolean,
+  val showBottomBar: Boolean = true,
 ) {
   object Conversations : Screen(
     route = Routes.Conversations.route,
     icon = Icons.Filled.ChatBubble,
     resourceId = R.string.conversations_title,
-    showBottomBar = true,
   )
 
   object Handle : Screen(
@@ -34,14 +33,12 @@ sealed class Screen(
     route = Routes.Connections.route,
     icon = Icons.Filled.Group,
     resourceId = R.string.connections_title,
-    showBottomBar = true,
   )
 
   object Connect : Screen(
     route = Routes.Connect.route,
     icon = Icons.Filled.PersonAdd,
     resourceId = R.string.connect_title,
-    showBottomBar = true,
   )
 
   object More : Screen(

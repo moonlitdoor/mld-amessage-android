@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  <color name="toolbarTitleText">@color/white</color>
-  <color name="list_divider">@color/grey_400</color>
-</resources>

@@ -16,6 +16,9 @@ dependencies {
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
+  implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
+  implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 
 //  implementation(project(M.EXTENSIONS))
 
@@ -23,9 +26,6 @@ dependencies {
 //  implementation(D.Androidx.AppCompat.appcompat)
 //  api(D.Androidx.Work.workRuntimeKtx)
 //  implementation(D.Com.JakeWharton.Timber.timber)
-  implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
-  implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 //  implementation(D.Com.Google.Firebase.firebaseAnalytics)
 //  implementation(D.Com.Google.Firebase.firebaseIid)
 //  implementation(D.Com.Google.Firebase.firebaseMessaging)

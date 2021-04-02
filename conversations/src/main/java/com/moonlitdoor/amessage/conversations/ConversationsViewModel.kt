@@ -10,6 +10,6 @@ import javax.inject.Inject
 @HiltViewModel
 class ConversationsViewModel @Inject constructor(val repository: ConversationRepository, private val profileRepository: ProfileRepository) : ViewModel() {
 
-  fun handleIsSet(): Flow<Boolean> = profileRepository.handleIsSet()
+  val isHandleSet: Flow<Boolean> = profileRepository.handleIsSet()
 
 }

@@ -32,6 +32,11 @@ dependencies {
 
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
+  implementation(project(Modules.COMPONENTS))
+  implementation(project(Modules.DOMAIN))
+  implementation(project(Modules.ROUTES))
+  implementation(project(Modules.THEME))
+
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
@@ -43,15 +48,11 @@ dependencies {
 //  testImplementation(Dependencies.Junit.junit)
 
 //  implementation(project(M.BINDINGS))
-//  implementation(project(M.COMPONENTS))
-  implementation(project(Modules.DOMAIN))
 //  implementation(project(M.EXPERIMENTS))
 //  implementation(project(M.EXTENSIONS))
 //  implementation(project(M.HANDLE))
 //  implementation(project(M.IDS))
 //  implementation(project(M.RESOURCES))
-  implementation(project(Modules.ROUTES))
-  implementation(project(Modules.THEME))
 
 //  implementation(D.Com.Google.Dagger.dagger)
 //  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)

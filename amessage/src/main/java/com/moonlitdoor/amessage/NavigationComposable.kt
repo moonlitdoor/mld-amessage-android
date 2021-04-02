@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.moonlitdoor.amessage.components.ActionItem
 import com.moonlitdoor.amessage.connect.Connect
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connections.Connections
@@ -15,27 +16,27 @@ import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
 
 @Composable
-fun Navigation(navController: NavHostController, showBottomBar: (Boolean) -> Unit) {
-  NavHost(navController, startDestination = Screen.Conversations.route) {
+fun Navigation(navHostController: NavHostController, setCurrentActions: (actionItems: List<ActionItem>) -> Unit, currentScreen: (Screen) -> Unit) {
+  NavHost(navHostController, startDestination = Screen.Conversations.route) {
     composable(Screen.Conversations.route) {
-      showBottomBar(Screen.Conversations.showBottomBar)
+      currentScreen(Screen.Conversations)
       val viewModel: ConversationsViewModel = hiltNavGraphViewModel()
-      Conversations(navHostController = navController, viewModel = viewModel)
+      Conversations(navHostController = navHostController, viewModel = viewModel, setCurrentActions = setCurrentActions)
     }
     composable(Screen.Connections.route) {
-      showBottomBar(Screen.Connections.showBottomBar)
+      currentScreen(Screen.Connections)
       val viewModel: ConnectionsViewModel = hiltNavGraphViewModel()
-      Connections(navHostController = navController, viewModel = viewModel)
+      Connections(navHostController = navHostController, viewModel = viewModel)
     }
     composable(Screen.Connect.route) {
-      showBottomBar(Screen.Connect.showBottomBar)
+      currentScreen(Screen.Connect)
       val viewModel: ConnectViewModel = hiltNavGraphViewModel()
-      Connect(navHostController = navController, viewModel = viewModel)
+      Connect(navHostController = navHostController, viewModel = viewModel)
     }
     composable(Screen.Handle.route) {
-      showBottomBar(Screen.Handle.showBottomBar)
+      currentScreen(Screen.Handle)
       val viewModel: HandleViewModel = hiltNavGraphViewModel()
-      Handle(navHostController = navController, viewModel = viewModel)
+      Handle(navHostController = navHostController, viewModel = viewModel, setCurrentActions = setCurrentActions)
     }
   }
 }

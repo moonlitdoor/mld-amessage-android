@@ -18,7 +18,7 @@ gradleEnterprise {
 include(":amessage")
 include(":analytics")
 //include(":bindings")
-//include(":components")
+include(":components")
 include(":connect")
 include(":connections")
 include(":conversations")

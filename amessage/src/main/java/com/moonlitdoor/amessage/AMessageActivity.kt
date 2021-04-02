@@ -10,6 +10,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -46,23 +47,36 @@ class AMessageActivity : AppCompatActivity() {
       AMessageTheme {
         EdgeToEdgeContent {
           val navController: NavHostController = rememberNavController()
-          var showBottomBar by remember { mutableStateOf(true) }
+          var currentScreen by remember { mutableStateOf<Screen?>(null) }
+          var currentActions by remember { mutableStateOf<List<com.moonlitdoor.amessage.components.ActionItem>>(listOf()) }
+          val setCurrentActions: (actionItems: List<com.moonlitdoor.amessage.components.ActionItem>) -> Unit = { currentActions = it }
           Scaffold(
             topBar = {
-              val currentScreenState by navController.currentBackStackEntryAsState()
-              val currentScreen = Screen.fromRoute(currentScreenState?.arguments?.getString(KEY_ROUTE))
               TopAppBar(
                 title = {
-                  Text(getString(currentScreen.resourceId))
+                  Text(stringResource(currentScreen?.resourceId ?: R.string.app_name))
                 },
-                elevation = 120.dp
+                elevation = 12.dp,
+                actions = {
+                  currentActions.forEach {
+                    IconButton(
+                      enabled = it.enabled,
+                      onClick = it.onClick
+                    ) {
+                      Icon(
+                        imageVector = it.imageVector,
+                        contentDescription = stringResource(R.string.app_name)
+                      )
+                    }
+                  }
+                },
               )
             },
             bottomBar = {
-              AnimatedVisibility(visible = showBottomBar) {
+              AnimatedVisibility(visible = currentScreen?.showBottomBar ?: true) {
                 BottomNavigation {
-                  val currentScreenState by navController.currentBackStackEntryAsState()
-                  val currentRoute = currentScreenState?.arguments?.getString(KEY_ROUTE)
+                  val currentState by navController.currentBackStackEntryAsState()
+                  val currentRoute = currentState?.arguments?.getString(KEY_ROUTE)
                   Screen.items.forEach { screen ->
                     BottomNavigationItem(
                       icon = { Icon(screen.icon, null) },
@@ -79,7 +93,7 @@ class AMessageActivity : AppCompatActivity() {
                 }
               }
             },
-            content = { Navigation(navController = navController) { value -> showBottomBar = value } }
+            content = { Navigation(navHostController = navController, setCurrentActions = setCurrentActions) { currentScreen = it } }
           )
         }
       }
@@ -89,4 +103,5 @@ class AMessageActivity : AppCompatActivity() {
   companion object {
     fun start(context: Context) = context.startActivity(Intent(context, AMessageActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK))
   }
+
 }

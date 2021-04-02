@@ -1,34 +1,21 @@
-plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
-}
+import com.moonlitdoor.amessage.dependencies.Dependencies
 
-android {
-  buildFeatures {
-    dataBinding = true
-  }
+plugins {
+  id("com.moonlitdoor.amessage.android.library")
 }
 
 dependencies {
 
-  implementation(project(M.BINDINGS))
-  implementation(project(M.CONSTANTS))
-  implementation(project(M.DOMAIN))
-  implementation(project(M.EXTENSIONS))
-  implementation(project(M.RESOURCES))
+  implementation(Dependencies.Androidx.Compose.Ui.ui)
 
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-  implementation(D.Androidx.AppCompat.appcompat)
-  implementation(D.Com.Google.Android.Material.material)
-  implementation(D.Com.JakeWharton.Timber.timber)
-  implementation(D.Androidx.ConstraintLayout.constraintLayout)
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  testImplementation(D.Androidx.Test.Ext.junitKtx)
-  testImplementation(D.Org.Robolectric.robolectric)
+//  androidTestUtil(D.Androidx.Test.orchestrator)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
-
-  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 
 }

@@ -10,6 +10,7 @@ import com.moonlitdoor.amessage.database.projection.SaltProjection
 import com.moonlitdoor.amessage.database.projection.TokenProjection
 import com.moonlitdoor.amessage.database.view.ProfileView
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import java.util.*
 
 @Dao
@@ -21,6 +22,8 @@ interface ProfileDao : KeyValueDao {
   suspend fun insertHandle(value: HandleProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
 
   suspend fun insertToken(value: TokenProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
+
+  fun getHandleFlow(): Flow<HandleProjection> = getValueFlow(HandleProjection.HANDLE).map { HandleProjection(it) }
 
   suspend fun getHandle(): HandleProjection = HandleProjection(getValue(HandleProjection.HANDLE))
 

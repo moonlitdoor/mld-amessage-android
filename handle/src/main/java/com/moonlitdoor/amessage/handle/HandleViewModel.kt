@@ -1,27 +1,32 @@
 package com.moonlitdoor.amessage.handle
 
-//import androidx.annotation.MainThread
-//import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.moonlitdoor.amessage.domain.model.Handle
+import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-//import androidx.lifecycle.asLiveData
-//import androidx.lifecycle.viewModelScope
-//import com.moonlitdoor.amessage.domain.model.Profile
-//import com.moonlitdoor.amessage.domain.repository.ProfileRepository
-//import kotlinx.coroutines.CoroutineExceptionHandler
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.launch
-//import kotlinx.coroutines.withContext
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class HandleViewModel @Inject constructor() : ViewModel() {
+class HandleViewModel @Inject constructor(private val repository: ProfileRepository) : ViewModel() {
 
-//  @MainThread
-//  fun setHandle(handle: String) = viewModelScope.launch(CoroutineExceptionHandler { _, exception ->
-//    println("CoroutineExceptionHandler got $exception")
-//  }) { withContext(Dispatchers.IO) { profileRepository.setHandle(handle) } }
-//
-//  val profile: LiveData<Profile> = profileRepository.getProfile().asLiveData()
+  private val _handle = MutableStateFlow(Handle(""))
+  var handle = _handle.asStateFlow()
+  val isHandleSet: Flow<Boolean> = repository.handleIsSet()
+
+  fun setHandle(handle: String) {
+    _handle.compareAndSet(_handle.value, Handle(handle))
+  }
+
+  fun saveHandle() = viewModelScope.launch(Dispatchers.IO) {
+    Timber.d("Setting Handle to: ${_handle.value}")
+    repository.setHandle(handle = _handle.value)
+  }
 
 }

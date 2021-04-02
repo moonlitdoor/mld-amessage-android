@@ -1,4 +1,5 @@
 import com.moonlitdoor.amessage.dependencies.Dependencies
+import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.amessage.android.library")
@@ -21,19 +22,12 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
   kapt(Dependencies.Androidx.Room.roomCompiler)
 
-//  api(project(M.CONSTANTS))
+  implementation(project(Modules.EXTENSIONS))
 
-  implementation(Dependencies.Com.Google.Firebase.firebaseDatabase)
-  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
-//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
   implementation(Dependencies.Androidx.Room.roomKtx)
   implementation(Dependencies.Androidx.Room.roomRuntime)
-//  implementation(D.Androidx.Core.coreKtx)
-//  implementation(D.Com.Moonlitdoor.SharedPreferenceLiveData.sharedPreferenceLiveData)
-//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
-//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
-//  implementation(D.Org.Jetbrains.Kotlinx.kotlinxCoroutinesPlayServices)
+  implementation(Dependencies.Com.Google.Firebase.firebaseDatabase)
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
 //  debugImplementation(D.Com.Amitshekhar.Android.debugDb)

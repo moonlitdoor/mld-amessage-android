@@ -165,7 +165,7 @@ dependencies {
 
   implementation(project(Modules.ANALYTICS))
 //  api(project(M.BINDINGS))
-//  api(project(M.COMPONENTS))
+  implementation(project(Modules.COMPONENTS))
 //  implementation(project(M.CONSTANTS))
   implementation(project(Modules.CONNECT))
   implementation(project(Modules.CONNECTIONS))

@@ -10,11 +10,15 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.components.ActionItem
 import com.moonlitdoor.amessage.routes.Routes
 
 @Composable
-fun Conversations(navHostController: NavHostController, viewModel: ConversationsViewModel) {
-  val handleIsSet: Boolean by viewModel.handleIsSet().collectAsState(initial = false)
+fun Conversations(navHostController: NavHostController, viewModel: ConversationsViewModel, setCurrentActions: (actionItems: List<ActionItem>) -> Unit) {
+
+  setCurrentActions(listOf())
+
+  val handleIsSet: Boolean by viewModel.isHandleSet.collectAsState(initial = true)
   if (!handleIsSet) {
     navHostController.navigate(Routes.Handle.route) {
       launchSingleTop = true
@@ -30,7 +34,7 @@ fun DefaultPreview() {
   MaterialTheme {
     val navHostController = rememberNavController()
     val viewModel: ConversationsViewModel = viewModel()
-    Conversations(navHostController, viewModel)
+    Conversations(navHostController, viewModel) {}
   }
 
 }
