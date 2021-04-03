@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.network.json
+package com.moonlitdoor.amessage.dto
 
 import timber.log.Timber
 import java.util.*

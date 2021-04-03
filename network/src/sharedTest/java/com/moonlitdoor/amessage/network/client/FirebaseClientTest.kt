@@ -1,9 +1,9 @@
 package com.moonlitdoor.amessage.network.client
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.moonlitdoor.amessage.dto.FirebaseMessageJson
+import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.network.FirebaseClientContainer
-import com.moonlitdoor.amessage.network.json.FirebaseMessageJson
-import com.moonlitdoor.amessage.network.json.Payload
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse

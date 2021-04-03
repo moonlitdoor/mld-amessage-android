@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.network.json
+package com.moonlitdoor.amessage.dto
 
 import com.google.gson.Gson
 import com.moonlitdoor.amessage.encryption.AesCbcWithIntegrity

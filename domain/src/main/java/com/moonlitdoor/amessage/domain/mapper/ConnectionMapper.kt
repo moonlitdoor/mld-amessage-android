@@ -3,7 +3,7 @@ package com.moonlitdoor.amessage.domain.mapper
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
-import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
+import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 //import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
 //import com.moonlitdoor.amessage.network.json.ConnectionJson
 import java.util.*

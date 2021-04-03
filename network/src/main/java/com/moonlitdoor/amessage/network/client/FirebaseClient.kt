@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.network.client
 
-import com.moonlitdoor.amessage.network.json.FirebaseMessageJson
-import com.moonlitdoor.amessage.network.json.FirebaseResponseJson
+import com.moonlitdoor.amessage.dto.FirebaseMessageJson
+import com.moonlitdoor.amessage.dto.FirebaseResponseJson
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers

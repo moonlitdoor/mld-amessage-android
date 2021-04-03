@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.network.json
 
+import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 import org.junit.Test
 import java.util.*
 

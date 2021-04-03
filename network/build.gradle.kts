@@ -22,6 +22,7 @@ dependencies {
 
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
+  implementation(project(Modules.DTO))
   implementation(project(Modules.ENCRYPTION))
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)

@@ -2,6 +2,9 @@ package com.moonlitdoor.amessage.network.json
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.google.gson.Gson
+import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
+import com.moonlitdoor.amessage.dto.ConnectionJson
+import com.moonlitdoor.amessage.dto.FirebaseMessageJson
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

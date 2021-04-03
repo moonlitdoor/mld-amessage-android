@@ -12,6 +12,7 @@ object Modules {
   const val CONSTANTS = ":constants"
   const val DATABASE = ":database"
   const val DOMAIN = ":domain"
+  const val DTO = ":dto"
   const val ENCRYPTION = ":encryption"
   const val EXPERIMENTS = ":experiments"
   const val EXPERIMENTS_UI = ":experiments_ui"

@@ -56,9 +56,11 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
         sourceSets {
           getByName("test") {
             java.srcDir("src/sharedTest/java")
+            java.srcDir("src/sharedTest/kotlin")
           }
           getByName("androidTest") {
             java.srcDir("src/sharedTest/java")
+            java.srcDir("src/sharedTest/kotlin")
           }
         }
       }

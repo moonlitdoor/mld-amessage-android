@@ -6,9 +6,9 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
+import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.extensions.ignore
-import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
-import com.moonlitdoor.amessage.network.json.Payload
 import kotlinx.coroutines.flow.first
 import timber.log.Timber
 import java.util.*

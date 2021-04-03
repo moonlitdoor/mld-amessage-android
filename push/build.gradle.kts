@@ -14,8 +14,7 @@ dependencies {
   implementation(project(Modules.EXTENSIONS))
   implementation(project(Modules.DATABASE))
   implementation(project(Modules.DOMAIN))
-  // TODO create DTO module to hold json objects for PUSH and NETWORK
-  implementation(project(Modules.NETWORK))
+  implementation(project(Modules.DTO))
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)

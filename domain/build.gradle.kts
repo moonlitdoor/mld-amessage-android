@@ -12,6 +12,7 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.DATABASE))
+  implementation(project(Modules.DTO))
   implementation(project(Modules.NETWORK))
 
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
