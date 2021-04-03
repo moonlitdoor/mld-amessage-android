@@ -25,6 +25,8 @@ interface ConnectionDao {
   @Query("SELECT * FROM connection WHERE state = 'pending'")
   fun getPending(): Flow<List<ConnectionEntity>>
 
+  @Query("SELECT count(*) FROM connection")
+  suspend fun connectionCount(): Long
 
   @Query("SELECT * FROM connection WHERE state = 'connected'")
   suspend fun getConnected2(): List<ConnectionEntity>
@@ -42,7 +44,7 @@ interface ConnectionDao {
 
   @WorkerThread
   @Insert(onConflict = OnConflictStrategy.IGNORE)
-  suspend fun insert(connection: ConnectionEntity): Long
+  suspend fun insert(connection: ConnectionEntity)
 
   @WorkerThread
   @Update

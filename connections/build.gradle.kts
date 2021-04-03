@@ -34,6 +34,8 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.DOMAIN))
+  implementation(project(Modules.EXTENSIONS))
+  implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 
   implementation(Dependencies.Androidx.Compose.Material.material)

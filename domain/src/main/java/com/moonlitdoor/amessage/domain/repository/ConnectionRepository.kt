@@ -65,9 +65,12 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
 
   }
 
+  suspend fun connectionCount() = connectionDao.connectionCount()
+
   fun update(connectionId: UUID, state: Connection.State) = connectionDao.update(connectionId, ConnectionMapper.state(state))
 
   suspend fun insert(entity: ConnectionEntity) = connectionDao.insert(entity)
+  suspend fun insert(entity: Connection) = connectionDao.insert(ConnectionMapper.from(entity))
 
   fun delete(connectionId: UUID) = Unit//connectionDao.delete(connectionId)
 
