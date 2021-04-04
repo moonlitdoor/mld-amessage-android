@@ -4,7 +4,6 @@ object Modules {
   const val ABOUT = ":about"
   const val AMESSAGE = ":amessage"
   const val ANALYTICS = ":analytics"
-  const val BINDINGS = ":bindings"
   const val COMPONENTS = ":components"
   const val CONNECT = ":connect"
   const val CONNECTION = ":connection"

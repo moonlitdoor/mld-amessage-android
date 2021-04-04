@@ -26,7 +26,6 @@ dependencies {
 
   implementation(project(M.AMESSAGE))
 
-//  implementation(project(M.BINDINGS))
 //  implementation(project(M.COMPONENTS))
 //  implementation(project(M.DOMAIN))
 //  implementation(project(M.EXTENSIONS))

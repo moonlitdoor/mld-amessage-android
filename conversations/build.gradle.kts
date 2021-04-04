@@ -47,7 +47,6 @@ dependencies {
 
 //  testImplementation(Dependencies.Junit.junit)
 
-//  implementation(project(M.BINDINGS))
 //  implementation(project(M.EXPERIMENTS))
 //  implementation(project(M.EXTENSIONS))
 //  implementation(project(M.HANDLE))

@@ -46,7 +46,6 @@ dependencies {
 
 //  testImplementation(Dependencies.Junit.junit)
 
-//  implementation(project(M.BINDINGS))
 //  implementation(project(M.COMPONENTS))
 //
 //  implementation(D.Com.Google.Dagger.dagger)

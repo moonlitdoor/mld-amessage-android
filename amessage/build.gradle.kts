@@ -166,7 +166,6 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.ANALYTICS))
-//  api(project(M.BINDINGS))
   implementation(project(Modules.COMPONENTS))
 //  implementation(project(M.CONSTANTS))
   implementation(project(Modules.CONNECT))

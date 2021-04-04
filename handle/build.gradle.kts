@@ -42,7 +42,6 @@ dependencies {
 
 //  testImplementation(Dependencies.Junit.junit)
 
-//  implementation(project(M.BINDINGS))
   implementation(project(Modules.COMPONENTS))
   implementation(project(Modules.DOMAIN))
 //  implementation(project(M.EXPERIMENTS))

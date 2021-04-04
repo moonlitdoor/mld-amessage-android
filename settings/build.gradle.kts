@@ -20,7 +20,6 @@ dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
 
-  implementation(project(M.BINDINGS))
   implementation(project(M.DOMAIN))
   implementation(project(M.EXPERIMENTS))
   api(project(M.EXPERIMENTS_UI))

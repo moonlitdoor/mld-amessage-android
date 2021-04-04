@@ -24,7 +24,6 @@ dependencies {
 
   kapt(D.Com.Google.Dagger.daggerCompiler)
 
-  implementation(project(M.BINDINGS))
   implementation(project(M.EXTENSIONS))
   implementation(project(M.EXPERIMENTS))
   implementation(project(M.RESOURCES))
