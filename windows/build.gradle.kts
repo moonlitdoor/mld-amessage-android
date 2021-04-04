@@ -29,7 +29,6 @@ dependencies {
 //  implementation(project(M.COMPONENTS))
 //  implementation(project(M.DOMAIN))
 //  implementation(project(M.EXTENSIONS))
-//  implementation(project(M.IDS))
 //  implementation(project(M.RESOURCES))
 
   implementation(D.Com.Google.Dagger.dagger)

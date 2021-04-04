@@ -47,7 +47,6 @@ dependencies {
 //  implementation(project(M.EXPERIMENTS))
 //  implementation(project(M.EXTENSIONS))
 //  implementation(project(M.HANDLE))
-//  implementation(project(M.IDS))
 //  implementation(project(M.RESOURCES))
   implementation(project(Modules.THEME))
 //

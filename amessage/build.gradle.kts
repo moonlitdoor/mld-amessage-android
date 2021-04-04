@@ -178,7 +178,6 @@ dependencies {
   implementation(project(Modules.EXPERIMENTS))
 //  api(project(M.EXTENSIONS))
   implementation(project(Modules.HANDLE))
-//  implementation(project(M.IDS))
   implementation(project(Modules.PUSH))
 //  api(project(M.RESOURCES))
   implementation(project(Modules.ROOT))
