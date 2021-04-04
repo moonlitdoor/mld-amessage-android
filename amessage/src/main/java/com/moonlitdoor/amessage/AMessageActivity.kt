@@ -14,6 +14,10 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ChatBubble
+import androidx.compose.material.icons.filled.Group
+import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,6 +29,8 @@ import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.components.AppChrome
+import com.moonlitdoor.amessage.routes.Routes
 import com.moonlitdoor.amessage.theme.AMessageTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -47,18 +53,17 @@ class AMessageActivity : AppCompatActivity() {
       AMessageTheme {
         EdgeToEdgeContent {
           val navController: NavHostController = rememberNavController()
-          var currentScreen by remember { mutableStateOf<Screen?>(null) }
-          var currentActions by remember { mutableStateOf<List<com.moonlitdoor.amessage.components.ActionItem>>(listOf()) }
-          val setCurrentActions: (actionItems: List<com.moonlitdoor.amessage.components.ActionItem>) -> Unit = { currentActions = it }
+          var currentAppChrome by remember { mutableStateOf<AppChrome?>(null) }
+          val setAppChrome: (appChrome: AppChrome) -> Unit = { currentAppChrome = it }
           Scaffold(
             topBar = {
               TopAppBar(
                 title = {
-                  Text(stringResource(currentScreen?.resourceId ?: R.string.app_name))
+                  Text(currentAppChrome?.title ?: stringResource(id = R.string.app_name))
                 },
                 elevation = 12.dp,
                 actions = {
-                  currentActions.forEach {
+                  currentAppChrome?.actionItems?.forEach {
                     IconButton(
                       enabled = it.enabled,
                       onClick = it.onClick
@@ -73,27 +78,47 @@ class AMessageActivity : AppCompatActivity() {
               )
             },
             bottomBar = {
-              AnimatedVisibility(visible = currentScreen?.showBottomBar ?: true) {
+              AnimatedVisibility(visible = currentAppChrome?.showBottomBar ?: true) {
                 BottomNavigation {
                   val currentState by navController.currentBackStackEntryAsState()
                   val currentRoute = currentState?.arguments?.getString(KEY_ROUTE)
-                  Screen.items.forEach { screen ->
-                    BottomNavigationItem(
-                      icon = { Icon(screen.icon, null) },
-                      label = { Text(stringResource(screen.resourceId)) },
-                      selected = currentRoute == screen.route,
-                      onClick = {
-                        navController.navigate(screen.route) {
-                          popUpTo = navController.graph.startDestination
-                          launchSingleTop = true
-                        }
+                  BottomNavigationItem(
+                    icon = { Icon(Icons.Filled.ChatBubble, null) },
+                    label = { Text(stringResource(R.string.conversations_title)) },
+                    selected = Routes.Conversations.route == currentRoute,
+                    onClick = {
+                      navController.navigate(Routes.Conversations.route) {
+                        popUpTo = navController.graph.startDestination
+                        launchSingleTop = true
                       }
-                    )
-                  }
+                    }
+                  )
+                  BottomNavigationItem(
+                    icon = { Icon(Icons.Filled.Group, null) },
+                    label = { Text(stringResource(R.string.connections_title)) },
+                    selected = Routes.Connections.route == currentRoute,
+                    onClick = {
+                      navController.navigate(Routes.Connections.route) {
+                        popUpTo = navController.graph.startDestination
+                        launchSingleTop = true
+                      }
+                    }
+                  )
+                  BottomNavigationItem(
+                    icon = { Icon(Icons.Filled.PersonAdd, null) },
+                    label = { Text(stringResource(R.string.connect_title)) },
+                    selected = Routes.Connect.route == currentRoute,
+                    onClick = {
+                      navController.navigate(Routes.Connect.route) {
+                        popUpTo = navController.graph.startDestination
+                        launchSingleTop = true
+                      }
+                    }
+                  )
                 }
               }
             },
-            content = { Navigation(navHostController = navController, setCurrentActions = setCurrentActions) { currentScreen = it } }
+            content = { Navigation(navHostController = navController, setAppChrome = setAppChrome) }
           )
         }
       }

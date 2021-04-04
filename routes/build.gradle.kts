@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
 
+  implementation(Dependencies.Androidx.Navigation.navigationCompose)
+
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)

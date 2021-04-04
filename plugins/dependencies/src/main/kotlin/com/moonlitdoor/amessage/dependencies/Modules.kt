@@ -7,6 +7,7 @@ object Modules {
   const val BINDINGS = ":bindings"
   const val COMPONENTS = ":components"
   const val CONNECT = ":connect"
+  const val CONNECTION = ":connection"
   const val CONNECTIONS = ":connections"
   const val CONVERSATIONS = ":conversations"
   const val CONSTANTS = ":constants"

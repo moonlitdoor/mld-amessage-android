@@ -17,7 +17,17 @@ object ConnectionMapper {
     token = connection.token,
     handle = connection.handle,
     state = state(connection.state),
-    id = connection.id
+    id = connection.id,
+  )
+
+  fun map(entity: ConnectionEntity) = Connection(
+    connectionId = entity.connectionId,
+    password = entity.password,
+    salt = entity.salt,
+    token = entity.token,
+    handle = entity.handle,
+    state = state(entity.state),
+    id = entity.id,
   )
 
   fun state(state: Connection.State) = when (state) {

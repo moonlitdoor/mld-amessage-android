@@ -26,20 +26,24 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.ActionItem
+import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.domain.model.Handle
 import timber.log.Timber
 
 @Composable
-fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, setCurrentActions: (actionItems: List<ActionItem>) -> Unit) {
+fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
   var isActionItemEnabled by remember { mutableStateOf(false) }
-  setCurrentActions(
-    listOf(
-      ActionItem(
-        enabled = isActionItemEnabled,
-        onClick = {
-          viewModel.saveHandle()
-        },
-        imageVector = Icons.Filled.Check,
+  setAppChrome(
+    AppChrome(
+      title = stringResource(id = R.string.handle_title),
+      actionItems = listOf(
+        ActionItem(
+          enabled = isActionItemEnabled,
+          onClick = {
+            viewModel.saveHandle()
+          },
+          imageVector = Icons.Filled.Check,
+        )
       )
     )
   )

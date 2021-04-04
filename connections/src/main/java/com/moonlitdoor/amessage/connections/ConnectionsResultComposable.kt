@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.routes.Routes
 import timber.log.Timber
 import java.util.*
 
@@ -26,13 +28,12 @@ fun ConnectionsResult(navHostController: NavHostController, viewState: Connectio
       Box(modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
-        .padding(8.dp)
+//        .padding(8.dp)
         .clickable {
-          /*TODO navigate to Connection */
-//          navHostController.navigate()
+          navHostController.navigate(Routes.Connection(it.id).route)
         }
       ) {
-        Text(text = it.handle)
+        Text(text = it.handle, Modifier.padding(8.dp))
       }
     }
   }

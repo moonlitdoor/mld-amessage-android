@@ -11,6 +11,7 @@ import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 //import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
+import kotlinx.coroutines.flow.Flow
 //import com.moonlitdoor.amessage.domain.work.ConnectionConfirmationWorker
 //import com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker
 //import com.moonlitdoor.amessage.extensions.map
@@ -69,9 +70,13 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
 
   fun update(connectionId: UUID, state: Connection.State) = connectionDao.update(connectionId, ConnectionMapper.state(state))
 
+  //  TODO remove ConnectionEntity
   suspend fun insert(entity: ConnectionEntity) = connectionDao.insert(entity)
   suspend fun insert(entity: Connection) = connectionDao.insert(ConnectionMapper.from(entity))
 
   fun delete(connectionId: UUID) = Unit//connectionDao.delete(connectionId)
+
+  fun getConnection(connectionId: Long): Flow<Connection> = connectionDao.getConnection(connectionId).map { ConnectionMapper.map(it) }
+
 
 }

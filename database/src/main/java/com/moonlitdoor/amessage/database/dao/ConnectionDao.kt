@@ -62,4 +62,7 @@ interface ConnectionDao {
   @Query("DELETE FROM connection WHERE connection_id == :connectionId")
   fun delete(connectionId: UUID)
 
+  @Query("SELECT * FROM connection WHERE id == :connectionId")
+  fun getConnection(connectionId: Long): Flow<ConnectionEntity>
+
 }

@@ -33,6 +33,7 @@ dependencies {
 //  kapt(D.Com.Google.Dagger.daggerCompiler)
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
+  implementation(project(Modules.COMPONENTS))
   implementation(project(Modules.DOMAIN))
   implementation(project(Modules.THEME))
 

@@ -170,6 +170,7 @@ dependencies {
   implementation(project(Modules.COMPONENTS))
 //  implementation(project(M.CONSTANTS))
   implementation(project(Modules.CONNECT))
+  implementation(project(Modules.CONNECTION))
   implementation(project(Modules.CONNECTIONS))
   implementation(project(Modules.CONVERSATIONS))
   implementation(project(Modules.INIT))
