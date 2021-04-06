@@ -10,12 +10,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
+import com.moonlitdoor.amessage.components.Navigation
 
 @Composable
 fun Connection(navHostController: NavHostController, viewModel: ConnectionViewModel, connectionId: Long, setAppChrome: (appChrome: AppChrome) -> Unit) {
   setAppChrome(
     AppChrome(
-      title = stringResource(id = R.string.connection_title)
+      title = stringResource(id = R.string.connection_title),
+      navigation = Navigation(imageVector = Navigation.DEFAULT_ICON) { navHostController.popBackStack() }
     )
   )
 

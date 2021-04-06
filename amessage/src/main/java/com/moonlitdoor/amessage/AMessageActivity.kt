@@ -53,17 +53,34 @@ class AMessageActivity : AppCompatActivity() {
       AMessageTheme {
         EdgeToEdgeContent {
           val navController: NavHostController = rememberNavController()
-          var currentAppChrome by remember { mutableStateOf<AppChrome?>(null) }
+          var currentAppChrome by remember {
+            mutableStateOf(
+              AppChrome(
+                title = getString(R.string.app_name),
+                showBottomBar = true,
+              )
+            )
+          }
           val setAppChrome: (appChrome: AppChrome) -> Unit = { currentAppChrome = it }
           Scaffold(
             topBar = {
               TopAppBar(
                 title = {
-                  Text(currentAppChrome?.title ?: stringResource(id = R.string.app_name))
+                  Text(currentAppChrome.title)
+                },
+                navigationIcon = currentAppChrome.navigation?.let {
+                  {
+                    IconButton(onClick = it.onClick) {
+                      Icon(
+                        imageVector = it.imageVector,
+                        contentDescription = stringResource(R.string.app_name)
+                      )
+                    }
+                  }
                 },
                 elevation = 12.dp,
                 actions = {
-                  currentAppChrome?.actionItems?.forEach {
+                  currentAppChrome.actionItems.forEach {
                     IconButton(
                       enabled = it.enabled,
                       onClick = it.onClick
@@ -78,7 +95,7 @@ class AMessageActivity : AppCompatActivity() {
               )
             },
             bottomBar = {
-              AnimatedVisibility(visible = currentAppChrome?.showBottomBar ?: true) {
+              AnimatedVisibility(visible = currentAppChrome.showBottomBar) {
                 BottomNavigation {
                   val currentState by navController.currentBackStackEntryAsState()
                   val currentRoute = currentState?.arguments?.getString(KEY_ROUTE)
