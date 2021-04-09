@@ -1,17 +1,11 @@
 package com.moonlitdoor.amessage.database.projection
 
-import androidx.room.ColumnInfo
 import java.util.*
 
-data class SaltProjection(
-  @ColumnInfo(name = "value")
-  val value: UUID
-) {
-  val key: String = SALT
-
+class SaltProjection(
+  value: UUID
+) : KeyValueProjection<UUID>(key = KEY, value = value) {
   companion object {
-
-    const val SALT = "salt"
+    const val KEY = "salt"
   }
-
 }

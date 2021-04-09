@@ -11,7 +11,7 @@ import kotlinx.coroutines.flow.Flow
 interface KeyValueDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  suspend fun insertKeyValue(keyValueEntity: KeyValueEntity)
+  suspend fun setKeyValue(keyValueEntity: KeyValueEntity)
 
   @Query("SELECT value FROM key_value WHERE `key` = :key")
   suspend fun getValue(key: String): String?

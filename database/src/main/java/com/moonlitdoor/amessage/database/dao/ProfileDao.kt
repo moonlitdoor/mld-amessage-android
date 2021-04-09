@@ -19,27 +19,27 @@ interface ProfileDao : KeyValueDao {
   @Query("SELECT * FROM profile")
   fun getProfile(): Flow<ProfileView>
 
-  suspend fun insertHandle(value: HandleProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
+  suspend fun setHandle(value: HandleProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
-  suspend fun insertToken(value: TokenProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
+  suspend fun setToken(value: TokenProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
-  fun getHandleFlow(): Flow<HandleProjection> = getValueFlow(HandleProjection.HANDLE).map { HandleProjection(it) }
+  fun getHandleFlow(): Flow<HandleProjection> = getValueFlow(HandleProjection.KEY).map { HandleProjection(it) }
 
-  suspend fun getHandle(): HandleProjection = HandleProjection(getValue(HandleProjection.HANDLE))
+  suspend fun getHandle(): HandleProjection = HandleProjection(getValue(HandleProjection.KEY))
 
-  suspend fun getToken(): TokenProjection = TokenProjection(getValue(TokenProjection.TOKEN))
+  suspend fun getToken(): TokenProjection = TokenProjection(getValue(TokenProjection.KEY))
 
-  suspend fun getId(): IdProjection = IdProjection(getValue(IdProjection.ID)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertId(IdProjection(it)) })
+  suspend fun getId(): IdProjection = IdProjection(getValue(IdProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertId(IdProjection(it)) })
 
-  suspend fun getPassword(): PasswordProjection = PasswordProjection(getValue(PasswordProjection.PASSWORD)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertPassword(PasswordProjection(it)) })
+  suspend fun getPassword(): PasswordProjection = PasswordProjection(getValue(PasswordProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertPassword(PasswordProjection(it)) })
 
-  suspend fun getSalt(): SaltProjection = SaltProjection(getValue(SaltProjection.SALT)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertSalt(SaltProjection(it)) })
+  suspend fun getSalt(): SaltProjection = SaltProjection(getValue(SaltProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertSalt(SaltProjection(it)) })
 
-  private suspend fun insertId(value: IdProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
+  private suspend fun insertId(value: IdProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
-  private suspend fun insertPassword(value: PasswordProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
+  private suspend fun insertPassword(value: PasswordProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
-  private suspend fun insertSalt(value: SaltProjection): Unit = insertKeyValue(KeyValueEntity.from(value))
+  private suspend fun insertSalt(value: SaltProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
   private fun String?.toUUID() = this?.let { UUID.fromString(it) }
 

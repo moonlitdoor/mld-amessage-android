@@ -1,20 +1,29 @@
 package com.moonlitdoor.amessage.domain.repository
 
-//import com.moonlitdoor.amessage.database.dao.SettingsDao
+import com.moonlitdoor.amessage.database.dao.SettingsDao
+import com.moonlitdoor.amessage.database.projection.DeveloperSettingsEnabledProjection
+import com.moonlitdoor.amessage.database.projection.EmployeeSettingsEnabledProjection
+import com.moonlitdoor.amessage.database.projection.ExperimentsUiEnabledProjection
 import javax.inject.Inject
 
-class SettingsRepository @Inject constructor(/*private val dao: SettingsDao*/) {
+class SettingsRepository @Inject constructor(private val dao: SettingsDao) {
 
-  fun getExperimentsUiEnabled() = Unit//dao.getExperimentsUiEnabled()
+  suspend fun isExperimentsUiEnabled(): Boolean = dao.isExperimentsUiEnabled().value
 
-  fun setExperimentsUiEnabled() = Unit//dao.setExperimentsUiEnabled()
+  suspend fun setExperimentsUiEnabled(): Unit = dao.setExperimentsUi(ExperimentsUiEnabledProjection(true))
 
-  fun getDeveloperSettingsEnabled() = Unit//dao.getDeveloperSettingsUiEnabled()
+  suspend fun setExperimentsUiDisabled(): Unit = dao.setExperimentsUi(ExperimentsUiEnabledProjection(false))
 
-  fun setDeveloperSettingsEnabled() = Unit//dao.setDeveloperSettingsEnabled()
+  suspend fun isDeveloperSettingsEnabled(): Boolean = dao.isDeveloperSettingsEnabled().value
 
-  fun getEmployeeSettingsEnabled() = Unit//dao.getEmployeeSettingsEnabled()
+  suspend fun setDeveloperSettingsEnabled(): Unit = dao.setDeveloperSettings(DeveloperSettingsEnabledProjection(true))
 
-  fun setEmployeeSettingsEnabled() = Unit//dao.setEmployeeSettingsEnabled()
+  suspend fun setDeveloperSettingsDisabled(): Unit = dao.setDeveloperSettings(DeveloperSettingsEnabledProjection(false))
+
+  suspend fun isEmployeeSettingsEnabled(): Boolean = dao.isEmployeeSettingsEnabled().value
+
+  suspend fun setEmployeeSettingsEnabled(): Unit = dao.setEmployeeSettings(EmployeeSettingsEnabledProjection(true))
+
+  suspend fun setEmployeeSettingsDisabled(): Unit = dao.setEmployeeSettings(EmployeeSettingsEnabledProjection(false))
 
 }

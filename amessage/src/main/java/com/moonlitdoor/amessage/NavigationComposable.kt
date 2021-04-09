@@ -37,7 +37,7 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
     }
     composable(route = Routes.Connect.route) {
       val viewModel: ConnectViewModel = hiltNavGraphViewModel()
-      Connect(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+      Connect(viewModel = viewModel, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Handle.route) {
       val viewModel: HandleViewModel = hiltNavGraphViewModel()

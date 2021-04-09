@@ -27,9 +27,9 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
 
   fun getConnected() = connectionDao.getConnected().map { list -> list.map { Connection.from(it) } }
 
-  fun getPending() = Unit//connectionDao.getPending().map { list -> list.map { Connection.from(it) } }
+  fun getPending() = connectionDao.getPending().map { list -> list.map { Connection.from(it) } }
 
-  val invited = Unit//connectionDao.getInvited().map { list -> list.map { Connection.from(it) } }
+  fun getInvited() = connectionDao.getInvited().map { list -> list.map { Connection.from(it) } }
 
 //  suspend fun getConnectedConnections2(): List<Connection> = connectionDao.getConnected2().map {
 //    Connection.from(it)
@@ -51,8 +51,7 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
   }
 
   suspend fun confirm(connection: Connection) {
-//    withContext(Dispatchers.IO) {
-//      connectionDao.update(ConnectionMapper.fromConnected(connection))
+    connectionDao.insert(ConnectionMapper.fromConnected(connection))
 //      workManager.enqueue(ConnectionConfirmationWorker.request().setInputData(ConnectionConfirmationWorker.data(connection.connectionId)).build())
 //    }
   }
@@ -77,6 +76,8 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
   fun delete(connectionId: UUID) = Unit//connectionDao.delete(connectionId)
 
   fun getConnection(connectionId: Long): Flow<Connection> = connectionDao.getConnection(connectionId).map { ConnectionMapper.map(it) }
+
+  suspend fun isConnectionExisting(connection: Connection): Boolean = connectionDao.isConnectionExisting(ConnectionMapper.from(connection).connectionId) > 0
 
 
 }

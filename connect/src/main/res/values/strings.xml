@@ -1,16 +1,30 @@
 <resources>
-  <string name="connect.title">Connect</string>
+  <string name="connect_title">Connect</string>
+  <string name="connect_pending_title">Pending</string>
+  <string name="connect_invited_title">Invited</string>
+  <string name="connect_qr_code_title">QR Code</string>
+  <string name="connect_scan_title">Scan</string>
+  <string name="connect_pending_none">You have not made any Connections yet…</string>
+  <string name="connect_with_handle">"Connect with %s?"</string>
+  <string name="connect_connected">Already Connected with %s</string>
 
-  <string name="invited_list_title">Invited</string>
-  <string name="connect_list_title">Pending</string>
-  <string name="connect">Connect with %s</string>
+  <string name="connect_experiments">Experiments</string>
+  <string name="connect_enable_experiments">Enable Experiments?</string>
+  <string name="connect_experiments_enabled">Experiments Already Enabled</string>
+
+  <string name="connect_developer_settings">Developer Settings</string>
+  <string name="connect_enable_developer_settings">Enable Developer Settings?</string>
+  <string name="connect_developer_settings_enabled">Developer Settings Already Enabled</string>
+
+  <string name="connect_employee_settings">Employee Settings</string>
+  <string name="connect_enable_employee_settings">Enable Employee Settings?</string>
+  <string name="connect_employee_settings_enabled">Employee Settings Already Enabled</string>
+
+  <string name="connect_ok">OK</string>
+  <string name="connect_cancel">Cancel</string>
+
+
   <string name="confirm">Confirm</string>
   <string name="reject">Reject</string>
-  <string name="connect_qr_title">QR Code</string>
-  <string name="connect_scan_title">Scan</string>
-  <!--  <string name="connect_scan_title2">Scan2</string>-->
-  <string name="qr_code">QR Code</string>
-  <string name="title_activity_connect">Connect</string>
-  <string name="settings_title_key" translatable="false">com.moonlitdoor.amessage.settings.title</string>
-  <string name="fragment_scan_content_description">contentDescription</string>
+
 </resources>

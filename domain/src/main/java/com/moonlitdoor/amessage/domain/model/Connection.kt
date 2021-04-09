@@ -33,6 +33,15 @@ data class Connection(
       selected.handle,
       State.Connected
     )
+
+    fun from(profile: Profile) = Connection(
+      connectionId = profile.id,
+      password = profile.password,
+      salt = profile.salt,
+      token = profile.token,
+      handle = profile.handle,
+      state = State.Scanned
+    )
   }
 
   sealed class State(val value: String) {

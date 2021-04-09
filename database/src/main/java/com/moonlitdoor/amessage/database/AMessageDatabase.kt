@@ -10,6 +10,7 @@ import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.KeyValueDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
+import com.moonlitdoor.amessage.database.dao.SettingsDao
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
@@ -34,6 +35,8 @@ abstract class AMessageDatabase : RoomDatabase() {
   abstract fun keyValueDao(): KeyValueDao
 
   abstract fun profileDao(): ProfileDao
+
+  abstract fun settingDao(): SettingsDao
 
   abstract fun connectionDao(): ConnectionDao
 

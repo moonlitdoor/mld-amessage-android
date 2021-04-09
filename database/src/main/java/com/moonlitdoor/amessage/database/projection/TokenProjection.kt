@@ -1,16 +1,10 @@
 package com.moonlitdoor.amessage.database.projection
 
-import androidx.room.ColumnInfo
 
-data class TokenProjection(
-  @ColumnInfo(name = "value")
-  val value: String?
-) {
-  val key: String = TOKEN
-
+class TokenProjection(
+  value: String?
+) : KeyValueProjection<String?>(key = KEY, value = value) {
   companion object {
-
-    const val TOKEN = "token"
+    const val KEY = "token"
   }
-
 }

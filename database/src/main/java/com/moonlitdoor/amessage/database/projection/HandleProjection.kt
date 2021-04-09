@@ -1,16 +1,9 @@
 package com.moonlitdoor.amessage.database.projection
 
-import androidx.room.ColumnInfo
-
-data class HandleProjection(
-  @ColumnInfo(name = "value")
-  val value: String?
-) {
-  val key: String = HANDLE
-
+class HandleProjection(
+  value: String?
+) : KeyValueProjection<String?>(key = KEY, value = value) {
   companion object {
-
-    const val HANDLE = "handle"
+    const val KEY = "handle"
   }
-
 }

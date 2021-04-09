@@ -23,10 +23,10 @@ class ProfileRepository @Inject constructor(private val dao: ProfileDao) {
   fun handleIsSet(): Flow<Boolean> = dao.getHandleFlow().map { !it.value.isNullOrEmpty() }
 
   //TODO notify connections of handle change
-  suspend fun setHandle(handle: Handle) = dao.insertHandle(HandleMapper.map(handle))
+  suspend fun setHandle(handle: Handle) = dao.setHandle(HandleMapper.map(handle))
 
   //TODO notify connections of token change
-  suspend fun setToken(token: Token) = dao.insertToken(TokenMapper.map(token))
+  suspend fun setToken(token: Token) = dao.setToken(TokenMapper.map(token))
 
   suspend fun getHandle() = HandleMapper.map(dao.getHandle())
 

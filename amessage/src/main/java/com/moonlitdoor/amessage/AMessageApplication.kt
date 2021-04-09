@@ -1,8 +1,8 @@
 package com.moonlitdoor.amessage
 
-//import androidx.camera.camera2.Camera2Config
-//import androidx.camera.core.CameraXConfig
 import android.app.Application
+import androidx.camera.camera2.Camera2Config
+import androidx.camera.core.CameraXConfig
 import androidx.lifecycle.LifecycleObserver
 import com.google.firebase.FirebaseApp
 import com.moonlitdoor.amessage.analytics.Analytics
@@ -12,7 +12,7 @@ import com.moonlitdoor.amessage.root.Root
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class AMessageApplication : Application(), LifecycleObserver /*Configuration.Provider,*/ /*CameraXConfig.Provider,*/ {
+class AMessageApplication : Application(), LifecycleObserver, /*Configuration.Provider,*/ CameraXConfig.Provider {
 
 //  @Inject
 //  lateinit var workerFactory: AMessageWorkerFactory
@@ -30,7 +30,7 @@ class AMessageApplication : Application(), LifecycleObserver /*Configuration.Pro
     DatabasePopulationService.start(this)
   }
 
-//  override fun getCameraXConfig(): CameraXConfig = Camera2Config.defaultConfig()
+  override fun getCameraXConfig(): CameraXConfig = Camera2Config.defaultConfig()
 
 //  override fun getWorkManagerConfiguration(): Configuration =
 //    Configuration.Builder()

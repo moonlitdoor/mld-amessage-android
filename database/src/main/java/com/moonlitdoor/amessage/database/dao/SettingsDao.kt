@@ -1,31 +1,24 @@
 package com.moonlitdoor.amessage.database.dao
 
-//import android.content.SharedPreferences
-//import androidx.core.content.edit
-//import com.moonlitdoor.amessage.constants.Constants
-//import javax.inject.Inject
-//
-//class SettingsDao @Inject constructor(private val preferences: SharedPreferences) {
-//
-//  fun getExperimentsUiEnabled(): Boolean = preferences.getBoolean(Constants.Keys.EXPERIMENTS_SETTINGS, false)
-//
-//  fun setExperimentsUiEnabled() = preferences.edit {
-//    putBoolean(Constants.Keys.EXPERIMENTS_SETTINGS, true)
-//    putBoolean(Constants.Keys.EXPERIMENTS_SETTINGS_VISIBLE, true)
-//  }
-//
-//  fun getDeveloperSettingsUiEnabled(): Boolean = preferences.getBoolean(Constants.Keys.DEVELOPER_SETTINGS, false)
-//
-//  fun setDeveloperSettingsEnabled() = preferences.edit {
-//    putBoolean(Constants.Keys.DEVELOPER_SETTINGS, true)
-//    putBoolean(Constants.Keys.DEVELOPER_SETTINGS_VISIBLE, true)
-//  }
-//
-//  fun getEmployeeSettingsEnabled(): Boolean = preferences.getBoolean(Constants.Keys.EMPLOYEE_SETTINGS, false)
-//
-//  fun setEmployeeSettingsEnabled() = preferences.edit {
-//    putBoolean(Constants.Keys.EMPLOYEE_SETTINGS, true)
-//    putBoolean(Constants.Keys.EMPLOYEE_SETTINGS_VISIBLE, true)
-//  }
-//
-//}
+import androidx.room.Dao
+import com.moonlitdoor.amessage.database.entity.KeyValueEntity
+import com.moonlitdoor.amessage.database.projection.DeveloperSettingsEnabledProjection
+import com.moonlitdoor.amessage.database.projection.EmployeeSettingsEnabledProjection
+import com.moonlitdoor.amessage.database.projection.ExperimentsUiEnabledProjection
+
+@Dao
+interface SettingsDao : KeyValueDao {
+
+  suspend fun isExperimentsUiEnabled(): ExperimentsUiEnabledProjection = ExperimentsUiEnabledProjection(getValue(ExperimentsUiEnabledProjection.KEY).toBoolean())
+
+  suspend fun setExperimentsUi(value: ExperimentsUiEnabledProjection): Unit = setKeyValue(KeyValueEntity.from(value))
+
+  suspend fun isEmployeeSettingsEnabled(): EmployeeSettingsEnabledProjection = EmployeeSettingsEnabledProjection(getValue(EmployeeSettingsEnabledProjection.KEY).toBoolean())
+
+  suspend fun setEmployeeSettings(value: EmployeeSettingsEnabledProjection): Unit = setKeyValue(KeyValueEntity.from(value))
+
+  suspend fun isDeveloperSettingsEnabled(): DeveloperSettingsEnabledProjection = DeveloperSettingsEnabledProjection(getValue(DeveloperSettingsEnabledProjection.KEY).toBoolean())
+
+  suspend fun setDeveloperSettings(value: DeveloperSettingsEnabledProjection): Unit = setKeyValue(KeyValueEntity.from(value))
+
+}

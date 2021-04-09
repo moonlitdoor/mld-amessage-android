@@ -9,7 +9,6 @@ import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.*
@@ -33,27 +32,29 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
       Timber.d(profileRepository.getId().toString())
       Timber.d(profileRepository.getPassword().toString())
       Timber.d(profileRepository.getSalt().toString())
-      /*Test Data*/
-      if (connectionRepository.connectionCount() == 0L) {
-        for (i in 1..25) {
-          connectionRepository.insert(createConnection("token$i", "handle$i"))
+      /* Test Data */
+      if (connectionRepository.connectionCount() == 0L && false) {
+        for (i in 1..100) {
+          val state = when {
+            i % 5 == 1 -> Connection.State.Queued
+            i % 5 == 2 -> Connection.State.Pending
+            i % 5 == 3 -> Connection.State.Invited
+            i % 5 == 4 -> Connection.State.Scanned
+            else -> Connection.State.Connected
+          }
+          connectionRepository.insert(createConnection("token$i", "handle$i", state))
         }
       }
     }
-
-    GlobalScope.launch(context = handler) {
-      delay(5000)
-
-    }
   }
 
-  private fun createConnection(token: String, handle: String) = Connection(
+  private fun createConnection(token: String, handle: String, state: Connection.State) = Connection(
     connectionId = UUID.randomUUID(),
     password = UUID.randomUUID(),
     salt = UUID.randomUUID(),
     token = token,
     handle = handle,
-    state = Connection.State.Connected
+    state = state,
   )
 
   companion object {

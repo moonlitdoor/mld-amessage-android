@@ -30,11 +30,12 @@ android {
 
 dependencies {
 
-//  kapt(D.Com.Google.Dagger.daggerCompiler)
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.COMPONENTS))
+  implementation(project(Modules.CONSTANTS))
   implementation(project(Modules.DOMAIN))
+  implementation(project(Modules.EXTENSIONS))
   implementation(project(Modules.THEME))
 
   implementation(Dependencies.Androidx.Compose.Material.material)
@@ -42,41 +43,13 @@ dependencies {
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
+  implementation(Dependencies.Com.Google.Accompanist.accompanistPager)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
-
-//  testImplementation(Dependencies.Junit.junit)
-
-//  implementation(project(M.COMPONENTS))
-//
-//  implementation(D.Com.Google.Dagger.dagger)
-//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
-//  implementation(D.Androidx.ConstraintLayout.constraintLayout)
-//  implementation(D.Androidx.Navigation.navigationFragmentKtx)
-//  implementation(D.Androidx.Navigation.navigationUiKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-//
-//  testImplementation(D.Androidx.Test.Ext.junitKtx)
-//  testImplementation(D.Org.Robolectric.robolectric)
-//
-//  androidTestUtil(D.Androidx.Test.orchestrator)
-//
-//  androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
-//  androidTestImplementation(D.Androidx.Test.Ext.junitKtx)
 
   testImplementation(Dependencies.Junit.junit)
-//  testImplementation(Dependencies.Androidx.Test.runner)
-//  testImplementation(Dependencies.Androidx.Test.rules)
-//  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  testImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-//  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-//  androidTestImplementation(Dependencies.Androidx.Test.runner)
-//  androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-//  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
-
 
   implementation(Dependencies.Androidx.Camera.cameraCamera2)
   implementation(Dependencies.Androidx.Camera.cameraCore)

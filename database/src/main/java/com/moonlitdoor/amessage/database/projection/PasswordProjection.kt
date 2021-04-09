@@ -1,17 +1,11 @@
 package com.moonlitdoor.amessage.database.projection
 
-import androidx.room.ColumnInfo
 import java.util.*
 
-data class PasswordProjection(
-  @ColumnInfo(name = "value")
-  val value: UUID
-) {
-  val key: String = PASSWORD
-
+class PasswordProjection(
+  value: UUID
+) : KeyValueProjection<UUID>(key = KEY, value = value) {
   companion object {
-
-    const val PASSWORD = "password"
+    const val KEY = "password"
   }
-
 }

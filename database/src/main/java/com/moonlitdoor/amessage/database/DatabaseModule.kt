@@ -10,6 +10,7 @@ import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.KeyValueDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
+import com.moonlitdoor.amessage.database.dao.SettingsDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,6 +45,9 @@ object DatabaseModule {
 
   @Provides
   fun providesProfileDao(aMessageDatabase: AMessageDatabase): ProfileDao = aMessageDatabase.profileDao()
+
+  @Provides
+  fun providesSettingsDao(aMessageDatabase: AMessageDatabase): SettingsDao = aMessageDatabase.settingDao()
 
 //    @Provides
 //    fun providesThemeDao(sharedPreferences: SharedPreferences): ThemeDao = ThemeDao(sharedPreferences)

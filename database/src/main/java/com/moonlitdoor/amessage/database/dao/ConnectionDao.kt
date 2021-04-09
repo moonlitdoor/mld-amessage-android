@@ -28,9 +28,6 @@ interface ConnectionDao {
   @Query("SELECT count(*) FROM connection")
   suspend fun connectionCount(): Long
 
-  @Query("SELECT * FROM connection WHERE state = 'connected'")
-  suspend fun getConnected2(): List<ConnectionEntity>
-
   @Query("SELECT * FROM connection WHERE state = 'invited'")
   fun getInvitedConnections(): Flow<List<ConnectionEntity>>
 
@@ -64,5 +61,8 @@ interface ConnectionDao {
 
   @Query("SELECT * FROM connection WHERE id == :connectionId")
   fun getConnection(connectionId: Long): Flow<ConnectionEntity>
+
+  @Query("SELECT count(*) FROM connection where connection_id == :connectionId")
+  suspend fun isConnectionExisting(connectionId: UUID): Long
 
 }
