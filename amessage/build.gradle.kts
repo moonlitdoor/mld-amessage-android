@@ -212,7 +212,6 @@ dependencies {
 //  implementation(Dependencies.Androidx.Navigation.navigationFragmentKtx)
 //  implementation(Dependencies.Androidx.Navigation.navigationUiKtx)
 
-  implementation(Dependencies.Androidx.Preference.preferenceKtx)
 //  implementation(D.Androidx.Legacy.legacyPreferenceV14)
 //  implementation(D.Androidx.Recyclerview.recyclerview)
 //  implementation(D.Androidx.Legacy.legacySupportV4)

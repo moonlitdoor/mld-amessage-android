@@ -6,12 +6,6 @@ object Dependencies {
   }
 
   object Androidx {
-    const val version = "off"
-
-//    object Annotation {
-//      const val annotation = "androidx.annotation:annotation:1.1.0"
-//    }
-
     object Activity {
       const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha05"
     }
@@ -47,21 +41,9 @@ object Dependencies {
       const val coreKtx = "androidx.core:core-ktx:1.6.0-alpha01"
     }
 
-    object Fragment {
-      private const val version = "1.3.0-alpha08"
-      const val fragmentKtx = "androidx.fragment:fragment-ktx:$version"
-      const val fragmentTesting = "androidx.fragment:fragment-testing:$version"
-    }
-
     object Hilt {
       const val hilt = "androidx.hilt:hilt:1.0.0-beta01"
       const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
-    }
-
-    object Legacy {
-      const val legacyPreferenceV14 = "androidx.legacy:legacy-preference-v14:1.0.0"
-      const val legacySupportCoreUtils = "androidx.legacy:legacy-support-core-utils:1.0.0"
-      const val legacySupportV4 = "androidx.legacy:legacy-support-v4:1.0.0"
     }
 
     object Lifecycle {
@@ -83,10 +65,6 @@ object Dependencies {
 
     object Preference {
       const val preferenceKtx = "androidx.preference:preference-ktx:1.1.1"
-    }
-
-    object Recyclerview {
-      const val recyclerview = "androidx.recyclerview:recyclerview:1.2.0-alpha05"
     }
 
     object Room {
@@ -117,10 +95,6 @@ object Dependencies {
       object Ext {
         const val junitKtx = "androidx.test.ext:junit-ktx:1.1.3-alpha05"
       }
-    }
-
-    object Viewpager2 {
-      const val viewpager2 = "androidx.viewpager2:viewpager2:1.1.0-alpha01"
     }
 
     object Work {
@@ -178,10 +152,6 @@ object Dependencies {
         const val firebasePerf = "com.google.firebase:firebase-perf:19.0.9"
       }
 
-      object Guava {
-        const val listenablefuture = "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava"
-      }
-
       object Truth {
         const val truth = "com.google.truth:truth:1.1.2"
       }
@@ -203,9 +173,6 @@ object Dependencies {
         const val dependencies = "com.moonlitdoor.amessage:dependencies"
       }
 
-      object SharedPreferenceLiveData {
-        const val sharedPreferenceLiveData = "com.moonlitdoor.shared-preference-live-data:shared-preference-live-data:0.0.6"
-      }
     }
 
     object SquareUp {
@@ -224,12 +191,6 @@ object Dependencies {
         private const val version = "2.9.0"
         const val converterGson = "com.squareup.retrofit2:converter-gson:$version"
         const val retrofit = "com.squareup.retrofit2:retrofit:$version"
-      }
-    }
-
-    object Stepstone {
-      object Stepper {
-        const val materialStepper = "com.stepstone.stepper:material-stepper:4.3.1"
       }
     }
   }
