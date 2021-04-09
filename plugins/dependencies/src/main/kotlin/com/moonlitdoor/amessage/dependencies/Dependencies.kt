@@ -7,7 +7,7 @@ object Dependencies {
 
   object Androidx {
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha05"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha06"
     }
 
     object AppCompat {
@@ -24,7 +24,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-beta03"
+      const val version = "1.0.0-beta04"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -52,7 +52,7 @@ object Dependencies {
       const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
       const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
       const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
-      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha03"
+      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
     }
 
     object Navigation {
@@ -60,7 +60,7 @@ object Dependencies {
       const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
       const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
       const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
-      const val navigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha09"
+      const val navigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha10"
     }
 
     object Preference {
@@ -111,7 +111,7 @@ object Dependencies {
 
     object Google {
       object Accompanist {
-        private const val version = "0.7.0"
+        private const val version = "0.7.1"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
       }
@@ -133,20 +133,20 @@ object Dependencies {
       }
 
       object Dagger {
-        private const val version = "2.33-beta"
+        private const val version = "2.34-beta"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
       }
 
       object Firebase {
-        const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:18.0.2"
+        const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:18.0.3"
         const val firebaseConfig = "com.google.firebase:firebase-config-ktx:20.0.4"
         const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.4.1"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.7.0"
-        const val firebaseIid = "com.google.firebase:firebase-iid:21.0.1"
+        const val firebaseIid = "com.google.firebase:firebase-iid:21.1.0"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
-        const val firebaseMessaging = "com.google.firebase:firebase-messaging:21.0.1"
+        const val firebaseMessaging = "com.google.firebase:firebase-messaging:21.1.0"
         const val firebaseMlVision = "com.google.firebase:firebase-ml-vision:24.1.0"
         const val firebaseMlVisionBarcodeModel = "com.google.firebase:firebase-ml-vision-barcode-model:16.1.2"
         const val firebasePerf = "com.google.firebase:firebase-perf:19.0.9"
