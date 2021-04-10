@@ -2,7 +2,7 @@ package com.moonlitdoor.amessage.dependencies
 
 object Dependencies {
   object AGP {
-    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha13"
+    const val gradle = "com.android.tools.build:gradle:7.0.0-alpha14"
   }
 
   object Androidx {
@@ -44,6 +44,7 @@ object Dependencies {
     object Hilt {
       const val hilt = "androidx.hilt:hilt:1.0.0-beta01"
       const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
+      const val hiltWork = "androidx.hilt:hilt-work:1.0.0-beta01"
     }
 
     object Lifecycle {
