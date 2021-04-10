@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connect.R
-import com.moonlitdoor.amessage.domain.model.Connection
 
 @Composable
 fun ScanConnectDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Result.Connect) {
@@ -23,7 +22,7 @@ fun ScanConnectDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Resu
       Button(
         onClick = {
           viewState.imageProxy.close()
-          viewModel.confirm(Connection.from(viewState.profile))
+          viewModel.confirm(viewState.profile)
         }) {
         Text(text = stringResource(id = R.string.connect_ok))
       }

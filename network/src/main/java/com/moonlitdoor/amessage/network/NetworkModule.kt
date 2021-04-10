@@ -10,7 +10,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
-import javax.inject.Named
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -28,7 +27,7 @@ object NetworkModule {
       .build()
 
   @Provides
-  fun providesRetrofit(@Named("base_url") baseUrl: String, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
+  fun providesRetrofit(@BaseUrl baseUrl: String, okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
     .baseUrl(baseUrl)
     .client(okHttpClient)
     .addConverterFactory(GsonConverterFactory.create())
@@ -41,7 +40,7 @@ object NetworkModule {
   fun providesNetworkClient(firebaseClient: FirebaseClient): NetworkClient = NetworkClient(firebaseClient)
 
   @Provides
-  @Named("base_url")
+  @BaseUrl
   fun providesFirebaseUrl() = BuildConfig.BASE_URL
 
 }

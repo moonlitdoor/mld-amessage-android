@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
-class ConversationsViewModel @Inject constructor(val repository: ConversationRepository, private val profileRepository: ProfileRepository) : ViewModel() {
+class ConversationsViewModel @Inject constructor(val repository: ConversationRepository, profileRepository: ProfileRepository) : ViewModel() {
 
   val isHandleSet: Flow<Boolean> = profileRepository.handleIsSet()
 

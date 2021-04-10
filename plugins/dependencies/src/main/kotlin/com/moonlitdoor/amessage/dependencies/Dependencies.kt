@@ -43,6 +43,7 @@ object Dependencies {
 
     object Hilt {
       const val hilt = "androidx.hilt:hilt:1.0.0-beta01"
+      const val hiltCompiler = "androidx.hilt:hilt-compiler:1.0.0-beta01"
       const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
       const val hiltWork = "androidx.hilt:hilt-work:1.0.0-beta01"
     }
@@ -99,7 +100,7 @@ object Dependencies {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.5.0-alpha02"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.5.0"
     }
   }
 

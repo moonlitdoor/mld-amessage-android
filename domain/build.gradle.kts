@@ -10,11 +10,14 @@ plugins {
 dependencies {
 
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
+  kapt(Dependencies.Androidx.Hilt.hiltCompiler)
 
   implementation(project(Modules.DATABASE))
   implementation(project(Modules.DTO))
   implementation(project(Modules.NETWORK))
 
+  implementation(Dependencies.Androidx.Hilt.hiltWork)
+  implementation(Dependencies.Androidx.Work.workRuntimeKtx)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
   implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)

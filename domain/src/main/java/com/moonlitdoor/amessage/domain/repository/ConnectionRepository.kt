@@ -3,6 +3,7 @@ package com.moonlitdoor.amessage.domain.repository
 //import androidx.annotation.MainThread
 //import androidx.lifecycle.LiveData/**/
 //import androidx.work.WorkManager
+import androidx.work.WorkManager
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
@@ -11,6 +12,7 @@ import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 //import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker
 import kotlinx.coroutines.flow.Flow
 //import com.moonlitdoor.amessage.domain.work.ConnectionConfirmationWorker
 //import com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker
@@ -23,7 +25,7 @@ import kotlinx.coroutines.flow.map
 import java.util.*
 import javax.inject.Inject
 
-class ConnectionRepository @Inject constructor(private val connectionDao: ConnectionDao/*, private val profileDao: ProfileDao, private val workManager: WorkManager, private val client: NetworkClient*/) {
+class ConnectionRepository @Inject constructor(private val connectionDao: ConnectionDao,/* private val profileDao: ProfileDao,*/ private val workManager: WorkManager/* private val client: NetworkClient*/) {
 
   fun getConnected() = connectionDao.getConnected().map { list -> list.map { Connection.from(it) } }
 
@@ -41,13 +43,11 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
 //  fun getScannedInvitedAndPendingConnections(): LiveData<List<Connection>> = connectionDao.getScannedInvitedAndPendingConnections().map { it.map { Connection.from(it) } }
 
   suspend fun create(scannedProfile: Profile) {
-//    withContext(Dispatchers.IO) {
-//      ConnectionMapper.fromScanned(scannedProfile).also { entity ->
-//        if (connectionDao.insert(entity) > 0) {
-//          workManager.enqueue(ConnectionInviteWorker.request().setInputData(ConnectionInviteWorker.data(entity.connectionId, scannedProfile)).build())
-//        }
-//      }
-//    }
+    ConnectionMapper.fromScanned(scannedProfile).also { entity ->
+      if (connectionDao.insert(entity) > 0) {
+        workManager.enqueue(ConnectionInviteWorker.request().setInputData(ConnectionInviteWorker.data(entity.connectionId, scannedProfile)).build())
+      }
+    }
   }
 
   suspend fun confirm(connection: Connection) {

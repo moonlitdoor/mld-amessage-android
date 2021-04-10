@@ -167,7 +167,6 @@ dependencies {
 
   implementation(project(Modules.ANALYTICS))
   implementation(project(Modules.COMPONENTS))
-//  implementation(project(M.CONSTANTS))
   implementation(project(Modules.CONNECT))
   implementation(project(Modules.CONNECTION))
   implementation(project(Modules.CONNECTIONS))
@@ -176,23 +175,21 @@ dependencies {
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
   implementation(project(Modules.EXPERIMENTS))
-//  api(project(M.EXTENSIONS))
   implementation(project(Modules.HANDLE))
   implementation(project(Modules.PUSH))
-//  api(project(M.RESOURCES))
   implementation(project(Modules.ROOT))
-//  api(project(M.SETTINGS))
 
   implementation(Dependencies.Androidx.Activity.activityCompose)
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Material.materialIconsExtended)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
+  implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
+  implementation(Dependencies.Androidx.Hilt.hiltWork)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleRuntimeKtx)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
   implementation(Dependencies.Com.Google.Accompanist.accompanistInsets)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
-  implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
 
   debugImplementation(Dependencies.Com.SquareUp.Leakcanary.leakcanaryAndroid)
 

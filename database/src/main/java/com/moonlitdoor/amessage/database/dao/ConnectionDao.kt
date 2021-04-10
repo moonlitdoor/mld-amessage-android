@@ -41,7 +41,7 @@ interface ConnectionDao {
 
   @WorkerThread
   @Insert(onConflict = OnConflictStrategy.IGNORE)
-  suspend fun insert(connection: ConnectionEntity)
+  suspend fun insert(connection: ConnectionEntity): Long
 
   @WorkerThread
   @Update

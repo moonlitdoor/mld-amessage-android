@@ -106,8 +106,8 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
     )
   }.ignore()
 
-  fun confirm(connection: Connection) = viewModelScope.launch(Dispatchers.IO) {
-    connectionRepository.confirm(connection)
+  fun confirm(profile: Profile) = viewModelScope.launch(Dispatchers.IO) {
+    connectionRepository.create(profile)
     cancelCurrentScan()
   }
 
