@@ -39,15 +39,6 @@ class AMessageActivity : AppCompatActivity() {
 
   @ExperimentalAnimationApi
   override fun onCreate(savedInstanceState: Bundle?) {
-//    this.setTheme(
-//      when (PreferenceManager.getDefaultSharedPreferences(this).getString(Constants.Keys.THEME, Constants.Keys.Defaults.THEME)) {
-//        Constants.Values.Theme.DARK -> R.style.AmTheme_Dark
-//        Constants.Values.Theme.MONSTER -> R.style.AmTheme_Monster
-//        Constants.Values.Theme.DEEP -> R.style.AmTheme_Deep
-//        Constants.Values.Theme.COOL -> R.style.AmTheme_Cool
-//        else -> R.style.AmTheme
-//      }
-//    )
     super.onCreate(savedInstanceState)
     setContent {
       AMessageTheme {

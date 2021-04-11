@@ -180,56 +180,23 @@ dependencies {
   implementation(project(Modules.ROOT))
 
   implementation(Dependencies.Androidx.Activity.activityCompose)
+  implementation(Dependencies.Androidx.Camera.cameraCamera2)
+  implementation(Dependencies.Androidx.Camera.cameraCore)
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Material.materialIconsExtended)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
   implementation(Dependencies.Androidx.Hilt.hiltWork)
-  implementation(Dependencies.Androidx.Lifecycle.lifecycleRuntimeKtx)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
+  implementation(Dependencies.Androidx.Preference.preferenceKtx)
   implementation(Dependencies.Com.Google.Accompanist.accompanistInsets)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
+  implementation(Dependencies.Com.Google.Firebase.firebaseAnalytics)
+  implementation(Dependencies.Com.Google.Firebase.firebaseCrashlytics)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
   debugImplementation(Dependencies.Com.SquareUp.Leakcanary.leakcanaryAndroid)
-
-  testImplementation(Dependencies.Junit.junit)
-
-//  implementation(D.Androidx.Lifecycle.lifecycleServiceKtx)
-//  implementation(D.Com.Google.Dagger.dagger)
-  implementation(Dependencies.Androidx.AppCompat.appcompat)
-  implementation(Dependencies.Androidx.Camera.cameraCamera2)
-  implementation(Dependencies.Androidx.Camera.cameraCore)
-  implementation(Dependencies.Androidx.Core.coreKtx)
-//  implementation(D.Androidx.Fragment.fragmentKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleRuntimeKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
-//  implementation(Dependencies.Androidx.Navigation.navigationDynamicFeatureFragment)
-//  implementation(Dependencies.Androidx.Navigation.navigationFragmentKtx)
-//  implementation(Dependencies.Androidx.Navigation.navigationUiKtx)
-
-//  implementation(D.Androidx.Legacy.legacyPreferenceV14)
-//  implementation(D.Androidx.Recyclerview.recyclerview)
-//  implementation(D.Androidx.Legacy.legacySupportV4)
-//  implementation(D.Com.Google.Android.Gms.playServicesVision)
-//  implementation(D.Com.Google.Code.Gson.gson)
-//  implementation(D.Com.Google.Firebase.firebaseConfig)
-  implementation(Dependencies.Com.Google.Firebase.firebaseAnalytics)
-//  implementation(D.Com.Google.Firebase.firebaseIid)
-//  implementation(D.Com.Google.Firebase.firebaseInAppMessaging)
-//  implementation(D.Com.Google.Firebase.firebaseMessaging)
-//  implementation(D.Com.Google.Firebase.firebasePerf)
-  implementation(Dependencies.Com.Google.Firebase.firebaseCrashlytics)
-//  implementation(D.Com.Google.Guava.listenablefuture)
-//  implementation(D.Com.Google.Zxing.core)
-  implementation(Dependencies.Com.JakeWharton.Timber.timber)
-//  implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-//  implementation(D.Androidx.Test.Espresso.espressoIdlingResource)
-
-//  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
-
-//  kaptTest(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
@@ -249,8 +216,6 @@ dependencies {
 //
 //  }
 //}
-
-//apply plugin: "com.google.gms.google-services"
 
 //task parseMetadata() {
 //  ext.parse = { param1, param2 ->

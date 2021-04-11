@@ -45,20 +45,6 @@ dependencies {
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
-//  testImplementation(Dependencies.Junit.junit)
-
-//  implementation(project(M.EXPERIMENTS))
-//  implementation(project(M.EXTENSIONS))
-//  implementation(project(M.HANDLE))
-//  implementation(project(M.RESOURCES))
-
-//  implementation(D.Com.Google.Dagger.dagger)
-//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-//  implementation(D.Androidx.ConstraintLayout.constraintLayout)
-//  implementation(D.Androidx.Navigation.navigationFragmentKtx)
-//  implementation(D.Androidx.Navigation.navigationUiKtx)
-
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
