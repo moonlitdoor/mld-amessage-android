@@ -8,7 +8,7 @@ class FirebaseMessageDtoTest {
 
   @Test
   fun test() {
-    ConnectionInvitePayload("handle", "token", UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID())
+    ConnectionInvitePayload("handle", "token", UUID.randomUUID(), UUID.randomUUID(), UUID.randomUUID().toString())
   }
 
 }

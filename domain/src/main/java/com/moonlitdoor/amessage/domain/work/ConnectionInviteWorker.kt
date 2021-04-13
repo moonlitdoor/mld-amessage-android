@@ -37,37 +37,29 @@ class ConnectionInviteWorker @AssistedInject constructor(
   override suspend fun doWork(): Result = coroutineScope {
     withContext(Dispatchers.IO) {
       val profile = profileDao.getProfile().first()
-      inputData.getString(CONNECTION_UUID)?.let { connectionUuid ->
-        val connectionEntity = connectionDao.get(UUID.fromString(connectionUuid))
-        inputData.getString(CONNECTION_ID)?.let { connectionId ->
-          inputData.getString(CONNECTION_TOKEN)?.let { connectionToken ->
-            inputData.getString(CONNECTION_PASSWORD)?.let { connectionPassword ->
-              inputData.getString(CONNECTION_SALT)?.let { connectionSalt ->
-                inputData.getString(CONNECTION_ASSOCIATED_DATA)?.let { associatedData ->
-                  inputData.getString(CONNECTION_KEYS)?.let { keys ->
-                    when (client.send(
-                      payload = ConnectionInvitePayload(
-                        handle = profile.handle.value,
-                        token = profile.token.value,
-                        connectionId = connectionEntity.connectionId.value,
-                        password = connectionEntity.password.value,
-                        salt = connectionEntity.salt.value,
-                        keys = keys,
-                        associatedData = UUID.fromString(associatedData)
-                      ),
-                      connectionId = UUID.fromString(connectionId),
-                      token = connectionToken,
-                      keys = KeysDto(keys),
-                      associatedData = AssociatedDataDto(UUID.fromString(associatedData))
-                    )) {
-                      NetworkRequestStatus.SENT -> {
-                        connectionDao.update(connectionEntity.copy(state = ConnectionEntity.State.Invited))
-                        return@withContext Result.success()
-                      }
-                      NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
-                    }
-                  }
+      inputData.getString(CONNECTION_UUID)?.let { newConnectionUuid ->
+        val newConnectionEntity = connectionDao.get(UUID.fromString(newConnectionUuid))
+        inputData.getString(SCANNED_TOKEN)?.let { scannedToken ->
+          inputData.getString(SCANNED_ASSOCIATED_DATA)?.let { scannedAssociatedData ->
+            inputData.getString(SCANNED_KEYS)?.let { scannedKeys ->
+              when (client.send(
+                payload = ConnectionInvitePayload(
+                  handle = profile.handle.value,
+                  token = profile.token.value,
+                  connectionId = newConnectionEntity.connectionId.value,
+                  keys = scannedKeys,
+                  associatedData = UUID.fromString(scannedAssociatedData)
+                ),
+                connectionId = newConnectionEntity.connectionId.value,
+                token = scannedToken,
+                keys = KeysDto(scannedKeys),
+                associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData))
+              )) {
+                NetworkRequestStatus.SENT -> {
+                  connectionDao.update(newConnectionEntity.copy(state = ConnectionEntity.State.Invited))
+                  return@withContext Result.success()
                 }
+                NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
               }
             }
           }
@@ -80,12 +72,9 @@ class ConnectionInviteWorker @AssistedInject constructor(
   companion object {
 
     private const val CONNECTION_UUID = "com.moonlitdoor.amessage.connection.uuid"
-    private const val CONNECTION_ID = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_ID"
-    private const val CONNECTION_TOKEN = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_TOKEN"
-    private const val CONNECTION_PASSWORD = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_PASSWORD"
-    private const val CONNECTION_SALT = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_SALT"
-    private const val CONNECTION_ASSOCIATED_DATA = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_ASSOCIATED_DATA"
-    private const val CONNECTION_KEYS = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_KEYS"
+    private const val SCANNED_TOKEN = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_TOKEN"
+    private const val SCANNED_ASSOCIATED_DATA = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_ASSOCIATED_DATA"
+    private const val SCANNED_KEYS = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_KEYS"
 
     fun request() = OneTimeWorkRequest.Builder(ConnectionInviteWorker::class.java)
       .setConstraints(Constraints.Builder().build())
@@ -95,12 +84,9 @@ class ConnectionInviteWorker @AssistedInject constructor(
     fun data(newConnection: ConnectionEntity, scannedConnection: ConnectionEntity): Data = Data.Builder().putAll(
       mapOf(
         CONNECTION_UUID to newConnection.connectionId.value.toString(),
-        CONNECTION_ID to scannedConnection.id,
-        CONNECTION_TOKEN to scannedConnection.token.value,
-        CONNECTION_PASSWORD to scannedConnection.password.value.toString(),
-        CONNECTION_SALT to scannedConnection.salt.value.toString(),
-        CONNECTION_ASSOCIATED_DATA to scannedConnection.associatedData.value.toString(),
-        CONNECTION_KEYS to scannedConnection.keys.value
+        SCANNED_TOKEN to scannedConnection.token.value,
+        SCANNED_ASSOCIATED_DATA to scannedConnection.associatedData.value.toString(),
+        SCANNED_KEYS to scannedConnection.keys.value
       )
     ).build()
 

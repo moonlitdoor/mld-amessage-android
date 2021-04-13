@@ -8,16 +8,12 @@ import com.moonlitdoor.amessage.database.projection.AssociatedDataProjection
 import com.moonlitdoor.amessage.database.projection.HandleProjection
 import com.moonlitdoor.amessage.database.projection.IdProjection
 import com.moonlitdoor.amessage.database.projection.KeysProjection
-import com.moonlitdoor.amessage.database.projection.PasswordProjection
-import com.moonlitdoor.amessage.database.projection.SaltProjection
 import com.moonlitdoor.amessage.database.projection.TokenProjection
 
 @Entity(tableName = "connection", indices = [Index(value = ["connection_id"], unique = true), Index(value = ["token"], unique = true)])
 data class ConnectionEntity(
   @ColumnInfo(name = "connection_id")
   val connectionId: IdProjection,
-  val password: PasswordProjection,
-  val salt: SaltProjection,
   val token: TokenProjection,
   val handle: HandleProjection,
   val associatedData: AssociatedDataProjection,
@@ -29,13 +25,11 @@ data class ConnectionEntity(
 
   fun new() = ConnectionEntity(
     connectionId = IdProjection(),
-    password = PasswordProjection(),
-    salt = SaltProjection(),
     token = TokenProjection(token.value),
     handle = HandleProjection(handle.value),
     associatedData = AssociatedDataProjection(),
     keys = KeysProjection(),
-    state = state
+    state = state,
   )
 
   sealed class State(val value: String) {

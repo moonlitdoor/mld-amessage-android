@@ -10,8 +10,6 @@ object ProfileMapper {
     handle = HandleMapper.map(profile.handle),
     token = TokenMapper.map(profile.token),
     id = IdMapper.map(profile.id),
-    password = PasswordMapper.map(profile.password),
-    salt = SaltMapper.map(profile.salt),
     associatedData = AssociatedDataMapper.map(profile.associatedData),
     keys = KeysMapper.map(profile.keys)
   )

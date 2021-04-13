@@ -7,8 +7,6 @@ import com.moonlitdoor.amessage.database.projection.AssociatedDataProjection
 import com.moonlitdoor.amessage.database.projection.HandleProjection
 import com.moonlitdoor.amessage.database.projection.IdProjection
 import com.moonlitdoor.amessage.database.projection.KeysProjection
-import com.moonlitdoor.amessage.database.projection.PasswordProjection
-import com.moonlitdoor.amessage.database.projection.SaltProjection
 import com.moonlitdoor.amessage.database.projection.TokenProjection
 import com.moonlitdoor.amessage.database.view.ProfileView
 import com.moonlitdoor.amessage.encryption.AuthenticatedEncryptionWithAssociatedData
@@ -29,19 +27,11 @@ interface ProfileDao : KeyValueDao {
 
   suspend fun getId(): IdProjection = IdProjection(getValue(IdProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertId(IdProjection(it)) })
 
-  suspend fun getPassword(): PasswordProjection = PasswordProjection(getValue(PasswordProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertPassword(PasswordProjection(it)) })
-
-  suspend fun getSalt(): SaltProjection = SaltProjection(getValue(SaltProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertSalt(SaltProjection(it)) })
-
   suspend fun getKeys(): KeysProjection = KeysProjection(getValue(KeysProjection.KEY) ?: AuthenticatedEncryptionWithAssociatedData.generateSerializedKeys().also { insertKeys(KeysProjection(it)) })
 
   suspend fun getAssociatedData(): AssociatedDataProjection = AssociatedDataProjection(getValue(AssociatedDataProjection.KEY)?.let { it.toUUID() } ?: UUID.randomUUID().also { insertAssociatedData(AssociatedDataProjection(it)) })
 
   private suspend fun insertId(value: IdProjection): Unit = setKeyValue(KeyValueEntity.from(value))
-
-  private suspend fun insertPassword(value: PasswordProjection): Unit = setKeyValue(KeyValueEntity.from(value))
-
-  private suspend fun insertSalt(value: SaltProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
   private suspend fun insertKeys(value: KeysProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 

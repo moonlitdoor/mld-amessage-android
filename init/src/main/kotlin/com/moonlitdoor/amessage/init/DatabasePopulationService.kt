@@ -8,8 +8,6 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
-import com.moonlitdoor.amessage.domain.model.Password
-import com.moonlitdoor.amessage.domain.model.Salt
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
@@ -36,8 +34,6 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
 
     GlobalScope.launch(context = handler) {
       Timber.d(profileRepository.getId().toString())
-      Timber.d(profileRepository.getPassword().toString())
-      Timber.d(profileRepository.getSalt().toString())
       Timber.d(profileRepository.getKeys().toString())
       Timber.d(profileRepository.getAssociatedData().toString())
       /* Test Data */
@@ -58,8 +54,6 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
 
   private fun createConnection(index: Int, state: Connection.State) = Connection(
     connectionId = Id(),
-    password = Password(),
-    salt = Salt(),
     token = Token("token$index"),
     handle = Handle("handle$index"),
     state = state,

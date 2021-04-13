@@ -5,8 +5,6 @@ import com.moonlitdoor.amessage.database.projection.AssociatedDataProjection
 import com.moonlitdoor.amessage.database.projection.HandleProjection
 import com.moonlitdoor.amessage.database.projection.IdProjection
 import com.moonlitdoor.amessage.database.projection.KeysProjection
-import com.moonlitdoor.amessage.database.projection.PasswordProjection
-import com.moonlitdoor.amessage.database.projection.SaltProjection
 import com.moonlitdoor.amessage.database.projection.TokenProjection
 
 @DatabaseView(
@@ -16,9 +14,7 @@ import com.moonlitdoor.amessage.database.projection.TokenProjection
   (SELECT value FROM key_value WHERE `key` = '${TokenProjection.KEY}') AS token,
   (SELECT value FROM key_value WHERE `key` = '${IdProjection.KEY}') AS id,
   (SELECT value FROM key_value WHERE `key` = '${KeysProjection.KEY}') AS keys,
-  (SELECT value FROM key_value WHERE `key` = '${AssociatedDataProjection.KEY}') AS associatedData,
-  (SELECT value FROM key_value WHERE `key` = '${PasswordProjection.KEY}') AS password,
-  (SELECT value FROM key_value WHERE `key` = '${SaltProjection.KEY}') AS salt"""
+  (SELECT value FROM key_value WHERE `key` = '${AssociatedDataProjection.KEY}') AS associatedData"""
 )
 data class ProfileView(
   val handle: HandleProjection,
@@ -26,6 +22,4 @@ data class ProfileView(
   val id: IdProjection,
   val keys: KeysProjection,
   val associatedData: AssociatedDataProjection,
-  val password: PasswordProjection,
-  val salt: SaltProjection,
 )

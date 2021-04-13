@@ -6,8 +6,6 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
-import com.moonlitdoor.amessage.domain.model.Password
-import com.moonlitdoor.amessage.domain.model.Salt
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 
@@ -15,8 +13,6 @@ object ConnectionMapper {
 
   fun map(connection: Connection) = ConnectionEntity(
     connectionId = IdMapper.map(connection.connectionId),
-    password = PasswordMapper.map(connection.password),
-    salt = SaltMapper.map(connection.salt),
     token = TokenMapper.map(connection.token),
     handle = HandleMapper.map(connection.handle),
     keys = KeysMapper.map(connection.keys),
@@ -27,8 +23,6 @@ object ConnectionMapper {
 
   fun map(entity: ConnectionEntity) = Connection(
     connectionId = IdMapper.map(entity.connectionId),
-    password = PasswordMapper.map(entity.password),
-    salt = SaltMapper.map(entity.salt),
     token = TokenMapper.map(entity.token),
     handle = HandleMapper.map(entity.handle),
     keys = KeysMapper.map(entity.keys),
@@ -39,8 +33,6 @@ object ConnectionMapper {
 
   fun map(payload: ConnectionInvitePayload) = Connection(
     connectionId = Id(payload.connectionId),
-    password = Password(payload.password),
-    salt = Salt(payload.salt),
     token = Token(payload.token),
     handle = Handle(payload.handle),
     state = Connection.State.Pending,

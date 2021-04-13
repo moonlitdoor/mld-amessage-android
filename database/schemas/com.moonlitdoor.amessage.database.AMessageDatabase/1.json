@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "13f4efb249e33884f816925e25852821",
+    "identityHash": "b0cfd7acee146e15b3b8c353f003e43b",
     "entities": [
       {
         "tableName": "key_value",
@@ -41,23 +41,11 @@
       },
       {
         "tableName": "connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `keys` TEXT NOT NULL, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `keys` TEXT NOT NULL, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
         "fields": [
           {
             "fieldPath": "connectionId",
             "columnName": "connection_id",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "password",
-            "columnName": "password",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "salt",
-            "columnName": "salt",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -259,7 +247,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '13f4efb249e33884f816925e25852821')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b0cfd7acee146e15b3b8c353f003e43b')"
     ]
   }
 }

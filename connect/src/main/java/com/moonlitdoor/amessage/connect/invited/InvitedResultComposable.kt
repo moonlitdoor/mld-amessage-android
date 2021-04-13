@@ -17,8 +17,6 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
-import com.moonlitdoor.amessage.domain.model.Password
-import com.moonlitdoor.amessage.domain.model.Salt
 import com.moonlitdoor.amessage.domain.model.Token
 import timber.log.Timber
 
@@ -47,8 +45,6 @@ fun InvitedResultPreview() {
       Connection(
         id = 0L,
         connectionId = Id(),
-        password = Password(),
-        salt = Salt(),
         token = Token("token1"),
         handle = Handle("handle1"),
         state = Connection.State.Invited,
@@ -58,8 +54,6 @@ fun InvitedResultPreview() {
       Connection(
         id = 1L,
         connectionId = Id(),
-        password = Password(),
-        salt = Salt(),
         token = Token("token2"),
         handle = Handle("handle2"),
         state = Connection.State.Invited,

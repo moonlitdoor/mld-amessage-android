@@ -5,17 +5,13 @@ import com.moonlitdoor.amessage.domain.mapper.AssociatedDataMapper
 import com.moonlitdoor.amessage.domain.mapper.HandleMapper
 import com.moonlitdoor.amessage.domain.mapper.IdMapper
 import com.moonlitdoor.amessage.domain.mapper.KeysMapper
-import com.moonlitdoor.amessage.domain.mapper.PasswordMapper
 import com.moonlitdoor.amessage.domain.mapper.ProfileMapper
-import com.moonlitdoor.amessage.domain.mapper.SaltMapper
 import com.moonlitdoor.amessage.domain.mapper.TokenMapper
 import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
-import com.moonlitdoor.amessage.domain.model.Password
 import com.moonlitdoor.amessage.domain.model.Profile
-import com.moonlitdoor.amessage.domain.model.Salt
 import com.moonlitdoor.amessage.domain.model.Token
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -34,14 +30,6 @@ class ProfileRepository @Inject constructor(private val dao: ProfileDao) {
   suspend fun setToken(token: Token): Unit = dao.setToken(TokenMapper.map(token))
 
   suspend fun getId(): Id = IdMapper.map(dao.getId())
-
-  // TODO Remove
-  @Deprecated("convert to keys")
-  suspend fun getPassword(): Password = PasswordMapper.map(dao.getPassword())
-
-  // TODO Remove
-  @Deprecated("convert to associatedData")
-  suspend fun getSalt(): Salt = SaltMapper.map(dao.getSalt())
 
   suspend fun getKeys(): Keys = KeysMapper.map(dao.getKeys())
 

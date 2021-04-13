@@ -5,8 +5,6 @@ import java.util.*
 data class Connection(
   val id: Long = 0,
   val connectionId: Id,
-  val password: Password,
-  val salt: Salt,
   val handle: Handle,
   val token: Token,
   val associatedData: AssociatedData,
@@ -18,10 +16,8 @@ data class Connection(
     handle = Handle(parts.split("|")[0]),
     token = Token(parts.split("|")[1]),
     connectionId = Id(UUID.fromString(parts.split("|")[2])),
-    password = Password(UUID.fromString(parts.split("|")[3])),
-    salt = Salt(UUID.fromString(parts.split("|")[4])),
-    associatedData = AssociatedData(UUID.fromString(parts.split("|")[5])),
-    keys = Keys(parts.split("|")[6]),
+    associatedData = AssociatedData(UUID.fromString(parts.split("|")[3])),
+    keys = Keys(parts.split("|")[4]),
     state = State.Scanned
   )
 

@@ -20,8 +20,6 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
-import com.moonlitdoor.amessage.domain.model.Password
-import com.moonlitdoor.amessage.domain.model.Salt
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.routes.Routes
 import timber.log.Timber
@@ -54,8 +52,6 @@ fun ConnectionsResultPreview() {
       Connection(
         id = 0L,
         connectionId = Id(),
-        password = Password(),
-        salt = Salt(),
         token = Token("token"),
         handle = Handle("handle"),
         state = Connection.State.Connected,
