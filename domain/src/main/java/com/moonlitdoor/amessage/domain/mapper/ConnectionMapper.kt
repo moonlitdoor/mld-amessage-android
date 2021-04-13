@@ -1,94 +1,51 @@
 package com.moonlitdoor.amessage.domain.mapper
 
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
-import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.domain.model.Handle
+import com.moonlitdoor.amessage.domain.model.Id
+import com.moonlitdoor.amessage.domain.model.Keys
+import com.moonlitdoor.amessage.domain.model.Password
+import com.moonlitdoor.amessage.domain.model.Salt
+import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
-//import com.moonlitdoor.amessage.network.json.ConnectionInvitePayload
-//import com.moonlitdoor.amessage.network.json.ConnectionJson
-import java.util.*
 
 object ConnectionMapper {
 
-  fun from(connection: Connection) = ConnectionEntity(
-    connectionId = connection.connectionId,
-    password = connection.password,
-    salt = connection.salt,
-    token = connection.token,
-    handle = connection.handle,
-    state = state(connection.state),
+  fun map(connection: Connection) = ConnectionEntity(
+    connectionId = IdMapper.map(connection.connectionId),
+    password = PasswordMapper.map(connection.password),
+    salt = SaltMapper.map(connection.salt),
+    token = TokenMapper.map(connection.token),
+    handle = HandleMapper.map(connection.handle),
+    keys = KeysMapper.map(connection.keys),
+    associatedData = AssociatedDataMapper.map(connection.associatedData),
+    state = ConnectionStateMapper.map(connection.state),
     id = connection.id,
   )
 
   fun map(entity: ConnectionEntity) = Connection(
-    connectionId = entity.connectionId,
-    password = entity.password,
-    salt = entity.salt,
-    token = entity.token,
-    handle = entity.handle,
-    state = state(entity.state),
+    connectionId = IdMapper.map(entity.connectionId),
+    password = PasswordMapper.map(entity.password),
+    salt = SaltMapper.map(entity.salt),
+    token = TokenMapper.map(entity.token),
+    handle = HandleMapper.map(entity.handle),
+    keys = KeysMapper.map(entity.keys),
+    associatedData = AssociatedDataMapper.map(entity.associatedData),
+    state = ConnectionStateMapper.map(entity.state),
     id = entity.id,
   )
 
-  fun state(state: Connection.State) = when (state) {
-    Connection.State.Scanned -> ConnectionEntity.State.Scanned
-    Connection.State.Queued -> ConnectionEntity.State.Queued
-    Connection.State.Invited -> ConnectionEntity.State.Invited
-    Connection.State.Pending -> ConnectionEntity.State.Pending
-    Connection.State.Connected -> ConnectionEntity.State.Connected
-  }
-
-  fun state(state: ConnectionEntity.State) = when (state) {
-    ConnectionEntity.State.Scanned -> Connection.State.Scanned
-    ConnectionEntity.State.Queued -> Connection.State.Queued
-    ConnectionEntity.State.Invited -> Connection.State.Invited
-    ConnectionEntity.State.Pending -> Connection.State.Pending
-    ConnectionEntity.State.Connected -> Connection.State.Connected
-  }
-
-  fun fromConnected(connection: Connection) = ConnectionEntity(
-    connectionId = connection.connectionId,
-    password = connection.password,
-    salt = connection.salt,
-    token = connection.token,
-    handle = connection.handle,
-    state = ConnectionEntity.State.Connected,
-    id = connection.id
+  fun map(payload: ConnectionInvitePayload) = Connection(
+    connectionId = Id(payload.connectionId),
+    password = Password(payload.password),
+    salt = Salt(payload.salt),
+    token = Token(payload.token),
+    handle = Handle(payload.handle),
+    state = Connection.State.Pending,
+    associatedData = AssociatedData(payload.associatedData),
+    keys = Keys(payload.keys)
   )
 
-  fun fromScanned(profile: Profile) = ConnectionEntity(
-    connectionId = UUID.randomUUID(),
-    password = UUID.randomUUID(),
-    salt = UUID.randomUUID(),
-    token = profile.token,
-    handle = profile.handle,
-    state = ConnectionEntity.State.Scanned
-  )
-
-  fun fromPending(payload: ConnectionInvitePayload) = ConnectionEntity(
-    connectionId = payload.connectionId,
-    password = payload.password,
-    salt = payload.salt,
-    token = payload.token,
-    handle = payload.handle,
-    state = ConnectionEntity.State.Pending
-  )
-
-//  fun toJson(connection: Connection) = ConnectionJson(
-//    id = connection.id,
-//    connectionId = connection.connectionId,
-//    password = connection.password,
-//    salt = connection.salt,
-//    token = connection.token,
-//    handle = connection.handle
-//  )
-
-//  fun toJson(connection: ConnectionEntity) = ConnectionJson(
-//    id = connection.id,
-//    connectionId = connection.connectionId,
-//    password = connection.password,
-//    salt = connection.salt,
-//    token = connection.token,
-//    handle = connection.handle
-//  )
 }

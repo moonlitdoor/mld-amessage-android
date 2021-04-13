@@ -1,14 +1,21 @@
 package com.moonlitdoor.amessage.domain.repository
 
 import com.moonlitdoor.amessage.database.dao.ProfileDao
+import com.moonlitdoor.amessage.domain.mapper.AssociatedDataMapper
 import com.moonlitdoor.amessage.domain.mapper.HandleMapper
 import com.moonlitdoor.amessage.domain.mapper.IdMapper
+import com.moonlitdoor.amessage.domain.mapper.KeysMapper
 import com.moonlitdoor.amessage.domain.mapper.PasswordMapper
 import com.moonlitdoor.amessage.domain.mapper.ProfileMapper
 import com.moonlitdoor.amessage.domain.mapper.SaltMapper
 import com.moonlitdoor.amessage.domain.mapper.TokenMapper
+import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Handle
+import com.moonlitdoor.amessage.domain.model.Id
+import com.moonlitdoor.amessage.domain.model.Keys
+import com.moonlitdoor.amessage.domain.model.Password
 import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.domain.model.Salt
 import com.moonlitdoor.amessage.domain.model.Token
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,24 +25,26 @@ class ProfileRepository @Inject constructor(private val dao: ProfileDao) {
 
   fun getProfile(): Flow<Profile> = dao.getProfile().map { ProfileMapper.map(it) }
 
-  fun getHandleFlow(): Flow<Handle> = dao.getHandleFlow().map { HandleMapper.map(it) }
-
-  fun handleIsSet(): Flow<Boolean> = dao.getHandleFlow().map { !it.value.isNullOrEmpty() }
+  fun handleIsSet(): Flow<Boolean> = dao.getProfile().map { it.handle.value.isNotEmpty() }
 
   //TODO notify connections of handle change
-  suspend fun setHandle(handle: Handle) = dao.setHandle(HandleMapper.map(handle))
+  suspend fun setHandle(handle: Handle): Unit = dao.setHandle(HandleMapper.map(handle))
 
   //TODO notify connections of token change
-  suspend fun setToken(token: Token) = dao.setToken(TokenMapper.map(token))
+  suspend fun setToken(token: Token): Unit = dao.setToken(TokenMapper.map(token))
 
-  suspend fun getHandle() = HandleMapper.map(dao.getHandle())
+  suspend fun getId(): Id = IdMapper.map(dao.getId())
 
-  suspend fun getToken() = TokenMapper.map(dao.getToken())
+  // TODO Remove
+  @Deprecated("convert to keys")
+  suspend fun getPassword(): Password = PasswordMapper.map(dao.getPassword())
 
-  suspend fun getId() = IdMapper.map(dao.getId())
+  // TODO Remove
+  @Deprecated("convert to associatedData")
+  suspend fun getSalt(): Salt = SaltMapper.map(dao.getSalt())
 
-  suspend fun getPassword() = PasswordMapper.map(dao.getPassword())
+  suspend fun getKeys(): Keys = KeysMapper.map(dao.getKeys())
 
-  suspend fun getSalt() = SaltMapper.map(dao.getSalt())
+  suspend fun getAssociatedData(): AssociatedData = AssociatedDataMapper.map(dao.getAssociatedData())
 
 }

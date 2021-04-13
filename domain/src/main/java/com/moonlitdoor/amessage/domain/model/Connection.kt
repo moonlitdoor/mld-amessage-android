@@ -1,48 +1,29 @@
 package com.moonlitdoor.amessage.domain.model
 
-import com.moonlitdoor.amessage.database.entity.ConnectionEntity
-import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import java.util.*
 
 data class Connection(
   val id: Long = 0,
-  val connectionId: UUID,
-  val password: UUID,
-  val salt: UUID,
-  val token: String,
-  val handle: String,
+  val connectionId: Id,
+  val password: Password,
+  val salt: Salt,
+  val handle: Handle,
+  val token: Token,
+  val associatedData: AssociatedData,
+  val keys: Keys,
   val state: State
 ) {
-  companion object {
-    fun from(entity: ConnectionEntity) = Connection(
-      entity.id,
-      entity.connectionId,
-      entity.password,
-      entity.salt,
-      entity.token,
-      entity.handle,
-      ConnectionMapper.state(entity.state)
-    )
 
-    fun from(selected: SelectableConnection) = Connection(
-      selected.id,
-      selected.connectionId,
-      selected.password,
-      selected.salt,
-      selected.token,
-      selected.handle,
-      State.Connected
-    )
-
-    fun from(profile: Profile) = Connection(
-      connectionId = profile.id,
-      password = profile.password,
-      salt = profile.salt,
-      token = profile.token,
-      handle = profile.handle,
-      state = State.Scanned
-    )
-  }
+  constructor(parts: String) : this(
+    handle = Handle(parts.split("|")[0]),
+    token = Token(parts.split("|")[1]),
+    connectionId = Id(UUID.fromString(parts.split("|")[2])),
+    password = Password(UUID.fromString(parts.split("|")[3])),
+    salt = Salt(UUID.fromString(parts.split("|")[4])),
+    associatedData = AssociatedData(UUID.fromString(parts.split("|")[5])),
+    keys = Keys(parts.split("|")[6]),
+    state = State.Scanned
+  )
 
   sealed class State(val value: String) {
     object Scanned : State("scanned")

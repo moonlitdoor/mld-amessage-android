@@ -1,8 +1,7 @@
 package com.moonlitdoor.amessage.dto
 
 import com.google.gson.Gson
-import com.moonlitdoor.amessage.encryption.AesCbcWithIntegrity
-import timber.log.Timber
+import com.moonlitdoor.amessage.encryption.AuthenticatedEncryptionWithAssociatedData
 
 abstract class Payload {
 
@@ -18,15 +17,13 @@ abstract class Payload {
 
     internal val GSON = Gson()
 
-    fun encrypt(payload: String, password: String, salt: String): String {
-      Timber.d("ENCRYPTION_CHECK password=$password salt=$salt")
-      return AesCbcWithIntegrity.encrypt(payload, password, salt)
-    }
+    fun encrypt(payload: String, keys: KeysDto, associatedData: AssociatedDataDto): String =
+      AuthenticatedEncryptionWithAssociatedData.encrypt(payload, AuthenticatedEncryptionWithAssociatedData.deserializeKeys(keys.value), associatedData.value)
 
-    fun decrypt(encryptedPayload: String, password: String, salt: String): String {
-      Timber.d("DECRYPTION_CHECK password=$password salt=$salt")
-      return AesCbcWithIntegrity.decrypt(encryptedPayload, password, salt)
-    }
+
+    fun decrypt(encryptedPayload: String, keys: KeysDto, associatedData: AssociatedDataDto): String =
+      AuthenticatedEncryptionWithAssociatedData.decrypt(encryptedPayload, keys.value, associatedData.value)
+
   }
 
 }

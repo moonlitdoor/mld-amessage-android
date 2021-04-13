@@ -6,7 +6,9 @@ import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
+import com.moonlitdoor.amessage.dto.AssociatedDataDto
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
+import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.extensions.ignore
 import kotlinx.coroutines.flow.first
@@ -34,13 +36,13 @@ class MessagingServiceAdapter @Inject constructor(private val connectionReposito
 
   private suspend fun type(type: String, id: UUID, payload: String): Unit = when (type) {
     Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
-      ConnectionMapper.fromPending(
+      ConnectionMapper.map(
         ConnectionInvitePayload.inflate(
           profileRepository.getProfile().first().let {
             Payload.decrypt(
-              payload,
-              it.password.toString(),
-              it.salt.toString()
+              encryptedPayload = payload,
+              keys = KeysDto(it.keys.value),
+              associatedData = AssociatedDataDto(it.associatedData.value)
             )
           }
         )

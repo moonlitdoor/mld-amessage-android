@@ -3,8 +3,15 @@ package com.moonlitdoor.amessage.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.moonlitdoor.amessage.database.converter.AssociatedDateProjectionConverter
 import com.moonlitdoor.amessage.database.converter.ConnectionStateConverter
 import com.moonlitdoor.amessage.database.converter.DateConverter
+import com.moonlitdoor.amessage.database.converter.HandleProjectionConverter
+import com.moonlitdoor.amessage.database.converter.IdProjectionConverter
+import com.moonlitdoor.amessage.database.converter.KeysProjectionConverter
+import com.moonlitdoor.amessage.database.converter.PasswordProjectionConverter
+import com.moonlitdoor.amessage.database.converter.SaltProjectionConverter
+import com.moonlitdoor.amessage.database.converter.TokenProjectionConverter
 import com.moonlitdoor.amessage.database.converter.UuidConverter
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
@@ -17,7 +24,20 @@ import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import com.moonlitdoor.amessage.database.entity.KeyValueEntity
 import com.moonlitdoor.amessage.database.view.ProfileView
 
-@TypeConverters(value = [DateConverter::class, UuidConverter::class, ConnectionStateConverter::class])
+@TypeConverters(
+  value = [
+    AssociatedDateProjectionConverter::class,
+    ConnectionStateConverter::class,
+    DateConverter::class,
+    HandleProjectionConverter::class,
+    IdProjectionConverter::class,
+    KeysProjectionConverter::class,
+    PasswordProjectionConverter::class,
+    SaltProjectionConverter::class,
+    TokenProjectionConverter::class,
+    UuidConverter::class,
+  ]
+)
 @Database(
   version = Migrations.VERSION,
   entities = [

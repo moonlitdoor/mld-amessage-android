@@ -8,5 +8,7 @@ data class ConnectionJson(
   val password: UUID,
   val salt: UUID,
   val token: String,
-  val handle: String
+  val handle: String,
+  val associatedData: AssociatedDataDto,
+  val keys: KeysDto
 )

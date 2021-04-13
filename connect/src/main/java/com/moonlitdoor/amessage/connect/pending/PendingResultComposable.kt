@@ -12,9 +12,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.domain.model.Handle
+import com.moonlitdoor.amessage.domain.model.Id
+import com.moonlitdoor.amessage.domain.model.Keys
+import com.moonlitdoor.amessage.domain.model.Password
+import com.moonlitdoor.amessage.domain.model.Salt
+import com.moonlitdoor.amessage.domain.model.Token
 import timber.log.Timber
-import java.util.*
 
 @Composable
 fun PendingResult(viewState: PendingViewState.Result) {
@@ -28,7 +34,7 @@ fun PendingResult(viewState: PendingViewState.Result) {
         .clickable {
         }
       ) {
-        Text(text = it.handle, Modifier.padding(8.dp))
+        Text(text = it.handle.value, Modifier.padding(8.dp))
       }
     }
   }
@@ -41,12 +47,14 @@ fun ConnectionsResultPreview() {
     listOf(
       Connection(
         id = 0L,
-        connectionId = UUID.randomUUID(),
-        password = UUID.randomUUID(),
-        salt = UUID.randomUUID(),
-        token = "token",
-        handle = "handle",
-        state = Connection.State.Connected
+        connectionId = Id(),
+        password = Password(),
+        salt = Salt(),
+        token = Token("token"),
+        handle = Handle("handle"),
+        state = Connection.State.Connected,
+        associatedData = AssociatedData(),
+        keys = Keys("keys")
       )
     )
   )

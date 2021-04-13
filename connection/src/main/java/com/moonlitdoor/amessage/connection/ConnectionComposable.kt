@@ -22,7 +22,7 @@ fun Connection(navHostController: NavHostController, viewModel: ConnectionViewMo
   )
 
   val connection by viewModel.getConnection(connectionId).collectAsState(initial = null)
-  Text(connection?.handle ?: "")
+  Text(connection?.handle?.value ?: "")
 }
 
 @Preview(showSystemUi = true)

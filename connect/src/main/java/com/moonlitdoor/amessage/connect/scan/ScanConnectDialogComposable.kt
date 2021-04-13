@@ -16,13 +16,13 @@ fun ScanConnectDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Resu
       Text(text = stringResource(id = R.string.connect_title))
     },
     text = {
-      Text(text = stringResource(id = R.string.connect_with_handle, viewState.profile.handle))
+      Text(text = stringResource(id = R.string.connect_with_handle, viewState.connection.handle.value))
     },
     confirmButton = {
       Button(
         onClick = {
           viewState.imageProxy.close()
-          viewModel.confirm(viewState.profile)
+          viewModel.confirm(viewState.connection)
         }) {
         Text(text = stringResource(id = R.string.connect_ok))
       }

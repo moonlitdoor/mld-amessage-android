@@ -1,18 +1,16 @@
 package com.moonlitdoor.amessage.domain.model
 
-import java.util.*
-
 data class Profile(
-  val handle: String,
-  val token: String,
-  val id: UUID,
-  val password: UUID,
-  val salt: UUID
+  val handle: Handle,
+  val token: Token,
+  val id: Id,
+  val password: Password,
+  val salt: Salt,
+  val associatedData: AssociatedData,
+  val keys: Keys,
 ) {
 
-  constructor(parts: String) : this(parts.split("|")[0], parts.split("|")[1], UUID.fromString(parts.split("|")[2]), UUID.fromString(parts.split("|")[3]), UUID.fromString(parts.split("|")[4]))
-
-  fun encode() = "$handle|$token|$id|$password|$salt"
+  fun encode() = "${handle.value}|${token.value}|${id.value}|${password.value}|${salt.value}|${associatedData.value}|${keys.value}"
 
 
 }

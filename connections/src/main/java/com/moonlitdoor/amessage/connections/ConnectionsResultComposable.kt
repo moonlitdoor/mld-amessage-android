@@ -15,10 +15,16 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.domain.model.Handle
+import com.moonlitdoor.amessage.domain.model.Id
+import com.moonlitdoor.amessage.domain.model.Keys
+import com.moonlitdoor.amessage.domain.model.Password
+import com.moonlitdoor.amessage.domain.model.Salt
+import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.routes.Routes
 import timber.log.Timber
-import java.util.*
 
 @Composable
 fun ConnectionsResult(navHostController: NavHostController, viewState: ConnectionsViewState.Result) {
@@ -33,7 +39,7 @@ fun ConnectionsResult(navHostController: NavHostController, viewState: Connectio
           navHostController.navigate(Routes.Connection(it.id).route)
         }
       ) {
-        Text(text = it.handle, Modifier.padding(8.dp))
+        Text(text = it.handle.value, Modifier.padding(8.dp))
       }
     }
   }
@@ -47,12 +53,14 @@ fun ConnectionsResultPreview() {
     listOf(
       Connection(
         id = 0L,
-        connectionId = UUID.randomUUID(),
-        password = UUID.randomUUID(),
-        salt = UUID.randomUUID(),
-        token = "token",
-        handle = "handle",
-        state = Connection.State.Connected
+        connectionId = Id(),
+        password = Password(),
+        salt = Salt(),
+        token = Token("token"),
+        handle = Handle("handle"),
+        state = Connection.State.Connected,
+        keys = Keys("keys"),
+        associatedData = AssociatedData()
       )
     )
   )

@@ -4,7 +4,7 @@ import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 import org.junit.Test
 import java.util.*
 
-class FirebaseMessageJsonTest {
+class FirebaseMessageDtoTest {
 
   @Test
   fun test() {

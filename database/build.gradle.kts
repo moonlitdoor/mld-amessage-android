@@ -22,6 +22,7 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
   kapt(Dependencies.Androidx.Room.roomCompiler)
 
+  implementation(project(Modules.ENCRYPTION))
   implementation(project(Modules.EXTENSIONS))
 
   implementation(Dependencies.Androidx.Room.roomKtx)

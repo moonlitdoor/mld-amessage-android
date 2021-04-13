@@ -1,3 +1,3 @@
 package com.moonlitdoor.amessage.domain.model
 
-data class Token(val value: String)
+data class Keys(val value: String)

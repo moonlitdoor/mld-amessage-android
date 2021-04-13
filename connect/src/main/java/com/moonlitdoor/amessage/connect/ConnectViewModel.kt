@@ -17,7 +17,6 @@ import com.moonlitdoor.amessage.connect.pending.PendingViewState
 import com.moonlitdoor.amessage.connect.qrcode.QRCodeViewState
 import com.moonlitdoor.amessage.connect.scan.ScanViewState
 import com.moonlitdoor.amessage.domain.model.Connection
-import com.moonlitdoor.amessage.domain.model.Profile
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.domain.repository.SettingsRepository
@@ -65,13 +64,12 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
   private val _scanViewState: MutableStateFlow<ScanViewState> = MutableStateFlow(ScanViewState.Scan)
   val scanViewState: StateFlow<ScanViewState> = _scanViewState.asStateFlow()
 
-  fun profileFound(profile: Profile, imageProxy: ImageProxy): Unit = viewModelScope.launch(Dispatchers.IO) {
-
+  fun connectionFound(connection: Connection, imageProxy: ImageProxy): Unit = viewModelScope.launch(Dispatchers.IO) {
     _scanViewState.emit(
-      if (connectionRepository.isConnectionExisting(Connection.from(profile = profile))) {
-        ScanViewState.Result.Connected(profile, imageProxy)
+      if (connectionRepository.isConnectionExisting(connection)) {
+        ScanViewState.Result.Connected(connection, imageProxy)
       } else {
-        ScanViewState.Result.Connect(profile, imageProxy)
+        ScanViewState.Result.Connect(connection, imageProxy)
       }
     )
   }.ignore()
@@ -106,8 +104,8 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
     )
   }.ignore()
 
-  fun confirm(profile: Profile) = viewModelScope.launch(Dispatchers.IO) {
-    connectionRepository.create(profile)
+  fun confirm(connection: Connection) = viewModelScope.launch(Dispatchers.IO) {
+    connectionRepository.create(connection = connection)
     cancelCurrentScan()
   }
 

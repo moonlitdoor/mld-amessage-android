@@ -6,10 +6,10 @@ import java.util.*
 class UuidConverter {
 
   @TypeConverter
-  fun to(uuid: UUID?): String? = uuid?.toString()
+  fun to(item: UUID?): String? = item?.toString()
 
 
   @TypeConverter
-  fun to(uuid: String?): UUID? = uuid?.let { UUID.fromString(it) }
+  fun to(item: String?): UUID? = item?.let { UUID.fromString(it) }
 
 }

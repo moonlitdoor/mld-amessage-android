@@ -54,7 +54,7 @@ fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, set
     navHostController.popBackStack()
   }
 
-  val handle: Handle by viewModel.handle.collectAsState(initial = Handle(null))
+  val handle: Handle by viewModel.handle.collectAsState(initial = Handle(""))
   Box(
     modifier = Modifier
       .fillMaxSize()
@@ -65,7 +65,7 @@ fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, set
       modifier = Modifier
         .align(Alignment.TopCenter)
         .focusRequester(focusRequester),
-      value = handle.value ?: "",
+      value = handle.value,
       onValueChange = {
         Timber.d("Handle updated to:$it")
         isActionItemEnabled = it.isNotBlank()

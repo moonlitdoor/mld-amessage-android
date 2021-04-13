@@ -6,16 +6,16 @@ import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 class ConnectionStateConverter {
 
   @TypeConverter
-  fun to(state: ConnectionEntity.State): String = state.value
+  fun to(item: ConnectionEntity.State): String = item.value
 
   @TypeConverter
-  fun to(state: String): ConnectionEntity.State = when (state) {
+  fun to(item: String): ConnectionEntity.State = when (item) {
     ConnectionEntity.State.Scanned.value -> ConnectionEntity.State.Scanned
     ConnectionEntity.State.Queued.value -> ConnectionEntity.State.Queued
     ConnectionEntity.State.Pending.value -> ConnectionEntity.State.Pending
     ConnectionEntity.State.Invited.value -> ConnectionEntity.State.Invited
     ConnectionEntity.State.Connected.value -> ConnectionEntity.State.Connected
-    else -> throw IllegalStateException("state=$state")
+    else -> throw IllegalStateException("state=$item")
   }
 
 }

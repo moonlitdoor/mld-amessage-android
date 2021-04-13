@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.network.client
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.moonlitdoor.amessage.dto.FirebaseMessageJson
+import com.moonlitdoor.amessage.dto.FirebaseMessageDto
 import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.network.FirebaseClientContainer
 import kotlinx.coroutines.runBlocking
@@ -54,7 +54,7 @@ class FirebaseClientTest {
   fun testClient() {
     runBlocking {
       val response = container.client.send(
-        FirebaseMessageJson(
+        FirebaseMessageDto(
           object : Payload() {
             override val type: Type
               get() = Type.ConnectionRejection

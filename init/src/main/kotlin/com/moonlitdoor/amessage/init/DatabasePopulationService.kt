@@ -3,7 +3,14 @@ package com.moonlitdoor.amessage.init
 import android.app.IntentService
 import android.content.Context
 import android.content.Intent
+import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.domain.model.Handle
+import com.moonlitdoor.amessage.domain.model.Id
+import com.moonlitdoor.amessage.domain.model.Keys
+import com.moonlitdoor.amessage.domain.model.Password
+import com.moonlitdoor.amessage.domain.model.Salt
+import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import dagger.hilt.android.AndroidEntryPoint
@@ -11,7 +18,6 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,6 +38,8 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
       Timber.d(profileRepository.getId().toString())
       Timber.d(profileRepository.getPassword().toString())
       Timber.d(profileRepository.getSalt().toString())
+      Timber.d(profileRepository.getKeys().toString())
+      Timber.d(profileRepository.getAssociatedData().toString())
       /* Test Data */
       if (connectionRepository.connectionCount() == 0L && false) {
         for (i in 1..100) {
@@ -42,19 +50,21 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
             i % 5 == 4 -> Connection.State.Scanned
             else -> Connection.State.Connected
           }
-          connectionRepository.insert(createConnection("token$i", "handle$i", state))
+          connectionRepository.insert(createConnection(i, state))
         }
       }
     }
   }
 
-  private fun createConnection(token: String, handle: String, state: Connection.State) = Connection(
-    connectionId = UUID.randomUUID(),
-    password = UUID.randomUUID(),
-    salt = UUID.randomUUID(),
-    token = token,
-    handle = handle,
+  private fun createConnection(index: Int, state: Connection.State) = Connection(
+    connectionId = Id(),
+    password = Password(),
+    salt = Salt(),
+    token = Token("token$index"),
+    handle = Handle("handle$index"),
     state = state,
+    associatedData = AssociatedData(),
+    keys = Keys("keys$index")
   )
 
   companion object {

@@ -11,8 +11,9 @@ import androidx.work.WorkerParameters
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
-import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.dto.AssociatedDataDto
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
+import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.network.NetworkClient
 import com.moonlitdoor.amessage.network.NetworkRequestStatus
 import dagger.assisted.Assisted
@@ -42,24 +43,30 @@ class ConnectionInviteWorker @AssistedInject constructor(
           inputData.getString(CONNECTION_TOKEN)?.let { connectionToken ->
             inputData.getString(CONNECTION_PASSWORD)?.let { connectionPassword ->
               inputData.getString(CONNECTION_SALT)?.let { connectionSalt ->
-                when (client.send(
-                  payload = ConnectionInvitePayload(
-                    handle = profile.handle,
-                    token = profile.token,
-                    connectionId = connectionEntity.connectionId,
-                    password = connectionEntity.password,
-                    salt = connectionEntity.salt
-                  ),
-                  connectionId = UUID.fromString(connectionId),
-                  token = connectionToken,
-                  password = UUID.fromString(connectionPassword),
-                  salt = UUID.fromString(connectionSalt)
-                )) {
-                  NetworkRequestStatus.SENT -> {
-                    connectionDao.update(connectionEntity.copy(state = ConnectionEntity.State.Invited))
-                    return@withContext Result.success()
+                inputData.getString(CONNECTION_ASSOCIATED_DATA)?.let { associatedData ->
+                  inputData.getString(CONNECTION_KEYS)?.let { keys ->
+                    when (client.send(
+                      payload = ConnectionInvitePayload(
+                        handle = profile.handle.value,
+                        token = profile.token.value,
+                        connectionId = connectionEntity.connectionId.value,
+                        password = connectionEntity.password.value,
+                        salt = connectionEntity.salt.value,
+                        keys = keys,
+                        associatedData = UUID.fromString(associatedData)
+                      ),
+                      connectionId = UUID.fromString(connectionId),
+                      token = connectionToken,
+                      keys = KeysDto(keys),
+                      associatedData = AssociatedDataDto(UUID.fromString(associatedData))
+                    )) {
+                      NetworkRequestStatus.SENT -> {
+                        connectionDao.update(connectionEntity.copy(state = ConnectionEntity.State.Invited))
+                        return@withContext Result.success()
+                      }
+                      NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
+                    }
                   }
-                  NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
                 }
               }
             }
@@ -77,19 +84,23 @@ class ConnectionInviteWorker @AssistedInject constructor(
     private const val CONNECTION_TOKEN = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_TOKEN"
     private const val CONNECTION_PASSWORD = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_PASSWORD"
     private const val CONNECTION_SALT = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_SALT"
+    private const val CONNECTION_ASSOCIATED_DATA = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_ASSOCIATED_DATA"
+    private const val CONNECTION_KEYS = "com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker.CONNECTION_KEYS"
 
     fun request() = OneTimeWorkRequest.Builder(ConnectionInviteWorker::class.java)
       .setConstraints(Constraints.Builder().build())
       .setInitialDelay(0L, TimeUnit.SECONDS)
       .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, OneTimeWorkRequest.MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS)
 
-    fun data(connectionId: UUID, scannedProfile: Profile): Data = Data.Builder().putAll(
+    fun data(newConnection: ConnectionEntity, scannedConnection: ConnectionEntity): Data = Data.Builder().putAll(
       mapOf(
-        CONNECTION_UUID to connectionId.toString(),
-        CONNECTION_ID to scannedProfile.id.toString(),
-        CONNECTION_TOKEN to scannedProfile.token,
-        CONNECTION_PASSWORD to scannedProfile.password.toString(),
-        CONNECTION_SALT to scannedProfile.salt.toString()
+        CONNECTION_UUID to newConnection.connectionId.value.toString(),
+        CONNECTION_ID to scannedConnection.id,
+        CONNECTION_TOKEN to scannedConnection.token.value,
+        CONNECTION_PASSWORD to scannedConnection.password.value.toString(),
+        CONNECTION_SALT to scannedConnection.salt.value.toString(),
+        CONNECTION_ASSOCIATED_DATA to scannedConnection.associatedData.value.toString(),
+        CONNECTION_KEYS to scannedConnection.keys.value
       )
     ).build()
 

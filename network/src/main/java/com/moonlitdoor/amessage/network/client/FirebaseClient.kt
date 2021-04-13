@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.network.client
 
-import com.moonlitdoor.amessage.dto.FirebaseMessageJson
+import com.moonlitdoor.amessage.dto.FirebaseMessageDto
 import com.moonlitdoor.amessage.dto.FirebaseResponseJson
 import retrofit2.Response
 import retrofit2.http.Body
@@ -11,6 +11,6 @@ interface FirebaseClient {
 
   @Headers("Content-Type:application/json")
   @POST("/api/message/send")
-  suspend fun send(@Body message: FirebaseMessageJson): Response<FirebaseResponseJson>
+  suspend fun send(@Body message: FirebaseMessageDto): Response<FirebaseResponseJson>
 
 }

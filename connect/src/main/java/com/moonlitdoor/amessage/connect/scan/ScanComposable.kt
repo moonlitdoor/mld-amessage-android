@@ -25,7 +25,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connect.R
 import com.moonlitdoor.amessage.constants.Constants
-import com.moonlitdoor.amessage.domain.model.Profile
+import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.Ensure
 import timber.log.Timber
 import java.util.concurrent.Executors
@@ -84,7 +84,7 @@ fun Scan(
                               Timber.d("Scanning qr code found: ${barcode.rawValue}")
                               barcode.rawValue?.let { value ->
                                 when {
-                                  Constants.PROFILE_REGEX.toRegex().matches(value) -> viewModel.profileFound(Profile(value), imageProxy)
+                                  Constants.PROFILE_REGEX.toRegex().matches(value) -> viewModel.connectionFound(Connection(value), imageProxy)
                                   value == Constants.EXPERIMENTS -> viewModel.experimentsCodeFound(imageProxy)
                                   value == Constants.DEVELOPER_SETTINGS -> viewModel.developerSettingsCodeFound(imageProxy)
                                   value == Constants.EMPLOYEE_SETTINGS -> viewModel.employeeSettingsCodeFound(imageProxy)
@@ -120,7 +120,7 @@ fun Scan(
     is ScanViewState.Result.Connected -> ScanEnabledDialog(
       viewModel = viewModel,
       viewState = viewState as ScanViewState.Result,
-      title = stringResource(id = R.string.connect_connected, (viewState as ScanViewState.Result.Connected).profile.handle)
+      title = stringResource(id = R.string.connect_connected, (viewState as ScanViewState.Result.Connected).connection.handle.value)
     )
     is ScanViewState.Result.Experiments -> ScanExperimentsDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result.Experiments)
     is ScanViewState.Result.ExperimentsEnabled -> ScanEnabledDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result, title = stringResource(id = R.string.connect_experiments_enabled))

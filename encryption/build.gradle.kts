@@ -4,11 +4,21 @@ plugins {
   id("com.moonlitdoor.amessage.android.library")
 }
 
+android {
+  testOptions {
+    unitTests.apply {
+      isIncludeAndroidResources = true
+    }
+  }
+}
+
 dependencies {
 
-//  TODO Bring in Tink: https://github.com/google/tink
+  api("com.google.crypto.tink:tink-android:1.5.0")
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Androidx.Test.rules)
+  testImplementation(Dependencies.Androidx.Test.runner)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 
