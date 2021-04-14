@@ -100,7 +100,7 @@ object Dependencies {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.5.0"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha02"
     }
   }
 
@@ -141,7 +141,7 @@ object Dependencies {
       }
 
       object Dagger {
-        private const val version = "2.34-beta"
+        private const val version = "2.34.1-beta"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
@@ -219,6 +219,7 @@ object Dependencies {
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlinxCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
+        const val kotlinxCollectionsImmutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm:0.3.4"
       }
     }
 
