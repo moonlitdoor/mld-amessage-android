@@ -14,7 +14,7 @@ android {
 
 dependencies {
 
-  api("com.google.crypto.tink:tink-android:1.5.0")
+  api(Dependencies.Com.Google.Crypto.Tink.tinkAndroid)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Androidx.Test.rules)

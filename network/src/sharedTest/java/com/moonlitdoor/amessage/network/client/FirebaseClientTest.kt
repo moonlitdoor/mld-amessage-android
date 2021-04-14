@@ -1,7 +1,9 @@
 package com.moonlitdoor.amessage.network.client
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.moonlitdoor.amessage.dto.AssociatedDataDto
 import com.moonlitdoor.amessage.dto.FirebaseMessageDto
+import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.network.FirebaseClientContainer
 import kotlinx.coroutines.runBlocking
@@ -59,7 +61,7 @@ class FirebaseClientTest {
             override val type: Type
               get() = Type.ConnectionRejection
           },
-          UUID.randomUUID(), "token", UUID.randomUUID(), UUID.randomUUID()
+          UUID.randomUUID(), "token", KeysDto("keys"), AssociatedDataDto(UUID.randomUUID())
         )
       )
       assertTrue(response.isSuccessful)

@@ -6,8 +6,8 @@ data class ConnectionInvitePayload(
   val handle: String,
   val token: String,
   val connectionId: UUID,
-  val associatedData: UUID,
-  val keys: String
+  val associatedData: AssociatedDataDto,
+  val keys: KeysDto
 ) : Payload() {
 
   @Transient

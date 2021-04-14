@@ -17,7 +17,7 @@ class RootTest {
 
   @Test
   fun givenRoot_whenInitialized_thenReturnsAContext() {
-    Root.init(InstrumentationRegistry.getInstrumentation().targetContext as Application)
+    Root.init(InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as Application)
     assertNotNull(Root.get())
   }
 

@@ -36,8 +36,8 @@ object ConnectionMapper {
     token = Token(payload.token),
     handle = Handle(payload.handle),
     state = Connection.State.Pending,
-    associatedData = AssociatedData(payload.associatedData),
-    keys = Keys(payload.keys)
+    associatedData = AssociatedData(payload.associatedData.value),
+    keys = Keys(payload.keys.value)
   )
 
 }

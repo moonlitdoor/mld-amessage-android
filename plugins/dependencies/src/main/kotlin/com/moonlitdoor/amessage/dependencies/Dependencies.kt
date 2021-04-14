@@ -134,6 +134,12 @@ object Dependencies {
         }
       }
 
+      object Crypto {
+        object Tink {
+          const val tinkAndroid = "com.google.crypto.tink:tink-android:1.5.0"
+        }
+      }
+
       object Dagger {
         private const val version = "2.34-beta"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
