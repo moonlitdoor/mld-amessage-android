@@ -6,91 +6,91 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Tags
-        run: git fetch origin +refs/tags/*:refs/tags/*
-      - name: Set Up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-      - name: AssembleDebug
-        env:
-          com_moonlitdoor_amessage_firebase_debug_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_default_web_client_id }}
-          com_moonlitdoor_amessage_firebase_debug_firebase_database_url: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_firebase_database_url }}
-          com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id }}
-          com_moonlitdoor_amessage_firebase_debug_google_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_api_key }}
-          com_moonlitdoor_amessage_firebase_debug_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_app_id }}
-          com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key }}
-          com_moonlitdoor_amessage_firebase_debug_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_storage_bucket }}
-          com_moonlitdoor_amessage_firebase_debug_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_project_id }}
-        run: ./gradlew assembleDebug --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_debug_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_debug_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_debug_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_debug_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID=$com_moonlitdoor_amessage_firebase_debug_project_id
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Tags
-        run: git fetch origin +refs/tags/*:refs/tags/*
-      - name: Set Up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-      - name: Test
-        run: ./gradlew test testReport --stacktrace --continue
-      - name: Coverage
-        run: ./gradlew jacocoTestReport --stacktrace --continue
-      - name: Verify Coverage
-        run: ./gradlew jacocoTestCoverageVerification --stacktrace --continue
-      - name: Upload Test Report
-        if: always()
-        uses: actions/upload-artifact@master
-        with:
-          name: tests
-          path: build/reports/allTests
-      - name: Upload Coverage Report
-        if: always()
-        uses: actions/upload-artifact@master
-        with:
-          name: coverage
-          path: build/reports/jacoco/jacocoTestReport/html
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - name: Tags
-        run: git fetch origin +refs/tags/*:refs/tags/*
-      - name: Set Up JDK 11
-        uses: actions/setup-java@v2
-        with:
-          distribution: 'adopt'
-          java-version: '11'
-      - name: Lint
-        run: ./gradlew lint --stacktrace --continue
-      - name: Upload Lint
-        if: always()
-        uses: actions/upload-artifact@master
-        with:
-          name: lint
-          path: amessage/build/reports/lint-results.html
+#  build:
+  #    name: Build
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - name: Checkout
+  #        uses: actions/checkout@v2
+  #        with:
+  #          fetch-depth: 0
+  #      - name: Tags
+  #        run: git fetch origin +refs/tags/*:refs/tags/*
+  #      - name: Set Up JDK 11
+  #        uses: actions/setup-java@v2
+  #        with:
+  #          distribution: 'adopt'
+  #          java-version: '11'
+  #      - name: AssembleDebug
+  #        env:
+  #          com_moonlitdoor_amessage_firebase_debug_default_web_client_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_default_web_client_id }}
+  #          com_moonlitdoor_amessage_firebase_debug_firebase_database_url: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_firebase_database_url }}
+  #          com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id }}
+  #          com_moonlitdoor_amessage_firebase_debug_google_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_api_key }}
+  #          com_moonlitdoor_amessage_firebase_debug_google_app_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_app_id }}
+  #          com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key }}
+  #          com_moonlitdoor_amessage_firebase_debug_google_storage_bucket: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_google_storage_bucket }}
+  #          com_moonlitdoor_amessage_firebase_debug_project_id: ${{ secrets.com_moonlitdoor_amessage_firebase_debug_project_id }}
+  #        run: ./gradlew assembleDebug --stacktrace -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID=$com_moonlitdoor_amessage_firebase_debug_default_web_client_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL=$com_moonlitdoor_amessage_firebase_debug_firebase_database_url -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID=$com_moonlitdoor_amessage_firebase_debug_gcm_default_sender_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_APP_ID=$com_moonlitdoor_amessage_firebase_debug_google_app_id -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_CRASH_REPORTING_API_KEY=$com_moonlitdoor_amessage_firebase_debug_google_crash_reporting_api_key -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GOOGLE_STORAGE_BUCKET=$com_moonlitdoor_amessage_firebase_debug_google_storage_bucket -PCOM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID=$com_moonlitdoor_amessage_firebase_debug_project_id
+  #  test:
+  #    name: Test
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - name: Checkout
+  #        uses: actions/checkout@v2
+  #        with:
+  #          fetch-depth: 0
+  #      - name: Tags
+  #        run: git fetch origin +refs/tags/*:refs/tags/*
+  #      - name: Set Up JDK 11
+  #        uses: actions/setup-java@v2
+  #        with:
+  #          distribution: 'adopt'
+  #          java-version: '11'
+  #      - name: Test
+  #        run: ./gradlew test testReport --stacktrace --continue
+  #      - name: Coverage
+  #        run: ./gradlew jacocoTestReport --stacktrace --continue
+  #      - name: Verify Coverage
+  #        run: ./gradlew jacocoTestCoverageVerification --stacktrace --continue
+  #      - name: Upload Test Report
+  #        if: always()
+  #        uses: actions/upload-artifact@master
+  #        with:
+  #          name: tests
+  #          path: build/reports/allTests
+  #      - name: Upload Coverage Report
+  #        if: always()
+  #        uses: actions/upload-artifact@master
+  #        with:
+  #          name: coverage
+  #          path: build/reports/jacoco/jacocoTestReport/html
+  #  lint:
+  #    name: Lint
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #      - name: Checkout
+  #        uses: actions/checkout@v2
+  #        with:
+  #          fetch-depth: 0
+  #      - name: Tags
+  #        run: git fetch origin +refs/tags/*:refs/tags/*
+  #      - name: Set Up JDK 11
+  #        uses: actions/setup-java@v2
+  #        with:
+  #          distribution: 'adopt'
+  #          java-version: '11'
+  #      - name: Lint
+  #        run: ./gradlew lint --stacktrace --continue
+  #      - name: Upload Lint
+  #        if: always()
+  #        uses: actions/upload-artifact@master
+  #        with:
+  #          name: lint
+  #          path: amessage/build/reports/lint-results.html
   beta:
     name: Beta
-    needs: [build, test, lint]
+    #    needs: [build, test, lint]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
