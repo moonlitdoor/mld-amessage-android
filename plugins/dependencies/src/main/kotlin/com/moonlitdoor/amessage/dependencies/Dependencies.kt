@@ -10,10 +10,6 @@ object Dependencies {
       const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha06"
     }
 
-    object AppCompat {
-      const val appcompat = "androidx.appcompat:appcompat:1.3.0-rc01"
-    }
-
     object Camera {
       private const val version = "1.1.0-alpha03"
       private const val versionView = "1.0.0-alpha23"
@@ -49,19 +45,10 @@ object Dependencies {
     }
 
     object Lifecycle {
-      private const val version = "2.4.0-alpha01"
-      const val lifecycleLivedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:$version"
-      const val lifecycleRuntimeKtx = "androidx.lifecycle:lifecycle-runtime-ktx:$version"
-      const val lifecycleServiceKtx = "androidx.lifecycle:lifecycle-service:$version"
-      const val lifecycleViewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$version"
       const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
     }
 
     object Navigation {
-      private const val version = "2.3.3"
-      const val navigationDynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
-      const val navigationFragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
-      const val navigationUiKtx = "androidx.navigation:navigation-ui-ktx:$version"
       const val navigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha10"
     }
 
@@ -85,13 +72,7 @@ object Dependencies {
       const val runner = "androidx.test:runner:$version"
 
       object Espresso {
-        private const val version = "3.4.0-alpha05"
-        const val espressoCore = "androidx.test.espresso:espresso-core:$version"
-        const val espressoIdlingResource = "androidx.test.espresso:espresso-idling-resource:$version"
-
-        object Idling {
-          const val idlingConcurrent = "androidx.test.espresso.idling:idling-concurrent:$version"
-        }
+        const val espressoCore = "androidx.test.espresso:espresso-core:3.4.0-alpha05"
       }
 
       object Ext {
@@ -105,12 +86,6 @@ object Dependencies {
   }
 
   object Com {
-    object Amitshekhar {
-      object Android {
-        const val debugDb = "com.amitshekhar.android:debug-db:1.0.6"
-      }
-    }
-
     object Google {
       object Accompanist {
         private const val version = "0.7.1"
@@ -121,10 +96,6 @@ object Dependencies {
       object Android {
         object Gms {
           const val playServicesVision = "com.google.android.gms:play-services-vision:20.1.3"
-        }
-
-        object Material {
-          const val material = "com.google.android.material:material:1.3.0-alpha02"
         }
       }
 
@@ -219,7 +190,6 @@ object Dependencies {
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlinxCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
-        const val kotlinxCollectionsImmutable = "org.jetbrains.kotlinx:kotlinx-collections-immutable-jvm:0.3.4"
       }
     }
 

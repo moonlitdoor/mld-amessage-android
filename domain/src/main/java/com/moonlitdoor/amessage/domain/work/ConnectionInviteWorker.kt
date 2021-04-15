@@ -38,7 +38,7 @@ class ConnectionInviteWorker @AssistedInject constructor(
     withContext(Dispatchers.IO) {
       val profile = profileDao.getProfile().first()
       inputData.getString(CONNECTION_UUID)?.let { newConnectionUuid ->
-        val newConnectionEntity = connectionDao.get(UUID.fromString(newConnectionUuid))
+        val newConnectionEntity = connectionDao.get(UUID.fromString(newConnectionUuid)).first()
         inputData.getString(SCANNED_TOKEN)?.let { scannedToken ->
           inputData.getString(SCANNED_ASSOCIATED_DATA)?.let { scannedAssociatedData ->
             inputData.getString(SCANNED_KEYS)?.let { scannedKeys ->

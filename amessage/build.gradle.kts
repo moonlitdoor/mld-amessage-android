@@ -42,12 +42,11 @@ android {
 //  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lint {
-    isAbortOnError = false
+
+    isAbortOnError = true
     disable(
-      "ObsoleteSdkInt",
-      "UnusedResources",
-      "NullSafeMutableLiveData",
-      "InvalidFragmentVersionForActivityResult"
+//      "ObsoleteSdkInt",
+//      "UnsafeOptInUsageError",
     )
     isIgnoreTestSources = true
     isCheckDependencies = true
@@ -202,7 +201,7 @@ dependencies {
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-//  androidTestUtil(D.Androidx.Test.orchestrator)
+  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)

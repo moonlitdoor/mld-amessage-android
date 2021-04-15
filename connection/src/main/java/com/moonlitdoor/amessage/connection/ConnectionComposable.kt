@@ -11,9 +11,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Navigation
+import java.util.*
 
 @Composable
-fun Connection(navHostController: NavHostController, viewModel: ConnectionViewModel, connectionId: Long, setAppChrome: (appChrome: AppChrome) -> Unit) {
+fun Connection(navHostController: NavHostController, viewModel: ConnectionViewModel, connectionId: UUID, setAppChrome: (appChrome: AppChrome) -> Unit) {
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.connection_title),
@@ -30,5 +31,5 @@ fun Connection(navHostController: NavHostController, viewModel: ConnectionViewMo
 fun ConnectionPreview() {
   val navHostController = rememberNavController()
   val viewModel: ConnectionViewModel = viewModel()
-  Connection(navHostController = navHostController, viewModel = viewModel, connectionId = 0) {}
+  Connection(navHostController = navHostController, viewModel = viewModel, connectionId = UUID.randomUUID()) {}
 }

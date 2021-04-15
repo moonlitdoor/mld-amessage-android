@@ -70,7 +70,7 @@ class ConnectionRepository @Inject constructor(private val connectionDao: Connec
 
   fun delete(connectionId: UUID) = Unit//connectionDao.delete(connectionId)
 
-  fun getConnection(connectionId: Long): Flow<Connection> = connectionDao.getConnection(connectionId).map { ConnectionMapper.map(it) }
+  fun getConnection(connectionId: UUID): Flow<Connection> = connectionDao.get(connectionId).map { ConnectionMapper.map(it) }
 
   suspend fun isConnectionExisting(connection: Connection): Boolean = connectionDao.isConnectionExisting(ConnectionMapper.map(connection).connectionId.value) > 0
 

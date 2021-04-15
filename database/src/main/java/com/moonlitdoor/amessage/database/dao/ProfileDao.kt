@@ -19,8 +19,6 @@ interface ProfileDao : KeyValueDao {
   @Query("SELECT * FROM profile")
   fun getProfile(): Flow<ProfileView>
 
-//  fun getHandle(): Flow<HandleProjection> = getValueAsFlow(HandleProjection.KEY).map { HandleProjection(it?: "") }
-
   suspend fun setHandle(value: HandleProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
   suspend fun setToken(value: TokenProjection): Unit = setKeyValue(KeyValueEntity.from(value))

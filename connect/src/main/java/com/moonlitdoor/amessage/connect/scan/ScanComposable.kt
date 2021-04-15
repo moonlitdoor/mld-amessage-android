@@ -19,7 +19,6 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
-import com.google.accompanist.pager.rememberPagerState
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import com.moonlitdoor.amessage.connect.ConnectViewModel
@@ -31,7 +30,7 @@ import timber.log.Timber
 import java.util.concurrent.Executors
 import androidx.camera.core.Preview as CameraPreview
 
-@OptIn(ExperimentalPagerApi::class)
+@ExperimentalPagerApi
 @ExperimentalGetImage
 @Composable
 fun Scan(
@@ -132,13 +131,12 @@ fun Scan(
 }
 
 
-@OptIn(ExperimentalPagerApi::class)
+@ExperimentalPagerApi
 @ExperimentalGetImage
 @Preview(showBackground = false)
 @Composable
 fun ScanPreview() {
   MaterialTheme {
-    val pagerState = rememberPagerState(pageCount = 4)
     val viewModel: ConnectViewModel = viewModel()
     Scan(viewModel, true)
   }

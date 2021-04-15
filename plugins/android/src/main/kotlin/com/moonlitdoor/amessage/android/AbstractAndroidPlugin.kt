@@ -35,7 +35,7 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
             "ObsoleteLintCustomCheck"
           )
           isWarningsAsErrors = true
-          isAbortOnError = true
+          isAbortOnError = false
           xmlReport = false
         }
 

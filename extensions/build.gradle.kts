@@ -6,13 +6,11 @@ plugins {
 
 dependencies {
 
-  implementation(Dependencies.Androidx.Lifecycle.lifecycleLivedataKtx)
-
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-//  androidTestUtil(D.Androidx.Test.orchestrator)
+  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)

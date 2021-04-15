@@ -17,6 +17,7 @@ import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.routes.Routes
+import java.util.*
 
 @Composable
 fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
@@ -30,10 +31,10 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       Connections(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Connection.route, arguments = Routes.Connection.arguments) { backStackEntry ->
-      val connectionId = backStackEntry.arguments?.getLong(Routes.Connection.Arguments.CONNECTION_ID)
+      val connectionId = backStackEntry.arguments?.getString(Routes.Connection.Arguments.CONNECTION_ID)
       connectionId ?: throw IllegalArgumentException("ConnectionId can not be null")
       val viewModel: ConnectionViewModel = hiltNavGraphViewModel()
-      Connection(navHostController = navHostController, viewModel = viewModel, connectionId = connectionId, setAppChrome = setAppChrome)
+      Connection(navHostController = navHostController, viewModel = viewModel, connectionId = UUID.fromString(connectionId), setAppChrome = setAppChrome)
     }
     composable(route = Routes.Connect.route) {
       val viewModel: ConnectViewModel = hiltNavGraphViewModel()

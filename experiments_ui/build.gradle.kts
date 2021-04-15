@@ -51,7 +51,7 @@ dependencies {
   testImplementation(D.Androidx.Test.Ext.junitKtx)
   testImplementation(D.Org.Robolectric.robolectric)
 
-  androidTestUtil(D.Androidx.Test.orchestrator)
+  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
   androidTestImplementation(D.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(D.Androidx.Fragment.fragmentTesting)

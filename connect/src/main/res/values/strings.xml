@@ -23,8 +23,7 @@
   <string name="connect_ok">OK</string>
   <string name="connect_cancel">Cancel</string>
 
-
-  <string name="confirm">Confirm</string>
-  <string name="reject">Reject</string>
+  <!--  <string name="confirm">Confirm</string>-->
+  <!--  <string name="reject">Reject</string>-->
 
 </resources>

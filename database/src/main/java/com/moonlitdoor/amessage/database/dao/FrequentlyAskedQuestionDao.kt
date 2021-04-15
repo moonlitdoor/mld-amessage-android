@@ -17,7 +17,7 @@ class FrequentlyAskedQuestionDao @Inject constructor(private val reference: Data
 
   @ExperimentalCoroutinesApi
   fun getFrequentlyAskedQuestions(): Flow<List<FrequentlyAskedQuestionEntity>> = callbackFlow {
-    val listener = reference.child("questions").addValueEventListener(object : ValueEventListener {
+    val listener = reference.child(PATH).addValueEventListener(object : ValueEventListener {
       override fun onDataChange(snapshot: DataSnapshot) {
         this@callbackFlow.sendBlocking(snapshot.children.mapNotNull {
           it.getValue(FrequentlyAskedQuestionEntity::class.java)
@@ -28,5 +28,9 @@ class FrequentlyAskedQuestionDao @Inject constructor(private val reference: Data
     })
 
     awaitClose { reference.removeEventListener(listener) }
+  }
+
+  companion object {
+    private const val PATH = "questions"
   }
 }

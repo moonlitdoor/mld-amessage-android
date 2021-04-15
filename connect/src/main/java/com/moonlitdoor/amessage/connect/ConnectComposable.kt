@@ -22,6 +22,7 @@ import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -64,11 +65,13 @@ fun Connect(viewModel: ConnectViewModel, setAppChrome: (AppChrome) -> Unit) {
     )
   )
 
-  val pages = mutableStateListOf(
-    ConnectTabs.Pending,
-    ConnectTabs.Invited,
-    ConnectTabs.QRCode,
-  )
+  val pages = remember {
+    mutableStateListOf(
+      ConnectTabs.Pending,
+      ConnectTabs.Invited,
+      ConnectTabs.QRCode,
+    )
+  }
 
   registerForActivityResult(contract = ActivityResultContracts.RequestPermission()) { granted ->
     if (granted) {
