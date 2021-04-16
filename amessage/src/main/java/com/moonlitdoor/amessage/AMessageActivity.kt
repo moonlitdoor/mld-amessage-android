@@ -14,14 +14,11 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ChatBubble
-import androidx.compose.material.icons.filled.Group
-import androidx.compose.material.icons.filled.PersonAdd
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -91,7 +88,7 @@ class AMessageActivity : AppCompatActivity() {
                   val currentState by navController.currentBackStackEntryAsState()
                   val currentRoute = currentState?.arguments?.getString(KEY_ROUTE)
                   BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.ChatBubble, null) },
+                    icon = { Icon(painterResource(id = R.drawable.ic_baseline_chat_24), null) },
                     label = { Text(stringResource(R.string.conversations_title)) },
                     selected = Routes.Conversations.route == currentRoute,
                     onClick = {
@@ -102,7 +99,7 @@ class AMessageActivity : AppCompatActivity() {
                     }
                   )
                   BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.Group, null) },
+                    icon = { Icon(painterResource(id = R.drawable.ic_baseline_group_24), null) },
                     label = { Text(stringResource(R.string.connections_title)) },
                     selected = Routes.Connections.route == currentRoute,
                     onClick = {
@@ -113,7 +110,7 @@ class AMessageActivity : AppCompatActivity() {
                     }
                   )
                   BottomNavigationItem(
-                    icon = { Icon(Icons.Filled.PersonAdd, null) },
+                    icon = { Icon(painterResource(id = R.drawable.ic_baseline_person_add_24), null) },
                     label = { Text(stringResource(R.string.connect_title)) },
                     selected = Routes.Connect.route == currentRoute,
                     onClick = {

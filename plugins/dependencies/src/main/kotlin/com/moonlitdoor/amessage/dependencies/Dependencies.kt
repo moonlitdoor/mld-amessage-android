@@ -24,7 +24,6 @@ object Dependencies {
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
-        const val materialIconsExtended = "androidx.compose.material:material-icons-extended:$version"
       }
 
       object Ui {
