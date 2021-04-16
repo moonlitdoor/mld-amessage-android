@@ -38,6 +38,20 @@
 
   <string name="more_title">More</string>
 
+  <string name="about_title">About</string>
+
+  <string name="settings_title">Settings</string>
+
+  <string name="faq_title">Frequently Asked Questions</string>
+
+  <string name="help_title">Help</string>
+
+  <string name="feedback_title">Feedback</string>
+
+  <string name="windows_title">Windows</string>
+
+  <string name="whats_new_title">Windows</string>
+
   <!--  <string name="confirm">Confirm</string>-->
   <!--  <string name="reject">Reject</string>-->
 

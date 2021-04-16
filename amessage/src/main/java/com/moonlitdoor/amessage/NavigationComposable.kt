@@ -5,6 +5,7 @@ import androidx.hilt.navigation.compose.hiltNavGraphViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.moonlitdoor.amessage.about.About
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.connect.Connect
 import com.moonlitdoor.amessage.connect.ConnectViewModel
@@ -47,6 +48,9 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
     }
     composable(route = Routes.More.route) {
       More(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.About.route) {
+      About(navHostController = navHostController, setAppChrome = setAppChrome)
     }
   }
 }

@@ -23,5 +23,6 @@ sealed class Routes(val route: String, val arguments: List<NamedNavArgument> = e
 
   object Connect : Routes("connect")
   object More : Routes("more")
+  object About : Routes("about")
   object Handle : Routes("handle")
 }

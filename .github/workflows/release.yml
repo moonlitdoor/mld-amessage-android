@@ -90,7 +90,7 @@ jobs:
           path: amessage/build/reports/lint-results.html
   release:
     name: Release
-    needs: [build, test, lint]
+    needs: [ build, sharedTest, lint ]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

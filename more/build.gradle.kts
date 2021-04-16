@@ -28,10 +28,9 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.COMPONENTS))
-  implementation(project(Modules.DOMAIN))
+  implementation(project(Modules.EXPERIMENTS))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROUTES))
-  implementation(project(Modules.THEME))
 
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)

@@ -14,7 +14,7 @@ gradleEnterprise {
   }
 }
 
-//include(":about")
+include(":about")
 include(":amessage")
 include(":analytics")
 include(":components")

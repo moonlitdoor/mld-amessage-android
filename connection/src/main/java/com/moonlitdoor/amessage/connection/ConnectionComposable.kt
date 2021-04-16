@@ -18,7 +18,7 @@ fun Connection(navHostController: NavHostController, viewModel: ConnectionViewMo
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.connection_title),
-      navigation = Navigation(imageVector = Navigation.DEFAULT_ICON) { navHostController.popBackStack() }
+      navigation = Navigation { navHostController.popBackStack() }
     )
   )
 
