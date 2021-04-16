@@ -20,11 +20,16 @@ import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.more.More
 import com.moonlitdoor.amessage.routes.Routes
+import com.moonlitdoor.amessage.settings.Settings
 import java.util.*
 
 @Composable
 fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
   NavHost(navHostController, startDestination = Routes.Conversations.route) {
+    composable(route = Routes.Handle.route) {
+      val viewModel: HandleViewModel = hiltNavGraphViewModel()
+      Handle(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+    }
     composable(route = Routes.Conversations.route) {
       val viewModel: ConversationsViewModel = hiltNavGraphViewModel()
       Conversations(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
@@ -43,18 +48,33 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       val viewModel: ConnectViewModel = hiltNavGraphViewModel()
       Connect(viewModel = viewModel, setAppChrome = setAppChrome)
     }
-    composable(route = Routes.Handle.route) {
-      val viewModel: HandleViewModel = hiltNavGraphViewModel()
-      Handle(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
-    }
     composable(route = Routes.More.route) {
       More(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.About.route) {
       About(navHostController = navHostController, setAppChrome = setAppChrome)
     }
+    composable(route = Routes.FAQ.route) {
+      //update
+      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.WhatsNew.route) {
+      //update
+      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
     composable(route = Routes.Feedback.route) {
       Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.Help.route) {
+      //update
+      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.Windows.route) {
+      //update
+      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.Settings.route) {
+      Settings(navHostController = navHostController, setAppChrome = setAppChrome)
     }
   }
 }

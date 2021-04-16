@@ -178,6 +178,7 @@ dependencies {
   implementation(project(Modules.PUSH))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROOT))
+  implementation(project(Modules.SETTINGS))
 
   implementation(Dependencies.Androidx.Activity.activityCompose)
   implementation(Dependencies.Androidx.Camera.cameraCamera2)

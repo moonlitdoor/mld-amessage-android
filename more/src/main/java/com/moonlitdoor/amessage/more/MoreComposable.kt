@@ -28,22 +28,22 @@ fun More(navHostController: NavHostController, setAppChrome: (appChrome: AppChro
       MoreItem(R.string.about_title) { navHostController.navigate(Routes.About.route) }
     }
     if (Experiments.FEATURE_FAQ.value.asBoolean) {
-      MoreItem(R.string.faq_title) { /*navHostController.navigate(Routes.About.route)*/ }
+      MoreItem(R.string.faq_title) { navHostController.navigate(Routes.FAQ.route) }
     }
     if (Experiments.FEATURE_WHATS_NEW.value.asBoolean) {
-      MoreItem(R.string.whats_new_title) { /*navHostController.navigate(Routes.About.route)*/ }
+      MoreItem(R.string.whats_new_title) { navHostController.navigate(Routes.WhatsNew.route) }
     }
     if (Experiments.FEATURE_FEEDBACK.value.asBoolean) {
-      MoreItem(R.string.feedback_title) { /*navHostController.navigate(Routes.About.route)*/ }
+      MoreItem(R.string.feedback_title) { navHostController.navigate(Routes.Feedback.route) }
     }
     if (Experiments.FEATURE_HELP.value.asBoolean) {
-      MoreItem(R.string.help_title) { /*navHostController.navigate(Routes.About.route)*/ }
+      MoreItem(R.string.help_title) { navHostController.navigate(Routes.Help.route) }
     }
     if (Experiments.FEATURE_WINDOWS.value.asBoolean) {
-      MoreItem(R.string.windows_title) { /*navHostController.navigate(Routes.About.route)*/ }
+      MoreItem(R.string.windows_title) { navHostController.navigate(Routes.Windows.route) }
     }
     if (Experiments.FEATURE_SETTINGS.value.asBoolean) {
-      MoreItem(R.string.settings_title) { /*navHostController.navigate(Routes.About.route)*/ }
+      MoreItem(R.string.settings_title) { navHostController.navigate(Routes.Settings.route) }
     }
   }
 }
