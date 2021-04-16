@@ -30,6 +30,7 @@ dependencies {
   implementation(project(Modules.COMPONENTS))
   implementation(project(Modules.DOMAIN))
   implementation(project(Modules.EXTENSIONS))
+  implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 

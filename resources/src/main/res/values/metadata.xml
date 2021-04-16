@@ -1,33 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-  <!--  <string name="navigation_drawer_open">Open navigation drawer</string>-->
-
-  <!--  <string name="generic_ok">OK</string>-->
-  <!--  <string name="generic_cancel">Cancel</string>-->
-
-
-  <!-- About -->
-
-  <string name="settings_title_key" translatable="false" tools:ignore="UnusedResources">com.moonlitdoor.amessage.settings.title</string>
-
-  <!-- PreferencesFragment -->
-
-
   <string name="metadata_whats_new_bug_fixes" tools:ignore="UnusedResources">Performance improvements and bug fixes.</string>
   <string name="metadata_title" tools:ignore="UnusedResources">AMessage</string>
   <string name="metadata_short_description" tools:ignore="UnusedResources">An encrypted server-less messaging application.</string>
-
-  <!-- Experiments -->
   <string name="metadata_full_description" tools:ignore="UnusedResources">AMessage uses keys that are generated locally and shared locally to encrypt messages that are sent through the cloud to your connection.</string>
-
-  <!-- Metadata -->
-
-
-  <!--<string name="profile_created">Profile Created</string>-->
-
-  <!-- Connect -->
-  <!--<string name="connect_client">Client</string>-->
-  <!--<string name="connect_server">Server</string>-->
-
 
 </resources>

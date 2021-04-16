@@ -1,13 +1,20 @@
+import com.moonlitdoor.amessage.dependencies.Dependencies
+
 plugins {
-  id("com.android.library")
-  id("com.moonlitdoor.android")
+  id("com.moonlitdoor.amessage.android.library")
+  id("kotlin-kapt")
 }
 
 dependencies {
 
-  api(project(M.ROOT))
+  testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
+  testImplementation(Dependencies.Junit.junit)
+  testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-  implementation(D.Androidx.AppCompat.appcompat)
-  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
+  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
+
+  androidTestImplementation(Dependencies.Androidx.Test.rules)
+  androidTestImplementation(Dependencies.Androidx.Test.runner)
+  androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
 
 }

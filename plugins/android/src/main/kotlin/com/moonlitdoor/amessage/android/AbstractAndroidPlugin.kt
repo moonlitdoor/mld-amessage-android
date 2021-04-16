@@ -12,7 +12,7 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
     val android = project.extensions.getByName("android")
     if (android is BaseExtension) {
       android.apply {
-        compileSdkVersion(28)
+        compileSdkVersion(30)
 
         defaultConfig {
           minSdkVersion(26)
@@ -35,7 +35,7 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
             "ObsoleteLintCustomCheck"
           )
           isWarningsAsErrors = true
-          isAbortOnError = true
+          isAbortOnError = false
           xmlReport = false
         }
 

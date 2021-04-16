@@ -25,12 +25,12 @@ android {
 
 dependencies {
 
-//  kapt(D.Com.Google.Dagger.daggerCompiler)
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.COMPONENTS))
   implementation(project(Modules.DOMAIN))
   implementation(project(Modules.EXTENSIONS))
+  implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 
@@ -42,22 +42,6 @@ dependencies {
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
-//  testImplementation(Dependencies.Junit.junit)
-
-//  implementation(project(M.COMPONENTS))
-//  implementation(project(M.EXPERIMENTS))
-//  implementation(project(M.EXTENSIONS))
-//  implementation(project(M.HANDLE))
-//  implementation(project(M.RESOURCES))
-//
-//  implementation(D.Com.Google.Dagger.dagger)
-//  implementation(D.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
-//  implementation(D.Androidx.ConstraintLayout.constraintLayout)
-//  implementation(D.Androidx.Navigation.navigationFragmentKtx)
-//  implementation(D.Androidx.Navigation.navigationUiKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleViewmodelKtx)
-//  implementation(D.Androidx.Lifecycle.lifecycleLivedataKtx)
-//
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)

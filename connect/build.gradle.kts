@@ -32,6 +32,7 @@ dependencies {
   implementation(project(Modules.CONSTANTS))
   implementation(project(Modules.DOMAIN))
   implementation(project(Modules.EXTENSIONS))
+  implementation(project(Modules.RESOURCES))
   implementation(project(Modules.THEME))
 
   implementation(Dependencies.Androidx.Camera.cameraCamera2)

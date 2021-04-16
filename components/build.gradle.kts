@@ -1,4 +1,5 @@
 import com.moonlitdoor.amessage.dependencies.Dependencies
+import com.moonlitdoor.amessage.dependencies.Modules
 
 plugins {
   id("com.moonlitdoor.amessage.android.library")
@@ -21,6 +22,8 @@ android {
 }
 
 dependencies {
+
+  implementation(project(Modules.RESOURCES))
 
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)

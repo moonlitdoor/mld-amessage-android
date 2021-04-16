@@ -1,6 +1,0 @@
-<resources>
-  <string name="connections.title">Connections</string>
-  <string name="connections.none">You have not made any Connections yet…</string>
-  <string name="connections.connect">Connect</string>
-  <string name="connections.loading">"Loading…"</string>
-</resources>
