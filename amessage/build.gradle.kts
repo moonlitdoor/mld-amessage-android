@@ -46,6 +46,7 @@ android {
     isIgnoreTestSources = true
     isCheckDependencies = true
     isShowAll = true
+    textReport = true
   }
 
   defaultConfig {
@@ -167,6 +168,7 @@ dependencies {
   implementation(project(Modules.CONNECTION))
   implementation(project(Modules.CONNECTIONS))
   implementation(project(Modules.CONVERSATIONS))
+  implementation(project(Modules.FEEDBACK))
   implementation(project(Modules.INIT))
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))

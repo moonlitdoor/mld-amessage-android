@@ -52,6 +52,14 @@
 
   <string name="whats_new_title">Windows</string>
 
+  <!--  <string name="error_no_help">Error: can\'t show help.</string>-->
+  <!--  <string name="about_build_date">Built On</string>-->
+  <!--  <string name="about_privacy_policy">Privacy Policy</string>-->
+  <!--  <string name="about_privacy_policy_url" translatable="false">https://www.moonlitdoor.com/app/documents/PrivacyPolicy.pdf</string>-->
+  <!--  <string name="about_version">Version</string>-->
+  <!--  <string name="about_page_view_acknowledgements">Acknowledgements</string>-->
+  <!--  <string name="about_page_view_statistics">Statistics</string>-->
+
   <!--  <string name="confirm">Confirm</string>-->
   <!--  <string name="reject">Reject</string>-->
 

@@ -6,7 +6,7 @@ object Experiments {
   val FEATURE_WHATS_NEW = Experiment(key = "exp_feature_whats_new")
   val FEATURE_ABOUT = Experiment(key = "exp_feature_about")
   val FEATURE_FEEDBACK = Experiment(key = "exp_feature_feedback")
-  val FEATURE_HELP = Experiment(key = "exp_feature_help", defaultValue = Experiment.BOOLEAN.TRUE)
+  val FEATURE_HELP = Experiment(key = "exp_feature_help")
   val FEATURE_SETTINGS = Experiment(key = "exp_feature_settings", defaultValue = Experiment.BOOLEAN.TRUE)
   val FEATURE_WINDOWS = Experiment(key = "exp_feature_windows")
 
@@ -21,6 +21,5 @@ object Experiments {
   )
 
   fun init(): Unit = FirebaseRemoteConfigWrapper.get().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
-
 
 }

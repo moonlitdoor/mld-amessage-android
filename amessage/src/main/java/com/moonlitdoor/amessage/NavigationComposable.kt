@@ -15,6 +15,7 @@ import com.moonlitdoor.amessage.connections.Connections
 import com.moonlitdoor.amessage.connections.ConnectionsViewModel
 import com.moonlitdoor.amessage.conversations.Conversations
 import com.moonlitdoor.amessage.conversations.ConversationsViewModel
+import com.moonlitdoor.amessage.feedback.Feedback
 import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.more.More
@@ -51,6 +52,9 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
     }
     composable(route = Routes.About.route) {
       About(navHostController = navHostController, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.Feedback.route) {
+      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
     }
   }
 }

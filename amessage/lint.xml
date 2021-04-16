@@ -1,12 +1,3 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-  <issue id="UnusedResources">
-    <ignore path="build.gradle.kts" />
-    <ignore path="../../help/src/main/res/drawable/ic_baseline_expand_more_24.xml" />
-  </issue>
-  <issue id="GoogleAppIndexingWarning" severity="ignore" />
-  <issue id="VectorPath" severity="ignore">
-    <ignore path="amessage/src/main/res/drawable/ic_settings_black_24dp.xml" />
-  </issue>
-  <issue id="PrivateResource" severity="informational" />
 </lint>
