@@ -22,6 +22,7 @@ object Modules {
   const val HELP = ":help"
   const val INIT = ":init"
   const val NETWORK = ":network"
+  const val MORE = ":more"
   const val PUSH = ":push"
   const val RESOURCES = ":resources"
   const val ROOT = ":root"

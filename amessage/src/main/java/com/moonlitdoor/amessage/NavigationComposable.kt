@@ -16,6 +16,7 @@ import com.moonlitdoor.amessage.conversations.Conversations
 import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
+import com.moonlitdoor.amessage.more.More
 import com.moonlitdoor.amessage.routes.Routes
 import java.util.*
 
@@ -43,6 +44,9 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
     composable(route = Routes.Handle.route) {
       val viewModel: HandleViewModel = hiltNavGraphViewModel()
       Handle(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.More.route) {
+      More(navHostController = navHostController, setAppChrome = setAppChrome)
     }
   }
 }

@@ -25,16 +25,18 @@
   <string name="connect_ok">OK</string>
   <string name="connect_cancel">Cancel</string>
 
-  <string name="connection.title">Connection</string>
+  <string name="connection_title">Connection</string>
 
-  <string name="connections.title">Connections</string>
-  <string name="connections.none">You have not made any Connections yet…</string>
-  <string name="connections.connect">Connect</string>
-  <string name="connections.loading">"Loading…"</string>
+  <string name="connections_title">Connections</string>
+  <string name="connections_none">You have not made any Connections yet…</string>
+  <string name="connections_connect">Connect</string>
+  <string name="connections_loading">"Loading…"</string>
 
-  <string name="conversations.title">Conversations</string>
+  <string name="conversations_title">Conversations</string>
 
-  <string name="handle.title">Set a Handle</string>
+  <string name="handle_title">Set a Handle</string>
+
+  <string name="more_title">More</string>
 
   <!--  <string name="confirm">Confirm</string>-->
   <!--  <string name="reject">Reject</string>-->

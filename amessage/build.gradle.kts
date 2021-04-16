@@ -171,6 +171,7 @@ dependencies {
   implementation(project(Modules.THEME))
   implementation(project(Modules.EXPERIMENTS))
   implementation(project(Modules.HANDLE))
+  implementation(project(Modules.MORE))
   implementation(project(Modules.PUSH))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROOT))

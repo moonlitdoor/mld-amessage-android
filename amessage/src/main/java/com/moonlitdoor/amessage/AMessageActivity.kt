@@ -14,6 +14,8 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -115,6 +117,17 @@ class AMessageActivity : AppCompatActivity() {
                     selected = Routes.Connect.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Connect.route) {
+                        popUpTo = navController.graph.startDestination
+                        launchSingleTop = true
+                      }
+                    }
+                  )
+                  BottomNavigationItem(
+                    icon = { Icon(Icons.Filled.MoreVert, null) },
+                    label = { Text(stringResource(R.string.more_title)) },
+                    selected = Routes.More.route == currentRoute,
+                    onClick = {
+                      navController.navigate(Routes.More.route) {
                         popUpTo = navController.graph.startDestination
                         launchSingleTop = true
                       }
