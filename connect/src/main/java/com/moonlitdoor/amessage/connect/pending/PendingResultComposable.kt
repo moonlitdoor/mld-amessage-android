@@ -19,6 +19,7 @@ import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
 import com.moonlitdoor.amessage.domain.model.Token
 import timber.log.Timber
+import java.time.Instant
 
 @Composable
 fun PendingResult(viewState: PendingViewState.Result) {
@@ -50,7 +51,8 @@ fun ConnectionsResultPreview() {
         handle = Handle("handle"),
         state = Connection.State.Connected,
         associatedData = AssociatedData(),
-        keys = Keys("keys")
+        keys = Keys("keys"),
+        scanned = Instant.now(),
       )
     )
   )

@@ -16,6 +16,7 @@ import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.time.Instant
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -58,7 +59,8 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
     handle = Handle("handle$index"),
     state = state,
     associatedData = AssociatedData(),
-    keys = Keys("keys$index")
+    keys = Keys("keys$index"),
+    scanned = Instant.now(),
   )
 
   companion object {

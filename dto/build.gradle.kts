@@ -18,6 +18,7 @@ dependencies {
 
   androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
+  androidTestImplementation(Dependencies.Junit.junit)
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)

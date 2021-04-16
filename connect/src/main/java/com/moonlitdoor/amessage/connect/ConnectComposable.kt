@@ -1,10 +1,11 @@
 package com.moonlitdoor.amessage.connect
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.activity.compose.registerForActivityResult
+import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,7 +22,8 @@ import androidx.compose.material.TabRow
 import androidx.compose.material.TabRowDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
@@ -55,6 +57,7 @@ fun hasPermissions(context: Context): Boolean = PERMISSIONS_REQUIRED.all {
   ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
 }
 
+@SuppressLint("UnsafeOptInUsageError")
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Connect(viewModel: ConnectViewModel, setAppChrome: (AppChrome) -> Unit) {
@@ -65,25 +68,26 @@ fun Connect(viewModel: ConnectViewModel, setAppChrome: (AppChrome) -> Unit) {
     )
   )
 
-  val pages = remember {
-    mutableStateListOf(
-      ConnectTabs.Pending,
-      ConnectTabs.Invited,
-      ConnectTabs.QRCode,
-    )
-  }
+  val pages2 = mutableListOf(
+    ConnectTabs.Pending,
+    ConnectTabs.Invited,
+    ConnectTabs.QRCode,
+  )
 
-  registerForActivityResult(contract = ActivityResultContracts.RequestPermission()) { granted ->
+  rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
     if (granted) {
-      pages.add(ConnectTabs.Scan)
+      pages2.add(ConnectTabs.Scan)
     }
   }
 
   if (!hasPermissions(LocalContext.current)) {
     requestPermissions(LocalContext.current as Activity, PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
   } else {
-    pages.add(ConnectTabs.Scan)
+    pages2.add(ConnectTabs.Scan)
   }
+
+  val pages by remember { mutableStateOf(pages2) }
+
 
   Column(Modifier.fillMaxSize()) {
     val coroutineScope = rememberCoroutineScope()

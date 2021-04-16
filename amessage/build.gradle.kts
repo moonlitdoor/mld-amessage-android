@@ -42,21 +42,17 @@ android {
 //  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
 
   lint {
-
     isAbortOnError = true
-    disable(
-//      "ObsoleteSdkInt",
-//      "UnsafeOptInUsageError",
-    )
     isIgnoreTestSources = true
     isCheckDependencies = true
+    isShowAll = true
   }
 
   defaultConfig {
     applicationId = "com.moonlitdoor.amessage"
     versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
-    resValue("color", "launcher_background", "@color/purple_deep_A400")
+    resValue("color", "launcher_background", "#651FFF")
     buildConfigField("String", "BUILD_DATE", "\"0\"")
     buildConfigField("boolean", "USE_COMPOSE", "true")
 //    if (largeTests) {
@@ -106,7 +102,7 @@ android {
       isShrinkResources = false
       proguardFiles(getDefaultProguardFile(Constants.PROGUARD_ANDROID_FILE), Constants.PROGUARD_FILE)
       applicationIdSuffix = ".beta"
-      resValue("color", "launcher_background", "@color/colorMonsterAccent")
+      resValue("color", "launcher_background", "#4caf50")
       resValue("string", "app_name", "AMessage Beta")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_BETA_FIREBASE_DATABASE_URL").toString())
@@ -128,7 +124,7 @@ android {
     getByName(Constants.DEBUG) {
       isMinifyEnabled = false
       applicationIdSuffix = ".debug"
-      resValue("color", "launcher_background", "@color/colorDarkPrimary")
+      resValue("color", "launcher_background", "#607d8b")
       resValue("string", "app_name", "AMessage Debug")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL").toString())

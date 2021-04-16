@@ -1,7 +1,10 @@
 package com.moonlitdoor.amessage.dto
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.moonlitdoor.amessage.dto.adapters.InstantAdapter
 import com.moonlitdoor.amessage.encryption.AuthenticatedEncryptionWithAssociatedData
+import java.time.Instant
 
 abstract class Payload {
 
@@ -15,7 +18,7 @@ abstract class Payload {
 
   companion object {
 
-    internal val GSON = Gson()
+    internal val GSON: Gson = GsonBuilder().registerTypeAdapter(Instant::class.java, InstantAdapter).create()
 
     fun encrypt(payload: String, keys: KeysDto, associatedData: AssociatedDataDto): String =
       AuthenticatedEncryptionWithAssociatedData.encrypt(payload, AuthenticatedEncryptionWithAssociatedData.deserializeKeys(keys.value), associatedData.value)

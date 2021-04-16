@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.dto
 
+import java.time.Instant
 import java.util.*
 
 data class ConnectionInvitePayload(
@@ -7,7 +8,8 @@ data class ConnectionInvitePayload(
   val token: String,
   val connectionId: UUID,
   val associatedData: AssociatedDataDto,
-  val keys: KeysDto
+  val keys: KeysDto,
+  val scanned: Instant,
 ) : Payload() {
 
   @Transient

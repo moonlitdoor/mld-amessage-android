@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.domain.model
 
+import java.time.Instant
 import java.util.*
 
 data class Connection(
@@ -9,7 +10,8 @@ data class Connection(
   val token: Token,
   val associatedData: AssociatedData,
   val keys: Keys,
-  val state: State
+  val state: State,
+  val scanned: Instant,
 ) {
 
   constructor(parts: String) : this(
@@ -18,7 +20,8 @@ data class Connection(
     connectionId = Id(UUID.fromString(parts.split("|")[2])),
     associatedData = AssociatedData(UUID.fromString(parts.split("|")[3])),
     keys = Keys(parts.split("|")[4]),
-    state = State.Scanned
+    state = State.Scanned,
+    scanned = Instant.now()
   )
 
   sealed class State(val value: String) {

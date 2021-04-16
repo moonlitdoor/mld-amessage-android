@@ -23,6 +23,7 @@ import com.moonlitdoor.amessage.domain.model.Keys
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.routes.Routes
 import timber.log.Timber
+import java.time.Instant
 
 @Composable
 fun ConnectionsResult(navHostController: NavHostController, viewState: ConnectionsViewState.Result) {
@@ -56,7 +57,8 @@ fun ConnectionsResultPreview() {
         handle = Handle("handle"),
         state = Connection.State.Connected,
         keys = Keys("keys"),
-        associatedData = AssociatedData()
+        associatedData = AssociatedData(),
+        scanned = Instant.now(),
       )
     )
   )

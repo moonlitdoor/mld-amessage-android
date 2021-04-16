@@ -1,64 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="colorPrimary">@color/orange_500</color>
-  <color name="colorPrimaryDark">@color/orange_800</color>
-  <!--  <color name="colorPrimaryLight">@color/orange_200</color>-->
-  <color name="colorAccent">@color/purple_deep_A400</color>
-  <!--<color name="colorAccentDark">@color/purple_deep_A700</color>-->
-  <!--<color name="colorAccentLight">@color/purple_deep_A100</color>-->
-  <!--<color name="colorWindowBackground">@color/white</color>-->
-
-
-  <!--<color name="dialog_title">@color/black_087</color>-->
-
-  <color name="colorDeepPrimary">#673ab7</color>
-  <!--  <color name="colorDeepPrimaryDark">@color/orange_800</color>-->
-  <color name="colorDeepAccent">#ffc107</color>
-
-  <color name="colorCoolPrimary">#2196f3</color>
-  <!--  <color name="colorCoolPrimaryDark">@color/orange_800</color>-->
-  <color name="colorCoolAccent">#607d8b</color>
-
+  <!--  <color name="colorDeepPrimary">#673ab7</color>-->
+  <!--  <color name="colorDeepAccent">#ffc107</color>-->
+  <!--  <color name="colorCoolPrimary">#2196f3</color>-->
+  <!--  <color name="colorCoolAccent">#607d8b</color>-->
   <!--<color name="colorHarvestPrimary">#ff5722</color>-->
-  <!--<color name="colorHarvestPrimaryDark">@color/orange_800</color>-->
   <!--<color name="colorHarvestAccent">#795548</color>-->
-
-  <color name="colorDarkPrimary">#607d8b</color>
-  <!--<color name="colorDarkPrimaryDark">@color/orange_800</color>-->
-  <color name="colorDarkAccent">#ffc107</color>
-
-  <color name="colorMonsterPrimary">#9c27b0</color>
-  <!--  <color name="colorMonsterPrimaryDark">@color/orange_800</color>-->
-  <color name="colorMonsterAccent">#4caf50</color>
-
+  <!--  <color name="colorDarkPrimary">#607d8b</color>-->
+  <!--  <color name="colorDarkAccent">#ffc107</color>-->
+  <!--  <color name="colorMonsterPrimary">#9c27b0</color>-->
+  <!--  <color name="colorMonsterAccent">#4caf50</color>-->
   <!--<color name="colorPinkPrimary">#e91e63</color>-->
   <!--<color name="colorPinkPrimaryDark">#b0003a</color>-->
   <!--<color name="colorPinkAccent">#607d8b</color>-->
-
-  <color name="backgroundDark">#303030</color>
-
+  <!--  <color name="backgroundDark">#303030</color>-->
   <!--<color name="orange_050">#FFF3E0</color>-->
   <!--<color name="orange_100">#FFE0B2</color>-->
   <!--  <color name="orange_200">#FFCC80</color>-->
   <!--<color name="orange_300">#FFB74D</color>-->
   <!--<color name="orange_400">#FFA726</color>-->
-  <color name="orange_500">#FF9800</color>
+  <!--  <color name="orange_500">#FF9800</color>-->
   <!--<color name="orange_600">#FB8C00</color>-->
   <!--<color name="orange_700">#F57C00</color>-->
-  <color name="orange_800">#EF6C00</color>
+  <!--  <color name="orange_800">#EF6C00</color>-->
   <!--<color name="orange_900">#E65100</color>-->
-
   <!--<color name="purple_deep_A100">#B388FF</color>-->
   <!--<color name="purple_deep_A200">#7C4DFF</color>-->
-  <color name="purple_deep_A400">#651FFF</color>
+  <!--  <color name="purple_deep_A400">#651FFF</color>-->
   <!--<color name="purple_deep_A700">#6200EA</color>-->
-
-  <color name="transparent">@android:color/transparent</color>
-  <color name="white">@android:color/white</color>
-
-
-  <color name="black">@color/black_100</color>
-  <color name="black_100">#FF000000</color>
+  <!--  <color name="black_100">#FF000000</color>-->
   <!--<color name="black_099">#FC000000</color> -->
   <!--<color name="black_098">#FA000000</color> -->
   <!--<color name="black_097">#F7000000</color> -->
@@ -71,7 +41,7 @@
   <!--<color name="black_090">#E6000000</color> -->
   <!--<color name="black_089">#E3000000</color> -->
   <!--<color name="black_088">#E0000000</color> -->
-  <color name="black_087">#DE000000</color>
+  <!--  <color name="black_087">#DE000000</color>-->
   <!--<color name="black_086">#DB000000</color> -->
   <!--<color name="black_085">#D9000000</color> -->
   <!--<color name="black_084">#D6000000</color> -->
@@ -108,7 +78,7 @@
   <!--<color name="black_053">#87000000</color> -->
   <!--<color name="black_052">#85000000</color> -->
   <!--<color name="black_051">#82000000</color> -->
-  <!--  <color name="black_050">#80000000</color>-->
+  <!--<color name="black_050">#80000000</color>-->
   <!--<color name="black_049">#7D000000</color> -->
   <!--<color name="black_048">#7A000000</color> -->
   <!--<color name="black_047">#78000000</color> -->
@@ -133,7 +103,7 @@
   <!--<color name="black_028">#47000000</color> -->
   <!--<color name="black_027">#45000000</color> -->
   <!--<color name="black_026">#42000000</color> -->
-  <color name="black_025">#40000000</color>
+  <!--  <color name="black_025">#40000000</color>-->
   <!--<color name="black_024">#3D000000</color> -->
   <!--<color name="black_023">#3B000000</color> -->
   <!--<color name="black_022">#38000000</color> -->

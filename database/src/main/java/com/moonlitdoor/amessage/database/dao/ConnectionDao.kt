@@ -1,6 +1,5 @@
 package com.moonlitdoor.amessage.database.dao
 
-import androidx.annotation.VisibleForTesting
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -26,7 +25,6 @@ interface ConnectionDao {
   @Query("SELECT * FROM connection WHERE state = 'pending'")
   fun getPending(): Flow<List<ConnectionEntity>>
 
-  @VisibleForTesting
   @Query("SELECT count(*) FROM connection")
   suspend fun connectionCount(): Long
 

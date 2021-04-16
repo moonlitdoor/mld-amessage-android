@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b0cfd7acee146e15b3b8c353f003e43b",
+    "identityHash": "8768bbffe1ad8b624e427728dfd3b0ce",
     "entities": [
       {
         "tableName": "key_value",
@@ -41,17 +41,11 @@
       },
       {
         "tableName": "connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `token` TEXT NOT NULL, `handle` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `keys` TEXT NOT NULL, `state` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `handle` TEXT NOT NULL, `token` TEXT NOT NULL, `keys` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `state` TEXT NOT NULL, `scanned` TEXT NOT NULL, PRIMARY KEY(`connection_id`))",
         "fields": [
           {
             "fieldPath": "connectionId",
             "columnName": "connection_id",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "token",
-            "columnName": "token",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -62,8 +56,8 @@
             "notNull": true
           },
           {
-            "fieldPath": "associatedData",
-            "columnName": "associatedData",
+            "fieldPath": "token",
+            "columnName": "token",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -74,33 +68,31 @@
             "notNull": true
           },
           {
+            "fieldPath": "associatedData",
+            "columnName": "associatedData",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
             "fieldPath": "state",
             "columnName": "state",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
+            "fieldPath": "scanned",
+            "columnName": "scanned",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "connection_id"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
         "indices": [
-          {
-            "name": "index_connection_connection_id",
-            "unique": true,
-            "columnNames": [
-              "connection_id"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_connection_connection_id` ON `${TABLE_NAME}` (`connection_id`)"
-          },
           {
             "name": "index_connection_token",
             "unique": true,
@@ -173,18 +165,18 @@
       },
       {
         "tableName": "conversation_connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` INTEGER NOT NULL, `connection_id` INTEGER NOT NULL, PRIMARY KEY(`conversation_id`, `connection_id`), FOREIGN KEY(`conversation_id`) REFERENCES `conversation`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`connection_id`) REFERENCES `connection`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `connection_id` TEXT NOT NULL, PRIMARY KEY(`conversation_id`, `connection_id`), FOREIGN KEY(`conversation_id`) REFERENCES `conversation`(`conversation_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`connection_id`) REFERENCES `connection`(`connection_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "conversationId",
             "columnName": "conversation_id",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
             "fieldPath": "connectionId",
             "columnName": "connection_id",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           }
         ],
@@ -222,7 +214,7 @@
               "conversation_id"
             ],
             "referencedColumns": [
-              "id"
+              "conversation_id"
             ]
           },
           {
@@ -233,7 +225,7 @@
               "connection_id"
             ],
             "referencedColumns": [
-              "id"
+              "connection_id"
             ]
           }
         ]
@@ -242,12 +234,12 @@
     "views": [
       {
         "viewName": "profile",
-        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT \n  (SELECT value FROM key_value WHERE `key` = 'handle') AS handle,\n  (SELECT value FROM key_value WHERE `key` = 'token') AS token,\n  (SELECT value FROM key_value WHERE `key` = 'id') AS id,\n  (SELECT value FROM key_value WHERE `key` = 'keys') AS keys,\n  (SELECT value FROM key_value WHERE `key` = 'associated_data') AS associatedData,\n  (SELECT value FROM key_value WHERE `key` = 'password') AS password,\n  (SELECT value FROM key_value WHERE `key` = 'salt') AS salt"
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT \n  (SELECT value FROM key_value WHERE `key` = 'handle') AS handle,\n  (SELECT value FROM key_value WHERE `key` = 'token') AS token,\n  (SELECT value FROM key_value WHERE `key` = 'id') AS id,\n  (SELECT value FROM key_value WHERE `key` = 'keys') AS keys,\n  (SELECT value FROM key_value WHERE `key` = 'associated_data') AS associatedData"
       }
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b0cfd7acee146e15b3b8c353f003e43b')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8768bbffe1ad8b624e427728dfd3b0ce')"
     ]
   }
 }

@@ -8,6 +8,7 @@ import com.moonlitdoor.amessage.database.converter.ConnectionStateConverter
 import com.moonlitdoor.amessage.database.converter.DateConverter
 import com.moonlitdoor.amessage.database.converter.HandleProjectionConverter
 import com.moonlitdoor.amessage.database.converter.IdProjectionConverter
+import com.moonlitdoor.amessage.database.converter.InstantConverter
 import com.moonlitdoor.amessage.database.converter.KeysProjectionConverter
 import com.moonlitdoor.amessage.database.converter.TokenProjectionConverter
 import com.moonlitdoor.amessage.database.converter.UuidConverter
@@ -28,6 +29,7 @@ import com.moonlitdoor.amessage.database.view.ProfileView
     ConnectionStateConverter::class,
     DateConverter::class,
     HandleProjectionConverter::class,
+    InstantConverter::class,
     IdProjectionConverter::class,
     KeysProjectionConverter::class,
     TokenProjectionConverter::class,

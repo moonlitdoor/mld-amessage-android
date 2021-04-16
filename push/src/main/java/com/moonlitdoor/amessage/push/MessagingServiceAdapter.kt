@@ -35,19 +35,23 @@ class MessagingServiceAdapter @Inject constructor(private val connectionReposito
   }
 
   private suspend fun type(type: String, id: UUID, payload: String): Unit = when (type) {
-    Payload.Type.ConnectionInvite.value -> connectionRepository.insert(
-      ConnectionMapper.map(
-        ConnectionInvitePayload.inflate(
-          profileRepository.getProfile().first().let {
-            Payload.decrypt(
-              encryptedPayload = payload,
-              keys = KeysDto(it.keys.value),
-              associatedData = AssociatedDataDto(it.associatedData.value)
-            )
-          }
+    Payload.Type.ConnectionInvite.value -> {
+      val string = profileRepository.getProfile().first().let {
+        Payload.decrypt(
+          encryptedPayload = payload,
+          keys = KeysDto(it.keys.value),
+          associatedData = AssociatedDataDto(it.associatedData.value)
         )
-      )
-    ).ignore()
+      }
+
+      connectionRepository.insert(
+        ConnectionMapper.map(
+          ConnectionInvitePayload.inflate(
+            string
+          )
+        )
+      ).ignore()
+    }
     Payload.Type.ConnectionConfirmation.value -> connectionRepository.update(id, Connection.State.Connected)
     Payload.Type.ConnectionRejection.value -> connectionRepository.delete(id)
     else -> throw IllegalStateException("type=$type")

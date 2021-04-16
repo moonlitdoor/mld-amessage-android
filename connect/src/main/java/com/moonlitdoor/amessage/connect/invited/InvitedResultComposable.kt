@@ -19,6 +19,7 @@ import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
 import com.moonlitdoor.amessage.domain.model.Token
 import timber.log.Timber
+import java.time.Instant
 
 @Composable
 fun InvitedResult(viewState: InvitedViewState.Result) {
@@ -49,7 +50,8 @@ fun InvitedResultPreview() {
         handle = Handle("handle1"),
         state = Connection.State.Invited,
         associatedData = AssociatedData(),
-        keys = Keys("keys1")
+        keys = Keys("keys1"),
+        scanned = Instant.now(),
       ),
       Connection(
         id = 1L,
@@ -58,7 +60,8 @@ fun InvitedResultPreview() {
         handle = Handle("handle2"),
         state = Connection.State.Invited,
         associatedData = AssociatedData(),
-        keys = Keys("keys2")
+        keys = Keys("keys2"),
+        scanned = Instant.now(),
       ),
     )
   )

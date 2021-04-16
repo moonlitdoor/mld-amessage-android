@@ -30,6 +30,7 @@ import timber.log.Timber
 import java.util.concurrent.Executors
 import androidx.camera.core.Preview as CameraPreview
 
+@OptIn(ExperimentalPagerApi::class)
 @ExperimentalPagerApi
 @ExperimentalGetImage
 @Composable

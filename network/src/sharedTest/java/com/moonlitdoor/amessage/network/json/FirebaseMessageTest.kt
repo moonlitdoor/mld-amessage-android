@@ -11,6 +11,7 @@ import com.moonlitdoor.amessage.network.StaticKeys
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.time.Instant
 import java.util.*
 
 @RunWith(AndroidJUnit4::class)
@@ -20,7 +21,7 @@ class FirebaseMessageTest {
 
   @Test
   fun testConnectionInvitePayloadSerialization() {
-    val payload = ConnectionInvitePayload("eldnah", "nekot", UUID.randomUUID(), AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value))
+    val payload = ConnectionInvitePayload("eldnah", "nekot", UUID.randomUUID(), AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value), Instant.now())
     val payloadAsJson: String = payload.toString()
     val payloadInflated = ConnectionInvitePayload.inflate(payloadAsJson)
     assertEquals(payload, payloadInflated)
@@ -28,7 +29,7 @@ class FirebaseMessageTest {
 
   @Test
   fun testConnectionInvitePayloadMessageSerialization() {
-    val payload = ConnectionInvitePayload("eldnah", "nekot", UUID.randomUUID(), AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value))
+    val payload = ConnectionInvitePayload("eldnah", "nekot", UUID.randomUUID(), AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value), Instant.now())
     val connection = ConnectionJson(0, UUID.randomUUID(), "token", "handle", AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value))
     val message = FirebaseMessageDto(payload, connection)
     val json = gson.toJson(message)

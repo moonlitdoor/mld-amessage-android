@@ -49,6 +49,7 @@ class ConnectionInviteWorker @AssistedInject constructor(
                   connectionId = newConnectionEntity.connectionId.value,
                   keys = KeysDto(scannedKeys),
                   associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData)),
+                  scanned = newConnectionEntity.scanned,
                 ),
                 connectionId = newConnectionEntity.connectionId.value,
                 token = scannedToken,

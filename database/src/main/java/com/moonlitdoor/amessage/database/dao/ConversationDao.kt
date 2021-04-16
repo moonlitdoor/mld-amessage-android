@@ -12,16 +12,15 @@ import kotlinx.coroutines.flow.Flow
 abstract class ConversationDao {
 
   @Insert
-  abstract fun insert(entity: ConversationEntity): Long
+  abstract fun insert(entity: ConversationEntity)
 
   @Insert
-  abstract fun insert(entity: ConversationConnectionEntity)
+  abstract fun insert(entities: List<ConversationConnectionEntity>)
 
   @Transaction
-  open fun insert(entity: ConversationEntity, entities: List<ConversationConnectionEntity>) = insert(entity).also { id ->
-    entities.forEach {
-      insert(it.copy(conversationId = id))
-    }
+  open fun insert(entity: ConversationEntity, entities: List<ConversationConnectionEntity>) {
+    insert(entity)
+    insert(entities)
   }
 
   @Query("SELECT * FROM conversation")

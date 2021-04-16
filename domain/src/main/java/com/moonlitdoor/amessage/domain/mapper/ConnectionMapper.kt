@@ -18,7 +18,7 @@ object ConnectionMapper {
     keys = KeysMapper.map(connection.keys),
     associatedData = AssociatedDataMapper.map(connection.associatedData),
     state = ConnectionStateMapper.map(connection.state),
-    id = connection.id,
+    scanned = connection.scanned,
   )
 
   fun map(entity: ConnectionEntity) = Connection(
@@ -28,16 +28,17 @@ object ConnectionMapper {
     keys = KeysMapper.map(entity.keys),
     associatedData = AssociatedDataMapper.map(entity.associatedData),
     state = ConnectionStateMapper.map(entity.state),
-    id = entity.id,
+    scanned = entity.scanned,
   )
 
   fun map(payload: ConnectionInvitePayload) = Connection(
     connectionId = Id(payload.connectionId),
     token = Token(payload.token),
     handle = Handle(payload.handle),
-    state = Connection.State.Pending,
+    keys = Keys(payload.keys.value),
     associatedData = AssociatedData(payload.associatedData.value),
-    keys = Keys(payload.keys.value)
+    state = Connection.State.Pending,
+    scanned = payload.scanned,
   )
 
 }

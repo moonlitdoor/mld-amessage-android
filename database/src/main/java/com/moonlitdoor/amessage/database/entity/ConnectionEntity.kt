@@ -9,27 +9,29 @@ import com.moonlitdoor.amessage.database.projection.HandleProjection
 import com.moonlitdoor.amessage.database.projection.IdProjection
 import com.moonlitdoor.amessage.database.projection.KeysProjection
 import com.moonlitdoor.amessage.database.projection.TokenProjection
+import java.time.Instant
 
-@Entity(tableName = "connection", indices = [Index(value = ["connection_id"], unique = true), Index(value = ["token"], unique = true)])
+@Entity(tableName = "connection", indices = [Index(value = ["token"], unique = true)])
 data class ConnectionEntity(
+  @PrimaryKey
   @ColumnInfo(name = "connection_id")
   val connectionId: IdProjection,
-  val token: TokenProjection,
   val handle: HandleProjection,
-  val associatedData: AssociatedDataProjection,
+  val token: TokenProjection,
   val keys: KeysProjection,
+  val associatedData: AssociatedDataProjection,
   val state: State,
-  @PrimaryKey(autoGenerate = true)
-  val id: Long = 0
+  val scanned: Instant,
 ) {
 
   fun new() = ConnectionEntity(
     connectionId = IdProjection(),
-    token = TokenProjection(token.value),
     handle = HandleProjection(handle.value),
-    associatedData = AssociatedDataProjection(),
+    token = TokenProjection(token.value),
     keys = KeysProjection(),
+    associatedData = AssociatedDataProjection(),
     state = state,
+    scanned = scanned,
   )
 
   sealed class State(val value: String) {
