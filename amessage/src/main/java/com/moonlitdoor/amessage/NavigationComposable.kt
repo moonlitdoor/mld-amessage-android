@@ -15,11 +15,13 @@ import com.moonlitdoor.amessage.connections.Connections
 import com.moonlitdoor.amessage.connections.ConnectionsViewModel
 import com.moonlitdoor.amessage.conversations.Conversations
 import com.moonlitdoor.amessage.conversations.ConversationsViewModel
+import com.moonlitdoor.amessage.faq.Faq
 import com.moonlitdoor.amessage.feedback.Feedback
 import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.help.Help
 import com.moonlitdoor.amessage.more.More
+import com.moonlitdoor.amessage.news.WhatsNew
 import com.moonlitdoor.amessage.routes.Routes
 import com.moonlitdoor.amessage.settings.Settings
 import com.moonlitdoor.amessage.windows.Windows
@@ -57,12 +59,10 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       About(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.FAQ.route) {
-      //update
-      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+      Faq(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.WhatsNew.route) {
-      //update
-      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+      WhatsNew(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Feedback.route) {
       Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
