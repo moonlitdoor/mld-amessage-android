@@ -18,9 +18,11 @@ import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.feedback.Feedback
 import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
+import com.moonlitdoor.amessage.help.Help
 import com.moonlitdoor.amessage.more.More
 import com.moonlitdoor.amessage.routes.Routes
 import com.moonlitdoor.amessage.settings.Settings
+import com.moonlitdoor.amessage.windows.Windows
 import java.util.*
 
 @Composable
@@ -66,12 +68,10 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Help.route) {
-      //update
-      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+      Help(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Windows.route) {
-      //update
-      Feedback(navHostController = navHostController, setAppChrome = setAppChrome)
+      Windows(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Settings.route) {
       Settings(navHostController = navHostController, setAppChrome = setAppChrome)

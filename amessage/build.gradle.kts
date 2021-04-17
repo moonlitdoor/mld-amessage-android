@@ -174,11 +174,13 @@ dependencies {
   implementation(project(Modules.THEME))
   implementation(project(Modules.EXPERIMENTS))
   implementation(project(Modules.HANDLE))
+  implementation(project(Modules.HELP))
   implementation(project(Modules.MORE))
   implementation(project(Modules.PUSH))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROOT))
   implementation(project(Modules.SETTINGS))
+  implementation(project(Modules.WINDOWS))
 
   implementation(Dependencies.Androidx.Activity.activityCompose)
   implementation(Dependencies.Androidx.Camera.cameraCamera2)
