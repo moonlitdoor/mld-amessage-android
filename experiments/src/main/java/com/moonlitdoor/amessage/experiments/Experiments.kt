@@ -18,7 +18,6 @@ object Experiments {
     FEATURE_ABOUT,
     FEATURE_FAQ,
     FEATURE_WHATS_NEW,
-    FEATURE_TEST,
   )
 
   fun init(): Unit = FirebaseRemoteConfigWrapper.get().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))

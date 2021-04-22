@@ -7,12 +7,12 @@ object Dependencies {
 
   object Androidx {
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha06"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha07"
     }
 
     object Camera {
-      private const val version = "1.1.0-alpha03"
-      private const val versionView = "1.0.0-alpha23"
+      private const val version = "1.1.0-alpha04"
+      private const val versionView = "1.0.0-alpha24"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -20,7 +20,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-beta04"
+      const val version = "1.0.0-beta05"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -60,7 +60,7 @@ object Dependencies {
     }
 
     object Room {
-      private const val version = "2.3.0-rc01"
+      private const val version = "2.4.0-alpha01"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -84,14 +84,14 @@ object Dependencies {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha02"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha03"
     }
   }
 
   object Com {
     object Google {
       object Accompanist {
-        private const val version = "0.7.1"
+        private const val version = "0.8.0"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
       }
