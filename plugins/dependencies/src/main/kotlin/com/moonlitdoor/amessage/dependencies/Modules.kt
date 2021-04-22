@@ -15,7 +15,7 @@ object Modules {
   const val DTO = ":dto"
   const val ENCRYPTION = ":encryption"
   const val EXPERIMENTS = ":experiments"
-  const val EXPERIMENTS_UI = ":experiments_ui"
+  const val EXPERIMENTS_UI = ":experiments:ui"
   const val EXTENSIONS = ":extensions"
   const val FAQ = ":faq"
   const val FEEDBACK = ":feedback"

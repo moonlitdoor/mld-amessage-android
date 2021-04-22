@@ -42,6 +42,8 @@
 
   <string name="settings_title">Settings</string>
 
+  <string name="experiments_title">Experiments</string>
+
   <string name="faq_title">Frequently Asked Questions</string>
 
   <string name="help_title">Help</string>

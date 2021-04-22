@@ -36,7 +36,7 @@ interface FirebaseRemoteConfigWrapper {
 
     private var INSTANCE: FirebaseRemoteConfigWrapper? = null
 
-    fun get(firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper? = null): FirebaseRemoteConfigWrapper = firebaseRemoteConfigWrapper?.also { INSTANCE = it } ?: INSTANCE ?: FirebaseRemoteConfigLive.get().also { INSTANCE = it }
+    fun get(firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper? = INSTANCE): FirebaseRemoteConfigWrapper = firebaseRemoteConfigWrapper?.also { INSTANCE = it } ?: INSTANCE ?: FirebaseRemoteConfigLive.get().also { INSTANCE = it }
 
   }
 }

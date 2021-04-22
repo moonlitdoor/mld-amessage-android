@@ -49,6 +49,7 @@ fun More(navHostController: NavHostController, setAppChrome: (appChrome: AppChro
     if (Experiments.FEATURE_SETTINGS.value.asBoolean) {
       MoreItem(R.string.settings_title) { navHostController.navigate(Routes.Settings.route) }
     }
+    MoreItem(R.string.experiments_title) { navHostController.navigate(Routes.Experiments.route) }
   }
 }
 

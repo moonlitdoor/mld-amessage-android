@@ -32,6 +32,10 @@ object Dependencies {
       }
     }
 
+    object ConstraintLayout {
+      const val constraintLayoutCompose = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha05"
+    }
+
     object Core {
       const val coreKtx = "androidx.core:core-ktx:1.6.0-alpha01"
     }

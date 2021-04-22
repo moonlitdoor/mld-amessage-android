@@ -1,12 +1,17 @@
 package com.moonlitdoor.amessage.experiments
 
-import androidx.annotation.StringRes
 import androidx.preference.PreferenceManager
 import com.moonlitdoor.amessage.root.Root
 import java.util.*
 
 
-data class Experiment<T : Enum<T>> internal constructor(val key: String, private val c: Class<T>, val defaultValue: T) {
+data class Experiment<T : Enum<T>> internal constructor(
+  val key: String,
+  var title: String? = null,
+  var description: String? = null,
+  private val c: Class<T>,
+  val defaultValue: T,
+) {
 
   private val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(Root.get())
 
@@ -14,20 +19,8 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
     FALSE(false), TRUE(true)
   }
 
-  private constructor(key: String, c: Class<T>, defaultValue: T, title: String? = null, description: String? = null) : this(key, c, defaultValue) {
-    this.title = title
-    this.description = description
-  }
-
-  private constructor(key: String, c: Class<T>, defaultValue: T, @StringRes title: Int = 0, @StringRes description: Int = 0) : this(key, c, defaultValue) {
-    this.title = Root.get().getString(title)
-    this.description = Root.get().getString(description)
-  }
-
   val id = "com.moonlitdoor.amessage.experiment.$key"
 
-  var title: String? = null
-  var description: String? = null
   val remoteValue: String
     get() = FirebaseRemoteConfigWrapper.get().getString(key).toUpperCase(Locale.ROOT)
 
@@ -46,13 +39,12 @@ data class Experiment<T : Enum<T>> internal constructor(val key: String, private
 
     const val REMOTE = "REMOTE"
 
-    operator fun invoke(key: String) = Experiment(key, BOOLEAN.FALSE)
+    operator fun invoke(key: String) = Experiment(key = key, defaultValue = BOOLEAN.FALSE)
 
-    operator fun invoke(key: String, defaultValue: BOOLEAN) = Experiment(key, BOOLEAN::class.java, defaultValue)
+    operator fun invoke(key: String, defaultValue: BOOLEAN) = Experiment(key = key, c = BOOLEAN::class.java, defaultValue = defaultValue)
 
-    operator fun invoke(key: String, title: String? = null, description: String? = null) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE, title, description)
+    operator fun invoke(key: String, title: String? = null, description: String? = null) = Experiment(key, title, description, BOOLEAN::class.java, BOOLEAN.FALSE)
 
-    operator fun invoke(key: String, @StringRes title: Int = 0, @StringRes description: Int = 0) = Experiment(key, BOOLEAN::class.java, BOOLEAN.FALSE, title, description)
   }
 
 }

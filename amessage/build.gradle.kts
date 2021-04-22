@@ -174,6 +174,7 @@ dependencies {
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
   implementation(project(Modules.EXPERIMENTS))
+  implementation(project(Modules.EXPERIMENTS_UI))
   implementation(project(Modules.HANDLE))
   implementation(project(Modules.HELP))
   implementation(project(Modules.MORE))
