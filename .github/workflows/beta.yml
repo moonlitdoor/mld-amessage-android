@@ -87,7 +87,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: lint
-          path: amessage/build/reports/lint-results.html
+          path: amessage/build/reports/lint-results-debug.html
   beta:
     name: Beta
     needs: [ build, test, lint ]

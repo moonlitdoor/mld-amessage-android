@@ -46,7 +46,6 @@ android {
     isIgnoreTestSources = true
     isCheckDependencies = true
     isShowAll = true
-    textReport = true
   }
 
   defaultConfig {
