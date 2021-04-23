@@ -30,6 +30,8 @@ sealed class Routes(val route: String, val arguments: List<NamedNavArgument> = e
   object Help : Routes("help")
   object Windows : Routes("windows")
   object Settings : Routes("settings")
+  object EmployeeSettings : Routes("employeeSettings")
+  object DeveloperSettings : Routes("developerSettings")
   object Experiments : Routes("experiments")
   object Feedback : Routes("feedback")
 }

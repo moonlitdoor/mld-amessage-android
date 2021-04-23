@@ -22,9 +22,13 @@ import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
 import com.moonlitdoor.amessage.help.Help
 import com.moonlitdoor.amessage.more.More
+import com.moonlitdoor.amessage.more.MoreViewModel
 import com.moonlitdoor.amessage.news.WhatsNew
 import com.moonlitdoor.amessage.routes.Routes
+import com.moonlitdoor.amessage.settings.DeveloperSettings
+import com.moonlitdoor.amessage.settings.EmployeeSettings
 import com.moonlitdoor.amessage.settings.Settings
+import com.moonlitdoor.amessage.settings.SettingsViewModel
 import com.moonlitdoor.amessage.windows.Windows
 import java.util.*
 
@@ -33,28 +37,53 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
   NavHost(navHostController, startDestination = Routes.Conversations.route) {
     composable(route = Routes.Handle.route) {
       val viewModel: HandleViewModel = hiltNavGraphViewModel()
-      Handle(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+      Handle(
+        navHostController = navHostController,
+        viewModel = viewModel,
+        setAppChrome = setAppChrome
+      )
     }
     composable(route = Routes.Conversations.route) {
       val viewModel: ConversationsViewModel = hiltNavGraphViewModel()
-      Conversations(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+      Conversations(
+        navHostController = navHostController,
+        viewModel = viewModel,
+        setAppChrome = setAppChrome
+      )
     }
     composable(route = Routes.Connections.route) {
       val viewModel: ConnectionsViewModel = hiltNavGraphViewModel()
-      Connections(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+      Connections(
+        navHostController = navHostController,
+        viewModel = viewModel,
+        setAppChrome = setAppChrome
+      )
     }
     composable(route = Routes.Connection.route, arguments = Routes.Connection.arguments) { backStackEntry ->
       val connectionId = backStackEntry.arguments?.getString(Routes.Connection.Arguments.CONNECTION_ID)
       connectionId ?: throw IllegalArgumentException("ConnectionId can not be null")
       val viewModel: ConnectionViewModel = hiltNavGraphViewModel()
-      Connection(navHostController = navHostController, viewModel = viewModel, connectionId = UUID.fromString(connectionId), setAppChrome = setAppChrome)
+      Connection(
+        navHostController = navHostController,
+        viewModel = viewModel,
+        connectionId = UUID.fromString(connectionId),
+        setAppChrome = setAppChrome
+      )
     }
     composable(route = Routes.Connect.route) {
       val viewModel: ConnectViewModel = hiltNavGraphViewModel()
-      Connect(viewModel = viewModel, setAppChrome = setAppChrome)
+      Connect(
+        viewModel = viewModel,
+        setAppChrome = setAppChrome
+      )
     }
     composable(route = Routes.More.route) {
-      More(navHostController = navHostController, setAppChrome = setAppChrome)
+      val viewModel: MoreViewModel = hiltNavGraphViewModel()
+      More(
+        navHostController = navHostController,
+        viewModel = viewModel,
+        setAppChrome = setAppChrome
+      )
     }
     composable(route = Routes.About.route) {
       About(navHostController = navHostController, setAppChrome = setAppChrome)
@@ -75,7 +104,16 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       Windows(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Settings.route) {
-      Settings(navHostController = navHostController, setAppChrome = setAppChrome)
+      val viewModel: SettingsViewModel = hiltNavGraphViewModel()
+      Settings(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.EmployeeSettings.route) {
+      val viewModel: SettingsViewModel = hiltNavGraphViewModel()
+      EmployeeSettings(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
+    }
+    composable(route = Routes.DeveloperSettings.route) {
+      val viewModel: SettingsViewModel = hiltNavGraphViewModel()
+      DeveloperSettings(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
     }
     composable(route = Routes.Experiments.route) {
       ExperimentsUi(navHostController = navHostController, setAppChrome = setAppChrome)

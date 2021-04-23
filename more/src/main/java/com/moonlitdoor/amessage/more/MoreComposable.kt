@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
@@ -17,7 +18,7 @@ import com.moonlitdoor.amessage.experiments.Experiments
 import com.moonlitdoor.amessage.routes.Routes
 
 @Composable
-fun More(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
+fun More(navHostController: NavHostController, viewModel: MoreViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
 
   setAppChrome(
     AppChrome(
@@ -25,9 +26,11 @@ fun More(navHostController: NavHostController, setAppChrome: (appChrome: AppChro
       showBottomBar = true
     )
   )
-  Column(modifier = Modifier
-    .fillMaxSize()
-    .verticalScroll(rememberScrollState())) {
+  Column(
+    modifier = Modifier
+      .fillMaxSize()
+      .verticalScroll(rememberScrollState())
+  ) {
     if (Experiments.FEATURE_ABOUT.value.asBoolean) {
       MoreItem(R.string.about_title) { navHostController.navigate(Routes.About.route) }
     }
@@ -49,7 +52,6 @@ fun More(navHostController: NavHostController, setAppChrome: (appChrome: AppChro
     if (Experiments.FEATURE_SETTINGS.value.asBoolean) {
       MoreItem(R.string.settings_title) { navHostController.navigate(Routes.Settings.route) }
     }
-    MoreItem(R.string.experiments_title) { navHostController.navigate(Routes.Experiments.route) }
   }
 }
 
@@ -58,7 +60,8 @@ fun More(navHostController: NavHostController, setAppChrome: (appChrome: AppChro
 fun MorePreview() {
   MaterialTheme {
     val navHostController = rememberNavController()
-    More(navHostController) {}
+    val viewModel: MoreViewModel = viewModel()
+    More(navHostController, viewModel) {}
   }
 
 }

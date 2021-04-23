@@ -41,6 +41,9 @@
   <string name="about_title">About</string>
 
   <string name="settings_title">Settings</string>
+  <string name="settings_experiments_disable">Disable Experiments</string>
+  <string name="settings_employee_settings_disable">Disable Employee Settings</string>
+  <string name="settings_developer_settings_disable">Disable Developer Settings</string>
 
   <string name="experiments_title">Experiments</string>
 
