@@ -3,7 +3,6 @@
   package="com.moonlitdoor.amessage.init">
 
   <application>
-
     <service
       android:name="com.moonlitdoor.amessage.init.DatabasePopulationService"
       android:exported="false" />
