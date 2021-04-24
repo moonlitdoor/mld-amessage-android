@@ -147,5 +147,4 @@ class AMessageActivity : AppCompatActivity() {
   companion object {
     fun start(context: Context) = context.startActivity(Intent(context, AMessageActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK and Intent.FLAG_ACTIVITY_NEW_TASK))
   }
-
 }

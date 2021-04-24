@@ -28,5 +28,4 @@ class HandleViewModel @Inject constructor(private val repository: ProfileReposit
     Timber.d("Setting Handle to: ${_handle.value}")
     repository.setHandle(handle = _handle.value)
   }
-
 }

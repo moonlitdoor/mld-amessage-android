@@ -30,7 +30,7 @@ import com.moonlitdoor.amessage.settings.EmployeeSettings
 import com.moonlitdoor.amessage.settings.Settings
 import com.moonlitdoor.amessage.settings.SettingsViewModel
 import com.moonlitdoor.amessage.windows.Windows
-import java.util.*
+import java.util.UUID
 
 @Composable
 fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {

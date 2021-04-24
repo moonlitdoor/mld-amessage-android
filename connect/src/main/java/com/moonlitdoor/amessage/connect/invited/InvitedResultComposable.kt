@@ -26,11 +26,12 @@ fun InvitedResult(viewState: InvitedViewState.Result) {
   LazyColumn {
     items(viewState.items) {
       Timber.d("$it")
-      Box(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
-        .clickable {
-        }
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .wrapContentHeight()
+          .clickable {
+          }
       ) {
         Text(text = it.handle.value, Modifier.padding(8.dp))
       }

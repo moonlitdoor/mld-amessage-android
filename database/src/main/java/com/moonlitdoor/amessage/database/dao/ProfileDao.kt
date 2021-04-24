@@ -11,7 +11,7 @@ import com.moonlitdoor.amessage.database.projection.TokenProjection
 import com.moonlitdoor.amessage.database.view.ProfileView
 import com.moonlitdoor.amessage.encryption.AuthenticatedEncryptionWithAssociatedData
 import kotlinx.coroutines.flow.Flow
-import java.util.*
+import java.util.UUID
 
 @Dao
 interface ProfileDao : KeyValueDao {
@@ -36,5 +36,4 @@ interface ProfileDao : KeyValueDao {
   private suspend fun insertAssociatedData(value: AssociatedDataProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 
   private fun String?.toUUID() = this?.let { UUID.fromString(it) }
-
 }

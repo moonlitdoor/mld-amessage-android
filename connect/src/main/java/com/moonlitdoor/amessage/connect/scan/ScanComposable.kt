@@ -62,55 +62,62 @@ fun Scan(
         }
         viewModel.executor = Executors.newSingleThreadExecutor()
         ProcessCameraProvider.getInstance(context).also { future ->
-          future.addListener({
-            val cameraProvider = future.get()
-            cameraProvider.unbindAll()
-            cameraProvider.bindToLifecycle(
-              CustomLifecycle,
-              CameraSelector.Builder()
-                .requireLensFacing(CameraSelector.LENS_FACING_BACK)
-                .build(),
-              ImageAnalysis.Builder()
-                .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-                .build().also { imageAnalysis ->
-                  imageAnalysis.setAnalyzer(viewModel.executor, { imageProxy ->
-                    imageProxy.image?.let { image ->
-                      viewModel.detector.detectInImage(FirebaseVisionImage.fromMediaImage(image, FirebaseVisionImageMetadata.ROTATION_0))
-                        .addOnSuccessListener { list ->
-                          if (list.isEmpty()) {
-                            imageProxy.close()
-                          } else {
-                            list.forEach { barcode ->
-                              Timber.d("Scanning qr code found: ${barcode.rawValue}")
-                              barcode.rawValue?.let { value ->
-                                when {
-                                  Constants.PROFILE_REGEX.toRegex().matches(value) -> viewModel.connectionFound(Connection(value), imageProxy)
-                                  value == Constants.EXPERIMENTS -> viewModel.experimentsCodeFound(imageProxy)
-                                  value == Constants.DEVELOPER_SETTINGS -> viewModel.developerSettingsCodeFound(imageProxy)
-                                  value == Constants.EMPLOYEE_SETTINGS -> viewModel.employeeSettingsCodeFound(imageProxy)
-                                  else -> Timber.i(value)
+          future.addListener(
+            {
+              val cameraProvider = future.get()
+              cameraProvider.unbindAll()
+              cameraProvider.bindToLifecycle(
+                CustomLifecycle,
+                CameraSelector.Builder()
+                  .requireLensFacing(CameraSelector.LENS_FACING_BACK)
+                  .build(),
+                ImageAnalysis.Builder()
+                  .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+                  .build().also { imageAnalysis ->
+                    imageAnalysis.setAnalyzer(
+                      viewModel.executor,
+                      { imageProxy ->
+                        imageProxy.image?.let { image ->
+                          viewModel.detector.detectInImage(FirebaseVisionImage.fromMediaImage(image, FirebaseVisionImageMetadata.ROTATION_0))
+                            .addOnSuccessListener { list ->
+                              if (list.isEmpty()) {
+                                imageProxy.close()
+                              } else {
+                                list.forEach { barcode ->
+                                  Timber.d("Scanning qr code found: ${barcode.rawValue}")
+                                  barcode.rawValue?.let { value ->
+                                    when {
+                                      Constants.PROFILE_REGEX.toRegex().matches(value) -> viewModel.connectionFound(Connection(value), imageProxy)
+                                      value == Constants.EXPERIMENTS -> viewModel.experimentsCodeFound(imageProxy)
+                                      value == Constants.DEVELOPER_SETTINGS -> viewModel.developerSettingsCodeFound(imageProxy)
+                                      value == Constants.EMPLOYEE_SETTINGS -> viewModel.employeeSettingsCodeFound(imageProxy)
+                                      else -> Timber.i(value)
+                                    }
+                                  }
                                 }
                               }
                             }
-                          }
+                            .addOnFailureListener { e ->
+                              imageProxy.close()
+                              Timber.e(e)
+                            }
                         }
-                        .addOnFailureListener { e ->
-                          imageProxy.close()
-                          Timber.e(e)
-                        }
-                    }
-                  })
-                },
-              CameraPreview.Builder()
-                .build()
-                .also {
-                  it.setSurfaceProvider(previewView.surfaceProvider)
-                }
-            )
-          }, ContextCompat.getMainExecutor(context))
+                      }
+                    )
+                  },
+                CameraPreview.Builder()
+                  .build()
+                  .also {
+                    it.setSurfaceProvider(previewView.surfaceProvider)
+                  }
+              )
+            },
+            ContextCompat.getMainExecutor(context)
+          )
         }
         previewView
-      })
+      }
+    )
   }
 
   Ensure exhaustive when (viewState) {
@@ -130,7 +137,6 @@ fun Scan(
     is ScanViewState.Result.EmployeeSettingsEnabled -> ScanEnabledDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result, title = stringResource(id = R.string.connect_employee_settings_enabled))
   }
 }
-
 
 @ExperimentalPagerApi
 @ExperimentalGetImage

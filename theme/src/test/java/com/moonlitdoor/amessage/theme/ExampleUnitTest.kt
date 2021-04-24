@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.theme
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 /**

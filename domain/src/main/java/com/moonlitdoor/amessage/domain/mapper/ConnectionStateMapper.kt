@@ -19,5 +19,4 @@ object ConnectionStateMapper {
     ConnectionEntity.State.Pending -> Connection.State.Pending
     ConnectionEntity.State.Connected -> Connection.State.Connected
   }
-
 }

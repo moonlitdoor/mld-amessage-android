@@ -4,7 +4,6 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.moonlitdoor.amessage.extensions.ignore
 
-
 interface FirebaseRemoteConfigWrapper {
 
   fun setDefaults(defaults: Map<String, Any>)
@@ -29,7 +28,6 @@ interface FirebaseRemoteConfigWrapper {
 
       fun get() = FirebaseRemoteConfigLive()
     }
-
   }
 
   companion object {
@@ -37,6 +35,5 @@ interface FirebaseRemoteConfigWrapper {
     private var INSTANCE: FirebaseRemoteConfigWrapper? = null
 
     fun get(firebaseRemoteConfigWrapper: FirebaseRemoteConfigWrapper? = INSTANCE): FirebaseRemoteConfigWrapper = firebaseRemoteConfigWrapper?.also { INSTANCE = it } ?: INSTANCE ?: FirebaseRemoteConfigLive.get().also { INSTANCE = it }
-
   }
 }

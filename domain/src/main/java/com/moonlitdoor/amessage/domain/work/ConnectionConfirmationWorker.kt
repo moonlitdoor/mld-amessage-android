@@ -1,31 +1,31 @@
 package com.moonlitdoor.amessage.domain.work
 
-//import android.content.Context
-//import androidx.work.BackoffPolicy
-//import androidx.work.Constraints
-//import androidx.work.CoroutineWorker
-//import androidx.work.Data
-//import androidx.work.OneTimeWorkRequest
-//import androidx.work.WorkerParameters
-//import androidx.work.workDataOf
-//import com.moonlitdoor.amessage.database.dao.ConnectionDao
-//import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
-//import com.moonlitdoor.amessage.network.NetworkClient
-//import com.moonlitdoor.amessage.network.NetworkRequestStatus
-//import com.moonlitdoor.amessage.network.json.ConnectionConfirmationPayload
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.coroutineScope
-//import kotlinx.coroutines.withContext
-//import java.util.*
-//import java.util.concurrent.TimeUnit
-//import javax.inject.Inject
+// import android.content.Context
+// import androidx.work.BackoffPolicy
+// import androidx.work.Constraints
+// import androidx.work.CoroutineWorker
+// import androidx.work.Data
+// import androidx.work.OneTimeWorkRequest
+// import androidx.work.WorkerParameters
+// import androidx.work.workDataOf
+// import com.moonlitdoor.amessage.database.dao.ConnectionDao
+// import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
+// import com.moonlitdoor.amessage.network.NetworkClient
+// import com.moonlitdoor.amessage.network.NetworkRequestStatus
+// import com.moonlitdoor.amessage.network.json.ConnectionConfirmationPayload
+// import kotlinx.coroutines.Dispatchers
+// import kotlinx.coroutines.coroutineScope
+// import kotlinx.coroutines.withContext
+// import java.util.*
+// import java.util.concurrent.TimeUnit
+// import javax.inject.Inject
 //
-//class ConnectionConfirmationWorker @Inject constructor(
+// class ConnectionConfirmationWorker @Inject constructor(
 //  private val connectionDao: ConnectionDao,
 //  private val client: NetworkClient,
 //  context: Context,
 //  parameters: WorkerParameters
-//) :
+// ) :
 //  CoroutineWorker(context, parameters) {
 //
 //  override suspend fun doWork(): Result = coroutineScope {
@@ -55,4 +55,4 @@ package com.moonlitdoor.amessage.domain.work
 //      CONNECTION_UUID to connectionId.toString()
 //    )
 //  }
-//}
+// }

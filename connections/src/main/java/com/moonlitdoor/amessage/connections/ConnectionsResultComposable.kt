@@ -30,13 +30,14 @@ fun ConnectionsResult(navHostController: NavHostController, viewState: Connectio
   LazyColumn {
     items(viewState.items) {
       Timber.d("$it")
-      Box(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .wrapContentHeight()
 //        .padding(8.dp)
-        .clickable {
-          navHostController.navigate(Routes.Connection(it.id).route)
-        }
+          .clickable {
+            navHostController.navigate(Routes.Connection(it.id).route)
+          }
       ) {
         Text(text = it.handle.value, Modifier.padding(8.dp))
       }

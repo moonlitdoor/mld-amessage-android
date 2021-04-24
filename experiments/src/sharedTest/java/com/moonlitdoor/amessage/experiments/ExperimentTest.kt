@@ -19,7 +19,8 @@ class ExperimentTest {
         "key" -> "FALSE"
         else -> ""
       }
-    })
+    }
+  )
 
   @Before
   fun setup() {

@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import java.util.*
+import java.util.UUID
 
 @Entity(tableName = "conversation", indices = [(Index(value = ["conversation_id"], unique = true))])
 data class ConversationEntity(
@@ -17,4 +17,3 @@ data class ConversationEntity(
   @PrimaryKey(autoGenerate = true)
   val id: Long = 0
 )
-

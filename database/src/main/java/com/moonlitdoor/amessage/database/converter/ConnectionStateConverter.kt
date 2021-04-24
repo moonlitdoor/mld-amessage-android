@@ -17,5 +17,4 @@ class ConnectionStateConverter {
     ConnectionEntity.State.Connected.value -> ConnectionEntity.State.Connected
     else -> throw IllegalStateException("state=$item")
   }
-
 }

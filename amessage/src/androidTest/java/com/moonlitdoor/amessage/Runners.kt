@@ -53,4 +53,3 @@ class AndroidJUnitRunnerFlaky : AndroidJUnitRunner() {
     super.onCreate(arguments)
   }
 }
-

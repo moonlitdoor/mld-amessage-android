@@ -2,8 +2,7 @@ package com.moonlitdoor.amessage.experiments
 
 import androidx.preference.PreferenceManager
 import com.moonlitdoor.amessage.root.Root
-import java.util.*
-
+import java.util.Locale
 
 data class Experiment<T : Enum<T>> internal constructor(
   val key: String,
@@ -44,7 +43,5 @@ data class Experiment<T : Enum<T>> internal constructor(
     operator fun invoke(key: String, defaultValue: BOOLEAN) = Experiment(key = key, c = BOOLEAN::class.java, defaultValue = defaultValue)
 
     operator fun invoke(key: String, title: String? = null, description: String? = null) = Experiment(key, title, description, BOOLEAN::class.java, BOOLEAN.FALSE)
-
   }
-
 }

@@ -16,5 +16,4 @@ class ConnectionsViewModel @Inject constructor(repository: ConnectionRepository)
       false -> ConnectionsViewState.Empty
     }
   }
-
 }

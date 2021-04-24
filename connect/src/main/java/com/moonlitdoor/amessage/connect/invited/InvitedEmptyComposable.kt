@@ -25,7 +25,5 @@ fun InvitedEmpty() {
     ) {
       Text(text = stringResource(id = R.string.connect_pending_none))
     }
-
   }
-
 }

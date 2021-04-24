@@ -54,5 +54,4 @@ object DatabaseModule {
 //
 //    @Provides
 //    fun providesWindowsDao(sharedPreferences: SharedPreferences): WindowsDao = WindowsDao(sharedPreferences)
-
 }

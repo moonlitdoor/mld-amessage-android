@@ -13,7 +13,7 @@ import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.extensions.ignore
 import kotlinx.coroutines.flow.first
 import timber.log.Timber
-import java.util.*
+import java.util.UUID
 import javax.inject.Inject
 
 class MessagingServiceAdapter @Inject constructor(private val connectionRepository: ConnectionRepository, private val profileRepository: ProfileRepository) {
@@ -58,5 +58,4 @@ class MessagingServiceAdapter @Inject constructor(private val connectionReposito
   }.also {
     Timber.i("New Firebase Message of type=$type")
   }
-
 }

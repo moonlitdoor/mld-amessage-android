@@ -28,5 +28,4 @@ interface SettingsDao : KeyValueDao {
   suspend fun isDeveloperSettingsEnabled(): DeveloperSettingsEnabledProjection = DeveloperSettingsEnabledProjection(getValue(DeveloperSettingsEnabledProjection.KEY).toBoolean())
 
   suspend fun setDeveloperSettings(value: DeveloperSettingsEnabledProjection): Unit = setKeyValue(KeyValueEntity.from(value))
-
 }

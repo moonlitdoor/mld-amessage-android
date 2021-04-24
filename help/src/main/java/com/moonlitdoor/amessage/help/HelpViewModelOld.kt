@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.help
 
-//class HelpViewModel @Inject constructor(private val frequentlyAskedQuestionRepository: FrequentlyAskedQuestionRepository) : ViewModel() {
+// class HelpViewModel @Inject constructor(private val frequentlyAskedQuestionRepository: FrequentlyAskedQuestionRepository) : ViewModel() {
 //
 //  @ExperimentalCoroutinesApi
 //  val frequentlyAskedQuestions: LiveData<List<FrequentlyAskedQuestion>> =
@@ -16,4 +16,4 @@ package com.moonlitdoor.amessage.help
 //      else -> Long.MAX_VALUE
 //    }
 //  }
-//}
+// }

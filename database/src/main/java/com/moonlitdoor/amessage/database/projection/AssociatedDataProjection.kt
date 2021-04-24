@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.database.projection
 
-import java.util.*
+import java.util.UUID
 
 class AssociatedDataProjection(
   value: UUID = UUID.randomUUID()

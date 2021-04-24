@@ -16,6 +16,4 @@ internal class FirebaseAnalyticsLive(context: Context, private val analytics: Fi
   override fun setUserId(userId: String) = analytics.setUserId(userId)
 
   override fun setUserProperty(key: String, value: String?) = analytics.setUserProperty(key, value)
-
 }
-

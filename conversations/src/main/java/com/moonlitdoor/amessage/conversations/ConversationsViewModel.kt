@@ -11,5 +11,4 @@ import javax.inject.Inject
 class ConversationsViewModel @Inject constructor(val repository: ConversationRepository, profileRepository: ProfileRepository) : ViewModel() {
 
   val isHandleSet: Flow<Boolean> = profileRepository.handleIsSet()
-
 }

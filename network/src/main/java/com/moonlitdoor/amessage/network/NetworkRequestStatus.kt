@@ -5,5 +5,4 @@ enum class NetworkRequestStatus {
   SENT,
   QUEUED,
   FAILED
-
 }

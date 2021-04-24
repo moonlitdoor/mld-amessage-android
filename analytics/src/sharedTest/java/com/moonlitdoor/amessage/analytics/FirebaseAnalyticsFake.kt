@@ -16,5 +16,4 @@ class FirebaseAnalyticsFake(
   override fun setUserId(userId: String) = setUserIdHandler?.invoke(userId) ?: Unit
 
   override fun setUserProperty(key: String, value: String?) = setUserPropertyHandler?.invoke(key, value) ?: Unit
-
 }

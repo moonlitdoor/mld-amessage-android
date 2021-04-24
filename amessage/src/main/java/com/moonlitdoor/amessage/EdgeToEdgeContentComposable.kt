@@ -33,8 +33,8 @@ fun EdgeToEdgeContent(content: @Composable () -> Unit) {
     WindowCompat.getInsetsController(window, view)
   }
   insetsController?.run {
-    isAppearanceLightNavigationBars = false//isLightTheme
-    isAppearanceLightStatusBars = false//isLightTheme
+    isAppearanceLightNavigationBars = false // isLightTheme
+    isAppearanceLightStatusBars = false // isLightTheme
   }
   ProvideWindowInsets(content = content)
 }

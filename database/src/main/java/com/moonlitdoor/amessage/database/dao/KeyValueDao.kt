@@ -18,5 +18,4 @@ interface KeyValueDao {
 
   @Query("SELECT value FROM key_value WHERE `key` = :key")
   fun getFlow(key: String): Flow<String?>
-
 }

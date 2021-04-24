@@ -10,8 +10,11 @@ class SplashActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    Handler(Looper.getMainLooper()).postDelayed({
-      AMessageActivity.start(this)
-    }, 1000)
+    Handler(Looper.getMainLooper()).postDelayed(
+      {
+        AMessageActivity.start(this)
+      },
+      1000
+    )
   }
 }

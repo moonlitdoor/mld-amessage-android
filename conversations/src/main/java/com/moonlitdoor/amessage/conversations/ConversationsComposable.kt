@@ -42,5 +42,4 @@ fun DefaultPreview() {
     val viewModel: ConversationsViewModel = viewModel()
     Conversations(navHostController, viewModel) {}
   }
-
 }

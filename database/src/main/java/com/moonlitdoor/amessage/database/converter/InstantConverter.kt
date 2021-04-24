@@ -9,12 +9,10 @@ class InstantConverter {
   @TypeConverter
   fun to(item: Instant?): String? = item?.let { FORMATTER.format(it) }
 
-
   @TypeConverter
   fun to(item: String?): Instant? = item?.let { Instant.from(FORMATTER.parse(it)) }
 
   companion object {
     private val FORMATTER = DateTimeFormatter.ISO_INSTANT
   }
-
 }

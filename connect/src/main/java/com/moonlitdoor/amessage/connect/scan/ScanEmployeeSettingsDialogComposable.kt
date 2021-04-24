@@ -23,7 +23,8 @@ fun ScanEmployeeSettingsDialog(viewModel: ConnectViewModel, viewState: ScanViewS
         onClick = {
           viewState.imageProxy.close()
           viewModel.enableEmployeeSettings()
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_ok))
       }
     },
@@ -32,7 +33,8 @@ fun ScanEmployeeSettingsDialog(viewModel: ConnectViewModel, viewState: ScanViewS
         onClick = {
           viewState.imageProxy.close()
           viewModel.cancelCurrentScan()
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_cancel))
       }
     }

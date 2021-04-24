@@ -20,7 +20,6 @@ android {
     jvmTarget = "1.8"
     useIR = true
   }
-
 }
 
 dependencies {

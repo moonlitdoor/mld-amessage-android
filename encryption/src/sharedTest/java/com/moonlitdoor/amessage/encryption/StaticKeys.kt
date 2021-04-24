@@ -16,6 +16,6 @@ object StaticKeys {
                 "outputPrefixType": "TINK"
             }
         ]
-    }""".trimIndent()
-
+    }
+  """.trimIndent()
 }

@@ -23,7 +23,8 @@ fun ScanDeveloperSettingsDialog(viewModel: ConnectViewModel, viewState: ScanView
         onClick = {
           viewState.imageProxy.close()
           viewModel.enableDeveloperSettings()
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_ok))
       }
     },
@@ -32,7 +33,8 @@ fun ScanDeveloperSettingsDialog(viewModel: ConnectViewModel, viewState: ScanView
         onClick = {
           viewState.imageProxy.close()
           viewModel.cancelCurrentScan()
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_cancel))
       }
     }

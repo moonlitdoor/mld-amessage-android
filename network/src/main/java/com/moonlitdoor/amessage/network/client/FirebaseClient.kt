@@ -12,5 +12,4 @@ interface FirebaseClient {
   @Headers("Content-Type:application/json")
   @POST("/api/message/send")
   suspend fun send(@Body message: FirebaseMessageDto): Response<FirebaseResponseJson>
-
 }

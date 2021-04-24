@@ -1,9 +1,9 @@
 package com.moonlitdoor.amessage.domain.mapper
 
-//import com.moonlitdoor.amessage.database.entity.FrequentlyAskedQuestionEntity
-//import com.moonlitdoor.amessage.domain.model.FrequentlyAskedQuestion
+// import com.moonlitdoor.amessage.database.entity.FrequentlyAskedQuestionEntity
+// import com.moonlitdoor.amessage.domain.model.FrequentlyAskedQuestion
 //
-//object FrequentlyAskedQuestionMapper {
+// object FrequentlyAskedQuestionMapper {
 //
 //  private fun map(entity: FrequentlyAskedQuestionEntity) = FrequentlyAskedQuestion(
 //    id = entity.id,
@@ -15,4 +15,4 @@ package com.moonlitdoor.amessage.domain.mapper
 //
 //  fun map(entities: List<FrequentlyAskedQuestionEntity>): List<FrequentlyAskedQuestion> = entities.map { map(it) }
 //
-//}
+// }

@@ -42,5 +42,4 @@ object NetworkModule {
   @Provides
   @BaseUrl
   fun providesFirebaseUrl() = BuildConfig.BASE_URL
-
 }

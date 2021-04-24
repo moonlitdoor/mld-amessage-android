@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.*
+import java.util.UUID
 
 @RunWith(AndroidJUnit4::class)
 class AuthenticatedEncryptionWithAssociatedDataTest {
@@ -104,11 +104,10 @@ class AuthenticatedEncryptionWithAssociatedDataTest {
                 "outputPrefixType": "TINK"
             }
         ]
-    }""".trimIndent()
+    }
+    """.trimIndent()
     val keys = AuthenticatedEncryptionWithAssociatedData.deserializeKeys(serializedKeys)
     val plainText = AuthenticatedEncryptionWithAssociatedData.decrypt(encryptedValue, keys, associatedData)
     Assert.assertEquals("This is a test string", plainText)
-
   }
-
 }

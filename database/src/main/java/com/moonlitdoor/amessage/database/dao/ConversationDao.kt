@@ -25,5 +25,4 @@ abstract class ConversationDao {
 
   @Query("SELECT * FROM conversation")
   abstract fun get(): Flow<List<ConversationEntity>>
-
 }

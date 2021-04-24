@@ -63,5 +63,4 @@ abstract class AMessageDatabase : RoomDatabase() {
   companion object {
     const val DATABASE_NAME = "amessage.db"
   }
-
 }

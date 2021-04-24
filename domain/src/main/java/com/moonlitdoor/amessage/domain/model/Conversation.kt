@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.domain.model
 
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
-import java.util.*
+import java.util.UUID
 
 data class Conversation(
   val id: Long = 0,
@@ -24,4 +24,3 @@ data class Conversation(
     )
   }
 }
-

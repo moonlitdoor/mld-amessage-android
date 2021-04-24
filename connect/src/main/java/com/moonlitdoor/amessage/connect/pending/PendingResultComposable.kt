@@ -26,12 +26,13 @@ fun PendingResult(viewState: PendingViewState.Result) {
   LazyColumn {
     items(viewState.items) {
       Timber.d("$it")
-      Box(modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
+      Box(
+        modifier = Modifier
+          .fillMaxWidth()
+          .wrapContentHeight()
 //        .padding(8.dp)
-        .clickable {
-        }
+          .clickable {
+          }
       ) {
         Text(text = it.handle.value, Modifier.padding(8.dp))
       }

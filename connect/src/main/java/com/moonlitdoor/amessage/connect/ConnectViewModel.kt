@@ -33,7 +33,11 @@ import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 
 @HiltViewModel
-class ConnectViewModel @Inject constructor(private val connectionRepository: ConnectionRepository, profileRepository: ProfileRepository, private val settingsRepository: SettingsRepository) : ViewModel() {
+class ConnectViewModel @Inject constructor(
+  private val connectionRepository: ConnectionRepository,
+  profileRepository: ProfileRepository,
+  private val settingsRepository: SettingsRepository
+) : ViewModel() {
 
   lateinit var executor: ExecutorService
 
@@ -128,7 +132,6 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
 
   fun cancelCurrentScan(): Unit = viewModelScope.launch(Dispatchers.IO) { _scanViewState.emit(ScanViewState.Scan) }.ignore()
 
-
   private fun encodeAsBitmap(string: String): ImageBitmap {
     val result: BitMatrix = MultiFormatWriter().encode(string, BarcodeFormat.QR_CODE, WIDTH, HEIGHT, null)
     val pixels = IntArray(WIDTH * HEIGHT)
@@ -150,5 +153,4 @@ class ConnectViewModel @Inject constructor(private val connectionRepository: Con
     private const val WIDTH = 500
     private const val HEIGHT = 500
   }
-
 }

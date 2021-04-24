@@ -3,7 +3,7 @@ package com.moonlitdoor.amessage
 import android.content.Context
 import androidx.core.content.edit
 import androidx.preference.PreferenceManager
-import java.util.*
+import java.util.UUID
 
 object UserId {
 

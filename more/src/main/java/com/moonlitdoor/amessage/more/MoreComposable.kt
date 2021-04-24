@@ -63,5 +63,4 @@ fun MorePreview() {
     val viewModel: MoreViewModel = viewModel()
     More(navHostController, viewModel) {}
   }
-
 }

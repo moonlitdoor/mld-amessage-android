@@ -27,7 +27,6 @@ fun Connections(navHostController: NavHostController, viewModel: ConnectionsView
     is ConnectionsViewState.Empty -> ConnectionsEmpty(navHostController = navHostController)
     is ConnectionsViewState.Result -> ConnectionsResult(navHostController = navHostController, viewState = viewState as ConnectionsViewState.Result)
   }
-
 }
 
 @Preview(showBackground = false)

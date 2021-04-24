@@ -11,7 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Navigation
-import java.util.*
+import java.util.UUID
 
 @Composable
 fun Connection(navHostController: NavHostController, viewModel: ConnectionViewModel, connectionId: UUID, setAppChrome: (appChrome: AppChrome) -> Unit) {

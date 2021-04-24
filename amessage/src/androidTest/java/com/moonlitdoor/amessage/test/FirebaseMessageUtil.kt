@@ -8,7 +8,7 @@ import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.*
+import java.util.UUID
 
 @RunWith(AndroidJUnit4::class)
 class FirebaseMessageUtil {
@@ -39,6 +39,4 @@ class FirebaseMessageUtil {
 //    } catch (e: InterruptedException) {
 //      e.printStackTrace()
 //    }
-
-
 }

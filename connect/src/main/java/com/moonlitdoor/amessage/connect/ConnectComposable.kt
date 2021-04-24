@@ -88,7 +88,6 @@ fun Connect(viewModel: ConnectViewModel, setAppChrome: (AppChrome) -> Unit) {
 
   val pages by remember { mutableStateOf(pages2) }
 
-
   Column(Modifier.fillMaxSize()) {
     val coroutineScope = rememberCoroutineScope()
     val pagerState = rememberPagerState(pageCount = pages.size)

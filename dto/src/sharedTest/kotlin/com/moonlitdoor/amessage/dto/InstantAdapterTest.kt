@@ -17,5 +17,4 @@ class InstantAdapterTest {
     val result: Instant = InstantAdapter.fromJson(out)
     assertEquals(result, instant)
   }
-
 }

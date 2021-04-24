@@ -20,5 +20,4 @@ class RootTest {
     Root.init(InstrumentationRegistry.getInstrumentation().targetContext.applicationContext as Application)
     assertNotNull(Root.get())
   }
-
 }

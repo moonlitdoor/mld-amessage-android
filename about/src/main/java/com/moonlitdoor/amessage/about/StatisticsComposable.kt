@@ -21,7 +21,6 @@ fun Statistics(navHostController: NavHostController, setAppChrome: (appChrome: A
 //  VERSION
 //  BUILD DATE
 //  Privacy Policy
-
 }
 
 @Preview(showBackground = true)
@@ -31,5 +30,4 @@ fun StatisticsPreview() {
     val navHostController = rememberNavController()
     Statistics(navHostController) {}
   }
-
 }

@@ -6,7 +6,7 @@ import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.network.StaticKeys
 import org.junit.Test
 import java.time.Instant
-import java.util.*
+import java.util.UUID
 
 class FirebaseMessageDtoTest {
 
@@ -14,5 +14,4 @@ class FirebaseMessageDtoTest {
   fun test() {
     ConnectionInvitePayload("handle", "token", UUID.randomUUID(), AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value), scanned = Instant.now())
   }
-
 }

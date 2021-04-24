@@ -8,8 +8,6 @@ class KeysProjectionConverter {
   @TypeConverter
   fun to(item: KeysProjection): String = item.value
 
-
   @TypeConverter
   fun to(item: String?): KeysProjection = KeysProjection(item ?: "")
-
 }

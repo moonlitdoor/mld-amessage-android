@@ -22,7 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
-import java.util.*
+import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 @HiltWorker
@@ -42,20 +42,22 @@ class ConnectionInviteWorker @AssistedInject constructor(
         inputData.getString(SCANNED_TOKEN)?.let { scannedToken ->
           inputData.getString(SCANNED_ASSOCIATED_DATA)?.let { scannedAssociatedData ->
             inputData.getString(SCANNED_KEYS)?.let { scannedKeys ->
-              when (client.send(
-                payload = ConnectionInvitePayload(
-                  handle = profile.handle.value,
-                  token = profile.token.value,
+              when (
+                client.send(
+                  payload = ConnectionInvitePayload(
+                    handle = profile.handle.value,
+                    token = profile.token.value,
+                    connectionId = newConnectionEntity.connectionId.value,
+                    keys = KeysDto(scannedKeys),
+                    associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData)),
+                    scanned = newConnectionEntity.scanned,
+                  ),
                   connectionId = newConnectionEntity.connectionId.value,
+                  token = scannedToken,
                   keys = KeysDto(scannedKeys),
-                  associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData)),
-                  scanned = newConnectionEntity.scanned,
-                ),
-                connectionId = newConnectionEntity.connectionId.value,
-                token = scannedToken,
-                keys = KeysDto(scannedKeys),
-                associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData))
-              )) {
+                  associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData))
+                )
+              ) {
                 NetworkRequestStatus.SENT -> {
                   connectionDao.update(newConnectionEntity.copy(state = ConnectionEntity.State.Invited))
                   return@withContext Result.success()
@@ -90,7 +92,5 @@ class ConnectionInviteWorker @AssistedInject constructor(
         SCANNED_KEYS to scannedConnection.keys.value
       )
     ).build()
-
   }
-
 }

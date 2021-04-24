@@ -19,9 +19,11 @@ class FrequentlyAskedQuestionDao @Inject constructor(private val reference: Data
   fun getFrequentlyAskedQuestions(): Flow<List<FrequentlyAskedQuestionEntity>> = callbackFlow {
     val listener = reference.child(PATH).addValueEventListener(object : ValueEventListener {
       override fun onDataChange(snapshot: DataSnapshot) {
-        this@callbackFlow.sendBlocking(snapshot.children.mapNotNull {
-          it.getValue(FrequentlyAskedQuestionEntity::class.java)
-        })
+        this@callbackFlow.sendBlocking(
+          snapshot.children.mapNotNull {
+            it.getValue(FrequentlyAskedQuestionEntity::class.java)
+          }
+        )
       }
 
       override fun onCancelled(error: DatabaseError) = Timber.e(error.toException())

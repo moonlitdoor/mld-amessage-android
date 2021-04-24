@@ -7,5 +7,4 @@ sealed class ConnectionsViewState {
   object Loading : ConnectionsViewState()
   object Empty : ConnectionsViewState()
   data class Result(val items: List<Connection>) : ConnectionsViewState()
-
 }

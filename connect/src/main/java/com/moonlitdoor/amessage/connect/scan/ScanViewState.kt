@@ -16,6 +16,5 @@ sealed class ScanViewState() {
     class EmployeeSettingsEnabled(imageProxy: ImageProxy) : ScanViewState.Result(imageProxy)
     class DeveloperSettings(imageProxy: ImageProxy) : ScanViewState.Result(imageProxy)
     class DeveloperSettingsEnabled(imageProxy: ImageProxy) : ScanViewState.Result(imageProxy)
-
   }
 }

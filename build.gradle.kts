@@ -1,10 +1,11 @@
+import org.jlleitschuh.gradle.ktlint.KtlintExtension
+
 buildscript {
 
   repositories {
     google()
     mavenCentral()
     maven(url = "https://plugins.gradle.org/m2/")
-
   }
   dependencies {
     classpath("com.moonlitdoor.amessage:dependencies")
@@ -18,11 +19,13 @@ buildscript {
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
     classpath("com.google.firebase:firebase-crashlytics-gradle:2.5.2")
     classpath("com.google.firebase:perf-plugin:1.3.5")
+    classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
   }
 }
 
 allprojects {
   apply(plugin = "com.github.ben-manes.versions")
+  apply(plugin = "org.jlleitschuh.gradle.ktlint")
   repositories {
     google()
     mavenCentral()
@@ -51,12 +54,13 @@ plugins {
   id("com.moonlitdoor.amessage.jacoco")
 }
 
+apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
 gradle.projectsEvaluated {
   tasks.withType(JavaCompile::class.java) {
     options.compilerArgs + "-Xmaxerrs" + "500"
   }
 }
-
 
 gradle.taskGraph.whenReady {
   val lintTaskRegex = """^((?!\:amessage:).)*lint$""".toRegex()
@@ -77,4 +81,9 @@ tasks.register("clean", Delete::class) {
 
 tasks.register("cleanGradleBuildCache", Delete::class) {
   delete("${System.getProperty("user.home")}/.gradle/cache")
+}
+
+configure<KtlintExtension> {
+  android.set(true)
+  enableExperimentalRules.set(true)
 }

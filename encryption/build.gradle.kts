@@ -27,6 +27,4 @@ dependencies {
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-
 }
-

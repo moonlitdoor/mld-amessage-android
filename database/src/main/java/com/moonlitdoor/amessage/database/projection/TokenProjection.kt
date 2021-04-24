@@ -1,6 +1,5 @@
 package com.moonlitdoor.amessage.database.projection
 
-
 class TokenProjection(
   value: String
 ) : KeyValueProjection<String>(key = KEY, value = value) {

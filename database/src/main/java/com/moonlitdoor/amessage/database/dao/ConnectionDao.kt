@@ -8,7 +8,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import kotlinx.coroutines.flow.Flow
-import java.util.*
+import java.util.UUID
 
 @Dao
 interface ConnectionDao {
@@ -45,5 +45,4 @@ interface ConnectionDao {
 
   @Query("SELECT count(*) FROM connection where connection_id == :connectionId")
   suspend fun isConnectionExisting(connectionId: UUID): Long
-
 }

@@ -22,7 +22,8 @@ class ExperimentsTest {
         "exp_test_3" -> "A"
         else -> ""
       }
-    })
+    }
+  )
 
   @Before
   fun setup() {
@@ -34,5 +35,4 @@ class ExperimentsTest {
   fun givenExperiments_whenInitialized_thenAMapOfDefaultValuesIsSentToFirebaseRemoteConfig() {
     Experiments.experiments
   }
-
 }

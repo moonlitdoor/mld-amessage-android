@@ -35,7 +35,5 @@ fun ConnectionsEmpty(navHostController: NavHostController) {
         Text(text = stringResource(id = R.string.connections_connect))
       }
     }
-
   }
-
 }

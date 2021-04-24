@@ -7,5 +7,4 @@ sealed class PendingViewState {
   object Loading : PendingViewState()
   object Empty : PendingViewState()
   data class Result(val items: List<Connection>) : PendingViewState()
-
 }

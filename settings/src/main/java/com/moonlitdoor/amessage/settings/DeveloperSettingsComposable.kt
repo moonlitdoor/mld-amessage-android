@@ -38,7 +38,6 @@ fun DeveloperSettings(navHostController: NavHostController, viewModel: SettingsV
     SettingSwitchItem(title = R.string.connect_developer_settings, checked = showDeveloperSettings) {
       if (it) viewModel.enableDeveloperSettingsUI() else viewModel.disableDeveloperSettingsUI()
     }
-
   }
 }
 

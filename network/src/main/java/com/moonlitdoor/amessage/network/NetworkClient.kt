@@ -7,7 +7,7 @@ import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.network.client.FirebaseClient
 import timber.log.Timber
-import java.util.*
+import java.util.UUID
 
 class NetworkClient(private val client: FirebaseClient) {
 
@@ -22,5 +22,4 @@ class NetworkClient(private val client: FirebaseClient) {
   }
 
   suspend fun send(payload: Payload, connection: ConnectionJson) = send(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
-
 }

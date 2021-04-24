@@ -41,5 +41,4 @@ data class ConnectionEntity(
     object Invited : State("invited")
     object Connected : State("connected")
   }
-
 }

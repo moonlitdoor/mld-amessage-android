@@ -32,11 +32,11 @@ hilt {
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
-//play {
+// play {
 //  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
 //  defaultToAppBundles = true
 //  track = "alpha"
-//}
+// }
 
 android {
 //  dynamicFeatures = mutableSetOf(M.ABOUT, M.FEEDBACK, M.HELP, M.WINDOWS)
@@ -153,7 +153,6 @@ android {
     jvmTarget = "1.8"
     useIR = true
   }
-
 }
 
 dependencies {
@@ -211,17 +210,16 @@ dependencies {
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-
 }
 
-//task connectedLargeTests {
+// task connectedLargeTests {
 //  dependsOn "connectedCheck"
 //  doFirst {
 //
 //  }
-//}
+// }
 
-//task parseMetadata() {
+// task parseMetadata() {
 //  ext.parse = { param1, param2 ->
 //    rootProject.file(String.format("amessage/src/main/play/%s", param1)).mkdir()
 //    def useDefault = true
@@ -260,9 +258,8 @@ dependencies {
 //  doLast {
 //    parse("en-US", "values")
 //  }
-//}
+// }
 
-//project.afterEvaluate {
+// project.afterEvaluate {
 //  project.tasks.getByName("generateReleasePlayResources").dependsOn parseMetadata
-//}
-
+// }

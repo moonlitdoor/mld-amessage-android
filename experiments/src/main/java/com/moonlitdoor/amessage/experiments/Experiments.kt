@@ -21,5 +21,4 @@ object Experiments {
   )
 
   fun init(): Unit = FirebaseRemoteConfigWrapper.get().setDefaults(experiments.associateBy({ it.key }, { it.defaultValue }))
-
 }

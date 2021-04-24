@@ -19,7 +19,6 @@ fun Windows(navHostController: NavHostController, setAppChrome: (appChrome: AppC
       navigation = Navigation { navHostController.popBackStack() }
     )
   )
-
 }
 
 @Preview

@@ -8,8 +8,6 @@ class HandleProjectionConverter {
   @TypeConverter
   fun to(item: HandleProjection): String = item.value
 
-
   @TypeConverter
   fun to(item: String?): HandleProjection = HandleProjection(item ?: "")
-
 }

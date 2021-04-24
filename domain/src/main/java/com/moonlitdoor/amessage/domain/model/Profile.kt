@@ -9,6 +9,4 @@ data class Profile(
 ) {
 
   fun encode() = "${handle.value}|${token.value}|${id.value}|${associatedData.value}|${keys.value}"
-
-
 }

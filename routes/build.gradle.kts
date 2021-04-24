@@ -12,10 +12,9 @@ dependencies {
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)
 
-    androidTestUtil(Dependencies.Androidx.Test.orchestrator)
+  androidTestUtil(Dependencies.Androidx.Test.orchestrator)
 
   androidTestImplementation(Dependencies.Androidx.Test.rules)
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
-
 }

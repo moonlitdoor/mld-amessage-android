@@ -1,10 +1,7 @@
 package com.moonlitdoor.amessage
 
-import android.preference.PreferenceManager
-import androidx.core.content.edit
-import androidx.test.platform.app.InstrumentationRegistry
-//import com.moonlitdoor.amessage.constants.Constants
-import java.util.*
+// import com.moonlitdoor.amessage.constants.Constants
+import java.util.UUID
 
 object ProfileObject {
 
@@ -13,7 +10,7 @@ object ProfileObject {
   lateinit var password: UUID
   lateinit var salt: UUID
 //  val token: String by lazy {
-////    PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext).getString(Constants.SharedPreferences.TOKEN, "token")
+// //    PreferenceManager.getDefaultSharedPreferences(InstrumentationRegistry.getInstrumentation().targetContext).getString(Constants.SharedPreferences.TOKEN, "token")
 //  }
 
   init {
@@ -36,5 +33,4 @@ object ProfileObject {
 //      it.edit(commit = true) { putInt(Constants.SharedPreferences.VERSION_CODE, Int.MAX_VALUE) }
 //    }
   }
-
 }

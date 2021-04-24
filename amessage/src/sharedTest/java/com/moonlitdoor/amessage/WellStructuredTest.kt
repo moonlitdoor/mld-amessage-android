@@ -8,7 +8,5 @@ class WellStructuredTest {
     // WHEN - An action is taken
 
     // THEN - An assertion is true
-
   }
-
 }

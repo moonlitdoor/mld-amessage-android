@@ -78,7 +78,6 @@ fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, set
       onDispose { }
     }
   }
-
 }
 
 @Preview(showBackground = false)

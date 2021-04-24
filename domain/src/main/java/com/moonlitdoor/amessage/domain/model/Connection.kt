@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.domain.model
 
 import java.time.Instant
-import java.util.*
+import java.util.UUID
 
 data class Connection(
   val id: Long = 0,

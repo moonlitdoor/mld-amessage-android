@@ -12,7 +12,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.time.Instant
-import java.util.*
+import java.util.UUID
 
 @RunWith(AndroidJUnit4::class)
 class FirebaseMessageTest {
@@ -34,7 +34,5 @@ class FirebaseMessageTest {
     val message = FirebaseMessageDto(payload, connection)
     val json = gson.toJson(message)
     gson.fromJson(json, FirebaseMessageDto::class.java)
-
   }
-
 }

@@ -33,7 +33,6 @@ fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, enab
         style = MaterialTheme.typography.overline,
       )
     }
-
   }
   if (enableDivider) Divider()
 }

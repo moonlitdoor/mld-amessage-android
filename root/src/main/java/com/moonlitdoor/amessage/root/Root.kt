@@ -16,7 +16,6 @@ object Root {
     reference.get()!!
   } catch (exception: Exception) {
     Timber.e(exception, "The Root WeakReference was null")
-    throw  exception
+    throw exception
   }
-
 }

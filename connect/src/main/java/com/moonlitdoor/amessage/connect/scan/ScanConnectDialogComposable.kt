@@ -23,7 +23,8 @@ fun ScanConnectDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Resu
         onClick = {
           viewState.imageProxy.close()
           viewModel.confirm(viewState.connection)
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_ok))
       }
     },
@@ -32,7 +33,8 @@ fun ScanConnectDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Resu
         onClick = {
           viewState.imageProxy.close()
           viewModel.cancelCurrentScan()
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_cancel))
       }
     }

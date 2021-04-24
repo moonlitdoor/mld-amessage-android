@@ -38,7 +38,6 @@ dependencies {
 //  testImplementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   testImplementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 
-
 //  androidTestImplementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   androidTestImplementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 
@@ -55,5 +54,4 @@ dependencies {
 //  androidTestImplementation(Dependencies.Androidx.Test.Espresso.espressoCore)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   androidTestImplementation(Dependencies.Com.SquareUp.OkHttp3.mockWebServer)
-
 }

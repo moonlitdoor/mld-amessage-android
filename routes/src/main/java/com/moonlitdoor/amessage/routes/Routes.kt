@@ -18,7 +18,6 @@ sealed class Routes(val route: String, val arguments: List<NamedNavArgument> = e
       route = "${Arguments.ROUTE}{${Arguments.CONNECTION_ID}}",
       arguments = listOf(navArgument(Arguments.CONNECTION_ID) { type = NavType.LongType })
     )
-
   }
 
   object FAQ : Routes("faq")

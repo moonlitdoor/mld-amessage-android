@@ -28,5 +28,4 @@ class ConstantsTest {
     assertTrue(Constants.EMPLOYEE_SETTINGS.contains("XUA9nZXa4alNKWI9bnHxRhlxso2HEqtksj2UpBZuQxdw5pVuVI"))
     assertTrue(Constants.EMPLOYEE_SETTINGS.contains("P06mqli1A8ZpJc7pTf9wcl2xnX87JSxRzz9pQuAJKjIu0MuNrE"))
   }
-
 }

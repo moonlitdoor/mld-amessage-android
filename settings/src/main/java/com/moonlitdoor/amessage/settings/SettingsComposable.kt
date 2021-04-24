@@ -62,9 +62,7 @@ fun Settings(navHostController: NavHostController, viewModel: SettingsViewModel,
     if (showDeveloperSettings) {
       SettingItem(title = R.string.connect_developer_settings) { navHostController.navigate(Routes.DeveloperSettings.route) }
     }
-
   }
-
 }
 
 @Preview

@@ -19,7 +19,6 @@ fun Feedback(navHostController: NavHostController, setAppChrome: (appChrome: App
       navigation = Navigation { navHostController.popBackStack() }
     )
   )
-
 }
 
 @Preview(showBackground = true)
@@ -29,5 +28,4 @@ fun FeedbackPreview() {
     val navHostController = rememberNavController()
     Feedback(navHostController) {}
   }
-
 }

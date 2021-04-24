@@ -7,5 +7,4 @@ class FirebaseClientContainer {
 
   @Inject
   lateinit var client: FirebaseClient
-
 }

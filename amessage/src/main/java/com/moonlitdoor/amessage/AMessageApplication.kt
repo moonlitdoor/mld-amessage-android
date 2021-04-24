@@ -38,5 +38,4 @@ class AMessageApplication : Application(), LifecycleObserver, Configuration.Prov
       .setMinimumLoggingLevel(android.util.Log.INFO)
       .setWorkerFactory(workerFactory)
       .build()
-
 }

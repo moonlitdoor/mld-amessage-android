@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.annotation.Keep
 import androidx.annotation.VisibleForTesting
-import java.util.*
+import java.util.UUID
 
 @Keep
 object Analytics {

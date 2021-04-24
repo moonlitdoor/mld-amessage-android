@@ -19,7 +19,6 @@ fun Faq(navHostController: NavHostController, setAppChrome: (appChrome: AppChrom
       navigation = Navigation { navHostController.popBackStack() }
     )
   )
-
 }
 
 @Preview

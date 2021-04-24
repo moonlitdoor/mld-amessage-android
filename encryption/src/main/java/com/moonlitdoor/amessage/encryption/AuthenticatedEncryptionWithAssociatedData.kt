@@ -8,13 +8,13 @@ import com.google.crypto.tink.KeysetHandle
 import com.google.crypto.tink.aead.AeadConfig
 import com.google.crypto.tink.aead.AesGcmKeyManager
 import java.io.ByteArrayOutputStream
-import java.util.*
-
+import java.util.Base64
+import java.util.UUID
 
 object AuthenticatedEncryptionWithAssociatedData {
 
   init {
-    AeadConfig.register();
+    AeadConfig.register()
   }
 
   fun generateKeys(): KeysetHandle = KeysetHandle.generateNew(AesGcmKeyManager.aes128GcmTemplate())

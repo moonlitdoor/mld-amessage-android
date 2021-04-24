@@ -35,7 +35,6 @@ fun SettingSwitchItem(@StringRes title: Int, checked: Boolean, @StringRes descri
           .align(Alignment.CenterVertically)
           .padding(top = 16.dp, end = 16.dp, bottom = 16.dp)
       )
-
     }
     Divider()
   }

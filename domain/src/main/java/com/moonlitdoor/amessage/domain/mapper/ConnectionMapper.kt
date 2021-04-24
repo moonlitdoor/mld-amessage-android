@@ -40,5 +40,4 @@ object ConnectionMapper {
     state = Connection.State.Pending,
     scanned = payload.scanned,
   )
-
 }

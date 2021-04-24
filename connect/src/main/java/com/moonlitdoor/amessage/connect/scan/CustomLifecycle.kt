@@ -22,5 +22,4 @@ object CustomLifecycle : LifecycleOwner {
   override fun getLifecycle(): Lifecycle {
     return lifecycleRegistry
   }
-
 }

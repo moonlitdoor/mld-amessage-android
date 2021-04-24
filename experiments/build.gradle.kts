@@ -28,5 +28,4 @@ dependencies {
   androidTestImplementation(Dependencies.Androidx.Test.runner)
   androidTestImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   androidTestImplementation(Dependencies.Com.Google.Truth.truth)
-
 }

@@ -5,6 +5,4 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class HelpViewModel @Inject constructor() : ViewModel() {
-
-}
+class HelpViewModel @Inject constructor() : ViewModel()

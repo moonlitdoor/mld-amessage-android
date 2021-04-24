@@ -8,8 +8,6 @@ class TokenProjectionConverter {
   @TypeConverter
   fun to(item: TokenProjection): String = item.value
 
-
   @TypeConverter
   fun to(item: String?): TokenProjection = TokenProjection(item ?: "")
-
 }

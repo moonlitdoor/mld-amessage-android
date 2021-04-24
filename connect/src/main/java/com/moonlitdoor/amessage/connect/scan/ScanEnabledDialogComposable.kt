@@ -20,7 +20,8 @@ fun ScanEnabledDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Resu
         onClick = {
           viewState.imageProxy.close()
           viewModel.cancelCurrentScan()
-        }) {
+        }
+      ) {
         Text(text = stringResource(id = R.string.connect_ok))
       }
     },
