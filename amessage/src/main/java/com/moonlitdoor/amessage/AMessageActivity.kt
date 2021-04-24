@@ -82,6 +82,7 @@ class AMessageActivity : AppCompatActivity() {
                     }
                   }
                 },
+                modifier = currentAppChrome.modifier
               )
             },
             bottomBar = {

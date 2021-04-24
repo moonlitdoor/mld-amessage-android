@@ -1,5 +1,7 @@
 package com.moonlitdoor.amessage.settings
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
@@ -8,6 +10,9 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -22,11 +27,22 @@ import com.moonlitdoor.amessage.routes.Routes
 @Composable
 fun Settings(navHostController: NavHostController, viewModel: SettingsViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
 
+  var clicks: Int by remember { mutableStateOf(value = 1) }
+
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.settings_title),
       showBottomBar = false,
-      navigation = Navigation { navHostController.popBackStack() }
+      navigation = Navigation { navHostController.popBackStack() },
+      modifier = Modifier.clickable(
+        interactionSource = remember { MutableInteractionSource() },
+        indication = null,
+      ) {
+        when (clicks) {
+          in 1..5 -> clicks++
+          6 -> navHostController.navigate(Routes.DeveloperSettings.route)
+        }
+      }
     )
   )
   Column(
@@ -39,15 +55,12 @@ fun Settings(navHostController: NavHostController, viewModel: SettingsViewModel,
     val showDeveloperSettings by viewModel.isDeveloperSettingsUIEnabled().collectAsState(initial = false)
     if (showEmployee) {
       SettingItem(title = R.string.connect_employee_settings) { navHostController.navigate(Routes.EmployeeSettings.route) }
-      SettingItem(title = R.string.settings_employee_settings_disable) { viewModel.disableEmployeeSettingsUI() }
     }
     if (showExperiments) {
       SettingItem(title = R.string.experiments_title) { navHostController.navigate(Routes.Experiments.route) }
-      SettingItem(title = R.string.settings_experiments_disable) { viewModel.disableExperimentsUI() }
     }
     if (showDeveloperSettings) {
       SettingItem(title = R.string.connect_developer_settings) { navHostController.navigate(Routes.DeveloperSettings.route) }
-      SettingItem(title = R.string.settings_developer_settings_disable) { viewModel.disableDeveloperSettingsUI() }
     }
 
   }

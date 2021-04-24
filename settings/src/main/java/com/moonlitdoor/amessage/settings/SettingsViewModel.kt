@@ -14,17 +14,29 @@ class SettingsViewModel @Inject constructor(private val repository: SettingsRepo
 
   fun isExperimentsUIEnabled(): Flow<Boolean> = repository.experimentsUIEnabled()
 
+  fun enableExperimentsUI() = viewModelScope.launch(Dispatchers.IO) {
+    repository.setExperimentsUiEnabled()
+  }
+
   fun disableExperimentsUI() = viewModelScope.launch(Dispatchers.IO) {
     repository.setExperimentsUiDisabled()
   }
 
   fun isDeveloperSettingsUIEnabled(): Flow<Boolean> = repository.developerSettingsUIEnabled()
 
+  fun enableDeveloperSettingsUI() = viewModelScope.launch(Dispatchers.IO) {
+    repository.setDeveloperSettingsEnabled()
+  }
+
   fun disableDeveloperSettingsUI() = viewModelScope.launch(Dispatchers.IO) {
     repository.setDeveloperSettingsDisabled()
   }
 
   fun isEmployeeSettingsUIEnabled(): Flow<Boolean> = repository.employeeSettingsUIEnabled()
+
+  fun enableEmployeeSettingsUI() = viewModelScope.launch(Dispatchers.IO) {
+    repository.setEmployeeSettingsEnabled()
+  }
 
   fun disableEmployeeSettingsUI() = viewModelScope.launch(Dispatchers.IO) {
     repository.setEmployeeSettingsDisabled()

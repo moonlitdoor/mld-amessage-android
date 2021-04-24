@@ -4,7 +4,6 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Divider
@@ -17,10 +16,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, onClick: (() -> Unit)? = null) {
+fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, enableDivider: Boolean = true, onClick: (() -> Unit)? = null) {
   Column(
     Modifier
-      .fillMaxWidth()
       .wrapContentHeight()
       .clickable(onClick = onClick ?: {}, enabled = onClick != null)
       .padding(16.dp)
@@ -37,7 +35,7 @@ fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, onCl
     }
 
   }
-  Divider()
+  if (enableDivider) Divider()
 }
 
 @Preview(showBackground = true)
