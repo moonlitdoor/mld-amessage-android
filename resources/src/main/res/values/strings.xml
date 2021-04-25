@@ -41,9 +41,6 @@
   <string name="about_title">About</string>
 
   <string name="settings_title">Settings</string>
-  <string name="settings_experiments_disable">Disable Experiments</string>
-  <string name="settings_employee_settings_disable">Disable Employee Settings</string>
-  <string name="settings_developer_settings_disable">Disable Developer Settings</string>
 
   <string name="experiments_title">Experiments</string>
 
@@ -65,7 +62,7 @@
   <!--  <string name="about_page_view_acknowledgements">Acknowledgements</string>-->
   <!--  <string name="about_page_view_statistics">Statistics</string>-->
 
-  <!--  <string name="confirm">Confirm</string>-->
-  <!--  <string name="reject">Reject</string>-->
+  <string name="confirm">Confirm</string>
+  <string name="reject">Reject</string>
 
 </resources>
