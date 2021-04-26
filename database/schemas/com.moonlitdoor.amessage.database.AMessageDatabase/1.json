@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "8768bbffe1ad8b624e427728dfd3b0ce",
+    "identityHash": "949baeea741fa38b4cf1dad69b597756",
     "entities": [
       {
         "tableName": "key_value",
@@ -41,7 +41,7 @@
       },
       {
         "tableName": "connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `handle` TEXT NOT NULL, `token` TEXT NOT NULL, `keys` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `state` TEXT NOT NULL, `scanned` TEXT NOT NULL, PRIMARY KEY(`connection_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `handle` TEXT NOT NULL, `token` TEXT NOT NULL, `keys` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `state` TEXT NOT NULL, `scanned` TEXT NOT NULL, `confirmed` TEXT, PRIMARY KEY(`connection_id`))",
         "fields": [
           {
             "fieldPath": "connectionId",
@@ -84,6 +84,12 @@
             "columnName": "scanned",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "confirmed",
+            "columnName": "confirmed",
+            "affinity": "TEXT",
+            "notNull": false
           }
         ],
         "primaryKey": {
@@ -239,7 +245,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8768bbffe1ad8b624e427728dfd3b0ce')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '949baeea741fa38b4cf1dad69b597756')"
     ]
   }
 }

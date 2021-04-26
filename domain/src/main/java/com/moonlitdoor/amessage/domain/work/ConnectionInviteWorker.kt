@@ -11,6 +11,8 @@ import androidx.work.WorkerParameters
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.domain.mapper.AssociatedDataMapper
+import com.moonlitdoor.amessage.domain.mapper.KeysMapper
 import com.moonlitdoor.amessage.dto.AssociatedDataDto
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 import com.moonlitdoor.amessage.dto.KeysDto
@@ -31,14 +33,14 @@ class ConnectionInviteWorker @AssistedInject constructor(
   @Assisted parameters: WorkerParameters,
   private val profileDao: ProfileDao,
   private val connectionDao: ConnectionDao,
-  private val client: NetworkClient
+  private val client: NetworkClient,
 ) : CoroutineWorker(context, parameters) {
 
   override suspend fun doWork(): Result = coroutineScope {
     withContext(Dispatchers.IO) {
       val profile = profileDao.getProfile().first()
       inputData.getString(CONNECTION_UUID)?.let { newConnectionUuid ->
-        val newConnectionEntity = connectionDao.get(UUID.fromString(newConnectionUuid)).first()
+        val newConnectionEntity = connectionDao.get(UUID.fromString(newConnectionUuid))
         inputData.getString(SCANNED_TOKEN)?.let { scannedToken ->
           inputData.getString(SCANNED_ASSOCIATED_DATA)?.let { scannedAssociatedData ->
             inputData.getString(SCANNED_KEYS)?.let { scannedKeys ->
@@ -48,9 +50,10 @@ class ConnectionInviteWorker @AssistedInject constructor(
                     handle = profile.handle.value,
                     token = profile.token.value,
                     connectionId = newConnectionEntity.connectionId.value,
-                    keys = KeysDto(scannedKeys),
-                    associatedData = AssociatedDataDto(UUID.fromString(scannedAssociatedData)),
+                    keys = KeysMapper.mapToDto(newConnectionEntity.keys),
+                    associatedData = AssociatedDataMapper.mapToDto(newConnectionEntity.associatedData),
                     scanned = newConnectionEntity.scanned,
+                    confirmed = newConnectionEntity.confirmed,
                   ),
                   connectionId = newConnectionEntity.connectionId.value,
                   token = scannedToken,
@@ -62,7 +65,8 @@ class ConnectionInviteWorker @AssistedInject constructor(
                   connectionDao.update(newConnectionEntity.copy(state = ConnectionEntity.State.Invited))
                   return@withContext Result.success()
                 }
-                NetworkRequestStatus.QUEUED, NetworkRequestStatus.FAILED -> return@withContext Result.retry()
+                NetworkRequestStatus.QUEUED,
+                NetworkRequestStatus.FAILED -> return@withContext Result.retry()
               }
             }
           }

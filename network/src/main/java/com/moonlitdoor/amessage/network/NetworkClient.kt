@@ -1,7 +1,7 @@
 package com.moonlitdoor.amessage.network
 
 import com.moonlitdoor.amessage.dto.AssociatedDataDto
-import com.moonlitdoor.amessage.dto.ConnectionJson
+import com.moonlitdoor.amessage.dto.ConnectionDto
 import com.moonlitdoor.amessage.dto.FirebaseMessageDto
 import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.dto.Payload
@@ -21,5 +21,5 @@ class NetworkClient(private val client: FirebaseClient) {
     }
   }
 
-  suspend fun send(payload: Payload, connection: ConnectionJson) = send(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
+  suspend fun send(payload: Payload, connection: ConnectionDto): NetworkRequestStatus = send(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
 }

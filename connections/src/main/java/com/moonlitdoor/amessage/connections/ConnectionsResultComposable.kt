@@ -34,10 +34,10 @@ fun ConnectionsResult(navHostController: NavHostController, viewState: Connectio
         modifier = Modifier
           .fillMaxWidth()
           .wrapContentHeight()
-//        .padding(8.dp)
           .clickable {
-            navHostController.navigate(Routes.Connection(it.id).route)
+            navHostController.navigate(Routes.Connection(it.connectionId.value).route)
           }
+          .padding(8.dp)
       ) {
         Text(text = it.handle.value, Modifier.padding(8.dp))
       }

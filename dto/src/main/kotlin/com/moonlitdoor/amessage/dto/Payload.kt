@@ -16,6 +16,8 @@ abstract class Payload {
     object ConnectionRejection : Type("ETGASDFVB")
   }
 
+  final override fun toString(): String = GSON.toJson(this)
+
   companion object {
 
     internal val GSON: Gson = GsonBuilder().registerTypeAdapter(Instant::class.java, InstantAdapter).create()

@@ -1,12 +1,15 @@
 package com.moonlitdoor.amessage.dto
 
-import java.util.*
+import java.time.Instant
+import java.util.UUID
 
-data class ConnectionJson(
+data class ConnectionDto(
   val id: Long = 0,
   val connectionId: UUID,
   val token: String,
   val handle: String,
   val associatedData: AssociatedDataDto,
-  val keys: KeysDto
+  val keys: KeysDto,
+  val scanned: Instant,
+  val confirmed: Instant?,
 )

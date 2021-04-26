@@ -22,6 +22,7 @@ data class ConnectionEntity(
   val associatedData: AssociatedDataProjection,
   val state: State,
   val scanned: Instant,
+  val confirmed: Instant? = null,
 ) {
 
   fun new() = ConnectionEntity(

@@ -11,5 +11,5 @@ import javax.inject.Inject
 @HiltViewModel
 class ConnectionViewModel @Inject constructor(private val repository: ConnectionRepository) : ViewModel() {
 
-  fun getConnection(connectionId: UUID): Flow<Connection> = repository.getConnection(connectionId = connectionId)
+  fun getConnection(connectionId: UUID): Flow<Connection> = repository.getFlow(connectionId = connectionId)
 }

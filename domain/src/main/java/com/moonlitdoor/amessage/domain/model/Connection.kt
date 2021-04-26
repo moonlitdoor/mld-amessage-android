@@ -12,6 +12,7 @@ data class Connection(
   val keys: Keys,
   val state: State,
   val scanned: Instant,
+  val confirmed: Instant? = null,
 ) {
 
   constructor(parts: String) : this(

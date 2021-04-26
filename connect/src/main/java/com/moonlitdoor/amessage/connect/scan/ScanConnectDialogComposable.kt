@@ -22,7 +22,7 @@ fun ScanConnectDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Resu
       Button(
         onClick = {
           viewState.imageProxy.close()
-          viewModel.confirm(viewState.connection)
+          viewModel.create(viewState.connection)
         }
       ) {
         Text(text = stringResource(id = R.string.connect_ok))

@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.dto
 
-import java.util.*
+import java.util.UUID
 
 class FirebaseMessageDto private constructor(payload: Payload, connectionId: UUID, keys: KeysDto, associatedData: AssociatedDataDto) {
 
@@ -11,7 +11,7 @@ class FirebaseMessageDto private constructor(payload: Payload, connectionId: UUI
   private val data = Data()
   private val fcm_options = FcmOptions()
 
-  constructor(payload: Payload, connection: ConnectionJson) : this(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
+  constructor(payload: Payload, connection: ConnectionDto) : this(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
 
   constructor(payload: Payload, connectionId: UUID, id: String, keys: KeysDto, associatedData: AssociatedDataDto) : this(payload, connectionId, keys, associatedData) {
     token = id

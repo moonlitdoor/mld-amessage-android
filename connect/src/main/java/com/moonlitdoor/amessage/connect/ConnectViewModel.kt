@@ -29,6 +29,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import java.time.Instant
 import java.util.concurrent.ExecutorService
 import javax.inject.Inject
 
@@ -108,12 +109,14 @@ class ConnectViewModel @Inject constructor(
     )
   }.ignore()
 
-  fun confirm(connection: Connection) = viewModelScope.launch(Dispatchers.IO) {
+  fun create(connection: Connection) = viewModelScope.launch(Dispatchers.IO) {
     connectionRepository.create(connection = connection)
     cancelCurrentScan()
   }
 
-  fun reject(connection: Connection) = viewModelScope.launch(Dispatchers.IO) { connectionRepository.reject(connection) }
+  fun confirm(connection: Connection) = viewModelScope.launch(Dispatchers.IO) { connectionRepository.confirm(connection = connection.copy(state = Connection.State.Connected, confirmed = Instant.now())) }
+
+  fun reject(connection: Connection) = viewModelScope.launch(Dispatchers.IO) { connectionRepository.reject(connection = connection) }
 
   fun enableExperiments(): Unit = viewModelScope.launch(Dispatchers.IO) {
     settingsRepository.setExperimentsUiEnabled()

@@ -14,7 +14,10 @@ import java.util.UUID
 interface ConnectionDao {
 
   @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
-  fun get(connectionId: UUID): Flow<ConnectionEntity>
+  suspend fun get(connectionId: UUID): ConnectionEntity
+
+  @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
+  fun getFlow(connectionId: UUID): Flow<ConnectionEntity>
 
   @Query("SELECT * FROM connection WHERE state = 'connected'")
   fun getConnected(): Flow<List<ConnectionEntity>>
@@ -32,16 +35,16 @@ interface ConnectionDao {
   suspend fun insert(connection: ConnectionEntity): Long
 
   @Update
-  fun update(connection: ConnectionEntity)
+  suspend fun update(connection: ConnectionEntity): Int
 
   @Query("UPDATE connection SET state = :state WHERE connection_id = :connectionId")
-  fun update(connectionId: UUID, state: ConnectionEntity.State)
+  suspend fun update(connectionId: UUID, state: ConnectionEntity.State)
 
   @Delete
-  fun delete(connection: ConnectionEntity)
+  suspend fun delete(connection: ConnectionEntity)
 
   @Query("DELETE FROM connection WHERE connection_id == :connectionId")
-  fun delete(connectionId: UUID)
+  suspend fun delete(connectionId: UUID)
 
   @Query("SELECT count(*) FROM connection where connection_id == :connectionId")
   suspend fun isConnectionExisting(connectionId: UUID): Long

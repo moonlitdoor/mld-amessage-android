@@ -7,18 +7,20 @@ import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
 import com.moonlitdoor.amessage.domain.model.Token
+import com.moonlitdoor.amessage.dto.ConnectionDto
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 
 object ConnectionMapper {
 
-  fun map(connection: Connection) = ConnectionEntity(
+  fun mapToEntity(connection: Connection) = ConnectionEntity(
     connectionId = IdMapper.map(connection.connectionId),
     token = TokenMapper.map(connection.token),
     handle = HandleMapper.map(connection.handle),
-    keys = KeysMapper.map(connection.keys),
-    associatedData = AssociatedDataMapper.map(connection.associatedData),
+    keys = KeysMapper.mapToProjection(connection.keys),
+    associatedData = AssociatedDataMapper.mapToProjection(connection.associatedData),
     state = ConnectionStateMapper.map(connection.state),
     scanned = connection.scanned,
+    confirmed = connection.confirmed,
   )
 
   fun map(entity: ConnectionEntity) = Connection(
@@ -29,6 +31,7 @@ object ConnectionMapper {
     associatedData = AssociatedDataMapper.map(entity.associatedData),
     state = ConnectionStateMapper.map(entity.state),
     scanned = entity.scanned,
+    confirmed = entity.confirmed,
   )
 
   fun map(payload: ConnectionInvitePayload) = Connection(
@@ -39,5 +42,16 @@ object ConnectionMapper {
     associatedData = AssociatedData(payload.associatedData.value),
     state = Connection.State.Pending,
     scanned = payload.scanned,
+    confirmed = payload.confirmed,
+  )
+
+  fun mapToDto(entity: ConnectionEntity) = ConnectionDto(
+    connectionId = entity.connectionId.value,
+    token = entity.token.value,
+    handle = entity.handle.value,
+    associatedData = AssociatedDataMapper.mapToDto(entity.associatedData),
+    keys = KeysMapper.mapToDto(entity.keys),
+    scanned = entity.scanned,
+    confirmed = entity.confirmed,
   )
 }

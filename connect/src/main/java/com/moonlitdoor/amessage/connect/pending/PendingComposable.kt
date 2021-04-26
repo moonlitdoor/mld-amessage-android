@@ -16,7 +16,10 @@ fun Pending(viewModel: ConnectViewModel) {
   Ensure exhaustive when (viewState) {
     is PendingViewState.Loading -> Loading()
     is PendingViewState.Empty -> PendingEmpty()
-    is PendingViewState.Result -> PendingResult(viewState = viewState as PendingViewState.Result)
+    is PendingViewState.Result -> PendingResult(
+      viewModel = viewModel,
+      viewState = viewState as PendingViewState.Result
+    )
   }
 }
 

@@ -3,11 +3,12 @@ package com.moonlitdoor.amessage.routes
 import androidx.navigation.NavType
 import androidx.navigation.compose.NamedNavArgument
 import androidx.navigation.compose.navArgument
+import java.util.UUID
 
 sealed class Routes(val route: String, val arguments: List<NamedNavArgument> = emptyList()) {
   object Conversations : Routes("conversations")
   object Connections : Routes("connections")
-  class Connection(connectionId: Long) : Routes("${Arguments.ROUTE}$connectionId") {
+  class Connection(connectionId: UUID) : Routes("${Arguments.ROUTE}$connectionId") {
 
     object Arguments {
       const val ROUTE: String = "connections/"
@@ -16,7 +17,7 @@ sealed class Routes(val route: String, val arguments: List<NamedNavArgument> = e
 
     companion object : Routes(
       route = "${Arguments.ROUTE}{${Arguments.CONNECTION_ID}}",
-      arguments = listOf(navArgument(Arguments.CONNECTION_ID) { type = NavType.LongType })
+      arguments = listOf(navArgument(Arguments.CONNECTION_ID) { type = NavType.StringType })
     )
   }
 
