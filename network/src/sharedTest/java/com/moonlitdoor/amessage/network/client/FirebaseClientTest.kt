@@ -58,7 +58,7 @@ class FirebaseClientTest {
         FirebaseMessageDto(
           object : Payload() {
             override val type: Type
-              get() = Type.ConnectionRejection
+              get() = Type.ConnectionReject
           },
           UUID.randomUUID(), "token", KeysDto("keys"), AssociatedDataDto(UUID.randomUUID())
         )

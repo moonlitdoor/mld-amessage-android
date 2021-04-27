@@ -23,6 +23,7 @@ data class ConnectionEntity(
   val state: State,
   val scanned: Instant,
   val confirmed: Instant? = null,
+  val deleted: Boolean = false
 ) {
 
   fun new() = ConnectionEntity(

@@ -10,11 +10,7 @@ import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkerParameters
 import androidx.work.workDataOf
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
-import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Id
-import com.moonlitdoor.amessage.dto.ConnectionConfirmationPayload
-import com.moonlitdoor.amessage.network.NetworkClient
-import com.moonlitdoor.amessage.network.NetworkRequestStatus
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
@@ -24,22 +20,19 @@ import java.util.UUID
 import java.util.concurrent.TimeUnit
 
 @HiltWorker
-class ConnectionConfirmationWorker @AssistedInject constructor(
+class ConnectionDeleteWorker @AssistedInject constructor(
   @Assisted context: Context,
   @Assisted parameters: WorkerParameters,
   private val connectionDao: ConnectionDao,
-  private val client: NetworkClient,
 ) :
   CoroutineWorker(context, parameters) {
 
   override suspend fun doWork(): Result = coroutineScope {
     withContext(Dispatchers.IO) {
       inputData.getString(CONNECTION_UUID)?.let { connectionUuid ->
-        val connectionEntity = connectionDao.get(UUID.fromString(connectionUuid))
-        return@withContext when (client.send(ConnectionConfirmationPayload(connectionEntity.confirmed), ConnectionMapper.mapToDto(connectionEntity))) {
-          NetworkRequestStatus.SENT -> Result.success()
-          NetworkRequestStatus.QUEUED,
-          NetworkRequestStatus.FAILED -> Result.retry()
+
+        if (connectionDao.delete(UUID.fromString(connectionUuid)) != 0) {
+          return@withContext Result.success()
         }
       }
       Result.failure()
@@ -50,7 +43,7 @@ class ConnectionConfirmationWorker @AssistedInject constructor(
 
     private const val CONNECTION_UUID = "com.moonlitdoor.amessage.connection.uuid"
 
-    fun request() = OneTimeWorkRequest.Builder(ConnectionConfirmationWorker::class.java)
+    fun request() = OneTimeWorkRequest.Builder(ConnectionDeleteWorker::class.java)
       .setConstraints(Constraints.Builder().build())
       .setInitialDelay(0L, TimeUnit.SECONDS)
       .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, OneTimeWorkRequest.MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS)

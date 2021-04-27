@@ -26,7 +26,7 @@ class ExampleUnitTest {
 
   @Test
   fun givenConnectionConfirmationPayload_whenSerialized_thenSerializationIsCorrect() {
-    val payload = ConnectionConfirmationPayload(
+    val payload = ConnectionConfirmPayload(
       confirmed = null,
     )
     assertEquals("{}", payload.toString())

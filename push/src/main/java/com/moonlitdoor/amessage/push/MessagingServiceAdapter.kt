@@ -9,7 +9,7 @@ import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.dto.AssociatedDataDto
-import com.moonlitdoor.amessage.dto.ConnectionConfirmationPayload
+import com.moonlitdoor.amessage.dto.ConnectionConfirmPayload
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
 import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.dto.Payload
@@ -58,13 +58,13 @@ class MessagingServiceAdapter @Inject constructor(
         )
       ).ignore()
     }
-    Payload.Type.ConnectionConfirmation.value -> {
+    Payload.Type.ConnectionConfirm.value -> {
       val connection = connectionRepository.get(id)
       val string = Payload.decrypt(payload, KeysMapper.mapToDto(connection.keys), AssociatedDataMapper.mapToDto(connection.associatedData))
-      val connectionConfirmationPayload = ConnectionConfirmationPayload.inflate(string)
+      val connectionConfirmationPayload = ConnectionConfirmPayload.inflate(string)
       connectionRepository.update(connection.copy(confirmed = connectionConfirmationPayload.confirmed, state = Connection.State.Connected)).ignore()
     }
-    Payload.Type.ConnectionRejection.value -> connectionRepository.delete(id)
+    Payload.Type.ConnectionReject.value -> connectionRepository.delete(id).ignore()
     else -> throw IllegalStateException("type=$type")
   }.also {
     Timber.i("New Firebase Message of type=$type")

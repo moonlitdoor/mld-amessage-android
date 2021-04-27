@@ -11,9 +11,9 @@ abstract class Payload {
   abstract val type: Type
 
   sealed class Type(val value: String) {
-    object ConnectionInvite : Type("ASFVASDFSV")
-    object ConnectionConfirmation : Type("BERTYHSAFDV")
-    object ConnectionRejection : Type("ETGASDFVB")
+    object ConnectionInvite : Type("ASFVASD6FSVT")
+    object ConnectionConfirm : Type("BERTYHSAFDVD")
+    object ConnectionReject : Type("ETGA4SDFV0OB")
   }
 
   final override fun toString(): String = GSON.toJson(this)

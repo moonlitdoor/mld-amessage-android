@@ -19,13 +19,13 @@ interface ConnectionDao {
   @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
   fun getFlow(connectionId: UUID): Flow<ConnectionEntity>
 
-  @Query("SELECT * FROM connection WHERE state = 'connected'")
+  @Query("SELECT * FROM connection WHERE state = 'connected' AND deleted = 0")
   fun getConnected(): Flow<List<ConnectionEntity>>
 
-  @Query("SELECT * FROM connection WHERE state = 'invited'")
+  @Query("SELECT * FROM connection WHERE state = 'invited' AND deleted = 0")
   fun getInvited(): Flow<List<ConnectionEntity>>
 
-  @Query("SELECT * FROM connection WHERE state = 'pending'")
+  @Query("SELECT * FROM connection WHERE state = 'pending' AND deleted = 0")
   fun getPending(): Flow<List<ConnectionEntity>>
 
   @Query("SELECT count(*) FROM connection")
@@ -40,11 +40,14 @@ interface ConnectionDao {
   @Query("UPDATE connection SET state = :state WHERE connection_id = :connectionId")
   suspend fun update(connectionId: UUID, state: ConnectionEntity.State)
 
+  @Query("UPDATE connection SET deleted = 1 WHERE connection_id = :connectionId")
+  suspend fun deleteLogical(connectionId: UUID): Int
+
   @Delete
-  suspend fun delete(connection: ConnectionEntity)
+  suspend fun delete(connection: ConnectionEntity): Int
 
   @Query("DELETE FROM connection WHERE connection_id == :connectionId")
-  suspend fun delete(connectionId: UUID)
+  suspend fun delete(connectionId: UUID): Int
 
   @Query("SELECT count(*) FROM connection where connection_id == :connectionId")
   suspend fun isConnectionExisting(connectionId: UUID): Long
