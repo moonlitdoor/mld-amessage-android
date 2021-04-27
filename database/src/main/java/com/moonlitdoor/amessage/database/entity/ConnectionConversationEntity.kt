@@ -7,7 +7,7 @@ import androidx.room.Index
 import com.moonlitdoor.amessage.database.projection.IdProjection
 
 @Entity(
-  tableName = "conversation_connection",
+  tableName = "connection_conversation",
   primaryKeys = ["conversation_id", "connection_id"],
   indices = [Index(value = ["conversation_id"]), Index(value = ["connection_id"])],
   foreignKeys = [
@@ -15,7 +15,7 @@ import com.moonlitdoor.amessage.database.projection.IdProjection
     ForeignKey(entity = ConnectionEntity::class, parentColumns = ["connection_id"], childColumns = ["connection_id"], onDelete = ForeignKey.CASCADE)
   ]
 )
-data class ConversationConnectionEntity(
+data class ConnectionConversationEntity(
   @ColumnInfo(name = "conversation_id")
   var conversationId: IdProjection,
   @ColumnInfo(name = "connection_id")

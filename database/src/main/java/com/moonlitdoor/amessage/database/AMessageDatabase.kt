@@ -10,15 +10,17 @@ import com.moonlitdoor.amessage.database.converter.HandleProjectionConverter
 import com.moonlitdoor.amessage.database.converter.IdProjectionConverter
 import com.moonlitdoor.amessage.database.converter.InstantConverter
 import com.moonlitdoor.amessage.database.converter.KeysProjectionConverter
+import com.moonlitdoor.amessage.database.converter.TitleProjectionConverter
 import com.moonlitdoor.amessage.database.converter.TokenProjectionConverter
+import com.moonlitdoor.amessage.database.converter.TopicProjectionConverter
 import com.moonlitdoor.amessage.database.converter.UuidConverter
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.KeyValueDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.dao.SettingsDao
+import com.moonlitdoor.amessage.database.entity.ConnectionConversationEntity
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
-import com.moonlitdoor.amessage.database.entity.ConversationConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import com.moonlitdoor.amessage.database.entity.KeyValueEntity
 import com.moonlitdoor.amessage.database.view.ProfileView
@@ -32,7 +34,9 @@ import com.moonlitdoor.amessage.database.view.ProfileView
     InstantConverter::class,
     IdProjectionConverter::class,
     KeysProjectionConverter::class,
+    TitleProjectionConverter::class,
     TokenProjectionConverter::class,
+    TopicProjectionConverter::class,
     UuidConverter::class,
   ]
 )
@@ -42,7 +46,7 @@ import com.moonlitdoor.amessage.database.view.ProfileView
     KeyValueEntity::class,
     ConnectionEntity::class,
     ConversationEntity::class,
-    ConversationConnectionEntity::class
+    ConnectionConversationEntity::class
   ],
   views = [
     ProfileView::class

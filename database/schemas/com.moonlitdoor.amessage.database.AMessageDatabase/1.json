@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "e65275f4a0b628fd02f94a15db350f1d",
+    "identityHash": "c113bf83815e20da70fde130d8f3516a",
     "entities": [
       {
         "tableName": "key_value",
@@ -118,7 +118,7 @@
       },
       {
         "tableName": "conversation",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `title` TEXT, `topic` TEXT, `password` TEXT NOT NULL, `salt` TEXT NOT NULL, `id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `title` TEXT, `topic` TEXT, `keys` TEXT NOT NULL, `associatedData` TEXT NOT NULL, PRIMARY KEY(`conversation_id`))",
         "fields": [
           {
             "fieldPath": "conversationId",
@@ -139,44 +139,29 @@
             "notNull": false
           },
           {
-            "fieldPath": "password",
-            "columnName": "password",
+            "fieldPath": "keys",
+            "columnName": "keys",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "salt",
-            "columnName": "salt",
+            "fieldPath": "associatedData",
+            "columnName": "associatedData",
             "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "id",
-            "columnName": "id",
-            "affinity": "INTEGER",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "id"
+            "conversation_id"
           ],
-          "autoGenerate": true
+          "autoGenerate": false
         },
-        "indices": [
-          {
-            "name": "index_conversation_conversation_id",
-            "unique": true,
-            "columnNames": [
-              "conversation_id"
-            ],
-            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_conversation_conversation_id` ON `${TABLE_NAME}` (`conversation_id`)"
-          }
-        ],
+        "indices": [],
         "foreignKeys": []
       },
       {
-        "tableName": "conversation_connection",
+        "tableName": "connection_conversation",
         "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `connection_id` TEXT NOT NULL, PRIMARY KEY(`conversation_id`, `connection_id`), FOREIGN KEY(`conversation_id`) REFERENCES `conversation`(`conversation_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`connection_id`) REFERENCES `connection`(`connection_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
@@ -201,20 +186,20 @@
         },
         "indices": [
           {
-            "name": "index_conversation_connection_conversation_id",
+            "name": "index_connection_conversation_conversation_id",
             "unique": false,
             "columnNames": [
               "conversation_id"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_conversation_connection_conversation_id` ON `${TABLE_NAME}` (`conversation_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_connection_conversation_conversation_id` ON `${TABLE_NAME}` (`conversation_id`)"
           },
           {
-            "name": "index_conversation_connection_connection_id",
+            "name": "index_connection_conversation_connection_id",
             "unique": false,
             "columnNames": [
               "connection_id"
             ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_conversation_connection_connection_id` ON `${TABLE_NAME}` (`connection_id`)"
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_connection_conversation_connection_id` ON `${TABLE_NAME}` (`connection_id`)"
           }
         ],
         "foreignKeys": [
@@ -251,7 +236,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e65275f4a0b628fd02f94a15db350f1d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c113bf83815e20da70fde130d8f3516a')"
     ]
   }
 }

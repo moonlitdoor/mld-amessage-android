@@ -85,6 +85,8 @@ class AMessageActivity : AppCompatActivity() {
                 modifier = currentAppChrome.modifier
               )
             },
+            floatingActionButtonPosition = currentAppChrome.fabPosition,
+            floatingActionButton = currentAppChrome.fab,
             bottomBar = {
               AnimatedVisibility(visible = currentAppChrome.showBottomBar) {
                 BottomNavigation {

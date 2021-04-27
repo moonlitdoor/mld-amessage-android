@@ -1,9 +1,12 @@
 package com.moonlitdoor.amessage.connection
 
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -18,7 +21,12 @@ fun Connection(navHostController: NavHostController, viewModel: ConnectionViewMo
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.connection_title),
-      navigation = Navigation { navHostController.popBackStack() }
+      navigation = Navigation { navHostController.popBackStack() },
+      fab = {
+        FloatingActionButton(onClick = { viewModel.createConversation(listOf(connectionId), title = "title", topic = null) }) {
+          Icon(painterResource(id = R.drawable.ic_baseline_chat_24), null)
+        }
+      },
     )
   )
 

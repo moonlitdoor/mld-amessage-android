@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
-import com.moonlitdoor.amessage.database.entity.ConversationConnectionEntity
+import com.moonlitdoor.amessage.database.entity.ConnectionConversationEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -12,13 +12,13 @@ import kotlinx.coroutines.flow.Flow
 abstract class ConversationDao {
 
   @Insert
-  abstract fun insert(entity: ConversationEntity)
+  abstract suspend fun insert(entity: ConversationEntity)
 
   @Insert
-  abstract fun insert(entities: List<ConversationConnectionEntity>)
+  abstract suspend fun insert(entities: List<ConnectionConversationEntity>)
 
   @Transaction
-  open fun insert(entity: ConversationEntity, entities: List<ConversationConnectionEntity>) {
+  open suspend fun insert(entity: ConversationEntity, entities: List<ConnectionConversationEntity>) {
     insert(entity)
     insert(entities)
   }
