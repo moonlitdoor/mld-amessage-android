@@ -97,8 +97,8 @@ fun ConnectionsResultPreview() {
   val viewState = PendingViewState.Result(
     listOf(
       Connection(
-        id = 0L,
         connectionId = Id(),
+        profileId = Id(),
         token = Token("token1"),
         handle = Handle("handle1"),
         state = Connection.State.Connected,
@@ -107,8 +107,8 @@ fun ConnectionsResultPreview() {
         scanned = Instant.now(),
       ),
       Connection(
-        id = 0L,
         connectionId = Id(),
+        profileId = Id(),
         token = Token("token2"),
         handle = Handle("handle2"),
         state = Connection.State.Connected,

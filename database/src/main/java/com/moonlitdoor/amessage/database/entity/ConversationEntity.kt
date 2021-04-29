@@ -8,6 +8,7 @@ import com.moonlitdoor.amessage.database.projection.IdProjection
 import com.moonlitdoor.amessage.database.projection.KeysProjection
 import com.moonlitdoor.amessage.database.projection.TitleProjection
 import com.moonlitdoor.amessage.database.projection.TopicProjection
+import java.time.Instant
 
 @Entity(tableName = "conversation")
 data class ConversationEntity(
@@ -17,5 +18,7 @@ data class ConversationEntity(
   val title: TitleProjection?,
   val topic: TopicProjection?,
   val keys: KeysProjection = KeysProjection(),
+  @ColumnInfo(name = "associated_data")
   val associatedData: AssociatedDataProjection = AssociatedDataProjection(),
+  val created: Instant = Instant.now(),
 )

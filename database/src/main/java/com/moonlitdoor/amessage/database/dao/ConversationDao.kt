@@ -7,6 +7,7 @@ import androidx.room.Transaction
 import com.moonlitdoor.amessage.database.entity.ConnectionConversationEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import kotlinx.coroutines.flow.Flow
+import java.util.UUID
 
 @Dao
 abstract class ConversationDao {
@@ -23,6 +24,9 @@ abstract class ConversationDao {
     insert(entities)
   }
 
+  @Query("SELECT * FROM conversation WHERE conversation_id = :conversationId")
+  abstract suspend fun get(conversationId: UUID): ConversationEntity
+
   @Query("SELECT * FROM conversation")
-  abstract fun get(): Flow<List<ConversationEntity>>
+  abstract fun getFlow(): Flow<List<ConversationEntity>>
 }

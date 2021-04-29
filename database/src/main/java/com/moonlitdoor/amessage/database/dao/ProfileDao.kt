@@ -17,7 +17,10 @@ import java.util.UUID
 interface ProfileDao : KeyValueDao {
 
   @Query("SELECT * FROM profile")
-  fun getProfile(): Flow<ProfileView>
+  fun getProfileFlow(): Flow<ProfileView>
+
+  @Query("SELECT * FROM profile")
+  suspend fun getProfile(): ProfileView
 
   suspend fun setHandle(value: HandleProjection): Unit = setKeyValue(KeyValueEntity.from(value))
 

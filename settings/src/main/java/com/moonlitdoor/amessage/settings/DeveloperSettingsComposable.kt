@@ -32,11 +32,15 @@ fun DeveloperSettings(navHostController: NavHostController, viewModel: SettingsV
     SettingSwitchItem(title = R.string.connect_employee_settings, checked = showEmployee) {
       if (it) viewModel.enableEmployeeSettingsUI() else viewModel.disableEmployeeSettingsUI()
     }
+
     SettingSwitchItem(title = R.string.connect_experiments, checked = showExperiments) {
       if (it) viewModel.enableExperimentsUI() else viewModel.disableExperimentsUI()
     }
     SettingSwitchItem(title = R.string.connect_developer_settings, checked = showDeveloperSettings) {
       if (it) viewModel.enableDeveloperSettingsUI() else viewModel.disableDeveloperSettingsUI()
+    }
+    SettingItem(title = "Clear Database", "Clear all 'connections' and 'conversations'.") {
+      viewModel.clearDatabase()
     }
   }
 }

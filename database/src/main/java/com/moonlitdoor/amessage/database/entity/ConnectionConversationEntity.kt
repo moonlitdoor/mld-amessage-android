@@ -8,16 +8,16 @@ import com.moonlitdoor.amessage.database.projection.IdProjection
 
 @Entity(
   tableName = "connection_conversation",
-  primaryKeys = ["conversation_id", "connection_id"],
-  indices = [Index(value = ["conversation_id"]), Index(value = ["connection_id"])],
+  primaryKeys = ["connection_id", "conversation_id"],
+  indices = [Index(value = ["connection_id"]), Index(value = ["conversation_id"])],
   foreignKeys = [
+    ForeignKey(entity = ConnectionEntity::class, parentColumns = ["connection_id"], childColumns = ["connection_id"], onDelete = ForeignKey.CASCADE),
     ForeignKey(entity = ConversationEntity::class, parentColumns = ["conversation_id"], childColumns = ["conversation_id"], onDelete = ForeignKey.CASCADE),
-    ForeignKey(entity = ConnectionEntity::class, parentColumns = ["connection_id"], childColumns = ["connection_id"], onDelete = ForeignKey.CASCADE)
   ]
 )
 data class ConnectionConversationEntity(
+  @ColumnInfo(name = "connection_id")
+  val connectionId: IdProjection,
   @ColumnInfo(name = "conversation_id")
   var conversationId: IdProjection,
-  @ColumnInfo(name = "connection_id")
-  val connectionId: IdProjection
 )

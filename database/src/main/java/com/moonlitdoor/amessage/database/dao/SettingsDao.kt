@@ -1,6 +1,7 @@
 package com.moonlitdoor.amessage.database.dao
 
 import androidx.room.Dao
+import androidx.room.Query
 import com.moonlitdoor.amessage.database.entity.KeyValueEntity
 import com.moonlitdoor.amessage.database.projection.DeveloperSettingsEnabledProjection
 import com.moonlitdoor.amessage.database.projection.EmployeeSettingsEnabledProjection
@@ -28,4 +29,10 @@ interface SettingsDao : KeyValueDao {
   suspend fun isDeveloperSettingsEnabled(): DeveloperSettingsEnabledProjection = DeveloperSettingsEnabledProjection(getValue(DeveloperSettingsEnabledProjection.KEY).toBoolean())
 
   suspend fun setDeveloperSettings(value: DeveloperSettingsEnabledProjection): Unit = setKeyValue(KeyValueEntity.from(value))
+
+  @Query("DELETE FROM connection ")
+  suspend fun clearConnections()
+
+  @Query("DELETE FROM conversation ")
+  suspend fun clearConversations()
 }

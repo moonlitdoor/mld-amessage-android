@@ -45,8 +45,8 @@ fun InvitedResultPreview() {
   val viewState = InvitedViewState.Result(
     listOf(
       Connection(
-        id = 0L,
         connectionId = Id(),
+        profileId = Id(),
         token = Token("token1"),
         handle = Handle("handle1"),
         state = Connection.State.Invited,
@@ -55,8 +55,8 @@ fun InvitedResultPreview() {
         scanned = Instant.now(),
       ),
       Connection(
-        id = 1L,
         connectionId = Id(),
+        profileId = Id(),
         token = Token("token2"),
         handle = Handle("handle2"),
         state = Connection.State.Invited,

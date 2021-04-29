@@ -14,6 +14,7 @@ object ConnectionMapper {
 
   fun mapToEntity(connection: Connection) = ConnectionEntity(
     connectionId = IdMapper.map(connection.connectionId),
+    profileId = IdMapper.map(connection.profileId),
     token = TokenMapper.map(connection.token),
     handle = HandleMapper.map(connection.handle),
     keys = KeysMapper.mapToProjection(connection.keys),
@@ -24,6 +25,7 @@ object ConnectionMapper {
   )
 
   fun map(entity: ConnectionEntity) = Connection(
+    profileId = IdMapper.map(entity.profileId),
     connectionId = IdMapper.map(entity.connectionId),
     token = TokenMapper.map(entity.token),
     handle = HandleMapper.map(entity.handle),
@@ -36,6 +38,7 @@ object ConnectionMapper {
 
   fun map(payload: ConnectionInvitePayload) = Connection(
     connectionId = Id(payload.connectionId),
+    profileId = Id(payload.profileId),
     token = Token(payload.token),
     handle = Handle(payload.handle),
     keys = Keys(payload.keys.value),
@@ -47,6 +50,7 @@ object ConnectionMapper {
 
   fun mapToDto(entity: ConnectionEntity) = ConnectionDto(
     connectionId = entity.connectionId.value,
+    profileId = entity.profileId.value,
     token = entity.token.value,
     handle = entity.handle.value,
     associatedData = AssociatedDataMapper.mapToDto(entity.associatedData),

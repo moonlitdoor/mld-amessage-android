@@ -22,7 +22,6 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withContext
 import java.util.UUID
 import java.util.concurrent.TimeUnit
@@ -38,7 +37,7 @@ class ConnectionInviteWorker @AssistedInject constructor(
 
   override suspend fun doWork(): Result = coroutineScope {
     withContext(Dispatchers.IO) {
-      val profile = profileDao.getProfile().first()
+      val profile = profileDao.getProfile()
       inputData.getString(CONNECTION_UUID)?.let { newConnectionUuid ->
         val newConnectionEntity = connectionDao.get(UUID.fromString(newConnectionUuid))
         inputData.getString(SCANNED_TOKEN)?.let { scannedToken ->
@@ -50,6 +49,7 @@ class ConnectionInviteWorker @AssistedInject constructor(
                     handle = profile.handle.value,
                     token = profile.token.value,
                     connectionId = newConnectionEntity.connectionId.value,
+                    profileId = profile.id.value,
                     keys = KeysMapper.mapToDto(newConnectionEntity.keys),
                     associatedData = AssociatedDataMapper.mapToDto(newConnectionEntity.associatedData),
                     scanned = newConnectionEntity.scanned,

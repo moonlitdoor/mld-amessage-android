@@ -52,8 +52,8 @@ fun ConnectionsResultPreview() {
   val viewState = ConnectionsViewState.Result(
     listOf(
       Connection(
-        id = 0L,
         connectionId = Id(),
+        profileId = Id(),
         token = Token("token"),
         handle = Handle("handle"),
         state = Connection.State.Connected,

@@ -17,6 +17,11 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, enableDivider: Boolean = true, onClick: (() -> Unit)? = null) {
+  SettingItem(stringResource(id = title), description?.let { stringResource(id = it) }, enableDivider, onClick)
+}
+
+@Composable
+fun SettingItem(title: String, description: String? = null, enableDivider: Boolean = true, onClick: (() -> Unit)? = null) {
   Column(
     Modifier
       .wrapContentHeight()
@@ -24,12 +29,12 @@ fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, enab
       .padding(16.dp)
   ) {
     Text(
-      text = stringResource(id = title),
+      text = title,
       style = MaterialTheme.typography.h6,
     )
     description?.let {
       Text(
-        text = stringResource(id = it),
+        text = it,
         style = MaterialTheme.typography.overline,
       )
     }

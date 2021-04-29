@@ -4,7 +4,7 @@ import java.time.Instant
 import java.util.UUID
 
 data class Connection(
-  val id: Long = 0,
+  val profileId: Id,
   val connectionId: Id,
   val handle: Handle,
   val token: Token,
@@ -18,7 +18,8 @@ data class Connection(
   constructor(parts: String) : this(
     handle = Handle(parts.split("|")[0]),
     token = Token(parts.split("|")[1]),
-    connectionId = Id(UUID.fromString(parts.split("|")[2])),
+    profileId = Id(UUID.fromString(parts.split("|")[2])),
+    connectionId = Id(),
     associatedData = AssociatedData(UUID.fromString(parts.split("|")[3])),
     keys = Keys(parts.split("|")[4]),
     state = State.Scanned,

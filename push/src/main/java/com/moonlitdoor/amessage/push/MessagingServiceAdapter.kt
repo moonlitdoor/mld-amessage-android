@@ -3,14 +3,17 @@ package com.moonlitdoor.amessage.push
 import com.google.firebase.messaging.RemoteMessage
 import com.moonlitdoor.amessage.domain.mapper.AssociatedDataMapper
 import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
+import com.moonlitdoor.amessage.domain.mapper.ConversationMapper
 import com.moonlitdoor.amessage.domain.mapper.KeysMapper
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
+import com.moonlitdoor.amessage.domain.repository.ConversationRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import com.moonlitdoor.amessage.dto.AssociatedDataDto
 import com.moonlitdoor.amessage.dto.ConnectionConfirmPayload
 import com.moonlitdoor.amessage.dto.ConnectionInvitePayload
+import com.moonlitdoor.amessage.dto.ConversationCreatePayload
 import com.moonlitdoor.amessage.dto.KeysDto
 import com.moonlitdoor.amessage.dto.Payload
 import com.moonlitdoor.amessage.extensions.ignore
@@ -21,6 +24,7 @@ import javax.inject.Inject
 
 class MessagingServiceAdapter @Inject constructor(
   private val connectionRepository: ConnectionRepository,
+  private val conversationRepository: ConversationRepository,
   private val profileRepository: ProfileRepository
 ) {
 
@@ -65,6 +69,12 @@ class MessagingServiceAdapter @Inject constructor(
       connectionRepository.update(connection.copy(confirmed = connectionConfirmationPayload.confirmed, state = Connection.State.Connected)).ignore()
     }
     Payload.Type.ConnectionReject.value -> connectionRepository.delete(id).ignore()
+    Payload.Type.ConversationCreate.value -> {
+      val connection = connectionRepository.get(id)
+      val string = Payload.decrypt(payload, KeysMapper.mapToDto(connection.keys), AssociatedDataMapper.mapToDto(connection.associatedData))
+      val conversationCreatePayload = ConversationCreatePayload.inflate(string)
+      conversationRepository.insert(ConversationMapper.map(conversationCreatePayload), conversationCreatePayload.connectionUuids.toList())
+    }
     else -> throw IllegalStateException("type=$type")
   }.also {
     Timber.i("New Firebase Message of type=$type")

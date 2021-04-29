@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c113bf83815e20da70fde130d8f3516a",
+    "identityHash": "796d6b7e8a503a35215e69f5c6a5cca7",
     "entities": [
       {
         "tableName": "key_value",
@@ -41,11 +41,17 @@
       },
       {
         "tableName": "connection",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `handle` TEXT NOT NULL, `token` TEXT NOT NULL, `keys` TEXT NOT NULL, `associatedData` TEXT NOT NULL, `state` TEXT NOT NULL, `scanned` TEXT NOT NULL, `confirmed` TEXT, `deleted` INTEGER NOT NULL, PRIMARY KEY(`connection_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `profile_id` TEXT NOT NULL, `handle` TEXT NOT NULL, `token` TEXT NOT NULL, `keys` TEXT NOT NULL, `associated_data` TEXT NOT NULL, `state` TEXT NOT NULL, `scanned` TEXT NOT NULL, `confirmed` TEXT, `deleted` INTEGER NOT NULL, PRIMARY KEY(`connection_id`))",
         "fields": [
           {
             "fieldPath": "connectionId",
             "columnName": "connection_id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "profileId",
+            "columnName": "profile_id",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -69,7 +75,7 @@
           },
           {
             "fieldPath": "associatedData",
-            "columnName": "associatedData",
+            "columnName": "associated_data",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -118,7 +124,7 @@
       },
       {
         "tableName": "conversation",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `title` TEXT, `topic` TEXT, `keys` TEXT NOT NULL, `associatedData` TEXT NOT NULL, PRIMARY KEY(`conversation_id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `title` TEXT, `topic` TEXT, `keys` TEXT NOT NULL, `associated_data` TEXT NOT NULL, `created` TEXT NOT NULL, PRIMARY KEY(`conversation_id`))",
         "fields": [
           {
             "fieldPath": "conversationId",
@@ -146,7 +152,13 @@
           },
           {
             "fieldPath": "associatedData",
-            "columnName": "associatedData",
+            "columnName": "associated_data",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "created",
+            "columnName": "created",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -162,37 +174,29 @@
       },
       {
         "tableName": "connection_conversation",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`conversation_id` TEXT NOT NULL, `connection_id` TEXT NOT NULL, PRIMARY KEY(`conversation_id`, `connection_id`), FOREIGN KEY(`conversation_id`) REFERENCES `conversation`(`conversation_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`connection_id`) REFERENCES `connection`(`connection_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`connection_id` TEXT NOT NULL, `conversation_id` TEXT NOT NULL, PRIMARY KEY(`connection_id`, `conversation_id`), FOREIGN KEY(`connection_id`) REFERENCES `connection`(`connection_id`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`conversation_id`) REFERENCES `conversation`(`conversation_id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
-            "fieldPath": "conversationId",
-            "columnName": "conversation_id",
+            "fieldPath": "connectionId",
+            "columnName": "connection_id",
             "affinity": "TEXT",
             "notNull": true
           },
           {
-            "fieldPath": "connectionId",
-            "columnName": "connection_id",
+            "fieldPath": "conversationId",
+            "columnName": "conversation_id",
             "affinity": "TEXT",
             "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "conversation_id",
-            "connection_id"
+            "connection_id",
+            "conversation_id"
           ],
           "autoGenerate": false
         },
         "indices": [
-          {
-            "name": "index_connection_conversation_conversation_id",
-            "unique": false,
-            "columnNames": [
-              "conversation_id"
-            ],
-            "createSql": "CREATE INDEX IF NOT EXISTS `index_connection_conversation_conversation_id` ON `${TABLE_NAME}` (`conversation_id`)"
-          },
           {
             "name": "index_connection_conversation_connection_id",
             "unique": false,
@@ -200,20 +204,17 @@
               "connection_id"
             ],
             "createSql": "CREATE INDEX IF NOT EXISTS `index_connection_conversation_connection_id` ON `${TABLE_NAME}` (`connection_id`)"
+          },
+          {
+            "name": "index_connection_conversation_conversation_id",
+            "unique": false,
+            "columnNames": [
+              "conversation_id"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_connection_conversation_conversation_id` ON `${TABLE_NAME}` (`conversation_id`)"
           }
         ],
         "foreignKeys": [
-          {
-            "table": "conversation",
-            "onDelete": "CASCADE",
-            "onUpdate": "NO ACTION",
-            "columns": [
-              "conversation_id"
-            ],
-            "referencedColumns": [
-              "conversation_id"
-            ]
-          },
           {
             "table": "connection",
             "onDelete": "CASCADE",
@@ -223,6 +224,17 @@
             ],
             "referencedColumns": [
               "connection_id"
+            ]
+          },
+          {
+            "table": "conversation",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "conversation_id"
+            ],
+            "referencedColumns": [
+              "conversation_id"
             ]
           }
         ]
@@ -236,7 +248,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c113bf83815e20da70fde130d8f3516a')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '796d6b7e8a503a35215e69f5c6a5cca7')"
     ]
   }
 }

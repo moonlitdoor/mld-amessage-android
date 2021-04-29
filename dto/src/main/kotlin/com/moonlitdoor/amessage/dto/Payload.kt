@@ -14,6 +14,7 @@ abstract class Payload {
     object ConnectionInvite : Type("ASFVASD6FSVT")
     object ConnectionConfirm : Type("BERTYHSAFDVD")
     object ConnectionReject : Type("ETGA4SDFV0OB")
+    object ConversationCreate : Type("SDF4DFG5FF3L")
   }
 
   final override fun toString(): String = GSON.toJson(this)

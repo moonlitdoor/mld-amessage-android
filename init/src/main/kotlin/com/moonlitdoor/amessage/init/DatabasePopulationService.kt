@@ -55,6 +55,7 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
 
   private fun createConnection(index: Int, state: Connection.State) = Connection(
     connectionId = Id(),
+    profileId = Id(),
     token = Token("token$index"),
     handle = Handle("handle$index"),
     state = state,

@@ -10,6 +10,8 @@ object AssociatedDataMapper {
 
   fun mapToProjection(item: AssociatedData): AssociatedDataProjection = AssociatedDataProjection(item.value)
 
+  fun mapToProjection(item: AssociatedDataDto): AssociatedDataProjection = AssociatedDataProjection(item.value)
+
   fun mapToDto(item: AssociatedDataProjection): AssociatedDataDto = AssociatedDataDto(item.value)
 
   fun mapToDto(item: AssociatedData): AssociatedDataDto = AssociatedDataDto(item.value)

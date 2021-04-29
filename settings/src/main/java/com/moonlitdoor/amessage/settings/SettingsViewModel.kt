@@ -41,4 +41,8 @@ class SettingsViewModel @Inject constructor(private val repository: SettingsRepo
   fun disableEmployeeSettingsUI() = viewModelScope.launch(Dispatchers.IO) {
     repository.setEmployeeSettingsDisabled()
   }
+
+  fun clearDatabase() = viewModelScope.launch(Dispatchers.IO) {
+    repository.clearDatabase()
+  }
 }

@@ -7,6 +7,7 @@ class ConnectionInvitePayload(
   val handle: String,
   val token: String,
   val connectionId: UUID,
+  val profileId: UUID,
   val associatedData: AssociatedDataDto,
   val keys: KeysDto,
   val scanned: Instant,

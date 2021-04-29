@@ -16,9 +16,12 @@ data class ConnectionEntity(
   @PrimaryKey
   @ColumnInfo(name = "connection_id")
   val connectionId: IdProjection,
+  @ColumnInfo(name = "profile_id")
+  val profileId: IdProjection,
   val handle: HandleProjection,
   val token: TokenProjection,
   val keys: KeysProjection,
+  @ColumnInfo(name = "associated_data")
   val associatedData: AssociatedDataProjection,
   val state: State,
   val scanned: Instant,
@@ -27,7 +30,8 @@ data class ConnectionEntity(
 ) {
 
   fun new() = ConnectionEntity(
-    connectionId = IdProjection(),
+    connectionId = IdProjection(connectionId.value),
+    profileId = IdProjection(profileId.value),
     handle = HandleProjection(handle.value),
     token = TokenProjection(token.value),
     keys = KeysProjection(),

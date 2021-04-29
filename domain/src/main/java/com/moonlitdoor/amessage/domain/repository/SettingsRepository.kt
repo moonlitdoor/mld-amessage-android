@@ -32,4 +32,9 @@ class SettingsRepository @Inject constructor(private val dao: SettingsDao) {
   suspend fun setEmployeeSettingsEnabled(): Unit = dao.setEmployeeSettings(EmployeeSettingsEnabledProjection(true))
 
   suspend fun setEmployeeSettingsDisabled(): Unit = dao.setEmployeeSettings(EmployeeSettingsEnabledProjection(false))
+
+  suspend fun clearDatabase() {
+    dao.clearConnections()
+    dao.clearConversations()
+  }
 }
