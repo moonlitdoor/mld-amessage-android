@@ -12,6 +12,14 @@ class FirebaseMessageDtoTest {
 
   @Test
   fun test() {
-    ConnectionInvitePayload("handle", "token", UUID.randomUUID(), AssociatedDataDto(UUID.randomUUID()), KeysDto(StaticKeys.value), scanned = Instant.now())
+    ConnectionInvitePayload(
+      handle = "handle",
+      token = "token",
+      connectionId = UUID.randomUUID(),
+      profileId = UUID.randomUUID(),
+      associatedData = AssociatedDataDto(UUID.randomUUID()),
+      keys = KeysDto(StaticKeys.value),
+      scanned = Instant.now()
+    )
   }
 }

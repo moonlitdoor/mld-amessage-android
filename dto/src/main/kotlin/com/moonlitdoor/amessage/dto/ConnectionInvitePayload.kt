@@ -3,7 +3,7 @@ package com.moonlitdoor.amessage.dto
 import java.time.Instant
 import java.util.UUID
 
-class ConnectionInvitePayload(
+data class ConnectionInvitePayload(
   val handle: String,
   val token: String,
   val connectionId: UUID,

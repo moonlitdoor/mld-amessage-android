@@ -91,7 +91,7 @@ object Dependencies {
   object Com {
     object Google {
       object Accompanist {
-        private const val version = "0.8.0"
+        private const val version = "0.8.1"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
       }
@@ -115,7 +115,7 @@ object Dependencies {
       }
 
       object Dagger {
-        private const val version = "2.34.1-beta"
+        private const val version = "2.35.1"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
