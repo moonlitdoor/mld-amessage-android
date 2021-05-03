@@ -150,11 +150,9 @@ object Dependencies {
     }
 
     object MoonlitDoor {
-
       object AMessage {
         const val dependencies = "com.moonlitdoor.amessage:dependencies"
       }
-
     }
 
     object SquareUp {

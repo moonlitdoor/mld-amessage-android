@@ -11,7 +11,7 @@ buildscript {
     classpath("com.moonlitdoor.amessage:dependencies")
     classpath("com.moonlitdoor.amessage:android")
     classpath("com.moonlitdoor.amessage:jacoco")
-    classpath("com.google.dagger:hilt-android-gradle-plugin:2.34.1-beta")
+    classpath("com.google.dagger:hilt-android-gradle-plugin:2.35.1")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.38.0")
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.1")
     classpath("com.github.triplet.gradle:play-publisher:3.3.0")
