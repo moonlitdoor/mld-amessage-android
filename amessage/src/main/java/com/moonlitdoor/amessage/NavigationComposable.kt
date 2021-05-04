@@ -17,6 +17,7 @@ import com.moonlitdoor.amessage.conversations.Conversations
 import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.experiments.ui.ExperimentsUi
 import com.moonlitdoor.amessage.faq.Faq
+import com.moonlitdoor.amessage.faq.FaqViewModel
 import com.moonlitdoor.amessage.feedback.Feedback
 import com.moonlitdoor.amessage.handle.Handle
 import com.moonlitdoor.amessage.handle.HandleViewModel
@@ -89,7 +90,8 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       About(navHostController = navHostController, setAppChrome = setAppChrome)
     }
     composable(route = Routes.FAQ.route) {
-      Faq(navHostController = navHostController, setAppChrome = setAppChrome)
+      val viewModel: FaqViewModel = hiltNavGraphViewModel(it)
+      Faq(navHostController = navHostController, viewModel = viewModel, setAppChrome = setAppChrome)
     }
     composable(route = Routes.WhatsNew.route) {
       WhatsNew(navHostController = navHostController, setAppChrome = setAppChrome)

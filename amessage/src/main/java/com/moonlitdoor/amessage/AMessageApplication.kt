@@ -9,7 +9,6 @@ import androidx.work.Configuration
 import com.google.firebase.FirebaseApp
 import com.moonlitdoor.amessage.analytics.Analytics
 import com.moonlitdoor.amessage.experiments.Experiments
-import com.moonlitdoor.amessage.init.DatabasePopulationService
 import com.moonlitdoor.amessage.root.Root
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -28,7 +27,6 @@ class AMessageApplication : Application(), LifecycleObserver, Configuration.Prov
     TimberInit(BuildConfig.DEBUG)
     Analytics.init(this, UserId.value)
     Experiments.init()
-    DatabasePopulationService.start(this)
   }
 
   override fun getCameraXConfig(): CameraXConfig = Camera2Config.defaultConfig()

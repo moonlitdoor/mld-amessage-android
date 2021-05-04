@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 class FrequentlyAskedQuestionDao @Inject constructor(private val reference: DatabaseReference) {
 
-  @ExperimentalCoroutinesApi
+  @OptIn(ExperimentalCoroutinesApi::class)
   fun getFrequentlyAskedQuestions(): Flow<List<FrequentlyAskedQuestionEntity>> = callbackFlow {
     val listener = reference.child(PATH).addValueEventListener(object : ValueEventListener {
       override fun onDataChange(snapshot: DataSnapshot) {
@@ -23,6 +23,8 @@ class FrequentlyAskedQuestionDao @Inject constructor(private val reference: Data
           snapshot.children.mapNotNull {
             it.getValue(FrequentlyAskedQuestionEntity::class.java)
           }
+            .filter { it.visible }
+            .sortedBy { it.rank }
         )
       }
 

@@ -1,11 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.moonlitdoor.amessage.init">
-
-  <application>
-    <service
-      android:name="com.moonlitdoor.amessage.init.DatabasePopulationService"
-      android:exported="false" />
-  </application>
-
-</manifest>
+<manifest package="com.moonlitdoor.amessage.init" />

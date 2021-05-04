@@ -24,16 +24,6 @@ dependencies {
   implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesAndroid)
   implementation(Dependencies.Org.Jetbrains.Kotlinx.kotlinxCoroutinesCore)
 
-//  implementation(project(M.EXTENSIONS))
-
-//  implementation(D.Com.Google.Dagger.dagger)
-//  implementation(D.Androidx.AppCompat.appcompat)
-//  api(D.Androidx.Work.workRuntimeKtx)
-//  implementation(D.Com.JakeWharton.Timber.timber)
-//  implementation(D.Com.Google.Firebase.firebaseAnalytics)
-//  implementation(D.Com.Google.Firebase.firebaseIid)
-//  implementation(D.Com.Google.Firebase.firebaseMessaging)
-
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)

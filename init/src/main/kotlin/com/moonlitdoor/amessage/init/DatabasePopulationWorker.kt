@@ -1,8 +1,13 @@
 package com.moonlitdoor.amessage.init
 
-import android.app.IntentService
 import android.content.Context
-import android.content.Intent
+import androidx.hilt.work.HiltWorker
+import androidx.work.BackoffPolicy
+import androidx.work.Constraints
+import androidx.work.CoroutineWorker
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
+import androidx.work.WorkerParameters
 import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.domain.model.Handle
@@ -11,29 +16,25 @@ import com.moonlitdoor.amessage.domain.model.Keys
 import com.moonlitdoor.amessage.domain.model.Token
 import com.moonlitdoor.amessage.domain.repository.ConnectionRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
-import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.time.Instant
-import javax.inject.Inject
+import java.util.concurrent.TimeUnit
 
-@AndroidEntryPoint
-class DatabasePopulationService : IntentService(DatabasePopulationService::class.java.simpleName) {
+@HiltWorker
+class DatabasePopulationWorker @AssistedInject constructor(
+  @Assisted context: Context,
+  @Assisted parameters: WorkerParameters,
+  private var profileRepository: ProfileRepository,
+  private var connectionRepository: ConnectionRepository,
+) : CoroutineWorker(context, parameters) {
 
-  @Inject
-  lateinit var profileRepository: ProfileRepository
-
-  @Inject
-  lateinit var connectionRepository: ConnectionRepository
-
-  override fun onHandleIntent(intent: Intent?) {
-    val handler = CoroutineExceptionHandler { _, exception ->
-      Timber.e(exception)
-    }
-
-    GlobalScope.launch(context = handler) {
+  override suspend fun doWork(): Result = coroutineScope {
+    withContext(Dispatchers.IO) {
       Timber.d(profileRepository.getId().toString())
       Timber.d(profileRepository.getKeys().toString())
       Timber.d(profileRepository.getAssociatedData().toString())
@@ -50,6 +51,7 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
           connectionRepository.insert(createConnection(i, state))
         }
       }
+      Result.success()
     }
   }
 
@@ -65,8 +67,14 @@ class DatabasePopulationService : IntentService(DatabasePopulationService::class
   )
 
   companion object {
-    fun start(context: Context) {
-      context.startService(Intent(context, DatabasePopulationService::class.java))
-    }
+
+    fun enqueue(workManager: WorkManager) = workManager
+      .beginWith(
+        OneTimeWorkRequest.Builder(DatabasePopulationWorker::class.java)
+          .setConstraints(Constraints.Builder().build())
+          .setInitialDelay(0L, TimeUnit.SECONDS)
+          .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, OneTimeWorkRequest.MIN_BACKOFF_MILLIS, TimeUnit.MILLISECONDS).build()
+      )
+      .enqueue()
   }
 }

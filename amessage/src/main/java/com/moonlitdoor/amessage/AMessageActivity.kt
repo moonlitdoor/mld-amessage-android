@@ -28,17 +28,24 @@ import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import androidx.work.WorkManager
 import com.moonlitdoor.amessage.components.AppChrome
+import com.moonlitdoor.amessage.init.DatabasePopulationWorker
 import com.moonlitdoor.amessage.routes.Routes
 import com.moonlitdoor.amessage.theme.AMessageTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AMessageActivity : AppCompatActivity() {
 
+  @Inject
+  lateinit var workManager: WorkManager
+
   @ExperimentalAnimationApi
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    DatabasePopulationWorker.enqueue(workManager = workManager)
     setContent {
       AMessageTheme {
         EdgeToEdgeContent {
@@ -94,7 +101,6 @@ class AMessageActivity : AppCompatActivity() {
                   val currentRoute = currentState?.arguments?.getString(KEY_ROUTE)
                   BottomNavigationItem(
                     icon = { Icon(painterResource(id = R.drawable.ic_baseline_chat_24), null) },
-                    label = { Text(stringResource(R.string.conversations_title)) },
                     selected = Routes.Conversations.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Conversations.route) {
@@ -105,7 +111,6 @@ class AMessageActivity : AppCompatActivity() {
                   )
                   BottomNavigationItem(
                     icon = { Icon(painterResource(id = R.drawable.ic_baseline_group_24), null) },
-                    label = { Text(stringResource(R.string.connections_title)) },
                     selected = Routes.Connections.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Connections.route) {
@@ -116,7 +121,6 @@ class AMessageActivity : AppCompatActivity() {
                   )
                   BottomNavigationItem(
                     icon = { Icon(painterResource(id = R.drawable.ic_baseline_person_add_24), null) },
-                    label = { Text(stringResource(R.string.connect_title)) },
                     selected = Routes.Connect.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Connect.route) {
@@ -127,7 +131,6 @@ class AMessageActivity : AppCompatActivity() {
                   )
                   BottomNavigationItem(
                     icon = { Icon(Icons.Filled.MoreVert, null) },
-                    label = { Text(stringResource(R.string.more_title)) },
                     selected = Routes.More.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.More.route) {

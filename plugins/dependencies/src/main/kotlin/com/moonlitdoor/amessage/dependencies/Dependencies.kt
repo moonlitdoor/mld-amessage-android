@@ -124,7 +124,7 @@ object Dependencies {
       object Firebase {
         const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:18.0.3"
         const val firebaseConfig = "com.google.firebase:firebase-config-ktx:20.0.4"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics:17.4.1"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx:17.4.1"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:19.7.0"
         const val firebaseIid = "com.google.firebase:firebase-iid:21.1.0"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
