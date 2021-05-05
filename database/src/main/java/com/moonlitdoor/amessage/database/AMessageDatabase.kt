@@ -3,7 +3,7 @@ package com.moonlitdoor.amessage.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.moonlitdoor.amessage.database.converter.AssociatedDateProjectionConverter
+import com.moonlitdoor.amessage.database.converter.AssociatedDataProjectionConverter
 import com.moonlitdoor.amessage.database.converter.ConnectionStateConverter
 import com.moonlitdoor.amessage.database.converter.DateConverter
 import com.moonlitdoor.amessage.database.converter.HandleProjectionConverter
@@ -27,7 +27,7 @@ import com.moonlitdoor.amessage.database.view.ProfileView
 
 @TypeConverters(
   value = [
-    AssociatedDateProjectionConverter::class,
+    AssociatedDataProjectionConverter::class,
     ConnectionStateConverter::class,
     DateConverter::class,
     HandleProjectionConverter::class,
