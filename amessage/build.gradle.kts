@@ -81,7 +81,7 @@ android {
   buildTypes {
     getByName(Constants.RELEASE) {
       signingConfig = signingConfigs.getByName(Constants.RELEASE)
-      isShrinkResources = false
+//      isShrinkResources = false
       proguardFiles(getDefaultProguardFile(Constants.PROGUARD_ANDROID_FILE), Constants.PROGUARD_FILE)
       resValue("string", "app_name", "AMessage")
       buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
@@ -99,7 +99,7 @@ android {
       matchingFallbacks += Constants.RELEASE
       isDebuggable = false
       signingConfig = signingConfigs.getByName(Constants.RELEASE)
-      isShrinkResources = false
+//      isShrinkResources = false
       proguardFiles(getDefaultProguardFile(Constants.PROGUARD_ANDROID_FILE), Constants.PROGUARD_FILE)
       applicationIdSuffix = ".beta"
       resValue("color", "launcher_background", "#4caf50")

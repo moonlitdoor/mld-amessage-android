@@ -9,6 +9,7 @@ import com.moonlitdoor.amessage.database.projection.IdProjection
 import com.moonlitdoor.amessage.database.projection.TitleProjection
 import com.moonlitdoor.amessage.database.projection.TopicProjection
 import com.moonlitdoor.amessage.domain.mapper.ConversationMapper
+import com.moonlitdoor.amessage.domain.mapper.IdMapper
 import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.domain.work.ConversationCreateWorker
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +23,7 @@ class ConversationRepository @Inject constructor(
   private val workManager: WorkManager,
 ) {
 
-  val conversations: Flow<List<Conversation>> = conversationDao.getFlow().map { list -> list.map { Conversation.from(it) } }
+  fun getConversations(): Flow<List<Conversation>> = conversationDao.getFlow().map { list -> list.map { ConversationMapper.map(it) } }
 
   suspend fun create(connectionIds: List<UUID>, title: String?, topic: String?) {
     val conversation = ConversationEntity(title = title?.let { TitleProjection(it) }, topic = topic?.let { TopicProjection(it) })
@@ -35,7 +36,7 @@ class ConversationRepository @Inject constructor(
     val (connected: List<UUID>, unconnected: List<UUID>) = connectionIds.partition { connectionDao.isConnectionExisting(it) == 1L }
     conversationDao.insert(
       connected.map {
-        ConnectionConversationEntity(connectionId = IdProjection(it), conversationId = IdProjection(conversation.conversationId))
+        ConnectionConversationEntity(connectionId = IdProjection(it), conversationId = IdMapper.map(conversation.conversationId))
       }
     )
     // TODO handle unconnected connections

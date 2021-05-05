@@ -1,7 +1,6 @@
 package com.moonlitdoor.amessage.conversations
 
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -12,6 +11,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
+import com.moonlitdoor.amessage.components.Loading
+import com.moonlitdoor.amessage.extensions.Ensure
 import com.moonlitdoor.amessage.routes.Routes
 
 @Composable
@@ -30,7 +31,14 @@ fun Conversations(navHostController: NavHostController, viewModel: Conversations
       launchSingleTop = true
     }
   } else {
-    Text(text = "Hello, my name is Conversation!: ${viewModel.repository}")
+    val viewState by viewModel.viewState.collectAsState(initial = ConversationsViewState.Loading)
+    viewState.let { state ->
+      Ensure exhaustive when (state) {
+        is ConversationsViewState.Loading -> Loading()
+        is ConversationsViewState.Empty -> ConversationsEmpty()
+        is ConversationsViewState.Result -> ConversationsResult(navHostController = navHostController, viewState = state)
+      }
+    }
   }
 }
 

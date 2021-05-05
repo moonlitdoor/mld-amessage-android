@@ -16,7 +16,7 @@ buildscript {
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.1")
     classpath("com.github.triplet.gradle:play-publisher:3.3.0")
     classpath("com.moonlitdoor.git-version:git-version:0.1.1")
-    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31")
+    classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
     classpath("com.google.firebase:firebase-crashlytics-gradle:2.5.2")
     classpath("com.google.firebase:perf-plugin:1.3.5")
     classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")

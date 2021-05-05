@@ -15,8 +15,8 @@ abstract class AbstractAndroidPlugin : Plugin<Project> {
         compileSdkVersion(30)
 
         defaultConfig {
-          minSdkVersion(26)
-          targetSdkVersion(30)
+          minSdk = 26
+          targetSdk = 30
           testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
           testInstrumentationRunnerArguments.putAll(mapOf("clearPackageData" to "true"))
         }

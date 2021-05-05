@@ -21,6 +21,18 @@ sealed class Routes(val route: String, val arguments: List<NamedNavArgument> = e
     )
   }
 
+  class Conversation(conversationId: UUID) : Routes("${Arguments.ROUTE}$conversationId") {
+
+    object Arguments {
+      const val ROUTE: String = "conversations/"
+      const val CONVERSATION_ID: String = "conversationId"
+    }
+
+    companion object : Routes(
+      route = "${Arguments.ROUTE}{${Arguments.CONVERSATION_ID}}",
+      arguments = listOf(navArgument(Arguments.CONVERSATION_ID) { type = NavType.StringType })
+    )
+  }
   object FAQ : Routes("faq")
   object WhatsNew : Routes("whatsNew")
   object Connect : Routes("connect")
