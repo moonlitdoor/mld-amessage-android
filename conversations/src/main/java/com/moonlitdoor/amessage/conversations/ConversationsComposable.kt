@@ -25,19 +25,16 @@ fun Conversations(navHostController: NavHostController, viewModel: Conversations
     )
   )
 
-  val handleIsSet: Boolean by viewModel.isHandleSet.collectAsState(initial = true)
-  if (!handleIsSet) {
-    navHostController.navigate(Routes.Handle.route) {
-      launchSingleTop = true
-    }
-  } else {
-    val viewState by viewModel.viewState.collectAsState(initial = ConversationsViewState.Loading)
-    viewState.let { state ->
-      Ensure exhaustive when (state) {
-        is ConversationsViewState.Loading -> Loading()
-        is ConversationsViewState.Empty -> ConversationsEmpty()
-        is ConversationsViewState.Result -> ConversationsResult(navHostController = navHostController, viewState = state)
+  val viewState by viewModel.viewState.collectAsState(initial = ConversationsViewState.Loading)
+  viewState.let { state ->
+    Ensure exhaustive when (state) {
+      is ConversationsViewState.HandleNotSet -> navHostController.navigate(Routes.Handle.route) {
+        launchSingleTop = true
       }
+      is ConversationsViewState.Loading -> Loading()
+      is ConversationsViewState.Empty -> ConversationsEmpty()
+      is ConversationsViewState.Result -> ConversationsResult(navHostController = navHostController, viewState = state)
+
     }
   }
 }

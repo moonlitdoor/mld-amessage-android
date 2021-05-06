@@ -5,18 +5,18 @@ import com.moonlitdoor.amessage.domain.repository.ConversationRepository
 import com.moonlitdoor.amessage.domain.repository.ProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.combine
 import javax.inject.Inject
 
 @HiltViewModel
-class ConversationsViewModel @Inject constructor(val repository: ConversationRepository, profileRepository: ProfileRepository) : ViewModel() {
+class ConversationsViewModel @Inject constructor(repository: ConversationRepository, profileRepository: ProfileRepository) : ViewModel() {
 
-  val isHandleSet: Flow<Boolean> = profileRepository.handleIsSet()
-
-  val viewState: Flow<ConversationsViewState> = repository.getConversations().map {
-    when (it.isNotEmpty()) {
-      true -> ConversationsViewState.Result(it)
-      false -> ConversationsViewState.Empty
+  val viewState: Flow<ConversationsViewState> = profileRepository.handleIsSet()
+    .combine(repository.getConversations()) { isHandleSet, conversations ->
+      when {
+        !isHandleSet -> ConversationsViewState.HandleNotSet
+        conversations.isEmpty() -> ConversationsViewState.Empty
+        else -> ConversationsViewState.Result(conversations)
+      }
     }
-  }
 }

@@ -6,5 +6,6 @@ sealed class ConversationsViewState {
 
   object Loading : ConversationsViewState()
   object Empty : ConversationsViewState()
+  object HandleNotSet : ConversationsViewState()
   data class Result(val items: List<Conversation>) : ConversationsViewState()
 }
