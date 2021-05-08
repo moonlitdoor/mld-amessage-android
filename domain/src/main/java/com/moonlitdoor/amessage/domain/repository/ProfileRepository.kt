@@ -19,9 +19,11 @@ import javax.inject.Inject
 
 class ProfileRepository @Inject constructor(private val dao: ProfileDao) {
 
-  fun getProfile(): Flow<Profile> = dao.getProfileFlow().map { ProfileMapper.map(it) }
+  fun getProfileFlow(): Flow<Profile> = dao.getProfileFlow().map { ProfileMapper.map(it) }
 
   fun handleIsSet(): Flow<Boolean> = dao.getProfileFlow().map { it.handle.value.isNotEmpty() }
+
+  suspend fun getProfile(): Profile = ProfileMapper.map(dao.getProfile())
 
   // TODO notify connections of handle change
   suspend fun setHandle(handle: Handle): Unit = dao.setHandle(HandleMapper.map(handle))

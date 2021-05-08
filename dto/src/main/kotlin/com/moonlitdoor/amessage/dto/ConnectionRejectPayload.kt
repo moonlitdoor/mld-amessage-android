@@ -1,6 +1,6 @@
 package com.moonlitdoor.amessage.dto
 
-class ConnectionRejectPayload : Payload() {
+class ConnectionRejectPayload : PayloadDto() {
 
   @Transient
   override val type: Type = Type.ConnectionReject

@@ -13,6 +13,8 @@ import com.moonlitdoor.amessage.connection.Connection
 import com.moonlitdoor.amessage.connection.ConnectionViewModel
 import com.moonlitdoor.amessage.connections.Connections
 import com.moonlitdoor.amessage.connections.ConnectionsViewModel
+import com.moonlitdoor.amessage.conversation.Conversation
+import com.moonlitdoor.amessage.conversation.ConversationViewModel
 import com.moonlitdoor.amessage.conversations.Conversations
 import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.experiments.ui.ExperimentsUi
@@ -52,6 +54,17 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
         setAppChrome = setAppChrome
       )
     }
+    composable(route = Routes.Conversation.route, arguments = Routes.Conversation.arguments) { backStackEntry ->
+      val conversationId = backStackEntry.arguments?.getString(Routes.Conversation.Arguments.CONVERSATION_ID)
+      conversationId ?: throw IllegalArgumentException("conversationId can not be null")
+      val viewModel: ConversationViewModel = hiltNavGraphViewModel(backStackEntry)
+      Conversation(
+        navHostController = navHostController,
+        viewModel = viewModel,
+        conversationId = UUID.fromString(conversationId),
+        setAppChrome = setAppChrome
+      )
+    }
     composable(route = Routes.Connections.route) {
       val viewModel: ConnectionsViewModel = hiltNavGraphViewModel(it)
       Connections(
@@ -62,7 +75,7 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
     }
     composable(route = Routes.Connection.route, arguments = Routes.Connection.arguments) { backStackEntry ->
       val connectionId = backStackEntry.arguments?.getString(Routes.Connection.Arguments.CONNECTION_ID)
-      connectionId ?: throw IllegalArgumentException("ConnectionId can not be null")
+      connectionId ?: throw IllegalArgumentException("connectionId can not be null")
       val viewModel: ConnectionViewModel = hiltNavGraphViewModel(backStackEntry)
       Connection(
         navHostController = navHostController,

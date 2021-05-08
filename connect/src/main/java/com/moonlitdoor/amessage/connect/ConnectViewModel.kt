@@ -60,7 +60,7 @@ class ConnectViewModel @Inject constructor(
     }
   }
 
-  val qrCodeViewState: Flow<QRCodeViewState> = profileRepository.getProfile().map { profile ->
+  val qrCodeViewState: Flow<QRCodeViewState> = profileRepository.getProfileFlow().map { profile ->
     profile?.let {
       QRCodeViewState.Result(encodeAsBitmap(it.encode()))
     } ?: QRCodeViewState.Empty

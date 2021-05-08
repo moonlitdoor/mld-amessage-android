@@ -11,7 +11,7 @@ class ConversationCreatePayload(
   val keys: KeysDto,
   val associatedData: AssociatedDataDto,
   val connectionUuids: Array<UUID>
-) : Payload() {
+) : PayloadDto() {
 
   @Transient
   override val type: Type = Type.ConversationCreate

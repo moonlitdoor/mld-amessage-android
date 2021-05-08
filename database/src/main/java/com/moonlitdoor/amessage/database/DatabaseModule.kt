@@ -9,6 +9,7 @@ import com.google.firebase.ktx.Firebase
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.KeyValueDao
+import com.moonlitdoor.amessage.database.dao.PayloadDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.dao.SettingsDao
 import dagger.Module
@@ -42,6 +43,9 @@ object DatabaseModule {
 
   @Provides
   fun providesKeyValueDao(aMessageDatabase: AMessageDatabase): KeyValueDao = aMessageDatabase.keyValueDao()
+
+  @Provides
+  fun providesPayloadDao(aMessageDatabase: AMessageDatabase): PayloadDao = aMessageDatabase.payloadDao()
 
   @Provides
   fun providesProfileDao(aMessageDatabase: AMessageDatabase): ProfileDao = aMessageDatabase.profileDao()

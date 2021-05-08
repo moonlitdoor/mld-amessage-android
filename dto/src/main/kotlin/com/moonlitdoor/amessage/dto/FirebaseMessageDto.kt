@@ -2,7 +2,7 @@ package com.moonlitdoor.amessage.dto
 
 import java.util.UUID
 
-class FirebaseMessageDto private constructor(payload: Payload, connectionId: UUID, keys: KeysDto, associatedData: AssociatedDataDto) {
+class FirebaseMessageDto private constructor(payload: PayloadDto, connectionId: UUID, keys: KeysDto, associatedData: AssociatedDataDto) {
 
   @Suppress("UNUSED")
 //  private val restricted_package_name = "com.moonlitdoor.amessage"
@@ -11,20 +11,20 @@ class FirebaseMessageDto private constructor(payload: Payload, connectionId: UUI
   private val data = Data()
   private val fcm_options = FcmOptions()
 
-  constructor(payload: Payload, connection: ConnectionDto) : this(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
+  constructor(payload: PayloadDto, connection: ConnectionDto) : this(payload, connection.connectionId, connection.token, connection.keys, connection.associatedData)
 
-  constructor(payload: Payload, connectionId: UUID, id: String, keys: KeysDto, associatedData: AssociatedDataDto) : this(payload, connectionId, keys, associatedData) {
+  constructor(payload: PayloadDto, connectionId: UUID, id: String, keys: KeysDto, associatedData: AssociatedDataDto) : this(payload, connectionId, keys, associatedData) {
     token = id
   }
 
-  constructor(payload: Payload, connectionId: UUID, ids: List<String>, keys: KeysDto, associatedData: AssociatedDataDto) : this(payload, connectionId, keys, associatedData) {
+  constructor(payload: PayloadDto, connectionId: UUID, ids: List<String>, keys: KeysDto, associatedData: AssociatedDataDto) : this(payload, connectionId, keys, associatedData) {
     tokens = ids
   }
 
   init {
     data.id = connectionId.toString()
     data.type = payload.type.value
-    data.payload = Payload.encrypt(payload.toString(), keys, associatedData)
+    data.payload = PayloadDto.encrypt(payload.toString(), keys, associatedData)
     fcm_options.analytics_label = payload.type.value
   }
 

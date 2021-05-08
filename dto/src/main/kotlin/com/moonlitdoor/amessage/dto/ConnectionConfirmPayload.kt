@@ -4,7 +4,7 @@ import java.time.Instant
 
 class ConnectionConfirmPayload(
   val confirmed: Instant?
-) : Payload() {
+) : PayloadDto() {
 
   @Transient
   override val type: Type = Type.ConnectionConfirm

@@ -27,6 +27,9 @@ abstract class ConversationDao {
   @Query("SELECT * FROM conversation WHERE conversation_id = :conversationId")
   abstract suspend fun get(conversationId: UUID): ConversationEntity
 
+  @Query("SELECT * FROM conversation WHERE conversation_id = :conversationId")
+  abstract fun getConversationFlow(conversationId: UUID): Flow<ConversationEntity>
+
   @Query("SELECT * FROM conversation")
-  abstract fun getFlow(): Flow<List<ConversationEntity>>
+  abstract fun getConversationsFlow(): Flow<List<ConversationEntity>>
 }

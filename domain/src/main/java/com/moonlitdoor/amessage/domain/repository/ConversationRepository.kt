@@ -11,6 +11,7 @@ import com.moonlitdoor.amessage.database.projection.TopicProjection
 import com.moonlitdoor.amessage.domain.mapper.ConversationMapper
 import com.moonlitdoor.amessage.domain.mapper.IdMapper
 import com.moonlitdoor.amessage.domain.model.Conversation
+import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.work.ConversationCreateWorker
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -23,7 +24,9 @@ class ConversationRepository @Inject constructor(
   private val workManager: WorkManager,
 ) {
 
-  fun getConversations(): Flow<List<Conversation>> = conversationDao.getFlow().map { list -> list.map { ConversationMapper.map(it) } }
+  fun getConversations(): Flow<List<Conversation>> = conversationDao.getConversationsFlow().map { list -> list.map { ConversationMapper.map(it) } }
+
+  fun getConversation(conversationId: Id): Flow<Conversation> = conversationDao.getConversationFlow(conversationId.value).map { ConversationMapper.map(it) }
 
   suspend fun create(connectionIds: List<UUID>, title: String?, topic: String?) {
     val conversation = ConversationEntity(title = title?.let { TitleProjection(it) }, topic = topic?.let { TopicProjection(it) })

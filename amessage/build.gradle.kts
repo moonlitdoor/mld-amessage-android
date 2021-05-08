@@ -165,6 +165,7 @@ dependencies {
   implementation(project(Modules.CONNECT))
   implementation(project(Modules.CONNECTION))
   implementation(project(Modules.CONNECTIONS))
+  implementation(project(Modules.CONVERSATION))
   implementation(project(Modules.CONVERSATIONS))
   implementation(project(Modules.FAQ))
   implementation(project(Modules.FEEDBACK))

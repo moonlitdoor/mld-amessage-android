@@ -32,6 +32,8 @@
   <string name="connections_connect">Connect</string>
   <string name="connections_loading">"Loading…"</string>
 
+  <string name="conversation_title">Conversation</string>
+
   <string name="conversations_title">Conversations</string>
   <string name="conversations_none">You have not started any Conversations yet…</string>
 

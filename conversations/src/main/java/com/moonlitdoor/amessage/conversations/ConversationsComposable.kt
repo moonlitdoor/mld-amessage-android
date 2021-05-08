@@ -34,7 +34,6 @@ fun Conversations(navHostController: NavHostController, viewModel: Conversations
       is ConversationsViewState.Loading -> Loading()
       is ConversationsViewState.Empty -> ConversationsEmpty()
       is ConversationsViewState.Result -> ConversationsResult(navHostController = navHostController, viewState = state)
-
     }
   }
 }

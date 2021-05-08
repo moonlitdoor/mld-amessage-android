@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "796d6b7e8a503a35215e69f5c6a5cca7",
+    "identityHash": "abe61125fc879bafef76ad92f44c35e7",
     "entities": [
       {
         "tableName": "key_value",
@@ -238,6 +238,44 @@
             ]
           }
         ]
+      },
+      {
+        "tableName": "payload",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`primary` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `type` TEXT NOT NULL, `id` TEXT NOT NULL, `cipher` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "primary",
+            "columnName": "primary",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cipher",
+            "columnName": "cipher",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "primary"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [
@@ -248,7 +286,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '796d6b7e8a503a35215e69f5c6a5cca7')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'abe61125fc879bafef76ad92f44c35e7')"
     ]
   }
 }

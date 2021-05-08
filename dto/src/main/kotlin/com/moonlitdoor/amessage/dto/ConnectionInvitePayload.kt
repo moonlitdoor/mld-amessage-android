@@ -12,7 +12,7 @@ data class ConnectionInvitePayload(
   val keys: KeysDto,
   val scanned: Instant,
   val confirmed: Instant? = null
-) : Payload() {
+) : PayloadDto() {
 
   @Transient
   override val type: Type = Type.ConnectionInvite

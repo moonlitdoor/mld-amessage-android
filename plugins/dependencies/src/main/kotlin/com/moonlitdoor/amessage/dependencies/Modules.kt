@@ -8,6 +8,7 @@ object Modules {
   const val CONNECT = ":connect"
   const val CONNECTION = ":connection"
   const val CONNECTIONS = ":connections"
+  const val CONVERSATION = ":conversation"
   const val CONVERSATIONS = ":conversations"
   const val CONSTANTS = ":constants"
   const val DATABASE = ":database"

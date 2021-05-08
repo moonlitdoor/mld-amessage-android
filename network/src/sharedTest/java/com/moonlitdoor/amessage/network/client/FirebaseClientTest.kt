@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.moonlitdoor.amessage.dto.AssociatedDataDto
 import com.moonlitdoor.amessage.dto.FirebaseMessageDto
 import com.moonlitdoor.amessage.dto.KeysDto
-import com.moonlitdoor.amessage.dto.Payload
+import com.moonlitdoor.amessage.dto.PayloadDto
 import com.moonlitdoor.amessage.network.FirebaseClientContainer
 import kotlinx.coroutines.runBlocking
 import okhttp3.mockwebserver.Dispatcher
@@ -56,7 +56,7 @@ class FirebaseClientTest {
     runBlocking {
       val response = container.client.send(
         FirebaseMessageDto(
-          object : Payload() {
+          object : PayloadDto() {
             override val type: Type
               get() = Type.ConnectionReject
           },

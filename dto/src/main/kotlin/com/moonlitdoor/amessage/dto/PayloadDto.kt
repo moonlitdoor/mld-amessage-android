@@ -6,7 +6,7 @@ import com.moonlitdoor.amessage.dto.adapters.InstantAdapter
 import com.moonlitdoor.amessage.encryption.AuthenticatedEncryptionWithAssociatedData
 import java.time.Instant
 
-abstract class Payload {
+abstract class PayloadDto {
 
   abstract val type: Type
 

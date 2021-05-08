@@ -17,12 +17,14 @@ import com.moonlitdoor.amessage.database.converter.UuidConverter
 import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.dao.ConversationDao
 import com.moonlitdoor.amessage.database.dao.KeyValueDao
+import com.moonlitdoor.amessage.database.dao.PayloadDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.dao.SettingsDao
 import com.moonlitdoor.amessage.database.entity.ConnectionConversationEntity
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.database.entity.ConversationEntity
 import com.moonlitdoor.amessage.database.entity.KeyValueEntity
+import com.moonlitdoor.amessage.database.entity.PayloadEntity
 import com.moonlitdoor.amessage.database.view.ProfileView
 
 @TypeConverters(
@@ -46,7 +48,8 @@ import com.moonlitdoor.amessage.database.view.ProfileView
     KeyValueEntity::class,
     ConnectionEntity::class,
     ConversationEntity::class,
-    ConnectionConversationEntity::class
+    ConnectionConversationEntity::class,
+    PayloadEntity::class
   ],
   views = [
     ProfileView::class
@@ -54,15 +57,17 @@ import com.moonlitdoor.amessage.database.view.ProfileView
 )
 abstract class AMessageDatabase : RoomDatabase() {
 
+  abstract fun connectionDao(): ConnectionDao
+
+  abstract fun conversationDao(): ConversationDao
+
   abstract fun keyValueDao(): KeyValueDao
+
+  abstract fun payloadDao(): PayloadDao
 
   abstract fun profileDao(): ProfileDao
 
   abstract fun settingDao(): SettingsDao
-
-  abstract fun connectionDao(): ConnectionDao
-
-  abstract fun conversationDao(): ConversationDao
 
   companion object {
     const val DATABASE_NAME = "amessage.db"
