@@ -49,6 +49,7 @@ import com.moonlitdoor.amessage.connect.qrcode.QRCode
 import com.moonlitdoor.amessage.connect.scan.Scan
 import com.moonlitdoor.amessage.extensions.Ensure
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 private const val PERMISSIONS_REQUEST_CODE = 1776
 private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
@@ -61,6 +62,7 @@ fun hasPermissions(context: Context): Boolean = PERMISSIONS_REQUIRED.all {
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Connect(viewModel: ConnectViewModel, setAppChrome: (AppChrome) -> Unit) {
+  Timber.d("Connect Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.connect_title),

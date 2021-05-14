@@ -23,10 +23,11 @@ import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Navigation
 import com.moonlitdoor.amessage.routes.Routes
+import timber.log.Timber
 
 @Composable
 fun Settings(navHostController: NavHostController, viewModel: SettingsViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("Settings Composable")
   var clicks: Int by remember { mutableStateOf(value = 1) }
 
   setAppChrome(

@@ -25,6 +25,7 @@ import java.time.Instant
 
 @Composable
 fun ConversationsResult(navHostController: NavHostController, viewState: ConversationsViewState.Result) {
+  Timber.d("ConversationsResult Composable")
   LazyColumn {
     items(viewState.items) {
       Timber.d("$it")

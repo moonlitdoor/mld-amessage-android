@@ -28,25 +28,20 @@ import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
-import androidx.work.WorkManager
 import com.moonlitdoor.amessage.components.AppChrome
-import com.moonlitdoor.amessage.init.DatabasePopulationWorker
 import com.moonlitdoor.amessage.routes.Routes
 import com.moonlitdoor.amessage.theme.AMessageTheme
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
+import timber.log.Timber
 
 @AndroidEntryPoint
 class AMessageActivity : AppCompatActivity() {
 
-  @Inject
-  lateinit var workManager: WorkManager
-
   @ExperimentalAnimationApi
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    DatabasePopulationWorker.enqueue(workManager = workManager)
     setContent {
+      Timber.d("AMessageActivity Composable")
       AMessageTheme {
         EdgeToEdgeContent {
           val navController: NavHostController = rememberNavController()

@@ -200,7 +200,7 @@ dependencies {
   implementation(Dependencies.Com.Google.Firebase.firebaseCrashlytics)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
-  debugImplementation(Dependencies.Com.SquareUp.Leakcanary.leakcanaryAndroid)
+//  debugImplementation(Dependencies.Com.SquareUp.Leakcanary.leakcanaryAndroid)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)

@@ -27,9 +27,9 @@ class DatabasePopulationWorker @AssistedInject constructor(
 
   override suspend fun doWork(): Result = coroutineScope {
     withContext(Dispatchers.IO) {
-      Timber.d(profileRepository.getId().toString())
-      Timber.d(profileRepository.getKeys().toString())
-      Timber.d(profileRepository.getAssociatedData().toString())
+      Timber.v(profileRepository.getId().toString())
+      Timber.v(profileRepository.getKeys().toString())
+      Timber.v(profileRepository.getAssociatedData().toString())
       Result.success()
     }
   }

@@ -12,9 +12,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.moonlitdoor.amessage.components.Loading
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.extensions.Ensure
+import timber.log.Timber
 
 @Composable
 fun QRCode(viewModel: ConnectViewModel) {
+  Timber.d("QRCode Composable")
   Box(modifier = Modifier.fillMaxSize()) {
     val qrCodeState: QRCodeViewState by viewModel.qrCodeViewState.collectAsState(initial = QRCodeViewState.Loading)
     Ensure exhaustive when (qrCodeState) {

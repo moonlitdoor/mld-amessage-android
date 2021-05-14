@@ -13,10 +13,11 @@ import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Loading
 import com.moonlitdoor.amessage.components.Navigation
 import com.moonlitdoor.amessage.extensions.Ensure
+import timber.log.Timber
 
 @Composable
 fun Faq(navHostController: NavHostController, viewModel: FaqViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("Faq Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.faq_title),

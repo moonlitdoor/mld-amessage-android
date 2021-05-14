@@ -27,9 +27,11 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import com.moonlitdoor.amessage.experiments.Experiment
 import com.moonlitdoor.amessage.experiments.FirebaseRemoteConfigWrapper
 import com.moonlitdoor.amessage.root.Root
+import timber.log.Timber
 
 @Composable
 fun ExperimentsItem(item: Experiment<*>) {
+  Timber.d("ExperimentsItem Composable")
   ConstraintLayout(
     modifier = Modifier
       .fillMaxWidth()

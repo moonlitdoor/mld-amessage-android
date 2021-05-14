@@ -12,6 +12,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.shrinkVertically
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import timber.log.Timber
 
 private const val FADE_IN_ANIMATION_DURATION = 600
 
@@ -22,6 +23,7 @@ fun ExpandableContent(
   initialVisibility: Boolean = false,
   content: @Composable () -> Unit,
 ) {
+  Timber.d("ExpandableContent Composable")
   val enterFadeIn = remember {
     fadeIn(
       animationSpec = TweenSpec(

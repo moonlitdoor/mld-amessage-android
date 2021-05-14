@@ -8,10 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Navigation
+import timber.log.Timber
 
 @Composable
 fun Windows(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("Windows Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.windows_title),

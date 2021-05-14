@@ -14,10 +14,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.moonlitdoor.amessage.connect.R
+import timber.log.Timber
 import kotlin.math.min
 
 @Composable
 fun QRCodeResult(viewState: QRCodeViewState.Result) {
+  Timber.d("QRCodeResult Composable")
   BoxWithConstraints(
     modifier = Modifier
       .fillMaxSize()

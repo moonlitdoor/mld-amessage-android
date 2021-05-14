@@ -9,9 +9,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.moonlitdoor.amessage.components.Loading
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.extensions.Ensure
+import timber.log.Timber
 
 @Composable
 fun Invited(viewModel: ConnectViewModel) {
+  Timber.d("Invited Composable")
   val viewState by viewModel.invitedViewState.collectAsState(initial = InvitedViewState.Loading)
   Ensure exhaustive when (viewState) {
     is InvitedViewState.Loading -> Loading()

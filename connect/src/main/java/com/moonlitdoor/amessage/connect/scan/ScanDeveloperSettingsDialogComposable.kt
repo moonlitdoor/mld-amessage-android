@@ -7,9 +7,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connect.R
+import timber.log.Timber
 
 @Composable
 fun ScanDeveloperSettingsDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Result.DeveloperSettings) {
+  Timber.d("ScanDeveloperSettingsDialog Composable")
   AlertDialog(
     onDismissRequest = {},
     title = {

@@ -10,26 +10,26 @@ import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
 @Dao
-abstract class ConversationDao {
+interface ConversationDao {
 
   @Insert
-  abstract suspend fun insert(entity: ConversationEntity)
+  suspend fun insert(entity: ConversationEntity)
 
   @Insert
-  abstract suspend fun insert(entities: List<ConnectionConversationEntity>)
+  suspend fun insert(entities: List<ConnectionConversationEntity>)
 
   @Transaction
-  open suspend fun insert(entity: ConversationEntity, entities: List<ConnectionConversationEntity>) {
+  suspend fun insert(entity: ConversationEntity, entities: List<ConnectionConversationEntity>) {
     insert(entity)
     insert(entities)
   }
 
   @Query("SELECT * FROM conversation WHERE conversation_id = :conversationId")
-  abstract suspend fun get(conversationId: UUID): ConversationEntity
+  suspend fun get(conversationId: UUID): ConversationEntity?
 
   @Query("SELECT * FROM conversation WHERE conversation_id = :conversationId")
-  abstract fun getConversationFlow(conversationId: UUID): Flow<ConversationEntity>
+  fun getFlow(conversationId: UUID): Flow<ConversationEntity?>
 
   @Query("SELECT * FROM conversation")
-  abstract fun getConversationsFlow(): Flow<List<ConversationEntity>>
+  fun getFlow(): Flow<List<ConversationEntity>>
 }

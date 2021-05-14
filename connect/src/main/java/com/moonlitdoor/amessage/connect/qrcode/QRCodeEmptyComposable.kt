@@ -14,7 +14,7 @@ import timber.log.Timber
 
 @Composable
 fun QRCodeEmpty() {
-  Timber.d("Empty... ;(")
+  Timber.d("QRCodeEmpty Composable")
   Box(
     modifier = Modifier.fillMaxSize(),
     contentAlignment = Alignment.Center

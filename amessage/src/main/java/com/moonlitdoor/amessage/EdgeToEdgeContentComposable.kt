@@ -8,9 +8,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import com.google.accompanist.insets.ProvideWindowInsets
+import timber.log.Timber
 
 @Composable
 fun EdgeToEdgeContent(content: @Composable () -> Unit) {
+  Timber.d("EdgeToEdgeContent Composable")
   val view = LocalView.current
   val window = (LocalContext.current as Activity).window
   val statusBarColor = MaterialTheme.colors.primaryVariant

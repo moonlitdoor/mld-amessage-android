@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.database.relation.ConnectionConversationsRelation
 import kotlinx.coroutines.flow.Flow
 import java.util.UUID
 
@@ -17,7 +18,10 @@ interface ConnectionDao {
   suspend fun get(connectionId: UUID): ConnectionEntity
 
   @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
-  fun getFlow(connectionId: UUID): Flow<ConnectionEntity>
+  fun getFlow(connectionId: UUID): Flow<ConnectionEntity?>
+
+  @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
+  fun getConnectionWithConversationsFlow(connectionId: UUID): Flow<ConnectionConversationsRelation?>
 
   @Query("SELECT * FROM connection WHERE state = 'connected' AND deleted = 0")
   fun getConnected(): Flow<List<ConnectionEntity>>

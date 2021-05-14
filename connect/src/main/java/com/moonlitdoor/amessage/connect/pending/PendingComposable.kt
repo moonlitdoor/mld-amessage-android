@@ -9,9 +9,11 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.moonlitdoor.amessage.components.Loading
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.extensions.Ensure
+import timber.log.Timber
 
 @Composable
 fun Pending(viewModel: ConnectViewModel) {
+  Timber.d("Pending Composable")
   val viewState by viewModel.pendingViewState.collectAsState(initial = PendingViewState.Loading)
   Ensure exhaustive when (viewState) {
     is PendingViewState.Loading -> Loading()

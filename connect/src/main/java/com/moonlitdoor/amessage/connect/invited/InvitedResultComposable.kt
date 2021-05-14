@@ -23,6 +23,7 @@ import java.time.Instant
 
 @Composable
 fun InvitedResult(viewState: InvitedViewState.Result) {
+  Timber.d("InvitedResult Composable")
   LazyColumn {
     items(viewState.items) {
       Timber.d("$it")

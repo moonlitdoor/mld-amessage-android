@@ -14,7 +14,7 @@ import timber.log.Timber
 
 @Composable
 fun InvitedEmpty() {
-  Timber.d("Empty... ;(")
+  Timber.d("InvitedEmpty Composable")
   Box(
     modifier = Modifier.fillMaxSize(),
     contentAlignment = Alignment.Center

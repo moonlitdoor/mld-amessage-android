@@ -7,10 +7,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
+import timber.log.Timber
 
 @Composable
 fun Statistics(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("About Statistics")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.more_title),

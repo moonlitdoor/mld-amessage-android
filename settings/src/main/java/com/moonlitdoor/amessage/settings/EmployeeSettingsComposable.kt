@@ -9,10 +9,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Navigation
+import timber.log.Timber
 
 @Composable
 fun EmployeeSettings(navHostController: NavHostController, viewModel: SettingsViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("EmployeeSettings Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.connect_employee_settings),

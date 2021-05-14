@@ -38,7 +38,7 @@ fun Scan(
   viewModel: ConnectViewModel,
   isCurrentPage: Boolean,
 ) {
-
+  Timber.d("Scan Composable")
   val viewState by viewModel.scanViewState.collectAsState(ScanViewState.Scan)
 
   if (isCurrentPage) {

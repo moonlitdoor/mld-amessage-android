@@ -20,7 +20,7 @@ import timber.log.Timber
 
 @Composable
 fun ConnectionsEmpty(navHostController: NavHostController) {
-  Timber.d("Empty... ;(")
+  Timber.d("ConnectionsEmpty Composable")
   Box(
     modifier = Modifier.fillMaxSize(),
     contentAlignment = Alignment.Center

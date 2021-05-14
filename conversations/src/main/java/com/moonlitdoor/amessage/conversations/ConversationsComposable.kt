@@ -14,10 +14,11 @@ import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Loading
 import com.moonlitdoor.amessage.extensions.Ensure
 import com.moonlitdoor.amessage.routes.Routes
+import timber.log.Timber
 
 @Composable
 fun Conversations(navHostController: NavHostController, viewModel: ConversationsViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("Conversations Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.conversations_title),
@@ -32,7 +33,7 @@ fun Conversations(navHostController: NavHostController, viewModel: Conversations
         launchSingleTop = true
       }
       is ConversationsViewState.Loading -> Loading()
-      is ConversationsViewState.Empty -> ConversationsEmpty()
+      is ConversationsViewState.Empty -> ConversationsEmpty(navHostController = navHostController)
       is ConversationsViewState.Result -> ConversationsResult(navHostController = navHostController, viewState = state)
     }
   }

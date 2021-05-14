@@ -1,8 +1,10 @@
 package com.moonlitdoor.amessage.domain.mapper
 
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
+import com.moonlitdoor.amessage.database.relation.ConnectionConversationsRelation
 import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.domain.model.ConnectionWithConversations
 import com.moonlitdoor.amessage.domain.model.Handle
 import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.model.Keys
@@ -46,6 +48,21 @@ object ConnectionMapper {
     state = Connection.State.Pending,
     scanned = payload.scanned,
     confirmed = payload.confirmed,
+  )
+
+  fun map(entity: ConnectionConversationsRelation) = ConnectionWithConversations(
+    profileId = IdMapper.map(entity.connection.profileId),
+    connectionId = IdMapper.map(entity.connection.connectionId),
+    token = TokenMapper.map(entity.connection.token),
+    handle = HandleMapper.map(entity.connection.handle),
+    keys = KeysMapper.map(entity.connection.keys),
+    associatedData = AssociatedDataMapper.map(entity.connection.associatedData),
+    state = ConnectionStateMapper.map(entity.connection.state),
+    scanned = entity.connection.scanned,
+    confirmed = entity.connection.confirmed,
+    conversations = entity.conversations.map {
+      ConversationMapper.map(it)
+    }
   )
 
   fun mapToDto(entity: ConnectionEntity) = ConnectionDto(

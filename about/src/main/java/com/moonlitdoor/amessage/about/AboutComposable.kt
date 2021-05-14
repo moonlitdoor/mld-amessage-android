@@ -8,10 +8,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.components.Navigation
+import timber.log.Timber
 
 @Composable
 fun About(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("About Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.about_title),

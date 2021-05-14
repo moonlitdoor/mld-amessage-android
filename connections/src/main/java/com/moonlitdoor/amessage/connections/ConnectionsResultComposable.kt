@@ -27,9 +27,9 @@ import java.time.Instant
 
 @Composable
 fun ConnectionsResult(navHostController: NavHostController, viewState: ConnectionsViewState.Result) {
+  Timber.d("ConnectionsResult Composable")
   LazyColumn {
     items(viewState.items) {
-      Timber.d("$it")
       Box(
         modifier = Modifier
           .fillMaxWidth()

@@ -18,6 +18,7 @@ import timber.log.Timber
 
 @Composable
 fun ExperimentsUi(navHostController: NavHostController, setAppChrome: (AppChrome) -> Unit) {
+  Timber.d("ExperimentsUi Composable")
   setAppChrome(AppChrome(
     title = stringResource(id = R.string.experiments_title),
     navigation = Navigation { navHostController.popBackStack() }

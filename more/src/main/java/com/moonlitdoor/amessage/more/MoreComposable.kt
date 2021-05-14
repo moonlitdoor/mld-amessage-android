@@ -16,10 +16,11 @@ import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.experiments.Experiments
 import com.moonlitdoor.amessage.routes.Routes
+import timber.log.Timber
 
 @Composable
 fun More(navHostController: NavHostController, viewModel: MoreViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
-
+  Timber.d("More Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.more_title),

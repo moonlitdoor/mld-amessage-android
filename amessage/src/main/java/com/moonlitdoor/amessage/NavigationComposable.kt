@@ -33,10 +33,12 @@ import com.moonlitdoor.amessage.settings.EmployeeSettings
 import com.moonlitdoor.amessage.settings.Settings
 import com.moonlitdoor.amessage.settings.SettingsViewModel
 import com.moonlitdoor.amessage.windows.Windows
+import timber.log.Timber
 import java.util.UUID
 
 @Composable
 fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
+  Timber.d("Navigation Composable")
   NavHost(navHostController, startDestination = Routes.Conversations.route) {
     composable(route = Routes.Handle.route) {
       val viewModel: HandleViewModel = hiltNavGraphViewModel(it)
@@ -77,6 +79,7 @@ fun Navigation(navHostController: NavHostController, setAppChrome: (appChrome: A
       val connectionId = backStackEntry.arguments?.getString(Routes.Connection.Arguments.CONNECTION_ID)
       connectionId ?: throw IllegalArgumentException("connectionId can not be null")
       val viewModel: ConnectionViewModel = hiltNavGraphViewModel(backStackEntry)
+      viewModel.setConnectionId(UUID.fromString(connectionId))
       Connection(
         navHostController = navHostController,
         viewModel = viewModel,

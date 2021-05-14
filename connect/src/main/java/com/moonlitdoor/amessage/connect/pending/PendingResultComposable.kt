@@ -34,7 +34,7 @@ import java.time.Instant
 
 @Composable
 fun PendingResult(viewModel: ConnectViewModel, viewState: PendingViewState.Result) {
-
+  Timber.d("PendingResult Composable")
   var selectedConnection by remember { mutableStateOf<Connection?>(null) }
 
   LazyColumn {

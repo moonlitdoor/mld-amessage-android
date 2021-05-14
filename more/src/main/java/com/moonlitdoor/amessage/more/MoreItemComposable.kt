@@ -15,9 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import timber.log.Timber
 
 @Composable
 fun MoreItem(@StringRes title: Int, onClick: () -> Unit = { }) {
+  Timber.d("MoreItem Composable")
   Box(
     Modifier
       .fillMaxWidth()

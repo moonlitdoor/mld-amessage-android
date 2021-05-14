@@ -16,9 +16,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import timber.log.Timber
 
 @Composable
 fun SettingSwitchItem(@StringRes title: Int, checked: Boolean, @StringRes description: Int? = null, onClick: (Boolean) -> Unit) {
+  Timber.d("SettingSwitchItem Composable")
   Column(
     Modifier
       .fillMaxWidth()

@@ -15,7 +15,7 @@ import timber.log.Timber
 
 @Composable
 fun ConnectionsLoading() {
-  Timber.d("Loading...")
+  Timber.d("ConnectionsLoading Composable")
   Box(
     modifier = Modifier.fillMaxSize(),
     contentAlignment = Alignment.Center,

@@ -6,8 +6,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
@@ -25,28 +23,28 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.moonlitdoor.amessage.components.ActionItem
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.domain.model.Handle
 import timber.log.Timber
 
 @Composable
 fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, setAppChrome: (appChrome: AppChrome) -> Unit) {
+  Timber.d("Handle Composable")
   var isActionItemEnabled by remember { mutableStateOf(false) }
-  setAppChrome(
-    AppChrome(
-      title = stringResource(id = R.string.handle_title),
-      actionItems = listOf(
-        ActionItem(
-          enabled = isActionItemEnabled,
-          onClick = {
-            viewModel.saveHandle()
-          },
-          imageVector = Icons.Filled.Check,
-        )
-      )
-    )
-  )
+//  setAppChrome(
+//    AppChrome(
+//      title = stringResource(id = R.string.handle_title),
+//      actionItems = listOf(
+//        ActionItem(
+//          enabled = isActionItemEnabled,
+//          onClick = {
+//            viewModel.saveHandle()
+//          },
+//          imageVector = Icons.Filled.Check,
+//        )
+//      )
+//    )
+//  )
 
   val isHandleSet: Boolean by viewModel.isHandleSet.collectAsState(initial = false)
   if (isHandleSet) {

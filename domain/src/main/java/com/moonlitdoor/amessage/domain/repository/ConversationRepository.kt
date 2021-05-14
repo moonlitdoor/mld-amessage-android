@@ -24,9 +24,11 @@ class ConversationRepository @Inject constructor(
   private val workManager: WorkManager,
 ) {
 
-  fun getConversations(): Flow<List<Conversation>> = conversationDao.getConversationsFlow().map { list -> list.map { ConversationMapper.map(it) } }
+  fun getConversationsFlow(): Flow<List<Conversation>> = conversationDao.getFlow().map { list -> list.map { ConversationMapper.map(it) } }
 
-  fun getConversation(conversationId: Id): Flow<Conversation> = conversationDao.getConversationFlow(conversationId.value).map { ConversationMapper.map(it) }
+  fun getConversationFlow(conversationId: Id): Flow<Conversation?> = conversationDao.getFlow(conversationId.value).map { entity: ConversationEntity? -> entity?.let { ConversationMapper.map(it) } }
+
+  suspend fun getConversation(conversationId: Id): Conversation? = conversationDao.get(conversationId.value)?.let { ConversationMapper.map(it) }
 
   suspend fun create(connectionIds: List<UUID>, title: String?, topic: String?) {
     val conversation = ConversationEntity(title = title?.let { TitleProjection(it) }, topic = topic?.let { TopicProjection(it) })

@@ -11,9 +11,11 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.extensions.Ensure
+import timber.log.Timber
 
 @Composable
 fun Connections(navHostController: NavHostController, viewModel: ConnectionsViewModel, setAppChrome: (AppChrome) -> Unit) {
+  Timber.d("Connections Composable")
   setAppChrome(
     AppChrome(
       title = stringResource(id = R.string.connections_title),

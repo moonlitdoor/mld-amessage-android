@@ -42,25 +42,27 @@ class ConversationCreateWorker @AssistedInject constructor(
       inputData.getString(CONNECTION_UUID)?.let { connectionUuid ->
         inputData.getString(CONVERSATION_UUID)?.let { conversationUuid ->
           inputData.getStringArray(CONNECTION_UUIDS)?.let { connectionUuids ->
-            val connectionEntity = connectionDao.get(UUID.fromString(connectionUuid))
-            val conversationEntity = conversationDao.get(UUID.fromString(conversationUuid))
-            return@withContext when (
-              client.send(
-                ConversationCreatePayload(
-                  conversationId = UUID.fromString(conversationUuid),
-                  title = conversationEntity.title?.value,
-                  topic = conversationEntity.topic?.value,
-                  created = conversationEntity.created,
-                  keys = KeysMapper.mapToDto(conversationEntity.keys),
-                  associatedData = AssociatedDataMapper.mapToDto(conversationEntity.associatedData),
-                  connectionUuids = connectionUuids.map { UUID.fromString(it) }.toTypedArray()
-                ),
-                ConnectionMapper.mapToDto(connectionEntity)
-              )
-            ) {
-              NetworkRequestStatus.SENT -> Result.success()
-              NetworkRequestStatus.QUEUED,
-              NetworkRequestStatus.FAILED -> Result.retry()
+            connectionDao.get(UUID.fromString(connectionUuid)).let { connectionEntity ->
+              conversationDao.get(UUID.fromString(conversationUuid))?.let { conversationEntity ->
+                return@withContext when (
+                  client.send(
+                    ConversationCreatePayload(
+                      conversationId = UUID.fromString(conversationUuid),
+                      title = conversationEntity.title?.value,
+                      topic = conversationEntity.topic?.value,
+                      created = conversationEntity.created,
+                      keys = KeysMapper.mapToDto(conversationEntity.keys),
+                      associatedData = AssociatedDataMapper.mapToDto(conversationEntity.associatedData),
+                      connectionUuids = connectionUuids.map { UUID.fromString(it) }.toTypedArray()
+                    ),
+                    ConnectionMapper.mapToDto(connectionEntity)
+                  )
+                ) {
+                  NetworkRequestStatus.SENT -> Result.success()
+                  NetworkRequestStatus.QUEUED,
+                  NetworkRequestStatus.FAILED -> Result.retry()
+                }
+              }
             }
           }
         }

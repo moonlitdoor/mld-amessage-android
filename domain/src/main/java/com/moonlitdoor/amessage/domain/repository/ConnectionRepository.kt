@@ -5,6 +5,8 @@ import com.moonlitdoor.amessage.database.dao.ConnectionDao
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.domain.mapper.ConnectionMapper
 import com.moonlitdoor.amessage.domain.model.Connection
+import com.moonlitdoor.amessage.domain.model.ConnectionWithConversations
+import com.moonlitdoor.amessage.domain.model.Id
 import com.moonlitdoor.amessage.domain.work.ConnectionConfirmWorker
 import com.moonlitdoor.amessage.domain.work.ConnectionInviteWorker
 import com.moonlitdoor.amessage.domain.work.ConnectionRejectWorker
@@ -19,7 +21,9 @@ class ConnectionRepository @Inject constructor(
 ) {
   suspend fun get(connectionId: UUID): Connection = ConnectionMapper.map(connectionDao.get(connectionId))
 
-  fun getFlow(connectionId: UUID): Flow<Connection> = connectionDao.getFlow(connectionId).map { ConnectionMapper.map(it) }
+  fun getFlow(connectionId: Id): Flow<Connection?> = connectionDao.getFlow(connectionId.value).map { entity -> entity?.let { ConnectionMapper.map(it) } }
+
+  fun getConnectionWithConversationsFlow(connectionId: Id): Flow<ConnectionWithConversations?> = connectionDao.getConnectionWithConversationsFlow(connectionId.value).map { relation -> relation?.let { ConnectionMapper.map(it) } }
 
   fun getConnected() = connectionDao.getConnected().map { list -> list.map { ConnectionMapper.map(it) } }
 

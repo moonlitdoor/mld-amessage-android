@@ -6,9 +6,11 @@ import androidx.compose.material.Divider
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import com.moonlitdoor.amessage.domain.model.FrequentlyAskedQuestion
+import timber.log.Timber
 
 @Composable
 fun FaqResult(result: FaqViewState.Result) {
+  Timber.d("FaqResult Composable")
   LazyColumn {
     itemsIndexed(result.items) { index, item ->
       FaqItem(index = index, faq = item)

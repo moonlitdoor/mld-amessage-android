@@ -18,9 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.moonlitdoor.amessage.components.ExpandableContent
 import com.moonlitdoor.amessage.domain.model.FrequentlyAskedQuestion
+import timber.log.Timber
 
 @Composable
 fun FaqItem(index: Int, faq: FrequentlyAskedQuestion, expanded: Boolean = false) {
+  Timber.d("FaqItem Composable")
   var expandedState by remember { mutableStateOf(expanded) }
   Column {
     Row(
