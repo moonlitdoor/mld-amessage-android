@@ -25,7 +25,7 @@
   <string name="connect_ok">OK</string>
   <string name="connect_cancel">Cancel</string>
 
-  <string name="connection_title">Connection</string>
+<!--  <string name="connection_title">Connection</string>-->
   <string name="connection_empty">The requested connection was not found.</string>
 
   <string name="connections_title">Connections</string>
