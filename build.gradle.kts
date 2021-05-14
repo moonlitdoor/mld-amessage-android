@@ -13,12 +13,12 @@ buildscript {
     classpath("com.moonlitdoor.amessage:jacoco")
     classpath("com.google.dagger:hilt-android-gradle-plugin:2.35.1")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.38.0")
-    classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.1")
-    classpath("com.github.triplet.gradle:play-publisher:3.3.0")
+    classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.2")
+    classpath("com.github.triplet.gradle:play-publisher:3.4.0")
     classpath("com.moonlitdoor.git-version:git-version:0.1.1")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.32")
-    classpath("com.google.firebase:firebase-crashlytics-gradle:2.5.2")
-    classpath("com.google.firebase:perf-plugin:1.3.5")
+    classpath("com.google.firebase:firebase-crashlytics-gradle:2.6.1")
+    classpath("com.google.firebase:perf-plugin:1.4.0")
     classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
   }
 }
@@ -29,7 +29,6 @@ allprojects {
   repositories {
     google()
     mavenCentral()
-    jcenter()
   }
 //  ext {
 //    set("smokeTests", if (project.hasProperty("smokeTests")) project.property("smokeTests") else false)

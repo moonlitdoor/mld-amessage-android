@@ -31,5 +31,4 @@ class ConversationViewModel @Inject constructor(
   fun setConversationId(conversationId: Id) {
     _conversationId.value = conversationId
   }
-
 }
