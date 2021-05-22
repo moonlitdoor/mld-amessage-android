@@ -7,7 +7,7 @@ object Dependencies {
 
   object Androidx {
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha07"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha08"
     }
 
     object Camera {
@@ -20,7 +20,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-beta06"
+      const val version = "1.0.0-beta07"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -33,7 +33,7 @@ object Dependencies {
     }
 
     object ConstraintLayout {
-      const val constraintLayoutCompose = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha06"
+      const val constraintLayoutCompose = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha07"
     }
 
     object Core {
@@ -43,16 +43,16 @@ object Dependencies {
     object Hilt {
       const val hilt = "androidx.hilt:hilt:1.0.0-beta01"
       const val hiltCompiler = "androidx.hilt:hilt-compiler:1.0.0"
-      const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha01"
+      const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha02"
       const val hiltWork = "androidx.hilt:hilt-work:1.0.0"
     }
 
     object Lifecycle {
-      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha04"
+      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha05"
     }
 
     object Navigation {
-      const val navigationCompose = "androidx.navigation:navigation-compose:1.0.0-alpha10"
+      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha01"
     }
 
     object Preference {
@@ -91,7 +91,7 @@ object Dependencies {
   object Com {
     object Google {
       object Accompanist {
-        private const val version = "0.9.1"
+        private const val version = "0.10.0"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
       }
@@ -110,7 +110,7 @@ object Dependencies {
 
       object Crypto {
         object Tink {
-          const val tinkAndroid = "com.google.crypto.tink:tink-android:1.5.0"
+          const val tinkAndroid = "com.google.crypto.tink:tink-android:1.6.0"
         }
       }
 

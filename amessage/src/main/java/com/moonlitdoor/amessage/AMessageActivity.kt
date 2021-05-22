@@ -24,9 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.KEY_ROUTE
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.routes.Routes
@@ -92,14 +90,13 @@ class AMessageActivity : AppCompatActivity() {
             bottomBar = {
               AnimatedVisibility(visible = currentAppChrome.showBottomBar) {
                 BottomNavigation {
-                  val currentState by navController.currentBackStackEntryAsState()
-                  val currentRoute = currentState?.arguments?.getString(KEY_ROUTE)
+                  val navBackStackEntry by navController.currentBackStackEntryAsState()
+                  val currentRoute = navBackStackEntry?.destination?.route
                   BottomNavigationItem(
                     icon = { Icon(painterResource(id = R.drawable.ic_baseline_chat_24), null) },
                     selected = Routes.Conversations.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Conversations.route) {
-                        popUpTo = navController.graph.startDestination
                         launchSingleTop = true
                       }
                     }
@@ -109,7 +106,6 @@ class AMessageActivity : AppCompatActivity() {
                     selected = Routes.Connections.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Connections.route) {
-                        popUpTo = navController.graph.startDestination
                         launchSingleTop = true
                       }
                     }
@@ -119,7 +115,6 @@ class AMessageActivity : AppCompatActivity() {
                     selected = Routes.Connect.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.Connect.route) {
-                        popUpTo = navController.graph.startDestination
                         launchSingleTop = true
                       }
                     }
@@ -129,7 +124,6 @@ class AMessageActivity : AppCompatActivity() {
                     selected = Routes.More.route == currentRoute,
                     onClick = {
                       navController.navigate(Routes.More.route) {
-                        popUpTo = navController.graph.startDestination
                         launchSingleTop = true
                       }
                     }
