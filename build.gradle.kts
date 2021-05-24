@@ -6,12 +6,17 @@ buildscript {
     google()
     mavenCentral()
     maven(url = "https://plugins.gradle.org/m2/")
+    maven(url = "https://oss.sonatype.org/content/repositories/snapshots") {
+      content {
+        includeModule("com.google.dagger", "hilt-android-gradle-plugin")
+      }
+    }
   }
   dependencies {
     classpath("com.moonlitdoor.amessage:dependencies")
     classpath("com.moonlitdoor.amessage:android")
     classpath("com.moonlitdoor.amessage:jacoco")
-    classpath("com.google.dagger:hilt-android-gradle-plugin:2.35.1")
+    classpath("com.google.dagger:hilt-android-gradle-plugin:HEAD-SNAPSHOT")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.38.0")
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.2")
     classpath("com.github.triplet.gradle:play-publisher:3.4.0")
