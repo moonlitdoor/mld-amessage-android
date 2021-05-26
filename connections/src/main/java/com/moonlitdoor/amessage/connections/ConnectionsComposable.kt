@@ -4,25 +4,16 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.moonlitdoor.amessage.components.AppChrome
 import com.moonlitdoor.amessage.extensions.Ensure
 import timber.log.Timber
 
 @Composable
-fun Connections(navHostController: NavHostController, viewModel: ConnectionsViewModel, setAppChrome: (AppChrome) -> Unit) {
+fun Connections(navHostController: NavHostController, viewModel: ConnectionsViewModel, showBottomBar: (Boolean) -> Unit) {
   Timber.d("Connections Composable")
-  setAppChrome(
-    AppChrome(
-      title = stringResource(id = R.string.connections_title),
-      showBottomBar = true
-    )
-  )
-
   val viewState by viewModel.viewState.collectAsState(initial = ConnectionsViewState.Loading)
   Ensure exhaustive when (viewState) {
     is ConnectionsViewState.Loading -> ConnectionsLoading()

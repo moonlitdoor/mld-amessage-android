@@ -7,7 +7,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.material.OutlinedButton
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,18 +24,29 @@ import timber.log.Timber
 @Composable
 fun ConversationsEmpty(navHostController: NavHostController) {
   Timber.d("ConversationsEmpty Composable")
-  Box(
-    modifier = Modifier.fillMaxSize(),
-    contentAlignment = Alignment.Center
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = {
+          Text(text = stringResource(id = R.string.conversations_title))
+        },
+        elevation = 12.dp,
+      )
+    },
   ) {
-    Column(
-      horizontalAlignment = Alignment.CenterHorizontally,
-      verticalArrangement = Arrangement.Center
+    Box(
+      modifier = Modifier.fillMaxSize(),
+      contentAlignment = Alignment.Center
     ) {
-      Text(text = stringResource(id = R.string.conversations_none))
-      Spacer(modifier = Modifier.height(32.dp))
-      OutlinedButton(onClick = { navHostController.navigate(Routes.Connections.route) }) {
-        Text(text = stringResource(id = R.string.connections_title))
+      Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+      ) {
+        Text(text = stringResource(id = R.string.conversations_none))
+        Spacer(modifier = Modifier.height(32.dp))
+        OutlinedButton(onClick = { navHostController.navigate(Routes.Connections.route) }) {
+          Text(text = stringResource(id = R.string.connections_title))
+        }
       }
     }
   }

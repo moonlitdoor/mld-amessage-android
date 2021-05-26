@@ -1,24 +1,44 @@
 package com.moonlitdoor.amessage.about
 
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.moonlitdoor.amessage.components.AppChrome
 import timber.log.Timber
 
 @Composable
-fun Statistics(navHostController: NavHostController, setAppChrome: (appChrome: AppChrome) -> Unit) {
+fun Statistics(navHostController: NavHostController, showBottomBar: (Boolean) -> Unit) {
   Timber.d("About Statistics")
-  setAppChrome(
-    AppChrome(
-      title = stringResource(id = R.string.more_title),
-      showBottomBar = true
-    )
-  )
-
+  showBottomBar(true)
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = {
+          Text(text = stringResource(id = R.string.more_title))
+        },
+        elevation = 12.dp,
+        navigationIcon = {
+          IconButton(onClick = { navHostController.popBackStack() }) {
+            Icon(
+              imageVector = Icons.Filled.ArrowBack,
+              contentDescription = stringResource(R.string.connect_ok)
+            )
+          }
+        },
+      )
+    },
+  ) {
+  }
 //  VERSION
 //  BUILD DATE
 //  Privacy Policy

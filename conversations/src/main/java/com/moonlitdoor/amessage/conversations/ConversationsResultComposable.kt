@@ -7,9 +7,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -25,19 +28,30 @@ import java.time.Instant
 @Composable
 fun ConversationsResult(navHostController: NavHostController, viewState: ConversationsViewState.Result) {
   Timber.d("ConversationsResult Composable")
-  LazyColumn {
-    items(viewState.items) {
-      Timber.d("$it")
-      Box(
-        modifier = Modifier
-          .fillMaxWidth()
-          .wrapContentHeight()
-          .clickable {
-            navHostController.navigate(Routes.Conversation(it.conversationId.value).route)
-          }
-          .padding(8.dp)
-      ) {
-        Text(text = it.title ?: "TODO: What is the default title", Modifier.padding(8.dp))
+  Scaffold(
+    topBar = {
+      TopAppBar(
+        title = {
+          Text(text = stringResource(id = R.string.conversations_title))
+        },
+        elevation = 12.dp,
+      )
+    },
+  ) {
+    LazyColumn {
+      items(viewState.items) {
+        Timber.d("$it")
+        Box(
+          modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentHeight()
+            .clickable {
+              navHostController.navigate(Routes.Conversation(it.conversationId.value).route)
+            }
+            .padding(8.dp)
+        ) {
+          Text(text = it.title ?: "TODO: What is the default title", Modifier.padding(8.dp))
+        }
       }
     }
   }
