@@ -6,17 +6,12 @@ buildscript {
     google()
     mavenCentral()
     maven(url = "https://plugins.gradle.org/m2/")
-    maven(url = "https://oss.sonatype.org/content/repositories/snapshots") {
-      content {
-        includeModule("com.google.dagger", "hilt-android-gradle-plugin")
-      }
-    }
   }
   dependencies {
     classpath("com.moonlitdoor.amessage:dependencies")
     classpath("com.moonlitdoor.amessage:android")
     classpath("com.moonlitdoor.amessage:jacoco")
-    classpath("com.google.dagger:hilt-android-gradle-plugin:HEAD-SNAPSHOT")
+    classpath("com.google.dagger:hilt-android-gradle-plugin:2.36")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.38.0")
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.2")
     classpath("com.github.triplet.gradle:play-publisher:3.4.0")
@@ -60,12 +55,6 @@ plugins {
 }
 
 apply(plugin = "org.jlleitschuh.gradle.ktlint")
-
-gradle.projectsEvaluated {
-  tasks.withType(JavaCompile::class.java) {
-    options.compilerArgs + "-Xmaxerrs" + "500"
-  }
-}
 
 gradle.taskGraph.whenReady {
   val lintTaskRegex = """^((?!\:amessage:).)*lint$""".toRegex()

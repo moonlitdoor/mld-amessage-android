@@ -1,5 +1,6 @@
-package com.moonlitdoor.amessage.settings
+package com.moonlitdoor.amessage.about
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -12,24 +13,20 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import timber.log.Timber
 
 @Composable
-fun EmployeeSettings(navHostController: NavHostController, viewModel: SettingsViewModel, showBottomBar: (Boolean) -> Unit) {
-  Timber.d("EmployeeSettings Composable")
-  showBottomBar(false)
+fun AboutData(state: AboutScreenState.Data, popBackStack: () -> Unit) {
+  Timber.d("AboutData")
   Scaffold(
     topBar = {
       TopAppBar(
         title = {
-          Text(text = stringResource(id = R.string.connect_employee_settings))
+          Text(text = stringResource(id = R.string.about_title))
         },
         elevation = 12.dp,
         navigationIcon = {
-          IconButton(onClick = { navHostController.popBackStack() }) {
+          IconButton(onClick = popBackStack) {
             Icon(
               imageVector = Icons.Filled.ArrowBack,
               contentDescription = stringResource(R.string.connect_ok)
@@ -39,15 +36,22 @@ fun EmployeeSettings(navHostController: NavHostController, viewModel: SettingsVi
       )
     },
   ) {
+    Column {
+      Text(text = state.version)
+      Text(text = state.buildDate)
+    }
   }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
-fun EmployeeSettingsPreview() {
+fun AboutData() {
   MaterialTheme {
-    val navHostController = rememberNavController()
-    val viewModel: SettingsViewModel = viewModel()
-    EmployeeSettings(navHostController, viewModel = viewModel) { }
+    AboutData(
+      AboutScreenState.Data(
+        version = "version",
+        buildDate = "buildDate"
+      )
+    ) {}
   }
 }

@@ -11,12 +11,12 @@ import javax.inject.Inject
 @HiltViewModel
 class ConversationsViewModel @Inject constructor(repository: ConversationRepository, profileRepository: ProfileRepository) : ViewModel() {
 
-  val viewState: Flow<ConversationsViewState> = profileRepository.handleIsSet()
+  val screenState: Flow<ConversationsScreenState> = profileRepository.handleIsSet()
     .combine(repository.getConversationsFlow()) { isHandleSet, conversations ->
       when {
-        !isHandleSet -> ConversationsViewState.HandleNotSet
-        conversations.isEmpty() -> ConversationsViewState.Empty
-        else -> ConversationsViewState.Result(conversations)
+        !isHandleSet -> ConversationsScreenState.HandleNotSet
+        conversations.isEmpty() -> ConversationsScreenState.Empty
+        else -> ConversationsScreenState.Result(conversations)
       }
     }
 }

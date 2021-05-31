@@ -7,6 +7,8 @@ plugins {
 
 dependencies {
 
+  implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
+
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Junit.junit)
   testImplementation(Dependencies.Org.Robolectric.robolectric)

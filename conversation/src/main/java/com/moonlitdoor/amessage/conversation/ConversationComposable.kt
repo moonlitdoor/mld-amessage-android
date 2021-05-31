@@ -20,7 +20,7 @@ fun Conversation(navHostController: NavHostController, viewModel: ConversationVi
   val viewState by viewModel.viewState.collectAsState(initial = ConversationViewState.Loading)
   viewState.let { state ->
     Ensure exhaustive when (state) {
-      is ConversationViewState.Loading -> Loading()
+      is ConversationViewState.Loading -> Loading("Conversation")
       is ConversationViewState.Empty -> ConversationEmpty()
       is ConversationViewState.Result -> ConversationResult(navHostController = navHostController, state = state, showBottomBar)
     }

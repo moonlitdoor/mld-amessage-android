@@ -16,6 +16,7 @@ dependencies {
   implementation(Dependencies.Org.Jetbrains.Kotlin.kotlinStandardLibrary)
   implementation(Dependencies.Com.Google.Firebase.firebaseConfig)
   implementation(Dependencies.Com.Google.Firebase.firebaseIid)
+  implementation(Dependencies.Com.JakeWharton.Timber.timber)
 
   testImplementation(Dependencies.Androidx.Test.Ext.junitKtx)
   testImplementation(Dependencies.Com.Google.Truth.truth)

@@ -27,7 +27,9 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.COMPONENTS))
+  implementation(project(Modules.EXTENSIONS))
   implementation(project(Modules.RESOURCES))
+  implementation(project(Modules.ROOT))
   implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 

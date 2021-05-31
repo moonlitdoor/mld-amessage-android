@@ -89,7 +89,6 @@ fun Handle(navHostController: NavHostController, viewModel: HandleViewModel, sho
         onDispose { }
       }
     }
-
   }
 }
 

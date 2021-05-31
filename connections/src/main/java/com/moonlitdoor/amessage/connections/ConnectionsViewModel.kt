@@ -10,10 +10,10 @@ import javax.inject.Inject
 @HiltViewModel
 class ConnectionsViewModel @Inject constructor(repository: ConnectionRepository) : ViewModel() {
 
-  val viewState: Flow<ConnectionsViewState> = repository.getConnected().map {
+  val screenState: Flow<ConnectionsScreenState> = repository.getConnected().map {
     when (it.isNotEmpty()) {
-      true -> ConnectionsViewState.Result(it)
-      false -> ConnectionsViewState.Empty
+      true -> ConnectionsScreenState.Result(it)
+      false -> ConnectionsScreenState.Empty
     }
   }
 }

@@ -1,22 +1,17 @@
 package com.moonlitdoor.amessage.conversations
 
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Conversation
 import com.moonlitdoor.amessage.domain.model.Id
@@ -26,7 +21,7 @@ import timber.log.Timber
 import java.time.Instant
 
 @Composable
-fun ConversationsResult(navHostController: NavHostController, viewState: ConversationsViewState.Result) {
+fun ConversationsResult(screenState: ConversationsScreenState.Result, navigate: (Routes) -> Unit) {
   Timber.d("ConversationsResult Composable")
   Scaffold(
     topBar = {
@@ -37,31 +32,30 @@ fun ConversationsResult(navHostController: NavHostController, viewState: Convers
         elevation = 12.dp,
       )
     },
+    floatingActionButton = {
+      FloatingActionButton(
+        onClick = {
+          /* TODO Create Conversation Flow navigateTo(Routes.CreateConversation) */
+          Timber.w("navigateTo(Routes.CreateConversation)")
+        }
+      ) {
+        Icon(painterResource(id = R.drawable.ic_baseline_forum_24), null)
+      }
+    }
   ) {
     LazyColumn {
-      items(viewState.items) {
+      items(screenState.items) {
         Timber.d("$it")
-        Box(
-          modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentHeight()
-            .clickable {
-              navHostController.navigate(Routes.Conversation(it.conversationId.value).route)
-            }
-            .padding(8.dp)
-        ) {
-          Text(text = it.title ?: "TODO: What is the default title", Modifier.padding(8.dp))
-        }
+        ConversationItem(conversation = it, navigate = navigate)
       }
     }
   }
 }
 
-@Preview(showSystemUi = true)
+@Preview()
 @Composable
 fun ConnectionsResultPreview() {
-  val navHostController = rememberNavController()
-  val viewState = ConversationsViewState.Result(
+  val viewState = ConversationsScreenState.Result(
     listOf(
       Conversation(
         conversationId = Id(),
@@ -73,5 +67,5 @@ fun ConnectionsResultPreview() {
       )
     )
   )
-  ConversationsResult(navHostController, viewState)
+  ConversationsResult(viewState) { }
 }

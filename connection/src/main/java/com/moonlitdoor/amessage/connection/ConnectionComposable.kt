@@ -16,11 +16,10 @@ import java.util.UUID
 fun Connection(navHostController: NavHostController, viewModel: ConnectionViewModel, connectionId: UUID, showBottomBar: (Boolean) -> Unit) {
   Timber.d("Connection Composable")
 
-
   val viewState by viewModel.viewState.collectAsState(initial = ConnectionViewState.Loading)
   viewState.let { state ->
     Ensure exhaustive when (state) {
-      is ConnectionViewState.Loading -> Loading()
+      is ConnectionViewState.Loading -> Loading(R.string.connection_title)
       is ConnectionViewState.Empty -> ConnectionEmpty()
       is ConnectionViewState.Result -> ConnectionResult(navHostController = navHostController, viewModel = viewModel, state = state, showBottomBar = showBottomBar)
     }

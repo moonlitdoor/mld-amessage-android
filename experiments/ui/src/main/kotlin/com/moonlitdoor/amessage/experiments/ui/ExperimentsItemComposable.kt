@@ -1,11 +1,10 @@
 package com.moonlitdoor.amessage.experiments.ui
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Divider
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
 import androidx.compose.material.MaterialTheme
@@ -23,7 +22,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
 import com.moonlitdoor.amessage.experiments.Experiment
 import com.moonlitdoor.amessage.experiments.FirebaseRemoteConfigWrapper
 import com.moonlitdoor.amessage.root.Root
@@ -32,48 +30,22 @@ import timber.log.Timber
 @Composable
 fun ExperimentsItem(item: Experiment<*>) {
   Timber.d("ExperimentsItem Composable")
-  ConstraintLayout(
+  Row(
     modifier = Modifier
       .fillMaxWidth()
       .wrapContentHeight()
-      .padding(8.dp)
+//      .padding(8.dp)
   ) {
-    val (title, statistics, dropdown) = createRefs()
-    val guideline = createGuidelineFromAbsoluteRight(fraction = .4F)
-    Text(
-      modifier = Modifier
-        .constrainAs(title) {
-          top.linkTo(parent.top)
-          start.linkTo(parent.start)
-        },
-      text = item.title ?: item.key,
-    )
-    Column(modifier = Modifier
-      .wrapContentSize()
-      .constrainAs(statistics) {
-        linkTo(
-          top = title.bottom,
-          bottom = parent.bottom,
-          verticalBias = 0F,
-          start = title.start,
-          startMargin = 4.dp,
-          end = guideline,
-          horizontalBias = 0F
-        )
-
-      }) {
+    Column(modifier = Modifier.fillMaxWidth(.5f)) {
+      Text(modifier = Modifier, text = item.title ?: item.key)
+      val indent = 4.dp
       item.description?.let {
-        Text(text = it, style = MaterialTheme.typography.overline, maxLines = 2)
+        Text(text = it, style = MaterialTheme.typography.overline, maxLines = 2, modifier = Modifier.padding(start = indent))
       }
-      Text(text = "Key: ${item.key}", style = MaterialTheme.typography.overline)
-      Text(text = "Remote: ${item.remoteValue}", style = MaterialTheme.typography.overline)
+      Text(text = "Key: ${item.key}", style = MaterialTheme.typography.overline, modifier = Modifier.padding(start = indent))
+      Text(text = "Remote: ${item.remoteValue}", style = MaterialTheme.typography.overline, modifier = Modifier.padding(start = indent))
     }
-    Column(
-      modifier = Modifier.constrainAs(dropdown) {
-        centerVerticallyTo(parent)
-        linkTo(start = guideline, end = parent.end)
-      },
-    ) {
+    Column(modifier = Modifier.fillMaxWidth(.5f)) {
       val focusManager = LocalFocusManager.current
       var expanded by remember { mutableStateOf(false) }
       OutlinedTextField(
@@ -102,7 +74,7 @@ fun ExperimentsItem(item: Experiment<*>) {
       }
     }
   }
-  Divider()
+//  Divider()
 }
 
 @Preview(showBackground = true)

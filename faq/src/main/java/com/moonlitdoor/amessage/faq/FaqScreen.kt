@@ -16,12 +16,12 @@ import timber.log.Timber
 fun Faq(navHostController: NavHostController, viewModel: FaqViewModel, showBottomBar: (Boolean) -> Unit) {
   Timber.d("Faq Composable")
   showBottomBar(false)
-  val viewState by viewModel.viewState.collectAsState(initial = FaqViewState.Loading)
-  viewState.let { state ->
+  val screenState by viewModel.screenState.collectAsState(initial = FaqScreenState.Loading)
+  screenState.let { state ->
     Ensure exhaustive when (state) {
-      is FaqViewState.Loading -> Loading()
-      is FaqViewState.Empty -> FaqEmpty()
-      is FaqViewState.Result -> FaqResult(state)
+      is FaqScreenState.Loading -> Loading(R.string.faq_title)
+      is FaqScreenState.Empty -> FaqEmpty { navHostController.popBackStack() }
+      is FaqScreenState.Result -> FaqResult(state) { navHostController.popBackStack() }
     }
   }
 }

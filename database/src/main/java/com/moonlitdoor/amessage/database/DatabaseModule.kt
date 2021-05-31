@@ -17,21 +17,25 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
+  @Singleton
   @Provides
   fun providesRealtimeDatabase(): FirebaseDatabase = Firebase.database.apply {
     setPersistenceEnabled(true)
   }
 
+  @Singleton
   @Provides
   fun providesDatabaseReference(database: FirebaseDatabase): DatabaseReference = database.getReference("faq").apply {
     keepSynced(true)
   }
 
+  @Singleton
   @Provides
   fun providesAppDatabase(@ApplicationContext context: Context): AMessageDatabase = Room.databaseBuilder(context, AMessageDatabase::class.java, AMessageDatabase.DATABASE_NAME).addMigrations(*Migrations.ALL).build()
 

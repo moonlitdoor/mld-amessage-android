@@ -1,14 +1,12 @@
-package com.moonlitdoor.amessage.components
+package com.moonlitdoor.amessage.connections
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.requiredSize
-import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.OutlinedButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -18,20 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.moonlitdoor.amessage.theme.AMessageTheme
+import com.moonlitdoor.amessage.routes.Routes
 import timber.log.Timber
 
 @Composable
-fun Loading(@StringRes title: Int) = Loading(stringResource(id = title))
-
-@Composable
-fun Loading(title: String) {
-  Timber.d("Loading Composable")
+fun ConnectionsEmpty(navigate: (Routes) -> Unit) {
+  Timber.d("ConnectionsEmpty Composable")
   Scaffold(
     topBar = {
       TopAppBar(
         title = {
-          Text(text = title)
+          Text(text = stringResource(id = R.string.connections_title))
         },
         elevation = 12.dp,
       )
@@ -39,24 +34,24 @@ fun Loading(title: String) {
   ) {
     Box(
       modifier = Modifier.fillMaxSize(),
-      contentAlignment = Alignment.Center,
+      contentAlignment = Alignment.Center
     ) {
       Column(
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Center
       ) {
-        CircularProgressIndicator(modifier = Modifier.requiredSize(36.dp))
-        Spacer(modifier = Modifier.height(8.dp))
-        Text(stringResource(id = R.string.components_loading))
+        Text(text = stringResource(id = R.string.connections_none))
+        Spacer(modifier = Modifier.height(32.dp))
+        OutlinedButton(onClick = { navigate(Routes.Connect) }) {
+          Text(text = stringResource(id = R.string.connections_connect))
+        }
       }
     }
   }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun LoadingPreview() {
-  AMessageTheme {
-    Loading("Loading")
-  }
+fun ConnectionsEmptyPreview() {
+  ConnectionsEmpty {}
 }

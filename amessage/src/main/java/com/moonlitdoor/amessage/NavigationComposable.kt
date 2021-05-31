@@ -5,16 +5,17 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.moonlitdoor.amessage.about.About
+import com.moonlitdoor.amessage.about.AboutScreen
+import com.moonlitdoor.amessage.about.AboutViewModel
 import com.moonlitdoor.amessage.connect.Connect
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connection.Connection
 import com.moonlitdoor.amessage.connection.ConnectionViewModel
-import com.moonlitdoor.amessage.connections.Connections
+import com.moonlitdoor.amessage.connections.ConnectionsScreen
 import com.moonlitdoor.amessage.connections.ConnectionsViewModel
 import com.moonlitdoor.amessage.conversation.Conversation
 import com.moonlitdoor.amessage.conversation.ConversationViewModel
-import com.moonlitdoor.amessage.conversations.Conversations
+import com.moonlitdoor.amessage.conversations.ConversationsScreen
 import com.moonlitdoor.amessage.conversations.ConversationsViewModel
 import com.moonlitdoor.amessage.experiments.ui.ExperimentsUi
 import com.moonlitdoor.amessage.faq.Faq
@@ -27,8 +28,8 @@ import com.moonlitdoor.amessage.more.More
 import com.moonlitdoor.amessage.more.MoreViewModel
 import com.moonlitdoor.amessage.news.WhatsNew
 import com.moonlitdoor.amessage.routes.Routes
-import com.moonlitdoor.amessage.settings.DeveloperSettings
-import com.moonlitdoor.amessage.settings.EmployeeSettings
+import com.moonlitdoor.amessage.settings.DeveloperSettingsScreen
+import com.moonlitdoor.amessage.settings.EmployeeSettingsScreen
 import com.moonlitdoor.amessage.settings.Settings
 import com.moonlitdoor.amessage.settings.SettingsViewModel
 import com.moonlitdoor.amessage.windows.Windows
@@ -49,7 +50,7 @@ fun Navigation(navHostController: NavHostController, showBottomBar: (Boolean) ->
     }
     composable(route = Routes.Conversations.route) {
       val viewModel: ConversationsViewModel = hiltViewModel(it)
-      Conversations(
+      ConversationsScreen(
         navHostController = navHostController,
         viewModel = viewModel,
         showBottomBar = showBottomBar,
@@ -68,7 +69,7 @@ fun Navigation(navHostController: NavHostController, showBottomBar: (Boolean) ->
     }
     composable(route = Routes.Connections.route) {
       val viewModel: ConnectionsViewModel = hiltViewModel(it)
-      Connections(
+      ConnectionsScreen(
         navHostController = navHostController,
         viewModel = viewModel,
         showBottomBar = showBottomBar,
@@ -102,8 +103,10 @@ fun Navigation(navHostController: NavHostController, showBottomBar: (Boolean) ->
       )
     }
     composable(route = Routes.About.route) {
-      About(
+      val viewModel: AboutViewModel = hiltViewModel(it)
+      AboutScreen(
         navHostController = navHostController,
+        viewModel = viewModel,
         showBottomBar = showBottomBar,
       )
     }
@@ -149,7 +152,7 @@ fun Navigation(navHostController: NavHostController, showBottomBar: (Boolean) ->
     }
     composable(route = Routes.EmployeeSettings.route) {
       val viewModel: SettingsViewModel = hiltViewModel(it)
-      EmployeeSettings(
+      EmployeeSettingsScreen(
         navHostController = navHostController,
         viewModel = viewModel,
         showBottomBar = showBottomBar,
@@ -157,7 +160,7 @@ fun Navigation(navHostController: NavHostController, showBottomBar: (Boolean) ->
     }
     composable(route = Routes.DeveloperSettings.route) {
       val viewModel: SettingsViewModel = hiltViewModel(it)
-      DeveloperSettings(
+      DeveloperSettingsScreen(
         navHostController = navHostController,
         viewModel = viewModel,
         showBottomBar = showBottomBar,

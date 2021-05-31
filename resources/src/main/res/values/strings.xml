@@ -25,13 +25,12 @@
   <string name="connect_ok">OK</string>
   <string name="connect_cancel">Cancel</string>
 
-<!--  <string name="connection_title">Connection</string>-->
+  <string name="connection_title">Connection</string>
   <string name="connection_empty">The requested connection was not found.</string>
 
   <string name="connections_title">Connections</string>
   <string name="connections_none">You have not made any Connections yet…</string>
   <string name="connections_connect">Connect</string>
-  <string name="connections_loading">"Loading…"</string>
 
   <string name="conversation_title">Conversation</string>
   <string name="conversation_empty">The requested conversation was not found.</string>

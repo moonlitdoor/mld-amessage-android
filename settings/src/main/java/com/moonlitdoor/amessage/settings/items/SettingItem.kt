@@ -5,30 +5,30 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import timber.log.Timber
 
 @Composable
-fun SettingItem(@StringRes title: Int, @StringRes description: Int? = null, enableDivider: Boolean = true, onClick: (() -> Unit)? = null) {
-  SettingItem(stringResource(id = title), description?.let { stringResource(id = it) }, enableDivider, onClick)
+fun SettingItem(@StringRes title: Int, modifier: Modifier = Modifier, @StringRes description: Int? = null, onClick: (() -> Unit)? = null) {
+  SettingItem(stringResource(id = title), modifier, description?.let { stringResource(id = it) }, onClick)
 }
 
 @Composable
-fun SettingItem(title: String, description: String? = null, enableDivider: Boolean = true, onClick: (() -> Unit)? = null) {
+fun SettingItem(title: String, modifier: Modifier = Modifier, description: String? = null, onClick: (() -> Unit)? = null) {
   Timber.d("SettingItem Composable")
   Column(
     Modifier
-      .wrapContentHeight()
       .clickable(onClick = onClick ?: {}, enabled = onClick != null)
       .padding(16.dp)
+      .composed { modifier }
   ) {
     Text(
       text = title,
@@ -41,7 +41,6 @@ fun SettingItem(title: String, description: String? = null, enableDivider: Boole
       )
     }
   }
-  if (enableDivider) Divider()
 }
 
 @Preview(showBackground = true)
@@ -50,8 +49,10 @@ fun SettingItemPreview() {
   MaterialTheme {
     Box(Modifier.padding(bottom = 2.dp)) {
       Column {
-        SettingItem(R.string.about_title, R.string.about_title)
+        SettingItem(R.string.about_title, description = R.string.about_title)
+        Divider()
         SettingItem(R.string.settings_title)
+        Divider()
       }
     }
   }

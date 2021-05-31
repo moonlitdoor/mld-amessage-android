@@ -1,6 +1,7 @@
 package com.moonlitdoor.amessage.components
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.AnimatedVisibilityScope
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.FastOutLinearInEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
@@ -20,8 +21,7 @@ private const val FADE_IN_ANIMATION_DURATION = 600
 @Composable
 fun ExpandableContent(
   visible: Boolean = true,
-  initialVisibility: Boolean = false,
-  content: @Composable () -> Unit,
+  content: @Composable AnimatedVisibilityScope.() -> Unit,
 ) {
   Timber.d("ExpandableContent Composable")
   val enterFadeIn = remember {
@@ -48,7 +48,6 @@ fun ExpandableContent(
   }
   AnimatedVisibility(
     visible = visible,
-    initiallyVisible = initialVisibility,
     enter = enterExpand + enterFadeIn,
     exit = exitCollapse + exitFadeOut,
     content = content

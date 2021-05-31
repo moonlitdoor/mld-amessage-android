@@ -23,6 +23,7 @@ android {
 dependencies {
 
   implementation(project(Modules.RESOURCES))
+  implementation(project(Modules.THEME))
 
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)

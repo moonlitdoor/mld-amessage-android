@@ -22,7 +22,7 @@ import timber.log.Timber
 
 @Composable
 fun FaqItem(index: Int, faq: FrequentlyAskedQuestion, expanded: Boolean = false) {
-  Timber.d("FaqItem Composable")
+  Timber.d("FaqItem")
   var expandedState by remember { mutableStateOf(expanded) }
   Column {
     Row(
@@ -41,7 +41,7 @@ fun FaqItem(index: Int, faq: FrequentlyAskedQuestion, expanded: Boolean = false)
         style = MaterialTheme.typography.subtitle1,
       )
     }
-    ExpandableContent(visible = expandedState, initialVisibility = expandedState) {
+    ExpandableContent(visible = expandedState) {
       Column(modifier = Modifier.padding(start = 20.dp, end = 20.dp, bottom = 16.dp)) {
         Text(
           text = faq.answer,

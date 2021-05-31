@@ -18,10 +18,11 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.extensions.Ensure
 import timber.log.Timber
 
 @Composable
-fun DeveloperSettings(navHostController: NavHostController, viewModel: SettingsViewModel, showBottomBar: (Boolean) -> Unit) {
+fun DeveloperSettingsScreen(navHostController: NavHostController, viewModel: SettingsViewModel, showBottomBar: (Boolean) -> Unit) {
   Timber.d("DeveloperSettings Composable")
   showBottomBar(false)
   Scaffold(
@@ -42,25 +43,26 @@ fun DeveloperSettings(navHostController: NavHostController, viewModel: SettingsV
       )
     },
   ) {
+    val screenState by viewModel.screenState.collectAsState(initial = SettingsScreenState.Data(experiments = false, developer = false, employee = false))
+    screenState.let { state ->
+      Ensure exhaustive when (state) {
+        is SettingsScreenState.Loading -> {
+        }
+        is SettingsScreenState.Data -> Column {
+          SettingSwitchItem(title = R.string.connect_employee_settings, checked = state.employee) {
+            if (it) viewModel.enableEmployeeSettingsUI() else viewModel.disableEmployeeSettingsUI()
+          }
 
-
-    val showEmployee by viewModel.isEmployeeSettingsUIEnabled().collectAsState(initial = false)
-    val showDeveloperSettings by viewModel.isDeveloperSettingsUIEnabled().collectAsState(initial = false)
-    val showExperiments by viewModel.isExperimentsUIEnabled().collectAsState(initial = false)
-
-    Column {
-      SettingSwitchItem(title = R.string.connect_employee_settings, checked = showEmployee) {
-        if (it) viewModel.enableEmployeeSettingsUI() else viewModel.disableEmployeeSettingsUI()
-      }
-
-      SettingSwitchItem(title = R.string.connect_experiments, checked = showExperiments) {
-        if (it) viewModel.enableExperimentsUI() else viewModel.disableExperimentsUI()
-      }
-      SettingSwitchItem(title = R.string.connect_developer_settings, checked = showDeveloperSettings) {
-        if (it) viewModel.enableDeveloperSettingsUI() else viewModel.disableDeveloperSettingsUI()
-      }
-      SettingItem(title = "Clear Database", "Clear all 'connections' and 'conversations'.") {
-        viewModel.clearDatabase()
+          SettingSwitchItem(title = R.string.connect_experiments, checked = state.experiments) {
+            if (it) viewModel.enableExperimentsUI() else viewModel.disableExperimentsUI()
+          }
+          SettingSwitchItem(title = R.string.connect_developer_settings, checked = state.developer) {
+            if (it) viewModel.enableDeveloperSettingsUI() else viewModel.disableDeveloperSettingsUI()
+          }
+          SettingItem(title = "Clear Database", description = "Clear all 'connections' and 'conversations'.") {
+            viewModel.clearDatabase()
+          }
+        }
       }
     }
   }
@@ -72,6 +74,6 @@ fun DeveloperSettingsPreview() {
   MaterialTheme {
     val navHostController = rememberNavController()
     val viewModel: SettingsViewModel = viewModel()
-    DeveloperSettings(navHostController, viewModel = viewModel) { }
+    DeveloperSettingsScreen(navHostController, viewModel = viewModel) { }
   }
 }

@@ -16,7 +16,7 @@ fun Invited(viewModel: ConnectViewModel) {
   Timber.d("Invited Composable")
   val viewState by viewModel.invitedViewState.collectAsState(initial = InvitedViewState.Loading)
   Ensure exhaustive when (viewState) {
-    is InvitedViewState.Loading -> Loading()
+    is InvitedViewState.Loading -> Loading("Invited")
     is InvitedViewState.Empty -> InvitedEmpty()
     is InvitedViewState.Result -> InvitedResult(viewState = viewState as InvitedViewState.Result)
   }

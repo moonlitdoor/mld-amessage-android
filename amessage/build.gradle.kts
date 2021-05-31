@@ -54,7 +54,6 @@ android {
     versionName = gitVersion
     resValue("color", "launcher_background", "#651FFF")
     buildConfigField("String", "BUILD_DATE", "\"0\"")
-    buildConfigField("boolean", "USE_COMPOSE", "true")
 //    if (largeTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
 //    } else if (mediumTests) {

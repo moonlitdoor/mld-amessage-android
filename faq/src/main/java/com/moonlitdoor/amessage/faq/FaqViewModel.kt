@@ -10,10 +10,10 @@ import javax.inject.Inject
 @HiltViewModel
 class FaqViewModel @Inject constructor(repository: FrequentlyAskedQuestionRepository) : ViewModel() {
 
-  val viewState: Flow<FaqViewState> = repository.getFrequentlyAskedQuestions().map {
+  val screenState: Flow<FaqScreenState> = repository.getFrequentlyAskedQuestions().map {
     when (it.isNotEmpty()) {
-      true -> FaqViewState.Result(it)
-      false -> FaqViewState.Empty
+      true -> FaqScreenState.Result(it)
+      false -> FaqScreenState.Empty
     }
   }
 }

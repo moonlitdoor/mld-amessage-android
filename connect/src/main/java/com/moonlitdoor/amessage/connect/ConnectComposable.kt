@@ -77,7 +77,6 @@ fun Connect(viewModel: ConnectViewModel, showBottomBar: (Boolean) -> Unit) {
     },
   ) {
 
-
     val pages2 = mutableListOf(
       ConnectTabs.Pending,
       ConnectTabs.Invited,

@@ -16,7 +16,7 @@ fun Pending(viewModel: ConnectViewModel) {
   Timber.d("Pending Composable")
   val viewState by viewModel.pendingViewState.collectAsState(initial = PendingViewState.Loading)
   Ensure exhaustive when (viewState) {
-    is PendingViewState.Loading -> Loading()
+    is PendingViewState.Loading -> Loading("Pending")
     is PendingViewState.Empty -> PendingEmpty()
     is PendingViewState.Result -> PendingResult(
       viewModel = viewModel,

@@ -1,34 +1,33 @@
-package com.moonlitdoor.amessage.about
+package com.moonlitdoor.amessage.faq
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
 import timber.log.Timber
 
 @Composable
-fun About(navHostController: NavHostController, showBottomBar: (Boolean) -> Unit) {
-  Timber.d("About Composable")
-  showBottomBar(false)
+fun FaqEmpty(popBackStack: () -> Unit) {
+  Timber.d("FaqEmpty")
   Scaffold(
     topBar = {
       TopAppBar(
         title = {
-          Text(text = stringResource(id = R.string.about_title))
+          Text(text = stringResource(id = R.string.faq_title))
         },
         elevation = 12.dp,
         navigationIcon = {
-          IconButton(onClick = { navHostController.popBackStack() }) {
+          IconButton(onClick = popBackStack) {
             Icon(
               imageVector = Icons.Filled.ArrowBack,
               contentDescription = stringResource(R.string.connect_ok)
@@ -38,14 +37,11 @@ fun About(navHostController: NavHostController, showBottomBar: (Boolean) -> Unit
       )
     },
   ) {
-  }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun AboutPreview() {
-  MaterialTheme {
-    val navHostController = rememberNavController()
-    About(navHostController) {}
+    Box(
+      modifier = Modifier.fillMaxSize(),
+      contentAlignment = Alignment.Center
+    ) {
+      Text(text = stringResource(id = R.string.faq_none))
+    }
   }
 }

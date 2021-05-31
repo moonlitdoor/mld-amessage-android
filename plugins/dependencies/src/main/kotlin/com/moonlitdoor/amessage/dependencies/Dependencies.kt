@@ -115,7 +115,7 @@ object Dependencies {
       }
 
       object Dagger {
-        private const val version = "2.35.1"
+        private const val version = "2.36"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
