@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.connect.scan
 
+import android.annotation.SuppressLint
 import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
@@ -30,9 +31,8 @@ import timber.log.Timber
 import java.util.concurrent.Executors
 import androidx.camera.core.Preview as CameraPreview
 
-@OptIn(ExperimentalPagerApi::class)
-@ExperimentalPagerApi
-@ExperimentalGetImage
+@SuppressLint("UnsafeOptInUsageError")
+@OptIn(ExperimentalPagerApi::class, ExperimentalGetImage::class)
 @Composable
 fun Scan(
   viewModel: ConnectViewModel,
@@ -138,8 +138,6 @@ fun Scan(
   }
 }
 
-@ExperimentalPagerApi
-@ExperimentalGetImage
 @Preview(showBackground = false)
 @Composable
 fun ScanPreview() {

@@ -7,12 +7,12 @@ object Dependencies {
 
   object Androidx {
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-alpha08"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-beta01"
     }
 
     object Camera {
-      private const val version = "1.1.0-alpha04"
-      private const val versionView = "1.0.0-alpha24"
+      private const val version = "1.1.0-alpha05"
+      private const val versionView = "1.0.0-alpha25"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -20,7 +20,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-beta07"
+      const val version = "1.0.0-beta08"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -48,11 +48,11 @@ object Dependencies {
     }
 
     object Lifecycle {
-      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha05"
+      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha06"
     }
 
     object Navigation {
-      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha01"
+      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha02"
     }
 
     object Preference {
@@ -84,7 +84,7 @@ object Dependencies {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha03"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha04"
     }
   }
 
@@ -105,7 +105,7 @@ object Dependencies {
 
       object Code {
         object Gson {
-          const val gson = "com.google.code.gson:gson:2.8.6"
+          const val gson = "com.google.code.gson:gson:2.8.7"
         }
       }
 
@@ -188,7 +188,7 @@ object Dependencies {
       }
 
       object Kotlinx {
-        private const val version = "1.4.3"
+        private const val version = "1.5.0"
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlinxCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
@@ -196,7 +196,7 @@ object Dependencies {
     }
 
     object Robolectric {
-      const val robolectric = "org.robolectric:robolectric:4.6-alpha-1"
+      const val robolectric = "org.robolectric:robolectric:4.6-alpha-2"
     }
   }
 }

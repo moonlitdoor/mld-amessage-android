@@ -5,7 +5,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.moonlitdoor.amessage.database.entity.FrequentlyAskedQuestionEntity
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.Flow
@@ -15,7 +14,6 @@ import javax.inject.Inject
 
 class FrequentlyAskedQuestionDao @Inject constructor(private val reference: DatabaseReference) {
 
-  @OptIn(ExperimentalCoroutinesApi::class)
   fun getFrequentlyAskedQuestions(): Flow<List<FrequentlyAskedQuestionEntity>> = callbackFlow {
     val listener = reference.child(PATH).addValueEventListener(object : ValueEventListener {
       override fun onDataChange(snapshot: DataSnapshot) {

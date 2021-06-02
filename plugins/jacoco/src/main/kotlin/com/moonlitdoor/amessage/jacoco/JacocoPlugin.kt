@@ -20,7 +20,7 @@ class JacocoPlugin : Plugin<Project> {
     project.tasks.findByName(JacocoTestCoverageVerification.NAME)?.mustRunAfter(project.childProjects.keys.map { "$it:testDebugUnitTest" })
 
     (project.extensions["jacoco"] as JacocoPluginExtension).apply {
-      toolVersion = "0.8.6"
+      toolVersion = "0.8.7"
       reportsDirectory.set(project.file("${project.buildDir}/reports"))
     }
     project.tasks.withType(Test::class.java) {

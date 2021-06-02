@@ -1,7 +1,6 @@
 package com.moonlitdoor.amessage.connect
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
@@ -59,7 +58,6 @@ fun hasPermissions(context: Context): Boolean = PERMISSIONS_REQUIRED.all {
   ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
 }
 
-@SuppressLint("UnsafeOptInUsageError")
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun Connect(viewModel: ConnectViewModel, showBottomBar: (Boolean) -> Unit) {
