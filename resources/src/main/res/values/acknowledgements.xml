@@ -1,25 +1,25 @@
 <resources>
-  <!--  <string-array name="about_acknowledgements_list">-->
-  <!--    <item>Android Support Constraint Layout:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Support AppCompat V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Support Design:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Support Preference V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Support Preference V14:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Support RecyclerView V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Support Support V4:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Architecture Lifecycle Runtime:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Architecture Lifecycle Extensions:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Architecture Lifecycle Compiler:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Architecture Persistence Room Runtime:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Android Architecture Persistence Room Compiler:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Dagger:Copyright © 2016 The Dagger Authors:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Dagger Compiler:Copyright © 2016 The Dagger Authors:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Firebase Config:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Firebase Core:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Firebase Messaging:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>ZXing:Copyright © 2007 ZXing authors:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>OkHttp:Copyright © 2015 Square, Inc.:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Moshi Converter:Copyright © 2013 Square, Inc.:Apache License, Version 2.0:APACHE</item>-->
-  <!--    <item>Retrofit:Copyright © 2013 Square, Inc.:Apache License, Version 2.0:APACHE</item>-->
-  <!--  </string-array>-->
+  <string-array name="about_acknowledgements_list">
+    <item>Android Support Constraint Layout:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support AppCompat V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Design:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Preference V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Preference V14:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support RecyclerView V7:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Support Support V4:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Lifecycle Runtime:Copyright © 2011 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Lifecycle Extensions:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Lifecycle Compiler:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Persistence Room Runtime:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Android Architecture Persistence Room Compiler:Copyright © 2017 The Android Open Source Project:Apache License, Version 2.0:APACHE</item>
+    <item>Dagger:Copyright © 2016 The Dagger Authors:Apache License, Version 2.0:APACHE</item>
+    <item>Dagger Compiler:Copyright © 2016 The Dagger Authors:Apache License, Version 2.0:APACHE</item>
+    <item>Firebase Config:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>
+    <item>Firebase Core:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>
+    <item>Firebase Messaging:Copyright © 2016 Google:Apache License, Version 2.0:APACHE</item>
+    <item>ZXing:Copyright © 2007 ZXing authors:Apache License, Version 2.0:APACHE</item>
+    <item>OkHttp:Copyright © 2015 Square, Inc.:Apache License, Version 2.0:APACHE</item>
+    <item>Moshi Converter:Copyright © 2013 Square, Inc.:Apache License, Version 2.0:APACHE</item>
+    <item>Retrofit:Copyright © 2013 Square, Inc.:Apache License, Version 2.0:APACHE</item>
+  </string-array>
 </resources>

@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.moonlitdoor.amessage.database.entity.ConnectionEntity
 import com.moonlitdoor.amessage.database.relation.ConnectionConversationsRelation
@@ -20,6 +21,7 @@ interface ConnectionDao {
   @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
   fun getFlow(connectionId: UUID): Flow<ConnectionEntity?>
 
+  @Transaction
   @Query("SELECT * FROM connection WHERE connection_id == :connectionId")
   fun getConnectionWithConversationsFlow(connectionId: UUID): Flow<ConnectionConversationsRelation?>
 

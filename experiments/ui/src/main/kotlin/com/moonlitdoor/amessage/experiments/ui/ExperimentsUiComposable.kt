@@ -1,10 +1,11 @@
 package com.moonlitdoor.amessage.experiments.ui
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
@@ -47,12 +48,13 @@ fun ExperimentsUi(navHostController: NavHostController, showBottomBar: (Boolean)
     LazyColumn {
       items(Experiments.experiments) {
         Timber.d("$it")
-        Box(
+        Column(
           modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
         ) {
           ExperimentsItem(item = it)
+          Divider()
         }
       }
     }

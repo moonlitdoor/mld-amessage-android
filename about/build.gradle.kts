@@ -27,6 +27,7 @@ dependencies {
   kapt(Dependencies.Com.Google.Dagger.hiltCompiler)
 
   implementation(project(Modules.COMPONENTS))
+  implementation(project(Modules.DOMAIN))
   implementation(project(Modules.EXTENSIONS))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROOT))
@@ -38,6 +39,8 @@ dependencies {
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
+  implementation(Dependencies.Com.Google.Accompanist.accompanistPager)
+  implementation(Dependencies.Com.Google.Accompanist.accompanistPagerIndicators)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
 

@@ -34,7 +34,7 @@ fun ExperimentsItem(item: Experiment<*>) {
     modifier = Modifier
       .fillMaxWidth()
       .wrapContentHeight()
-//      .padding(8.dp)
+      .padding(8.dp)
   ) {
     Column(modifier = Modifier.fillMaxWidth(.5f)) {
       Text(modifier = Modifier, text = item.title ?: item.key)

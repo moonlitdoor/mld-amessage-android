@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -27,7 +28,7 @@ object AMessageModule {
 
   @Singleton
   @Provides
-  fun providesAboutStatisticsFlow() = flowOf(
+  fun providesAboutStatisticsFlow(): Flow<AboutStatistics> = flowOf(
     AboutStatistics(
       version = BuildConfig.VERSION_NAME,
       buildDate = BuildConfig.BUILD_DATE
@@ -37,7 +38,7 @@ object AMessageModule {
   @Singleton
   @DateFormatterFull
   @Provides
-  fun providesDateTimeFormatterFull(@ApplicationContext context: Context) = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)
+  fun providesDateTimeFormatterFull(@ApplicationContext context: Context): DateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)
     .withLocale(context.resources.configuration.locales[0])
     .withZone(ZoneId.systemDefault())
 }

@@ -94,6 +94,7 @@ object Dependencies {
         private const val version = "0.10.0"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
+        const val accompanistPagerIndicators = "com.google.accompanist:accompanist-pager-indicators:$version"
       }
 
       object Android {
