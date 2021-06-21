@@ -1,5 +1,7 @@
 package com.moonlitdoor.amessage.about
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -46,29 +48,31 @@ fun AboutData(state: AboutScreenState.Data, popBackStack: () -> Unit) {
         },
       )
     },
-  ) {
-    val coroutineScope = rememberCoroutineScope()
-    val pagerState = rememberPagerState(pageCount = AboutPages.values().size)
-    TabRow(
-      selectedTabIndex = pagerState.currentPage,
-      indicator = { tabPositions ->
-        TabRowDefaults.Indicator(
-          Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
-        )
+  ) { padding ->
+    Column(modifier = Modifier.padding(padding)) {
+      val coroutineScope = rememberCoroutineScope()
+      val pagerState = rememberPagerState(pageCount = AboutPages.values().size)
+      TabRow(
+        selectedTabIndex = pagerState.currentPage,
+        indicator = { tabPositions ->
+          TabRowDefaults.Indicator(
+            Modifier.pagerTabIndicatorOffset(pagerState, tabPositions)
+          )
+        }
+      ) {
+        AboutPages.values().forEachIndexed { index, page ->
+          Tab(
+            text = { Text(text = stringResource(id = page.title)) },
+            selected = pagerState.currentPage == index,
+            onClick = { coroutineScope.launch { pagerState.scrollToPage(index) } },
+          )
+        }
       }
-    ) {
-      AboutPages.values().forEachIndexed { index, page ->
-        Tab(
-          text = { Text(text = stringResource(id = page.title)) },
-          selected = pagerState.currentPage == index,
-          onClick = { coroutineScope.launch { pagerState.scrollToPage(index) } },
-        )
-      }
-    }
-    HorizontalPager(state = pagerState) { page ->
-      Ensure exhaustive when (AboutPages.values()[page]) {
-        AboutPages.STATISTICS -> StatisticsPage(state = state)
-        AboutPages.ACKNOWLEDGEMENTS -> AcknowledgementPage(state = state)
+      HorizontalPager(state = pagerState, Modifier) { page ->
+        Ensure exhaustive when (AboutPages.values()[page]) {
+          AboutPages.STATISTICS -> StatisticsPage(state = state)
+          AboutPages.ACKNOWLEDGEMENTS -> AcknowledgementPage(state = state)
+        }
       }
     }
   }

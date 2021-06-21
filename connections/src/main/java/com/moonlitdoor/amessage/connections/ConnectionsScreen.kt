@@ -16,7 +16,7 @@ fun ConnectionsScreen(navHostController: NavHostController, viewModel: Connectio
   val screenState by viewModel.screenState.collectAsState(initial = ConnectionsScreenState.Loading)
   screenState.let { state ->
     Ensure exhaustive when (state) {
-      is ConnectionsScreenState.Loading -> Loading(R.string.connections_title)
+      is ConnectionsScreenState.Loading -> Loading(R.string.connections_title) { navHostController.popBackStack() }
       is ConnectionsScreenState.Empty -> ConnectionsEmpty { navHostController.navigate(it) }
       is ConnectionsScreenState.Result -> ConnectionsResult(screenState = state) { navHostController.navigate(it) }
     }

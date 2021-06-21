@@ -15,7 +15,7 @@ fun AboutScreen(navHostController: NavHostController, viewModel: AboutViewModel,
   val screenState by viewModel.screenState.collectAsState(initial = AboutScreenState.Loading)
   screenState.let { state ->
     Ensure exhaustive when (state) {
-      is AboutScreenState.Loading -> Loading(title = R.string.about_title)
+      is AboutScreenState.Loading -> Loading(title = R.string.about_title) { navHostController.popBackStack() }
       is AboutScreenState.Data -> AboutData(state) { navHostController.popBackStack() }
     }
   }

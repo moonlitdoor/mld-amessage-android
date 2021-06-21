@@ -9,9 +9,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,10 +26,10 @@ import com.moonlitdoor.amessage.theme.AMessageTheme
 import timber.log.Timber
 
 @Composable
-fun Loading(@StringRes title: Int) = Loading(stringResource(id = title))
+fun Loading(@StringRes title: Int, popBackStack: (() -> Unit)? = null) = Loading(stringResource(id = title), popBackStack)
 
 @Composable
-fun Loading(title: String) {
+fun Loading(title: String, popBackStack: (() -> Unit)? = null) {
   Timber.d("Loading Composable")
   Scaffold(
     topBar = {
@@ -34,6 +38,16 @@ fun Loading(title: String) {
           Text(text = title)
         },
         elevation = 12.dp,
+        navigationIcon = {
+          popBackStack?.let {
+            IconButton(onClick = it) {
+              Icon(
+                imageVector = Icons.Filled.ArrowBack,
+                contentDescription = stringResource(R.string.connect_ok)
+              )
+            }
+          }
+        },
       )
     },
   ) {
@@ -57,6 +71,6 @@ fun Loading(title: String) {
 @Composable
 fun LoadingPreview() {
   AMessageTheme {
-    Loading("Loading")
+    Loading("Loading") {}
   }
 }

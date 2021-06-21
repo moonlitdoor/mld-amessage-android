@@ -1,6 +1,7 @@
 includeBuild("plugins/dependencies")
 includeBuild("plugins/android")
 includeBuild("plugins/jacoco")
+includeBuild("plugins/acknowledgements")
 
 plugins {
   id("com.gradle.enterprise").version("3.6")

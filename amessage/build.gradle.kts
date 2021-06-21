@@ -5,6 +5,8 @@ import com.moonlitdoor.amessage.dependencies.Modules
 plugins {
   id("com.moonlitdoor.git-version")
   id("com.moonlitdoor.amessage.android.application")
+  id("com.moonlitdoor.amessage.acknowledgements")
+//  id("com.moonlitdoor.amessage.acknowledgements.grv")
   id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
   id("com.google.firebase.appdistribution")

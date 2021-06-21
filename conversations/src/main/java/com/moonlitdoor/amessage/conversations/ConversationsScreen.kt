@@ -20,7 +20,7 @@ fun ConversationsScreen(navHostController: NavHostController, viewModel: Convers
       is ConversationsScreenState.HandleNotSet -> navHostController.navigate(Routes.Handle) {
         launchSingleTop = true
       }
-      is ConversationsScreenState.Loading -> Loading(R.string.conversations_title)
+      is ConversationsScreenState.Loading -> Loading(R.string.conversations_title) { navHostController.popBackStack() }
       is ConversationsScreenState.Empty -> ConversationsEmpty { navHostController.navigate(it) }
       is ConversationsScreenState.Result -> ConversationsResult(screenState = state) { navHostController.navigate(it) }
     }

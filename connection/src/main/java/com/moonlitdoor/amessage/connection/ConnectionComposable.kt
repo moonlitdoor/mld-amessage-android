@@ -19,7 +19,7 @@ fun Connection(navHostController: NavHostController, viewModel: ConnectionViewMo
   val viewState by viewModel.viewState.collectAsState(initial = ConnectionViewState.Loading)
   viewState.let { state ->
     Ensure exhaustive when (state) {
-      is ConnectionViewState.Loading -> Loading(R.string.connection_title)
+      is ConnectionViewState.Loading -> Loading(R.string.connection_title) { navHostController.popBackStack() }
       is ConnectionViewState.Empty -> ConnectionEmpty()
       is ConnectionViewState.Result -> ConnectionResult(navHostController = navHostController, viewModel = viewModel, state = state, showBottomBar = showBottomBar)
     }

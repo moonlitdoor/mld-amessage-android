@@ -19,7 +19,7 @@ fun Faq(navHostController: NavHostController, viewModel: FaqViewModel, showBotto
   val screenState by viewModel.screenState.collectAsState(initial = FaqScreenState.Loading)
   screenState.let { state ->
     Ensure exhaustive when (state) {
-      is FaqScreenState.Loading -> Loading(R.string.faq_title)
+      is FaqScreenState.Loading -> Loading(R.string.faq_title) { navHostController.popBackStack() }
       is FaqScreenState.Empty -> FaqEmpty { navHostController.popBackStack() }
       is FaqScreenState.Result -> FaqResult(state) { navHostController.popBackStack() }
     }

@@ -20,7 +20,7 @@ fun QRCode(viewModel: ConnectViewModel) {
   Box(modifier = Modifier.fillMaxSize()) {
     val qrCodeState: QRCodeViewState by viewModel.qrCodeViewState.collectAsState(initial = QRCodeViewState.Loading)
     Ensure exhaustive when (qrCodeState) {
-      is QRCodeViewState.Loading -> Loading("QR")
+      is QRCodeViewState.Loading -> Loading("QR") { /* TODO pop the backstack */ }
       is QRCodeViewState.Empty -> QRCodeEmpty()
       is QRCodeViewState.Result -> QRCodeResult(viewState = qrCodeState as QRCodeViewState.Result)
     }
