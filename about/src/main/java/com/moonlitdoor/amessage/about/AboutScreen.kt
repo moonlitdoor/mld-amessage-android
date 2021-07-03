@@ -16,7 +16,7 @@ fun AboutScreen(navHostController: NavHostController, viewModel: AboutViewModel,
   screenState.let { state ->
     Ensure exhaustive when (state) {
       is AboutScreenState.Loading -> Loading(title = R.string.about_title) { navHostController.popBackStack() }
-      is AboutScreenState.Data -> AboutData(state) { navHostController.popBackStack() }
+      is AboutScreenState.Loaded -> AboutLoaded(state) { navHostController.popBackStack() }
     }
   }
 }

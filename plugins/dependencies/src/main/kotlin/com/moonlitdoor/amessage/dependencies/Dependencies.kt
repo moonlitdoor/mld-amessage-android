@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.dependencies
 
+@Suppress("unused")
 object Dependencies {
   object AGP {
     const val gradle = "com.android.tools.build:gradle:7.1.0-alpha01"

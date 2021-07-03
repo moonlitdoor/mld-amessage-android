@@ -29,7 +29,7 @@ import timber.log.Timber
 
 @Composable
 @OptIn(ExperimentalPagerApi::class)
-fun AboutData(state: AboutScreenState.Data, popBackStack: () -> Unit) {
+fun AboutLoaded(state: AboutScreenState.Loaded, popBackStack: () -> Unit) {
   Timber.d("AboutData")
   Scaffold(
     topBar = {
@@ -80,10 +80,10 @@ fun AboutData(state: AboutScreenState.Data, popBackStack: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun AboutData() {
+fun AboutLoaded() {
   MaterialTheme {
-    AboutData(
-      AboutScreenState.Data(
+    AboutLoaded(
+      AboutScreenState.Loaded(
         version = "version",
         buildDate = "buildDate",
         acknowledgements = emptyList()

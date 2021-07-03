@@ -1,22 +1,27 @@
 package com.moonlitdoor.amessage.about
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import timber.log.Timber
 
 @Composable
-fun StatisticsPage(state: AboutScreenState.Data) {
+fun StatisticsPage(state: AboutScreenState.Loaded) {
   Timber.d("StatisticsPage")
-  Column {
-    Text(text = state.version)
-    Text(text = state.buildDate)
+  Column(modifier = Modifier.fillMaxSize()) {
+    StatisticsItem(title = R.string.about_version, value = state.version)
+    Divider()
+    StatisticsItem(title = R.string.about_build_date, value = state.buildDate)
+    Divider()
+    StatisticsItem(title = R.string.about_privacy_policy, url = R.string.about_privacy_policy_url)
+    Divider()
+    StatisticsItem(title = R.string.about_terms_of_use, url = R.string.about_terms_of_use_url)
+    Divider()
   }
-//  VERSION
-//  BUILD DATE
-//  Privacy Policy
 }
 
 @Preview(showBackground = true)
@@ -24,7 +29,7 @@ fun StatisticsPage(state: AboutScreenState.Data) {
 fun StatisticsPagePreview() {
   MaterialTheme {
     StatisticsPage(
-      AboutScreenState.Data(
+      AboutScreenState.Loaded(
         version = "version",
         buildDate = "buildDate",
         acknowledgements = emptyList(),

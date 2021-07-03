@@ -3,7 +3,12 @@ package com.moonlitdoor.amessage
 import android.content.Context
 import androidx.work.WorkManager
 import com.moonlitdoor.amessage.about.AboutStatistics
+import com.moonlitdoor.amessage.about.Acknowledgement
+import com.moonlitdoor.amessage.about.Acknowledgements
 import com.moonlitdoor.amessage.resources.DateFormatterFull
+import com.moonlitdoor.amessage.resources.DateFormatterLong
+import com.moonlitdoor.amessage.resources.DateFormatterMedium
+import com.moonlitdoor.amessage.resources.DateFormatterShort
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -36,9 +41,47 @@ object AMessageModule {
   )
 
   @Singleton
+  @Provides
+  fun providesAcknowledgements(@ApplicationContext context: Context): Flow<Acknowledgements> =
+    context.resources.getStringArray(R.array.acknowledgements_array).let {
+      flowOf(
+        Acknowledgements(
+          it.toList().map { acknowledgement ->
+            Acknowledgement.create(acknowledgement)
+          }
+        )
+      )
+    }
+
+  @Singleton
   @DateFormatterFull
   @Provides
-  fun providesDateTimeFormatterFull(@ApplicationContext context: Context): DateTimeFormatter = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.FULL)
+  fun providesDateTimeFormatterFull(@ApplicationContext context: Context): DateTimeFormatter = DateTimeFormatter
+    .ofLocalizedDateTime(FormatStyle.FULL)
+    .withLocale(context.resources.configuration.locales[0])
+    .withZone(ZoneId.systemDefault())
+
+  @Singleton
+  @DateFormatterLong
+  @Provides
+  fun providesDateTimeFormatterLong(@ApplicationContext context: Context): DateTimeFormatter = DateTimeFormatter
+    .ofLocalizedDateTime(FormatStyle.LONG)
+    .withLocale(context.resources.configuration.locales[0])
+    .withZone(ZoneId.systemDefault())
+
+  @Singleton
+  @DateFormatterMedium
+  @Provides
+  fun providesDateTimeFormatterMedium(@ApplicationContext context: Context): DateTimeFormatter = DateTimeFormatter
+    .ofLocalizedDateTime(FormatStyle.MEDIUM)
+    .withLocale(context.resources.configuration.locales[0])
+    .withZone(ZoneId.systemDefault())
+
+  @Singleton
+  @DateFormatterShort
+  @Provides
+  fun providesDateTimeFormatterShort(@ApplicationContext context: Context): DateTimeFormatter = DateTimeFormatter
+    .ofLocalizedDateTime(FormatStyle.SHORT)
     .withLocale(context.resources.configuration.locales[0])
     .withZone(ZoneId.systemDefault())
 }

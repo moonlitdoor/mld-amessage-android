@@ -6,7 +6,6 @@ plugins {
   id("com.moonlitdoor.git-version")
   id("com.moonlitdoor.amessage.android.application")
   id("com.moonlitdoor.amessage.acknowledgements")
-//  id("com.moonlitdoor.amessage.acknowledgements.grv")
   id("dagger.hilt.android.plugin")
   id("kotlin-kapt")
   id("com.google.firebase.appdistribution")
@@ -55,7 +54,7 @@ android {
     versionCode = (project.extensions.getByName("gitCommitAndTagCount") as Long).toInt()
     versionName = gitVersion
     resValue("color", "launcher_background", "#651FFF")
-    buildConfigField("String", "BUILD_DATE", "\"0\"")
+    buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
 //    if (largeTests) {
 //      testInstrumentationRunner "com.moonlitdoor.amessage.AndroidJUnitRunnerLarge"
 //    } else if (mediumTests) {
@@ -85,7 +84,6 @@ android {
 //      isShrinkResources = false
       proguardFiles(getDefaultProguardFile(Constants.PROGUARD_ANDROID_FILE), Constants.PROGUARD_FILE)
       resValue("string", "app_name", "AMessage")
-      buildConfigField("String", "BUILD_DATE", "\"${System.currentTimeMillis()}\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_FIREBASE_DATABASE_URL").toString())
       resValue("string", "gcm_defaultSenderId", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_PROD_GCM_DEFAULT_SENDER_ID").toString())
@@ -129,6 +127,7 @@ android {
       applicationIdSuffix = ".debug"
       resValue("color", "launcher_background", "#607d8b")
       resValue("string", "app_name", "AMessage Debug")
+      buildConfigField("String", "BUILD_DATE", "\"0\"")
       resValue("string", "default_web_client_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_DEFAULT_WEB_CLIENT_ID").toString())
       resValue("string", "firebase_database_url", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_FIREBASE_DATABASE_URL").toString())
       resValue("string", "gcm_defaultSenderId", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_GCM_DEFAULT_SENDER_ID").toString())
@@ -155,7 +154,6 @@ android {
 
   kotlinOptions {
     jvmTarget = "1.8"
-    useIR = true
   }
 }
 
