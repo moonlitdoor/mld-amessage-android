@@ -4,6 +4,8 @@ import android.webkit.WebView
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.BottomSheetScaffold
 import androidx.compose.material.BottomSheetValue
 import androidx.compose.material.Divider
@@ -22,6 +24,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -67,8 +70,10 @@ fun AcknowledgementPage(state: AboutScreenState.Loaded) {
           )
         }
       ) {
+        val scrollState = rememberScrollState()
         urlState?.let { url ->
           AndroidView(
+            modifier = Modifier.verticalScroll(scrollState),
             factory = { context ->
               WebView(context).apply {
                 loadUrl(
@@ -108,6 +113,9 @@ fun AcknowledgementPagePreview() {
       AboutScreenState.Loaded(
         version = "",
         buildDate = "",
+        privacyPolicyUrl = "",
+        termsOfUseUrl = "",
+        websiteUrl = "",
         acknowledgements = emptyList(),
       )
     )

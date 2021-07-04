@@ -1,15 +1,21 @@
 <resources>
 
   <string name="about_title">About</string>
-  <string name="about_acknowledgements">Acknowledgements</string>
   <string name="about_statistics">Statistics</string>
+  <string name="about_acknowledgements">Acknowledgements</string>
   <string name="about_version">Version</string>
   <string name="about_build_date">Built On</string>
   <string name="about_privacy_policy">Privacy Policy</string>
-  <!--  <string name="about_privacy_policy_url" translatable="false">https://www.moonlitdoor.com/app/documents/PrivacyPolicy.pdf</string>-->
-  <string name="about_privacy_policy_url" translatable="false">http://imbd.com/</string>
   <string name="about_terms_of_use">Terms of Use</string>
-  <string name="about_terms_of_use_url" translatable="false">http://imbd.com/</string>
+  <string name="about_email">Email</string>
+  <string name="about_email_value" translatable="false">amessage@moonlitdoor.com</string>
+  <string name="about_twitter">Twitter</string>
+  <string name="about_twitter_value" translatable="false">\@MLDSoftware</string>
+  <string name="about_playstore">PlayStore</string>
+  <string name="about_playstore_value" translatable="false">https://play.google.com/store/apps/details?id=com.moonlitdoor.amessage</string>
+  <string name="about_website">Website</string>
+  <string name="about_github_issues">Github Issues</string>
+  <string name="about_github_issues_value" translatable="false">https://github.com/moonlitdoor/mld-amessage-android/issues</string>
 
   <string name="components_loading">Loading…</string>
 

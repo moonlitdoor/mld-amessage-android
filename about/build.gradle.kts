@@ -28,6 +28,7 @@ dependencies {
 
   implementation(project(Modules.COMPONENTS))
   implementation(project(Modules.DOMAIN))
+  implementation(project(Modules.EXPERIMENTS))
   implementation(project(Modules.EXTENSIONS))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROOT))

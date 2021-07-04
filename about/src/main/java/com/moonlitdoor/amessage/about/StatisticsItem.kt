@@ -1,5 +1,6 @@
 package com.moonlitdoor.amessage.about
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.annotation.StringRes
@@ -16,21 +17,55 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.moonlitdoor.amessage.extensions.Ensure
 import com.moonlitdoor.amessage.theme.Colors
+import timber.log.Timber
+import java.net.URLEncoder
 
-@Composable
-fun StatisticsItem(@StringRes title: Int, value: String? = null, @StringRes url: Int? = null) {
-  StatisticsItem(title = stringResource(id = title), value = value, url = url?.let { stringResource(id = it) })
+enum class StatisticsItemType {
+  VALUE,
+  URL,
+  EMAIL,
+  TWITTER
 }
 
 @Composable
-fun StatisticsItem(title: String, value: String? = null, url: String? = null) {
+fun StatisticsItem(@StringRes title: Int, @StringRes value: Int, type: StatisticsItemType = StatisticsItemType.VALUE) {
+  StatisticsItem(title = title, value = stringResource(id = value), type = type)
+}
+
+@Composable
+fun StatisticsItem(@StringRes title: Int, value: String, type: StatisticsItemType = StatisticsItemType.VALUE) {
+  StatisticsItem(title = stringResource(id = title), value = value, type = type)
+}
+
+@SuppressLint("QueryPermissionsNeeded")
+@Composable
+fun StatisticsItem(title: String, value: String? = null, type: StatisticsItemType = StatisticsItemType.VALUE) {
+  Timber.d("StatisticsItem")
+
   val context = LocalContext.current
   Column(
     modifier = Modifier
       .fillMaxWidth()
-      .clickable(enabled = url != null) {
-        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+      .clickable(enabled = type != StatisticsItemType.VALUE) {
+        Ensure exhaustive when (type) {
+          StatisticsItemType.URL -> context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(value)))
+          StatisticsItemType.EMAIL -> context.startActivity(
+            Intent(Intent.ACTION_SENDTO).also {
+              it.data = Uri.parse("mailto:")
+              it.putExtra(Intent.EXTRA_EMAIL, value)
+            }
+          )
+          StatisticsItemType.TWITTER -> context.startActivity(
+            Intent(
+              Intent.ACTION_VIEW,
+              Uri.parse("https://twitter.com/intent/tweet?text=${URLEncoder.encode(value, "UTF-8")}")
+            )
+          )
+          StatisticsItemType.VALUE -> {
+          }
+        }
       }
       .padding(16.dp)
   ) {
@@ -41,16 +76,11 @@ fun StatisticsItem(title: String, value: String? = null, url: String? = null) {
     value?.let {
       Text(
         text = it,
-        style = MaterialTheme.typography.body1,
+        style = MaterialTheme.typography.body1.run {
+          if (type == StatisticsItemType.VALUE) this else copy(color = Colors.Link)
+        },
       )
     }
-    url?.let {
-      Text(
-        text = it,
-        style = MaterialTheme.typography.body1.copy(color = Colors.Link),
-      )
-    }
-
   }
 }
 
@@ -62,8 +92,7 @@ fun StatisticsItemPreview() {
     Divider()
     StatisticsItem(title = "Version2", value = "0.3.5")
     Divider()
-    StatisticsItem(title = "Privacy Policy", url = "https://www.google.com")
+    StatisticsItem(title = "Privacy Policy", value = "https://www.google.com", type = StatisticsItemType.URL)
     Divider()
   }
-
 }

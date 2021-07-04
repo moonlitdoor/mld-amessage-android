@@ -12,6 +12,8 @@ import com.moonlitdoor.amessage.database.dao.KeyValueDao
 import com.moonlitdoor.amessage.database.dao.PayloadDao
 import com.moonlitdoor.amessage.database.dao.ProfileDao
 import com.moonlitdoor.amessage.database.dao.SettingsDao
+import com.moonlitdoor.amessage.database.qualifiers.DatabaseReferenceFaq
+import com.moonlitdoor.amessage.database.qualifiers.DatabaseReferenceKeyValueRemote
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -31,7 +33,15 @@ object DatabaseModule {
 
   @Singleton
   @Provides
-  fun providesDatabaseReference(database: FirebaseDatabase): DatabaseReference = database.getReference("faq").apply {
+  @DatabaseReferenceFaq
+  fun providesDatabaseReferenceFaq(database: FirebaseDatabase): DatabaseReference = database.getReference("faq").apply {
+    keepSynced(true)
+  }
+
+  @Singleton
+  @Provides
+  @DatabaseReferenceKeyValueRemote
+  fun providesDatabaseReferenceRemoteKeyValue(database: FirebaseDatabase): DatabaseReference = database.getReference("key-value-remote").apply {
     keepSynced(true)
   }
 

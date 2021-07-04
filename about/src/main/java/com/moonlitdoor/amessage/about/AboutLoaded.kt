@@ -86,6 +86,9 @@ fun AboutLoaded() {
       AboutScreenState.Loaded(
         version = "version",
         buildDate = "buildDate",
+        privacyPolicyUrl = "privacyPolicyUrl",
+        termsOfUseUrl = "termsOfUseUrl",
+        websiteUrl = "websiteUrl",
         acknowledgements = emptyList()
       )
     ) {}
