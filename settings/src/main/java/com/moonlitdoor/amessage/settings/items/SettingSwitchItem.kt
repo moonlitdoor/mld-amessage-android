@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.settings
+package com.moonlitdoor.amessage.settings.items
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
@@ -14,20 +14,19 @@ import androidx.compose.material.Switch
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.moonlitdoor.amessage.settings.R
 import timber.log.Timber
 
 @Composable
 fun SettingSwitchItem(@StringRes title: Int, checked: Boolean, modifier: Modifier = Modifier, @StringRes description: Int? = null, onClick: (Boolean) -> Unit) {
   Timber.d("SettingSwitchItem Composable")
   Row(
-    modifier = Modifier
+    modifier = modifier
       .fillMaxWidth()
       .clickable(onClick = { onClick(!checked) })
-      .padding(end = 16.dp)
-      .composed { modifier },
+      .padding(end = 16.dp),
     horizontalArrangement = Arrangement.SpaceBetween
   ) {
     SettingItem(title = title, description = description)

@@ -44,6 +44,7 @@ dependencies {
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
   implementation(Dependencies.Com.Google.Accompanist.accompanistPager)
+  implementation(Dependencies.Com.Google.Accompanist.accompanistPagerIndicators)
   implementation(Dependencies.Com.Google.Android.Gms.playServicesVision)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
   implementation(Dependencies.Com.Google.Firebase.firebaseMlVision)

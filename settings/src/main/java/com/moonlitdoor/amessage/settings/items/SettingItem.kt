@@ -1,4 +1,4 @@
-package com.moonlitdoor.amessage.settings
+package com.moonlitdoor.amessage.settings.items
 
 import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
@@ -10,10 +10,10 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.moonlitdoor.amessage.settings.R
 import timber.log.Timber
 
 @Composable
@@ -25,10 +25,9 @@ fun SettingItem(@StringRes title: Int, modifier: Modifier = Modifier, @StringRes
 fun SettingItem(title: String, modifier: Modifier = Modifier, description: String? = null, onClick: (() -> Unit)? = null) {
   Timber.d("SettingItem Composable")
   Column(
-    Modifier
+    modifier
       .clickable(onClick = onClick ?: {}, enabled = onClick != null)
       .padding(16.dp)
-      .composed { modifier }
   ) {
     Text(
       text = title,

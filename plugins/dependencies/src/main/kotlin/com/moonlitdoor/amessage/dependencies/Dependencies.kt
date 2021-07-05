@@ -8,12 +8,12 @@ object Dependencies {
 
   object Androidx {
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-beta01"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-rc01"
     }
 
     object Camera {
-      private const val version = "1.1.0-alpha05"
-      private const val versionView = "1.0.0-alpha25"
+      private const val version = "1.1.0-alpha06"
+      private const val versionView = "1.0.0-alpha26"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -21,7 +21,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-beta08"
+      const val version = "1.0.0-rc01"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -34,7 +34,7 @@ object Dependencies {
     }
 
     object ConstraintLayout {
-      const val constraintLayoutCompose = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha07"
+      const val constraintLayoutCompose = "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha08"
     }
 
     object Core {
@@ -44,16 +44,16 @@ object Dependencies {
     object Hilt {
       const val hilt = "androidx.hilt:hilt:1.0.0-beta01"
       const val hiltCompiler = "androidx.hilt:hilt-compiler:1.0.0"
-      const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha02"
+      const val hiltNavigationCompose = "androidx.hilt:hilt-navigation-compose:1.0.0-alpha03"
       const val hiltWork = "androidx.hilt:hilt-work:1.0.0"
     }
 
     object Lifecycle {
-      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha06"
+      const val lifecycleViewmodelCompose = "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
     }
 
     object Navigation {
-      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha02"
+      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha04"
     }
 
     object Preference {
@@ -61,7 +61,7 @@ object Dependencies {
     }
 
     object Room {
-      private const val version = "2.4.0-alpha02"
+      private const val version = "2.4.0-alpha03"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -69,7 +69,7 @@ object Dependencies {
     }
 
     object Test {
-      private const val version = "1.3.0"
+      private const val version = "1.4.0"
       const val core = "androidx.test:core:$version"
       const val orchestrator = "androidx.test:orchestrator:$version"
       const val rules = "androidx.test:rules:$version"
@@ -80,7 +80,7 @@ object Dependencies {
       }
 
       object Ext {
-        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.3-alpha05"
+        const val junitKtx = "androidx.test.ext:junit-ktx:1.1.3"
       }
     }
 
@@ -92,7 +92,7 @@ object Dependencies {
   object Com {
     object Google {
       object Accompanist {
-        private const val version = "0.10.0"
+        private const val version = "0.13.0"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
         const val accompanistPagerIndicators = "com.google.accompanist:accompanist-pager-indicators:$version"
@@ -117,7 +117,7 @@ object Dependencies {
       }
 
       object Dagger {
-        private const val version = "2.36"
+        private const val version = "2.37"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
@@ -126,7 +126,7 @@ object Dependencies {
       object Firebase {
         const val firebaseAnalytics = "com.google.firebase:firebase-analytics-ktx:19.0.0"
         const val firebaseConfig = "com.google.firebase:firebase-config-ktx:21.0.0"
-        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.0.0"
+        const val firebaseCrashlytics = "com.google.firebase:firebase-crashlytics-ktx:18.1.0"
         const val firebaseDatabase = "com.google.firebase:firebase-database-ktx:20.0.0"
         const val firebaseIid = "com.google.firebase:firebase-iid:21.1.0"
         const val firebaseInAppMessaging = "com.google.firebase:firebase-inappmessaging-display-ktx:19.1.1"
@@ -137,7 +137,7 @@ object Dependencies {
       }
 
       object Truth {
-        const val truth = "com.google.truth:truth:1.1.2"
+        const val truth = "com.google.truth:truth:1.1.3"
       }
 
       object Zxing {
@@ -197,7 +197,7 @@ object Dependencies {
     }
 
     object Robolectric {
-      const val robolectric = "org.robolectric:robolectric:4.6-alpha-2"
+      const val robolectric = "org.robolectric:robolectric:4.6"
     }
   }
 }

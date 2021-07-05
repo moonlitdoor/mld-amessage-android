@@ -12,15 +12,15 @@ buildscript {
     classpath("com.moonlitdoor.amessage:android")
     classpath("com.moonlitdoor.amessage:jacoco")
     classpath("com.moonlitdoor.amessage:acknowledgements")
-    classpath("com.google.dagger:hilt-android-gradle-plugin:2.36")
+    classpath("com.google.dagger:hilt-android-gradle-plugin:2.37")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.39.0")
-    classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.2")
-    classpath("com.github.triplet.gradle:play-publisher:3.4.0")
+    classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.3")
+    classpath("com.github.triplet.gradle:play-publisher:3.5.0")
     classpath("com.moonlitdoor.git-version:git-version:0.1.1")
     classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
-    classpath("com.google.firebase:firebase-crashlytics-gradle:2.6.1")
+    classpath("com.google.firebase:firebase-crashlytics-gradle:2.7.1")
     classpath("com.google.firebase:perf-plugin:1.4.0")
-    classpath("org.jlleitschuh.gradle:ktlint-gradle:10.0.0")
+    classpath("org.jlleitschuh.gradle:ktlint-gradle:10.1.0")
   }
 }
 
