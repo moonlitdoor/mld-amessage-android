@@ -6,5 +6,5 @@ sealed class QRCodeViewState {
 
   object Loading : QRCodeViewState()
   object Empty : QRCodeViewState()
-  data class Result(val item: ImageBitmap) : QRCodeViewState()
+  data class Loaded(val item: ImageBitmap) : QRCodeViewState()
 }

@@ -7,7 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.moonlitdoor.amessage.about.AboutScreen
 import com.moonlitdoor.amessage.about.AboutViewModel
-import com.moonlitdoor.amessage.connect.Connect
+import com.moonlitdoor.amessage.connect.ConnectScreen
 import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connection.Connection
 import com.moonlitdoor.amessage.connection.ConnectionViewModel
@@ -88,10 +88,10 @@ fun Navigation(navHostController: NavHostController, showBottomBar: (Boolean) ->
       )
     }
     composable(route = Routes.Connect.route) {
+      showBottomBar(true)
       val viewModel: ConnectViewModel = hiltViewModel(it)
-      Connect(
+      ConnectScreen(
         viewModel = viewModel,
-        showBottomBar = showBottomBar,
       )
     }
     composable(route = Routes.More.route) {

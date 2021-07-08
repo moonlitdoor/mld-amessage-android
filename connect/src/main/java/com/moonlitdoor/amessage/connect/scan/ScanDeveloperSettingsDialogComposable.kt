@@ -5,12 +5,11 @@ import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
-import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connect.R
 import timber.log.Timber
 
 @Composable
-fun ScanDeveloperSettingsDialog(viewModel: ConnectViewModel, viewState: ScanViewState.Result.DeveloperSettings) {
+fun ScanDeveloperSettingsDialog(viewState: ScanViewState.Result.DeveloperSettings, enableDeveloperSettings: () -> Unit, cancelCurrentScan: () -> Unit) {
   Timber.d("ScanDeveloperSettingsDialog Composable")
   AlertDialog(
     onDismissRequest = {},
@@ -24,7 +23,7 @@ fun ScanDeveloperSettingsDialog(viewModel: ConnectViewModel, viewState: ScanView
       Button(
         onClick = {
           viewState.imageProxy.close()
-          viewModel.enableDeveloperSettings()
+          enableDeveloperSettings()
         }
       ) {
         Text(text = stringResource(id = R.string.connect_ok))
@@ -34,7 +33,7 @@ fun ScanDeveloperSettingsDialog(viewModel: ConnectViewModel, viewState: ScanView
       Button(
         onClick = {
           viewState.imageProxy.close()
-          viewModel.cancelCurrentScan()
+          cancelCurrentScan()
         }
       ) {
         Text(text = stringResource(id = R.string.connect_cancel))

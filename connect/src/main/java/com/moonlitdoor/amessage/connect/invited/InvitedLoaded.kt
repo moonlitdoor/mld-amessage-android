@@ -22,10 +22,10 @@ import timber.log.Timber
 import java.time.Instant
 
 @Composable
-fun InvitedResult(viewState: InvitedViewState.Result) {
-  Timber.d("InvitedResult Composable")
+fun InvitedLoaded(state: InvitedViewState.Loaded) {
+  Timber.d("InvitedLoaded")
   LazyColumn {
-    items(viewState.items) {
+    items(state.items) {
       Timber.d("$it")
       Box(
         modifier = Modifier
@@ -43,7 +43,7 @@ fun InvitedResult(viewState: InvitedViewState.Result) {
 @Preview(showSystemUi = true)
 @Composable
 fun InvitedResultPreview() {
-  val viewState = InvitedViewState.Result(
+  val viewState = InvitedViewState.Loaded(
     listOf(
       Connection(
         connectionId = Id(),
@@ -67,5 +67,5 @@ fun InvitedResultPreview() {
       ),
     )
   )
-  InvitedResult(viewState)
+  InvitedLoaded(viewState)
 }

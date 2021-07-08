@@ -5,41 +5,50 @@ import android.view.ViewGroup
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ExperimentalGetImage
 import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageProxy
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.android.gms.tasks.Task
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
-import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connect.R
 import com.moonlitdoor.amessage.constants.Constants
 import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.Ensure
 import timber.log.Timber
-import java.util.concurrent.Executors
+import java.util.concurrent.Executor
 import androidx.camera.core.Preview as CameraPreview
 
 @SuppressLint("UnsafeOptInUsageError")
 @OptIn(ExperimentalPagerApi::class, ExperimentalGetImage::class)
 @Composable
-fun Scan(
-  viewModel: ConnectViewModel,
+fun ScanPage(
+  state: ScanViewState,
   isCurrentPage: Boolean,
+  executor: Executor,
+  detect: (FirebaseVisionImage) -> Task<List<FirebaseVisionBarcode>>,
+  connectionFound: (Connection, ImageProxy) -> Unit,
+  experimentsCodeFound: (ImageProxy) -> Unit,
+  developerSettingsCodeFound: (ImageProxy) -> Unit,
+  employeeSettingsCodeFound: (ImageProxy) -> Unit,
+  createConnection: (Connection) -> Unit,
+  enableExperiments: () -> Unit,
+  enableDeveloperSettings: () -> Unit,
+  enableEmployeeSettings: () -> Unit,
+  cancelCurrentScan: () -> Unit,
 ) {
   Timber.d("Scan Composable")
-  val viewState by viewModel.scanViewState.collectAsState(ScanViewState.Scan)
 
   if (isCurrentPage) {
     CustomLifecycle.onResume()
@@ -60,7 +69,6 @@ fun Scan(
           // Preview is incorrectly scaled in Compose on some devices without this
           it.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
         }
-        viewModel.executor = Executors.newSingleThreadExecutor()
         ProcessCameraProvider.getInstance(context).also { future ->
           future.addListener(
             {
@@ -75,10 +83,10 @@ fun Scan(
                   .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                   .build().also { imageAnalysis ->
                     imageAnalysis.setAnalyzer(
-                      viewModel.executor,
+                      executor,
                       { imageProxy ->
                         imageProxy.image?.let { image ->
-                          viewModel.detector.detectInImage(FirebaseVisionImage.fromMediaImage(image, FirebaseVisionImageMetadata.ROTATION_0))
+                          detect(FirebaseVisionImage.fromMediaImage(image, FirebaseVisionImageMetadata.ROTATION_0))
                             .addOnSuccessListener { list ->
                               if (list.isEmpty()) {
                                 imageProxy.close()
@@ -87,10 +95,10 @@ fun Scan(
                                   Timber.d("Scanning qr code found: ${barcode.rawValue}")
                                   barcode.rawValue?.let { value ->
                                     when {
-                                      Constants.PROFILE_REGEX.toRegex().matches(value) -> viewModel.connectionFound(Connection(value), imageProxy)
-                                      value == Constants.EXPERIMENTS -> viewModel.experimentsCodeFound(imageProxy)
-                                      value == Constants.DEVELOPER_SETTINGS -> viewModel.developerSettingsCodeFound(imageProxy)
-                                      value == Constants.EMPLOYEE_SETTINGS -> viewModel.employeeSettingsCodeFound(imageProxy)
+                                      Constants.PROFILE_REGEX.toRegex().matches(value) -> connectionFound(Connection(value), imageProxy)
+                                      value == Constants.EXPERIMENTS -> experimentsCodeFound(imageProxy)
+                                      value == Constants.DEVELOPER_SETTINGS -> developerSettingsCodeFound(imageProxy)
+                                      value == Constants.EMPLOYEE_SETTINGS -> employeeSettingsCodeFound(imageProxy)
                                       else -> Timber.i(value)
                                     }
                                   }
@@ -120,21 +128,17 @@ fun Scan(
     )
   }
 
-  Ensure exhaustive when (viewState) {
+  Ensure exhaustive when (state) {
     is ScanViewState.Scan -> {
     }
-    is ScanViewState.Result.Connect -> ScanConnectDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result.Connect)
-    is ScanViewState.Result.Connected -> ScanEnabledDialog(
-      viewModel = viewModel,
-      viewState = viewState as ScanViewState.Result,
-      title = stringResource(id = R.string.connect_connected, (viewState as ScanViewState.Result.Connected).connection.handle.value)
-    )
-    is ScanViewState.Result.Experiments -> ScanExperimentsDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result.Experiments)
-    is ScanViewState.Result.ExperimentsEnabled -> ScanEnabledDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result, title = stringResource(id = R.string.connect_experiments_enabled))
-    is ScanViewState.Result.DeveloperSettings -> ScanDeveloperSettingsDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result.DeveloperSettings)
-    is ScanViewState.Result.DeveloperSettingsEnabled -> ScanEnabledDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result, title = stringResource(id = R.string.connect_developer_settings_enabled))
-    is ScanViewState.Result.EmployeeSettings -> ScanEmployeeSettingsDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result.EmployeeSettings)
-    is ScanViewState.Result.EmployeeSettingsEnabled -> ScanEnabledDialog(viewModel = viewModel, viewState = viewState as ScanViewState.Result, title = stringResource(id = R.string.connect_employee_settings_enabled))
+    is ScanViewState.Result.Connect -> ScanConnectDialog(viewState = state, create = createConnection, cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.Connected -> ScanEnabledDialog(viewState = state, title = stringResource(id = R.string.connect_connected, state.connection.handle.value), cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.Experiments -> ScanExperimentsDialog(viewState = state, enableExperiments = enableExperiments, cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.ExperimentsEnabled -> ScanEnabledDialog(viewState = state as ScanViewState.Result, title = stringResource(id = R.string.connect_experiments_enabled), cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.DeveloperSettings -> ScanDeveloperSettingsDialog(viewState = state, enableDeveloperSettings = enableDeveloperSettings, cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.DeveloperSettingsEnabled -> ScanEnabledDialog(viewState = state, title = stringResource(id = R.string.connect_developer_settings_enabled), cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.EmployeeSettings -> ScanEmployeeSettingsDialog(viewState = state, enableEmployeeSettings = enableEmployeeSettings, cancelCurrentScan = cancelCurrentScan)
+    is ScanViewState.Result.EmployeeSettingsEnabled -> ScanEnabledDialog(viewState = state, title = stringResource(id = R.string.connect_employee_settings_enabled), cancelCurrentScan = cancelCurrentScan)
   }
 }
 
@@ -142,7 +146,5 @@ fun Scan(
 @Composable
 fun ScanPreview() {
   MaterialTheme {
-    val viewModel: ConnectViewModel = viewModel()
-    Scan(viewModel, true)
   }
 }

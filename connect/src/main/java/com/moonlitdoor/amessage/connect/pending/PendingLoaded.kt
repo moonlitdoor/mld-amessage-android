@@ -20,8 +20,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.moonlitdoor.amessage.connect.ConnectViewModel
 import com.moonlitdoor.amessage.connect.R
 import com.moonlitdoor.amessage.domain.model.AssociatedData
 import com.moonlitdoor.amessage.domain.model.Connection
@@ -33,12 +31,12 @@ import timber.log.Timber
 import java.time.Instant
 
 @Composable
-fun PendingResult(viewModel: ConnectViewModel, viewState: PendingViewState.Result) {
-  Timber.d("PendingResult Composable")
+fun PendingLoaded(state: PendingViewState.Loaded, confirm: (Connection) -> Unit, reject: (Connection) -> Unit) {
+  Timber.d("PendingLoaded")
   var selectedConnection by remember { mutableStateOf<Connection?>(null) }
 
   LazyColumn {
-    items(viewState.items) {
+    items(state.items) {
       Timber.d("$it")
       Box(
         modifier = Modifier
@@ -69,7 +67,7 @@ fun PendingResult(viewModel: ConnectViewModel, viewState: PendingViewState.Resul
       confirmButton = {
         Button(
           onClick = {
-            viewModel.confirm(it)
+            confirm(it)
             selectedConnection = null
           }
         ) {
@@ -79,7 +77,7 @@ fun PendingResult(viewModel: ConnectViewModel, viewState: PendingViewState.Resul
       dismissButton = {
         Button(
           onClick = {
-            viewModel.reject(it)
+            reject(it)
             selectedConnection = null
           }
         ) {
@@ -93,8 +91,7 @@ fun PendingResult(viewModel: ConnectViewModel, viewState: PendingViewState.Resul
 @Preview(showSystemUi = true)
 @Composable
 fun ConnectionsResultPreview() {
-  val viewModel: ConnectViewModel = viewModel()
-  val viewState = PendingViewState.Result(
+  val viewState = PendingViewState.Loaded(
     listOf(
       Connection(
         connectionId = Id(),
@@ -118,5 +115,5 @@ fun ConnectionsResultPreview() {
       )
     )
   )
-  PendingResult(viewModel, viewState)
+  PendingLoaded(state = viewState, confirm = {}, reject = {})
 }

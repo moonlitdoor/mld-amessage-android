@@ -6,5 +6,5 @@ sealed class InvitedViewState {
 
   object Loading : InvitedViewState()
   object Empty : InvitedViewState()
-  data class Result(val items: List<Connection>) : InvitedViewState()
+  data class Loaded(val items: List<Connection>) : InvitedViewState()
 }

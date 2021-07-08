@@ -27,10 +27,12 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import java.time.Instant
 import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 import javax.inject.Inject
 
 @HiltViewModel
@@ -40,7 +42,7 @@ class ConnectViewModel @Inject constructor(
   private val settingsRepository: SettingsRepository
 ) : ViewModel() {
 
-  lateinit var executor: ExecutorService
+  val executor: ExecutorService = Executors.newSingleThreadExecutor()
 
   val detector = FirebaseVision.getInstance().getVisionBarcodeDetector(
     FirebaseVisionBarcodeDetectorOptions.Builder().setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE).build()
@@ -48,26 +50,43 @@ class ConnectViewModel @Inject constructor(
 
   val pendingViewState: Flow<PendingViewState> = connectionRepository.getPending().map {
     when (it.isNotEmpty()) {
-      true -> PendingViewState.Result(it)
+      true -> PendingViewState.Loaded(it)
       false -> PendingViewState.Empty
     }
   }
 
   val invitedViewState: Flow<InvitedViewState> = connectionRepository.getInvited().map {
     when (it.isNotEmpty()) {
-      true -> InvitedViewState.Result(it)
+      true -> InvitedViewState.Loaded(it)
       false -> InvitedViewState.Empty
     }
   }
 
   val qrCodeViewState: Flow<QRCodeViewState> = profileRepository.getProfileFlow().map { profile ->
     profile?.let {
-      QRCodeViewState.Result(encodeAsBitmap(it.encode()))
+      QRCodeViewState.Loaded(encodeAsBitmap(it.encode()))
     } ?: QRCodeViewState.Empty
   }
 
   private val _scanViewState: MutableStateFlow<ScanViewState> = MutableStateFlow(ScanViewState.Scan)
   val scanViewState: StateFlow<ScanViewState> = _scanViewState.asStateFlow()
+
+  val connectViewState: Flow<ConnectViewState> = combine(pendingViewState, invitedViewState, qrCodeViewState, scanViewState) { pending, invited, qr, scan ->
+    if (pending is PendingViewState.Loading ||
+      invited is InvitedViewState.Loading ||
+      qr is QRCodeViewState.Loading
+    ) {
+      ConnectViewState.Loading
+    } else {
+      ConnectViewState.Loaded(
+        pending = pending,
+        invited = invited,
+        qr = qr,
+        scan = scan,
+      )
+    }
+  }
+
 
   fun connectionFound(connection: Connection, imageProxy: ImageProxy): Unit = viewModelScope.launch(Dispatchers.IO) {
     _scanViewState.emit(

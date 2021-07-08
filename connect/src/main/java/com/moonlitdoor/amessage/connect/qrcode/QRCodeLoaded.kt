@@ -18,8 +18,8 @@ import timber.log.Timber
 import kotlin.math.min
 
 @Composable
-fun QRCodeResult(viewState: QRCodeViewState.Result) {
-  Timber.d("QRCodeResult Composable")
+fun QRCodeLoaded(viewState: QRCodeViewState.Loaded) {
+  Timber.d("QRCodeLoaded")
   BoxWithConstraints(
     modifier = Modifier
       .fillMaxSize()
@@ -40,8 +40,8 @@ fun QRCodeResult(viewState: QRCodeViewState.Result) {
 @Preview(showSystemUi = true)
 @Composable
 fun QRCodeResultPreview() {
-  val viewState = QRCodeViewState.Result(
+  val viewState = QRCodeViewState.Loaded(
     item = ImageBitmap(500, 500)
   )
-  QRCodeResult(viewState)
+  QRCodeLoaded(viewState)
 }

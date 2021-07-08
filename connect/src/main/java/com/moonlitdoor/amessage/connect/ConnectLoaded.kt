@@ -6,11 +6,11 @@ import android.content.Context
 import android.content.pm.PackageManager
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.camera.core.ImageProxy
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Tab
@@ -26,22 +26,25 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.pagerTabIndicatorOffset
 import com.google.accompanist.pager.rememberPagerState
-import com.moonlitdoor.amessage.connect.invited.Invited
-import com.moonlitdoor.amessage.connect.pending.Pending
-import com.moonlitdoor.amessage.connect.qrcode.QRCode
-import com.moonlitdoor.amessage.connect.scan.Scan
+import com.google.android.gms.tasks.Task
+import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode
+import com.google.firebase.ml.vision.common.FirebaseVisionImage
+import com.moonlitdoor.amessage.connect.invited.InvitedPage
+import com.moonlitdoor.amessage.connect.pending.PendingPage
+import com.moonlitdoor.amessage.connect.qrcode.QRCodePage
+import com.moonlitdoor.amessage.connect.scan.ScanPage
+import com.moonlitdoor.amessage.domain.model.Connection
 import com.moonlitdoor.amessage.extensions.Ensure
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import java.util.concurrent.Executor
 
 private const val PERMISSIONS_REQUEST_CODE = 1776
 private val PERMISSIONS_REQUIRED = arrayOf(Manifest.permission.CAMERA)
@@ -52,10 +55,24 @@ fun hasPermissions(context: Context): Boolean = PERMISSIONS_REQUIRED.all {
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Connect(viewModel: ConnectViewModel, showBottomBar: (Boolean) -> Unit) {
-  Timber.d("Connect Composable")
+fun ConnectLoaded(
+  state: ConnectViewState.Loaded,
+  executor: Executor,
+  pendingConfirm: (Connection) -> Unit,
+  pendingReject: (Connection) -> Unit,
+  detect: (FirebaseVisionImage) -> Task<List<FirebaseVisionBarcode>>,
+  connectionFound: (Connection, ImageProxy) -> Unit,
+  experimentsCodeFound: (ImageProxy) -> Unit,
+  developerSettingsCodeFound: (ImageProxy) -> Unit,
+  employeeSettingsCodeFound: (ImageProxy) -> Unit,
+  createConnection: (Connection) -> Unit,
+  enableExperiments: () -> Unit,
+  enableDeveloperSettings: () -> Unit,
+  enableEmployeeSettings: () -> Unit,
+  cancelCurrentScan: () -> Unit,
+) {
+  Timber.d("ConnectLoaded")
 
-  showBottomBar(true)
   Scaffold(
     topBar = {
       TopAppBar(
@@ -80,7 +97,7 @@ fun Connect(viewModel: ConnectViewModel, showBottomBar: (Boolean) -> Unit) {
     }
 
     if (!hasPermissions(LocalContext.current)) {
-      requestPermissions(LocalContext.current as Activity, PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
+      ActivityCompat.requestPermissions(LocalContext.current as Activity, PERMISSIONS_REQUIRED, PERMISSIONS_REQUEST_CODE)
     } else {
       pages2.add(ConnectTabs.Scan)
     }
@@ -121,10 +138,28 @@ fun Connect(viewModel: ConnectViewModel, showBottomBar: (Boolean) -> Unit) {
         ) { index ->
           Box(modifier = Modifier.fillMaxSize()) {
             Ensure exhaustive when (pages[index]) {
-              is ConnectTabs.Pending -> Pending(viewModel = viewModel)
-              is ConnectTabs.Invited -> Invited(viewModel = viewModel)
-              is ConnectTabs.QRCode -> QRCode(viewModel = viewModel)
-              is ConnectTabs.Scan -> Scan(viewModel = viewModel, isCurrentPage = pages[pagerState.currentPage] == ConnectTabs.Scan)
+              is ConnectTabs.Pending -> PendingPage(
+                state = state.pending,
+                confirm = pendingConfirm,
+                reject = pendingReject,
+              )
+              is ConnectTabs.Invited -> InvitedPage(state = state.invited)
+              is ConnectTabs.QRCode -> QRCodePage(state = state.qr)
+              is ConnectTabs.Scan -> ScanPage(
+                state = state.scan,
+                isCurrentPage = pages[pagerState.currentPage] == ConnectTabs.Scan,
+                executor = executor,
+                detect = detect,
+                connectionFound = connectionFound,
+                experimentsCodeFound = experimentsCodeFound,
+                developerSettingsCodeFound = developerSettingsCodeFound,
+                employeeSettingsCodeFound = employeeSettingsCodeFound,
+                createConnection = createConnection,
+                enableExperiments = enableExperiments,
+                enableDeveloperSettings = enableDeveloperSettings,
+                enableEmployeeSettings = enableEmployeeSettings,
+                cancelCurrentScan = cancelCurrentScan,
+              )
             }
           }
         }
@@ -133,11 +168,3 @@ fun Connect(viewModel: ConnectViewModel, showBottomBar: (Boolean) -> Unit) {
   }
 }
 
-@Preview(showBackground = false)
-@Composable
-fun ConnectPreview() {
-  MaterialTheme {
-    val viewModel: ConnectViewModel = viewModel()
-    Connect(viewModel) {}
-  }
-}
