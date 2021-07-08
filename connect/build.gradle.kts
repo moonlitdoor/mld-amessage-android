@@ -32,6 +32,7 @@ dependencies {
   implementation(project(Modules.DOMAIN))
   implementation(project(Modules.EXTENSIONS))
   implementation(project(Modules.RESOURCES))
+  implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 
   implementation(Dependencies.Androidx.Camera.cameraCamera2)
@@ -41,6 +42,7 @@ dependencies {
   implementation(Dependencies.Androidx.Compose.Material.material)
   implementation(Dependencies.Androidx.Compose.Ui.ui)
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
+  implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
   implementation(Dependencies.Com.Google.Accompanist.accompanistPager)

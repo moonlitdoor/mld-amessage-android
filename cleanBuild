@@ -1,0 +1,3 @@
+#!/bin/sh
+
+./gradlew clean build --no-build-cache --continue --rerun-tasks --stacktrace

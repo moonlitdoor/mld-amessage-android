@@ -27,15 +27,21 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.moonlitdoor.amessage.routes.NavigationFactory
 import com.moonlitdoor.amessage.routes.Routes
 import com.moonlitdoor.amessage.theme.AMessageTheme
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class AMessageActivity : AppCompatActivity() {
+
+  @Inject
+  lateinit var navigationFactories: @JvmSuppressWildcards Set<NavigationFactory>
 
   @ExperimentalAnimationApi
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,7 +116,11 @@ class AMessageActivity : AppCompatActivity() {
             },
           ) { padding ->
             Box(modifier = Modifier.padding(padding)) {
-              Navigation(navHostController = navController, showBottomBar = showBottomBar)
+              NavHost(navController = navController, startDestination = Routes.Conversations.route) {
+                navigationFactories.forEach { factory ->
+                  factory.create(builder = this, navHostController = navController, showBottomBar = showBottomBar)
+                }
+              }
             }
           }
         }

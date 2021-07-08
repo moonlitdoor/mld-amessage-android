@@ -27,6 +27,7 @@ kapt {
 }
 
 hilt {
+//  enableAggregatingTask = true
   enableExperimentalClasspathAggregation = true
 }
 
@@ -96,7 +97,7 @@ android {
     }
 
     create(Constants.BETA) {
-      matchingFallbacks += Constants.RELEASE
+      matchingFallbacks += listOf(Constants.RELEASE)
       isDebuggable = false
       signingConfig = signingConfigs.getByName(Constants.RELEASE)
 //      isShrinkResources = false
@@ -172,7 +173,6 @@ dependencies {
   implementation(project(Modules.FAQ))
   implementation(project(Modules.FEEDBACK))
   implementation(project(Modules.INIT))
-  implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
   implementation(project(Modules.EXPERIMENTS))
   implementation(project(Modules.EXPERIMENTS_UI))
@@ -183,6 +183,7 @@ dependencies {
   implementation(project(Modules.PUSH))
   implementation(project(Modules.RESOURCES))
   implementation(project(Modules.ROOT))
+  implementation(project(Modules.ROUTES))
   implementation(project(Modules.SETTINGS))
   implementation(project(Modules.WINDOWS))
 

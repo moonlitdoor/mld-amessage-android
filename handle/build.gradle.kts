@@ -31,11 +31,13 @@ dependencies {
   implementation(Dependencies.Androidx.Compose.Ui.uiTooling)
   implementation(Dependencies.Androidx.Lifecycle.lifecycleViewmodelCompose)
   implementation(Dependencies.Androidx.Navigation.navigationCompose)
+  implementation(Dependencies.Androidx.Hilt.hiltNavigationCompose)
   implementation(Dependencies.Com.Google.Dagger.hiltAndroid)
 
   implementation(project(Modules.COMPONENTS))
   implementation(project(Modules.DOMAIN))
   implementation(project(Modules.RESOURCES))
+  implementation(project(Modules.ROUTES))
   implementation(project(Modules.THEME))
 
   implementation(Dependencies.Com.JakeWharton.Timber.timber)
