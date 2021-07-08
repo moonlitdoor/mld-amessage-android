@@ -68,10 +68,7 @@ tasks.register("testReport", TestReport::class) {
 }
 
 tasks.register("clean", Delete::class) {
-  delete(
-    rootProject.buildDir,
-    "amessage/src/main/play/en-US"
-  )
+  delete(rootProject.buildDir, "amessage/src/main/play/en-US")
 }
 
 tasks.register("cleanGradleBuildCache", Delete::class) {

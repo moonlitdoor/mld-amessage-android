@@ -87,7 +87,6 @@ class ConnectViewModel @Inject constructor(
     }
   }
 
-
   fun connectionFound(connection: Connection, imageProxy: ImageProxy): Unit = viewModelScope.launch(Dispatchers.IO) {
     _scanViewState.emit(
       if (connectionRepository.isConnectionExisting(connection)) {
