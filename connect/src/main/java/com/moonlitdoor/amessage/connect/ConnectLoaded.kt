@@ -39,7 +39,6 @@ import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.util.concurrent.Executor
 
-
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun ConnectLoaded(
