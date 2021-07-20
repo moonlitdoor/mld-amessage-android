@@ -5,7 +5,7 @@ buildscript {
   repositories {
     google()
     mavenCentral()
-    maven(url = "https://plugins.gradle.org/m2/")
+    gradlePluginPortal()
   }
   dependencies {
     classpath("com.moonlitdoor.amessage:dependencies")

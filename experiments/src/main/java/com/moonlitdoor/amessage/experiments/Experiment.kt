@@ -21,7 +21,7 @@ data class Experiment<T : Enum<T>> internal constructor(
   val id = "com.moonlitdoor.amessage.experiment.$key"
 
   val remoteValue: String
-    get() = FirebaseRemoteConfigWrapper.get().getString(key).toUpperCase(Locale.ROOT)
+    get() = FirebaseRemoteConfigWrapper.get().getString(key).uppercase(Locale.US)
 
   var localValue: String
     get() = sharedPreferences.getString(id, REMOTE) ?: REMOTE
@@ -29,7 +29,7 @@ data class Experiment<T : Enum<T>> internal constructor(
       sharedPreferences.edit().putString(id, value).apply()
     }
 
-  val options: List<String> = listOf(REMOTE) + c.enumConstants.map { it.name.toUpperCase(Locale.ROOT) }
+  val options: List<String> = listOf(REMOTE) + c.enumConstants.map { it.name.uppercase(Locale.US) }
 
   val value: T
     get() = c.enumConstants.asList().find { if (localValue == REMOTE) remoteValue == it.name else localValue == it.name } ?: defaultValue
