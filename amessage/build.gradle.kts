@@ -19,7 +19,7 @@ plugins {
 }
 
 base {
-  archivesBaseName = "$name-$gitVersion"
+  archivesName.set("$name-$gitVersion")
 }
 
 kapt {
@@ -139,10 +139,6 @@ android {
       //noinspection
       resValue("string", "project_id", property("COM_MOONLITDOOR_AMESSAGE_FIREBASE_DEBUG_PROJECT_ID").toString())
     }
-  }
-
-  packagingOptions {
-    exclude("META-INF/proguard/androidx-annotations.pro")
   }
 
   buildFeatures {
