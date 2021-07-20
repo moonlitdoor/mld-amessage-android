@@ -8,7 +8,7 @@ object Dependencies {
 
   object Androidx {
     object Activity {
-      const val activityCompose = "androidx.activity:activity-compose:1.3.0-rc01"
+      const val activityCompose = "androidx.activity:activity-compose:1.3.0-rc02"
     }
 
     object Camera {
@@ -21,7 +21,7 @@ object Dependencies {
     }
 
     object Compose {
-      const val version = "1.0.0-rc01"
+      const val version = "1.0.0-rc02"
 
       object Material {
         const val material = "androidx.compose.material:material:$version"
@@ -92,7 +92,7 @@ object Dependencies {
   object Com {
     object Google {
       object Accompanist {
-        private const val version = "0.13.0"
+        private const val version = "0.14.0"
         const val accompanistInsets = "com.google.accompanist:accompanist-insets:$version"
         const val accompanistPager = "com.google.accompanist:accompanist-pager:$version"
         const val accompanistPagerIndicators = "com.google.accompanist:accompanist-pager-indicators:$version"
@@ -113,12 +113,12 @@ object Dependencies {
 
       object Crypto {
         object Tink {
-          const val tinkAndroid = "com.google.crypto.tink:tink-android:1.6.0"
+          const val tinkAndroid = "com.google.crypto.tink:tink-android:1.6.1"
         }
       }
 
       object Dagger {
-        private const val version = "2.37"
+        private const val version = "2.38"
         const val hiltAndroid = "com.google.dagger:hilt-android:$version"
         const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:$version"
         const val hiltCompiler = "com.google.dagger:hilt-compiler:$version"
@@ -198,7 +198,7 @@ object Dependencies {
     }
 
     object Robolectric {
-      const val robolectric = "org.robolectric:robolectric:4.6"
+      const val robolectric = "org.robolectric:robolectric:4.6.1"
     }
   }
 }

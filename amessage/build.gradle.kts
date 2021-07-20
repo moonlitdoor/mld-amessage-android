@@ -27,17 +27,17 @@ kapt {
 }
 
 hilt {
-//  enableAggregatingTask = true
-  enableExperimentalClasspathAggregation = true
+  enableAggregatingTask = true
 }
 
 println("VERSION NAME: $gitVersion")
 println("VERSION CODE: ${project.extensions.getByName("gitCommitAndTagCount")}")
 
 // play {
-//  serviceAccountCredentials = file("../build/keys/playstore-api-key.json")
-//  defaultToAppBundles = true
-//  track = "alpha"
+//  serviceAccountCredentials.set(file("../../keys/amessage/android/production/play-api-key.json"))
+// //   serviceAccountCredentials.set(file("../build/keys/playstore-api-key.json"))
+//  defaultToAppBundles.set(true)
+//  track.set("alpha")
 // }
 
 android {
