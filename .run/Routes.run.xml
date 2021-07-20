@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Ids" type="GradleRunConfiguration" factoryName="Gradle" folderName="CleanBuildTestCoverage">
+  <configuration default="false" name="Routes" type="GradleRunConfiguration" factoryName="Gradle" folderName="CleanBuildTestCoverage">
     <ExternalSystemSettings>
       <option name="executionName" />
       <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -10,9 +10,8 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value="clean" />
-          <option value="ids:build" />
-          <option value="jacocoTestReport" />
+          <option value="routes:clean" />
+          <option value="routes:build" />
         </list>
       </option>
       <option name="vmOptions" value="" />

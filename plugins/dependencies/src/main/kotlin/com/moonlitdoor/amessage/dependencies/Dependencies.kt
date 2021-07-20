@@ -190,7 +190,7 @@ object Dependencies {
       }
 
       object Kotlinx {
-        private const val version = "1.5.0"
+        private const val version = "1.5.1"
         const val kotlinxCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$version"
         const val kotlinxCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
         const val kotlinxCoroutinesPlayServices = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:$version"
