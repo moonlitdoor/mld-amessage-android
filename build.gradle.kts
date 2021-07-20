@@ -12,7 +12,7 @@ buildscript {
     classpath("com.moonlitdoor.amessage:android")
     classpath("com.moonlitdoor.amessage:jacoco")
     classpath("com.moonlitdoor.amessage:acknowledgements")
-    classpath("com.google.dagger:hilt-android-gradle-plugin:2.37")
+    classpath("com.google.dagger:hilt-android-gradle-plugin:2.38")
     classpath("com.github.ben-manes:gradle-versions-plugin:0.39.0")
     classpath("com.google.firebase:firebase-appdistribution-gradle:2.1.3")
     classpath("com.github.triplet.gradle:play-publisher:3.5.0")
