@@ -3,7 +3,7 @@ package com.moonlitdoor.amessage.dependencies
 @Suppress("unused")
 object Dependencies {
   object AGP {
-    const val gradle = "com.android.tools.build:gradle:7.1.0-alpha03"
+    const val gradle = "com.android.tools.build:gradle:7.1.0-alpha04"
   }
 
   object Androidx {
@@ -12,8 +12,8 @@ object Dependencies {
     }
 
     object Camera {
-      private const val version = "1.1.0-alpha06"
-      private const val versionView = "1.0.0-alpha26"
+      private const val version = "1.1.0-alpha07"
+      private const val versionView = "1.0.0-alpha27"
       const val cameraCamera2 = "androidx.camera:camera-camera2:$version"
       const val cameraCore = "androidx.camera:camera-core:$version"
       const val cameraLifecycle = "androidx.camera:camera-lifecycle:$version"
@@ -53,7 +53,7 @@ object Dependencies {
     }
 
     object Navigation {
-      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha04"
+      const val navigationCompose = "androidx.navigation:navigation-compose:2.4.0-alpha05"
     }
 
     object Preference {
@@ -61,7 +61,7 @@ object Dependencies {
     }
 
     object Room {
-      private const val version = "2.4.0-alpha03"
+      private const val version = "2.4.0-alpha04"
       const val roomCompiler = "androidx.room:room-compiler:$version"
       const val roomRuntime = "androidx.room:room-runtime:$version"
       const val roomKtx = "androidx.room:room-ktx:$version"
@@ -85,7 +85,7 @@ object Dependencies {
     }
 
     object Work {
-      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha04"
+      const val workRuntimeKtx = "androidx.work:work-runtime-ktx:2.7.0-alpha05"
     }
   }
 
